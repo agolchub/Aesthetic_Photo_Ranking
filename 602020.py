@@ -24,6 +24,7 @@ def proc_image_dir(Images_Path):
     for image_class in image_classes:
         print("Processing ", image_class)
         items = glob(os.path.join(Images_Path, image_class,"*"))
+        j = 0
         for item in items:
             print("Reading "+item)
             if item.lower().endswith(".jpg") or item.lower().endswith(".bmp"):
@@ -34,6 +35,8 @@ def proc_image_dir(Images_Path):
                 out = [0] * len(image_classes)
                 out[i] = 1
                 y.append(out)
+                j+=1
+                if(j>4): break
         i+=1
 
     print("")
@@ -70,9 +73,9 @@ X_train, X_valtest, y_train, y_valtest = train_test_split(x2,y2, test_size=0.4, 
 # Second split the 40% into validation and test sets
 X_test, X_val, y_test, y_val = train_test_split(X_valtest, y_valtest, test_size=0.5, random_state=1, stratify=y_valtest)
 
-print(np.array(X_train).shape)
-print(np.array(X_val).shape)
-print(np.array(X_test).shape)
+#print(np.array(X_train).shape)
+#print(np.array(X_val).shape)
+#print(np.array(X_test).shape)
 
 
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -88,12 +91,48 @@ import os
 
 K.image_data_format()
 
-img_width, img_height = 6000, 4000
+img_width, img_height = 1100, 1650
 nb_train_samples = len(X_train)
 nb_validation_samples = len(X_val)
 epochs = 100
 batch_size = 16
 
+model = models.Sequential()
+
+model.add(layers.Conv2D(32, (88, 132), input_shape=(img_width, img_height, 3)))
+model.add(layers.BatchNormalization())
+model.add(layers.Activation("softmax"))
+
+model.add(layers.MaxPooling2D((2, 2)))
+
+model.add(layers.Conv2D(64, (44, 66)))
+model.add(layers.BatchNormalization())
+model.add(layers.Activation("softmax"))
+
+model.add(layers.MaxPooling2D((2, 2)))
+
+model.add(layers.Conv2D(128, (2, 3)))
+model.add(layers.BatchNormalization())
+model.add(layers.Activation("softmax"))
+
+model.add(layers.MaxPooling2D((2, 2)))
+
+model.add(layers.Conv2D(128, (2, 3)))
+model.add(layers.BatchNormalization())
+model.add(layers.Activation("softmax"))
+
+model.add(layers.MaxPooling2D((2, 2)))
+
+model.add(layers.Flatten())
+model.add(layers.Dropout(0.2))
+model.add(layers.Dense(64))
+model.add(layers.BatchNormalization())
+model.add(layers.Activation("relu"))
+model.add(layers.Dropout(0.2))
+
+model.add(layers.Dense(len(image_classes)))
+model.add(layers.BatchNormalization())
+model.add(layers.Activation("sigmoid"))
 
 model.compile(
 	loss='binary_crossentropy',
@@ -101,3 +140,8 @@ model.compile(
 	metrics=['acc'])
 
 model.summary()
+
+
+
+
+history = model.fit(np.array(X_train), np.array(y_train), validation_data=(np.array(X_val), np.array(y_val)), epochs=50)
