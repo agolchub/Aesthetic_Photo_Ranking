@@ -16,8 +16,8 @@ def proc_image_dir(Images_Path):
     
     x = [] # images as arrays
     y = [] # labels Infiltration or Not_infiltration
-    WIDTH = 3840
-    HEIGHT = 2160
+    WIDTH = 1650
+    HEIGHT = 1100
   
     print("Adding Images: ",end="")
     i = 0
@@ -30,13 +30,13 @@ def proc_image_dir(Images_Path):
             if item.lower().endswith(".jpg") or item.lower().endswith(".bmp"):
                 # Read and resize image
                 full_size_image = cv2.imread(item)
-                #x.append(cv2.resize(full_size_image, (WIDTH,HEIGHT), interpolation=cv2.INTER_CUBIC))
-                x.append(full_size_image)
+                x.append(cv2.resize(full_size_image, (WIDTH,HEIGHT), interpolation=cv2.INTER_CUBIC))
+                #x.append(full_size_image)
                 out = [0] * len(image_classes)
                 out[i] = 1
                 y.append(out)
                 j+=1
-                if(j>4): break
+                #if(j>4): break
         i+=1
 
     print("")
@@ -142,6 +142,6 @@ model.compile(
 model.summary()
 
 
-
+print (np.array(X_train))
 
 history = model.fit(np.array(X_train), np.array(y_train), validation_data=(np.array(X_val), np.array(y_val)), epochs=50)
