@@ -1,4 +1,4 @@
-import cv2
+import skimage
 import os
 import random
 import matplotlib.pylab as plt
@@ -6,6 +6,8 @@ from glob import glob
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
+from skimage import io
+from skimage.transform import rescale, resize
 
 def proc_image_dir(Images_Path):
     
@@ -29,8 +31,8 @@ def proc_image_dir(Images_Path):
             print("Reading "+item)
             if item.lower().endswith(".jpg") or item.lower().endswith(".bmp"):
                 # Read and resize image
-                full_size_image = cv2.imread(item)
-                x.append(cv2.resize(full_size_image, (WIDTH,HEIGHT), interpolation=cv2.INTER_CUBIC))
+                full_size_image = io.imread(item)
+                x.append(resize(full_size_image, (WIDTH,HEIGHT), anti_aliasing=True))
                 #x.append(full_size_image)
                 out = [0] * len(image_classes)
                 out[i] = 1
