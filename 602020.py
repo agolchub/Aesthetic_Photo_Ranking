@@ -38,7 +38,7 @@ def proc_image_dir(Images_Path):
                 out[i] = 1
                 y.append(out)
                 j+=1
-                #if(j>4): break
+                if(j>3): break
         i+=1
 
     print("")
@@ -90,36 +90,83 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten
 from tensorflow.keras.layers import Conv2D, MaxPooling2D
 import os
+import tensorflow as tf
+
+physical_devices = tf.config.list_physical_devices('GPU') 
+tf.config.experimental.set_memory_growth(physical_devices[0], True)
 
 K.image_data_format()
 
-img_width, img_height = 1100, 1650
+img_width, img_height = 1650, 1100
 nb_train_samples = len(X_train)
 nb_validation_samples = len(X_val)
 epochs = 100
 batch_size = 16
 
+"""
+l = layers.Conv2D(32, (132, 88), input_shape=(img_width, img_height, 3))(img)
+
+l = layers.BatchNormalization()(l)
+l = layers.Activation("softmax")(l)
+
+l = layers.MaxPooling2D((2, 2))(l)
+
+l = layers.Conv2D(64, (66, 44))(l)
+l = layers.BatchNormalization()(l)
+l = layers.Activation("softmax")(l)
+
+l = layers.MaxPooling2D((2, 2))(l)
+
+l = layers.Conv2D(128, (3, 2))(l)
+l = layers.BatchNormalization()(l)
+l = layers.Activation("softmax")(l)
+
+l = layers.MaxPooling2D((2, 2))(l)
+
+l = layers.Conv2D(128, (3, 2))(l)
+l = layers.BatchNormalization()(l)
+l = layers.Activation("softmax")(l)
+
+l = layers.MaxPooling2D((2, 2))(l)
+
+l = layers.Flatten()(l)
+l = layers.Dropout(0.2)(l)
+l = layers.Dense(64)(l)
+l = layers.BatchNormalization()(l)
+l = layers.Activation("relu")(l)
+l = layers.Dropout(0.2)(l)
+
+l = layers.Dense(len(image_classes))(l)
+l = layers.BatchNormalization()(l)
+preds = layers.Activation("sigmoid")(l)
+
+labels = tf.placeholder(image_classes)
+
+from keras.objectives import categorical_crossentropy
+loss = tf.reduce_mean(categorical_crossentropy(labels, preds))
+"""
+ 
 model = models.Sequential()
 
-model.add(layers.Conv2D(32, (88, 132), input_shape=(img_width, img_height, 3)))
+model.add(layers.Conv2D(32, (264, 176), input_shape=(img_width, img_height, 3)))
 model.add(layers.BatchNormalization())
 model.add(layers.Activation("softmax"))
 
 model.add(layers.MaxPooling2D((2, 2)))
 
-model.add(layers.Conv2D(64, (44, 66)))
+model.add(layers.Conv2D(64, (66, 44)))
 model.add(layers.BatchNormalization())
 model.add(layers.Activation("softmax"))
 
 model.add(layers.MaxPooling2D((2, 2)))
 
-model.add(layers.Conv2D(128, (2, 3)))
+model.add(layers.Conv2D(128, (3, 2)))
 model.add(layers.BatchNormalization())
 model.add(layers.Activation("softmax"))
 
 model.add(layers.MaxPooling2D((2, 2)))
 
-model.add(layers.Conv2D(128, (2, 3)))
+model.add(layers.Conv2D(128, (3, 2)))
 model.add(layers.BatchNormalization())
 model.add(layers.Activation("softmax"))
 
@@ -141,9 +188,21 @@ model.compile(
 	optimizer=optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0),
 	metrics=['acc'])
 
-model.summary()
+model.summary() 
 
+#train_step = tf.train.GradientDescentOptimizer(0.5).minimize(loss)
+# Initialize all variables
+#init_op = tf.global_variables_initializer()
+#sess.run(init_op)
 
-print (np.array(X_train))
+# Run training loop
+#with sess.as_default():
+#    for i in range(10):
+#        batch = mnist_data.train.next_batch(50)
+#        train_step.run(feed_dict={img: batch[0],
+#                                  labels: batch[1]})
+#print (np.array(X_train))
+
+#print (tf.trainable_variables())
 
 history = model.fit(np.array(X_train), np.array(y_train), validation_data=(np.array(X_val), np.array(y_val)), epochs=50)
