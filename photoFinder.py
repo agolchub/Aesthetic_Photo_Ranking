@@ -11,4 +11,4 @@ for x in range(pages):
         if(int(photo["count_faves"]) >= 1):
             print(photo)
             photoResponse = requests.get("https://live.staticflickr.com/%s/%s_%s_b.jpg" % (photo["server"],photo["id"],photo["secret"]))
-            open("./databaserelease2/flickr-1/%s-%s.jpg" % (photo["count_faves"],photo["id"]), 'wb').write(photoResponse.content)
+            open("./databaserelease2/flickr-2/%s-%s.jpg" % (photo["count_faves"],photo["id"]), 'wb').write(photoResponse.content)
