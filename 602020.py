@@ -194,16 +194,16 @@ model.summary()
 
 #print (tf.trainable_variables())
 
-tf.keras.utils.plot_model(
-    model,
-    to_file="model.png",
-    show_shapes=False,
-    show_dtype=False,
-    show_layer_names=True,
-    rankdir="TB",
-    expand_nested=False,
-    dpi=96,
-)
+#tf.keras.utils.plot_model(
+#    model,
+#    to_file="model.png",
+#    show_shapes=False,
+#    show_dtype=False,
+#    show_layer_names=True,
+#    rankdir="TB",
+#    expand_nested=False,
+#    dpi=96,
+#)
 
 
 run_filepath = './runs/run-'+datetime.now().strftime("%Y%m%d%H%M%S")
