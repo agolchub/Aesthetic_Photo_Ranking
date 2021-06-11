@@ -9,6 +9,7 @@ from sklearn.model_selection import train_test_split
 from skimage import io
 from skimage.transform import rescale, resize
 from datetime import datetime
+import math
 
 def proc_image_dir(Images_Path):
     
@@ -39,9 +40,9 @@ def proc_image_dir(Images_Path):
 
             rawscore = int(os.path.basename(item).split("-")[0])
 
-            if rawscore > 1:
+            if rawscore >= 1:
                 #x.append(full_size_image)
-                out = rawscore/788.0
+                out = rawscore
                 print(out)
                 y.append(out)
                 images.append(item)
@@ -74,7 +75,7 @@ def horizontal_motion_blur(img, blur_factor):
 
 
 # ./input/
-PATH = os.path.abspath(os.path.join('.', 'databaserelease2', 'flickr-1'))
+PATH = os.path.abspath(os.path.join('.', 'databaserelease2', 'flickr-2'))
 
 # ./input/sample/images/
 SOURCE_IMAGES = PATH#os.path.join(PATH, "sample", "images")
@@ -117,13 +118,14 @@ K.image_data_format()
 img_width, img_height = 1024, 680
 nb_train_samples = len(X_train)
 nb_validation_samples = len(X_val)
-epochs = 100
-batch_size = 1
+epochs = 50
+batch_size = 10
 
+initializer = tf.keras.initializers.TruncatedNormal(mean=0., stddev=1.)
 
 model = models.Sequential()
-
-model.add(layers.Conv2D(32, (264, 176), input_shape=(img_width, img_height, 3)))
+'''
+model.add(layers.Conv2D(32, (128, 85), input_shape=(img_width, img_height, 3)))
 model.add(layers.BatchNormalization())
 model.add(layers.Activation("softmax"))
 
@@ -134,48 +136,63 @@ model.add(layers.BatchNormalization())
 model.add(layers.Activation("softmax"))
 
 model.add(layers.MaxPooling2D((2, 2)))
+'''
+model.add(layers.Conv2D(32, (132, 88),input_shape=(img_width, img_height, 3), strides=(4,4), activation="relu"))
+model.add(layers.BatchNormalization())
+model.add(layers.Dropout(0.2))
 
-model.add(layers.Conv2D(128, (6, 4)))
+#model.add(layers.MaxPooling2D((4, 4)))
+
+model.add(layers.Conv2D(64, (66, 44), strides=(4,4), activation="relu"))
+model.add(layers.BatchNormalization())
+model.add(layers.Dropout(0.5))
+
+model.add(layers.Conv2D(128, (33, 22), strides=(4,4), activation="relu"))
+model.add(layers.BatchNormalization())
+model.add(layers.Dropout(0.5))
+'''
+model.add(layers.MaxPooling2D((2, 2)))
+
+model.add(layers.Conv2D(256, (3, 2)))
 model.add(layers.BatchNormalization())
 model.add(layers.Activation("softmax"))
+model.add(layers.Dropout(0.5))
 
 model.add(layers.MaxPooling2D((2, 2)))
 
 model.add(layers.Conv2D(128, (3, 2)))
 model.add(layers.BatchNormalization())
 model.add(layers.Activation("softmax"))
-
-'''model.add(layers.MaxPooling2D((2, 2)))
-
-model.add(layers.Conv2D(128, (3, 2)))
-model.add(layers.BatchNormalization())
-model.add(layers.Activation("softmax"))
-
-model.add(layers.MaxPooling2D((2, 2)))
-
-model.add(layers.Conv2D(128, (3, 2)))
-model.add(layers.BatchNormalization())
-model.add(layers.Activation("softmax"))
+model.add(layers.Dropout(0.5))
 '''
 
 model.add(layers.Flatten())
+
+model.add(layers.Dense(512, activation="relu"))
+model.add(layers.Dropout(0.5))
+model.add(layers.Dense(256, activation="relu"))
 model.add(layers.Dropout(0.2))
+#model.add(layers.BatchNormalization())
+
+
+
+'''
 model.add(layers.Dense(128))
-model.add(layers.BatchNormalization())
+#model.add(layers.BatchNormalization())
 model.add(layers.Activation("relu"))
 model.add(layers.Dense(128))
-model.add(layers.BatchNormalization())
+#model.add(layers.BatchNormalization())
 model.add(layers.Activation("relu"))
 model.add(layers.Dense(64))
-model.add(layers.BatchNormalization())
+#model.add(layers.BatchNormalization())
 model.add(layers.Activation("relu"))
 #model.add(layers.Dropout(0.2))
-
+'''
 model.add(Dense(1, input_dim=1, kernel_initializer='glorot_uniform', activation='linear'))
 
 model.compile(
 	loss='mse',
-	optimizer=optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0))
+	optimizer=optimizers.Adam(lr=0.01, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0))
 
 model.summary() 
 
@@ -207,20 +224,43 @@ model.summary()
 
 
 run_filepath = './runs/run-'+datetime.now().strftime("%Y%m%d%H%M%S")
-checkpoint_filepath = './runs/checkpoint'
+checkpoint_filepath = './runs/checkpointfile/'
 history_path = run_filepath+".history"
 
 model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
-    filepath=checkpoint_filepath,
+    filepath=checkpoint_filepath,   
     save_weights_only=False,
     monitor='val_loss',
     mode='min',
-    save_best_only=True)
+    save_best_only=False)
 
+model.compile(
+	loss='mae',
+	optimizer=optimizers.Adam(lr=0.01, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0))
 history = model.fit(np.array(X_train), np.array(y_train),
     validation_data=(np.array(X_val), np.array(y_val)),
-        epochs=5, batch_size=batch_size,
+        epochs=30, batch_size=batch_size,
         callbacks=[model_checkpoint_callback])
+model.save(run_filepath+'-1')
+
+model.compile(
+	loss='mae',
+	optimizer=optimizers.Adam(lr=0.005, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0))
+history = model.fit(np.array(X_train), np.array(y_train),
+    validation_data=(np.array(X_val), np.array(y_val)),
+        epochs=60, batch_size=batch_size,
+        callbacks=[model_checkpoint_callback])
+model.save(run_filepath+'-2')
+
+model.compile(
+	loss='mae',
+	optimizer=optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0))
+history = model.fit(np.array(X_train), np.array(y_train),
+    validation_data=(np.array(X_val), np.array(y_val)),
+        epochs=epochs, batch_size=batch_size,
+        callbacks=[model_checkpoint_callback])
+model.save(run_filepath+'-3')
+
 
 model.save(run_filepath)
 
@@ -229,6 +269,13 @@ Y_pred = model.predict(a)
 
 print(y_test)
 print(Y_pred)
+
+model.load_weights(checkpoint_filepath+"checkpoint")
+
+Y_pred = model.predict(a)
+
+print(Y_pred)
+
 
 #pickle.dumps(history, open(history_path, 'w'))
 

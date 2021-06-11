@@ -9,8 +9,9 @@ from sklearn.model_selection import train_test_split
 from skimage import io
 from skimage.transform import rescale, resize
 from datetime import datetime
+import math
 
-def proc_image_dir(Images_Path):
+def proc_image_dir(Images_Path, start, end):
     
 #    image_classes = sorted([dirname for dirname in os.listdir(Images_Path)
 #                      if os.path.isdir(os.path.join(Images_Path, dirname)) and not dirname.startswith(".") and not dirname.startswith("mblur")])
@@ -34,26 +35,26 @@ def proc_image_dir(Images_Path):
     for item in items:
         print("Reading "+item)
         if item.lower().endswith(".jpg") or item.lower().endswith(".bmp"):
-            # Read and resize image
-            full_size_image = io.imread(item)
+
 
             rawscore = int(os.path.basename(item).split("-")[0])
 
-            if rawscore > 1:
-                #x.append(full_size_image)
-                out = rawscore/788.0
-                print(out)
-                y.append(out)
-                images.append(item)
-                resizedImage = resize(full_size_image, (WIDTH,HEIGHT), anti_aliasing=True) 
-                if(len(resizedImage.shape) < 3):
-                    resizedImage = skimage.color.gray2rgb(resizedImage)
+            if rawscore >= 1:
+                if(j>=start and j<end+1):
+                    # Read and resize image
+                    full_size_image = io.imread(item)
+                    #x.append(full_size_image)
+                    out = rawscore
+                    print(out)
+                    y.append(out)
+                    images.append(item)
+                    resizedImage = resize(full_size_image, (WIDTH,HEIGHT), anti_aliasing=True) 
+                    if(len(resizedImage.shape) < 3):
+                        resizedImage = skimage.color.gray2rgb(resizedImage)
 
-                x.append(resizedImage)
+                    x.append(resizedImage)
                 j+=1
-            #if j>3:
-            #    break
-                
+
 
     print("")
     return x,y,images
@@ -74,20 +75,20 @@ def horizontal_motion_blur(img, blur_factor):
 
 
 # ./input/
-PATH = os.path.abspath(os.path.join('.', 'databaserelease2', 'flickr-1'))
+PATH = os.path.abspath(os.path.join('.', 'databaserelease2', 'flickr-2'))
 
 # ./input/sample/images/
 SOURCE_IMAGES = PATH#os.path.join(PATH, "sample", "images")
-x2,y2,image_classes = proc_image_dir(SOURCE_IMAGES)
+x2,y2,image_classes = proc_image_dir(SOURCE_IMAGES,1,100)
 
 
 
 
 # First split the data in two sets, 60% for training, 40% for Val/Test)
-X_train, X_valtest, y_train, y_valtest = train_test_split(x2,y2, test_size=0.4, random_state=1)
+#X_train, X_valtest, y_train, y_valtest = train_test_split(x2,y2, test_size=0.4, random_state=1)
 
 # Second split the 40% into validation and test sets
-X_test, X_val, y_test, y_val = train_test_split(X_valtest, y_valtest, test_size=0.5, random_state=1)
+#X_test, X_val, y_test, y_val = train_test_split(X_valtest, y_valtest, test_size=0.5, random_state=1)
 
 #print(np.array(X_train).shape)
 #print(np.array(X_val).shape)
@@ -114,22 +115,44 @@ import pickle
 
 K.image_data_format()
 
-img_width, img_height = 1024, 680
-nb_train_samples = len(X_train)
-nb_validation_samples = len(X_val)
-epochs = 100
-batch_size = 1
 
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
-model = models.load_model('./runs/checkpoint')
+run_filepath = './runs/run-20210609084750-3'
+checkpoint_filepath = './runs/checkpointfile/'
+history_path = run_filepath+".history"
 
-a=np.array(X_test).astype(float)
+print("Loading Model")
+model = models.load_model(checkpoint_filepath)
+
+print("Model Loaded")
+a=np.array(x2).astype(float)
 Y_pred = model.predict(a)
 
-print(y_test)
+print(np.array(y2))
 print(Y_pred)
+
+y2_orig = []
+for y in y2:
+    y2_orig.append([y])
+print(np.array(y2_orig))
+y_comp = np.concatenate((np.array(y2_orig),Y_pred),axis=1)
+print(y_comp)
+y_diff = np.array(y2_orig) - Y_pred
+print (y_diff)
+
+'''
+a=np.array(X_val).astype(float)
+Y_pred = model.predict(a)
+
+print(y_val)
+print(Y_pred)
+#model.load_weights(checkpoint_filepath+"checkpoint")
+'''
+#Y_pred = model.predict(a)
+
+#print(Y_pred)
 
 #pickle.dumps(history, open(history_path, 'w'))
 
