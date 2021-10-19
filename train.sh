@@ -1,1 +1,1 @@
-python ./train.py -i model2 -o model2.train b 10 -e 2 -r -d 0.0001 -l 0.01 -t ./databaserelease2/NatureDataset/train/ -v ./databaserelease2/NatureDataset/val/
+python ./train.py -i model2 -o model2.train -b 10 -e 2 -r -d 0.0001 -l 0.01 -t ./databaserelease2/NatureDataset/train/ -v ./databaserelease2/NatureDataset/val/

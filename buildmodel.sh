@@ -1,1 +1,1 @@
-python ./buildmodel.py -w 1024 -h 680
+python ./buildmodel.py -o model2 -w 1024 -h 680

@@ -13,6 +13,54 @@ import os
 import tensorflow as tf
 from tensorflow.python.platform.tf_logging import error
 
+class CustomDataGen(tf.keras.utils.Sequence):
+    
+    def __init__(self,
+                 batch_size,path,
+                 input_size=(1024, 680, 3),
+                 shuffle=True):
+        
+        self.batch_size = batch_size
+        self.input_size = input_size
+        self.shuffle = shuffle
+        self.path = path
+        self.items = glob(os.path.join(self.path,"*.jpg"))
+        self.n = len(self.items)
+        
+    
+    def on_epoch_end(self):
+        pass
+    
+    def __getitem__(self, index):
+        #import random
+
+        x = [] # images as arrays
+        y = [] # labels Infiltration or Not_infiltration
+        WIDTH = 1024
+        HEIGHT = 680
+        j = 0
+        images = []
+        rawscore = 0.0
+
+        for i in range(index*self.batch_size, (index+1)*self.batch_size):
+            item = self.items[index]
+            #print("Reading " + item)
+            # Read and resize image
+            full_size_image = io.imread(item)
+            rawscore = int(os.path.basename(item).split("-")[0])
+            out = rawscore
+            y.append(out)
+            images.append(item)
+            resizedImage = resize(full_size_image, (WIDTH,HEIGHT), anti_aliasing=True) 
+            if(len(resizedImage.shape) < 3):
+                resizedImage = skimage.color.gray2rgb(resizedImage)
+
+            x.append(resizedImage)
+        return np.array(x),np.array(y)
+    
+    def __len__(self):
+        return self.n // self.batch_size
+
 class WaitCallback(tf.keras.callbacks.Callback):
         def on_epoch_end(self, epoch, logs):
             import time
@@ -125,8 +173,10 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         # Second split the 40% into validation and test sets
         X_test, X_val, y_test, y_val = train_test_split(X_valtest, y_valtest, test_size=0.5, random_state=1)
     else:
-        X_train,y_train,image_list_train = proc_image_dir(train_path)
-        X_val,y_val,image_list_val = proc_image_dir(val_path)
+        training_generator = CustomDataGen(batch_size,train_path)
+        validation_generator = CustomDataGen(batch_size,val_path)
+        #X_train,y_train,image_list_train = proc_image_dir(train_path)
+        #X_val,y_val,image_list_val = proc_image_dir(val_path)
 
     #run training loop
     model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
@@ -141,10 +191,16 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
     model.compile(
         loss='mae',
         optimizer=optimizers.SGD(learning_rate=lr,momentum = 0.0, decay=decay, nesterov=nesterov))
-    history = model.fit(np.array(X_train), np.array(y_train),
-        validation_data=(np.array(X_val), np.array(y_val)),
-            epochs=epochs, batch_size=batch_size,
-            callbacks=[model_checkpoint_callback,wait_callback])
+    #history = model.fit(np.array(X_train), np.array(y_train),
+    #    validation_data=(np.array(X_val), np.array(y_val)),
+    #        epochs=epochs, batch_size=batch_size,
+    #        callbacks=[model_checkpoint_callback,wait_callback])
+
+    history = model.fit_generator(generator=training_generator,
+                    validation_data=validation_generator,
+                    epochs=epochs,callbacks=[model_checkpoint_callback,wait_callback],
+                    use_multiprocessing=True,
+                    workers=6)
 
     #save model
     model.save(modelout)
@@ -217,5 +273,3 @@ def main(argv):
 
 if __name__ == "__main__":
     main(sys.argv[1:])
-
-
