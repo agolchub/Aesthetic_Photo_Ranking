@@ -149,7 +149,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
     #save model
     model.save(modelout)
 
-    print ([history["loss"],history["val_loss"]])
+    print ([model.history.history["loss"],model.history.history["val_loss"]])
 
 def main(argv):
     modelin = ''

@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras import layers, models, optimizers
 from tensorflow.keras import backend as K
