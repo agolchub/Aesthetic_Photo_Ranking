@@ -75,13 +75,17 @@ def horizontal_motion_blur(img, blur_factor):
 
 
 # ./input/
-PATH = os.path.abspath(os.path.join('.', 'databaserelease2', 'flickr-2'))
+PATH = os.path.abspath(os.path.join('.', 'databaserelease2', 'Forests-2', 'Test'))
 
 # ./input/sample/images/
 SOURCE_IMAGES = PATH#os.path.join(PATH, "sample", "images")
-x2,y2,image_classes = proc_image_dir(SOURCE_IMAGES,1,100)
+X_test,y_test,image_classes_test = proc_image_dir(SOURCE_IMAGES,1,1000)
+#x2,y2,image_classes = proc_image_dir(SOURCE_IMAGES,1,100)
+# First split the data in two sets, 60% for training, 40% for Val/Test)
+#X_train, X_valtest, y_train, y_valtest, image_classes_train, image_classes_valtest = train_test_split(x2,y2,image_classes, test_size=0.4, random_state=1)
 
-
+# Second split the 40% into validation and test sets
+#X_test, X_val, y_test, y_val, image_classes_test, image_classes_val = train_test_split(X_valtest, y_valtest, image_classes_valtest, test_size=0.5, random_state=1)
 
 
 # First split the data in two sets, 60% for training, 40% for Val/Test)
@@ -119,28 +123,33 @@ K.image_data_format()
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
-run_filepath = './runs/run-20210609084750-3'
-checkpoint_filepath = './runs/checkpointfile/'
+run_filepath = './model-3-train1'
+checkpoint_filepath = './checkpoint/.data-00000-of-00001'
 history_path = run_filepath+".history"
 
 print("Loading Model")
-model = models.load_model(checkpoint_filepath)
+model = models.load_model(run_filepath)
+#model.load_weights(checkpoint_filepath)
 
 print("Model Loaded")
-a=np.array(x2).astype(float)
+a=np.array(X_test).astype(float)
 Y_pred = model.predict(a)
 
-print(np.array(y2))
+print(np.array(y_test))
 print(Y_pred)
 
 y2_orig = []
-for y in y2:
+for y in y_test:
     y2_orig.append([y])
+images = []
+for image in image_classes_test:
+    images.append([image])
+
 print(np.array(y2_orig))
-y_comp = np.concatenate((np.array(y2_orig),Y_pred),axis=1)
+y_comp = np.concatenate((np.array(images), np.array(y2_orig),Y_pred),axis=1)
 print(y_comp)
 y_diff = np.array(y2_orig) - Y_pred
-print (y_diff)
+#print (y_diff)
 
 '''
 a=np.array(X_val).astype(float)
@@ -148,7 +157,7 @@ Y_pred = model.predict(a)
 
 print(y_val)
 print(Y_pred)
-#model.load_weights(checkpoint_filepath+"checkpoint")
+model.load_weights(checkpoint_filepath+"checkpoint")
 '''
 #Y_pred = model.predict(a)
 

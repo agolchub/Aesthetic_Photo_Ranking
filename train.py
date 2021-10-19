@@ -1,27 +1,36 @@
+#!/usr/bin/env python
+
 import skimage
 import os
-import random
-import matplotlib.pylab as plt
 from glob import glob
-import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from skimage import io
-from skimage.transform import rescale, resize
-from datetime import datetime
-import math, sys, getopt
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras import layers, models, optimizers
-from tensorflow.keras import backend as K
-import tensorflow.keras
-from tensorflow.keras.datasets import cifar10
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten
-from tensorflow.keras.layers import Conv2D, MaxPooling2D
+from skimage.transform import resize
+import sys, getopt
+from tensorflow.keras import initializers, models, optimizers
 import os
 import tensorflow as tf
-import pickle
+from tensorflow.python.platform.tf_logging import error
+
+class WaitCallback(tf.keras.callbacks.Callback):
+        def on_epoch_end(self, epoch, logs):
+            import time
+
+            stream = os.popen("nvidia-smi -q -i 0 -d TEMPERATURE|grep 'GPU Current'|cut -d\" \" -f 30")
+            temp = int(stream.read())
+            print("The temperature of the GPU is ",temp)
+
+            if(temp>75):
+                print("Cooling down...")
+                while(temp>55):
+                    time.sleep(15)
+                    stream = os.popen("nvidia-smi -q -i 0 -d TEMPERATURE|grep 'GPU Current'|cut -d\" \" -f 30")
+                    temp = int(stream.read())
+
+                print("Resuming -> ")
+
+            return super().on_epoch_end(epoch, logs=logs)
 
 def proc_image_dir(Images_Path):
     
@@ -71,33 +80,53 @@ def proc_image_dir(Images_Path):
     print("\nRead " + str(j) + " images.\n\n")
     return x,y,images
 
-def horizontal_motion_blur(img, blur_factor):
-    import cv2 
-    import numpy as np 
+def init_layer(layer):
+    try:
+        initializer = tf.keras.initializers.GlorotUniform()
+        import keras.backend as K
+        session = K.get_session()
+        if hasattr(layer, 'kernel_initializer'):
+            print("initializing kernel weights")
+            layer.kernel.initializer.run(session=session)
+        if hasattr(layer, 'bias_initializer'):
+            print("initializing bias weights")
+            layer.bias.initializer.run(session=session) 
+        print(layer.name," re-initilized")
+    except:
+        print(layer.name, " could not be re-initilized", sys.exc_info())
 
-    kernel_size = blur_factor
-    kernel_h = np.zeros((kernel_size, kernel_size))
-    kernel_h[int((kernel_size - 1)/2), :] = np.ones(kernel_size) 
-    kernel_h /= kernel_size 
-
-    # Apply the horizontal kernel. 
-    horizontal_mb = cv2.filter2D(img, -1, kernel_h) 
-    
-    return horizontal_mb
-
-def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath):
-    #load images
-    x2,y2,images = proc_image_dir(imagepath)
-    
+def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights):
     #load model
     model = models.load_model(modelin)
+
+    if transfer_learning:
+        for layer in model.layers:
+            if (isinstance(layer, tf.keras.layers.Conv2D)):
+                print("conv layer",layer.name)
+                layer.trainable = False
+
+    if randomize_weights:
+        
+        for layer in model.layers:
+            if(layer.trainable):
+                init_layer(layer)
+
+    model.build()
+
     print(model.summary())
 
-    # First split the data in two sets, 60% for training, 40% for Val/Test)
-    X_train, X_valtest, y_train, y_valtest = train_test_split(x2,y2, test_size=0.4, random_state=1)
+    if(imagepath!=''):
+        #load images
+        x2,y2,images = proc_image_dir(imagepath)
+        
+        # First split the data in two sets, 60% for training, 40% for Val/Test)
+        X_train, X_valtest, y_train, y_valtest = train_test_split(x2,y2, test_size=0.4, random_state=1)
 
-    # Second split the 40% into validation and test sets
-    X_test, X_val, y_test, y_val = train_test_split(X_valtest, y_valtest, test_size=0.5, random_state=1)
+        # Second split the 40% into validation and test sets
+        X_test, X_val, y_test, y_val = train_test_split(X_valtest, y_valtest, test_size=0.5, random_state=1)
+    else:
+        X_train,y_train,image_list_train = proc_image_dir(train_path)
+        X_val,y_val,image_list_val = proc_image_dir(val_path)
 
     #run training loop
     model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
@@ -107,17 +136,20 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         mode='min',
         save_best_only=True)
 
+    wait_callback = WaitCallback()
+
     model.compile(
         loss='mae',
         optimizer=optimizers.SGD(learning_rate=lr,momentum = 0.0, decay=decay, nesterov=nesterov))
     history = model.fit(np.array(X_train), np.array(y_train),
         validation_data=(np.array(X_val), np.array(y_val)),
             epochs=epochs, batch_size=batch_size,
-            callbacks=[model_checkpoint_callback])
+            callbacks=[model_checkpoint_callback,wait_callback])
 
     #save model
     model.save(modelout)
 
+    print ([history["loss"],history["val_loss"]])
 
 def main(argv):
     modelin = ''
@@ -128,10 +160,14 @@ def main(argv):
     lr = .01
     decay = 0.0
     nesterov = False
-    checkpoint_filepath = "./"
+    checkpoint_filepath = "./checkpoint/"
+    train_path = ''
+    val_path = ''
+    transfer_learning = False
+    randomize_weights = False
 
     try:
-        opts, args = getopt.getopt(argv,"hi:o:p:nd:l:b:e:c:",["modelin=","modelout=","imagepath=","nesterov","decay=","learningrate=","batchsize","epochs","checkpoint_filepath="])
+        opts, args = getopt.getopt(argv,"hi:o:p:nd:l:b:e:c:t:v:xr",["modelin=","modelout=","imagepath=","nesterov","decay=","learningrate=","batchsize","epochs","checkpoint_filepath=","train=","val=","test=","transfer_learning","randomize_weights"])
     except getopt.GetoptError:
         print ('train.py -i <modelin> -o <modelout> -p <imagepath>')
         sys.exit(2)
@@ -154,13 +190,21 @@ def main(argv):
         elif opt in ("-b", "--batchsize"):
             batch_size = int(arg)
         elif opt in ("-e", "--epochs"):
-            epochs = int(arg)       
-            
+            epochs = int(arg)
+        elif opt in ("-t", "--train"):
+            train_path = arg
+        elif opt in ("-v", "--val"):
+            val_path = arg  
+        elif opt in ("-x", "--transfer_learning"):
+            transfer_learning = True
+        elif opt in ("-r", "--randomize_weights"):
+            randomize_weights = True
+
     print ('Input file is "', modelin)
     print ('Output file is "', modelout)
     print ('Image path is "', imagepath)
 
-    if(modelin == '' or modelout == '' or imagepath == ''):
+    if(modelin == '' or modelout == '' or (imagepath == '' and (train_path == '' or val_path == ''))):
         print('Missing required parameter.')
         print ('train.py -i <modelin> -o <modelout> -p <imagepath>')
         sys.exit(2)
@@ -168,8 +212,10 @@ def main(argv):
 
     print ('--------------------\n\n')
 
-    train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath)
+    train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights)
 
 
 if __name__ == "__main__":
     main(sys.argv[1:])
+
+

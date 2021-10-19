@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras import layers, models, optimizers
 from tensorflow.keras import backend as K
@@ -47,36 +49,38 @@ def main(argv):
 
     img_width, img_height = imagewidth, imageheight
 
+    initializer = tf.keras.initializers.GlorotNormal()
+
     model = models.Sequential()
-    model.add(layers.Conv2D(32, (132, 88),input_shape=(img_width, img_height, 3), strides=(6,4), activation="relu"))
+    model.add(layers.Conv2D(32, (132, 88),input_shape=(img_width, img_height, 3), strides=(3,2), activation="relu", kernel_initializer="he_uniform"))
     model.add(layers.BatchNormalization())
     model.add(layers.Dropout(0.2))
 
-    model.add(layers.Conv2D(64, (66, 66), strides=(2,2), activation="relu"))
+    model.add(layers.Conv2D(64, (66, 66), strides=(2,2), activation="relu",kernel_initializer="he_uniform"))
     model.add(layers.BatchNormalization())
     model.add(layers.Dropout(0.5))
 
-    model.add(layers.Conv2D(128, (16, 16), strides=(2,2), activation="relu"))
+    model.add(layers.Conv2D(128, (16, 16), strides=(2,2), activation="relu",kernel_initializer="he_uniform"))
     model.add(layers.BatchNormalization())
     model.add(layers.Dropout(0.5))
 
-    model.add(layers.Conv2D(256, (7, 7), strides=(2,2), activation="relu"))
+    model.add(layers.Conv2D(256, (7, 7), strides=(2,2), activation="relu",kernel_initializer="he_uniform"))
     model.add(layers.BatchNormalization())
     model.add(layers.Dropout(0.5))
 
-    model.add(layers.Conv2D(512, (3, 3), strides=(1,1), activation="relu"))
+    model.add(layers.Conv2D(512, (3, 3), strides=(1,1), activation="relu",kernel_initializer="he_uniform"))
     model.add(layers.BatchNormalization())
     model.add(layers.Dropout(0.5))
 
     model.add(layers.Flatten())
 
-    model.add(layers.Dense(512, activation="relu"))
+    model.add(layers.Dense(256, activation="relu",kernel_initializer="he_uniform"))
     model.add(layers.Dropout(0.5))
 
-    model.add(layers.Dense(256, activation="relu"))
+    model.add(layers.Dense(128, activation="relu",kernel_initializer="he_uniform"))
     model.add(layers.Dropout(0.2))
 
-    model.add(Dense(1, input_dim=1, kernel_initializer='glorot_uniform', activation='linear'))
+    model.add(Dense(1, input_dim=1, kernel_initializer="he_uniform", activation="linear"))
 
     model.compile(
         loss='mse',
