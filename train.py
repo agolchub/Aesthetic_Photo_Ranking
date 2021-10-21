@@ -8,17 +8,23 @@ from sklearn.model_selection import train_test_split
 from skimage import io
 from skimage.transform import resize
 import sys, getopt
-from tensorflow.keras import initializers, models, optimizers
+from tensorflow.keras import initializers, models, optimizers, layers
 import os
 import tensorflow as tf
+from tensorflow.python.keras.layers.core import Lambda
+from tensorflow.python.lib.io.file_io import file_crc32
 from tensorflow.python.platform.tf_logging import error
+from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Concatenate
+from tensorflow.keras.models import Sequential
+
 
 class CustomDataGen(tf.keras.utils.Sequence):
     
     def __init__(self,
                  batch_size,path,
                  input_size=(1024, 680, 3),
-                 shuffle=True):
+                 shuffle=True,resnet=False):
         
         self.batch_size = batch_size
         self.input_size = input_size
@@ -26,7 +32,7 @@ class CustomDataGen(tf.keras.utils.Sequence):
         self.path = path
         self.items = glob(os.path.join(self.path,"*.jpg"))
         self.n = len(self.items)
-        
+        self.resnet = resnet
     
     def on_epoch_end(self):
         pass
@@ -38,6 +44,8 @@ class CustomDataGen(tf.keras.utils.Sequence):
         y = [] # labels Infiltration or Not_infiltration
         WIDTH = 1024
         HEIGHT = 680
+        if self.resnet:
+            WIDTH=HEIGHT=224
         j = 0
         images = []
         rawscore = 0.0
@@ -56,7 +64,12 @@ class CustomDataGen(tf.keras.utils.Sequence):
                 resizedImage = skimage.color.gray2rgb(resizedImage)
 
             x.append(resizedImage)
-        return np.array(x),np.array(y)
+        x = np.array(x)
+        y = np.array(y)
+        if self.resnet:
+            x = tf.keras.applications.resnet.preprocess_input(x)
+
+        return x,y
     
     def __len__(self):
         return self.n // self.batch_size
@@ -143,9 +156,105 @@ def init_layer(layer):
     except:
         print(layer.name, " could not be re-initilized", sys.exc_info())
 
-def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights):
+def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model):
     #load model
-    model = models.load_model(modelin)
+    if(use_resnet):
+        resnetmodel = tf.keras.applications.resnet50.ResNet50(input_shape=(224,224,3),include_top=False)
+        for layer in resnetmodel.layers:
+            layer.trainable=False
+        f1 = layers.Flatten()(resnetmodel.output)
+
+        l1 = Lambda(lambda x: x[:,0:10000])(f1)
+        l2 = Lambda(lambda x: x[:,10000:20000])(f1)
+        l3 = Lambda(lambda x: x[:,20000:30000])(f1)
+        l4 = Lambda(lambda x: x[:,30000:40000])(f1)
+        l5 = Lambda(lambda x: x[:,40000:50000])(f1)
+        l6 = Lambda(lambda x: x[:,50000:60000])(f1)
+        l7 = Lambda(lambda x: x[:,60000:70000])(f1)
+        l8 = Lambda(lambda x: x[:,70000:80000])(f1)
+        l9 = Lambda(lambda x: x[:,80000:90000])(f1)
+        l10 = Lambda(lambda x: x[:,90000:])(f1)
+
+        d1_1 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l1)
+        d1_2 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l2)
+        d1_3 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l3)
+        d1_4 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l4)
+        d1_5 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l5)
+        d1_6 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l6)
+        d1_7 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l7)
+        d1_8 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l8)
+        d1_9 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l9)
+        d1_10 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l10)
+
+        d1 = layers.Concatenate()([d1_1,d1_2,d1_3,d1_4,d1_5,d1_6,d1_7,d1_8,d1_9,d1_10])
+        do1= Dropout(0.5)(d1)
+        d2 = layers.Dense(128, activation="relu",kernel_initializer="he_uniform")(do1)
+        do2= layers.Dropout(0.2)(d2)
+        d3 = Dense(1, kernel_initializer="he_uniform", activation="linear")(do2)
+        
+        model = models.Model(inputs=resnetmodel.input,outputs=d3)
+    elif(special_model):
+        input = layers.Input((1024,680,3))
+        c1    = layers.Conv2D(32, (132, 88),input_shape=(1024, 680, 3), strides=(3,2), activation="relu", kernel_initializer="he_uniform")(input)
+        b1    = layers.BatchNormalization()(c1)
+        do1   = layers.Dropout(0.2)(b1)
+
+        c2    = layers.Conv2D(64, (66, 66), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do1)
+        b2    = layers.BatchNormalization()(c2)
+        do2   = layers.Dropout(0.5)(b2)
+
+        c3    = layers.Conv2D(128, (16, 16), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do2)
+        b3    = layers.BatchNormalization()(c3)
+        do3   = layers.Dropout(0.5)(b3)
+
+        c4    = layers.Conv2D(256, (7, 7), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do3)
+        b4    = layers.BatchNormalization()(c4)
+        do4   = layers.Dropout(0.5)(b4)
+
+        c5    = layers.Conv2D(512, (3, 3), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do4)
+        b5    = layers.BatchNormalization()(c5)
+        do5   = layers.Dropout(0.5)(b5)
+
+        m1    = MaxPooling2D(4,4)(do1)
+        m2    = MaxPooling2D(2,2)(do5)
+        f1_1  = layers.Flatten()(m1)
+        f1_2  = layers.Flatten()(do2)
+        f1_3  = layers.Flatten()(do3)
+        f1_4  = layers.Flatten()(do4)
+        f1_5  = layers.Flatten()(m2)
+
+        f1   = layers.Concatenate()([f1_1,f1_5])
+
+        l1 = Lambda(lambda x: x[:,0:10000])(f1)
+        l2 = Lambda(lambda x: x[:,10000:20000])(f1)
+        l3 = Lambda(lambda x: x[:,20000:30000])(f1)
+        l4 = Lambda(lambda x: x[:,30000:40000])(f1)
+        l5 = Lambda(lambda x: x[:,40000:50000])(f1)
+        l6 = Lambda(lambda x: x[:,50000:60000])(f1)
+        l7 = Lambda(lambda x: x[:,60000:70000])(f1)
+        l8 = Lambda(lambda x: x[:,70000:80000])(f1)
+        l9 = Lambda(lambda x: x[:,80000:90000])(f1)
+        l10 = Lambda(lambda x: x[:,90000:])(f1)
+
+        d1_1 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l1)
+        d1_2 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l2)
+        d1_3 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l3)
+        d1_4 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l4)
+        d1_5 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l5)
+        d1_6 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l6)
+        d1_7 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l7)
+        d1_8 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l8)
+        d1_9 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l9)
+        d1_10 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l10)
+
+        d1 = layers.Concatenate()([d1_1,d1_2,d1_3,d1_4,d1_5,d1_6,d1_7,d1_8,d1_9,d1_10])
+        do1   = Dropout(0.5)(d1)
+        d2    = layers.Dense(128, activation="relu",kernel_initializer="he_uniform")(do1)
+        do2   = layers.Dropout(0.2)(d2)
+        d3    = Dense(1, kernel_initializer="he_uniform", activation="linear")(do2)
+        model = models.Model(inputs=input,outputs=d3)
+    else:
+        model = models.load_model(modelin)
 
     if transfer_learning:
         for layer in model.layers:
@@ -159,7 +268,10 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
             if(layer.trainable):
                 init_layer(layer)
 
-    model.build()
+    #model.build()
+    model.compile(
+        loss='mse',
+        optimizer=optimizers.Adam(lr=0.01, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0))
 
     print(model.summary())
 
@@ -173,8 +285,8 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         # Second split the 40% into validation and test sets
         X_test, X_val, y_test, y_val = train_test_split(X_valtest, y_valtest, test_size=0.5, random_state=1)
     else:
-        training_generator = CustomDataGen(batch_size,train_path)
-        validation_generator = CustomDataGen(batch_size,val_path)
+        training_generator = CustomDataGen(batch_size,train_path,resnet=use_resnet)
+        validation_generator = CustomDataGen(batch_size,val_path,resnet=use_resnet)
         #X_train,y_train,image_list_train = proc_image_dir(train_path)
         #X_val,y_val,image_list_val = proc_image_dir(val_path)
 
@@ -191,6 +303,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
     model.compile(
         loss='mae',
         optimizer=optimizers.SGD(learning_rate=lr,momentum = 0.0, decay=decay, nesterov=nesterov))
+    #model.build()
     #history = model.fit(np.array(X_train), np.array(y_train),
     #    validation_data=(np.array(X_val), np.array(y_val)),
     #        epochs=epochs, batch_size=batch_size,
@@ -198,9 +311,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
 
     history = model.fit_generator(generator=training_generator,
                     validation_data=validation_generator,
-                    epochs=epochs,callbacks=[model_checkpoint_callback,wait_callback],
-                    use_multiprocessing=True,
-                    workers=6)
+                    epochs=epochs,callbacks=[model_checkpoint_callback,wait_callback])
 
     #save model
     model.save(modelout)
@@ -221,9 +332,11 @@ def main(argv):
     val_path = ''
     transfer_learning = False
     randomize_weights = False
+    use_resnet = False
+    special_model = False
 
     try:
-        opts, args = getopt.getopt(argv,"hi:o:p:nd:l:b:e:c:t:v:xr",["modelin=","modelout=","imagepath=","nesterov","decay=","learningrate=","batchsize","epochs","checkpoint_filepath=","train=","val=","test=","transfer_learning","randomize_weights"])
+        opts, args = getopt.getopt(argv,"hi:o:p:nd:l:b:e:c:t:v:xr",["modelin=","resnet50","special_model","modelout=","imagepath=","nesterov","decay=","learningrate=","batchsize","epochs","checkpoint_filepath=","train=","val=","test=","transfer_learning","randomize_weights"])
     except getopt.GetoptError:
         print ('train.py -i <modelin> -o <modelout> -p <imagepath>')
         sys.exit(2)
@@ -255,12 +368,16 @@ def main(argv):
             transfer_learning = True
         elif opt in ("-r", "--randomize_weights"):
             randomize_weights = True
+        elif opt in ("--resnet50"):
+            use_resnet = True
+        elif opt in ("--special_model"):
+            special_model = True
 
     print ('Input file is "', modelin)
     print ('Output file is "', modelout)
     print ('Image path is "', imagepath)
 
-    if(modelin == '' or modelout == '' or (imagepath == '' and (train_path == '' or val_path == ''))):
+    if((modelin == '' and not use_resnet and not special_model) or modelout == '' or (imagepath == '' and (train_path == '' or val_path == ''))):
         print('Missing required parameter.')
         print ('train.py -i <modelin> -o <modelout> -p <imagepath>')
         sys.exit(2)
@@ -268,7 +385,7 @@ def main(argv):
 
     print ('--------------------\n\n')
 
-    train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights)
+    train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model)
 
 
 if __name__ == "__main__":
