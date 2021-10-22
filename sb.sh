@@ -1,5 +1,5 @@
 #!/bin/sh
-#SBATCH --partition=shortq7-gpu
+#SBATCH --partition=longq7
 #SBATCH  -N 1
 #SBATCH --exclusive
 #SBATCH --mem-per-cpu=16000

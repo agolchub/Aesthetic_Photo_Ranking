@@ -186,7 +186,8 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         d1_9 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l9)
         d1_10 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l10)
 
-        d1 = layers.Concatenate()([d1_1,d1_2,d1_3,d1_4,d1_5,d1_6,d1_7,d1_8,d1_9,d1_10])
+        #d1 = layers.Concatenate()([d1_1,d1_2,d1_3,d1_4,d1_5,d1_6,d1_7,d1_8,d1_9,d1_10])
+        d1= layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(f1)
         do1= Dropout(0.5)(d1)
         d2 = layers.Dense(128, activation="relu",kernel_initializer="he_uniform")(do1)
         do2= layers.Dropout(0.2)(d2)
@@ -231,20 +232,32 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         b9    = layers.BatchNormalization()(c9)
         do9   = layers.Dropout(0.2)(b9)
 
-        m1    = MaxPooling2D(2,2)(do1)
-        m2    = MaxPooling2D(2,2)(do5)
+        #m1    = MaxPooling2D(2,2)(do1)
+        #m2    = MaxPooling2D(2,2)(do5)
         f1_1  = layers.Flatten()(do1)
         f1_2  = layers.Flatten()(do2)
         f1_3  = layers.Flatten()(do3)
         f1_4  = layers.Flatten()(do4)
-        f1_5  = layers.Flatten()(m2)
+        f1_5  = layers.Flatten()(do5)
+        
+        f1_6  = layers.Flatten()(do6)
+        f1_7  = layers.Flatten()(do7)
+        f1_8  = layers.Flatten()(do8)
+
         f1_9  = layers.Flatten()(do9)
 
         d0_1 = layers.Dense(5, activation="relu",kernel_initializer="he_uniform")(f1_1)
-        d0_2 = layers.Dense(128, activation="relu",kernel_initializer="he_uniform")(f1_9)
+        d0_2 = layers.Dense(5, activation="relu",kernel_initializer="he_uniform")(f1_2)
+        d0_3 = layers.Dense(5, activation="relu",kernel_initializer="he_uniform")(f1_3)
+        d0_4 = layers.Dense(5, activation="relu",kernel_initializer="he_uniform")(f1_4)
+        d0_5 = layers.Dense(5, activation="relu",kernel_initializer="he_uniform")(f1_5)
+        d0_6 = layers.Dense(5, activation="relu",kernel_initializer="he_uniform")(f1_6)
+        d0_7 = layers.Dense(5, activation="relu",kernel_initializer="he_uniform")(f1_7)
+        d0_8 = layers.Dense(5, activation="relu",kernel_initializer="he_uniform")(f1_8)
+        d0_9 = layers.Dense(128, activation="relu",kernel_initializer="he_uniform")(f1_9)
 
 
-        f1   = layers.Concatenate()([d0_1,d0_2])
+        f1   = layers.Concatenate()([d0_1,d0_2,d0_3,d0_4,d0_5,d0_6,d0_7,d0_8,d0_9])
 
         l1 = Lambda(lambda x: x[:,0:10000])(f1)
         l2 = Lambda(lambda x: x[:,10000:20000])(f1)
@@ -297,7 +310,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
 
     print(model.summary())
     if(build_only):
-        img_file = './model_arch.png'
+        img_file = modelout+'-model_arch.png'
         tf.keras.utils.plot_model(model, to_file=img_file, show_shapes=True, show_layer_names=True)
         model.save(modelout)
         exit(0)
