@@ -51,7 +51,7 @@ class CustomDataGen(tf.keras.utils.Sequence):
         rawscore = 0.0
 
         for i in range(index*self.batch_size, (index+1)*self.batch_size):
-            if(i>len(self.items)):
+            if(i>=len(self.items)):
                 break
             item = self.items[index]
             #print("Reading " + item)
