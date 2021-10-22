@@ -156,7 +156,7 @@ def init_layer(layer):
     except:
         print(layer.name, " could not be re-initilized", sys.exc_info())
 
-def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model):
+def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only):
     #load model
     if(use_resnet):
         resnetmodel = tf.keras.applications.resnet50.ResNet50(input_shape=(224,224,3),include_top=False)
@@ -215,7 +215,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         b5    = layers.BatchNormalization()(c5)
         do5   = layers.Dropout(0.5)(b5)
 
-        m1    = MaxPooling2D(4,4)(do1)
+        m1    = MaxPooling2D(8,8)(do1)
         m2    = MaxPooling2D(2,2)(do5)
         f1_1  = layers.Flatten()(m1)
         f1_2  = layers.Flatten()(do2)
@@ -274,6 +274,9 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         optimizer=optimizers.Adam(lr=0.01, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0))
 
     print(model.summary())
+    if(build_only):
+        model.save(modelout)
+        exit(0)
 
     if(imagepath!=''):
         #load images
@@ -334,9 +337,10 @@ def main(argv):
     randomize_weights = False
     use_resnet = False
     special_model = False
+    build_only = False
 
     try:
-        opts, args = getopt.getopt(argv,"hi:o:p:nd:l:b:e:c:t:v:xr",["modelin=","resnet50","special_model","modelout=","imagepath=","nesterov","decay=","learningrate=","batchsize","epochs","checkpoint_filepath=","train=","val=","test=","transfer_learning","randomize_weights"])
+        opts, args = getopt.getopt(argv,"hi:o:p:nd:l:b:e:c:t:v:xr",["test","build_only","modelin=","resnet50","special_model","modelout=","imagepath=","nesterov","decay=","learningrate=","batchsize","epochs","checkpoint_filepath=","train=","val=","test=","transfer_learning","randomize_weights"])
     except getopt.GetoptError:
         print ('train.py -i <modelin> -o <modelout> -p <imagepath>')
         sys.exit(2)
@@ -372,6 +376,8 @@ def main(argv):
             use_resnet = True
         elif opt in ("--special_model"):
             special_model = True
+        elif opt in ("--build_only"):
+            build_only = True
 
     print ('Input file is "', modelin)
     print ('Output file is "', modelout)
@@ -385,7 +391,7 @@ def main(argv):
 
     print ('--------------------\n\n')
 
-    train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model)
+    train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only)
 
 
 if __name__ == "__main__":
