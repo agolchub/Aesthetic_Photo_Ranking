@@ -53,7 +53,7 @@ class CustomDataGen(tf.keras.utils.Sequence):
         for i in range(index*self.batch_size, (index+1)*self.batch_size):
             if(i>=len(self.items)):
                 break
-            item = self.items[index]
+            item = self.items[i]
             #print("Reading " + item)
             # Read and resize image
             full_size_image = io.imread(item)
