@@ -158,7 +158,7 @@ def init_layer(layer):
     except:
         print(layer.name, " could not be re-initilized", sys.exc_info())
 
-def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only):
+def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2):
     #load model
     if(use_resnet):
         resnetmodel = tf.keras.applications.resnet50.ResNet50(input_shape=(224,224,3),include_top=False)
@@ -197,6 +197,74 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         
         model = models.Model(inputs=resnetmodel.input,outputs=d3)
     elif(special_model):
+        input = layers.Input((1024,680,3))
+        c1    = layers.Conv2D(32, (132, 88),input_shape=(1024, 680, 3), strides=(3,2), activation="relu", kernel_initializer="he_uniform")(input)
+        b1    = layers.BatchNormalization()(c1)
+        do1   = layers.Dropout(0.2)(b1)
+
+        c2    = layers.Conv2D(64, (66, 66), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do1)
+        b2    = layers.BatchNormalization()(c2)
+        do2   = layers.Dropout(0.5)(b2)
+
+        c3    = layers.Conv2D(128, (16, 16), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do2)
+        b3    = layers.BatchNormalization()(c3)
+        do3   = layers.Dropout(0.5)(b3)
+
+        c4    = layers.Conv2D(256, (7, 7), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do3)
+        b4    = layers.BatchNormalization()(c4)
+        do4   = layers.Dropout(0.5)(b4)
+
+        c5    = layers.Conv2D(512, (3, 3), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do4)
+        b5    = layers.BatchNormalization()(c5)
+        do5   = layers.Dropout(0.5)(b5)
+
+        c6    = layers.Conv2D(256, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do5)
+        b6    = layers.BatchNormalization()(c6)
+        do6   = layers.Dropout(0.2)(b6)
+
+        c7    = layers.Conv2D(128, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do6)
+        b7    = layers.BatchNormalization()(c7)
+        do7   = layers.Dropout(0.2)(b7)
+
+        c8    = layers.Conv2D(64, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do7)
+        b8    = layers.BatchNormalization()(c8)
+        do8   = layers.Dropout(0.2)(b8)
+
+        c9    = layers.Conv2D(64, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do8)
+        b9    = layers.BatchNormalization()(c9)
+        do9   = layers.Dropout(0.2)(b9)
+
+        f1_1  = layers.Flatten()(do1)
+        f1_2  = layers.Flatten()(do2)
+        f1_3  = layers.Flatten()(do3)
+        f1_4  = layers.Flatten()(do4)
+        f1_5  = layers.Flatten()(do5)
+        
+        f1_6  = layers.Flatten()(do6)
+        f1_7  = layers.Flatten()(do7)
+        f1_8  = layers.Flatten()(do8)
+
+        f1_9  = layers.Flatten()(do9)
+
+        d0_1 = layers.Dense(5, activation="relu",kernel_initializer="he_uniform")(f1_1)
+        d0_2 = layers.Dense(5, activation="relu",kernel_initializer="he_uniform")(f1_2)
+        d0_3 = layers.Dense(5, activation="relu",kernel_initializer="he_uniform")(f1_3)
+        d0_4 = layers.Dense(5, activation="relu",kernel_initializer="he_uniform")(f1_4)
+        d0_5 = layers.Dense(5, activation="relu",kernel_initializer="he_uniform")(f1_5)
+        d0_6 = layers.Dense(5, activation="relu",kernel_initializer="he_uniform")(f1_6)
+        d0_7 = layers.Dense(5, activation="relu",kernel_initializer="he_uniform")(f1_7)
+        d0_8 = layers.Dense(5, activation="relu",kernel_initializer="he_uniform")(f1_8)
+        d0_9 = layers.Dense(128, activation="relu",kernel_initializer="he_uniform")(f1_9)
+
+        f1   = layers.Concatenate()([d0_1,d0_2,d0_3,d0_4,d0_5,d0_6,d0_7,d0_8,d0_9])
+
+        d1 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(f1)
+        do1   = Dropout(0.5)(d1)
+        d2    = layers.Dense(128, activation="relu",kernel_initializer="he_uniform")(do1)
+        do2   = layers.Dropout(0.2)(d2)
+        d3    = Dense(1, kernel_initializer="he_uniform", activation="linear")(do2)
+        model = models.Model(inputs=input,outputs=d3)
+    elif(special_model2):
         input = layers.Input((1024,680,3))
         c1    = layers.Conv2D(32, (132, 88), strides=(3,2), activation="relu", kernel_initializer="he_uniform")(input)
         b1    = layers.BatchNormalization()(c1)
@@ -274,8 +342,6 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         b9    = layers.BatchNormalization()(c9)
         do9   = layers.Dropout(0.2)(b9)
 
-        #m1    = MaxPooling2D(2,2)(do1)
-        #m2    = MaxPooling2D(2,2)(do5)
         f1_1  = layers.Flatten()(do1_1)
         f1_2  = layers.Flatten()(do2_1)
         f1_3  = layers.Flatten()(do3_1)
@@ -352,7 +418,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
     #run training loop
     model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
         filepath=checkpoint_filepath,   
-        save_weights_only=True,
+        save_weights_only=False,
         monitor='val_loss',
         mode='min',
         save_best_only=True)
@@ -447,6 +513,8 @@ def main(argv):
             use_resnet = True
         elif opt in ("--special_model"):
             special_model = True
+        elif opt in ("--special_model2"):
+            special_model2 = True
         elif opt in ("--build_only"):
             build_only = True
         elif opt in ("--test"):
@@ -473,7 +541,7 @@ def main(argv):
     if(testmode):
         test(modelin,imagepath)
     else:
-        train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only)
+        train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
