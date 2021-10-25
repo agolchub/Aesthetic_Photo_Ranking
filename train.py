@@ -475,7 +475,8 @@ def main(argv):
     special_model = False
     build_only = False
     testmode = False
-
+    special_model2 = False
+    
     try:
         opts, args = getopt.getopt(argv,"hi:o:p:nd:l:b:e:c:t:v:xr",["test","build_only","modelin=","resnet50","special_model","modelout=","imagepath=","nesterov","decay=","learningrate=","batchsize","epochs","checkpoint_filepath=","train=","val=","test=","transfer_learning","randomize_weights"])
     except getopt.GetoptError:
