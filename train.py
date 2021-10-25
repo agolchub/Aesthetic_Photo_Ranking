@@ -457,6 +457,8 @@ def main(argv):
         elif opt in ("--build_only"):
             build_only = True
 
+    checkpoint_filepath = modelout+".checkpoint/"
+
     print ('Input file is "', modelin)
     print ('Output file is "', modelout)
     print ('Image path is "', imagepath)
