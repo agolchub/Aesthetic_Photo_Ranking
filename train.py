@@ -202,7 +202,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         b1    = layers.BatchNormalization()(c1)
         do1   = layers.Dropout(0.2)(b1)
 
-        c1_1    = layers.Conv2D(128, (33, 33), strides=(1,1), activation="relu", kernel_initializer="he_uniform")(do1)
+        c1_1    = layers.Conv2D(64, (33, 33), strides=(1,1), activation="relu", kernel_initializer="he_uniform")(do1)
         b1_1    = layers.BatchNormalization()(c1_1)
         do1_1   = layers.Dropout(0.2)(b1_1)
 
@@ -211,7 +211,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         b2    = layers.BatchNormalization()(c2)
         do2   = layers.Dropout(0.5)(b2)
 
-        c2_1    = layers.Conv2D(128, (16, 16), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do2)
+        c2_1    = layers.Conv2D(64, (16, 16), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do2)
         b2_1    = layers.BatchNormalization()(c2_1)
         do2_1   = layers.Dropout(0.5)(b2_1)
 
@@ -220,7 +220,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         b3    = layers.BatchNormalization()(c3)
         do3   = layers.Dropout(0.5)(b3)
 
-        c3_1    = layers.Conv2D(128, (16, 16), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do3)
+        c3_1    = layers.Conv2D(64, (16, 16), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do3)
         b3_1    = layers.BatchNormalization()(c3_1)
         do3_1   = layers.Dropout(0.5)(b3_1)
 
@@ -229,7 +229,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         b4    = layers.BatchNormalization()(c4)
         do4   = layers.Dropout(0.5)(b4)
 
-        c4_1    = layers.Conv2D(128, (7, 7), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do4)
+        c4_1    = layers.Conv2D(64, (7, 7), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do4)
         b4_1    = layers.BatchNormalization()(c4_1)
         do4_1   = layers.Dropout(0.5)(b4_1)
 
@@ -238,7 +238,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         b5    = layers.BatchNormalization()(c5)
         do5   = layers.Dropout(0.5)(b5)
 
-        c5_1    = layers.Conv2D(128, (3, 3), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do5)
+        c5_1    = layers.Conv2D(64, (3, 3), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do5)
         b5_1    = layers.BatchNormalization()(c5_1)
         do5_1   = layers.Dropout(0.5)(b5_1)
 
@@ -247,7 +247,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         b6    = layers.BatchNormalization()(c6)
         do6   = layers.Dropout(0.2)(b6)
 
-        c6_1    = layers.Conv2D(128, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do6)
+        c6_1    = layers.Conv2D(64, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do6)
         b6_1    = layers.BatchNormalization()(c6_1)
         do6_1   = layers.Dropout(0.2)(b6_1)
 
@@ -256,7 +256,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         b7    = layers.BatchNormalization()(c7)
         do7   = layers.Dropout(0.2)(b7)
 
-        c7_1    = layers.Conv2D(128, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do7)
+        c7_1    = layers.Conv2D(64, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do7)
         b7_1    = layers.BatchNormalization()(c7_1)
         do7_1   = layers.Dropout(0.2)(b7_1)
 
@@ -265,7 +265,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         b8    = layers.BatchNormalization()(c8)
         do8   = layers.Dropout(0.2)(b8)
 
-        c8_1    = layers.Conv2D(128, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do8)
+        c8_1    = layers.Conv2D(64, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do8)
         b8_1    = layers.BatchNormalization()(c8_1)
         do8_1   = layers.Dropout(0.2)(b8_1)
 
@@ -300,35 +300,13 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
 
         f1   = layers.Concatenate()([d0_1,d0_2,d0_3,d0_4,d0_5,d0_6,d0_7,d0_8,d0_9])
 
-        l1 = Lambda(lambda x: x[:,0:10000])(f1)
-        l2 = Lambda(lambda x: x[:,10000:20000])(f1)
-        l3 = Lambda(lambda x: x[:,20000:30000])(f1)
-        l4 = Lambda(lambda x: x[:,30000:40000])(f1)
-        l5 = Lambda(lambda x: x[:,40000:50000])(f1)
-        l6 = Lambda(lambda x: x[:,50000:60000])(f1)
-        l7 = Lambda(lambda x: x[:,60000:70000])(f1)
-        l8 = Lambda(lambda x: x[:,70000:80000])(f1)
-        l9 = Lambda(lambda x: x[:,80000:90000])(f1)
-        l10 = Lambda(lambda x: x[:,90000:])(f1)
-
-        d1_1 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l1)
-        d1_2 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l2)
-        d1_3 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l3)
-        d1_4 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l4)
-        d1_5 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l5)
-        d1_6 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l6)
-        d1_7 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l7)
-        d1_8 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l8)
-        d1_9 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l9)
-        d1_10 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(l10)
-
-        #d1 = layers.Concatenate()([d1_1,d1_2,d1_3,d1_4,d1_5,d1_6,d1_7,d1_8,d1_9,d1_10])
         d1 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(f1)
         do1   = Dropout(0.5)(d1)
         d2    = layers.Dense(128, activation="relu",kernel_initializer="he_uniform")(do1)
         do2   = layers.Dropout(0.2)(d2)
-        d3    = Dense(1, kernel_initializer="he_uniform", activation="linear")(do2)
-        model = models.Model(inputs=input,outputs=d3)
+        d3    = layers.Dense(10, activation="relu",kernel_initializer="he_uniform")(do2)
+        d4    = Dense(1, kernel_initializer="he_uniform", activation="linear")(d3)
+        model = models.Model(inputs=input,outputs=d4)
     else:
         model = models.load_model(modelin)
 
