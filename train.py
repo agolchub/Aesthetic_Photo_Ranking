@@ -158,7 +158,7 @@ def init_layer(layer):
     except:
         print(layer.name, " could not be re-initilized", sys.exc_info())
 
-def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2):
+def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader):
     #load model
     if(use_resnet):
         resnetmodel = tf.keras.applications.resnet50.ResNet50(input_shape=(224,224,3),include_top=False)
@@ -409,11 +409,12 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
 
         # Second split the 40% into validation and test sets
         X_test, X_val, y_test, y_val = train_test_split(X_valtest, y_valtest, test_size=0.5, random_state=1)
-    else:
+    elif(batched_reader):
         training_generator = CustomDataGen(batch_size,train_path,resnet=use_resnet)
         validation_generator = CustomDataGen(batch_size,val_path,resnet=use_resnet)
-        #X_train,y_train,image_list_train = proc_image_dir(train_path)
-        #X_val,y_val,image_list_val = proc_image_dir(val_path)
+    else:
+        X_train,y_train,image_list_train = proc_image_dir(train_path)
+        X_val,y_val,image_list_val = proc_image_dir(val_path)
 
     #run training loop
     model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
@@ -433,10 +434,15 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
     #    validation_data=(np.array(X_val), np.array(y_val)),
     #        epochs=epochs, batch_size=batch_size,
     #        callbacks=[model_checkpoint_callback,wait_callback])
-
-    history = model.fit_generator(generator=training_generator,
+    if(batched_reader):
+        history = model.fit_generator(generator=training_generator,
                     validation_data=validation_generator,
                     epochs=epochs,callbacks=[model_checkpoint_callback,wait_callback])
+    else:
+        history = model.fit(np.array(X_train), np.array(y_train),
+        validation_data=(np.array(X_val), np.array(y_val)),
+            epochs=epochs, batch_size=batch_size,
+            callbacks=[model_checkpoint_callback,wait_callback])
 
     #save model
     model.save(modelout)
@@ -476,9 +482,10 @@ def main(argv):
     build_only = False
     testmode = False
     special_model2 = False
+    batched_reader = False
     
     try:
-        opts, args = getopt.getopt(argv,"hi:o:p:nd:l:b:e:c:t:v:xr",["test","build_only","modelin=","resnet50","special_model","modelout=","imagepath=","nesterov","decay=","learningrate=","batchsize","epochs","checkpoint_filepath=","train=","val=","test=","transfer_learning","randomize_weights"])
+        opts, args = getopt.getopt(argv,"hi:o:p:nd:l:b:e:c:t:v:xr",["test","build_only","modelin=","resnet50","special_model","modelout=","imagepath=","nesterov","decay=","learningrate=","batchsize","epochs","checkpoint_filepath=","train=","val=","test=","transfer_learning","randomize_weights","batched_reader"])
     except getopt.GetoptError:
         print ('train.py -i <modelin> -o <modelout> -p <imagepath>')
         sys.exit(2)
@@ -520,6 +527,8 @@ def main(argv):
             build_only = True
         elif opt in ("--test"):
             testmode = True
+        elif opt in ("--batched_reader"):
+            batched_reader = True
 
     checkpoint_filepath = modelout+".checkpoint/"
 
@@ -542,7 +551,7 @@ def main(argv):
     if(testmode):
         test(modelin,imagepath)
     else:
-        train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2)
+        train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
