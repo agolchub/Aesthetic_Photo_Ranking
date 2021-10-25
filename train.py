@@ -378,15 +378,18 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
     print ([model.history.history["loss"],model.history.history["val_loss"]])
 
 def test(modelin,imagepath):
-    x,y,images = proc_image_dir(imagepath)
+    
     model = models.load_model(modelin)
-    model.load_weights(modelin+".checkpoint/checkpoint")
+    #model.load_weights(modelin+".checkpoint/")
     print("Model Loaded")
     print(model.summary())
+    x,y,images = proc_image_dir(imagepath)
     a=np.array(x).astype(float)
     Y_pred = model.predict(a)
     print(np.array(y))
     print(Y_pred)
+    loss, acc = model.evaluate(x, y, verbose=2)
+    print("Restored model, accuracy: {:5.2f}%".format(100 * acc))
 
 def main(argv):
     modelin = ''
