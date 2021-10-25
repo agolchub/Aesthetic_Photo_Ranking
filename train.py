@@ -405,7 +405,7 @@ def main(argv):
     use_resnet = False
     special_model = False
     build_only = False
-    test = False
+    testmode = False
 
     try:
         opts, args = getopt.getopt(argv,"hi:o:p:nd:l:b:e:c:t:v:xr",["test","build_only","modelin=","resnet50","special_model","modelout=","imagepath=","nesterov","decay=","learningrate=","batchsize","epochs","checkpoint_filepath=","train=","val=","test=","transfer_learning","randomize_weights"])
@@ -447,7 +447,7 @@ def main(argv):
         elif opt in ("--build_only"):
             build_only = True
         elif opt in ("--test"):
-            test = True
+            testmode = True
 
     checkpoint_filepath = modelout+".checkpoint/"
 
@@ -455,19 +455,19 @@ def main(argv):
     print ('Output file is "', modelout)
     print ('Image path is "', imagepath)
 
-    if(not test and ((modelin == '' and not use_resnet and not special_model) or modelout == '' or (imagepath == '' and (train_path == '' or val_path == '')))):
+    if(not testmode and ((modelin == '' and not use_resnet and not special_model) or modelout == '' or (imagepath == '' and (train_path == '' or val_path == '')))):
         print('Missing required parameter.')
         print ('train.py -i <modelin> -o <modelout> -p <imagepath>')
         sys.exit(2)
 
-    if(test and (modelin == '' or imagepath == '')):
+    if(testmode and (modelin == '' or imagepath == '')):
         print('Missing required parameter.')
         print ('train.py --test -i <modelin> -p <imagepath>')
         sys.exit(2)
 
     print ('--------------------\n\n')
 
-    if(test):
+    if(testmode):
         test(modelin,imagepath)
     else:
         train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only)
