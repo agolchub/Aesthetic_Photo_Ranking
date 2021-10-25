@@ -198,64 +198,103 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         model = models.Model(inputs=resnetmodel.input,outputs=d3)
     elif(special_model):
         input = layers.Input((1024,680,3))
-        c1    = layers.Conv2D(32, (132, 88),input_shape=(1024, 680, 3), strides=(3,2), activation="relu", kernel_initializer="he_uniform")(input)
+        c1    = layers.Conv2D(32, (132, 88), strides=(3,2), activation="relu", kernel_initializer="he_uniform")(input)
         b1    = layers.BatchNormalization()(c1)
         do1   = layers.Dropout(0.2)(b1)
 
+        c1_1    = layers.Conv2D(128, (33, 33), strides=(1,1), activation="relu", kernel_initializer="he_uniform")(do1)
+        b1_1    = layers.BatchNormalization()(c1_1)
+        do1_1   = layers.Dropout(0.2)(b1_1)
+
+        ##
         c2    = layers.Conv2D(64, (66, 66), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do1)
         b2    = layers.BatchNormalization()(c2)
         do2   = layers.Dropout(0.5)(b2)
 
+        c2_1    = layers.Conv2D(128, (16, 16), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do2)
+        b2_1    = layers.BatchNormalization()(c2_1)
+        do2_1   = layers.Dropout(0.5)(b2_1)
+
+        ##
         c3    = layers.Conv2D(128, (16, 16), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do2)
         b3    = layers.BatchNormalization()(c3)
         do3   = layers.Dropout(0.5)(b3)
 
+        c3_1    = layers.Conv2D(128, (16, 16), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do3)
+        b3_1    = layers.BatchNormalization()(c3_1)
+        do3_1   = layers.Dropout(0.5)(b3_1)
+
+        ##
         c4    = layers.Conv2D(256, (7, 7), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do3)
         b4    = layers.BatchNormalization()(c4)
         do4   = layers.Dropout(0.5)(b4)
 
+        c4_1    = layers.Conv2D(128, (7, 7), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do4)
+        b4_1    = layers.BatchNormalization()(c4_1)
+        do4_1   = layers.Dropout(0.5)(b4_1)
+
+        ##
         c5    = layers.Conv2D(512, (3, 3), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do4)
         b5    = layers.BatchNormalization()(c5)
         do5   = layers.Dropout(0.5)(b5)
 
+        c5_1    = layers.Conv2D(128, (3, 3), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do5)
+        b5_1    = layers.BatchNormalization()(c5_1)
+        do5_1   = layers.Dropout(0.5)(b5_1)
+
+        ##
         c6    = layers.Conv2D(256, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do5)
         b6    = layers.BatchNormalization()(c6)
         do6   = layers.Dropout(0.2)(b6)
 
+        c6_1    = layers.Conv2D(128, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do6)
+        b6_1    = layers.BatchNormalization()(c6_1)
+        do6_1   = layers.Dropout(0.2)(b6_1)
+
+        ##
         c7    = layers.Conv2D(128, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do6)
         b7    = layers.BatchNormalization()(c7)
         do7   = layers.Dropout(0.2)(b7)
 
+        c7_1    = layers.Conv2D(128, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do7)
+        b7_1    = layers.BatchNormalization()(c7_1)
+        do7_1   = layers.Dropout(0.2)(b7_1)
+
+        ##
         c8    = layers.Conv2D(64, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do7)
         b8    = layers.BatchNormalization()(c8)
         do8   = layers.Dropout(0.2)(b8)
 
-        c9    = layers.Conv2D(64, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do8)
+        c8_1    = layers.Conv2D(128, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do8)
+        b8_1    = layers.BatchNormalization()(c8_1)
+        do8_1   = layers.Dropout(0.2)(b8_1)
+
+        ##
+        c9    = layers.Conv2D(32, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do8)
         b9    = layers.BatchNormalization()(c9)
         do9   = layers.Dropout(0.2)(b9)
 
         #m1    = MaxPooling2D(2,2)(do1)
         #m2    = MaxPooling2D(2,2)(do5)
-        f1_1  = layers.Flatten()(do1)
-        f1_2  = layers.Flatten()(do2)
-        f1_3  = layers.Flatten()(do3)
-        f1_4  = layers.Flatten()(do4)
-        f1_5  = layers.Flatten()(do5)
-        
-        f1_6  = layers.Flatten()(do6)
-        f1_7  = layers.Flatten()(do7)
-        f1_8  = layers.Flatten()(do8)
+        f1_1  = layers.Flatten()(do1_1)
+        f1_2  = layers.Flatten()(do2_1)
+        f1_3  = layers.Flatten()(do3_1)
+        f1_4  = layers.Flatten()(do4_1)
+        f1_5  = layers.Flatten()(do5_1)   
+        f1_6  = layers.Flatten()(do6_1)
+        f1_7  = layers.Flatten()(do7_1)
+        f1_8  = layers.Flatten()(do8_1)
 
         f1_9  = layers.Flatten()(do9)
 
-        d0_1 = layers.Dense(5, activation="relu",kernel_initializer="he_uniform")(f1_1)
-        d0_2 = layers.Dense(5, activation="relu",kernel_initializer="he_uniform")(f1_2)
-        d0_3 = layers.Dense(5, activation="relu",kernel_initializer="he_uniform")(f1_3)
-        d0_4 = layers.Dense(5, activation="relu",kernel_initializer="he_uniform")(f1_4)
-        d0_5 = layers.Dense(5, activation="relu",kernel_initializer="he_uniform")(f1_5)
-        d0_6 = layers.Dense(5, activation="relu",kernel_initializer="he_uniform")(f1_6)
-        d0_7 = layers.Dense(5, activation="relu",kernel_initializer="he_uniform")(f1_7)
-        d0_8 = layers.Dense(5, activation="relu",kernel_initializer="he_uniform")(f1_8)
+        d0_1 = layers.Dense(25, activation="relu",kernel_initializer="he_uniform")(f1_1)
+        d0_2 = layers.Dense(25, activation="relu",kernel_initializer="he_uniform")(f1_2)
+        d0_3 = layers.Dense(25, activation="relu",kernel_initializer="he_uniform")(f1_3)
+        d0_4 = layers.Dense(25, activation="relu",kernel_initializer="he_uniform")(f1_4)
+        d0_5 = layers.Dense(25, activation="relu",kernel_initializer="he_uniform")(f1_5)
+        d0_6 = layers.Dense(25, activation="relu",kernel_initializer="he_uniform")(f1_6)
+        d0_7 = layers.Dense(25, activation="relu",kernel_initializer="he_uniform")(f1_7)
+        d0_8 = layers.Dense(25, activation="relu",kernel_initializer="he_uniform")(f1_8)
         d0_9 = layers.Dense(128, activation="relu",kernel_initializer="he_uniform")(f1_9)
 
 
