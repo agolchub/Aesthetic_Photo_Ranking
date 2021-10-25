@@ -202,7 +202,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         b1    = layers.BatchNormalization()(c1)
         do1   = layers.Dropout(0.2)(b1)
 
-        c1_1    = layers.Conv2D(64, (33, 33), strides=(1,1), activation="relu", kernel_initializer="he_uniform")(do1)
+        c1_1    = layers.Conv2D(128, (33, 33), strides=(1,1), activation="relu", kernel_initializer="he_uniform")(do1)
         b1_1    = layers.BatchNormalization()(c1_1)
         do1_1   = layers.Dropout(0.2)(b1_1)
 
@@ -211,7 +211,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         b2    = layers.BatchNormalization()(c2)
         do2   = layers.Dropout(0.5)(b2)
 
-        c2_1    = layers.Conv2D(64, (16, 16), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do2)
+        c2_1    = layers.Conv2D(128, (16, 16), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do2)
         b2_1    = layers.BatchNormalization()(c2_1)
         do2_1   = layers.Dropout(0.5)(b2_1)
 
@@ -220,7 +220,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         b3    = layers.BatchNormalization()(c3)
         do3   = layers.Dropout(0.5)(b3)
 
-        c3_1    = layers.Conv2D(64, (16, 16), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do3)
+        c3_1    = layers.Conv2D(128, (16, 16), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do3)
         b3_1    = layers.BatchNormalization()(c3_1)
         do3_1   = layers.Dropout(0.5)(b3_1)
 
@@ -229,7 +229,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         b4    = layers.BatchNormalization()(c4)
         do4   = layers.Dropout(0.5)(b4)
 
-        c4_1    = layers.Conv2D(64, (7, 7), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do4)
+        c4_1    = layers.Conv2D(128, (7, 7), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do4)
         b4_1    = layers.BatchNormalization()(c4_1)
         do4_1   = layers.Dropout(0.5)(b4_1)
 
@@ -238,7 +238,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         b5    = layers.BatchNormalization()(c5)
         do5   = layers.Dropout(0.5)(b5)
 
-        c5_1    = layers.Conv2D(64, (3, 3), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do5)
+        c5_1    = layers.Conv2D(128, (3, 3), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do5)
         b5_1    = layers.BatchNormalization()(c5_1)
         do5_1   = layers.Dropout(0.5)(b5_1)
 
@@ -247,7 +247,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         b6    = layers.BatchNormalization()(c6)
         do6   = layers.Dropout(0.2)(b6)
 
-        c6_1    = layers.Conv2D(64, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do6)
+        c6_1    = layers.Conv2D(128, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do6)
         b6_1    = layers.BatchNormalization()(c6_1)
         do6_1   = layers.Dropout(0.2)(b6_1)
 
@@ -256,7 +256,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         b7    = layers.BatchNormalization()(c7)
         do7   = layers.Dropout(0.2)(b7)
 
-        c7_1    = layers.Conv2D(64, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do7)
+        c7_1    = layers.Conv2D(128, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do7)
         b7_1    = layers.BatchNormalization()(c7_1)
         do7_1   = layers.Dropout(0.2)(b7_1)
 
@@ -265,7 +265,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         b8    = layers.BatchNormalization()(c8)
         do8   = layers.Dropout(0.2)(b8)
 
-        c8_1    = layers.Conv2D(64, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do8)
+        c8_1    = layers.Conv2D(128, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do8)
         b8_1    = layers.BatchNormalization()(c8_1)
         do8_1   = layers.Dropout(0.2)(b8_1)
 
