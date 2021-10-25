@@ -377,6 +377,17 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
 
     print ([model.history.history["loss"],model.history.history["val_loss"]])
 
+def test(modelin,imagepath):
+    x,y,images = proc_image_dir(imagepath)
+    model = models.load_model(modelin)
+    model.load_weights(modelin+".checkpoint/checkpoint")
+    print("Model Loaded")
+    print(model.summary())
+    a=np.array(x).astype(float)
+    Y_pred = model.predict(a)
+    print(np.array(y))
+    print(Y_pred)
+
 def main(argv):
     modelin = ''
     modelout = ''
@@ -394,6 +405,7 @@ def main(argv):
     use_resnet = False
     special_model = False
     build_only = False
+    test = False
 
     try:
         opts, args = getopt.getopt(argv,"hi:o:p:nd:l:b:e:c:t:v:xr",["test","build_only","modelin=","resnet50","special_model","modelout=","imagepath=","nesterov","decay=","learningrate=","batchsize","epochs","checkpoint_filepath=","train=","val=","test=","transfer_learning","randomize_weights"])
@@ -434,6 +446,8 @@ def main(argv):
             special_model = True
         elif opt in ("--build_only"):
             build_only = True
+        elif opt in ("--test"):
+            test = True
 
     checkpoint_filepath = modelout+".checkpoint/"
 
@@ -441,16 +455,22 @@ def main(argv):
     print ('Output file is "', modelout)
     print ('Image path is "', imagepath)
 
-    if((modelin == '' and not use_resnet and not special_model) or modelout == '' or (imagepath == '' and (train_path == '' or val_path == ''))):
+    if(test or ((modelin == '' and not use_resnet and not special_model) or modelout == '' or (imagepath == '' and (train_path == '' or val_path == '')))):
         print('Missing required parameter.')
         print ('train.py -i <modelin> -o <modelout> -p <imagepath>')
         sys.exit(2)
 
+    if(test and (modelin == '' or imagepath == '')):
+        print('Missing required parameter.')
+        print ('train.py --test -i <modelin> -p <imagepath>')
+        sys.exit(2)
 
     print ('--------------------\n\n')
 
-    train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only)
-
+    if(test):
+        test(modelin,imagepath)
+    else:
+        train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
