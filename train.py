@@ -126,7 +126,8 @@ def proc_image_dir(Images_Path):
 
             if rawscore >= 1:
                 #x.append(full_size_image)
-                out = rawscore
+                out = [0]*10
+                out[rawscore-1] = 1
                 print(out)
                 y.append(out)
                 images.append(item)
@@ -262,8 +263,9 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         do1   = Dropout(0.5)(d1)
         d2    = layers.Dense(128, activation="relu",kernel_initializer="he_uniform")(do1)
         do2   = layers.Dropout(0.2)(d2)
-        d3    = Dense(1, kernel_initializer="he_uniform", activation="linear")(do2)
+        d3    = Dense(10, kernel_initializer="he_uniform", activation="sigmoid")(do2)
         model = models.Model(inputs=input,outputs=d3)
+
     elif(special_model2):
         input = layers.Input((1024,680,3))
         c1    = layers.Conv2D(32, (132, 88), strides=(3,2), activation="relu", kernel_initializer="he_uniform")(input)
@@ -427,8 +429,8 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
     wait_callback = WaitCallback()
 
     model.compile(
-        loss='mae',
-        optimizer=optimizers.SGD(learning_rate=lr,momentum = 0.0, decay=decay, nesterov=nesterov))
+        loss='categorical_crossentropy',
+        optimizer=optimizers.Adam(lr=lr,beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=decay))
     #model.build()
     #history = model.fit(np.array(X_train), np.array(y_train),
     #    validation_data=(np.array(X_val), np.array(y_val)),
@@ -452,7 +454,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
 def test(modelin,imagepath):
     
     model = models.load_model(modelin)
-    #model.load_weights(modelin+".checkpoint/")
+    model.load_weights(modelin+".checkpoint/")
     print("Model Loaded")
     print(model.summary())
     x,y,images = proc_image_dir(imagepath)
