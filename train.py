@@ -199,7 +199,6 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         model = models.Model(inputs=resnetmodel.input,outputs=d3)
     elif(simple_model):
         input = layers.Input((1024,680,3))
-        input = layers.Dropout(0.2)(input)
         c1    = layers.Conv2D(32, (132, 88), strides=(3,2), activation="relu", kernel_initializer="he_uniform")(input)
         b1    = layers.BatchNormalization()(c1)
         do1   = layers.Dropout(0.2)(b1)
