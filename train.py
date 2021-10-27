@@ -95,8 +95,8 @@ class WaitCallback(tf.keras.callbacks.Callback):
 
             return super().on_epoch_end(epoch, logs=logs)
 
-def proc_image_dir(Images_Path,categorical=False):
-    
+def proc_image_dir(Images_Path,categorical=True):
+    import random
 #    image_classes = sorted([dirname for dirname in os.listdir(Images_Path)
 #                      if os.path.isdir(os.path.join(Images_Path, dirname)) and not dirname.startswith(".") and not dirname.startswith("mblur")])
     
@@ -115,7 +115,8 @@ def proc_image_dir(Images_Path,categorical=False):
     j = 0
     images = []
     rawscore = 0.0
-
+    random.shuffle(items)
+    #items = items[:200]
     for item in items:
         print("Reading "+item)
         if item.lower().endswith(".jpg") or item.lower().endswith(".bmp"):
@@ -229,8 +230,8 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         d2    = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(do1)
         do2   = layers.Dropout(0.2)(d2)
         d3    = Dense(10, kernel_initializer="he_uniform", activation="softmax")(do2)
-        d4    = Dense(1, kernel_initializer="he_uniform", activation="linear")(d3)
-        model = models.Model(inputs=input,outputs=d4)
+        #d4    = Dense(1, kernel_initializer="he_uniform", activation="linear")(d3)
+        model = models.Model(inputs=input,outputs=d3)
     elif(special_model):
         input = layers.Input((1024,680,3))
         c1    = layers.Conv2D(32, (132, 88),input_shape=(1024, 680, 3), strides=(3,2), activation="relu", kernel_initializer="he_uniform")(input)
@@ -463,7 +464,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
     wait_callback = WaitCallback()
 
     model.compile(
-        loss='mae',
+        loss='categorical_crossentropy',
         optimizer=optimizers.SGD(learning_rate=lr,momentum = 0.0, decay=decay, nesterov=nesterov),
         metrics=['accuracy'])
     #model.build()
