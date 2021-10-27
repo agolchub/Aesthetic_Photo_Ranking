@@ -95,7 +95,7 @@ class WaitCallback(tf.keras.callbacks.Callback):
 
             return super().on_epoch_end(epoch, logs=logs)
 
-def proc_image_dir(Images_Path):
+def proc_image_dir(Images_Path,categorical=False):
     
 #    image_classes = sorted([dirname for dirname in os.listdir(Images_Path)
 #                      if os.path.isdir(os.path.join(Images_Path, dirname)) and not dirname.startswith(".") and not dirname.startswith("mblur")])
@@ -126,8 +126,11 @@ def proc_image_dir(Images_Path):
 
             if rawscore >= 1:
                 #x.append(full_size_image)
-                out = [0]*10
-                out[rawscore-1] = 1
+                if(categorical):
+                    out = [0]*10
+                    out[rawscore-1] = 1
+                else:
+                    out = rawscore
                 print(out)
                 y.append(out)
                 images.append(item)
@@ -231,7 +234,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         do2   = layers.Dropout(0.2)(d2)
         d3    = Dense(10, kernel_initializer="he_uniform", activation="softmax")(do2)
         d4    = Dense(1, kernel_initializer="he_uniform", activation="linear")(d3)
-        model = models.Model(inputs=input,outputs=d3)
+        model = models.Model(inputs=input,outputs=d4)
     elif(special_model):
         input = layers.Input((1024,680,3))
         c1    = layers.Conv2D(32, (132, 88),input_shape=(1024, 680, 3), strides=(3,2), activation="relu", kernel_initializer="he_uniform")(input)
