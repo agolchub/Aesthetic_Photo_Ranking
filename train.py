@@ -18,7 +18,6 @@ from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Concatenate
 from tensorflow.keras.models import Sequential
 
-
 class CustomDataGen(tf.keras.utils.Sequence):
     
     def __init__(self,
@@ -312,11 +311,11 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         b0_1    = layers.BatchNormalization()(c0_1)
         do0_1   = layers.Dropout(0.2)(b0_1)
 
-        c0_1    = layers.Conv2D(160, (3, 3), strides=(2,2), activation="relu", kernel_initializer="he_uniform")(do0_1)
+        c0_1    = layers.Conv2D(80, (3, 3), strides=(2,2), activation="relu", kernel_initializer="he_uniform")(do0_1)
         b0_1    = layers.BatchNormalization()(c0_1)
         do0_1   = layers.Dropout(0.2)(b0_1)
 
-        c0_1    = layers.Conv2D(320, (2, 2), strides=(2,2), activation="relu", kernel_initializer="he_uniform")(do0_1)
+        c0_1    = layers.Conv2D(80, (2, 2), strides=(2,2), activation="relu", kernel_initializer="he_uniform")(do0_1)
         b0_1    = layers.BatchNormalization()(c0_1)
         do0_1   = layers.Dropout(0.2)(b0_1)
 
