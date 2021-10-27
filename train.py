@@ -610,7 +610,7 @@ def main(argv):
     print ('Output file is "', modelout)
     print ('Image path is "', imagepath)
 
-    if(not testmode and ((modelin == '' and not use_resnet and not special_model and not simple_model) or modelout == '' or (imagepath == '' and (train_path == '' or val_path == '')))):
+    if(not testmode and ((modelin == '' and not use_resnet and not special_model and not special_model2 and not simple_model) or modelout == '' or (imagepath == '' and (train_path == '' or val_path == '')))):
         print('Missing required parameter.')
         print ('train.py -i <modelin> -o <modelout> -p <imagepath>')
         sys.exit(2)
