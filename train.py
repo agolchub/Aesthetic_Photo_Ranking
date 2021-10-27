@@ -492,39 +492,6 @@ def test(modelin,imagepath):
     model = models.load_model(modelin)
     #model.load_weights(modelin+".checkpoint/")
     print("Model Loaded")
-
-    initializer = tf.keras.initializers.RandomNormal(mean=0., stddev=1.)
-    input = layers.Input((1024,680,3))
-    c1    = layers.Conv2D(32, (132, 88), strides=(6,4), activation="sigmoid", kernel_initializer=initializer)(input)
-    b1    = layers.BatchNormalization()(c1)
-    do1   = layers.Dropout(0.2)(b1)
-
-    c2    = layers.Conv2D(64, (66, 66), strides=(2,2), activation="sigmoid",kernel_initializer=initializer)(do1)
-    b2    = layers.BatchNormalization()(c2)
-    do2   = layers.Dropout(0.2)(b2)
-
-    c3    = layers.Conv2D(128, (16, 16), strides=(2,2), activation="sigmoid",kernel_initializer=initializer)(do2)
-    b3    = layers.BatchNormalization()(c3)
-    do3   = layers.Dropout(0.2)(b3)
-
-    c4    = layers.Conv2D(256, (7, 7), strides=(2,2), activation="sigmoid",kernel_initializer=initializer)(do3)
-    b4    = layers.BatchNormalization()(c4)
-    do4   = layers.Dropout(0.2)(b4)
-
-    c5    = layers.Conv2D(512, (3, 3), strides=(1,1), activation="sigmoid",kernel_initializer=initializer)(do4)
-    b5    = layers.BatchNormalization()(c5)
-    do5   = layers.Dropout(0.2)(b5)
-
-    f1   = layers.Flatten()(do5)
-
-    d1 = layers.Dense(512, activation="sigmoid",kernel_initializer=initializer)(f1)
-    do1   = Dropout(0.2)(d1)
-    d2    = layers.Dense(256, activation="sigmoid",kernel_initializer=initializer)(do1)
-    do2   = layers.Dropout(0.2)(d2)
-    #d3    = Dense(10, kernel_initializer=initializer, activation="softmax")(do2)
-    d3    = Dense(1, kernel_initializer=initializer, activation="linear")(do2)
-    model = models.Model(inputs=input,outputs=d3)
-
     print(model.summary())
     x,y,images = proc_image_dir(imagepath)
     a=np.array(x).astype(float)
