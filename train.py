@@ -215,17 +215,22 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         b4    = layers.BatchNormalization()(c4)
         do4   = layers.Dropout(0.2)(b4)
 
-        c5    = layers.Conv2D(512, (3, 3), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do4)
+        c5    = layers.Conv2D(256, (2, 2), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do4)
         b5    = layers.BatchNormalization()(c5)
         do5   = layers.Dropout(0.2)(b5)
 
-        f1   = layers.Flatten()(do5)
+        c6    = layers.Conv2D(256, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do5)
+        b6    = layers.BatchNormalization()(c6)
+        do6   = layers.Dropout(0.2)(b6)
+
+        f1   = layers.Flatten()(do6)
 
         d1 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(f1)
         do1   = Dropout(0.2)(d1)
         d2    = layers.Dense(128, activation="relu",kernel_initializer="he_uniform")(do1)
         do2   = layers.Dropout(0.2)(d2)
         d3    = Dense(10, kernel_initializer="he_uniform", activation="softmax")(do2)
+        d4    = Dense(1, kernel_initializer="he_uniform", activation="linear")(d3)
         model = models.Model(inputs=input,outputs=d3)
     elif(special_model):
         input = layers.Input((1024,680,3))
