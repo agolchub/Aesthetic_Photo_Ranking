@@ -465,7 +465,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
     wait_callback = WaitCallback()
 
     model.compile(
-        loss='categorical_crossentropy',
+        loss='mae',
         optimizer=optimizers.SGD(learning_rate=lr,momentum = 0.0, decay=decay, nesterov=nesterov),
         metrics=['accuracy'])
     #model.build()
