@@ -95,7 +95,7 @@ class WaitCallback(tf.keras.callbacks.Callback):
 
             return super().on_epoch_end(epoch, logs=logs)
 
-def proc_image_dir(Images_Path,categorical=True):
+def proc_image_dir(Images_Path,categorical=False):
     import random
 #    image_classes = sorted([dirname for dirname in os.listdir(Images_Path)
 #                      if os.path.isdir(os.path.join(Images_Path, dirname)) and not dirname.startswith(".") and not dirname.startswith("mblur")])
@@ -230,8 +230,8 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         do1   = Dropout(0.2)(d1)
         d2    = layers.Dense(256, activation="sigmoid",kernel_initializer=initializer)(do1)
         do2   = layers.Dropout(0.2)(d2)
-        d3    = Dense(10, kernel_initializer=initializer, activation="softmax")(do2)
-        #d4    = Dense(1, kernel_initializer=initializer, activation="linear")(d3)
+        #d3    = Dense(10, kernel_initializer=initializer, activation="softmax")(do2)
+        d3    = Dense(1, kernel_initializer=initializer, activation="linear")(do2)
         model = models.Model(inputs=input,outputs=d3)
     elif(special_model):
         input = layers.Input((1024,680,3))
