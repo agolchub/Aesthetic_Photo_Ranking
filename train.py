@@ -104,8 +104,8 @@ def proc_image_dir(Images_Path,categorical=False):
     
     x = [] # images as arrays
     y = [] # labels Infiltration or Not_infiltration
-    WIDTH = 1024
-    HEIGHT = 680
+    WIDTH = 256
+    HEIGHT = 170
   
     print("Adding Images: ",end="")
     i = 0
