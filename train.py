@@ -56,7 +56,7 @@ class CustomDataGen(tf.keras.utils.Sequence):
             #print("Reading " + item)
             # Read and resize image
             full_size_image = io.imread(item)
-            rawscore = int(os.path.basename(item).split("-")[0])
+            rawscore = float(os.path.basename(item).split("-")[0])
             out = rawscore
             y.append(out)
             images.append(item)
@@ -122,7 +122,7 @@ def proc_image_dir(Images_Path,categorical=False):
             # Read and resize image
             full_size_image = io.imread(item)
 
-            rawscore = int(os.path.basename(item).split("-")[0])
+            rawscore = float(os.path.basename(item).split("-")[0])
 
             if rawscore >= 1:
                 #x.append(full_size_image)
