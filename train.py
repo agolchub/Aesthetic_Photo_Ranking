@@ -42,8 +42,8 @@ class CustomDataGen(tf.keras.utils.Sequence):
 
         x = [] # images as arrays
         y = [] # labels Infiltration or Not_infiltration
-        WIDTH = 1024
-        HEIGHT = 680
+        WIDTH = 256
+        HEIGHT = 170
         if self.resnet:
             WIDTH=HEIGHT=224
         j = 0
@@ -303,48 +303,48 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         model = models.Model(inputs=input,outputs=d3)
 
     elif(special_model2):
-        input = layers.Input((1024,680,3))
-        c1    = layers.Conv2D(32, (132, 88), strides=(3,2), activation="relu", kernel_initializer="he_uniform")(input)
+        input = layers.Input((256,170,3))
+        c1    = layers.Conv2D(48, (18, 6), strides=(3,2), activation="relu", kernel_initializer="he_uniform")(input)
         b1    = layers.BatchNormalization()(c1)
         do1   = layers.Dropout(0.2)(b1)
 
-        c1_1    = layers.Conv2D(128, (33, 33), strides=(1,1), activation="relu", kernel_initializer="he_uniform")(do1)
+        c1_1    = layers.Conv2D(80, (9, 9), strides=(1,1), activation="relu", kernel_initializer="he_uniform")(do1)
         b1_1    = layers.BatchNormalization()(c1_1)
         do1_1   = layers.Dropout(0.2)(b1_1)
 
         ##
-        c2    = layers.Conv2D(64, (66, 66), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do1)
+        c2    = layers.Conv2D(64, (9, 9), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do1)
         b2    = layers.BatchNormalization()(c2)
         do2   = layers.Dropout(0.5)(b2)
 
-        c2_1    = layers.Conv2D(128, (16, 16), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do2)
+        c2_1    = layers.Conv2D(128, (5, 5), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do2)
         b2_1    = layers.BatchNormalization()(c2_1)
         do2_1   = layers.Dropout(0.5)(b2_1)
 
         ##
-        c3    = layers.Conv2D(128, (16, 16), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do2)
+        c3    = layers.Conv2D(128, (7, 7), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do2)
         b3    = layers.BatchNormalization()(c3)
         do3   = layers.Dropout(0.5)(b3)
 
-        c3_1    = layers.Conv2D(128, (16, 16), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do3)
+        c3_1    = layers.Conv2D(128, (7, 7), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do3)
         b3_1    = layers.BatchNormalization()(c3_1)
         do3_1   = layers.Dropout(0.5)(b3_1)
 
         ##
-        c4    = layers.Conv2D(256, (7, 7), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do3)
+        c4    = layers.Conv2D(256, (5, 5), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do3)
         b4    = layers.BatchNormalization()(c4)
         do4   = layers.Dropout(0.5)(b4)
 
-        c4_1    = layers.Conv2D(128, (7, 7), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do4)
+        c4_1    = layers.Conv2D(128, (3, 3), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do4)
         b4_1    = layers.BatchNormalization()(c4_1)
         do4_1   = layers.Dropout(0.5)(b4_1)
 
         ##
-        c5    = layers.Conv2D(512, (3, 3), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do4)
+        c5    = layers.Conv2D(512, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do4)
         b5    = layers.BatchNormalization()(c5)
         do5   = layers.Dropout(0.5)(b5)
 
-        c5_1    = layers.Conv2D(128, (3, 3), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do5)
+        c5_1    = layers.Conv2D(128, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do5)
         b5_1    = layers.BatchNormalization()(c5_1)
         do5_1   = layers.Dropout(0.5)(b5_1)
 
@@ -376,7 +376,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         do8_1   = layers.Dropout(0.2)(b8_1)
 
         ##
-        c9    = layers.Conv2D(32, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do8)
+        c9    = layers.Conv2D(48, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do8)
         b9    = layers.BatchNormalization()(c9)
         do9   = layers.Dropout(0.2)(b9)
 
@@ -465,8 +465,8 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
     wait_callback = WaitCallback()
 
     model.compile(
-        loss='mse',
-        optimizer=optimizers.SGD(learning_rate=lr,momentum = 0.0, decay=decay, nesterov=nesterov),
+        loss='mae',
+        optimizer=optimizers.SGD(learning_rate=lr,momentum = 0.009, decay=decay, nesterov=nesterov),
         metrics=['accuracy'])
     #model.build()
     #history = model.fit(np.array(X_train), np.array(y_train),
@@ -557,7 +557,7 @@ def main(argv):
     simple_model = False
 
     try:
-        opts, args = getopt.getopt(argv,"hi:o:p:nd:l:b:e:c:t:v:xr",["simple_model","test","build_only","modelin=","resnet50","special_model","modelout=","imagepath=","nesterov","decay=","learningrate=","batchsize","epochs","checkpoint_filepath=","train=","val=","test=","transfer_learning","randomize_weights","batched_reader"])
+        opts, args = getopt.getopt(argv,"hi:o:p:nd:l:b:e:c:t:v:xr",["special_model2","simple_model","test","build_only","modelin=","resnet50","special_model","modelout=","imagepath=","nesterov","decay=","learningrate=","batchsize","epochs","checkpoint_filepath=","train=","val=","test=","transfer_learning","randomize_weights","batched_reader"])
     except getopt.GetoptError:
         print ('train.py -i <modelin> -o <modelout> -p <imagepath>')
         sys.exit(2)
