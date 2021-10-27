@@ -159,7 +159,7 @@ def init_layer(layer):
     except:
         print(layer.name, " could not be re-initilized", sys.exc_info())
 
-def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader):
+def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model):
     #load model
     if(use_resnet):
         resnetmodel = tf.keras.applications.resnet50.ResNet50(input_shape=(224,224,3),include_top=False)
@@ -197,6 +197,37 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         d3 = Dense(1, kernel_initializer="he_uniform", activation="linear")(do2)
         
         model = models.Model(inputs=resnetmodel.input,outputs=d3)
+    elif(simple_model):
+        input = layers.Input((1024,680,3))
+        input = layers.Dropout(0.2)(input)
+        c1    = layers.Conv2D(32, (132, 88), strides=(3,2), activation="relu", kernel_initializer="he_uniform")(input)
+        b1    = layers.BatchNormalization()(c1)
+        do1   = layers.Dropout(0.2)(b1)
+
+        c2    = layers.Conv2D(64, (66, 66), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do1)
+        b2    = layers.BatchNormalization()(c2)
+        do2   = layers.Dropout(0.2)(b2)
+
+        c3    = layers.Conv2D(128, (16, 16), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do2)
+        b3    = layers.BatchNormalization()(c3)
+        do3   = layers.Dropout(0.2)(b3)
+
+        c4    = layers.Conv2D(256, (7, 7), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do3)
+        b4    = layers.BatchNormalization()(c4)
+        do4   = layers.Dropout(0.2)(b4)
+
+        c5    = layers.Conv2D(512, (3, 3), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do4)
+        b5    = layers.BatchNormalization()(c5)
+        do5   = layers.Dropout(0.2)(b5)
+
+        f1   = layers.Flatten()(do5)
+
+        d1 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(f1)
+        do1   = Dropout(0.2)(d1)
+        d2    = layers.Dense(128, activation="relu",kernel_initializer="he_uniform")(do1)
+        do2   = layers.Dropout(0.2)(d2)
+        d3    = Dense(10, kernel_initializer="he_uniform", activation="softmax")(do2)
+        model = models.Model(inputs=input,outputs=d3)
     elif(special_model):
         input = layers.Input((1024,680,3))
         c1    = layers.Conv2D(32, (132, 88),input_shape=(1024, 680, 3), strides=(3,2), activation="relu", kernel_initializer="he_uniform")(input)
@@ -485,9 +516,10 @@ def main(argv):
     testmode = False
     special_model2 = False
     batched_reader = False
-    
+    simple_model = False
+
     try:
-        opts, args = getopt.getopt(argv,"hi:o:p:nd:l:b:e:c:t:v:xr",["test","build_only","modelin=","resnet50","special_model","modelout=","imagepath=","nesterov","decay=","learningrate=","batchsize","epochs","checkpoint_filepath=","train=","val=","test=","transfer_learning","randomize_weights","batched_reader"])
+        opts, args = getopt.getopt(argv,"hi:o:p:nd:l:b:e:c:t:v:xr",["simple_model","test","build_only","modelin=","resnet50","special_model","modelout=","imagepath=","nesterov","decay=","learningrate=","batchsize","epochs","checkpoint_filepath=","train=","val=","test=","transfer_learning","randomize_weights","batched_reader"])
     except getopt.GetoptError:
         print ('train.py -i <modelin> -o <modelout> -p <imagepath>')
         sys.exit(2)
@@ -531,6 +563,8 @@ def main(argv):
             testmode = True
         elif opt in ("--batched_reader"):
             batched_reader = True
+        elif opt in ("--simple_model"):
+            simple_model = True
 
     checkpoint_filepath = modelout+".checkpoint/"
 
@@ -538,7 +572,7 @@ def main(argv):
     print ('Output file is "', modelout)
     print ('Image path is "', imagepath)
 
-    if(not testmode and ((modelin == '' and not use_resnet and not special_model) or modelout == '' or (imagepath == '' and (train_path == '' or val_path == '')))):
+    if(not testmode and ((modelin == '' and not use_resnet and not special_model and not simple_model) or modelout == '' or (imagepath == '' and (train_path == '' or val_path == '')))):
         print('Missing required parameter.')
         print ('train.py -i <modelin> -o <modelout> -p <imagepath>')
         sys.exit(2)
@@ -553,7 +587,7 @@ def main(argv):
     if(testmode):
         test(modelin,imagepath)
     else:
-        train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader)
+        train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
