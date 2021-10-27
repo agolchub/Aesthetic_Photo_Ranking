@@ -259,7 +259,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
 
         f1   = layers.Concatenate()([d0_1,d0_2,d0_3,d0_4,d0_5,d0_6,d0_7,d0_8,d0_9])
 
-        d1 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(f1)
+        d1 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(f1_9)
         do1   = Dropout(0.5)(d1)
         d2    = layers.Dense(128, activation="relu",kernel_initializer="he_uniform")(do1)
         do2   = layers.Dropout(0.2)(d2)
@@ -430,7 +430,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
 
     model.compile(
         loss='categorical_crossentropy',
-        optimizer=optimizers.Adam(lr=lr,beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=decay),
+        optimizer=optimizers.SGD(lr=lr,momentum=decay,nesterov=nesterov),
         metrics=['accuracy'])
     #model.build()
     #history = model.fit(np.array(X_train), np.array(y_train),
