@@ -263,7 +263,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         do1   = Dropout(0.5)(d1)
         d2    = layers.Dense(128, activation="relu",kernel_initializer="he_uniform")(do1)
         do2   = layers.Dropout(0.2)(d2)
-        d3    = Dense(10, kernel_initializer="he_uniform", activation="sigmoid")(do2)
+        d3    = Dense(10, kernel_initializer="he_uniform", activation="softmax")(do2)
         model = models.Model(inputs=input,outputs=d3)
 
     elif(special_model2):
@@ -430,7 +430,8 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
 
     model.compile(
         loss='categorical_crossentropy',
-        optimizer=optimizers.Adam(lr=lr,beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=decay))
+        optimizer=optimizers.Adam(lr=lr,beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=decay),
+        metrics=['accuracy'])
     #model.build()
     #history = model.fit(np.array(X_train), np.array(y_train),
     #    validation_data=(np.array(X_val), np.array(y_val)),
@@ -461,7 +462,7 @@ def test(modelin,imagepath):
     Y_pred = model.predict(a)
     print(np.array(y))
     print(Y_pred)
-    loss, acc = model.evaluate(a, no.array(y), verbose=2)
+    loss, acc = model.evaluate(a, np.array(y), verbose=2)
     print("Restored model, accuracy: {:5.2f}%".format(100 * acc))
 
 def main(argv):
