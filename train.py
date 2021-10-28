@@ -128,7 +128,7 @@ def proc_image_dir(Images_Path,categorical=True):
                 #x.append(full_size_image)
                 if(categorical):
                     out = [0]*5
-                    out[int(rawscore)] = 1
+                    out[int(rawscore)-1] = 1
                 else:
                     out = rawscore
                 print(out)
