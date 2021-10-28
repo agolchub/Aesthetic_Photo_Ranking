@@ -127,7 +127,7 @@ def proc_image_dir(Images_Path,categorical=True):
             if rawscore >= 0:
                 #x.append(full_size_image)
                 if(categorical):
-                    out = [0]*2
+                    out = [0]*5
                     out[int(rawscore)] = 1
                 else:
                     out = rawscore
@@ -162,7 +162,21 @@ def init_layer(layer):
     except:
         print(layer.name, " could not be re-initilized", sys.exc_info())
 
-def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model):
+def new_conv2d(input,n,size=(2,2),strides=(2,2),activation="relu",kernel_initializer="he_uniform",batch_normalization=False,dropout_rate=0.2):
+    conv2d = layers.Conv2D(n, size, strides=strides, activation=activation, kernel_initializer=kernel_initializer)(input)
+    if(batch_normalization):
+        batchNormalization = layers.BatchNormalization()(conv2d)
+    else:
+        batchNormalization = conv2d
+    dropout = layers.Dropout(dropout_rate)(batchNormalization)
+    return dropout
+
+def new_dense(input,n,activation="relu",kernel_initializer="he_uniform",dropout_rate=0.2):
+    dense = layers.Dense(n, activation=activation,kernel_initializer=kernel_initializer)(input)
+    dropout = layers.Dropout(dropout_rate)(dense)
+    return dropout
+
+def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model,batch_normalization):
     #load model
     if(use_resnet):
         resnetmodel = tf.keras.applications.resnet50.ResNet50(input_shape=(224,224,3),include_top=False)
@@ -307,121 +321,42 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
 
     elif(special_model2):
         input = layers.Input((1024,680,3))
-        c0    = layers.Conv2D(48, (36, 12), strides=(1,1), activation="relu", kernel_initializer="he_uniform")(input)
-        b0    = layers.BatchNormalization()(c0)
-        do0   = layers.Dropout(0.2)(b0)
 
-        c0_1    = layers.Conv2D(80, (9, 9), strides=(2,2), activation="relu", kernel_initializer="he_uniform")(do0)
-        b0_1    = layers.BatchNormalization()(c0_1)
-        do0_1   = layers.Dropout(0.2)(b0_1)
-
-        c0_1    = layers.Conv2D(80, (3, 3), strides=(2,2), activation="relu", kernel_initializer="he_uniform")(do0_1)
-        b0_1    = layers.BatchNormalization()(c0_1)
-        do0_1   = layers.Dropout(0.2)(b0_1)
-
-        c0_1    = layers.Conv2D(80, (2, 2), strides=(2,2), activation="relu", kernel_initializer="he_uniform")(do0_1)
-        b0_1    = layers.BatchNormalization()(c0_1)
-        do0_1   = layers.Dropout(0.2)(b0_1)
+        do0 = new_conv2d(input,48,(36,12),(1,1))
+        do0_1   = new_conv2d(do0,80,(9,9),(2,2))
+        do0_1   = new_conv2d(do0_1,80,(3,3),(2,2))
+        do0_1   = new_conv2d(do0_1,80,(2,2),(2,2))
 
         ##
-        c1    = layers.Conv2D(48, (18, 6), strides=(3,2), activation="relu", kernel_initializer="he_uniform")(input)
-        #m1    = layers.MaxPooling2D(pool_size=(3,2),strides=(1,1),padding='valid')
-        b1    = layers.BatchNormalization()(c1)
-        do1   = layers.Dropout(0.2)(b1)
-
-
-        c1_1    = layers.Conv2D(80, (9, 9), strides=(2,2), activation="relu", kernel_initializer="he_uniform")(do1)
-        b1_1    = layers.BatchNormalization()(c1_1)
-        do1_1   = layers.Dropout(0.2)(b1_1)
-        
-        c1_1    = layers.Conv2D(160, (9, 9), strides=(2,2), activation="relu", kernel_initializer="he_uniform")(do1_1)
-        b1_1    = layers.BatchNormalization()(c1_1)
-        do1_1   = layers.Dropout(0.2)(b1_1)
+        do1 = new_conv2d(input,80,(18, 6), strides=(3,2))
+        do1_1 = new_conv2d(do1,80, (9, 9), strides=(2,2))
+        do1_1 = new_conv2d(do1_1,160, (9, 9), strides=(2,2))
 
         ##
-        c2    = layers.Conv2D(80, (9, 9), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do1)
-        b2    = layers.BatchNormalization()(c2)
-        do2   = layers.Dropout(0.5)(b2)
-
-        c2_1    = layers.Conv2D(160, (5, 5), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do2)
-        b2_1    = layers.BatchNormalization()(c2_1)
-        do2_1   = layers.Dropout(0.5)(b2_1)
-
-        c2_1    = layers.Conv2D(320, (5, 5), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do2_1)
-        b2_1    = layers.BatchNormalization()(c2_1)
-        do2_1   = layers.Dropout(0.5)(b2_1)
+        do2   = new_conv2d(do1,80, (9, 9), strides=(2,2))
+        do2_1   = new_conv2d(do2,160, (5, 5), strides=(2,2))
+        do2_1   = new_conv2d(do2_1,320, (5, 5), strides=(2,2))
 
         ##
-        c3    = layers.Conv2D(160, (7, 7), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do2)
-        b3    = layers.BatchNormalization()(c3)
-        do3   = layers.Dropout(0.5)(b3)
-
-        c3_1    = layers.Conv2D(320, (7, 7), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do3)
-        b3_1    = layers.BatchNormalization()(c3_1)
-        do3_1   = layers.Dropout(0.5)(b3_1)
-
-        c3_1    = layers.Conv2D(320, (7, 7), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do3_1)
-        b3_1    = layers.BatchNormalization()(c3_1)
-        do3_1   = layers.Dropout(0.5)(b3_1)
+        do3   = new_conv2d(do2,160, (7, 7), strides=(2,2))
+        do3_1   = new_conv2d(do3,160, (7, 7), strides=(2,2))
+        do3_1   = new_conv2d(do3_1,320, (7, 7), strides=(2,2))
 
         ##
-        c4    = layers.Conv2D(160, (5, 5), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do3)
-        b4    = layers.BatchNormalization()(c4)
-        do4   = layers.Dropout(0.5)(b4)
-
-        c4_1    = layers.Conv2D(320, (3, 3), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do4)
-        b4_1    = layers.BatchNormalization()(c4_1)
-        do4_1   = layers.Dropout(0.5)(b4_1)
-
-        c4_1    = layers.Conv2D(320, (3, 3), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do4_1)
-        b4_1    = layers.BatchNormalization()(c4_1)
-        do4_1   = layers.Dropout(0.5)(b4_1)
+        do4   = new_conv2d(do3,160, (5, 5), strides=(2,2))
+        do4_1   = new_conv2d(do4,320, (3, 3), strides=(2,2))
+        do4_1   = new_conv2d(do4_1,320, (3, 3), strides=(2,2))
 
         ##
-        c5    = layers.Conv2D(320, (2, 2), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do4)
-        b5    = layers.BatchNormalization()(c5)
-        do5   = layers.Dropout(0.5)(b5)
-
-        c5_1    = layers.Conv2D(320, (2, 2), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do5)
-        b5_1    = layers.BatchNormalization()(c5_1)
-        do5_1   = layers.Dropout(0.5)(b5_1)
-
-        c5_1    = layers.Conv2D(320, (2, 2), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do5_1)
-        b5_1    = layers.BatchNormalization()(c5_1)
-        do5_1   = layers.Dropout(0.5)(b5_1)
+        do5   = new_conv2d(do4,320, (2, 2), strides=(2,2))
+        do5_1   = new_conv2d(do5,320, (2, 2), strides=(2,2))
+        do5_1   = new_conv2d(do5_1,320, (2, 2), strides=(2,2))
 
         ##
-        c6    = layers.Conv2D(320, (2, 2), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do5)
-        b6    = layers.BatchNormalization()(c6)
-        do6   = layers.Dropout(0.2)(b6)
-
-        c6_1    = layers.Conv2D(320, (2, 2), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do6)
-        b6_1    = layers.BatchNormalization()(c6_1)
-        do6_1   = layers.Dropout(0.2)(b6_1)
+        do6   = new_conv2d(do5,320, (2, 2), strides=(2,2))
+        do6_1   = new_conv2d(do6,320, (2, 2), strides=(2,2))
 
         ##
-        c7    = layers.Conv2D(320, (2, 2), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do6)
-        b7    = layers.BatchNormalization()(c7)
-        do7   = layers.Dropout(0.2)(b7)
-
-        c7_1    = layers.Conv2D(128, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do7)
-        b7_1    = layers.BatchNormalization()(c7_1)
-        do7_1   = layers.Dropout(0.2)(b7_1)
-
-        ##
-        c8    = layers.Conv2D(320, (2, 2), strides=(2,2), activation="relu",kernel_initializer="he_uniform")(do7)
-        b8    = layers.BatchNormalization()(c8)
-        do8   = layers.Dropout(0.2)(b8)
-
-        c8_1    = layers.Conv2D(128, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do8)
-        b8_1    = layers.BatchNormalization()(c8_1)
-        do8_1   = layers.Dropout(0.2)(b8_1)
-
-        ##
-        c9    = layers.Conv2D(320, (2, 2), strides=(1,1), activation="relu",kernel_initializer="he_uniform")(do8)
-        b9    = layers.BatchNormalization()(c9)
-        do9   = layers.Dropout(0.2)(b9)
-
         f0_1  = layers.Flatten()(do0_1)
         f1_1  = layers.Flatten()(do1_1)
         f1_2  = layers.Flatten()(do2_1)
@@ -429,31 +364,23 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         f1_4  = layers.Flatten()(do4_1)
         f1_5  = layers.Flatten()(do5_1)   
         f1_6  = layers.Flatten()(do6_1)
-        f1_7  = layers.Flatten()(do7_1)
-        f1_8  = layers.Flatten()(do8_1)
 
-        f1_9  = layers.Flatten()(do9)
-
-        d0_0 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(f0_1)
-        d0_1 = layers.Dense(25, activation="relu",kernel_initializer="he_uniform")(f1_1)
-        d0_2 = layers.Dense(25, activation="relu",kernel_initializer="he_uniform")(f1_2)
-        d0_3 = layers.Dense(25, activation="relu",kernel_initializer="he_uniform")(f1_3)
-        d0_4 = layers.Dense(25, activation="relu",kernel_initializer="he_uniform")(f1_4)
-        d0_5 = layers.Dense(25, activation="relu",kernel_initializer="he_uniform")(f1_5)
-        d0_6 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(f1_6)
-        d0_7 = layers.Dense(25, activation="relu",kernel_initializer="he_uniform")(f1_7)
-        d0_8 = layers.Dense(25, activation="relu",kernel_initializer="he_uniform")(f1_8)
-        d0_9 = layers.Dense(128, activation="relu",kernel_initializer="he_uniform")(f1_9)
+        d0_0 = new_dense(f0_1, 256)
+        d0_1 = new_dense(f1_1, 25)
+        d0_2 = new_dense(f1_2, 25)
+        d0_3 = new_dense(f1_3, 25)
+        d0_4 = new_dense(f1_4, 25)
+        d0_5 = new_dense(f1_5, 25)
+        d0_6 = new_dense(f1_6, 256)
 
 
-        f1   = layers.Concatenate()([d0_0,d0_1,d0_2,d0_3,d0_4,d0_5,d0_6])#,d0_7,d0_8,d0_9
+        f1   = layers.Concatenate()([d0_0,d0_1,d0_2,d0_3,d0_4,d0_5,d0_6])
 
-        d1 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(f1)
-        do1   = Dropout(0.5)(d1)
+        do1 = new_dense(f1, 256,dropout_rate=0.5)
         d2    = layers.Dense(128, activation="relu",kernel_initializer="he_uniform")(do1)
-        do2   = layers.Dropout(0.2)(d2)
-        d3    = layers.Dense(10, activation="relu",kernel_initializer="he_uniform")(do2)
-        d4    = Dense(2, kernel_initializer="he_uniform", activation="softmax")(d3)
+        do2   = new_dense(do1, 128)
+        d3    = new_dense(do2, 10)
+        d4    = Dense(5, kernel_initializer="he_uniform", activation="softmax")(d3)
         model = models.Model(inputs=input,outputs=d4)
     else:
         model = models.load_model(modelin)
