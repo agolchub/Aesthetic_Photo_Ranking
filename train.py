@@ -469,6 +469,10 @@ def test(modelin,imagepath):
     Y_pred = model.predict(a)
     print(np.array(y))
     print(Y_pred)
+
+    print(np.argmax(np.array(y),axis=1))
+    print(np.argmax(Y_pred,axis=1))
+
     loss, acc = model.evaluate(a, np.array(y), verbose=2)
     print("Restored model, accuracy: {:5.2f}%".format(100 * acc))
 
