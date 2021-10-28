@@ -470,6 +470,8 @@ def test(modelin,imagepath):
     print(np.array(y))
     print(Y_pred)
 
+    numpy.set_printoptions(threshold=sys.maxsize)
+
     print(np.argmax(np.array(y),axis=1))
     print(np.argmax(Y_pred,axis=1))
 
