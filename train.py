@@ -94,7 +94,7 @@ class WaitCallback(tf.keras.callbacks.Callback):
 
             return super().on_epoch_end(epoch, logs=logs)
 
-def proc_image_dir(Images_Path,categorical=False):
+def proc_image_dir(Images_Path,categorical=True):
     import random
 #    image_classes = sorted([dirname for dirname in os.listdir(Images_Path)
 #                      if os.path.isdir(os.path.join(Images_Path, dirname)) and not dirname.startswith(".") and not dirname.startswith("mblur")])
@@ -124,11 +124,11 @@ def proc_image_dir(Images_Path,categorical=False):
 
             rawscore = float(os.path.basename(item).split("-")[0])
 
-            if rawscore >= 1:
+            if rawscore >= 0:
                 #x.append(full_size_image)
                 if(categorical):
-                    out = [0]*10
-                    out[rawscore-1] = 1
+                    out = [0]*2
+                    out[int(rawscore)] = 1
                 else:
                     out = rawscore
                 print(out)
@@ -137,7 +137,7 @@ def proc_image_dir(Images_Path,categorical=False):
                 resizedImage = resize(full_size_image, (WIDTH,HEIGHT), anti_aliasing=True) 
                 if(len(resizedImage.shape) < 3):
                     resizedImage = skimage.color.gray2rgb(resizedImage)
-
+                resizedImage = tf.keras.applications.resnet.preprocess_input(resizedImage)
                 x.append(resizedImage)
                 j+=1
             #if j>3:
@@ -197,7 +197,11 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         do1= Dropout(0.5)(d1)
         d2 = layers.Dense(128, activation="relu",kernel_initializer="he_uniform")(do1)
         do2= layers.Dropout(0.2)(d2)
-        d3 = Dense(1, kernel_initializer="he_uniform", activation="linear")(do2)
+        d2 = layers.Dense(128, activation="relu",kernel_initializer="he_uniform")(do2)
+        do2= layers.Dropout(0.2)(d2)
+        d2 = layers.Dense(128, activation="relu",kernel_initializer="he_uniform")(do2)
+        do2= layers.Dropout(0.2)(d2)
+        d3 = Dense(1, kernel_initializer="he_uniform", activation="relu")(do2)
         
         model = models.Model(inputs=resnetmodel.input,outputs=d3)
     elif(simple_model):
@@ -230,7 +234,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         d2    = layers.Dense(256, activation="sigmoid",kernel_initializer=initializer)(do1)
         do2   = layers.Dropout(0.2)(d2)
         #d3    = Dense(10, kernel_initializer=initializer, activation="softmax")(do2)
-        d3    = Dense(1, kernel_initializer=initializer, activation="linear")(do2)
+        d3    = Dense(1, kernel_initializer=initializer, activation="relu")(do2)
         model = models.Model(inputs=input,outputs=d3)
     elif(special_model):
         input = layers.Input((1024,680,3))
@@ -430,13 +434,13 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
 
         f1_9  = layers.Flatten()(do9)
 
-        d0_0 = layers.Dense(128, activation="relu",kernel_initializer="he_uniform")(f0_1)
+        d0_0 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(f0_1)
         d0_1 = layers.Dense(25, activation="relu",kernel_initializer="he_uniform")(f1_1)
         d0_2 = layers.Dense(25, activation="relu",kernel_initializer="he_uniform")(f1_2)
         d0_3 = layers.Dense(25, activation="relu",kernel_initializer="he_uniform")(f1_3)
         d0_4 = layers.Dense(25, activation="relu",kernel_initializer="he_uniform")(f1_4)
         d0_5 = layers.Dense(25, activation="relu",kernel_initializer="he_uniform")(f1_5)
-        d0_6 = layers.Dense(25, activation="relu",kernel_initializer="he_uniform")(f1_6)
+        d0_6 = layers.Dense(256, activation="relu",kernel_initializer="he_uniform")(f1_6)
         d0_7 = layers.Dense(25, activation="relu",kernel_initializer="he_uniform")(f1_7)
         d0_8 = layers.Dense(25, activation="relu",kernel_initializer="he_uniform")(f1_8)
         d0_9 = layers.Dense(128, activation="relu",kernel_initializer="he_uniform")(f1_9)
@@ -449,7 +453,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         d2    = layers.Dense(128, activation="relu",kernel_initializer="he_uniform")(do1)
         do2   = layers.Dropout(0.2)(d2)
         d3    = layers.Dense(10, activation="relu",kernel_initializer="he_uniform")(do2)
-        d4    = Dense(1, kernel_initializer="he_uniform", activation="linear")(d3)
+        d4    = Dense(2, kernel_initializer="he_uniform", activation="softmax")(d3)
         model = models.Model(inputs=input,outputs=d4)
     else:
         model = models.load_model(modelin)
@@ -505,7 +509,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
     wait_callback = WaitCallback()
 
     model.compile(
-        loss='mae',
+        loss='mse',
         optimizer=optimizers.SGD(learning_rate=lr,momentum = 0.009, decay=decay, nesterov=nesterov),
         metrics=['accuracy'])
     #model.build()
