@@ -163,12 +163,13 @@ def init_layer(layer):
         print(layer.name, " could not be re-initilized", sys.exc_info())
 
 def new_conv2d(input,n,size=(2,2),strides=(2,2),activation="relu",kernel_initializer="he_uniform",batch_normalization=True,dropout_rate=0.2):
-    conv2d = layers.Conv2D(n, size, strides=strides, activation=activation, kernel_initializer=kernel_initializer)(input)
+    conv2d = layers.Conv2D(n, size, strides=strides, kernel_initializer=kernel_initializer)(input)
     if(batch_normalization):
         batchNormalization = layers.BatchNormalization()(conv2d)
     else:
         batchNormalization = conv2d
-    dropout = layers.Dropout(dropout_rate)(batchNormalization)
+    activationLayer = layers.Activation(activation)(batchNormalization)
+    dropout = layers.Dropout(dropout_rate)(activationLayer)
     return dropout
 
 def new_dense(input,n,activation="relu",kernel_initializer="he_uniform",dropout_rate=0.2):
