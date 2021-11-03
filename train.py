@@ -401,7 +401,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
 
     # Define the Keras TensorBoard callback.
     logdir=modelout+".logs/fit/" + datetime.now().strftime("%Y%m%d-%H%M%S")
-    tensorboard_callback = keras.callbacks.TensorBoard(log_dir=logdir)
+    tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=logdir)
 
     #model.build()
     model.compile(
