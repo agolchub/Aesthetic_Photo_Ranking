@@ -17,7 +17,7 @@ from tensorflow.python.platform.tf_logging import error
 from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Concatenate
 from tensorflow.keras.models import Sequential
-import datetime
+from datetime import datetime
 
 class CustomDataGen(tf.keras.utils.Sequence):
     
