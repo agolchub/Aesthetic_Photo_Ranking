@@ -131,7 +131,7 @@ def proc_image_dir(Images_Path,categorical=False):
                     out = [0]*5
                     out[int(rawscore)-1] = 1
                 else:
-                    out = (((rawscore - 1.0)/9.0)*2.0) - 1.0
+                    out = ((rawscore - 1.0)/9.0)
                 print(out)
                 y.append(out)
                 images.append(item)
