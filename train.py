@@ -302,13 +302,13 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
     elif(special_model2):
         input = layers.Input((1024,680,3))
 
-        do0 = new_conv2d(input,48,(36,12),(1,1))
+        do0 = new_conv2d(input,48,(35,35),(24,16))
         do0_1   = new_conv2d(do0,80,(9,9),(2,2))
         do0_1   = new_conv2d(do0_1,80,(3,3),(2,2))
         do0_1   = new_conv2d(do0_1,80,(2,2),(2,2))
 
         ##
-        do1 = new_conv2d(input,80,(18, 6), strides=(3,2))
+        do1 = new_conv2d(input,80,(18, 18), strides=(3,2))
         do1_1 = new_conv2d(do1,80, (9, 9), strides=(2,2))
         do1_1 = new_conv2d(do1_1,160, (9, 9), strides=(2,2))
 
