@@ -356,12 +356,12 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
 
         f1   = layers.Concatenate()([d0_0,d0_6]) #d0_1,d0_2,d0_3,d0_4,d0_5,
 
-        do1 = new_dense(f1, 512,dropout_rate=0.2)
-        do2   = new_dense(do1, 192)
-        d3    = new_dense(do2, 64)
-        d3    = new_dense(d3, 32)
-        d3    = new_dense(d3, 5)
-        d4    = Dense(1, kernel_initializer="he_uniform", activation="sigmoid")(d3)
+        do1 = new_dense(f1, 512,dropout_rate=0.2, activation="sigmoid")
+        do2   = new_dense(do1, 192, activation="sigmoid")
+        d3    = new_dense(do2, 64, activation="sigmoid")
+        d3    = new_dense(d3, 32, activation="sigmoid")
+        d3    = new_dense(d3, 5, activation="sigmoid")
+        d4    = Dense(1, kernel_initializer="he_uniform", activation="linear")(d3)
         model = models.Model(inputs=input,outputs=d4)
     else:
         model = models.load_model(modelin)
