@@ -308,22 +308,22 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         do0_1   = new_conv2d(do0_1,80,(2,2),(2,2))
 
         ##
-        do1 = new_conv2d(input,80,(18, 18), strides=(3,2))
+        do1 = new_conv2d(input,48,(7, 7), strides=(3,2))
         do1_1 = new_conv2d(do1,80, (9, 9), strides=(2,2))
         do1_1 = new_conv2d(do1_1,160, (9, 9), strides=(2,2))
 
         ##
-        do2   = new_conv2d(do1,80, (9, 9), strides=(2,2))
+        do2   = new_conv2d(do1,80, (5, 5), strides=(2,2))
         do2_1   = new_conv2d(do2,160, (5, 5), strides=(2,2))
         do2_1   = new_conv2d(do2_1,320, (5, 5), strides=(2,2))
 
         ##
-        do3   = new_conv2d(do2,160, (7, 7), strides=(2,2))
+        do3   = new_conv2d(do2,160, (3, 3), strides=(2,2))
         do3_1   = new_conv2d(do3,160, (7, 7), strides=(2,2))
         do3_1   = new_conv2d(do3_1,320, (7, 7), strides=(2,2))
 
         ##
-        do4   = new_conv2d(do3,160, (5, 5), strides=(2,2))
+        do4   = new_conv2d(do3,160, (3, 3), strides=(2,2))
         do4_1   = new_conv2d(do4,320, (3, 3), strides=(2,2))
         do4_1   = new_conv2d(do4_1,320, (3, 3), strides=(2,2))
 
