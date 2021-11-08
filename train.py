@@ -420,8 +420,8 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
     wait_callback = WaitCallback()
 
     model.compile(
-        loss='mse',
-        optimizer=optimizers.SGD(learning_rate=lr,momentum = 0.009, decay=decay, nesterov=nesterov),
+        loss='mae',
+        optimizer='adam',#optimizers.SGD(learning_rate=lr,momentum = 0.009, decay=decay, nesterov=nesterov),
         metrics=['accuracy'])
     #model.build()
     #history = model.fit(np.array(X_train), np.array(y_train),
