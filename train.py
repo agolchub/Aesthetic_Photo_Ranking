@@ -178,7 +178,7 @@ def new_dense(input,n,activation="relu",kernel_initializer="he_uniform",dropout_
     dropout = layers.Dropout(dropout_rate)(dense)
     return dropout
 
-def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model,momentum):
+def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model,momentum,loss_function):
     #load model
     if(use_resnet):
         resnetmodel = tf.keras.applications.resnet50.ResNet50(input_shape=(224,224,3),include_top=False)
@@ -419,7 +419,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
     wait_callback = WaitCallback()
 
     model.compile(
-        loss='mae',
+        loss=loss_function,
         optimizer=optimizers.SGD(learning_rate=lr,momentum = momentum, decay=decay, nesterov=nesterov),
         metrics=['accuracy'])
     #model.build()
@@ -483,9 +483,10 @@ def main(argv):
     batched_reader = False
     simple_model = False
     momentum = 0.0
+    loss_function = 'mse'
 
     try:
-        opts, args = getopt.getopt(argv,"hi:o:p:nd:l:b:e:c:t:v:xrm:",["momentum=","special_model2","simple_model","test","build_only","modelin=","resnet50","special_model","modelout=","imagepath=","nesterov","decay=","learningrate=","batchsize","epochs","checkpoint_filepath=","train=","val=","test=","transfer_learning","randomize_weights","batched_reader"])
+        opts, args = getopt.getopt(argv,"hi:o:p:nd:l:b:e:c:t:v:xrm:f:",["loss=","momentum=","special_model2","simple_model","test","build_only","modelin=","resnet50","special_model","modelout=","imagepath=","nesterov","decay=","learningrate=","batchsize","epochs","checkpoint_filepath=","train=","val=","test=","transfer_learning","randomize_weights","batched_reader"])
     except getopt.GetoptError:
         print ('train.py -i <modelin> -o <modelout> -p <imagepath>')
         sys.exit(2)
@@ -533,6 +534,8 @@ def main(argv):
             simple_model = True
         elif opt in ("-e","--momentum"):
             momentum = arg
+        elif opt in ("-f","--loss"):
+            loss_function = arg
 
     checkpoint_filepath = modelout+".checkpoint/"
 
@@ -555,7 +558,7 @@ def main(argv):
     if(testmode):
         test(modelin,imagepath)
     else:
-        train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model,momentum)
+        train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model,momentum,loss_function)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
