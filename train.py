@@ -131,7 +131,7 @@ def proc_image_dir(Images_Path,categorical=False):
                     out = [0]*5
                     out[int(rawscore)-1] = 1
                 else:
-                    out = rawscore
+                    out = (((rawscore - 1.0)/9.0)*2.0) - 1.0
                 print(out)
                 y.append(out)
                 images.append(item)
@@ -358,8 +358,8 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
 
         do1 = new_dense(f1, 256,dropout_rate=0.5)
         do2   = new_dense(do1, 128)
-        d3    = new_dense(do2, 10, activation="softmax")
-        d4    = Dense(1, kernel_initializer="he_uniform", activation="linear")(d3)
+        d3    = new_dense(do2, 32)
+        d4    = Dense(1, kernel_initializer="he_uniform", activation="sigmoid")(d3)
         model = models.Model(inputs=input,outputs=d4)
     else:
         model = models.load_model(modelin)
