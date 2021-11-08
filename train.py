@@ -354,11 +354,13 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         d0_6 = new_dense(f1_6, 256)
 
 
-        f1   = layers.Concatenate()([d0_0,d0_1,d0_2,d0_3,d0_4,d0_5,d0_6])
+        f1   = layers.Concatenate()([d0_0,d0_6]) #d0_1,d0_2,d0_3,d0_4,d0_5,
 
-        do1 = new_dense(f1, 256,dropout_rate=0.5)
-        do2   = new_dense(do1, 128)
-        d3    = new_dense(do2, 32)
+        do1 = new_dense(f1, 512,dropout_rate=0.2)
+        do2   = new_dense(do1, 192)
+        d3    = new_dense(do2, 64)
+        d3    = new_dense(d3, 32)
+        d3    = new_dense(d3, 5)
         d4    = Dense(1, kernel_initializer="he_uniform", activation="sigmoid")(d3)
         model = models.Model(inputs=input,outputs=d4)
     else:
