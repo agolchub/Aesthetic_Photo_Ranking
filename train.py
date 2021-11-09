@@ -396,7 +396,7 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         d3    = new_dense(d3, 256, activation="relu")
         d3    = new_dense(d3, 128, activation="relu")
         d3    = new_dense(d3, 64, activation="relu")
-        d4    = Dense(1, kernel_initializer="ones", activation="linear")(d3)
+        d4    = Dense(1, activation="linear")(d3)
         model = models.Model(inputs=input,outputs=d4)
     else:
         model = models.load_model(modelin)
