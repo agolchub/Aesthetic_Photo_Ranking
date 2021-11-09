@@ -163,7 +163,7 @@ def init_layer(layer):
     except:
         print(layer.name, " could not be re-initilized", sys.exc_info())
 
-def new_conv2d(input,n,size=(2,2),strides=(2,2),activation="relu",kernel_initializer="he_uniform",batch_normalization=True,dropout_rate=0.2):
+def new_conv2d(input,n,size=(2,2),strides=(2,2),activation="relu",kernel_initializer="glorot_uniform",batch_normalization=True,dropout_rate=0.2):
     conv2d = layers.Conv2D(n, size, strides=strides, kernel_initializer=kernel_initializer)(input)
     if(batch_normalization):
         batchNormalization = layers.BatchNormalization()(conv2d)
@@ -177,6 +177,25 @@ def new_dense(input,n,activation="relu",kernel_initializer="he_uniform",dropout_
     dense = layers.Dense(n, activation=activation,kernel_initializer=kernel_initializer)(input)
     dropout = layers.Dropout(dropout_rate)(dense)
     return dropout
+
+def new_res_block(input,n,m,size,strides):
+    conv2d = layers.Conv2D(n, size, strides=strides)(input)
+    batchNormalization = layers.BatchNormalization()(conv2d)
+    activation = layers.Activation("relu")(batchNormalization)
+    shortcut = activation
+    conv2d = layers.Conv2D(n*m, (2,2), strides=(1,1))(activation)
+    batchNormalization = layers.BatchNormalization()(conv2d)
+    activation = layers.Activation("relu")(batchNormalization)
+    conv2d = layers.Conv2D(n*m*m, (2,2), strides=(1,1))(activation)
+    batchNormalization = layers.BatchNormalization()(conv2d)
+
+    shortcut = layers.Conv2D(n*m*m, (3,3), strides=(1,1))(shortcut)
+    shortcut = layers.BatchNormalization()(shortcut)
+
+    add = layers.Add()([batchNormalization,shortcut])
+    activation = layers.Activation("relu")(add)
+    return activation
+
 
 def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model,momentum,loss_function):
     #load model
@@ -301,19 +320,33 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
 
     elif(special_model2):
         input = layers.Input((1024,680,3))
+        resblock = new_res_block(input,96,2,(35,35),(6,4))
+        resblock = new_res_block(resblock,384,0.5,(9,9),(2,2))
+        resblock = new_res_block(resblock,384,2,(5,5),(2,2))
+        resblock = new_res_block(resblock,384,0.5,(3,3),(1,1))
+        resblock = new_res_block(resblock,160,1,(3,3),(1,1))
 
-        do0 = new_conv2d(input,48,(35,35),(24,16))
-        do0_1   = new_conv2d(do0,80,(9,9),(2,2))
-        do0_1   = new_conv2d(do0_1,80,(3,3),(2,2))
-        do0_1   = new_conv2d(do0_1,80,(2,2),(2,2))
+        resblock2 = new_res_block(input,96,2,(9,9),(6,4))
+        resblock2 = new_res_block(resblock2,384,0.5,(7,7),(2,2))
+        resblock2 = new_res_block(resblock2,384,2,(5,5),(2,2))
+        resblock2 = new_res_block(resblock2,384,0.5,(3,3),(1,1))
+        resblock2 = new_res_block(resblock2,160,1,(3,3),(1,1))
+        '''
+        do0 = new_conv2d(input,96,(35,35),(4,4))
+        do0_1 = layers.MaxPooling2D(pool_size=(2,2))(do0)
+        do0_1   = new_conv2d(do0,256,(9,9),(2,2))
+        do0_1   = new_conv2d(do0_1,384,(3,3),(2,2))
+        do0_1   = new_conv2d(do0_1,384,(2,2),(2,2))
+        do0_1 = layers.MaxPooling2D(pool_size=(2,2))(do0_1)
 
         ##
-        do1 = new_conv2d(input,48,(7, 7), strides=(3,2))
+        do1 = new_conv2d(input,96,(11, 11), strides=(3,2))
+        do1 = layers.MaxPooling2D(pool_size=(2,2))(do1)
         do1_1 = new_conv2d(do1,80, (9, 9), strides=(2,2))
         do1_1 = new_conv2d(do1_1,160, (9, 9), strides=(2,2))
 
         ##
-        do2   = new_conv2d(do1,80, (5, 5), strides=(2,2))
+        do2   = new_conv2d(do1,160, (5, 5), strides=(2,2))
         do2_1   = new_conv2d(do2,160, (5, 5), strides=(2,2))
         do2_1   = new_conv2d(do2_1,320, (5, 5), strides=(2,2))
 
@@ -353,14 +386,16 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         d0_5 = new_dense(f1_5, 25)
         d0_6 = new_dense(f1_6, 256)
 
-
-        f1   = layers.Concatenate()([d0_0,d0_6]) #d0_1,d0_2,d0_3,d0_4,d0_5,
-
-        do1 = new_dense(f1, 512,dropout_rate=0.2, activation="sigmoid")
-        do2   = new_dense(do1, 192, activation="sigmoid")
-        d3    = new_dense(do2, 64, activation="sigmoid")
-        d3    = new_dense(d3, 32, activation="sigmoid")
-        d3    = new_dense(d3, 5, activation="sigmoid")
+        '''
+        f1   = layers.Concatenate()([layers.Flatten()(resblock),layers.Flatten()(resblock2)]) #d0_1,d0_2,d0_3,d0_4,d0_5,
+        
+        f1 = layers.Flatten()(f1)
+        do1 = new_dense(f1, 2048,dropout_rate=0.2, activation="sigmoid")
+        do2   = new_dense(do1, 1024, activation="sigmoid")
+        d3    = new_dense(do2, 512, activation="sigmoid")
+        d3    = new_dense(d3, 256, activation="sigmoid")
+        d3    = new_dense(d3, 128, activation="sigmoid")
+        d3    = new_dense(d3, 64, activation="sigmoid")
         d4    = Dense(1, kernel_initializer="he_uniform", activation="linear")(d3)
         model = models.Model(inputs=input,outputs=d4)
     else:
