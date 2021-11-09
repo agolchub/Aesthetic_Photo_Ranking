@@ -323,14 +323,14 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         resblock = new_res_block(input,96,2,(35,35),(6,4))
         resblock = new_res_block(resblock,384,0.5,(9,9),(2,2))
         resblock = new_res_block(resblock,384,2,(5,5),(2,2))
-        resblock = new_res_block(resblock,384,0.5,(3,3),(1,1))
-        resblock = new_res_block(resblock,160,1,(3,3),(1,1))
+        resblock = new_res_block(resblock,384,0.5,(3,3),(2,2))
+        resblock = new_res_block(resblock,160,1,(3,3),(2,2))
 
         resblock2 = new_res_block(input,96,2,(9,9),(6,4))
         resblock2 = new_res_block(resblock2,384,0.5,(7,7),(2,2))
         resblock2 = new_res_block(resblock2,384,2,(5,5),(2,2))
-        resblock2 = new_res_block(resblock2,384,0.5,(3,3),(1,1))
-        resblock2 = new_res_block(resblock2,160,1,(3,3),(1,1))
+        resblock2 = new_res_block(resblock2,384,0.5,(3,3),(2,2))
+        resblock2 = new_res_block(resblock2,160,1,(3,3),(2,2))
         '''
         do0 = new_conv2d(input,96,(35,35),(4,4))
         do0_1 = layers.MaxPooling2D(pool_size=(2,2))(do0)
