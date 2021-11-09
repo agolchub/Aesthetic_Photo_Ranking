@@ -170,10 +170,10 @@ def new_conv2d(input,n,size=(2,2),strides=(2,2),activation="relu",kernel_initial
     else:
         batchNormalization = conv2d
     activationLayer = layers.Activation(activation)(batchNormalization)
-    dropout = layers.Dropout(dropout_rate)(activationLayer)
+    dropout = activationLayer#layers.Dropout(dropout_rate)(activationLayer)
     return dropout
 
-def new_dense(input,n,activation="relu",kernel_initializer="he_uniform",dropout_rate=0.2):
+def new_dense(input,n,activation="relu",kernel_initializer="glorot_uniform",dropout_rate=0.2):
     dense = layers.Dense(n, activation=activation,kernel_initializer=kernel_initializer)(input)
     dropout = layers.Dropout(dropout_rate)(dense)
     return dropout
@@ -389,14 +389,14 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         '''
         f1   = layers.Concatenate()([layers.Flatten()(resblock),layers.Flatten()(resblock2)]) #d0_1,d0_2,d0_3,d0_4,d0_5,
         
-        f1 = layers.Flatten()(f1)
-        do1 = new_dense(f1, 2048,dropout_rate=0.2, activation="sigmoid")
-        do2   = new_dense(do1, 1024, activation="sigmoid")
-        d3    = new_dense(do2, 512, activation="sigmoid")
-        d3    = new_dense(d3, 256, activation="sigmoid")
-        d3    = new_dense(d3, 128, activation="sigmoid")
-        d3    = new_dense(d3, 64, activation="sigmoid")
-        d4    = Dense(1, kernel_initializer="he_uniform", activation="linear")(d3)
+        #f1 = layers.Flatten()(f1)
+        do1 = new_dense(f1, 2048,dropout_rate=0.2, activation="relu")
+        do2   = new_dense(do1, 1024, activation="relu")
+        d3    = new_dense(do2, 512, activation="relu")
+        d3    = new_dense(d3, 256, activation="relu")
+        d3    = new_dense(d3, 128, activation="relu")
+        d3    = new_dense(d3, 64, activation="relu")
+        d4    = Dense(1, kernel_initializer="ones", activation="linear")(d3)
         model = models.Model(inputs=input,outputs=d4)
     else:
         model = models.load_model(modelin)
