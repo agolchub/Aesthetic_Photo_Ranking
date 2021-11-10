@@ -131,7 +131,7 @@ def proc_image_dir(Images_Path,categorical=False):
                     out = [0]*5
                     out[int(rawscore)-1] = 1
                 else:
-                    out = ((rawscore - 1.0)/9.0)
+                    out = rawscore#((rawscore - 1.0)/9.0)
                 print(out)
                 y.append(out)
                 images.append(item)
@@ -322,11 +322,11 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         input = layers.Input((1024,680,3))
         resblock = new_res_block(input,96,2,(35,35),(6,4))
         resblock = new_res_block(resblock,384,0.5,(9,9),(2,2))
-        '''resblock = new_res_block(resblock,384,2,(5,5),(2,2))
+        resblock = new_res_block(resblock,384,2,(5,5),(2,2))
         resblock = new_res_block(resblock,384,0.5,(3,3),(2,2))
         resblock = new_res_block(resblock,160,1,(3,3),(2,2))
-        '''
         
+
         resblock2 = new_res_block(input,96,2,(9,9),(6,4))
         resblock2 = new_res_block(resblock2,384,0.5,(7,7),(2,2))
         resblock2 = new_res_block(resblock2,384,2,(5,5),(2,2))
