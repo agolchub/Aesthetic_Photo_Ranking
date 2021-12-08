@@ -320,11 +320,11 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
 
     elif(special_model2):
         input = layers.Input((1024,680,3))
-        resblock = new_res_block(input,96,2,(35,35),(6,4))
-        resblock = new_res_block(resblock,384,0.5,(9,9),(2,2))
-        resblock = new_res_block(resblock,384,2,(5,5),(2,2))
-        resblock = new_res_block(resblock,384,0.5,(3,3),(2,2))
-        resblock = new_res_block(resblock,160,1,(3,3),(2,2))
+        resblock = new_res_block(input,96,2,(35,35),(3,2))
+        resblock = new_res_block(resblock,160,0.5,(18,18),(2,2))
+        resblock = new_res_block(resblock,160,1,(18,18),(2,2))
+        resblock = new_res_block(resblock,80,.5,(9,9),(2,2))
+#        resblock = new_res_block(resblock,160,1,(3,3),(2,2))
         
 
         resblock2 = new_res_block(input,96,2,(9,9),(6,4))
