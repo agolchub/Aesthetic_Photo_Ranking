@@ -1,0 +1,2090 @@
+Requirement already satisfied: tensorflow-gpu==2.6 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (2.6.0)
+Requirement already satisfied: opt-einsum~=3.3.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.6) (3.3.0)
+Requirement already satisfied: astunparse~=1.6.3 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.6) (1.6.3)
+Requirement already satisfied: protobuf>=3.9.2 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.6) (3.19.0)
+Requirement already satisfied: typing-extensions~=3.7.4 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.6) (3.7.4.3)
+Requirement already satisfied: flatbuffers~=1.12.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.6) (1.12)
+Requirement already satisfied: numpy~=1.19.2 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.6) (1.19.5)
+Requirement already satisfied: keras~=2.6 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.6) (2.6.0)
+Requirement already satisfied: tensorboard~=2.6 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.6) (2.7.0)
+Requirement already satisfied: keras-preprocessing~=1.1.2 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.6) (1.1.2)
+Requirement already satisfied: termcolor~=1.1.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.6) (1.1.0)
+Requirement already satisfied: wrapt~=1.12.1 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.6) (1.12.1)
+Requirement already satisfied: gast==0.4.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.6) (0.4.0)
+Requirement already satisfied: absl-py~=0.10 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.6) (0.15.0)
+Requirement already satisfied: h5py~=3.1.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.6) (3.1.0)
+Requirement already satisfied: six~=1.15.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.6) (1.15.0)
+Requirement already satisfied: clang~=5.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.6) (5.0)
+Requirement already satisfied: wheel~=0.35 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.6) (0.35.1)
+Requirement already satisfied: tensorflow-estimator~=2.6 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.6) (2.6.0)
+Requirement already satisfied: grpcio<2.0,>=1.37.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.6) (1.41.0)
+Requirement already satisfied: google-pasta~=0.2 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.6) (0.2.0)
+Requirement already satisfied: tensorboard-data-server<0.7.0,>=0.6.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (0.6.1)
+Requirement already satisfied: tensorboard-plugin-wit>=1.6.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (1.8.0)
+Requirement already satisfied: google-auth<3,>=1.6.3 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (2.3.0)
+Requirement already satisfied: requests<3,>=2.21.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (2.24.0)
+Requirement already satisfied: werkzeug>=0.11.15 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (2.0.2)
+Requirement already satisfied: setuptools>=41.0.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (50.3.1.post20201107)
+Requirement already satisfied: markdown>=2.6.8 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (3.3.4)
+Requirement already satisfied: google-auth-oauthlib<0.5,>=0.4.1 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (0.4.6)
+Requirement already satisfied: cachetools<5.0,>=2.0.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from google-auth<3,>=1.6.3->tensorboard~=2.6->tensorflow-gpu==2.6) (4.2.4)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from google-auth<3,>=1.6.3->tensorboard~=2.6->tensorflow-gpu==2.6) (0.2.8)
+Requirement already satisfied: rsa<5,>=3.1.4 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from google-auth<3,>=1.6.3->tensorboard~=2.6->tensorflow-gpu==2.6) (4.7.2)
+Requirement already satisfied: idna<3,>=2.5 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard~=2.6->tensorflow-gpu==2.6) (2.10)
+Requirement already satisfied: chardet<4,>=3.0.2 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard~=2.6->tensorflow-gpu==2.6) (3.0.4)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard~=2.6->tensorflow-gpu==2.6) (1.25.11)
+Requirement already satisfied: certifi>=2017.4.17 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard~=2.6->tensorflow-gpu==2.6) (2020.6.20)
+Requirement already satisfied: requests-oauthlib>=0.7.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from google-auth-oauthlib<0.5,>=0.4.1->tensorboard~=2.6->tensorflow-gpu==2.6) (1.3.0)
+Requirement already satisfied: pyasn1<0.5.0,>=0.4.6 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from pyasn1-modules>=0.2.1->google-auth<3,>=1.6.3->tensorboard~=2.6->tensorflow-gpu==2.6) (0.4.8)
+Requirement already satisfied: oauthlib>=3.0.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib<0.5,>=0.4.1->tensorboard~=2.6->tensorflow-gpu==2.6) (3.1.1)
+Requirement already satisfied: scikit-learn in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (1.0)
+Requirement already satisfied: threadpoolctl>=2.0.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from scikit-learn) (3.0.0)
+Requirement already satisfied: joblib>=0.11 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from scikit-learn) (1.1.0)
+Requirement already satisfied: numpy>=1.14.6 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from scikit-learn) (1.19.5)
+Requirement already satisfied: scipy>=1.1.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from scikit-learn) (1.7.1)
+Requirement already satisfied: scikit-image in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (0.18.3)
+Requirement already satisfied: PyWavelets>=1.1.1 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from scikit-image) (1.1.1)
+Requirement already satisfied: networkx>=2.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from scikit-image) (2.6.3)
+Requirement already satisfied: tifffile>=2019.7.26 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from scikit-image) (2021.10.12)
+Requirement already satisfied: numpy>=1.16.5 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from scikit-image) (1.19.5)
+Requirement already satisfied: scipy>=1.0.1 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from scikit-image) (1.7.1)
+Requirement already satisfied: imageio>=2.3.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from scikit-image) (2.9.0)
+Requirement already satisfied: pillow!=7.1.0,!=7.1.1,>=4.3.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from scikit-image) (8.4.0)
+Requirement already satisfied: matplotlib!=3.0.0,>=2.0.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from scikit-image) (3.4.3)
+Requirement already satisfied: pyparsing>=2.2.1 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from matplotlib!=3.0.0,>=2.0.0->scikit-image) (2.4.7)
+Requirement already satisfied: kiwisolver>=1.0.1 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from matplotlib!=3.0.0,>=2.0.0->scikit-image) (1.3.2)
+Requirement already satisfied: cycler>=0.10 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from matplotlib!=3.0.0,>=2.0.0->scikit-image) (0.10.0)
+Requirement already satisfied: python-dateutil>=2.7 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from matplotlib!=3.0.0,>=2.0.0->scikit-image) (2.8.2)
+Requirement already satisfied: six in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from cycler>=0.10->matplotlib!=3.0.0,>=2.0.0->scikit-image) (1.15.0)
+2021-10-22 17:53:20.910302: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2021-10-22 17:53:20.910340: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2021-10-22 17:53:33.605336: E tensorflow/stream_executor/cuda/cuda_driver.cc:271] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2021-10-22 17:53:33.605394: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (node054.hpc.fau.edu): /proc/driver/nvidia/version does not exist
+2021-10-22 17:53:33.605950: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Input file is " 
+Output file is " resnet.model
+Image path is " 
+--------------------
+
+
+flatten  re-initilized
+initializing kernel weights
+dense_10  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f3e381a9900>)
+dropout  re-initilized
+initializing kernel weights
+dense_11  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f3e381a9900>)
+dropout_1  re-initilized
+initializing kernel weights
+dense_12  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f3e381a9900>)
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 224, 224, 3) 0                                            
+__________________________________________________________________________________________________
+conv1_pad (ZeroPadding2D)       (None, 230, 230, 3)  0           input_1[0][0]                    
+__________________________________________________________________________________________________
+conv1_conv (Conv2D)             (None, 112, 112, 64) 9472        conv1_pad[0][0]                  
+__________________________________________________________________________________________________
+conv1_bn (BatchNormalization)   (None, 112, 112, 64) 256         conv1_conv[0][0]                 
+__________________________________________________________________________________________________
+conv1_relu (Activation)         (None, 112, 112, 64) 0           conv1_bn[0][0]                   
+__________________________________________________________________________________________________
+pool1_pad (ZeroPadding2D)       (None, 114, 114, 64) 0           conv1_relu[0][0]                 
+__________________________________________________________________________________________________
+pool1_pool (MaxPooling2D)       (None, 56, 56, 64)   0           pool1_pad[0][0]                  
+__________________________________________________________________________________________________
+conv2_block1_1_conv (Conv2D)    (None, 56, 56, 64)   4160        pool1_pool[0][0]                 
+__________________________________________________________________________________________________
+conv2_block1_1_bn (BatchNormali (None, 56, 56, 64)   256         conv2_block1_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv2_block1_1_relu (Activation (None, 56, 56, 64)   0           conv2_block1_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv2_block1_2_conv (Conv2D)    (None, 56, 56, 64)   36928       conv2_block1_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv2_block1_2_bn (BatchNormali (None, 56, 56, 64)   256         conv2_block1_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv2_block1_2_relu (Activation (None, 56, 56, 64)   0           conv2_block1_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv2_block1_0_conv (Conv2D)    (None, 56, 56, 256)  16640       pool1_pool[0][0]                 
+__________________________________________________________________________________________________
+conv2_block1_3_conv (Conv2D)    (None, 56, 56, 256)  16640       conv2_block1_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv2_block1_0_bn (BatchNormali (None, 56, 56, 256)  1024        conv2_block1_0_conv[0][0]        
+__________________________________________________________________________________________________
+conv2_block1_3_bn (BatchNormali (None, 56, 56, 256)  1024        conv2_block1_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv2_block1_add (Add)          (None, 56, 56, 256)  0           conv2_block1_0_bn[0][0]          
+                                                                 conv2_block1_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv2_block1_out (Activation)   (None, 56, 56, 256)  0           conv2_block1_add[0][0]           
+__________________________________________________________________________________________________
+conv2_block2_1_conv (Conv2D)    (None, 56, 56, 64)   16448       conv2_block1_out[0][0]           
+__________________________________________________________________________________________________
+conv2_block2_1_bn (BatchNormali (None, 56, 56, 64)   256         conv2_block2_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv2_block2_1_relu (Activation (None, 56, 56, 64)   0           conv2_block2_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv2_block2_2_conv (Conv2D)    (None, 56, 56, 64)   36928       conv2_block2_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv2_block2_2_bn (BatchNormali (None, 56, 56, 64)   256         conv2_block2_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv2_block2_2_relu (Activation (None, 56, 56, 64)   0           conv2_block2_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv2_block2_3_conv (Conv2D)    (None, 56, 56, 256)  16640       conv2_block2_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv2_block2_3_bn (BatchNormali (None, 56, 56, 256)  1024        conv2_block2_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv2_block2_add (Add)          (None, 56, 56, 256)  0           conv2_block1_out[0][0]           
+                                                                 conv2_block2_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv2_block2_out (Activation)   (None, 56, 56, 256)  0           conv2_block2_add[0][0]           
+__________________________________________________________________________________________________
+conv2_block3_1_conv (Conv2D)    (None, 56, 56, 64)   16448       conv2_block2_out[0][0]           
+__________________________________________________________________________________________________
+conv2_block3_1_bn (BatchNormali (None, 56, 56, 64)   256         conv2_block3_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv2_block3_1_relu (Activation (None, 56, 56, 64)   0           conv2_block3_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv2_block3_2_conv (Conv2D)    (None, 56, 56, 64)   36928       conv2_block3_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv2_block3_2_bn (BatchNormali (None, 56, 56, 64)   256         conv2_block3_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv2_block3_2_relu (Activation (None, 56, 56, 64)   0           conv2_block3_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv2_block3_3_conv (Conv2D)    (None, 56, 56, 256)  16640       conv2_block3_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv2_block3_3_bn (BatchNormali (None, 56, 56, 256)  1024        conv2_block3_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv2_block3_add (Add)          (None, 56, 56, 256)  0           conv2_block2_out[0][0]           
+                                                                 conv2_block3_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv2_block3_out (Activation)   (None, 56, 56, 256)  0           conv2_block3_add[0][0]           
+__________________________________________________________________________________________________
+conv3_block1_1_conv (Conv2D)    (None, 28, 28, 128)  32896       conv2_block3_out[0][0]           
+__________________________________________________________________________________________________
+conv3_block1_1_bn (BatchNormali (None, 28, 28, 128)  512         conv3_block1_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block1_1_relu (Activation (None, 28, 28, 128)  0           conv3_block1_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv3_block1_2_conv (Conv2D)    (None, 28, 28, 128)  147584      conv3_block1_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv3_block1_2_bn (BatchNormali (None, 28, 28, 128)  512         conv3_block1_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block1_2_relu (Activation (None, 28, 28, 128)  0           conv3_block1_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv3_block1_0_conv (Conv2D)    (None, 28, 28, 512)  131584      conv2_block3_out[0][0]           
+__________________________________________________________________________________________________
+conv3_block1_3_conv (Conv2D)    (None, 28, 28, 512)  66048       conv3_block1_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv3_block1_0_bn (BatchNormali (None, 28, 28, 512)  2048        conv3_block1_0_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block1_3_bn (BatchNormali (None, 28, 28, 512)  2048        conv3_block1_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block1_add (Add)          (None, 28, 28, 512)  0           conv3_block1_0_bn[0][0]          
+                                                                 conv3_block1_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv3_block1_out (Activation)   (None, 28, 28, 512)  0           conv3_block1_add[0][0]           
+__________________________________________________________________________________________________
+conv3_block2_1_conv (Conv2D)    (None, 28, 28, 128)  65664       conv3_block1_out[0][0]           
+__________________________________________________________________________________________________
+conv3_block2_1_bn (BatchNormali (None, 28, 28, 128)  512         conv3_block2_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block2_1_relu (Activation (None, 28, 28, 128)  0           conv3_block2_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv3_block2_2_conv (Conv2D)    (None, 28, 28, 128)  147584      conv3_block2_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv3_block2_2_bn (BatchNormali (None, 28, 28, 128)  512         conv3_block2_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block2_2_relu (Activation (None, 28, 28, 128)  0           conv3_block2_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv3_block2_3_conv (Conv2D)    (None, 28, 28, 512)  66048       conv3_block2_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv3_block2_3_bn (BatchNormali (None, 28, 28, 512)  2048        conv3_block2_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block2_add (Add)          (None, 28, 28, 512)  0           conv3_block1_out[0][0]           
+                                                                 conv3_block2_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv3_block2_out (Activation)   (None, 28, 28, 512)  0           conv3_block2_add[0][0]           
+__________________________________________________________________________________________________
+conv3_block3_1_conv (Conv2D)    (None, 28, 28, 128)  65664       conv3_block2_out[0][0]           
+__________________________________________________________________________________________________
+conv3_block3_1_bn (BatchNormali (None, 28, 28, 128)  512         conv3_block3_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block3_1_relu (Activation (None, 28, 28, 128)  0           conv3_block3_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv3_block3_2_conv (Conv2D)    (None, 28, 28, 128)  147584      conv3_block3_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv3_block3_2_bn (BatchNormali (None, 28, 28, 128)  512         conv3_block3_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block3_2_relu (Activation (None, 28, 28, 128)  0           conv3_block3_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv3_block3_3_conv (Conv2D)    (None, 28, 28, 512)  66048       conv3_block3_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv3_block3_3_bn (BatchNormali (None, 28, 28, 512)  2048        conv3_block3_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block3_add (Add)          (None, 28, 28, 512)  0           conv3_block2_out[0][0]           
+                                                                 conv3_block3_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv3_block3_out (Activation)   (None, 28, 28, 512)  0           conv3_block3_add[0][0]           
+__________________________________________________________________________________________________
+conv3_block4_1_conv (Conv2D)    (None, 28, 28, 128)  65664       conv3_block3_out[0][0]           
+__________________________________________________________________________________________________
+conv3_block4_1_bn (BatchNormali (None, 28, 28, 128)  512         conv3_block4_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block4_1_relu (Activation (None, 28, 28, 128)  0           conv3_block4_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv3_block4_2_conv (Conv2D)    (None, 28, 28, 128)  147584      conv3_block4_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv3_block4_2_bn (BatchNormali (None, 28, 28, 128)  512         conv3_block4_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block4_2_relu (Activation (None, 28, 28, 128)  0           conv3_block4_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv3_block4_3_conv (Conv2D)    (None, 28, 28, 512)  66048       conv3_block4_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv3_block4_3_bn (BatchNormali (None, 28, 28, 512)  2048        conv3_block4_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block4_add (Add)          (None, 28, 28, 512)  0           conv3_block3_out[0][0]           
+                                                                 conv3_block4_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv3_block4_out (Activation)   (None, 28, 28, 512)  0           conv3_block4_add[0][0]           
+__________________________________________________________________________________________________
+conv4_block1_1_conv (Conv2D)    (None, 14, 14, 256)  131328      conv3_block4_out[0][0]           
+__________________________________________________________________________________________________
+conv4_block1_1_bn (BatchNormali (None, 14, 14, 256)  1024        conv4_block1_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block1_1_relu (Activation (None, 14, 14, 256)  0           conv4_block1_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block1_2_conv (Conv2D)    (None, 14, 14, 256)  590080      conv4_block1_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv4_block1_2_bn (BatchNormali (None, 14, 14, 256)  1024        conv4_block1_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block1_2_relu (Activation (None, 14, 14, 256)  0           conv4_block1_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block1_0_conv (Conv2D)    (None, 14, 14, 1024) 525312      conv3_block4_out[0][0]           
+__________________________________________________________________________________________________
+conv4_block1_3_conv (Conv2D)    (None, 14, 14, 1024) 263168      conv4_block1_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv4_block1_0_bn (BatchNormali (None, 14, 14, 1024) 4096        conv4_block1_0_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block1_3_bn (BatchNormali (None, 14, 14, 1024) 4096        conv4_block1_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block1_add (Add)          (None, 14, 14, 1024) 0           conv4_block1_0_bn[0][0]          
+                                                                 conv4_block1_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block1_out (Activation)   (None, 14, 14, 1024) 0           conv4_block1_add[0][0]           
+__________________________________________________________________________________________________
+conv4_block2_1_conv (Conv2D)    (None, 14, 14, 256)  262400      conv4_block1_out[0][0]           
+__________________________________________________________________________________________________
+conv4_block2_1_bn (BatchNormali (None, 14, 14, 256)  1024        conv4_block2_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block2_1_relu (Activation (None, 14, 14, 256)  0           conv4_block2_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block2_2_conv (Conv2D)    (None, 14, 14, 256)  590080      conv4_block2_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv4_block2_2_bn (BatchNormali (None, 14, 14, 256)  1024        conv4_block2_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block2_2_relu (Activation (None, 14, 14, 256)  0           conv4_block2_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block2_3_conv (Conv2D)    (None, 14, 14, 1024) 263168      conv4_block2_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv4_block2_3_bn (BatchNormali (None, 14, 14, 1024) 4096        conv4_block2_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block2_add (Add)          (None, 14, 14, 1024) 0           conv4_block1_out[0][0]           
+                                                                 conv4_block2_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block2_out (Activation)   (None, 14, 14, 1024) 0           conv4_block2_add[0][0]           
+__________________________________________________________________________________________________
+conv4_block3_1_conv (Conv2D)    (None, 14, 14, 256)  262400      conv4_block2_out[0][0]           
+__________________________________________________________________________________________________
+conv4_block3_1_bn (BatchNormali (None, 14, 14, 256)  1024        conv4_block3_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block3_1_relu (Activation (None, 14, 14, 256)  0           conv4_block3_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block3_2_conv (Conv2D)    (None, 14, 14, 256)  590080      conv4_block3_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv4_block3_2_bn (BatchNormali (None, 14, 14, 256)  1024        conv4_block3_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block3_2_relu (Activation (None, 14, 14, 256)  0           conv4_block3_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block3_3_conv (Conv2D)    (None, 14, 14, 1024) 263168      conv4_block3_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv4_block3_3_bn (BatchNormali (None, 14, 14, 1024) 4096        conv4_block3_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block3_add (Add)          (None, 14, 14, 1024) 0           conv4_block2_out[0][0]           
+                                                                 conv4_block3_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block3_out (Activation)   (None, 14, 14, 1024) 0           conv4_block3_add[0][0]           
+__________________________________________________________________________________________________
+conv4_block4_1_conv (Conv2D)    (None, 14, 14, 256)  262400      conv4_block3_out[0][0]           
+__________________________________________________________________________________________________
+conv4_block4_1_bn (BatchNormali (None, 14, 14, 256)  1024        conv4_block4_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block4_1_relu (Activation (None, 14, 14, 256)  0           conv4_block4_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block4_2_conv (Conv2D)    (None, 14, 14, 256)  590080      conv4_block4_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv4_block4_2_bn (BatchNormali (None, 14, 14, 256)  1024        conv4_block4_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block4_2_relu (Activation (None, 14, 14, 256)  0           conv4_block4_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block4_3_conv (Conv2D)    (None, 14, 14, 1024) 263168      conv4_block4_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv4_block4_3_bn (BatchNormali (None, 14, 14, 1024) 4096        conv4_block4_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block4_add (Add)          (None, 14, 14, 1024) 0           conv4_block3_out[0][0]           
+                                                                 conv4_block4_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block4_out (Activation)   (None, 14, 14, 1024) 0           conv4_block4_add[0][0]           
+__________________________________________________________________________________________________
+conv4_block5_1_conv (Conv2D)    (None, 14, 14, 256)  262400      conv4_block4_out[0][0]           
+__________________________________________________________________________________________________
+conv4_block5_1_bn (BatchNormali (None, 14, 14, 256)  1024        conv4_block5_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block5_1_relu (Activation (None, 14, 14, 256)  0           conv4_block5_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block5_2_conv (Conv2D)    (None, 14, 14, 256)  590080      conv4_block5_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv4_block5_2_bn (BatchNormali (None, 14, 14, 256)  1024        conv4_block5_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block5_2_relu (Activation (None, 14, 14, 256)  0           conv4_block5_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block5_3_conv (Conv2D)    (None, 14, 14, 1024) 263168      conv4_block5_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv4_block5_3_bn (BatchNormali (None, 14, 14, 1024) 4096        conv4_block5_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block5_add (Add)          (None, 14, 14, 1024) 0           conv4_block4_out[0][0]           
+                                                                 conv4_block5_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block5_out (Activation)   (None, 14, 14, 1024) 0           conv4_block5_add[0][0]           
+__________________________________________________________________________________________________
+conv4_block6_1_conv (Conv2D)    (None, 14, 14, 256)  262400      conv4_block5_out[0][0]           
+__________________________________________________________________________________________________
+conv4_block6_1_bn (BatchNormali (None, 14, 14, 256)  1024        conv4_block6_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block6_1_relu (Activation (None, 14, 14, 256)  0           conv4_block6_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block6_2_conv (Conv2D)    (None, 14, 14, 256)  590080      conv4_block6_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv4_block6_2_bn (BatchNormali (None, 14, 14, 256)  1024        conv4_block6_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block6_2_relu (Activation (None, 14, 14, 256)  0           conv4_block6_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block6_3_conv (Conv2D)    (None, 14, 14, 1024) 263168      conv4_block6_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv4_block6_3_bn (BatchNormali (None, 14, 14, 1024) 4096        conv4_block6_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block6_add (Add)          (None, 14, 14, 1024) 0           conv4_block5_out[0][0]           
+                                                                 conv4_block6_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block6_out (Activation)   (None, 14, 14, 1024) 0           conv4_block6_add[0][0]           
+__________________________________________________________________________________________________
+conv5_block1_1_conv (Conv2D)    (None, 7, 7, 512)    524800      conv4_block6_out[0][0]           
+__________________________________________________________________________________________________
+conv5_block1_1_bn (BatchNormali (None, 7, 7, 512)    2048        conv5_block1_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv5_block1_1_relu (Activation (None, 7, 7, 512)    0           conv5_block1_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv5_block1_2_conv (Conv2D)    (None, 7, 7, 512)    2359808     conv5_block1_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv5_block1_2_bn (BatchNormali (None, 7, 7, 512)    2048        conv5_block1_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv5_block1_2_relu (Activation (None, 7, 7, 512)    0           conv5_block1_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv5_block1_0_conv (Conv2D)    (None, 7, 7, 2048)   2099200     conv4_block6_out[0][0]           
+__________________________________________________________________________________________________
+conv5_block1_3_conv (Conv2D)    (None, 7, 7, 2048)   1050624     conv5_block1_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv5_block1_0_bn (BatchNormali (None, 7, 7, 2048)   8192        conv5_block1_0_conv[0][0]        
+__________________________________________________________________________________________________
+conv5_block1_3_bn (BatchNormali (None, 7, 7, 2048)   8192        conv5_block1_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv5_block1_add (Add)          (None, 7, 7, 2048)   0           conv5_block1_0_bn[0][0]          
+                                                                 conv5_block1_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv5_block1_out (Activation)   (None, 7, 7, 2048)   0           conv5_block1_add[0][0]           
+__________________________________________________________________________________________________
+conv5_block2_1_conv (Conv2D)    (None, 7, 7, 512)    1049088     conv5_block1_out[0][0]           
+__________________________________________________________________________________________________
+conv5_block2_1_bn (BatchNormali (None, 7, 7, 512)    2048        conv5_block2_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv5_block2_1_relu (Activation (None, 7, 7, 512)    0           conv5_block2_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv5_block2_2_conv (Conv2D)    (None, 7, 7, 512)    2359808     conv5_block2_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv5_block2_2_bn (BatchNormali (None, 7, 7, 512)    2048        conv5_block2_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv5_block2_2_relu (Activation (None, 7, 7, 512)    0           conv5_block2_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv5_block2_3_conv (Conv2D)    (None, 7, 7, 2048)   1050624     conv5_block2_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv5_block2_3_bn (BatchNormali (None, 7, 7, 2048)   8192        conv5_block2_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv5_block2_add (Add)          (None, 7, 7, 2048)   0           conv5_block1_out[0][0]           
+                                                                 conv5_block2_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv5_block2_out (Activation)   (None, 7, 7, 2048)   0           conv5_block2_add[0][0]           
+__________________________________________________________________________________________________
+conv5_block3_1_conv (Conv2D)    (None, 7, 7, 512)    1049088     conv5_block2_out[0][0]           
+__________________________________________________________________________________________________
+conv5_block3_1_bn (BatchNormali (None, 7, 7, 512)    2048        conv5_block3_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv5_block3_1_relu (Activation (None, 7, 7, 512)    0           conv5_block3_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv5_block3_2_conv (Conv2D)    (None, 7, 7, 512)    2359808     conv5_block3_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv5_block3_2_bn (BatchNormali (None, 7, 7, 512)    2048        conv5_block3_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv5_block3_2_relu (Activation (None, 7, 7, 512)    0           conv5_block3_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv5_block3_3_conv (Conv2D)    (None, 7, 7, 2048)   1050624     conv5_block3_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv5_block3_3_bn (BatchNormali (None, 7, 7, 2048)   8192        conv5_block3_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv5_block3_add (Add)          (None, 7, 7, 2048)   0           conv5_block2_out[0][0]           
+                                                                 conv5_block3_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv5_block3_out (Activation)   (None, 7, 7, 2048)   0           conv5_block3_add[0][0]           
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 100352)       0           conv5_block3_out[0][0]           
+__________________________________________________________________________________________________
+dense_10 (Dense)                (None, 256)          25690368    flatten[0][0]                    
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 256)          0           dense_10[0][0]                   
+__________________________________________________________________________________________________
+dense_11 (Dense)                (None, 128)          32896       dropout[0][0]                    
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 128)          0           dense_11[0][0]                   
+__________________________________________________________________________________________________
+dense_12 (Dense)                (None, 1)            129         dropout_1[0][0]                  
+==================================================================================================
+Total params: 49,311,105
+Trainable params: 25,723,393
+Non-trainable params: 23,587,712
+__________________________________________________________________________________________________
+None
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+2021-10-22 17:53:47.251211: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:185] None of the MLIR Optimization Passes are enabled (registered 2)
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Epoch 1/50
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters147.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+ 1/23 [>.............................] - ETA: 8:14 - loss: 10.8181Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters222.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters820.jpg
+ 2/23 [=>............................] - ETA: 6:37 - loss: 8.0248 Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+ 3/23 [==>...........................] - ETA: 5:30 - loss: 6.1921Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest12.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters460.jpg
+ 4/23 [====>.........................] - ETA: 4:53 - loss: 7.2065Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters424.jpg
+ 5/23 [=====>........................] - ETA: 4:15 - loss: 7.1366Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters798.jpg
+ 6/23 [======>.......................] - ETA: 3:50 - loss: 6.5469Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+ 7/23 [========>.....................] - ETA: 3:38 - loss: 6.0270Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters579.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters797.jpg
+ 8/23 [=========>....................] - ETA: 3:23 - loss: 5.6782Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+ 9/23 [==========>...................] - ETA: 3:10 - loss: 5.3996Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters484.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+10/23 [============>.................] - ETA: 3:02 - loss: 5.1096Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-forest23.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+11/23 [=============>................] - ETA: 2:51 - loss: 4.9028Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters740.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+12/23 [==============>...............] - ETA: 2:39 - loss: 4.7569Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters443.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+13/23 [===============>..............] - ETA: 2:25 - loss: 4.9059Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters717.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters593.jpg
+14/23 [=================>............] - ETA: 2:10 - loss: 5.0994Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+15/23 [==================>...........] - ETA: 1:55 - loss: 5.0943Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters530.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+16/23 [===================>..........] - ETA: 1:42 - loss: 5.2338Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters458.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters682.jpg
+17/23 [=====================>........] - ETA: 1:27 - loss: 5.1291Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters431.jpg
+18/23 [======================>.......] - ETA: 1:11 - loss: 5.2771Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+19/23 [=======================>......] - ETA: 57s - loss: 5.2947 Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters844.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+20/23 [=========================>....] - ETA: 43s - loss: 5.3335Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters180.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+Reading ./databaserelease2/NatureDataset/train/1-waters607.jpg
+21/23 [==========================>...] - ETA: 28s - loss: 5.2205Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+22/23 [===========================>..] - ETA: 14s - loss: 5.0582Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+Reading ./databaserelease2/NatureDataset/train/10-waters159.jpg
+23/23 [==============================] - ETA: 0s - loss: 5.2104 Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+23/23 [==============================] - 429s 18s/step - loss: 5.2104 - val_loss: 4.9696
+/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/keras/optimizer_v2/optimizer_v2.py:355: UserWarning: The `lr` argument is deprecated, use `learning_rate` instead.
+  warnings.warn(
+/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/keras/engine/training.py:1972: UserWarning: `Model.fit_generator` is deprecated and will be removed in a future version. Please use `Model.fit`, which supports generators.
+  warnings.warn('`Model.fit_generator` is deprecated and '
+Traceback (most recent call last):
+  File "./train.py", line 437, in <module>
+    
+  File "./train.py", line 433, in main
+    print ('--------------------\n\n')
+  File "./train.py", line 354, in train
+    #        callbacks=[model_checkpoint_callback,wait_callback])
+  File "/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/keras/engine/training.py", line 1975, in fit_generator
+    return self.fit(
+  File "/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/keras/engine/training.py", line 1230, in fit
+    callbacks.on_epoch_end(epoch, epoch_logs)
+  File "/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/keras/callbacks.py", line 413, in on_epoch_end
+    callback.on_epoch_end(epoch, logs)
+  File "./train.py", line 84, in on_epoch_end
+    
+ValueError: invalid literal for int() with base 10: ''
+srun: error: node054: task 0: Exited with exit code 1

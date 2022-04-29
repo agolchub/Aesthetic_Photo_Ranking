@@ -1,0 +1,21 @@
+Input file is " ./agnet.model3.checkpoint
+Output file is " 
+Image path is " ./databaserelease2/NatureDataset2/test
+--------------------
+
+
+Traceback (most recent call last):
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 558, in <module>
+    main(sys.argv[1:])
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 553, in main
+    test(modelin,imagepath)
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 455, in test
+    model = models.load_model(modelin)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/saving/save.py", line 205, in load_model
+    return saved_model_load.load(filepath, compile, options)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/saving/saved_model/load.py", line 108, in load
+    meta_graph_def = tf.__internal__.saved_model.parse_saved_model(path).meta_graphs[0]
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/tensorflow/python/saved_model/loader_impl.py", line 118, in parse_saved_model
+    raise IOError(
+OSError: SavedModel file does not exist at: ./agnet.model3.checkpoint/{saved_model.pbtxt|saved_model.pb}
+srun: error: nodegpu002: task 0: Exited with exit code 1

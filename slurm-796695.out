@@ -1,0 +1,343 @@
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+Requirement already satisfied: tensorflow-gpu==2.6 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (2.6.0)
+Requirement already satisfied: grpcio<2.0,>=1.37.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (1.41.0)
+Requirement already satisfied: keras~=2.6 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (2.6.0)
+Requirement already satisfied: protobuf>=3.9.2 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (3.19.0)
+Requirement already satisfied: numpy~=1.19.2 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (1.19.5)
+Requirement already satisfied: gast==0.4.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (0.4.0)
+Requirement already satisfied: absl-py~=0.10 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (0.15.0)
+Requirement already satisfied: flatbuffers~=1.12.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (1.12)
+Requirement already satisfied: tensorflow-estimator~=2.6 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (2.6.0)
+Requirement already satisfied: opt-einsum~=3.3.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (3.3.0)
+Requirement already satisfied: google-pasta~=0.2 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (0.2.0)
+Requirement already satisfied: clang~=5.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (5.0)
+Requirement already satisfied: astunparse~=1.6.3 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (1.6.3)
+Requirement already satisfied: tensorboard~=2.6 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (2.7.0)
+Requirement already satisfied: six~=1.15.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (1.15.0)
+Requirement already satisfied: wrapt~=1.12.1 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (1.12.1)
+Requirement already satisfied: keras-preprocessing~=1.1.2 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (1.1.2)
+Requirement already satisfied: wheel~=0.35 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (0.37.0)
+Requirement already satisfied: h5py~=3.1.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (3.1.0)
+Requirement already satisfied: typing-extensions~=3.7.4 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (3.7.4.3)
+Requirement already satisfied: termcolor~=1.1.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (1.1.0)
+Requirement already satisfied: tensorboard-data-server<0.7.0,>=0.6.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (0.6.1)
+Requirement already satisfied: tensorboard-plugin-wit>=1.6.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (1.8.0)
+Requirement already satisfied: google-auth-oauthlib<0.5,>=0.4.1 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (0.4.6)
+Requirement already satisfied: werkzeug>=0.11.15 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (2.0.2)
+Requirement already satisfied: google-auth<3,>=1.6.3 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (2.3.0)
+Requirement already satisfied: setuptools>=41.0.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (58.0.4)
+Requirement already satisfied: requests<3,>=2.21.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (2.26.0)
+Requirement already satisfied: markdown>=2.6.8 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (3.3.4)
+Requirement already satisfied: cachetools<5.0,>=2.0.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from google-auth<3,>=1.6.3->tensorboard~=2.6->tensorflow-gpu==2.6) (4.2.4)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from google-auth<3,>=1.6.3->tensorboard~=2.6->tensorflow-gpu==2.6) (0.2.8)
+Requirement already satisfied: rsa<5,>=3.1.4 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from google-auth<3,>=1.6.3->tensorboard~=2.6->tensorflow-gpu==2.6) (4.7.2)
+Requirement already satisfied: requests-oauthlib>=0.7.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from google-auth-oauthlib<0.5,>=0.4.1->tensorboard~=2.6->tensorflow-gpu==2.6) (1.3.0)
+Requirement already satisfied: pyasn1<0.5.0,>=0.4.6 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from pyasn1-modules>=0.2.1->google-auth<3,>=1.6.3->tensorboard~=2.6->tensorflow-gpu==2.6) (0.4.8)
+Requirement already satisfied: certifi>=2017.4.17 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from requests<3,>=2.21.0->tensorboard~=2.6->tensorflow-gpu==2.6) (2021.10.8)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from requests<3,>=2.21.0->tensorboard~=2.6->tensorflow-gpu==2.6) (2.0.7)
+Requirement already satisfied: idna<4,>=2.5 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from requests<3,>=2.21.0->tensorboard~=2.6->tensorflow-gpu==2.6) (3.3)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from requests<3,>=2.21.0->tensorboard~=2.6->tensorflow-gpu==2.6) (1.26.7)
+Requirement already satisfied: oauthlib>=3.0.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib<0.5,>=0.4.1->tensorboard~=2.6->tensorflow-gpu==2.6) (3.1.1)
+Collecting scikit-learn
+  Downloading scikit_learn-1.0-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (24.7 MB)
+Requirement already satisfied: numpy>=1.14.6 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from scikit-learn) (1.19.5)
+Collecting scipy>=1.1.0
+  Downloading scipy-1.7.1-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.whl (28.5 MB)
+Collecting threadpoolctl>=2.0.0
+  Using cached threadpoolctl-3.0.0-py3-none-any.whl (14 kB)
+Collecting joblib>=0.11
+  Using cached joblib-1.1.0-py2.py3-none-any.whl (306 kB)
+Installing collected packages: threadpoolctl, scipy, joblib, scikit-learn
+Successfully installed joblib-1.1.0 scikit-learn-1.0 scipy-1.7.1 threadpoolctl-3.0.0
+Collecting scikit-image
+  Downloading scikit_image-0.18.3-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (34.6 MB)
+Collecting PyWavelets>=1.1.1
+  Downloading PyWavelets-1.1.1-cp39-cp39-manylinux1_x86_64.whl (4.3 MB)
+Requirement already satisfied: numpy>=1.16.5 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from scikit-image) (1.19.5)
+Requirement already satisfied: scipy>=1.0.1 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from scikit-image) (1.7.1)
+Collecting matplotlib!=3.0.0,>=2.0.0
+  Downloading matplotlib-3.4.3-cp39-cp39-manylinux1_x86_64.whl (10.3 MB)
+Collecting pillow!=7.1.0,!=7.1.1,>=4.3.0
+  Downloading Pillow-8.4.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.1 MB)
+Collecting networkx>=2.0
+  Using cached networkx-2.6.3-py3-none-any.whl (1.9 MB)
+Collecting tifffile>=2019.7.26
+  Using cached tifffile-2021.10.12-py3-none-any.whl (175 kB)
+Collecting imageio>=2.3.0
+  Using cached imageio-2.9.0-py3-none-any.whl (3.3 MB)
+Collecting cycler>=0.10
+  Using cached cycler-0.10.0-py2.py3-none-any.whl (6.5 kB)
+Collecting pyparsing>=2.2.1
+  Downloading pyparsing-3.0.1-py3-none-any.whl (96 kB)
+Collecting kiwisolver>=1.0.1
+  Downloading kiwisolver-1.3.2-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (1.6 MB)
+Collecting python-dateutil>=2.7
+  Using cached python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+Requirement already satisfied: six in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from cycler>=0.10->matplotlib!=3.0.0,>=2.0.0->scikit-image) (1.15.0)
+Installing collected packages: python-dateutil, pyparsing, pillow, kiwisolver, cycler, tifffile, PyWavelets, networkx, matplotlib, imageio, scikit-image
+Successfully installed PyWavelets-1.1.1 cycler-0.10.0 imageio-2.9.0 kiwisolver-1.3.2 matplotlib-3.4.3 networkx-2.6.3 pillow-8.4.0 pyparsing-3.0.1 python-dateutil-2.8.2 scikit-image-0.18.3 tifffile-2021.10.12
+2021-10-24 22:27:30.916027: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-10-24 22:27:31.839562: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38426 MB memory:  -> device: 0, name: A100-PCIE-40GB, pci bus id: 0000:21:00.0, compute capability: 8.0
+2021-10-24 22:27:32.404470: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38426 MB memory:  -> device: 0, name: A100-PCIE-40GB, pci bus id: 0000:21:00.0, compute capability: 8.0
+/mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages/keras/optimizer_v2/optimizer_v2.py:355: UserWarning: The `lr` argument is deprecated, use `learning_rate` instead.
+  warnings.warn(
+Input file is " 
+Output file is " sptest.model
+Image path is " 
+--------------------
+
+
+input_1  re-initilized
+initializing kernel weights
+conv2d  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7fe0f00da800>)
+batch_normalization  re-initilized
+dropout  re-initilized
+initializing kernel weights
+conv2d_1  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7fe0f00da800>)
+batch_normalization_1  re-initilized
+dropout_1  re-initilized
+initializing kernel weights
+conv2d_2  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7fe0f00da800>)
+batch_normalization_2  re-initilized
+dropout_2  re-initilized
+initializing kernel weights
+conv2d_3  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7fe0f00da800>)
+batch_normalization_3  re-initilized
+dropout_3  re-initilized
+initializing kernel weights
+conv2d_4  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7fe0f00da800>)
+batch_normalization_4  re-initilized
+dropout_4  re-initilized
+initializing kernel weights
+conv2d_5  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7fe0f00da800>)
+batch_normalization_5  re-initilized
+dropout_5  re-initilized
+initializing kernel weights
+conv2d_6  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7fe0f00da800>)
+batch_normalization_6  re-initilized
+dropout_6  re-initilized
+initializing kernel weights
+conv2d_7  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7fe0f00da800>)
+batch_normalization_7  re-initilized
+dropout_7  re-initilized
+initializing kernel weights
+conv2d_8  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7fe0f00da800>)
+batch_normalization_8  re-initilized
+dropout_8  re-initilized
+flatten  re-initilized
+flatten_1  re-initilized
+flatten_2  re-initilized
+flatten_3  re-initilized
+flatten_4  re-initilized
+flatten_5  re-initilized
+flatten_6  re-initilized
+flatten_7  re-initilized
+flatten_8  re-initilized
+initializing kernel weights
+dense  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7fe0f00da800>)
+initializing kernel weights
+dense_1  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7fe0f003e600>)
+initializing kernel weights
+dense_2  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7fe0f010f580>)
+initializing kernel weights
+dense_3  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7fe0f00da800>)
+initializing kernel weights
+dense_4  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7fe0f003e600>)
+initializing kernel weights
+dense_5  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7fe0f010f580>)
+initializing kernel weights
+dense_6  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7fe0f00da800>)
+initializing kernel weights
+dense_7  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7fe0f003e600>)
+initializing kernel weights
+dense_8  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7fe0f010f580>)
+concatenate  re-initilized
+initializing kernel weights
+dense_19  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7fe0f003e600>)
+dropout_9  re-initilized
+initializing kernel weights
+dense_20  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7fe0f00da800>)
+dropout_10  re-initilized
+initializing kernel weights
+dense_21  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7fe0f010f580>)
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 1024, 680, 3 0                                            
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 298, 297, 32) 1115168     input_1[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 298, 297, 32) 128         conv2d[0][0]                     
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 298, 297, 32) 0           batch_normalization[0][0]        
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 117, 116, 64) 8921152     dropout[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 117, 116, 64) 256         conv2d_1[0][0]                   
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 117, 116, 64) 0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, 51, 51, 128)  2097280     dropout_1[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 51, 51, 128)  512         conv2d_2[0][0]                   
+__________________________________________________________________________________________________
+dropout_2 (Dropout)             (None, 51, 51, 128)  0           batch_normalization_2[0][0]      
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, 23, 23, 256)  1605888     dropout_2[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 23, 23, 256)  1024        conv2d_3[0][0]                   
+__________________________________________________________________________________________________
+dropout_3 (Dropout)             (None, 23, 23, 256)  0           batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+conv2d_4 (Conv2D)               (None, 21, 21, 512)  1180160     dropout_3[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 21, 21, 512)  2048        conv2d_4[0][0]                   
+__________________________________________________________________________________________________
+dropout_4 (Dropout)             (None, 21, 21, 512)  0           batch_normalization_4[0][0]      
+__________________________________________________________________________________________________
+conv2d_5 (Conv2D)               (None, 20, 20, 256)  524544      dropout_4[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 20, 20, 256)  1024        conv2d_5[0][0]                   
+__________________________________________________________________________________________________
+dropout_5 (Dropout)             (None, 20, 20, 256)  0           batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+conv2d_6 (Conv2D)               (None, 19, 19, 128)  131200      dropout_5[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 19, 19, 128)  512         conv2d_6[0][0]                   
+__________________________________________________________________________________________________
+dropout_6 (Dropout)             (None, 19, 19, 128)  0           batch_normalization_6[0][0]      
+__________________________________________________________________________________________________
+conv2d_7 (Conv2D)               (None, 18, 18, 64)   32832       dropout_6[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 18, 18, 64)   256         conv2d_7[0][0]                   
+__________________________________________________________________________________________________
+dropout_7 (Dropout)             (None, 18, 18, 64)   0           batch_normalization_7[0][0]      
+__________________________________________________________________________________________________
+conv2d_8 (Conv2D)               (None, 17, 17, 64)   16448       dropout_7[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_8 (BatchNor (None, 17, 17, 64)   256         conv2d_8[0][0]                   
+__________________________________________________________________________________________________
+dropout_8 (Dropout)             (None, 17, 17, 64)   0           batch_normalization_8[0][0]      
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 2832192)      0           dropout[0][0]                    
+__________________________________________________________________________________________________
+flatten_1 (Flatten)             (None, 868608)       0           dropout_1[0][0]                  
+__________________________________________________________________________________________________
+flatten_2 (Flatten)             (None, 332928)       0           dropout_2[0][0]                  
+__________________________________________________________________________________________________
+flatten_3 (Flatten)             (None, 135424)       0           dropout_3[0][0]                  
+__________________________________________________________________________________________________
+flatten_4 (Flatten)             (None, 225792)       0           dropout_4[0][0]                  
+__________________________________________________________________________________________________
+flatten_5 (Flatten)             (None, 102400)       0           dropout_5[0][0]                  
+__________________________________________________________________________________________________
+flatten_6 (Flatten)             (None, 46208)        0           dropout_6[0][0]                  
+__________________________________________________________________________________________________
+flatten_7 (Flatten)             (None, 20736)        0           dropout_7[0][0]                  
+__________________________________________________________________________________________________
+flatten_8 (Flatten)             (None, 18496)        0           dropout_8[0][0]                  
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 5)            14160965    flatten[0][0]                    
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 5)            4343045     flatten_1[0][0]                  
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 5)            1664645     flatten_2[0][0]                  
+__________________________________________________________________________________________________
+dense_3 (Dense)                 (None, 5)            677125      flatten_3[0][0]                  
+__________________________________________________________________________________________________
+dense_4 (Dense)                 (None, 5)            1128965     flatten_4[0][0]                  
+__________________________________________________________________________________________________
+dense_5 (Dense)                 (None, 5)            512005      flatten_5[0][0]                  
+__________________________________________________________________________________________________
+dense_6 (Dense)                 (None, 5)            231045      flatten_6[0][0]                  
+__________________________________________________________________________________________________
+dense_7 (Dense)                 (None, 5)            103685      flatten_7[0][0]                  
+__________________________________________________________________________________________________
+dense_8 (Dense)                 (None, 128)          2367616     flatten_8[0][0]                  
+__________________________________________________________________________________________________
+concatenate (Concatenate)       (None, 168)          0           dense[0][0]                      
+                                                                 dense_1[0][0]                    
+                                                                 dense_2[0][0]                    
+                                                                 dense_3[0][0]                    
+                                                                 dense_4[0][0]                    
+                                                                 dense_5[0][0]                    
+                                                                 dense_6[0][0]                    
+                                                                 dense_7[0][0]                    
+                                                                 dense_8[0][0]                    
+__________________________________________________________________________________________________
+dense_19 (Dense)                (None, 256)          43264       concatenate[0][0]                
+__________________________________________________________________________________________________
+dropout_9 (Dropout)             (None, 256)          0           dense_19[0][0]                   
+__________________________________________________________________________________________________
+dense_20 (Dense)                (None, 128)          32896       dropout_9[0][0]                  
+__________________________________________________________________________________________________
+dropout_10 (Dropout)            (None, 128)          0           dense_20[0][0]                   
+__________________________________________________________________________________________________
+dense_21 (Dense)                (None, 1)            129         dropout_10[0][0]                 
+/mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages/keras/engine/training.py:1972: UserWarning: `Model.fit_generator` is deprecated and will be removed in a future version. Please use `Model.fit`, which supports generators.
+  warnings.warn('`Model.fit_generator` is deprecated and '
+2021-10-24 22:27:33.351051: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:185] None of the MLIR Optimization Passes are enabled (registered 2)
+2021-10-24 22:27:36.280598: E tensorflow/stream_executor/cuda/cuda_dnn.cc:362] Loaded runtime CuDNN library: 8.0.4 but source was compiled with: 8.1.0.  CuDNN library needs to have matching major version and equal or higher minor version. If using a binary install, upgrade your CuDNN library.  If building from sources, make sure the library loaded at runtime is compatible with the version specified during compile configuration.
+2021-10-24 22:27:36.283471: E tensorflow/stream_executor/cuda/cuda_dnn.cc:362] Loaded runtime CuDNN library: 8.0.4 but source was compiled with: 8.1.0.  CuDNN library needs to have matching major version and equal or higher minor version. If using a binary install, upgrade your CuDNN library.  If building from sources, make sure the library loaded at runtime is compatible with the version specified during compile configuration.
+2021-10-24 22:27:36.292487: W tensorflow/core/framework/op_kernel.cc:1692] OP_REQUIRES failed at conv_ops_fused_impl.h:766 : Unknown: Failed to get convolution algorithm. This is probably because cuDNN failed to initialize, so try looking to see if a warning log message was printed above.
+==================================================================================================
+Total params: 40,896,073
+Trainable params: 40,893,065
+Non-trainable params: 3,008
+__________________________________________________________________________________________________
+None
+Epoch 1/50
+Traceback (most recent call last):
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 437, in <module>
+    main(sys.argv[1:])
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 433, in main
+    train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only)
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 354, in train
+    history = model.fit_generator(generator=training_generator,
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages/keras/engine/training.py", line 1975, in fit_generator
+    return self.fit(
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages/keras/engine/training.py", line 1184, in fit
+    tmp_logs = self.train_function(iterator)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages/tensorflow/python/eager/def_function.py", line 885, in __call__
+    result = self._call(*args, **kwds)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages/tensorflow/python/eager/def_function.py", line 950, in _call
+    return self._stateless_fn(*args, **kwds)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages/tensorflow/python/eager/function.py", line 3039, in __call__
+    return graph_function._call_flat(
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages/tensorflow/python/eager/function.py", line 1963, in _call_flat
+    return self._build_call_outputs(self._inference_function.call(
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages/tensorflow/python/eager/function.py", line 591, in call
+    outputs = execute.execute(
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages/tensorflow/python/eager/execute.py", line 59, in quick_execute
+    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+tensorflow.python.framework.errors_impl.UnknownError:  Failed to get convolution algorithm. This is probably because cuDNN failed to initialize, so try looking to see if a warning log message was printed above.
+	 [[node model/conv2d/Relu (defined at /repo/Aesthetic_Photo_Ranking/./train.py:354) ]] [Op:__inference_train_function_3072]
+
+Function call stack:
+train_function
+
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: got SIGCONT
+slurmstepd: error: *** STEP 796695.0 ON nodegpu002 CANCELLED AT 2021-10-24T23:28:32 ***
+slurmstepd: error: *** JOB 796695 ON nodegpu002 CANCELLED AT 2021-10-24T23:28:32 ***
+srun: forcing job termination

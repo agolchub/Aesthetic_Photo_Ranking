@@ -1,0 +1,520 @@
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+Requirement already satisfied: tensorflow-gpu==2.4 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (2.4.0)
+Requirement already satisfied: absl-py~=0.10 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (0.15.0)
+Requirement already satisfied: numpy~=1.19.2 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (1.19.5)
+Requirement already satisfied: protobuf>=3.9.2 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (3.19.0)
+Requirement already satisfied: typing-extensions~=3.7.4 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (3.7.4.3)
+Requirement already satisfied: tensorflow-estimator<2.5.0,>=2.4.0rc0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (2.4.0)
+Requirement already satisfied: gast==0.3.3 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (0.3.3)
+Requirement already satisfied: opt-einsum~=3.3.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (3.3.0)
+Requirement already satisfied: google-pasta~=0.2 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (0.2.0)
+Requirement already satisfied: astunparse~=1.6.3 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (1.6.3)
+Requirement already satisfied: keras-preprocessing~=1.1.2 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (1.1.2)
+Requirement already satisfied: termcolor~=1.1.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (1.1.0)
+Requirement already satisfied: wrapt~=1.12.1 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (1.12.1)
+Requirement already satisfied: grpcio~=1.32.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (1.32.0)
+Requirement already satisfied: six~=1.15.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (1.15.0)
+Requirement already satisfied: tensorboard~=2.4 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (2.7.0)
+Requirement already satisfied: wheel~=0.35 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (0.37.0)
+Requirement already satisfied: flatbuffers~=1.12.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (1.12)
+Requirement already satisfied: h5py~=2.10.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (2.10.0)
+Requirement already satisfied: setuptools>=41.0.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorboard~=2.4->tensorflow-gpu==2.4) (58.0.4)
+Requirement already satisfied: markdown>=2.6.8 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorboard~=2.4->tensorflow-gpu==2.4) (3.3.4)
+Requirement already satisfied: google-auth<3,>=1.6.3 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorboard~=2.4->tensorflow-gpu==2.4) (2.3.0)
+Requirement already satisfied: google-auth-oauthlib<0.5,>=0.4.1 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorboard~=2.4->tensorflow-gpu==2.4) (0.4.6)
+Requirement already satisfied: requests<3,>=2.21.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorboard~=2.4->tensorflow-gpu==2.4) (2.26.0)
+Requirement already satisfied: werkzeug>=0.11.15 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorboard~=2.4->tensorflow-gpu==2.4) (2.0.2)
+Requirement already satisfied: tensorboard-data-server<0.7.0,>=0.6.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorboard~=2.4->tensorflow-gpu==2.4) (0.6.1)
+Requirement already satisfied: tensorboard-plugin-wit>=1.6.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from tensorboard~=2.4->tensorflow-gpu==2.4) (1.8.0)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from google-auth<3,>=1.6.3->tensorboard~=2.4->tensorflow-gpu==2.4) (0.2.8)
+Requirement already satisfied: rsa<5,>=3.1.4 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from google-auth<3,>=1.6.3->tensorboard~=2.4->tensorflow-gpu==2.4) (4.7.2)
+Requirement already satisfied: cachetools<5.0,>=2.0.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from google-auth<3,>=1.6.3->tensorboard~=2.4->tensorflow-gpu==2.4) (4.2.4)
+Requirement already satisfied: requests-oauthlib>=0.7.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from google-auth-oauthlib<0.5,>=0.4.1->tensorboard~=2.4->tensorflow-gpu==2.4) (1.3.0)
+Requirement already satisfied: pyasn1<0.5.0,>=0.4.6 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from pyasn1-modules>=0.2.1->google-auth<3,>=1.6.3->tensorboard~=2.4->tensorflow-gpu==2.4) (0.4.8)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard~=2.4->tensorflow-gpu==2.4) (2.0.7)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard~=2.4->tensorflow-gpu==2.4) (1.26.7)
+Requirement already satisfied: certifi>=2017.4.17 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard~=2.4->tensorflow-gpu==2.4) (2021.10.8)
+Requirement already satisfied: idna<4,>=2.5 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard~=2.4->tensorflow-gpu==2.4) (3.3)
+Requirement already satisfied: oauthlib>=3.0.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib<0.5,>=0.4.1->tensorboard~=2.4->tensorflow-gpu==2.4) (3.1.1)
+Collecting scikit-learn
+  Using cached scikit_learn-1.0-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (25.8 MB)
+Requirement already satisfied: numpy>=1.14.6 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from scikit-learn) (1.19.5)
+Collecting scipy>=1.1.0
+  Using cached scipy-1.7.1-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl (28.4 MB)
+Collecting joblib>=0.11
+  Using cached joblib-1.1.0-py2.py3-none-any.whl (306 kB)
+Collecting threadpoolctl>=2.0.0
+  Using cached threadpoolctl-3.0.0-py3-none-any.whl (14 kB)
+Installing collected packages: threadpoolctl, scipy, joblib, scikit-learn
+Successfully installed joblib-1.1.0 scikit-learn-1.0 scipy-1.7.1 threadpoolctl-3.0.0
+Collecting scikit-image
+  Using cached scikit_image-0.18.3-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl (30.2 MB)
+Collecting matplotlib!=3.0.0,>=2.0.0
+  Using cached matplotlib-3.4.3-cp38-cp38-manylinux1_x86_64.whl (10.3 MB)
+Collecting PyWavelets>=1.1.1
+  Using cached PyWavelets-1.1.1-cp38-cp38-manylinux1_x86_64.whl (4.4 MB)
+Collecting tifffile>=2019.7.26
+  Using cached tifffile-2021.10.12-py3-none-any.whl (175 kB)
+Collecting pillow!=7.1.0,!=7.1.1,>=4.3.0
+  Using cached Pillow-8.4.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.1 MB)
+Requirement already satisfied: scipy>=1.0.1 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from scikit-image) (1.7.1)
+Collecting networkx>=2.0
+  Using cached networkx-2.6.3-py3-none-any.whl (1.9 MB)
+Requirement already satisfied: numpy>=1.16.5 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from scikit-image) (1.19.5)
+Collecting imageio>=2.3.0
+  Using cached imageio-2.9.0-py3-none-any.whl (3.3 MB)
+Collecting python-dateutil>=2.7
+  Using cached python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+Collecting pyparsing>=2.2.1
+  Using cached pyparsing-3.0.1-py3-none-any.whl (96 kB)
+Collecting cycler>=0.10
+  Using cached cycler-0.10.0-py2.py3-none-any.whl (6.5 kB)
+Collecting kiwisolver>=1.0.1
+  Using cached kiwisolver-1.3.2-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl (1.2 MB)
+Requirement already satisfied: six in /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.8/site-packages (from cycler>=0.10->matplotlib!=3.0.0,>=2.0.0->scikit-image) (1.15.0)
+Installing collected packages: python-dateutil, pyparsing, pillow, kiwisolver, cycler, tifffile, PyWavelets, networkx, matplotlib, imageio, scikit-image
+Successfully installed PyWavelets-1.1.1 cycler-0.10.0 imageio-2.9.0 kiwisolver-1.3.2 matplotlib-3.4.3 networkx-2.6.3 pillow-8.4.0 pyparsing-3.0.1 python-dateutil-2.8.2 scikit-image-0.18.3 tifffile-2021.10.12
+2021-10-25 00:33:25.162918: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-10-25 00:33:31.278886: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-10-25 00:33:31.287639: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcuda.so.1
+2021-10-25 00:33:32.119544: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:21:00.0 name: A100-PCIE-40GB computeCapability: 8.0
+coreClock: 1.41GHz coreCount: 108 deviceMemorySize: 39.59GiB deviceMemoryBandwidth: 1.41TiB/s
+2021-10-25 00:33:32.119595: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-10-25 00:33:32.187812: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-10-25 00:33:32.187874: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+2021-10-25 00:33:32.198473: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2021-10-25 00:33:32.203942: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2021-10-25 00:33:32.206255: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcusolver.so.10'; dlerror: libcusolver.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2021-10-25 00:33:32.211841: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.11
+2021-10-25 00:33:32.214768: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.8
+2021-10-25 00:33:32.214791: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1757] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2021-10-25 00:33:32.215290: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-10-25 00:33:32.215326: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1261] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-10-25 00:33:32.215334: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1267]      
+Input file is " 
+Output file is " sptest.model
+Image path is " 
+--------------------
+
+
+flatten  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7fac90689600>)
+dense_10  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7fac90689540>)
+dropout  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7fac90689640>)
+dense_11  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7fac90689700>)
+dropout_1  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7fac90689600>)
+dense_12  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7fac90689540>)
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 224, 224, 3) 0                                            
+__________________________________________________________________________________________________
+conv1_pad (ZeroPadding2D)       (None, 230, 230, 3)  0           input_1[0][0]                    
+__________________________________________________________________________________________________
+conv1_conv (Conv2D)             (None, 112, 112, 64) 9472        conv1_pad[0][0]                  
+__________________________________________________________________________________________________
+conv1_bn (BatchNormalization)   (None, 112, 112, 64) 256         conv1_conv[0][0]                 
+__________________________________________________________________________________________________
+conv1_relu (Activation)         (None, 112, 112, 64) 0           conv1_bn[0][0]                   
+__________________________________________________________________________________________________
+pool1_pad (ZeroPadding2D)       (None, 114, 114, 64) 0           conv1_relu[0][0]                 
+__________________________________________________________________________________________________
+pool1_pool (MaxPooling2D)       (None, 56, 56, 64)   0           pool1_pad[0][0]                  
+__________________________________________________________________________________________________
+conv2_block1_1_conv (Conv2D)    (None, 56, 56, 64)   4160        pool1_pool[0][0]                 
+__________________________________________________________________________________________________
+conv2_block1_1_bn (BatchNormali (None, 56, 56, 64)   256         conv2_block1_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv2_block1_1_relu (Activation (None, 56, 56, 64)   0           conv2_block1_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv2_block1_2_conv (Conv2D)    (None, 56, 56, 64)   36928       conv2_block1_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv2_block1_2_bn (BatchNormali (None, 56, 56, 64)   256         conv2_block1_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv2_block1_2_relu (Activation (None, 56, 56, 64)   0           conv2_block1_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv2_block1_0_conv (Conv2D)    (None, 56, 56, 256)  16640       pool1_pool[0][0]                 
+__________________________________________________________________________________________________
+conv2_block1_3_conv (Conv2D)    (None, 56, 56, 256)  16640       conv2_block1_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv2_block1_0_bn (BatchNormali (None, 56, 56, 256)  1024        conv2_block1_0_conv[0][0]        
+__________________________________________________________________________________________________
+conv2_block1_3_bn (BatchNormali (None, 56, 56, 256)  1024        conv2_block1_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv2_block1_add (Add)          (None, 56, 56, 256)  0           conv2_block1_0_bn[0][0]          
+                                                                 conv2_block1_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv2_block1_out (Activation)   (None, 56, 56, 256)  0           conv2_block1_add[0][0]           
+__________________________________________________________________________________________________
+conv2_block2_1_conv (Conv2D)    (None, 56, 56, 64)   16448       conv2_block1_out[0][0]           
+__________________________________________________________________________________________________
+conv2_block2_1_bn (BatchNormali (None, 56, 56, 64)   256         conv2_block2_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv2_block2_1_relu (Activation (None, 56, 56, 64)   0           conv2_block2_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv2_block2_2_conv (Conv2D)    (None, 56, 56, 64)   36928       conv2_block2_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv2_block2_2_bn (BatchNormali (None, 56, 56, 64)   256         conv2_block2_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv2_block2_2_relu (Activation (None, 56, 56, 64)   0           conv2_block2_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv2_block2_3_conv (Conv2D)    (None, 56, 56, 256)  16640       conv2_block2_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv2_block2_3_bn (BatchNormali (None, 56, 56, 256)  1024        conv2_block2_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv2_block2_add (Add)          (None, 56, 56, 256)  0           conv2_block1_out[0][0]           
+                                                                 conv2_block2_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv2_block2_out (Activation)   (None, 56, 56, 256)  0           conv2_block2_add[0][0]           
+__________________________________________________________________________________________________
+conv2_block3_1_conv (Conv2D)    (None, 56, 56, 64)   16448       conv2_block2_out[0][0]           
+__________________________________________________________________________________________________
+conv2_block3_1_bn (BatchNormali (None, 56, 56, 64)   256         conv2_block3_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv2_block3_1_relu (Activation (None, 56, 56, 64)   0           conv2_block3_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv2_block3_2_conv (Conv2D)    (None, 56, 56, 64)   36928       conv2_block3_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv2_block3_2_bn (BatchNormali (None, 56, 56, 64)   256         conv2_block3_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv2_block3_2_relu (Activation (None, 56, 56, 64)   0           conv2_block3_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv2_block3_3_conv (Conv2D)    (None, 56, 56, 256)  16640       conv2_block3_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv2_block3_3_bn (BatchNormali (None, 56, 56, 256)  1024        conv2_block3_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv2_block3_add (Add)          (None, 56, 56, 256)  0           conv2_block2_out[0][0]           
+                                                                 conv2_block3_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv2_block3_out (Activation)   (None, 56, 56, 256)  0           conv2_block3_add[0][0]           
+__________________________________________________________________________________________________
+conv3_block1_1_conv (Conv2D)    (None, 28, 28, 128)  32896       conv2_block3_out[0][0]           
+__________________________________________________________________________________________________
+conv3_block1_1_bn (BatchNormali (None, 28, 28, 128)  512         conv3_block1_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block1_1_relu (Activation (None, 28, 28, 128)  0           conv3_block1_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv3_block1_2_conv (Conv2D)    (None, 28, 28, 128)  147584      conv3_block1_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv3_block1_2_bn (BatchNormali (None, 28, 28, 128)  512         conv3_block1_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block1_2_relu (Activation (None, 28, 28, 128)  0           conv3_block1_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv3_block1_0_conv (Conv2D)    (None, 28, 28, 512)  131584      conv2_block3_out[0][0]           
+__________________________________________________________________________________________________
+conv3_block1_3_conv (Conv2D)    (None, 28, 28, 512)  66048       conv3_block1_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv3_block1_0_bn (BatchNormali (None, 28, 28, 512)  2048        conv3_block1_0_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block1_3_bn (BatchNormali (None, 28, 28, 512)  2048        conv3_block1_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block1_add (Add)          (None, 28, 28, 512)  0           conv3_block1_0_bn[0][0]          
+                                                                 conv3_block1_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv3_block1_out (Activation)   (None, 28, 28, 512)  0           conv3_block1_add[0][0]           
+__________________________________________________________________________________________________
+conv3_block2_1_conv (Conv2D)    (None, 28, 28, 128)  65664       conv3_block1_out[0][0]           
+__________________________________________________________________________________________________
+conv3_block2_1_bn (BatchNormali (None, 28, 28, 128)  512         conv3_block2_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block2_1_relu (Activation (None, 28, 28, 128)  0           conv3_block2_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv3_block2_2_conv (Conv2D)    (None, 28, 28, 128)  147584      conv3_block2_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv3_block2_2_bn (BatchNormali (None, 28, 28, 128)  512         conv3_block2_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block2_2_relu (Activation (None, 28, 28, 128)  0           conv3_block2_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv3_block2_3_conv (Conv2D)    (None, 28, 28, 512)  66048       conv3_block2_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv3_block2_3_bn (BatchNormali (None, 28, 28, 512)  2048        conv3_block2_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block2_add (Add)          (None, 28, 28, 512)  0           conv3_block1_out[0][0]           
+                                                                 conv3_block2_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv3_block2_out (Activation)   (None, 28, 28, 512)  0           conv3_block2_add[0][0]           
+__________________________________________________________________________________________________
+conv3_block3_1_conv (Conv2D)    (None, 28, 28, 128)  65664       conv3_block2_out[0][0]           
+__________________________________________________________________________________________________
+conv3_block3_1_bn (BatchNormali (None, 28, 28, 128)  512         conv3_block3_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block3_1_relu (Activation (None, 28, 28, 128)  0           conv3_block3_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv3_block3_2_conv (Conv2D)    (None, 28, 28, 128)  147584      conv3_block3_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv3_block3_2_bn (BatchNormali (None, 28, 28, 128)  512         conv3_block3_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block3_2_relu (Activation (None, 28, 28, 128)  0           conv3_block3_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv3_block3_3_conv (Conv2D)    (None, 28, 28, 512)  66048       conv3_block3_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv3_block3_3_bn (BatchNormali (None, 28, 28, 512)  2048        conv3_block3_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block3_add (Add)          (None, 28, 28, 512)  0           conv3_block2_out[0][0]           
+                                                                 conv3_block3_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv3_block3_out (Activation)   (None, 28, 28, 512)  0           conv3_block3_add[0][0]           
+__________________________________________________________________________________________________
+conv3_block4_1_conv (Conv2D)    (None, 28, 28, 128)  65664       conv3_block3_out[0][0]           
+__________________________________________________________________________________________________
+conv3_block4_1_bn (BatchNormali (None, 28, 28, 128)  512         conv3_block4_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block4_1_relu (Activation (None, 28, 28, 128)  0           conv3_block4_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv3_block4_2_conv (Conv2D)    (None, 28, 28, 128)  147584      conv3_block4_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv3_block4_2_bn (BatchNormali (None, 28, 28, 128)  512         conv3_block4_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block4_2_relu (Activation (None, 28, 28, 128)  0           conv3_block4_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv3_block4_3_conv (Conv2D)    (None, 28, 28, 512)  66048       conv3_block4_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv3_block4_3_bn (BatchNormali (None, 28, 28, 512)  2048        conv3_block4_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv3_block4_add (Add)          (None, 28, 28, 512)  0           conv3_block3_out[0][0]           
+                                                                 conv3_block4_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv3_block4_out (Activation)   (None, 28, 28, 512)  0           conv3_block4_add[0][0]           
+__________________________________________________________________________________________________
+conv4_block1_1_conv (Conv2D)    (None, 14, 14, 256)  131328      conv3_block4_out[0][0]           
+__________________________________________________________________________________________________
+conv4_block1_1_bn (BatchNormali (None, 14, 14, 256)  1024        conv4_block1_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block1_1_relu (Activation (None, 14, 14, 256)  0           conv4_block1_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block1_2_conv (Conv2D)    (None, 14, 14, 256)  590080      conv4_block1_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv4_block1_2_bn (BatchNormali (None, 14, 14, 256)  1024        conv4_block1_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block1_2_relu (Activation (None, 14, 14, 256)  0           conv4_block1_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block1_0_conv (Conv2D)    (None, 14, 14, 1024) 525312      conv3_block4_out[0][0]           
+__________________________________________________________________________________________________
+conv4_block1_3_conv (Conv2D)    (None, 14, 14, 1024) 263168      conv4_block1_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv4_block1_0_bn (BatchNormali (None, 14, 14, 1024) 4096        conv4_block1_0_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block1_3_bn (BatchNormali (None, 14, 14, 1024) 4096        conv4_block1_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block1_add (Add)          (None, 14, 14, 1024) 0           conv4_block1_0_bn[0][0]          
+                                                                 conv4_block1_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block1_out (Activation)   (None, 14, 14, 1024) 0           conv4_block1_add[0][0]           
+__________________________________________________________________________________________________
+conv4_block2_1_conv (Conv2D)    (None, 14, 14, 256)  262400      conv4_block1_out[0][0]           
+__________________________________________________________________________________________________
+conv4_block2_1_bn (BatchNormali (None, 14, 14, 256)  1024        conv4_block2_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block2_1_relu (Activation (None, 14, 14, 256)  0           conv4_block2_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block2_2_conv (Conv2D)    (None, 14, 14, 256)  590080      conv4_block2_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv4_block2_2_bn (BatchNormali (None, 14, 14, 256)  1024        conv4_block2_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block2_2_relu (Activation (None, 14, 14, 256)  0           conv4_block2_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block2_3_conv (Conv2D)    (None, 14, 14, 1024) 263168      conv4_block2_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv4_block2_3_bn (BatchNormali (None, 14, 14, 1024) 4096        conv4_block2_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block2_add (Add)          (None, 14, 14, 1024) 0           conv4_block1_out[0][0]           
+                                                                 conv4_block2_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block2_out (Activation)   (None, 14, 14, 1024) 0           conv4_block2_add[0][0]           
+__________________________________________________________________________________________________
+conv4_block3_1_conv (Conv2D)    (None, 14, 14, 256)  262400      conv4_block2_out[0][0]           
+__________________________________________________________________________________________________
+conv4_block3_1_bn (BatchNormali (None, 14, 14, 256)  1024        conv4_block3_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block3_1_relu (Activation (None, 14, 14, 256)  0           conv4_block3_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block3_2_conv (Conv2D)    (None, 14, 14, 256)  590080      conv4_block3_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv4_block3_2_bn (BatchNormali (None, 14, 14, 256)  1024        conv4_block3_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block3_2_relu (Activation (None, 14, 14, 256)  0           conv4_block3_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block3_3_conv (Conv2D)    (None, 14, 14, 1024) 263168      conv4_block3_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv4_block3_3_bn (BatchNormali (None, 14, 14, 1024) 4096        conv4_block3_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block3_add (Add)          (None, 14, 14, 1024) 0           conv4_block2_out[0][0]           
+                                                                 conv4_block3_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block3_out (Activation)   (None, 14, 14, 1024) 0           conv4_block3_add[0][0]           
+__________________________________________________________________________________________________
+conv4_block4_1_conv (Conv2D)    (None, 14, 14, 256)  262400      conv4_block3_out[0][0]           
+__________________________________________________________________________________________________
+conv4_block4_1_bn (BatchNormali (None, 14, 14, 256)  1024        conv4_block4_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block4_1_relu (Activation (None, 14, 14, 256)  0           conv4_block4_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block4_2_conv (Conv2D)    (None, 14, 14, 256)  590080      conv4_block4_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv4_block4_2_bn (BatchNormali (None, 14, 14, 256)  1024        conv4_block4_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block4_2_relu (Activation (None, 14, 14, 256)  0           conv4_block4_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block4_3_conv (Conv2D)    (None, 14, 14, 1024) 263168      conv4_block4_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv4_block4_3_bn (BatchNormali (None, 14, 14, 1024) 4096        conv4_block4_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block4_add (Add)          (None, 14, 14, 1024) 0           conv4_block3_out[0][0]           
+                                                                 conv4_block4_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block4_out (Activation)   (None, 14, 14, 1024) 0           conv4_block4_add[0][0]           
+__________________________________________________________________________________________________
+conv4_block5_1_conv (Conv2D)    (None, 14, 14, 256)  262400      conv4_block4_out[0][0]           
+__________________________________________________________________________________________________
+conv4_block5_1_bn (BatchNormali (None, 14, 14, 256)  1024        conv4_block5_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block5_1_relu (Activation (None, 14, 14, 256)  0           conv4_block5_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block5_2_conv (Conv2D)    (None, 14, 14, 256)  590080      conv4_block5_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv4_block5_2_bn (BatchNormali (None, 14, 14, 256)  1024        conv4_block5_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block5_2_relu (Activation (None, 14, 14, 256)  0           conv4_block5_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block5_3_conv (Conv2D)    (None, 14, 14, 1024) 263168      conv4_block5_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv4_block5_3_bn (BatchNormali (None, 14, 14, 1024) 4096        conv4_block5_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block5_add (Add)          (None, 14, 14, 1024) 0           conv4_block4_out[0][0]           
+                                                                 conv4_block5_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block5_out (Activation)   (None, 14, 14, 1024) 0           conv4_block5_add[0][0]           
+__________________________________________________________________________________________________
+conv4_block6_1_conv (Conv2D)    (None, 14, 14, 256)  262400      conv4_block5_out[0][0]           
+__________________________________________________________________________________________________
+conv4_block6_1_bn (BatchNormali (None, 14, 14, 256)  1024        conv4_block6_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block6_1_relu (Activation (None, 14, 14, 256)  0           conv4_block6_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block6_2_conv (Conv2D)    (None, 14, 14, 256)  590080      conv4_block6_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv4_block6_2_bn (BatchNormali (None, 14, 14, 256)  1024        conv4_block6_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block6_2_relu (Activation (None, 14, 14, 256)  0           conv4_block6_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block6_3_conv (Conv2D)    (None, 14, 14, 1024) 263168      conv4_block6_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv4_block6_3_bn (BatchNormali (None, 14, 14, 1024) 4096        conv4_block6_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv4_block6_add (Add)          (None, 14, 14, 1024) 0           conv4_block5_out[0][0]           
+                                                                 conv4_block6_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv4_block6_out (Activation)   (None, 14, 14, 1024) 0           conv4_block6_add[0][0]           
+__________________________________________________________________________________________________
+conv5_block1_1_conv (Conv2D)    (None, 7, 7, 512)    524800      conv4_block6_out[0][0]           
+__________________________________________________________________________________________________
+conv5_block1_1_bn (BatchNormali (None, 7, 7, 512)    2048        conv5_block1_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv5_block1_1_relu (Activation (None, 7, 7, 512)    0           conv5_block1_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv5_block1_2_conv (Conv2D)    (None, 7, 7, 512)    2359808     conv5_block1_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv5_block1_2_bn (BatchNormali (None, 7, 7, 512)    2048        conv5_block1_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv5_block1_2_relu (Activation (None, 7, 7, 512)    0           conv5_block1_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv5_block1_0_conv (Conv2D)    (None, 7, 7, 2048)   2099200     conv4_block6_out[0][0]           
+__________________________________________________________________________________________________
+conv5_block1_3_conv (Conv2D)    (None, 7, 7, 2048)   1050624     conv5_block1_2_relu[0][0]        
+__________________________________________________________________________________________________
+2021-10-25 00:33:34.897902: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:116] None of the MLIR optimization passes are enabled (registered 2)
+2021-10-25 00:33:34.899791: I tensorflow/core/platform/profile_utils/cpu_utils.cc:112] CPU Frequency: 2794610000 Hz
+conv5_block1_0_bn (BatchNormali (None, 7, 7, 2048)   8192        conv5_block1_0_conv[0][0]        
+__________________________________________________________________________________________________
+conv5_block1_3_bn (BatchNormali (None, 7, 7, 2048)   8192        conv5_block1_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv5_block1_add (Add)          (None, 7, 7, 2048)   0           conv5_block1_0_bn[0][0]          
+                                                                 conv5_block1_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv5_block1_out (Activation)   (None, 7, 7, 2048)   0           conv5_block1_add[0][0]           
+__________________________________________________________________________________________________
+conv5_block2_1_conv (Conv2D)    (None, 7, 7, 512)    1049088     conv5_block1_out[0][0]           
+__________________________________________________________________________________________________
+conv5_block2_1_bn (BatchNormali (None, 7, 7, 512)    2048        conv5_block2_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv5_block2_1_relu (Activation (None, 7, 7, 512)    0           conv5_block2_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv5_block2_2_conv (Conv2D)    (None, 7, 7, 512)    2359808     conv5_block2_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv5_block2_2_bn (BatchNormali (None, 7, 7, 512)    2048        conv5_block2_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv5_block2_2_relu (Activation (None, 7, 7, 512)    0           conv5_block2_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv5_block2_3_conv (Conv2D)    (None, 7, 7, 2048)   1050624     conv5_block2_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv5_block2_3_bn (BatchNormali (None, 7, 7, 2048)   8192        conv5_block2_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv5_block2_add (Add)          (None, 7, 7, 2048)   0           conv5_block1_out[0][0]           
+                                                                 conv5_block2_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv5_block2_out (Activation)   (None, 7, 7, 2048)   0           conv5_block2_add[0][0]           
+__________________________________________________________________________________________________
+conv5_block3_1_conv (Conv2D)    (None, 7, 7, 512)    1049088     conv5_block2_out[0][0]           
+__________________________________________________________________________________________________
+conv5_block3_1_bn (BatchNormali (None, 7, 7, 512)    2048        conv5_block3_1_conv[0][0]        
+__________________________________________________________________________________________________
+conv5_block3_1_relu (Activation (None, 7, 7, 512)    0           conv5_block3_1_bn[0][0]          
+__________________________________________________________________________________________________
+conv5_block3_2_conv (Conv2D)    (None, 7, 7, 512)    2359808     conv5_block3_1_relu[0][0]        
+__________________________________________________________________________________________________
+conv5_block3_2_bn (BatchNormali (None, 7, 7, 512)    2048        conv5_block3_2_conv[0][0]        
+__________________________________________________________________________________________________
+conv5_block3_2_relu (Activation (None, 7, 7, 512)    0           conv5_block3_2_bn[0][0]          
+__________________________________________________________________________________________________
+conv5_block3_3_conv (Conv2D)    (None, 7, 7, 2048)   1050624     conv5_block3_2_relu[0][0]        
+__________________________________________________________________________________________________
+conv5_block3_3_bn (BatchNormali (None, 7, 7, 2048)   8192        conv5_block3_3_conv[0][0]        
+__________________________________________________________________________________________________
+conv5_block3_add (Add)          (None, 7, 7, 2048)   0           conv5_block2_out[0][0]           
+                                                                 conv5_block3_3_bn[0][0]          
+__________________________________________________________________________________________________
+conv5_block3_out (Activation)   (None, 7, 7, 2048)   0           conv5_block3_add[0][0]           
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 100352)       0           conv5_block3_out[0][0]           
+__________________________________________________________________________________________________
+dense_10 (Dense)                (None, 256)          25690368    flatten[0][0]                    
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 256)          0           dense_10[0][0]                   
+__________________________________________________________________________________________________
+dense_11 (Dense)                (None, 128)          32896       dropout[0][0]                    
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 128)          0           dense_11[0][0]                   
+__________________________________________________________________________________________________
+dense_12 (Dense)                (None, 1)            129         dropout_1[0][0]                  
+==================================================================================================
+Total params: 49,311,105
+Trainable params: 25,723,393
+Non-trainable params: 23,587,712
+__________________________________________________________________________________________________
+None
+Epoch 1/50
+  1/239 [..............................] - ETA: 13:36 - loss: 10.7418  2/239 [..............................] - ETA: 4:36 - loss: 8.8109    3/239 [..............................] - ETA: 4:57 - loss: 7.9686  4/239 [..............................] - ETA: 4:57 - loss: 7.3423  5/239 [..............................] - ETA: 5:03 - loss: 7.0116  6/239 [..............................] - ETA: 5:02 - loss: 6.7143  7/239 [..............................] - ETA: 4:53 - loss: 6.5057  8/239 [>.............................] - ETA: 4:51 - loss: 6.3930  9/239 [>.............................] - ETA: 4:52 - loss: 6.3253 10/239 [>.............................] - ETA: 4:50 - loss: 6.2439 11/239 [>.............................] - ETA: 4:51 - loss: 6.1700 12/239 [>.............................] - ETA: 4:49 - loss: 6.0814 13/239 [>.............................] - ETA: 4:48 - loss: 5.9905 14/239 [>.............................] - ETA: 4:46 - loss: 5.8923 15/239 [>.............................] - ETA: 4:43 - loss: 5.8001 16/239 [=>............................] - ETA: 4:44 - loss: 5.7136 17/239 [=>............................] - ETA: 4:44 - loss: 5.6310 18/239 [=>............................] - ETA: 4:41 - loss: 5.5528 19/239 [=>............................] - ETA: 4:41 - loss: 5.4819 20/239 [=>............................] - ETA: 4:39 - loss: 5.4167 21/239 [=>............................] - ETA: 4:39 - loss: 5.3555 22/239 [=>............................] - ETA: 4:36 - loss: 5.3011 23/239 [=>............................] - ETA: 4:35 - loss: 5.2472 24/239 [==>...........................] - ETA: 4:35 - loss: 5.1972 25/239 [==>...........................] - ETA: 4:34 - loss: 5.1491 26/239 [==>...........................] - ETA: 4:31 - loss: 5.1041 27/239 [==>...........................] - ETA: 4:29 - loss: 5.0627 28/239 [==>...........................] - ETA: 4:28 - loss: 5.0237 29/239 [==>...........................] - ETA: 4:27 - loss: 4.9845 30/239 [==>...........................] - ETA: 4:26 - loss: 4.9478 31/239 [==>...........................] - ETA: 4:23 - loss: 4.9127 32/239 [===>..........................] - ETA: 4:21 - loss: 4.8789 33/239 [===>..........................] - ETA: 4:21 - loss: 4.8464 34/239 [===>..........................] - ETA: 4:21 - loss: 4.8144 35/239 [===>..........................] - ETA: 4:24 - loss: 4.7834 36/239 [===>..........................] - ETA: 4:23 - loss: 4.7552 37/239 [===>..........................] - ETA: 4:21 - loss: 4.7306 38/239 [===>..........................] - ETA: 4:20 - loss: 4.7080 39/239 [===>..........................] - ETA: 4:19 - loss: 4.6867 40/239 [====>.........................] - ETA: 4:17 - loss: 4.6661 41/239 [====>.........................] - ETA: 4:16 - loss: 4.6461 42/239 [====>.........................] - ETA: 4:15 - loss: 4.6264 43/239 [====>.........................] - ETA: 4:13 - loss: 4.6058 44/239 [====>.........................] - ETA: 4:12 - loss: 4.5852 45/239 [====>.........................] - ETA: 4:10 - loss: 4.5655 46/239 [====>.........................] - ETA: 4:08 - loss: 4.5462 47/239 [====>.........................] - ETA: 4:06 - loss: 4.5278 48/239 [=====>........................] - ETA: 4:05 - loss: 4.5099 49/239 [=====>........................] - ETA: 4:03 - loss: 4.4928 50/239 [=====>........................] - ETA: 4:01 - loss: 4.4767 51/239 [=====>........................] - ETA: 3:59 - loss: 4.4607 52/239 [=====>........................] - ETA: 3:59 - loss: 4.4457 53/239 [=====>........................] - ETA: 3:57 - loss: 4.4314 54/239 [=====>........................] - ETA: 3:55 - loss: 4.4169 55/239 [=====>........................] - ETA: 3:54 - loss: 4.4022 56/239 [======>.......................] - ETA: 3:54 - loss: 4.3877 57/239 [======>.......................] - ETA: 3:53 - loss: 4.3729 58/239 [======>.......................] - ETA: 3:51 - loss: 4.3586 59/239 [======>.......................] - ETA: 3:50 - loss: 4.3442 60/239 [======>.......................] - ETA: 3:48 - loss: 4.3300 61/239 [======>.......................] - ETA: 3:47 - loss: 4.3162 62/239 [======>.......................] - ETA: 3:45 - loss: 4.3030 63/239 [======>.......................] - ETA: 3:43 - loss: 4.2899 64/239 [=======>......................] - ETA: 3:42 - loss: 4.2768 65/239 [=======>......................] - ETA: 3:40 - loss: 4.2646 66/239 [=======>......................] - ETA: 3:39 - loss: 4.2529 67/239 [=======>......................] - ETA: 3:38 - loss: 4.2412 68/239 [=======>......................] - ETA: 3:37 - loss: 4.2300 69/239 [=======>......................] - ETA: 3:36 - loss: 4.2188 70/239 [=======>......................] - ETA: 3:34 - loss: 4.2078 71/239 [=======>......................] - ETA: 3:33 - loss: 4.1976 72/239 [========>.....................] - ETA: 3:31 - loss: 4.1872 73/239 [========>.....................] - ETA: 3:30 - loss: 4.1769 74/239 [========>.....................] - ETA: 3:28 - loss: 4.1669 75/239 [========>.....................] - ETA: 3:27 - loss: 4.1569 76/239 [========>.....................] - ETA: 3:26 - loss: 4.1470 77/239 [========>.....................] - ETA: 3:24 - loss: 4.1372 78/239 [========>.....................] - ETA: 3:23 - loss: 4.1275 79/239 [========>.....................] - ETA: 3:22 - loss: 4.1179 80/239 [=========>....................] - ETA: 3:21 - loss: 4.1084 81/239 [=========>....................] - ETA: 3:20 - loss: 4.0997 82/239 [=========>....................] - ETA: 3:18 - loss: 4.0910 83/239 [=========>....................] - ETA: 3:17 - loss: 4.0823 84/239 [=========>....................] - ETA: 3:16 - loss: 4.0741 85/239 [=========>....................] - ETA: 3:15 - loss: 4.0658 86/239 [=========>....................] - ETA: 3:14 - loss: 4.0576 87/239 [=========>....................] - ETA: 3:12 - loss: 4.0496 88/239 [==========>...................] - ETA: 3:11 - loss: 4.0418 89/239 [==========>...................] - ETA: 3:09 - loss: 4.0341 90/239 [==========>...................] - ETA: 3:08 - loss: 4.0266 91/239 [==========>...................] - ETA: 3:07 - loss: 4.0191 92/239 [==========>...................] - ETA: 3:05 - loss: 4.0117 93/239 [==========>...................] - ETA: 3:03 - loss: 4.0043 94/239 [==========>...................] - ETA: 3:02 - loss: 3.9972 95/239 [==========>...................] - ETA: 3:01 - loss: 3.9902 96/239 [===========>..................] - ETA: 3:00 - loss: 3.9834 97/239 [===========>..................] - ETA: 2:59 - loss: 3.9768 98/239 [===========>..................] - ETA: 2:58 - loss: 3.9701 99/239 [===========>..................] - ETA: 2:56 - loss: 3.9636100/239 [===========>..................] - ETA: 2:55 - loss: 3.9570101/239 [===========>..................] - ETA: 2:53 - loss: 3.9507102/239 [===========>..................] - ETA: 2:52 - loss: 3.9446103/239 [===========>..................] - ETA: 2:53 - loss: 3.9387104/239 [============>.................] - ETA: 2:52 - loss: 3.9329105/239 [============>.................] - ETA: 2:50 - loss: 3.9273106/239 [============>.................] - ETA: 2:49 - loss: 3.9217107/239 [============>.................] - ETA: 2:48 - loss: 3.9161108/239 [============>.................] - ETA: 2:46 - loss: 3.9105109/239 [============>.................] - ETA: 2:45 - loss: 3.9049110/239 [============>.................] - ETA: 2:44 - loss: 3.8995111/239 [============>.................] - ETA: 2:42 - loss: 3.8944112/239 [=============>................] - ETA: 2:41 - loss: 3.8893113/239 [=============>................] - ETA: 2:40 - loss: 3.8843114/239 [=============>................] - ETA: 2:39 - loss: 3.8792115/239 [=============>................] - ETA: 2:37 - loss: 3.8743116/239 [=============>................] - ETA: 2:36 - loss: 3.8694117/239 [=============>................] - ETA: 2:34 - loss: 3.8645118/239 [=============>................] - ETA: 2:33 - loss: 3.8597119/239 [=============>................] - ETA: 2:32 - loss: 3.8551120/239 [==============>...............] - ETA: 2:31 - loss: 3.8504121/239 [==============>...............] - ETA: 2:29 - loss: 3.8457122/239 [==============>...............] - ETA: 2:28 - loss: 3.8410123/239 [==============>...............] - ETA: 2:27 - loss: 3.8363124/239 [==============>...............] - ETA: 2:25 - loss: 3.8318125/239 [==============>...............] - ETA: 2:24 - loss: 3.8273126/239 [==============>...............] - ETA: 2:23 - loss: 3.8229127/239 [==============>...............] - ETA: 2:22 - loss: 3.8185128/239 [===============>..............] - ETA: 2:20 - loss: 3.8141129/239 [===============>..............] - ETA: 2:19 - loss: 3.8097130/239 [===============>..............] - ETA: 2:18 - loss: 3.8054131/239 [===============>..............] - ETA: 2:16 - loss: 3.8010132/239 [===============>..............] - ETA: 2:15 - loss: 3.7968133/239 [===============>..............] - ETA: 2:14 - loss: 3.7925134/239 [===============>..............] - ETA: 2:12 - loss: 3.7883135/239 [===============>..............] - ETA: 2:11 - loss: 3.7840136/239 [================>.............] - ETA: 2:10 - loss: 3.7799137/239 [================>.............] - ETA: 2:08 - loss: 3.77srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: got SIGCONT
+slurmstepd: error: *** STEP 796709.0 ON nodegpu002 CANCELLED AT 2021-10-25T00:36:30 ***
+slurmstepd: error: *** JOB 796709 ON nodegpu002 CANCELLED AT 2021-10-25T00:36:30 ***
+srun: forcing job termination

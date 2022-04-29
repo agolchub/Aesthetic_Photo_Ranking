@@ -1,0 +1,2762 @@
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+Mon Nov  8 02:53:24 2021       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 460.32.03    Driver Version: 460.32.03    CUDA Version: 11.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  A100-PCIE-40GB      Off  | 00000000:21:00.0 Off |                    0 |
+| N/A   38C    P0    40W / 250W |      0MiB / 40536MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+2021-11-08 02:53:36.460013: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-11-08 02:53:37.265795: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38426 MB memory:  -> device: 0, name: A100-PCIE-40GB, pci bus id: 0000:21:00.0, compute capability: 8.0
+2021-11-08 02:53:37.908759: I tensorflow/core/profiler/lib/profiler_session.cc:131] Profiler session initializing.
+2021-11-08 02:53:37.908808: I tensorflow/core/profiler/lib/profiler_session.cc:146] Profiler session started.
+2021-11-08 02:53:37.909700: I tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1614] Profiler found 1 GPUs
+2021-11-08 02:53:37.913244: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcupti.so.11.2'; dlerror: libcupti.so.11.2: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2021-11-08 02:53:37.913778: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcupti.so'; dlerror: libcupti.so: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2021-11-08 02:53:37.913796: E tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1666] function cupti_interface_->Subscribe( &subscriber_, (CUpti_CallbackFunc)ApiCallback, this)failed with error CUPTI could not be loaded or symbol could not be found.
+2021-11-08 02:53:37.913813: I tensorflow/core/profiler/lib/profiler_session.cc:164] Profiler session tear down.
+2021-11-08 02:53:37.913830: E tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1757] function cupti_interface_->Finalize()failed with error CUPTI could not be loaded or symbol could not be found.
+/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/optimizer_v2/optimizer_v2.py:355: UserWarning: The `lr` argument is deprecated, use `learning_rate` instead.
+  warnings.warn(
+Input file is " 
+Output file is " agnet.specialmodel.6.1
+Image path is " 
+--------------------
+
+
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 1024, 680, 3 0                                            
+__________________________________________________________________________________________________
+conv2d_4 (Conv2D)               (None, 336, 332, 80) 77840       input_1[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 336, 332, 80) 320         conv2d_4[0][0]                   
+__________________________________________________________________________________________________
+activation_4 (Activation)       (None, 336, 332, 80) 0           batch_normalization_4[0][0]      
+__________________________________________________________________________________________________
+dropout_4 (Dropout)             (None, 336, 332, 80) 0           activation_4[0][0]               
+__________________________________________________________________________________________________
+conv2d_7 (Conv2D)               (None, 164, 162, 80) 518480      dropout_4[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 164, 162, 80) 320         conv2d_7[0][0]                   
+__________________________________________________________________________________________________
+activation_7 (Activation)       (None, 164, 162, 80) 0           batch_normalization_7[0][0]      
+__________________________________________________________________________________________________
+dropout_7 (Dropout)             (None, 164, 162, 80) 0           activation_7[0][0]               
+__________________________________________________________________________________________________
+conv2d_10 (Conv2D)              (None, 79, 78, 160)  627360      dropout_7[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_10 (BatchNo (None, 79, 78, 160)  640         conv2d_10[0][0]                  
+__________________________________________________________________________________________________
+activation_10 (Activation)      (None, 79, 78, 160)  0           batch_normalization_10[0][0]     
+__________________________________________________________________________________________________
+dropout_10 (Dropout)            (None, 79, 78, 160)  0           activation_10[0][0]              
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 42, 41, 48)   176448      input_1[0][0]                    
+__________________________________________________________________________________________________
+conv2d_13 (Conv2D)              (None, 38, 37, 160)  640160      dropout_10[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 42, 41, 48)   192         conv2d[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_13 (BatchNo (None, 38, 37, 160)  640         conv2d_13[0][0]                  
+__________________________________________________________________________________________________
+activation (Activation)         (None, 42, 41, 48)   0           batch_normalization[0][0]        
+__________________________________________________________________________________________________
+activation_13 (Activation)      (None, 38, 37, 160)  0           batch_normalization_13[0][0]     
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 42, 41, 48)   0           activation[0][0]                 
+__________________________________________________________________________________________________
+dropout_13 (Dropout)            (None, 38, 37, 160)  0           activation_13[0][0]              
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 17, 17, 80)   311120      dropout[0][0]                    
+__________________________________________________________________________________________________
+conv2d_16 (Conv2D)              (None, 19, 18, 320)  205120      dropout_13[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 17, 17, 80)   320         conv2d_1[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_16 (BatchNo (None, 19, 18, 320)  1280        conv2d_16[0][0]                  
+__________________________________________________________________________________________________
+activation_1 (Activation)       (None, 17, 17, 80)   0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+activation_16 (Activation)      (None, 19, 18, 320)  0           batch_normalization_16[0][0]     
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 17, 17, 80)   0           activation_1[0][0]               
+__________________________________________________________________________________________________
+dropout_16 (Dropout)            (None, 19, 18, 320)  0           activation_16[0][0]              
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, 8, 8, 80)     57680       dropout_1[0][0]                  
+__________________________________________________________________________________________________
+conv2d_5 (Conv2D)               (None, 164, 162, 80) 518480      dropout_4[0][0]                  
+__________________________________________________________________________________________________
+conv2d_8 (Conv2D)               (None, 80, 79, 160)  320160      dropout_7[0][0]                  
+__________________________________________________________________________________________________
+conv2d_11 (Conv2D)              (None, 37, 36, 160)  1254560     dropout_10[0][0]                 
+__________________________________________________________________________________________________
+conv2d_14 (Conv2D)              (None, 18, 18, 320)  461120      dropout_13[0][0]                 
+__________________________________________________________________________________________________
+conv2d_17 (Conv2D)              (None, 9, 9, 320)    409920      dropout_16[0][0]                 
+__________________________________________________________________________________________________
+conv2d_19 (Conv2D)              (None, 9, 9, 320)    409920      dropout_16[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 8, 8, 80)     320         conv2d_2[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 164, 162, 80) 320         conv2d_5[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_8 (BatchNor (None, 80, 79, 160)  640         conv2d_8[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_11 (BatchNo (None, 37, 36, 160)  640         conv2d_11[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_14 (BatchNo (None, 18, 18, 320)  1280        conv2d_14[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_17 (BatchNo (None, 9, 9, 320)    1280        conv2d_17[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_19 (BatchNo (None, 9, 9, 320)    1280        conv2d_19[0][0]                  
+__________________________________________________________________________________________________
+activation_2 (Activation)       (None, 8, 8, 80)     0           batch_normalization_2[0][0]      
+__________________________________________________________________________________________________
+activation_5 (Activation)       (None, 164, 162, 80) 0           batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+activation_8 (Activation)       (None, 80, 79, 160)  0           batch_normalization_8[0][0]      
+__________________________________________________________________________________________________
+activation_11 (Activation)      (None, 37, 36, 160)  0           batch_normalization_11[0][0]     
+__________________________________________________________________________________________________
+activation_14 (Activation)      (None, 18, 18, 320)  0           batch_normalization_14[0][0]     
+__________________________________________________________________________________________________
+activation_17 (Activation)      (None, 9, 9, 320)    0           batch_normalization_17[0][0]     
+__________________________________________________________________________________________________
+activation_19 (Activation)      (None, 9, 9, 320)    0           batch_normalization_19[0][0]     
+__________________________________________________________________________________________________
+dropout_2 (Dropout)             (None, 8, 8, 80)     0           activation_2[0][0]               
+__________________________________________________________________________________________________
+dropout_5 (Dropout)             (None, 164, 162, 80) 0           activation_5[0][0]               
+__________________________________________________________________________________________________
+dropout_8 (Dropout)             (None, 80, 79, 160)  0           activation_8[0][0]               
+__________________________________________________________________________________________________
+dropout_11 (Dropout)            (None, 37, 36, 160)  0           activation_11[0][0]              
+__________________________________________________________________________________________________
+dropout_14 (Dropout)            (None, 18, 18, 320)  0           activation_14[0][0]              
+__________________________________________________________________________________________________
+dropout_17 (Dropout)            (None, 9, 9, 320)    0           activation_17[0][0]              
+__________________________________________________________________________________________________
+dropout_19 (Dropout)            (None, 9, 9, 320)    0           activation_19[0][0]              
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, 4, 4, 80)     25680       dropout_2[0][0]                  
+__________________________________________________________________________________________________
+conv2d_6 (Conv2D)               (None, 78, 77, 160)  1036960     dropout_5[0][0]                  
+__________________________________________________________________________________________________
+conv2d_9 (Conv2D)               (None, 38, 38, 320)  1280320     dropout_8[0][0]                  
+__________________________________________________________________________________________________
+conv2d_12 (Conv2D)              (None, 16, 15, 320)  2509120     dropout_11[0][0]                 
+__________________________________________________________________________________________________
+conv2d_15 (Conv2D)              (None, 8, 8, 320)    921920      dropout_14[0][0]                 
+__________________________________________________________________________________________________
+conv2d_18 (Conv2D)              (None, 4, 4, 320)    409920      dropout_17[0][0]                 
+__________________________________________________________________________________________________
+conv2d_20 (Conv2D)              (None, 4, 4, 320)    409920      dropout_19[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 4, 4, 80)     320         conv2d_3[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 78, 77, 160)  640         conv2d_6[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_9 (BatchNor (None, 38, 38, 320)  1280        conv2d_9[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_12 (BatchNo (None, 16, 15, 320)  1280        conv2d_12[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_15 (BatchNo (None, 8, 8, 320)    1280        conv2d_15[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_18 (BatchNo (None, 4, 4, 320)    1280        conv2d_18[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_20 (BatchNo (None, 4, 4, 320)    1280        conv2d_20[0][0]                  
+__________________________________________________________________________________________________
+activation_3 (Activation)       (None, 4, 4, 80)     0           batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+activation_6 (Activation)       (None, 78, 77, 160)  0           batch_normalization_6[0][0]      
+__________________________________________________________________________________________________
+activation_9 (Activation)       (None, 38, 38, 320)  0           batch_normalization_9[0][0]      
+__________________________________________________________________________________________________
+activation_12 (Activation)      (None, 16, 15, 320)  0           batch_normalization_12[0][0]     
+__________________________________________________________________________________________________
+activation_15 (Activation)      (None, 8, 8, 320)    0           batch_normalization_15[0][0]     
+__________________________________________________________________________________________________
+activation_18 (Activation)      (None, 4, 4, 320)    0           batch_normalization_18[0][0]     
+__________________________________________________________________________________________________
+activation_20 (Activation)      (None, 4, 4, 320)    0           batch_normalization_20[0][0]     
+__________________________________________________________________________________________________
+dropout_3 (Dropout)             (None, 4, 4, 80)     0           activation_3[0][0]               
+__________________________________________________________________________________________________
+dropout_6 (Dropout)             (None, 78, 77, 160)  0           activation_6[0][0]               
+__________________________________________________________________________________________________
+dropout_9 (Dropout)             (None, 38, 38, 320)  0           activation_9[0][0]               
+__________________________________________________________________________________________________
+dropout_12 (Dropout)            (None, 16, 15, 320)  0           activation_12[0][0]              
+__________________________________________________________________________________________________
+dropout_15 (Dropout)            (None, 8, 8, 320)    0           activation_15[0][0]              
+__________________________________________________________________________________________________
+dropout_18 (Dropout)            (None, 4, 4, 320)    0           activation_18[0][0]              
+__________________________________________________________________________________________________
+dropout_20 (Dropout)            (None, 4, 4, 320)    0           activation_20[0][0]              
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 1280)         0           dropout_3[0][0]                  
+__________________________________________________________________________________________________
+flatten_1 (Flatten)             (None, 960960)       0           dropout_6[0][0]                  
+__________________________________________________________________________________________________
+flatten_2 (Flatten)             (None, 462080)       0           dropout_9[0][0]                  
+__________________________________________________________________________________________________
+flatten_3 (Flatten)             (None, 76800)        0           dropout_12[0][0]                 
+__________________________________________________________________________________________________
+flatten_4 (Flatten)             (None, 20480)        0           dropout_15[0][0]                 
+__________________________________________________________________________________________________
+flatten_5 (Flatten)             (None, 5120)         0           dropout_18[0][0]                 
+__________________________________________________________________________________________________
+flatten_6 (Flatten)             (None, 5120)         0           dropout_20[0][0]                 
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 256)          327936      flatten[0][0]                    
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 25)           24024025    flatten_1[0][0]                  
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 25)           11552025    flatten_2[0][0]                  
+__________________________________________________________________________________________________
+dense_3 (Dense)                 (None, 25)           1920025     flatten_3[0][0]                  
+__________________________________________________________________________________________________
+dense_4 (Dense)                 (None, 25)           512025      flatten_4[0][0]                  
+__________________________________________________________________________________________________
+dense_5 (Dense)                 (None, 25)           128025      flatten_5[0][0]                  
+__________________________________________________________________________________________________
+dense_6 (Dense)                 (None, 256)          1310976     flatten_6[0][0]                  
+__________________________________________________________________________________________________
+dropout_21 (Dropout)            (None, 256)          0           dense[0][0]                      
+__________________________________________________________________________________________________
+dropout_22 (Dropout)            (None, 25)           0           dense_1[0][0]                    
+__________________________________________________________________________________________________
+dropout_23 (Dropout)            (None, 25)           0           dense_2[0][0]                    
+__________________________________________________________________________________________________
+dropout_24 (Dropout)            (None, 25)           0           dense_3[0][0]                    
+__________________________________________________________________________________________________
+dropout_25 (Dropout)            (None, 25)           0           dense_4[0][0]                    
+__________________________________________________________________________________________________
+dropout_26 (Dropout)            (None, 25)           0           dense_5[0][0]                    
+__________________________________________________________________________________________________
+dropout_27 (Dropout)            (None, 256)          0           dense_6[0][0]                    
+__________________________________________________________________________________________________
+concatenate (Concatenate)       (None, 637)          0           dropout_21[0][0]                 
+                                                                 dropout_22[0][0]                 
+                                                                 dropout_23[0][0]                 
+                                                                 dropout_24[0][0]                 
+                                                                 dropout_25[0][0]                 
+                                                                 dropout_26[0][0]                 
+                                                                 dropout_27[0][0]                 
+__________________________________________________________________________________________________
+dense_7 (Dense)                 (None, 256)          163328      concatenate[0][0]                
+__________________________________________________________________________________________________
+dropout_28 (Dropout)            (None, 256)          0           dense_7[0][0]                    
+__________________________________________________________________________________________________
+dense_8 (Dense)                 (None, 128)          32896       dropout_28[0][0]                 
+__________________________________________________________________________________________________
+dropout_29 (Dropout)            (None, 128)          0           dense_8[0][0]                    
+__________________________________________________________________________________________________
+dense_9 (Dense)                 (None, 32)           4128        dropout_29[0][0]                 
+__________________________________________________________________________________________________
+dropout_30 (Dropout)            (None, 32)           0           dense_9[0][0]                    
+__________________________________________________________________________________________________
+dense_10 (Dense)                (None, 1)            33          dropout_30[0][0]                 
+==================================================================================================
+Total params: 52,574,462
+Trainable params: 52,566,046
+Non-trainable params: 8,416
+__________________________________________________________________________________________________
+None
+Adding Images: Reading ./databaserelease2/NatureDataset2/train/7-forest191.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/5-forest556.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/1-waters136.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/5-forest467.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-forest198.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-meadows183.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/7-forest435.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/1-forest28.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/3-meadows352.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/10-meadows101.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/7-forest477.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/3-forest412.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest408.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/3-meadows444.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-forest31.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/5-meadows441.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-forest555.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest514.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/8-meadows457.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-forest33.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/4-meadows100.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/9-waters156.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/6-forest490.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-forest406.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/1-forest97.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/10-waters399.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/10-waters113.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/9-waters347.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/2-forest560.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/7-forest148.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/9-waters190.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/7-meadows351.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/9-waters299.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/3-meadows335.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/9-forest405.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/4-forest409.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/6-meadows205.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-forest376.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/3-forest417.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-meadows27.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/6-meadows169.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-forest349.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/6-forest315.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/9-forest586.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/8-meadows311.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/4-forest52.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/8-forest185.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/4-meadows298.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/6-forest219.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-meadows211.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/9-meadows3.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/5-meadows84.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-forest246.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/1-forest339.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/3-meadows163.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/9-meadows289.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/8-waters108.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/10-waters269.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/3-meadows432.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/1-forest85.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/5-forest438.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-waters123.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-meadows319.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/5-forest549.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-forest159.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/10-forest26.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/3-forest442.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/4-meadows316.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/7-forest494.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-meadows422.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-meadows404.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/4-meadows230.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/6-forest446.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/9-meadows380.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/1-waters183.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/7-forest264.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/4-forest109.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/3-meadows268.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/5-forest216.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/9-waters295.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/8-waters114.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/9-meadows367.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/2-forest543.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/5-forest100.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-forest424.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/1-forest2.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/7-forest450.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/8-meadows348.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest342.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/6-meadows178.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-forest374.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/9-meadows365.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/3-meadows394.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/1-waters185.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/9-forest545.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/3-meadows117.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/9-waters205.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/1-forest197.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/8-meadows126.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-forest323.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/6-forest156.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-forest563.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/6-meadows387.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/9-meadows431.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/5-meadows379.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/10-waters364.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/5-meadows291.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-forest392.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/5-meadows201.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/10-waters431.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/8-meadows408.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/3-meadows391.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-meadows283.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/6-meadows213.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-meadows307.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/5-forest597.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-meadows122.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/6-forest518.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-forest415.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/2-forest158.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/5-meadows343.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-meadows99.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-forest21.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/5-forest540.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-forest166.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/10-forest500.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/7-meadows378.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/8-meadows194.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-meadows491.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/4-forest492.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/5-meadows18.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-meadows360.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/2-meadows43.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/7-forest316.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/3-forest567.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-forest363.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-waters157.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-meadows425.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/2-forest155.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/5-forest280.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-forest324.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/5-forest531.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-waters195.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-meadows375.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/6-meadows469.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-forest386.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest292.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/9-forest575.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/1-meadows330.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/2-meadows342.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/7-meadows464.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/3-forest340.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/4-meadows236.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/4-forest62.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/5-forest385.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/10-forest523.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/8-meadows202.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/8-meadows212.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest393.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/9-forest345.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/6-meadows349.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-meadows415.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/3-forest309.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-forest491.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/2-forest326.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/2-forest238.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/1-meadows81.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/6-forest557.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-forest535.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/1-waters162.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/1-meadows47.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/7-meadows6.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-meadows324.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/10-meadows410.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/8-meadows182.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-waters121.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-meadows461.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/7-forest234.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/1-waters211.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/8-waters321.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/4-meadows233.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/5-forest81.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-meadows69.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-forest574.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-meadows15.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/5-forest129.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-forest404.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/9-forest542.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/5-forest136.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-waters143.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-forest570.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/8-forest413.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-meadows381.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/3-meadows152.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-meadows120.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/1-meadows226.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/10-waters474.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/9-waters301.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/8-forest174.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/4-forest161.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/1-forest252.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/9-forest67.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/7-waters191.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/1-meadows434.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/3-forest480.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-forest127.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/1-meadows130.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/7-forest489.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/6-meadows474.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/9-forest168.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/7-meadows287.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/2-meadows355.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/4-meadows151.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/8-forest123.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-meadows275.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/1-forest29.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/7-meadows309.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/2-meadows344.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/7-meadows223.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/4-forest593.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/3-forest3.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/8-meadows277.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-forest83.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-meadows470.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/8-meadows384.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-forest103.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/4-forest117.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/9-forest433.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/2-meadows320.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/5-meadows217.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-forest301.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/7-meadows167.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/9-waters196.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/4-meadows229.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/1-forest294.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/7-waters187.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/2-forest504.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/9-meadows88.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/8-forest587.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-meadows264.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-forest437.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/3-meadows294.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest317.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/1-forest78.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/1-waters1.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/2-meadows231.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/7-waters132.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/9-meadows225.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/1-forest165.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/7-forest101.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/9-forest89.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/7-forest327.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/9-forest242.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/4-forest475.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/5-forest37.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-meadows214.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/3-meadows245.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-meadows164.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-forest18.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/3-meadows478.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/10-waters32.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/6-forest286.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/10-waters141.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/7-waters206.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-forest362.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/3-forest273.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/9-forest39.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/2-forest357.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/2-forest268.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/3-forest584.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/5-forest15.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-meadows74.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-forest320.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-forest506.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/1-forest53.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/3-forest44.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/3-forest1.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest223.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/2-forest599.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/7-forest434.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/2-meadows487.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/2-meadows14.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/10-waters456.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/5-meadows357.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-forest314.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/7-waters101.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/3-meadows132.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/4-forest462.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/5-forest210.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/10-waters147.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/8-forest524.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/8-forest95.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/5-meadows85.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-meadows209.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/4-meadows296.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/7-meadows216.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/2-meadows493.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/8-meadows146.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/8-meadows125.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest356.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/1-forest226.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/2-forest144.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/9-forest454.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/3-meadows203.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/3-meadows170.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/10-forest145.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/9-forest365.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/5-meadows17.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-meadows418.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/4-meadows382.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/7-meadows488.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/4-forest250.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/4-forest290.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/7-forest212.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/3-forest414.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/10-waters257.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/6-forest313.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-meadows71.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-forest573.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/10-meadows436.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/4-forest139.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/10-meadows145.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/10-forest558.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/4-forest425.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/5-waters102.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/9-forest512.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/3-forest107.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/10-waters116.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/10-forest225.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/5-meadows467.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-meadows282.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-forest580.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/5-forest114.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-meadows131.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/9-waters350.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/1-meadows95.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/10-meadows402.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/6-meadows424.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/10-waters248.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/8-meadows180.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/5-meadows210.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/10-waters208.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/4-meadows411.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/10-waters194.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/2-forest56.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/8-waters177.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/8-forest63.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/5-forest276.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/1-forest274.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/7-forest355.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/4-forest336.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/7-forest244.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/5-meadows137.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/1-waters137.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/8-meadows68.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-meadows299.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/6-forest411.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-meadows392.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/6-forest394.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-meadows24.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-meadows121.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/9-forest447.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/4-meadows19.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/6-meadows246.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/9-forest431.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/10-forest236.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/9-forest138.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/2-meadows353.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/3-meadows197.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/8-forest69.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/8-forest358.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/9-forest579.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/9-forest102.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/7-waters214.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/9-forest214.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/1-forest322.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/4-meadows400.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/8-forest529.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/8-forest265.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-meadows30.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/2-meadows179.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/2-forest487.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/2-forest72.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/2-meadows191.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/2-forest253.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/6-forest488.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-forest571.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-meadows389.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-forest516.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/9-waters250.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/10-meadows57.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/3-forest260.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-forest231.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-forest259.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/3-forest360.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/1-meadows160.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/5-forest565.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-forest237.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-forest346.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/1-forest455.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/2-meadows110.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/3-forest257.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/1-meadows376.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/5-meadows412.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/9-meadows248.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/6-meadows315.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-forest163.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/9-forest245.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/2-forest61.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/5-forest35.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-forest304.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/4-meadows280.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/9-meadows269.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/8-meadows485.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/9-waters285.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/9-meadows102.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/8-meadows398.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/3-forest429.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-meadows468.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/8-meadows317.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/3-forest329.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/10-waters333.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/9-forest334.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/10-waters159.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/6-meadows119.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-meadows40.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-meadows13.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest235.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/4-meadows222.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/3-meadows147.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/1-meadows232.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/2-forest171.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/6-forest370.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-forest233.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-forest7.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/7-meadows328.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/4-forest261.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/4-forest218.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/8-meadows300.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-forest14.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/10-waters460.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/7-forest80.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/3-forest42.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/8-forest93.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/3-forest474.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/3-meadows302.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/4-meadows26.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/3-meadows251.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/3-meadows350.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest319.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/9-meadows228.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/10-waters129.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/5-forest125.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-forest592.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-forest241.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/5-meadows181.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/1-forest332.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/9-meadows174.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/7-meadows189.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/5-meadows116.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-meadows111.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/4-forest267.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/8-forest88.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest527.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/3-forest157.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/5-forest175.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-meadows34.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/1-forest121.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/5-meadows227.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-forest6.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-forest377.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-forest387.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/8-meadows28.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/9-forest98.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/8-forest389.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-meadows458.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/1-forest469.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/2-forest113.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/7-forest247.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/8-waters245.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/8-forest509.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/4-meadows454.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/1-waters105.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/4-forest87.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/10-meadows55.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/7-meadows148.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/4-forest188.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/3-meadows238.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/9-waters122.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/9-meadows10.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/3-forest86.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/3-forest325.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/8-forest143.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest289.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/6-forest416.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-forest517.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-meadows437.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-meadows359.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/1-meadows66.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/9-waters267.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/6-forest153.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/9-forest421.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/10-forest471.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/3-forest82.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest239.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/7-forest551.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/8-forest495.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/10-meadows133.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/5-forest318.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-waters150.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/3-meadows208.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/1-forest262.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/6-forest459.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/1-forest497.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/6-forest354.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-forest566.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/5-forest307.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-forest199.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-waters213.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/5-forest49.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-forest104.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/3-forest296.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-meadows497.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/5-forest150.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-meadows255.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-forest272.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-meadows114.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/5-meadows218.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-meadows33.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/8-waters279.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-forest133.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-waters144.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/1-forest391.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/1-forest19.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/1-forest151.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/9-waters203.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/2-meadows247.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/3-forest444.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/3-meadows406.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/9-waters216.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/3-forest183.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest302.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/6-forest91.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-meadows149.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/4-forest478.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/3-meadows46.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/4-forest473.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/7-forest546.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-forest249.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/9-meadows445.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/1-meadows362.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/2-meadows35.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/4-forest440.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/1-meadows347.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/9-forest16.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/7-forest57.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/8-forest534.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-forest90.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-forest466.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/4-forest344.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/7-waters128.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/2-meadows386.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/3-forest180.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/5-forest436.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-forest576.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/1-meadows361.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/7-forest479.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/10-waters153.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/3-forest84.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/4-forest361.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/9-forest369.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/10-forest23.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/1-meadows235.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/4-forest134.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/3-forest201.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/9-waters249.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/5-forest131.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-meadows476.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/3-forest182.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest149.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/7-meadows93.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/4-forest74.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/10-waters425.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/7-forest464.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-forest532.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/6-waters140.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-forest240.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/7-forest333.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-meadows165.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/6-forest528.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-forest65.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/5-meadows195.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/1-meadows199.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/6-forest452.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-meadows305.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/8-forest108.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-meadows241.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/5-meadows72.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-meadows142.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-forest552.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/10-forest12.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/7-meadows29.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/10-forest448.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/9-forest533.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/1-waters120.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/6-forest116.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-forest126.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-forest453.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/1-meadows301.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/3-meadows239.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/1-forest34.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/6-meadows385.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-meadows490.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/2-meadows463.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/6-forest338.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-forest256.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/2-forest24.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/6-meadows16.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/9-forest598.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/8-meadows185.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-forest401.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/9-meadows252.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/9-meadows442.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/7-meadows471.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/5-forest190.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-waters176.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest569.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/8-meadows433.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-forest537.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/10-waters222.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/7-forest55.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-forest503.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/6-meadows439.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/9-meadows168.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/7-forest508.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/3-meadows288.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/5-meadows267.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-forest179.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-meadows306.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/1-forest187.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/1-meadows190.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/3-meadows141.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-forest310.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/9-forest484.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/3-forest496.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/8-forest499.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/8-meadows323.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest76.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/1-meadows135.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/2-meadows253.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/8-forest562.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-meadows207.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/1-meadows39.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/4-forest538.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/9-waters175.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/6-forest511.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/1-meadows466.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/9-forest120.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/7-meadows200.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/9-forest167.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/2-forest350.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/1-waters204.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/8-waters217.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-meadows22.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/4-forest291.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/5-meadows128.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-forest589.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/1-waters22.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/8-forest482.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/1-forest118.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/1-forest373.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/7-meadows356.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/2-forest441.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/7-meadows5.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/2-forest140.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/1-forest439.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/3-forest298.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/3-forest550.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/4-meadows171.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/5-meadows338.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-meadows115.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/9-waters355.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/2-forest299.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/10-waters170.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/1-forest255.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/2-forest287.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/3-forest195.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/10-waters215.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/4-forest5.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/10-meadows366.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/1-waters180.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/7-forest372.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-meadows368.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/9-forest220.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/4-forest378.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/2-forest347.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/7-waters192.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/5-meadows109.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-meadows430.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/10-waters218.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/9-forest46.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/7-forest73.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-meadows204.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/3-meadows48.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/8-forest410.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/5-forest293.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-forest572.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/2-forest353.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/10-forest221.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/8-forest519.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/1-forest321.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/1-meadows372.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/1-forest395.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/7-forest285.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/2-meadows276.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/7-forest70.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/10-waters220.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/6-meadows304.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/10-forest60.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/6-meadows397.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-forest505.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/4-forest371.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/5-meadows192.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-meadows371.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/9-waters125.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/5-meadows249.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-meadows416.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/4-meadows143.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/2-forest581.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/1-meadows364.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/2-forest178.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/8-meadows423.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-meadows136.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-forest230.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-forest422.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-forest8.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/6-forest270.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-forest211.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/9-meadows86.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/10-forest47.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/7-meadows153.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/10-meadows403.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/5-meadows465.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-forest297.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-meadows51.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-meadows1.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/5-meadows313.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-meadows234.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/1-forest300.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/4-meadows314.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/1-meadows459.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/1-waters18.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/7-forest248.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/10-forest472.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/3-meadows331.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-waters126.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/5-meadows196.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-meadows443.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-forest379.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-meadows105.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/5-forest445.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-waters11.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/1-meadows419.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/6-forest30.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-forest243.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/6-meadows124.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-forest99.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/8-meadows186.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/5-meadows339.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/1-forest308.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/6-meadows134.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-forest585.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/2-meadows340.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/7-forest266.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/6-forest461.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-meadows369.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/2-forest539.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/10-forest169.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/9-meadows499.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/4-meadows395.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/5-forest119.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/10-waters273.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/2-forest335.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/5-meadows49.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-forest173.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-forest9.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-forest400.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/9-waters139.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/10-forest513.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/4-meadows329.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/10-forest443.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/5-forest277.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-meadows318.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/4-forest364.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/5-forest50.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-forest271.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/4-forest36.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/4-meadows271.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/9-waters160.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/4-forest382.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/4-forest137.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/6-meadows127.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/9-meadows261.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/8-meadows175.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-meadows480.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/8-forest449.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/5-meadows56.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-meadows198.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-forest383.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-forest213.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-meadows373.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-forest111.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-meadows25.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/3-meadows112.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-meadows451.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-forest430.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/8-forest54.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest106.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/6-forest595.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-meadows129.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-meadows156.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/8-waters223.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/4-meadows278.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/9-meadows326.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/3-meadows270.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/3-meadows460.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/1-waters130.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/9-forest79.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/9-waters110.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/2-forest48.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/6-forest432.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/1-meadows73.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/7-forest96.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-forest427.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/9-meadows260.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/4-forest58.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/3-meadows250.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/4-meadows450.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/5-meadows440.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-meadows303.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-forest525.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-forest4.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/9-forest75.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/5-meadows144.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-meadows447.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-forest122.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-forest10.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/3-meadows172.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/3-meadows242.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/10-waters165.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/3-meadows104.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-forest375.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-forest186.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-forest282.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/7-meadows92.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/3-meadows11.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-forest224.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-meadows414.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-meadows286.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/6-meadows435.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-meadows83.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/6-meadows139.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-forest66.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/10-waters421.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/5-forest515.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-forest594.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-forest232.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/4-forest92.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/1-forest328.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/1-forest351.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/4-meadows187.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/9-waters182.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/5-meadows341.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/1-forest227.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/4-forest456.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/5-forest288.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-forest352.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/9-meadows374.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/9-meadows427.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/3-forest331.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/3-forest520.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/1-forest275.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/2-forest59.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/3-meadows290.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest366.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/10-waters491.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/4-forest420.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/6-meadows113.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-meadows413.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest192.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/5-meadows44.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-forest388.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/5-forest526.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/10-waters484.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/7-meadows383.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/4-meadows237.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/6-meadows486.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-forest77.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/7-forest397.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/10-forest428.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/8-meadows297.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/10-waters378.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/6-meadows154.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-forest423.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/6-forest263.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-forest68.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/5-forest152.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/9-forest196.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/8-forest205.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/5-forest460.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-meadows284.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/3-forest281.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-meadows272.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/4-forest124.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/1-meadows293.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/8-waters210.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-forest337.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-forest403.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/10-forest207.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/7-waters134.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/5-meadows70.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-meadows407.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/3-forest591.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/4-forest284.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/6-forest32.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-forest498.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/1-meadows94.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/5-forest71.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-forest176.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/1-meadows161.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/8-meadows107.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/10-meadows90.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/1-meadows193.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/5-forest465.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-meadows184.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/8-forest194.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-meadows266.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/1-meadows220.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/1-meadows215.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/7-meadows438.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/3-meadows21.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-meadows336.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-meadows206.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/8-waters142.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/1-forest493.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/3-meadows221.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/4-forest311.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/5-meadows158.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-meadows428.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-meadows446.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/10-forest476.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/9-meadows263.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/5-forest486.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-forest341.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/10-waters302.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/9-meadows310.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/2-meadows188.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/4-meadows274.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/5-meadows20.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-forest541.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-forest142.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/4-meadows106.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/6-meadows45.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/1-forest40.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/7-meadows409.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/3-forest146.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-forest596.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-forest568.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/1-waters12.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/4-forest45.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/4-forest217.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/5-meadows452.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-waters135.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/9-meadows494.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/1-forest64.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/4-forest343.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/3-meadows159.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-forest582.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/9-meadows123.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/1-meadows483.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/3-meadows138.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/3-meadows472.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-forest419.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-forest426.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-forest522.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-meadows405.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/9-forest481.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/1-forest578.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/9-waters348.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/1-forest184.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/5-forest170.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-forest283.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/7-meadows325.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/5-forest177.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-meadows358.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/4-forest306.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/8-forest203.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/4-forest590.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/6-forest147.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-meadows453.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-meadows103.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-forest463.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/10-waters234.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/4-forest251.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/10-forest396.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/1-meadows23.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/8-meadows332.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/8-meadows63.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/3-meadows42.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/3-forest359.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/10-meadows396.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/5-forest269.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-meadows177.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-meadows448.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-meadows312.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-meadows31.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-waters212.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/9-meadows390.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/4-forest399.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/7-forest162.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/4-forest279.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/7-forest451.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-forest154.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/9-forest521.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/3-meadows399.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/8-forest564.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-meadows244.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-waters164.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-forest189.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-meadows58.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/9-forest94.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/10-waters10.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/3-meadows334.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-meadows12.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-waters221.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/2-forest135.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/5-meadows345.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-waters20.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/10-meadows173.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/4-meadows140.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/1-meadows337.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/3-meadows327.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/1-meadows322.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/3-forest22.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/4-forest548.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/6-waters151.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-forest600.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-forest278.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/8-forest553.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/5-meadows38.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/9-waters331.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/6-meadows456.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/10-waters197.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/5-meadows489.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/10-forest160.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/2-forest130.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/5-forest181.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-forest105.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/3-forest228.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/5-forest457.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-waters315.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-waters119.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-meadows346.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-forest254.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-forest547.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-forest110.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/7-forest561.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/3-meadows2.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/5-waters124.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-meadows224.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest583.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/3-forest368.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/8-forest202.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/8-meadows401.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/3-meadows354.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest330.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/1-forest13.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/3-meadows219.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/8-meadows393.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-forest27.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/6-forest208.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-meadows333.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-meadows259.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-forest380.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-meadows281.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-forest295.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/10-forest41.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/3-forest303.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/9-waters161.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/7-forest390.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/5-meadows449.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-forest20.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/10-waters424.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/10-forest407.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/2-meadows462.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/5-forest128.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/2-meadows258.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/8-meadows240.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-meadows417.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/3-forest209.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-forest222.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/2-forest204.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/2-forest17.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/2-forest536.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/8-forest348.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/8-forest483.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest485.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/10-meadows279.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/5-meadows377.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-forest501.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/5-meadows455.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-meadows257.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-forest384.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-forest398.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-meadows176.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-forest588.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/8-meadows262.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest468.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/9-forest554.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/5-forest215.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-forest577.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/7-waters149.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/5-forest11.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-meadows157.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/5-forest470.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/6-meadows96.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/1-forest132.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/8-forest559.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/1-meadows254.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/6-meadows295.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-forest381.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-meadows150.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/5-meadows492.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-meadows4.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/5-forest38.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/9-forest164.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/9-forest402.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/8-meadows308.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/1-forest229.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/1-meadows8.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/9-meadows484.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/10-forest305.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/7-meadows166.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/10-waters429.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/6-meadows108.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-forest200.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-forest206.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/3-forest115.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-forest312.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/6-forest530.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/10-forest25.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/6-meadows32.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-meadows363.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/1-forest418.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/1-meadows285.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/7-forest510.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/6-forest141.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/10-waters405.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/2-meadows292.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/3-meadows155.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/9-forest544.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/3-forest367.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-forest458.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/10-waters131.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/8-forest43.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/3-forest507.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/5-meadows500.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/7-meadows321.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/4-forest258.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/8-waters25.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/6-meadows98.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-meadows473.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-meadows273.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/2-meadows37.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/train/9-meadows256.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/5-meadows36.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-forest172.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/1-meadows97.jpg
+-1.0
+Reading ./databaserelease2/NatureDataset2/train/5-forest502.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-waters271.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/10-meadows388.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/6-meadows426.jpg
+0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/9-forest193.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/5-meadows479.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/5-forest112.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/8-meadows421.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/7-meadows265.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/3-meadows243.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/10-waters340.jpg
+1.0
+Reading ./databaserelease2/NatureDataset2/train/9-meadows482.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/9-waters117.jpg
+0.7777777777777777
+Reading ./databaserelease2/NatureDataset2/train/7-meadows162.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/7-meadows41.jpg
+0.33333333333333326
+Reading ./databaserelease2/NatureDataset2/train/8-forest51.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/train/5-meadows429.jpg
+-0.11111111111111116
+Reading ./databaserelease2/NatureDataset2/train/4-meadows420.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/train/9-meadows370.jpg
+0.7777777777777777
+
+Read 1197 images.
+
+
+Adding Images: Reading ./databaserelease2/NatureDataset2/val/2-meadows80.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/val/3-meadows87.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/val/3-meadows481.jpg
+-0.5555555555555556
+Reading ./databaserelease2/NatureDataset2/val/2-meadows65.jpg
+-0.7777777777777778
+Reading ./databaserelease2/NatureDataset2/val/4-meadows67.jpg
+-0.33333333333333337
+Reading ./databaserelease2/NatureDataset2/val/4-meadows89.jpg
+-0.33333333333333337
+2021-11-08 02:56:27.258509: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:185] None of the MLIR Optimization Passes are enabled (registered 2)
+2021-11-08 02:56:30.749559: I tensorflow/stream_executor/cuda/cuda_dnn.cc:369] Loaded cuDNN version 8201
+2021-11-08 02:56:32.339445: W tensorflow/stream_executor/gpu/asm_compiler.cc:77] Couldn't get ptxas version string: Internal: Running ptxas --version returned 32512
+2021-11-08 02:56:32.451603: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] Internal: ptxas exited with non-zero error code 32512, output: 
+Relying on driver to perform ptx compilation. 
+Modify $PATH to customize ptxas location.
+This message will be only logged once.
+2021-11-08 02:56:34.541591: W tensorflow/core/kernels/gpu_utils.cc:49] Failed to allocate memory for convolution redzone checking; skipping this check. This is benign and only means that we won't check cudnn for out-of-bounds reads and writes. This message will only be printed once.
+2021-11-08 02:56:34.541677: F tensorflow/stream_executor/cuda/cuda_dnn.cc:573] Check failed: cudnnSetTensorNdDescriptor(handle_.get(), elem_type, nd, dims.data(), strides.data()) == CUDNN_STATUS_SUCCESS (9 vs. 0)batch_descriptor: {count: 300 feature_map_count: 80 spatial: 336 332  value_min: 0.000000 value_max: 0.000000 layout: BatchDepthYX}
+train.sh: line 5: 28338 Aborted                 (core dumped) python ./train.py --special_model2 -o agnet.specialmodel.6.1 -b 300 -e 2 -l 0.1 -n -t ./databaserelease2/NatureDataset2/train/ -v ./databaserelease2/NatureDataset2/val/
+Input file is " agnet.specialmodel.6.1
+Output file is " agnet.specialmodel.6.2
+Image path is " 
+--------------------
+
+
+Traceback (most recent call last):
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 564, in <module>
+    main(sys.argv[1:])
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 561, in main
+    train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model,momentum,loss_function)
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 365, in train
+    model = models.load_model(modelin)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/saving/save.py", line 205, in load_model
+    return saved_model_load.load(filepath, compile, options)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/saving/saved_model/load.py", line 108, in load
+    meta_graph_def = tf.__internal__.saved_model.parse_saved_model(path).meta_graphs[0]
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/tensorflow/python/saved_model/loader_impl.py", line 118, in parse_saved_model
+    raise IOError(
+OSError: SavedModel file does not exist at: agnet.specialmodel.6.1/{saved_model.pbtxt|saved_model.pb}
+Input file is " agnet.specialmodel.6.2
+Output file is " agnet.specialmodel.6.3
+Image path is " 
+--------------------
+
+
+Traceback (most recent call last):
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 564, in <module>
+    main(sys.argv[1:])
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 561, in main
+    train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model,momentum,loss_function)
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 365, in train
+    model = models.load_model(modelin)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/saving/save.py", line 205, in load_model
+    return saved_model_load.load(filepath, compile, options)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/saving/saved_model/load.py", line 108, in load
+    meta_graph_def = tf.__internal__.saved_model.parse_saved_model(path).meta_graphs[0]
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/tensorflow/python/saved_model/loader_impl.py", line 118, in parse_saved_model
+    raise IOError(
+OSError: SavedModel file does not exist at: agnet.specialmodel.6.2/{saved_model.pbtxt|saved_model.pb}
+srun: error: nodegpu002: task 0: Exited with exit code 1

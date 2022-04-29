@@ -1,0 +1,1840 @@
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+Tue Nov  9 14:50:18 2021       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 460.32.03    Driver Version: 460.32.03    CUDA Version: 11.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  A100-PCIE-40GB      Off  | 00000000:21:00.0 Off |                    0 |
+| N/A   37C    P0    40W / 250W |      0MiB / 40536MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+2021-11-09 14:51:30.348701: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-11-09 14:51:31.157617: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38426 MB memory:  -> device: 0, name: A100-PCIE-40GB, pci bus id: 0000:21:00.0, compute capability: 8.0
+2021-11-09 14:51:31.978657: I tensorflow/core/profiler/lib/profiler_session.cc:131] Profiler session initializing.
+2021-11-09 14:51:31.978707: I tensorflow/core/profiler/lib/profiler_session.cc:146] Profiler session started.
+2021-11-09 14:51:31.979612: I tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1614] Profiler found 1 GPUs
+2021-11-09 14:51:32.066317: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcupti.so.11.2'; dlerror: libcupti.so.11.2: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2021-11-09 14:51:32.066859: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcupti.so'; dlerror: libcupti.so: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2021-11-09 14:51:32.066892: E tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1666] function cupti_interface_->Subscribe( &subscriber_, (CUpti_CallbackFunc)ApiCallback, this)failed with error CUPTI could not be loaded or symbol could not be found.
+2021-11-09 14:51:32.066927: I tensorflow/core/profiler/lib/profiler_session.cc:164] Profiler session tear down.
+2021-11-09 14:51:32.066959: E tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1757] function cupti_interface_->Finalize()failed with error CUPTI could not be loaded or symbol could not be found.
+/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/optimizer_v2/optimizer_v2.py:355: UserWarning: The `lr` argument is deprecated, use `learning_rate` instead.
+  warnings.warn(
+Input file is " 
+Output file is " agnet.specialmodel.12.res
+Image path is " 
+--------------------
+
+
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 1024, 680, 3 0                                            
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 165, 162, 96) 352896      input_1[0][0]                    
+__________________________________________________________________________________________________
+conv2d_20 (Conv2D)              (None, 170, 168, 96) 23424       input_1[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 165, 162, 96) 384         conv2d[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_20 (BatchNo (None, 170, 168, 96) 384         conv2d_20[0][0]                  
+__________________________________________________________________________________________________
+activation (Activation)         (None, 165, 162, 96) 0           batch_normalization[0][0]        
+__________________________________________________________________________________________________
+activation_15 (Activation)      (None, 170, 168, 96) 0           batch_normalization_20[0][0]     
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 164, 161, 192 73920       activation[0][0]                 
+__________________________________________________________________________________________________
+conv2d_21 (Conv2D)              (None, 169, 167, 192 73920       activation_15[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 164, 161, 192 768         conv2d_1[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_21 (BatchNo (None, 169, 167, 192 768         conv2d_21[0][0]                  
+__________________________________________________________________________________________________
+activation_1 (Activation)       (None, 164, 161, 192 0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+activation_16 (Activation)      (None, 169, 167, 192 0           batch_normalization_21[0][0]     
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, 163, 160, 384 295296      activation_1[0][0]               
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, 163, 160, 384 332160      activation[0][0]                 
+__________________________________________________________________________________________________
+conv2d_22 (Conv2D)              (None, 168, 166, 384 295296      activation_16[0][0]              
+__________________________________________________________________________________________________
+conv2d_23 (Conv2D)              (None, 168, 166, 384 332160      activation_15[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 163, 160, 384 1536        conv2d_2[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 163, 160, 384 1536        conv2d_3[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_22 (BatchNo (None, 168, 166, 384 1536        conv2d_22[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_23 (BatchNo (None, 168, 166, 384 1536        conv2d_23[0][0]                  
+__________________________________________________________________________________________________
+add (Add)                       (None, 163, 160, 384 0           batch_normalization_2[0][0]      
+                                                                 batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+add_5 (Add)                     (None, 168, 166, 384 0           batch_normalization_22[0][0]     
+                                                                 batch_normalization_23[0][0]     
+__________________________________________________________________________________________________
+activation_2 (Activation)       (None, 163, 160, 384 0           add[0][0]                        
+__________________________________________________________________________________________________
+activation_17 (Activation)      (None, 168, 166, 384 0           add_5[0][0]                      
+__________________________________________________________________________________________________
+conv2d_4 (Conv2D)               (None, 78, 76, 384)  11944320    activation_2[0][0]               
+__________________________________________________________________________________________________
+conv2d_24 (Conv2D)              (None, 81, 80, 384)  7225728     activation_17[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 78, 76, 384)  1536        conv2d_4[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_24 (BatchNo (None, 81, 80, 384)  1536        conv2d_24[0][0]                  
+__________________________________________________________________________________________________
+activation_3 (Activation)       (None, 78, 76, 384)  0           batch_normalization_4[0][0]      
+__________________________________________________________________________________________________
+activation_18 (Activation)      (None, 81, 80, 384)  0           batch_normalization_24[0][0]     
+__________________________________________________________________________________________________
+conv2d_5 (Conv2D)               (None, 77, 75, 192)  295104      activation_3[0][0]               
+__________________________________________________________________________________________________
+conv2d_25 (Conv2D)              (None, 80, 79, 192)  295104      activation_18[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 77, 75, 192)  768         conv2d_5[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_25 (BatchNo (None, 80, 79, 192)  768         conv2d_25[0][0]                  
+__________________________________________________________________________________________________
+activation_4 (Activation)       (None, 77, 75, 192)  0           batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+activation_19 (Activation)      (None, 80, 79, 192)  0           batch_normalization_25[0][0]     
+__________________________________________________________________________________________________
+conv2d_6 (Conv2D)               (None, 76, 74, 96)   73824       activation_4[0][0]               
+__________________________________________________________________________________________________
+conv2d_7 (Conv2D)               (None, 76, 74, 96)   331872      activation_3[0][0]               
+__________________________________________________________________________________________________
+conv2d_26 (Conv2D)              (None, 79, 78, 96)   73824       activation_19[0][0]              
+__________________________________________________________________________________________________
+conv2d_27 (Conv2D)              (None, 79, 78, 96)   331872      activation_18[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 76, 74, 96)   384         conv2d_6[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 76, 74, 96)   384         conv2d_7[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_26 (BatchNo (None, 79, 78, 96)   384         conv2d_26[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_27 (BatchNo (None, 79, 78, 96)   384         conv2d_27[0][0]                  
+__________________________________________________________________________________________________
+add_1 (Add)                     (None, 76, 74, 96)   0           batch_normalization_6[0][0]      
+                                                                 batch_normalization_7[0][0]      
+__________________________________________________________________________________________________
+add_6 (Add)                     (None, 79, 78, 96)   0           batch_normalization_26[0][0]     
+                                                                 batch_normalization_27[0][0]     
+__________________________________________________________________________________________________
+activation_5 (Activation)       (None, 76, 74, 96)   0           add_1[0][0]                      
+__________________________________________________________________________________________________
+activation_20 (Activation)      (None, 79, 78, 96)   0           add_6[0][0]                      
+__________________________________________________________________________________________________
+conv2d_8 (Conv2D)               (None, 36, 35, 384)  921984      activation_5[0][0]               
+__________________________________________________________________________________________________
+conv2d_28 (Conv2D)              (None, 38, 37, 384)  921984      activation_20[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_8 (BatchNor (None, 36, 35, 384)  1536        conv2d_8[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_28 (BatchNo (None, 38, 37, 384)  1536        conv2d_28[0][0]                  
+__________________________________________________________________________________________________
+activation_6 (Activation)       (None, 36, 35, 384)  0           batch_normalization_8[0][0]      
+__________________________________________________________________________________________________
+activation_21 (Activation)      (None, 38, 37, 384)  0           batch_normalization_28[0][0]     
+__________________________________________________________________________________________________
+conv2d_9 (Conv2D)               (None, 35, 34, 768)  1180416     activation_6[0][0]               
+__________________________________________________________________________________________________
+conv2d_29 (Conv2D)              (None, 37, 36, 768)  1180416     activation_21[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_9 (BatchNor (None, 35, 34, 768)  3072        conv2d_9[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_29 (BatchNo (None, 37, 36, 768)  3072        conv2d_29[0][0]                  
+__________________________________________________________________________________________________
+activation_7 (Activation)       (None, 35, 34, 768)  0           batch_normalization_9[0][0]      
+__________________________________________________________________________________________________
+activation_22 (Activation)      (None, 37, 36, 768)  0           batch_normalization_29[0][0]     
+__________________________________________________________________________________________________
+conv2d_10 (Conv2D)              (None, 34, 33, 1536) 4720128     activation_7[0][0]               
+__________________________________________________________________________________________________
+conv2d_11 (Conv2D)              (None, 34, 33, 1536) 5309952     activation_6[0][0]               
+__________________________________________________________________________________________________
+conv2d_30 (Conv2D)              (None, 36, 35, 1536) 4720128     activation_22[0][0]              
+__________________________________________________________________________________________________
+conv2d_31 (Conv2D)              (None, 36, 35, 1536) 5309952     activation_21[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_10 (BatchNo (None, 34, 33, 1536) 6144        conv2d_10[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_11 (BatchNo (None, 34, 33, 1536) 6144        conv2d_11[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_30 (BatchNo (None, 36, 35, 1536) 6144        conv2d_30[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_31 (BatchNo (None, 36, 35, 1536) 6144        conv2d_31[0][0]                  
+__________________________________________________________________________________________________
+add_2 (Add)                     (None, 34, 33, 1536) 0           batch_normalization_10[0][0]     
+                                                                 batch_normalization_11[0][0]     
+__________________________________________________________________________________________________
+add_7 (Add)                     (None, 36, 35, 1536) 0           batch_normalization_30[0][0]     
+                                                                 batch_normalization_31[0][0]     
+__________________________________________________________________________________________________
+activation_8 (Activation)       (None, 34, 33, 1536) 0           add_2[0][0]                      
+__________________________________________________________________________________________________
+activation_23 (Activation)      (None, 36, 35, 1536) 0           add_7[0][0]                      
+__________________________________________________________________________________________________
+conv2d_12 (Conv2D)              (None, 16, 16, 384)  5308800     activation_8[0][0]               
+__________________________________________________________________________________________________
+conv2d_32 (Conv2D)              (None, 17, 17, 384)  5308800     activation_23[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_12 (BatchNo (None, 16, 16, 384)  1536        conv2d_12[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_32 (BatchNo (None, 17, 17, 384)  1536        conv2d_32[0][0]                  
+__________________________________________________________________________________________________
+activation_9 (Activation)       (None, 16, 16, 384)  0           batch_normalization_12[0][0]     
+__________________________________________________________________________________________________
+activation_24 (Activation)      (None, 17, 17, 384)  0           batch_normalization_32[0][0]     
+__________________________________________________________________________________________________
+conv2d_13 (Conv2D)              (None, 15, 15, 192)  295104      activation_9[0][0]               
+__________________________________________________________________________________________________
+conv2d_33 (Conv2D)              (None, 16, 16, 192)  295104      activation_24[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_13 (BatchNo (None, 15, 15, 192)  768         conv2d_13[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_33 (BatchNo (None, 16, 16, 192)  768         conv2d_33[0][0]                  
+__________________________________________________________________________________________________
+activation_10 (Activation)      (None, 15, 15, 192)  0           batch_normalization_13[0][0]     
+__________________________________________________________________________________________________
+activation_25 (Activation)      (None, 16, 16, 192)  0           batch_normalization_33[0][0]     
+__________________________________________________________________________________________________
+conv2d_14 (Conv2D)              (None, 14, 14, 96)   73824       activation_10[0][0]              
+__________________________________________________________________________________________________
+conv2d_15 (Conv2D)              (None, 14, 14, 96)   331872      activation_9[0][0]               
+__________________________________________________________________________________________________
+conv2d_34 (Conv2D)              (None, 15, 15, 96)   73824       activation_25[0][0]              
+__________________________________________________________________________________________________
+conv2d_35 (Conv2D)              (None, 15, 15, 96)   331872      activation_24[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_14 (BatchNo (None, 14, 14, 96)   384         conv2d_14[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_15 (BatchNo (None, 14, 14, 96)   384         conv2d_15[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_34 (BatchNo (None, 15, 15, 96)   384         conv2d_34[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_35 (BatchNo (None, 15, 15, 96)   384         conv2d_35[0][0]                  
+__________________________________________________________________________________________________
+add_3 (Add)                     (None, 14, 14, 96)   0           batch_normalization_14[0][0]     
+                                                                 batch_normalization_15[0][0]     
+__________________________________________________________________________________________________
+add_8 (Add)                     (None, 15, 15, 96)   0           batch_normalization_34[0][0]     
+                                                                 batch_normalization_35[0][0]     
+__________________________________________________________________________________________________
+activation_11 (Activation)      (None, 14, 14, 96)   0           add_3[0][0]                      
+__________________________________________________________________________________________________
+activation_26 (Activation)      (None, 15, 15, 96)   0           add_8[0][0]                      
+__________________________________________________________________________________________________
+conv2d_16 (Conv2D)              (None, 6, 6, 160)    138400      activation_11[0][0]              
+__________________________________________________________________________________________________
+conv2d_36 (Conv2D)              (None, 7, 7, 160)    138400      activation_26[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_16 (BatchNo (None, 6, 6, 160)    640         conv2d_16[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_36 (BatchNo (None, 7, 7, 160)    640         conv2d_36[0][0]                  
+__________________________________________________________________________________________________
+activation_12 (Activation)      (None, 6, 6, 160)    0           batch_normalization_16[0][0]     
+__________________________________________________________________________________________________
+activation_27 (Activation)      (None, 7, 7, 160)    0           batch_normalization_36[0][0]     
+__________________________________________________________________________________________________
+conv2d_17 (Conv2D)              (None, 5, 5, 160)    102560      activation_12[0][0]              
+__________________________________________________________________________________________________
+conv2d_37 (Conv2D)              (None, 6, 6, 160)    102560      activation_27[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_17 (BatchNo (None, 5, 5, 160)    640         conv2d_17[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_37 (BatchNo (None, 6, 6, 160)    640         conv2d_37[0][0]                  
+__________________________________________________________________________________________________
+activation_13 (Activation)      (None, 5, 5, 160)    0           batch_normalization_17[0][0]     
+__________________________________________________________________________________________________
+activation_28 (Activation)      (None, 6, 6, 160)    0           batch_normalization_37[0][0]     
+__________________________________________________________________________________________________
+conv2d_18 (Conv2D)              (None, 4, 4, 160)    102560      activation_13[0][0]              
+__________________________________________________________________________________________________
+conv2d_19 (Conv2D)              (None, 4, 4, 160)    230560      activation_12[0][0]              
+__________________________________________________________________________________________________
+conv2d_38 (Conv2D)              (None, 5, 5, 160)    102560      activation_28[0][0]              
+__________________________________________________________________________________________________
+conv2d_39 (Conv2D)              (None, 5, 5, 160)    230560      activation_27[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_18 (BatchNo (None, 4, 4, 160)    640         conv2d_18[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_19 (BatchNo (None, 4, 4, 160)    640         conv2d_19[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_38 (BatchNo (None, 5, 5, 160)    640         conv2d_38[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_39 (BatchNo (None, 5, 5, 160)    640         conv2d_39[0][0]                  
+__________________________________________________________________________________________________
+add_4 (Add)                     (None, 4, 4, 160)    0           batch_normalization_18[0][0]     
+                                                                 batch_normalization_19[0][0]     
+__________________________________________________________________________________________________
+add_9 (Add)                     (None, 5, 5, 160)    0           batch_normalization_38[0][0]     
+                                                                 batch_normalization_39[0][0]     
+__________________________________________________________________________________________________
+activation_14 (Activation)      (None, 4, 4, 160)    0           add_4[0][0]                      
+__________________________________________________________________________________________________
+activation_29 (Activation)      (None, 5, 5, 160)    0           add_9[0][0]                      
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 2560)         0           activation_14[0][0]              
+__________________________________________________________________________________________________
+flatten_1 (Flatten)             (None, 4000)         0           activation_29[0][0]              
+__________________________________________________________________________________________________
+concatenate (Concatenate)       (None, 6560)         0           flatten[0][0]                    
+                                                                 flatten_1[0][0]                  
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 2048)         13436928    concatenate[0][0]                
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 2048)         0           dense[0][0]                      
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 1024)         2098176     dropout[0][0]                    
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 1024)         0           dense_1[0][0]                    
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 512)          524800      dropout_1[0][0]                  
+__________________________________________________________________________________________________
+dropout_2 (Dropout)             (None, 512)          0           dense_2[0][0]                    
+__________________________________________________________________________________________________
+dense_3 (Dense)                 (None, 256)          131328      dropout_2[0][0]                  
+__________________________________________________________________________________________________
+dropout_3 (Dropout)             (None, 256)          0           dense_3[0][0]                    
+__________________________________________________________________________________________________
+dense_4 (Dense)                 (None, 128)          32896       dropout_3[0][0]                  
+__________________________________________________________________________________________________
+dropout_4 (Dropout)             (None, 128)          0           dense_4[0][0]                    
+__________________________________________________________________________________________________
+dense_5 (Dense)                 (None, 64)           8256        dropout_4[0][0]                  
+__________________________________________________________________________________________________
+dropout_5 (Dropout)             (None, 64)           0           dense_5[0][0]                    
+__________________________________________________________________________________________________
+dense_6 (Dense)                 (None, 1)            65          dropout_5[0][0]                  
+==================================================================================================
+Total params: 76,075,137
+Trainable params: 76,045,313
+Non-trainable params: 29,824
+__________________________________________________________________________________________________
+None
+Adding Images: Reading ./databaserelease2/NatureDataset/train2/10-forest23.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/train2/1-waters458.jpg
+0.0
+Reading ./databaserelease2/NatureDataset/train2/1-waters530.jpg
+0.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters831.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/train2/10-forest12.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters593.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters484.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters579.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters682.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters798.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters740.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters147.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/train2/1-waters180.jpg
+0.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters159.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters222.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/train2/1-waters844.jpg
+0.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters797.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/train2/1-waters443.jpg
+0.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters431.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/train2/1-waters607.jpg
+0.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters717.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/train2/1-waters820.jpg
+0.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters424.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters460.jpg
+1.0
+
+Read 24 images.
+
+
+Adding Images: Reading ./databaserelease2/NatureDataset/val/8-forest542.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/3-waters105.jpg
+0.2222222222222222
+Reading ./databaserelease2/NatureDataset/val/5-forest326.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/7-waters550.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/7-forest449.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/7-waters501.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/9-waters364.jpg
+0.8888888888888888
+Reading ./databaserelease2/NatureDataset/val/6-meadows9.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/8-waters600.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/5-meadows329.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/7-meadows165.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-meadows467.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/4-meadows35.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/6-forest535.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-forest99.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-forest283.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/3-waters130.jpg
+0.2222222222222222
+Reading ./databaserelease2/NatureDataset/val/3-forest165.jpg
+0.2222222222222222
+Reading ./databaserelease2/NatureDataset/val/6-meadows452.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/5-forest423.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/7-waters507.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/8-waters519.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/4-meadows54.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/5-meadows155.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/3-meadows193.jpg
+0.2222222222222222
+Reading ./databaserelease2/NatureDataset/val/6-waters497.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-forest37.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-meadows339.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/7-meadows397.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/5-forest65.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/6-meadows236.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/7-forest95.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/8-waters753.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/3-waters260.jpg
+0.2222222222222222
+Reading ./databaserelease2/NatureDataset/val/4-waters67.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/7-forest127.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/7-forest482.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/5-forest278.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/5-meadows251.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/5-waters75.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/4-waters466.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/4-meadows183.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/6-waters351.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/3-waters395.jpg
+0.2222222222222222
+Reading ./databaserelease2/NatureDataset/val/7-waters803.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/8-waters487.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/5-meadows208.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/4-forest302.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/5-meadows481.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/6-meadows271.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/7-meadows295.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-meadows119.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-waters868.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-forest258.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/8-waters401.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/8-waters666.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/7-meadows433.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/5-forest444.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/6-waters846.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/7-waters427.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-waters227.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/8-waters590.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/9-waters696.jpg
+0.8888888888888888
+Reading ./databaserelease2/NatureDataset/val/8-meadows185.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/6-forest420.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/4-meadows120.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/3-meadows293.jpg
+0.2222222222222222
+Reading ./databaserelease2/NatureDataset/val/6-meadows106.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/7-waters773.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/7-waters217.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/5-forest124.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/8-meadows398.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/6-waters671.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/5-forest146.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/6-waters237.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/7-meadows127.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/7-waters69.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/7-meadows348.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-forest590.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/5-forest366.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/6-meadows446.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-waters115.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/4-forest576.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/7-forest191.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/5-meadows163.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/8-meadows102.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/2-waters621.jpg
+0.1111111111111111
+Reading ./databaserelease2/NatureDataset/val/7-forest147.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/8-waters542.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/3-forest321.jpg
+0.2222222222222222
+Reading ./databaserelease2/NatureDataset/val/9-waters648.jpg
+0.8888888888888888
+Reading ./databaserelease2/NatureDataset/val/5-meadows284.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/7-forest244.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-waters854.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/val/8-waters538.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/8-waters852.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/5-waters43.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/5-forest157.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/7-meadows150.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/7-meadows24.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/4-forest539.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/7-waters576.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-meadows98.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-meadows314.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/8-forest405.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/9-forest407.jpg
+0.8888888888888888
+Reading ./databaserelease2/NatureDataset/val/8-forest203.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/7-meadows108.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/9-waters619.jpg
+0.8888888888888888
+Reading ./databaserelease2/NatureDataset/val/4-waters657.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/6-waters342.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/5-forest342.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/7-forest101.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/8-meadows175.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/4-waters72.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/7-meadows485.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/4-waters890.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/2-waters18.jpg
+0.1111111111111111
+Reading ./databaserelease2/NatureDataset/val/7-forest355.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/9-forest225.jpg
+0.8888888888888888
+Reading ./databaserelease2/NatureDataset/val/3-meadows39.jpg
+0.2222222222222222
+Reading ./databaserelease2/NatureDataset/val/2-meadows235.jpg
+0.1111111111111111
+Reading ./databaserelease2/NatureDataset/val/5-forest21.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/7-waters306.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/8-waters347.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/7-meadows453.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-forest557.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/8-waters793.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/6-forest570.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/7-forest186.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/8-waters210.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/6-waters713.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/7-forest389.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/8-waters390.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/7-meadows336.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/val/5-meadows25.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/6-waters400.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/7-waters230.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-forest50.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-meadows111.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/7-forest137.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/7-meadows404.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/4-waters228.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/7-waters555.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/7-waters870.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/5-forest309.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/9-waters646.jpg
+0.8888888888888888
+Reading ./databaserelease2/NatureDataset/val/8-waters485.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/5-forest536.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/7-meadows15.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-forest593.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/8-waters730.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/7-waters805.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/9-waters626.jpg
+0.8888888888888888
+Reading ./databaserelease2/NatureDataset/val/4-meadows34.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/6-forest237.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/5-waters173.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/8-forest242.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/7-forest54.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/8-waters216.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/7-forest179.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-waters45.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/7-meadows417.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/7-waters771.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-meadows217.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/3-waters325.jpg
+0.2222222222222222
+Reading ./databaserelease2/NatureDataset/val/6-meadows148.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-meadows274.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-waters711.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/2-forest118.jpg
+0.1111111111111111
+Reading ./databaserelease2/NatureDataset/val/5-waters100.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/7-waters647.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/7-forest90.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/8-waters245.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/5-meadows250.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/7-waters241.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/5-meadows46.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/6-meadows352.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/8-waters875.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/6-waters872.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/4-forest485.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/5-waters52.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/6-waters281.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/8-waters315.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/5-forest238.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/9-waters89.jpg
+0.8888888888888888
+Reading ./databaserelease2/NatureDataset/val/7-waters720.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-waters35.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/2-waters328.jpg
+0.1111111111111111
+Reading ./databaserelease2/NatureDataset/val/6-forest478.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-meadows38.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/8-waters570.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/7-forest123.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/8-meadows277.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/10-waters679.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/val/5-waters545.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/5-forest527.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/9-waters707.jpg
+0.8888888888888888
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/val/7-forest499.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/7-meadows169.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/4-forest352.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/8-waters182.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/5-waters236.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/6-waters171.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/7-forest430.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-forest293.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/7-forest432.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/5-forest17.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/3-meadows364.jpg
+0.2222222222222222
+Reading ./databaserelease2/NatureDataset/val/6-meadows473.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-meadows85.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/3-forest226.jpg
+0.2222222222222222
+Reading ./databaserelease2/NatureDataset/val/5-waters27.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+0.0
+Reading ./databaserelease2/NatureDataset/val/6-forest217.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/7-meadows378.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/4-waters61.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/6-waters166.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/5-waters178.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/10-waters491.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/val/7-forest511.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-waters802.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/8-forest562.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/4-meadows199.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/8-waters743.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/7-waters721.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-meadows441.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/7-waters786.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-waters823.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-forest11.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/7-forest532.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-forest58.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/5-waters332.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/9-meadows55.jpg
+0.8888888888888888
+Reading ./databaserelease2/NatureDataset/val/7-waters475.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/3-forest78.jpg
+0.2222222222222222
+Reading ./databaserelease2/NatureDataset/val/7-waters213.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/5-waters526.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/8-waters606.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/8-forest365.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/4-waters86.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/7-meadows422.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/9-waters302.jpg
+0.8888888888888888
+Reading ./databaserelease2/NatureDataset/val/6-meadows178.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/9-waters577.jpg
+0.8888888888888888
+Reading ./databaserelease2/NatureDataset/val/4-waters685.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/4-forest578.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/5-meadows11.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/5-meadows172.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/4-waters211.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/3-waters377.jpg
+0.2222222222222222
+Reading ./databaserelease2/NatureDataset/val/6-waters534.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/5-forest260.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/5-meadows37.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/5-forest253.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/7-waters754.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/5-forest180.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/4-waters263.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/7-waters176.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+0.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows70.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-forest404.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/7-forest70.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/5-forest86.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/5-meadows142.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/7-waters583.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-forest156.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/4-meadows361.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/6-meadows196.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/8-meadows212.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/5-forest155.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/6-waters496.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/7-meadows205.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/7-forest310.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/5-waters5.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/7-waters442.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/8-waters592.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/4-forest72.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/7-forest111.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/4-forest330.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/6-waters614.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-forest364.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/7-forest213.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/7-waters508.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/7-meadows488.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-waters288.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-waters493.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-waters265.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/5-waters450.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/6-meadows67.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/5-meadows358.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/7-meadows286.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/8-forest380.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/8-waters398.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/7-forest148.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/7-meadows93.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/7-waters635.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/8-waters709.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/8-waters749.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/7-waters195.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/7-waters515.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/4-meadows97.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/6-waters41.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/5-forest359.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/7-meadows180.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+0.0
+Reading ./databaserelease2/NatureDataset/val/9-forest47.jpg
+0.8888888888888888
+Reading ./databaserelease2/NatureDataset/val/7-meadows92.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/5-meadows170.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/6-meadows379.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/8-forest51.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/8-forest545.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/8-waters824.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/8-waters787.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows298.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/7-waters327.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-meadows500.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-forest361.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/5-forest1.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/8-waters836.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/6-waters58.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/8-waters807.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/3-meadows47.jpg
+0.2222222222222222
+Reading ./databaserelease2/NatureDataset/val/6-meadows151.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/5-meadows243.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/9-forest523.jpg
+0.8888888888888888
+Reading ./databaserelease2/NatureDataset/val/9-forest448.jpg
+0.8888888888888888
+Reading ./databaserelease2/NatureDataset/val/8-meadows431.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/9-waters616.jpg
+/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/utils/generic_utils.py:494: CustomMaskWarning: Custom mask layers require a config and must override get_config. When loading, the custom mask layer must be passed to the custom_objects argument.
+  warnings.warn('Custom mask layers require a config and must override '
+2021-11-09 14:52:29.858798: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:185] None of the MLIR Optimization Passes are enabled (registered 2)
+2021-11-09 14:52:33.251967: I tensorflow/stream_executor/cuda/cuda_dnn.cc:369] Loaded cuDNN version 8201
+2021-11-09 14:52:34.794722: W tensorflow/stream_executor/gpu/asm_compiler.cc:77] Couldn't get ptxas version string: Internal: Running ptxas --version returned 32512
+2021-11-09 14:52:34.840154: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] Internal: ptxas exited with non-zero error code 32512, output: 
+Relying on driver to perform ptx compilation. 
+Modify $PATH to customize ptxas location.
+This message will be only logged once.
+2021-11-09 14:53:08.014917: I tensorflow/stream_executor/cuda/cuda_blas.cc:1760] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+0.8888888888888888
+Reading ./databaserelease2/NatureDataset/val/2-waters584.jpg
+0.1111111111111111
+Reading ./databaserelease2/NatureDataset/val/8-waters339.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/5-forest289.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/5-waters15.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/6-waters598.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-waters464.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/8-meadows307.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/6-meadows113.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-meadows267.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/4-forest66.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/4-waters510.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/8-waters49.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/6-waters186.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-meadows412.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-forest188.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/4-meadows301.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/7-meadows383.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-forest401.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/5-waters74.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/7-waters841.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/7-forest254.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-forest176.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-forest35.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/9-waters113.jpg
+0.8888888888888888
+Reading ./databaserelease2/NatureDataset/val/5-waters882.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/6-forest548.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-waters370.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/7-forest568.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/7-waters247.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/4-waters479.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/5-meadows79.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/8-meadows390.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/7-meadows103.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/7-waters618.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/8-waters470.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/7-waters897.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-forest425.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/8-waters865.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/6-forest530.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/6-meadows237.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/7-forest159.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/9-waters129.jpg
+0.8888888888888888
+Reading ./databaserelease2/NatureDataset/val/5-forest273.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/6-forest470.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/9-waters722.jpg
+0.8888888888888888
+Reading ./databaserelease2/NatureDataset/val/7-waters845.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/5-meadows219.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/6-waters104.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/7-forest561.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/7-waters795.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/8-waters677.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/9-forest169.jpg
+0.8888888888888888
+Reading ./databaserelease2/NatureDataset/val/4-forest350.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/6-meadows84.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/9-waters847.jpg
+0.8888888888888888
+Reading ./databaserelease2/NatureDataset/val/7-waters51.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-forest15.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/8-waters375.jpg
+0.7777777777777778
+Reading ./databaserelease2/NatureDataset/val/5-meadows346.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/5-forest312.jpg
+0.4444444444444444
+Reading ./databaserelease2/NatureDataset/val/4-waters22.jpg
+0.3333333333333333
+Reading ./databaserelease2/NatureDataset/val/7-forest63.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/7-forest427.jpg
+0.6666666666666666
+Reading ./databaserelease2/NatureDataset/val/6-waters66.jpg
+0.5555555555555556
+Reading ./databaserelease2/NatureDataset/val/5-forest171.jpg
+0.4444444444444444
+
+Read 398 images.
+
+
+Epoch 1/200
+1/1 [==============================] - ETA: 0s - loss: 0.3509 - accuracy: 0.29171/1 [==============================] - 158s 158s/step - loss: 0.3509 - accuracy: 0.2917 - val_loss: 0.1135 - val_accuracy: 0.0151
+2021-11-09 14:55:12.651481: W tensorflow/python/util/util.cc:348] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
+/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/utils/generic_utils.py:494: CustomMaskWarning: Custom mask layers require a config and must override get_config. When loading, the custom mask layer must be passed to the custom_objects argument.
+  warnings.warn('Custom mask layers require a config and must override '
+2021-11-09 14:55:20.626761: I tensorflow/core/profiler/lib/profiler_session.cc:131] Profiler session initializing.
+2021-11-09 14:55:20.626805: I tensorflow/core/profiler/lib/profiler_session.cc:146] Profiler session started.
+2021-11-09 14:55:20.626841: E tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1666] function cupti_interface_->Subscribe( &subscriber_, (CUpti_CallbackFunc)ApiCallback, this)failed with error CUPTI could not be loaded or symbol could not be found.
+The temperature of the GPU is  36
+Epoch 2/200
+2021-11-09 14:55:21.294899: I tensorflow/core/profiler/lib/profiler_session.cc:66] Profiler session collecting data.
+2021-11-09 14:55:21.295019: E tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1757] function cupti_interface_->Finalize()failed with error CUPTI could not be loaded or symbol could not be found.
+2021-11-09 14:55:21.307146: I tensorflow/core/profiler/internal/gpu/cupti_collector.cc:673]  GpuTracer has collected 0 callback api events and 0 activity events. 
+2021-11-09 14:55:21.310693: I tensorflow/core/profiler/lib/profiler_session.cc:164] Profiler session tear down.
+2021-11-09 14:55:21.502104: I tensorflow/core/profiler/rpc/client/save_profile.cc:136] Creating directory: agnet.specialmodel.12.res.logs/fit/20211109-145131/train/plugins/profile/2021_11_09_14_55_21
+
+2021-11-09 14:55:21.504986: I tensorflow/core/profiler/rpc/client/save_profile.cc:142] Dumped gzipped tool data for trace.json.gz to agnet.specialmodel.12.res.logs/fit/20211109-145131/train/plugins/profile/2021_11_09_14_55_21/nodegpu002.hpc.fau.edu.trace.json.gz
+2021-11-09 14:55:21.541815: I tensorflow/core/profiler/rpc/client/save_profile.cc:136] Creating directory: agnet.specialmodel.12.res.logs/fit/20211109-145131/train/plugins/profile/2021_11_09_14_55_21
+
+2021-11-09 14:55:21.549228: I tensorflow/core/profiler/rpc/client/save_profile.cc:142] Dumped gzipped tool data for memory_profile.json.gz to agnet.specialmodel.12.res.logs/fit/20211109-145131/train/plugins/profile/2021_11_09_14_55_21/nodegpu002.hpc.fau.edu.memory_profile.json.gz
+2021-11-09 14:55:21.556526: I tensorflow/core/profiler/rpc/client/capture_profile.cc:251] Creating directory: agnet.specialmodel.12.res.logs/fit/20211109-145131/train/plugins/profile/2021_11_09_14_55_21
+Dumped tool data for xplane.pb to agnet.specialmodel.12.res.logs/fit/20211109-145131/train/plugins/profile/2021_11_09_14_55_21/nodegpu002.hpc.fau.edu.xplane.pb
+Dumped tool data for overview_page.pb to agnet.specialmodel.12.res.logs/fit/20211109-145131/train/plugins/profile/2021_11_09_14_55_21/nodegpu002.hpc.fau.edu.overview_page.pb
+Dumped tool data for input_pipeline.pb to agnet.specialmodel.12.res.logs/fit/20211109-145131/train/plugins/profile/2021_11_09_14_55_21/nodegpu002.hpc.fau.edu.input_pipeline.pb
+Dumped tool data for tensorflow_stats.pb to agnet.specialmodel.12.res.logs/fit/20211109-145131/train/plugins/profile/2021_11_09_14_55_21/nodegpu002.hpc.fau.edu.tensorflow_stats.pb
+Dumped tool data for kernel_stats.pb to agnet.specialmodel.12.res.logs/fit/20211109-145131/train/plugins/profile/2021_11_09_14_55_21/nodegpu002.hpc.fau.edu.kernel_stats.pb
+
+1/1 [==============================] - ETA: 0s - loss: 0.2796 - accuracy: 0.37501/1 [==============================] - 4s 4s/step - loss: 0.2796 - accuracy: 0.3750 - val_loss: 0.1977 - val_accuracy: 0.0151
+The temperature of the GPU is  43
+Epoch 3/200
+1/1 [==============================] - ETA: 0s - loss: 0.3394 - accuracy: 0.29171/1 [==============================] - 4s 4s/step - loss: 0.3394 - accuracy: 0.2917 - val_loss: 0.2106 - val_accuracy: 0.0151
+The temperature of the GPU is  45
+Epoch 4/200
+1/1 [==============================] - ETA: 0s - loss: 0.3045 - accuracy: 0.45831/1 [==============================] - 4s 4s/step - loss: 0.3045 - accuracy: 0.4583 - val_loss: 0.2109 - val_accuracy: 0.0151
+The temperature of the GPU is  47
+Epoch 5/200
+1/1 [==============================] - ETA: 0s - loss: 0.2465 - accuracy: 0.58331/1 [==============================] - 4s 4s/step - loss: 0.2465 - accuracy: 0.5833 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  48
+Epoch 6/200
+1/1 [==============================] - ETA: 0s - loss: 0.2079 - accuracy: 0.70831/1 [==============================] - 4s 4s/step - loss: 0.2079 - accuracy: 0.7083 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  50
+Epoch 7/200
+1/1 [==============================] - ETA: 0s - loss: 0.2109 - accuracy: 0.62501/1 [==============================] - 4s 4s/step - loss: 0.2109 - accuracy: 0.6250 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  51
+Epoch 8/200
+1/1 [==============================] - ETA: 0s - loss: 0.2101 - accuracy: 0.79171/1 [==============================] - 4s 4s/step - loss: 0.2101 - accuracy: 0.7917 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  52
+Epoch 9/200
+1/1 [==============================] - ETA: 0s - loss: 0.2459 - accuracy: 0.54171/1 [==============================] - 4s 4s/step - loss: 0.2459 - accuracy: 0.5417 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  54
+Epoch 10/200
+1/1 [==============================] - ETA: 0s - loss: 0.2146 - accuracy: 0.75001/1 [==============================] - 4s 4s/step - loss: 0.2146 - accuracy: 0.7500 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  54
+Epoch 11/200
+1/1 [==============================] - ETA: 0s - loss: 0.2242 - accuracy: 0.70831/1 [==============================] - 4s 4s/step - loss: 0.2242 - accuracy: 0.7083 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  56
+Epoch 12/200
+1/1 [==============================] - ETA: 0s - loss: 0.2435 - accuracy: 0.54171/1 [==============================] - 4s 4s/step - loss: 0.2435 - accuracy: 0.5417 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  57
+Epoch 13/200
+1/1 [==============================] - ETA: 0s - loss: 0.2144 - accuracy: 0.70831/1 [==============================] - 4s 4s/step - loss: 0.2144 - accuracy: 0.7083 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  57
+Epoch 14/200
+1/1 [==============================] - ETA: 0s - loss: 0.1880 - accuracy: 0.75001/1 [==============================] - 4s 4s/step - loss: 0.1880 - accuracy: 0.7500 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  58
+Epoch 15/200
+1/1 [==============================] - ETA: 0s - loss: 0.1859 - accuracy: 0.75001/1 [==============================] - 4s 4s/step - loss: 0.1859 - accuracy: 0.7500 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  59
+Epoch 16/200
+1/1 [==============================] - ETA: 0s - loss: 0.1503 - accuracy: 0.87501/1 [==============================] - 4s 4s/step - loss: 0.1503 - accuracy: 0.8750 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  60
+Epoch 17/200
+1/1 [==============================] - ETA: 0s - loss: 0.1305 - accuracy: 0.91671/1 [==============================] - 4s 4s/step - loss: 0.1305 - accuracy: 0.9167 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  60
+Epoch 18/200
+1/1 [==============================] - ETA: 0s - loss: 0.1859 - accuracy: 0.75001/1 [==============================] - 4s 4s/step - loss: 0.1859 - accuracy: 0.7500 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  60
+Epoch 19/200
+1/1 [==============================] - ETA: 0s - loss: 0.1525 - accuracy: 0.70831/1 [==============================] - 4s 4s/step - loss: 0.1525 - accuracy: 0.7083 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  61
+Epoch 20/200
+1/1 [==============================] - ETA: 0s - loss: 0.1256 - accuracy: 0.75001/1 [==============================] - 4s 4s/step - loss: 0.1256 - accuracy: 0.7500 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  62
+Epoch 21/200
+1/1 [==============================] - ETA: 0s - loss: 0.1786 - accuracy: 0.75001/1 [==============================] - 4s 4s/step - loss: 0.1786 - accuracy: 0.7500 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  62
+Epoch 22/200
+1/1 [==============================] - ETA: 0s - loss: 0.1399 - accuracy: 0.79171/1 [==============================] - 4s 4s/step - loss: 0.1399 - accuracy: 0.7917 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  62
+Epoch 23/200
+1/1 [==============================] - ETA: 0s - loss: 0.1590 - accuracy: 0.75001/1 [==============================] - 4s 4s/step - loss: 0.1590 - accuracy: 0.7500 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  63
+Epoch 24/200
+1/1 [==============================] - ETA: 0s - loss: 0.1313 - accuracy: 0.75001/1 [==============================] - 4s 4s/step - loss: 0.1313 - accuracy: 0.7500 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  63
+Epoch 25/200
+1/1 [==============================] - ETA: 0s - loss: 0.1271 - accuracy: 0.83331/1 [==============================] - 4s 4s/step - loss: 0.1271 - accuracy: 0.8333 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 26/200
+1/1 [==============================] - ETA: 0s - loss: 0.1024 - accuracy: 0.87501/1 [==============================] - 4s 4s/step - loss: 0.1024 - accuracy: 0.8750 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 27/200
+1/1 [==============================] - ETA: 0s - loss: 0.1398 - accuracy: 0.87501/1 [==============================] - 4s 4s/step - loss: 0.1398 - accuracy: 0.8750 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 28/200
+1/1 [==============================] - ETA: 0s - loss: 0.1052 - accuracy: 0.95831/1 [==============================] - 4s 4s/step - loss: 0.1052 - accuracy: 0.9583 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 29/200
+1/1 [==============================] - ETA: 0s - loss: 0.0838 - accuracy: 0.95831/1 [==============================] - 4s 4s/step - loss: 0.0838 - accuracy: 0.9583 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 30/200
+1/1 [==============================] - ETA: 0s - loss: 0.0931 - accuracy: 0.87501/1 [==============================] - 4s 4s/step - loss: 0.0931 - accuracy: 0.8750 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 31/200
+1/1 [==============================] - ETA: 0s - loss: 0.1086 - accuracy: 0.79171/1 [==============================] - 4s 4s/step - loss: 0.1086 - accuracy: 0.7917 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 32/200
+1/1 [==============================] - ETA: 0s - loss: 0.0943 - accuracy: 0.91671/1 [==============================] - 4s 4s/step - loss: 0.0943 - accuracy: 0.9167 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 33/200
+1/1 [==============================] - ETA: 0s - loss: 0.0790 - accuracy: 0.91671/1 [==============================] - 4s 4s/step - loss: 0.0790 - accuracy: 0.9167 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 34/200
+1/1 [==============================] - ETA: 0s - loss: 0.0597 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0597 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 35/200
+1/1 [==============================] - ETA: 0s - loss: 0.0888 - accuracy: 0.91671/1 [==============================] - 4s 4s/step - loss: 0.0888 - accuracy: 0.9167 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 36/200
+1/1 [==============================] - ETA: 0s - loss: 0.0616 - accuracy: 0.95831/1 [==============================] - 4s 4s/step - loss: 0.0616 - accuracy: 0.9583 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 37/200
+1/1 [==============================] - ETA: 0s - loss: 0.0725 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0725 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 38/200
+1/1 [==============================] - ETA: 0s - loss: 0.0605 - accuracy: 0.95831/1 [==============================] - 4s 4s/step - loss: 0.0605 - accuracy: 0.9583 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 39/200
+1/1 [==============================] - ETA: 0s - loss: 0.0954 - accuracy: 0.91671/1 [==============================] - 4s 4s/step - loss: 0.0954 - accuracy: 0.9167 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 40/200
+1/1 [==============================] - ETA: 0s - loss: 0.0930 - accuracy: 0.91671/1 [==============================] - 4s 4s/step - loss: 0.0930 - accuracy: 0.9167 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  67
+Epoch 41/200
+1/1 [==============================] - ETA: 0s - loss: 0.0813 - accuracy: 0.91671/1 [==============================] - 4s 4s/step - loss: 0.0813 - accuracy: 0.9167 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 42/200
+1/1 [==============================] - ETA: 0s - loss: 0.0536 - accuracy: 0.95831/1 [==============================] - 4s 4s/step - loss: 0.0536 - accuracy: 0.9583 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 43/200
+1/1 [==============================] - ETA: 0s - loss: 0.0401 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0401 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  67
+Epoch 44/200
+1/1 [==============================] - ETA: 0s - loss: 0.0518 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0518 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  67
+Epoch 45/200
+1/1 [==============================] - ETA: 0s - loss: 0.0391 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0391 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  67
+Epoch 46/200
+1/1 [==============================] - ETA: 0s - loss: 0.0347 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0347 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  67
+Epoch 47/200
+1/1 [==============================] - ETA: 0s - loss: 0.0406 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0406 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 48/200
+1/1 [==============================] - ETA: 0s - loss: 0.0244 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0244 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  67
+Epoch 49/200
+1/1 [==============================] - ETA: 0s - loss: 0.0368 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0368 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  67
+Epoch 50/200
+1/1 [==============================] - ETA: 0s - loss: 0.0321 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0321 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  67
+Epoch 51/200
+1/1 [==============================] - ETA: 0s - loss: 0.0286 - accuracy: 0.95831/1 [==============================] - 4s 4s/step - loss: 0.0286 - accuracy: 0.9583 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  67
+Epoch 52/200
+1/1 [==============================] - ETA: 0s - loss: 0.0341 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0341 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  67
+Epoch 53/200
+1/1 [==============================] - ETA: 0s - loss: 0.0206 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0206 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  67
+Epoch 54/200
+1/1 [==============================] - ETA: 0s - loss: 0.0108 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0108 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  67
+Epoch 55/200
+1/1 [==============================] - ETA: 0s - loss: 0.0305 - accuracy: 0.95831/1 [==============================] - 4s 4s/step - loss: 0.0305 - accuracy: 0.9583 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  67
+Epoch 56/200
+1/1 [==============================] - ETA: 0s - loss: 0.0276 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0276 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  67
+Epoch 57/200
+1/1 [==============================] - ETA: 0s - loss: 0.0354 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0354 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  67
+Epoch 58/200
+1/1 [==============================] - ETA: 0s - loss: 0.0186 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0186 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 59/200
+1/1 [==============================] - ETA: 0s - loss: 0.0201 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0201 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  67
+Epoch 60/200
+1/1 [==============================] - ETA: 0s - loss: 0.0236 - accuracy: 0.95831/1 [==============================] - 4s 4s/step - loss: 0.0236 - accuracy: 0.9583 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 61/200
+1/1 [==============================] - ETA: 0s - loss: 0.0187 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0187 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 62/200
+1/1 [==============================] - ETA: 0s - loss: 0.0198 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0198 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  67
+Epoch 63/200
+1/1 [==============================] - ETA: 0s - loss: 0.0291 - accuracy: 0.95831/1 [==============================] - 4s 4s/step - loss: 0.0291 - accuracy: 0.9583 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 64/200
+1/1 [==============================] - ETA: 0s - loss: 0.0139 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0139 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 65/200
+1/1 [==============================] - ETA: 0s - loss: 0.0084 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0084 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 66/200
+1/1 [==============================] - ETA: 0s - loss: 0.0265 - accuracy: 0.95831/1 [==============================] - 4s 4s/step - loss: 0.0265 - accuracy: 0.9583 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 67/200
+1/1 [==============================] - ETA: 0s - loss: 0.0245 - accuracy: 0.95831/1 [==============================] - 4s 4s/step - loss: 0.0245 - accuracy: 0.9583 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 68/200
+1/1 [==============================] - ETA: 0s - loss: 0.0232 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0232 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 69/200
+1/1 [==============================] - ETA: 0s - loss: 0.0134 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0134 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 70/200
+1/1 [==============================] - ETA: 0s - loss: 0.0130 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0130 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 71/200
+1/1 [==============================] - ETA: 0s - loss: 0.0073 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0073 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 72/200
+1/1 [==============================] - ETA: 0s - loss: 0.0222 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0222 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 73/200
+1/1 [==============================] - ETA: 0s - loss: 0.0128 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0128 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 74/200
+1/1 [==============================] - ETA: 0s - loss: 0.0144 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0144 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 75/200
+1/1 [==============================] - ETA: 0s - loss: 0.0139 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0139 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 76/200
+1/1 [==============================] - ETA: 0s - loss: 0.0160 - accuracy: 0.95831/1 [==============================] - 4s 4s/step - loss: 0.0160 - accuracy: 0.9583 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 77/200
+1/1 [==============================] - ETA: 0s - loss: 0.0137 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0137 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 78/200
+1/1 [==============================] - ETA: 0s - loss: 0.0109 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0109 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 79/200
+1/1 [==============================] - ETA: 0s - loss: 0.0083 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0083 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 80/200
+1/1 [==============================] - ETA: 0s - loss: 0.0104 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0104 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 81/200
+1/1 [==============================] - ETA: 0s - loss: 0.0132 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0132 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 82/200
+1/1 [==============================] - ETA: 0s - loss: 0.0283 - accuracy: 0.95831/1 [==============================] - 4s 4s/step - loss: 0.0283 - accuracy: 0.9583 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 83/200
+1/1 [==============================] - ETA: 0s - loss: 0.0115 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0115 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 84/200
+1/1 [==============================] - ETA: 0s - loss: 0.0114 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0114 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 85/200
+1/1 [==============================] - ETA: 0s - loss: 0.0097 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0097 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 86/200
+1/1 [==============================] - ETA: 0s - loss: 0.0163 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0163 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 87/200
+1/1 [==============================] - ETA: 0s - loss: 0.0119 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0119 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 88/200
+1/1 [==============================] - ETA: 0s - loss: 0.0050 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0050 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 89/200
+1/1 [==============================] - ETA: 0s - loss: 0.0212 - accuracy: 0.95831/1 [==============================] - 4s 4s/step - loss: 0.0212 - accuracy: 0.9583 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 90/200
+1/1 [==============================] - ETA: 0s - loss: 0.0086 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0086 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 91/200
+1/1 [==============================] - ETA: 0s - loss: 0.0081 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0081 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 92/200
+1/1 [==============================] - ETA: 0s - loss: 0.0084 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0084 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 93/200
+1/1 [==============================] - ETA: 0s - loss: 0.0058 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0058 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 94/200
+1/1 [==============================] - ETA: 0s - loss: 0.0161 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0161 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 95/200
+1/1 [==============================] - ETA: 0s - loss: 0.0130 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0130 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 96/200
+1/1 [==============================] - ETA: 0s - loss: 0.0137 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0137 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 97/200
+1/1 [==============================] - ETA: 0s - loss: 0.0043 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0043 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 98/200
+1/1 [==============================] - ETA: 0s - loss: 0.0137 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0137 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  66
+Epoch 99/200
+1/1 [==============================] - ETA: 0s - loss: 0.0321 - accuracy: 0.95831/1 [==============================] - 4s 4s/step - loss: 0.0321 - accuracy: 0.9583 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 100/200
+1/1 [==============================] - ETA: 0s - loss: 0.0155 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0155 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 101/200
+1/1 [==============================] - ETA: 0s - loss: 0.0127 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0127 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 102/200
+1/1 [==============================] - ETA: 0s - loss: 0.0048 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0048 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 103/200
+1/1 [==============================] - ETA: 0s - loss: 0.0073 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0073 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 104/200
+1/1 [==============================] - ETA: 0s - loss: 0.0022 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0022 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 105/200
+1/1 [==============================] - ETA: 0s - loss: 0.0080 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0080 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 106/200
+1/1 [==============================] - ETA: 0s - loss: 0.0111 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0111 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 107/200
+1/1 [==============================] - ETA: 0s - loss: 0.0066 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0066 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 108/200
+1/1 [==============================] - ETA: 0s - loss: 0.0046 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0046 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 109/200
+1/1 [==============================] - ETA: 0s - loss: 0.0163 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0163 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 110/200
+1/1 [==============================] - ETA: 0s - loss: 0.0030 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0030 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 111/200
+1/1 [==============================] - ETA: 0s - loss: 0.0022 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0022 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 112/200
+1/1 [==============================] - ETA: 0s - loss: 0.0090 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0090 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 113/200
+1/1 [==============================] - ETA: 0s - loss: 0.0086 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0086 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 114/200
+1/1 [==============================] - ETA: 0s - loss: 0.0032 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0032 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 115/200
+1/1 [==============================] - ETA: 0s - loss: 0.0068 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0068 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 116/200
+1/1 [==============================] - ETA: 0s - loss: 0.0034 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0034 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 117/200
+1/1 [==============================] - ETA: 0s - loss: 0.0092 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0092 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 118/200
+1/1 [==============================] - ETA: 0s - loss: 0.0046 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0046 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 119/200
+1/1 [==============================] - ETA: 0s - loss: 0.0020 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0020 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 120/200
+1/1 [==============================] - ETA: 0s - loss: 0.0022 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0022 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 121/200
+1/1 [==============================] - ETA: 0s - loss: 0.0129 - accuracy: 0.95831/1 [==============================] - 4s 4s/step - loss: 0.0129 - accuracy: 0.9583 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 122/200
+1/1 [==============================] - ETA: 0s - loss: 0.0017 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0017 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 123/200
+1/1 [==============================] - ETA: 0s - loss: 0.0104 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0104 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 124/200
+1/1 [==============================] - ETA: 0s - loss: 0.0050 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0050 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 125/200
+1/1 [==============================] - ETA: 0s - loss: 0.0086 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0086 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 126/200
+1/1 [==============================] - ETA: 0s - loss: 0.0049 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0049 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 127/200
+1/1 [==============================] - ETA: 0s - loss: 0.0019 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0019 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 128/200
+1/1 [==============================] - ETA: 0s - loss: 0.0046 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0046 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 129/200
+1/1 [==============================] - ETA: 0s - loss: 0.0071 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0071 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 130/200
+1/1 [==============================] - ETA: 0s - loss: 0.0015 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0015 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 131/200
+1/1 [==============================] - ETA: 0s - loss: 0.0032 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0032 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 132/200
+1/1 [==============================] - ETA: 0s - loss: 0.0037 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0037 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 133/200
+1/1 [==============================] - ETA: 0s - loss: 0.0049 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0049 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 134/200
+1/1 [==============================] - ETA: 0s - loss: 0.0065 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0065 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 135/200
+1/1 [==============================] - ETA: 0s - loss: 0.0058 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0058 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 136/200
+1/1 [==============================] - ETA: 0s - loss: 0.0033 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0033 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 137/200
+1/1 [==============================] - ETA: 0s - loss: 0.0049 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0049 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 138/200
+1/1 [==============================] - ETA: 0s - loss: 7.7575e-04 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 7.7575e-04 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 139/200
+1/1 [==============================] - ETA: 0s - loss: 0.0032 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0032 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 140/200
+1/1 [==============================] - ETA: 0s - loss: 0.0093 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0093 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 141/200
+1/1 [==============================] - ETA: 0s - loss: 0.0051 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0051 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 142/200
+1/1 [==============================] - ETA: 0s - loss: 0.0032 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0032 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 143/200
+1/1 [==============================] - ETA: 0s - loss: 0.0054 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0054 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 144/200
+1/1 [==============================] - ETA: 0s - loss: 0.0022 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0022 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 145/200
+1/1 [==============================] - ETA: 0s - loss: 0.0038 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0038 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 146/200
+1/1 [==============================] - ETA: 0s - loss: 0.0116 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0116 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 147/200
+1/1 [==============================] - ETA: 0s - loss: 0.0048 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0048 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 148/200
+1/1 [==============================] - ETA: 0s - loss: 0.0023 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0023 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 149/200
+1/1 [==============================] - ETA: 0s - loss: 0.0072 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0072 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 150/200
+1/1 [==============================] - ETA: 0s - loss: 0.0070 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0070 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 151/200
+1/1 [==============================] - ETA: 0s - loss: 0.0056 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0056 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 152/200
+1/1 [==============================] - ETA: 0s - loss: 0.0031 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0031 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 153/200
+1/1 [==============================] - ETA: 0s - loss: 0.0092 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0092 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 154/200
+1/1 [==============================] - ETA: 0s - loss: 0.0051 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0051 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 155/200
+1/1 [==============================] - ETA: 0s - loss: 0.0017 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0017 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 156/200
+1/1 [==============================] - ETA: 0s - loss: 0.0054 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0054 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 157/200
+1/1 [==============================] - ETA: 0s - loss: 0.0017 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0017 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 158/200
+1/1 [==============================] - ETA: 0s - loss: 0.0062 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0062 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 159/200
+1/1 [==============================] - ETA: 0s - loss: 0.0109 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0109 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 160/200
+1/1 [==============================] - ETA: 0s - loss: 0.0013 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0013 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 161/200
+1/1 [==============================] - ETA: 0s - loss: 0.0079 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0079 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 162/200
+1/1 [==============================] - ETA: 0s - loss: 0.0053 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0053 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 163/200
+1/1 [==============================] - ETA: 0s - loss: 0.0031 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0031 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 164/200
+1/1 [==============================] - ETA: 0s - loss: 0.0035 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0035 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 165/200
+1/1 [==============================] - ETA: 0s - loss: 7.0667e-04 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 7.0667e-04 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 166/200
+1/1 [==============================] - ETA: 0s - loss: 0.0032 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0032 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 167/200
+1/1 [==============================] - ETA: 0s - loss: 0.0107 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0107 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 168/200
+1/1 [==============================] - ETA: 0s - loss: 0.0020 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0020 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 169/200
+1/1 [==============================] - ETA: 0s - loss: 0.0033 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0033 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 170/200
+1/1 [==============================] - ETA: 0s - loss: 0.0042 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0042 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 171/200
+1/1 [==============================] - ETA: 0s - loss: 0.0059 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0059 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 172/200
+1/1 [==============================] - ETA: 0s - loss: 0.0023 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0023 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 173/200
+1/1 [==============================] - ETA: 0s - loss: 0.0029 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0029 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 174/200
+1/1 [==============================] - ETA: 0s - loss: 0.0033 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0033 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 175/200
+1/1 [==============================] - ETA: 0s - loss: 0.0021 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0021 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 176/200
+1/1 [==============================] - ETA: 0s - loss: 0.0094 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0094 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 177/200
+1/1 [==============================] - ETA: 0s - loss: 0.0059 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0059 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 178/200
+1/1 [==============================] - ETA: 0s - loss: 0.0033 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0033 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 179/200
+1/1 [==============================] - ETA: 0s - loss: 0.0061 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0061 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 180/200
+1/1 [==============================] - ETA: 0s - loss: 0.0171 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0171 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 181/200
+1/1 [==============================] - ETA: 0s - loss: 0.0023 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0023 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 182/200
+1/1 [==============================] - ETA: 0s - loss: 0.0010 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0010 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 183/200
+1/1 [==============================] - ETA: 0s - loss: 0.0028 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0028 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 184/200
+1/1 [==============================] - ETA: 0s - loss: 0.0025 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0025 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 185/200
+1/1 [==============================] - ETA: 0s - loss: 0.0055 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0055 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 186/200
+1/1 [==============================] - ETA: 0s - loss: 7.6855e-04 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 7.6855e-04 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 187/200
+1/1 [==============================] - ETA: 0s - loss: 0.0027 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0027 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 188/200
+1/1 [==============================] - ETA: 0s - loss: 7.4918e-04 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 7.4918e-04 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 189/200
+1/1 [==============================] - ETA: 0s - loss: 0.0160 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0160 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 190/200
+1/1 [==============================] - ETA: 0s - loss: 0.0020 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0020 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 191/200
+1/1 [==============================] - ETA: 0s - loss: 7.1141e-04 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 7.1141e-04 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 192/200
+1/1 [==============================] - ETA: 0s - loss: 0.0136 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0136 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 193/200
+1/1 [==============================] - ETA: 0s - loss: 0.0030 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0030 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 194/200
+1/1 [==============================] - ETA: 0s - loss: 0.0083 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0083 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 195/200
+1/1 [==============================] - ETA: 0s - loss: 0.0012 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0012 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 196/200
+1/1 [==============================] - ETA: 0s - loss: 0.0059 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0059 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 197/200
+1/1 [==============================] - ETA: 0s - loss: 0.0044 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0044 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 198/200
+1/1 [==============================] - ETA: 0s - loss: 0.0058 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0058 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  65
+Epoch 199/200
+1/1 [==============================] - ETA: 0s - loss: 0.0016 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0016 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+The temperature of the GPU is  64
+Epoch 200/200
+1/1 [==============================] - ETA: 0s - loss: 0.0018 - accuracy: 1.00001/1 [==============================] - 4s 4s/step - loss: 0.0018 - accuracy: 1.0000 - val_loss: 0.2110 - val_accuracy: 0.0151
+/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/utils/generic_utils.py:494: CustomMaskWarning: Custom mask layers require a config and must override get_config. When loading, the custom mask layer must be passed to the custom_objects argument.
+  warnings.warn('Custom mask layers require a config and must override '
+The temperature of the GPU is  64
+[[0.3508756160736084, 0.2796255648136139, 0.33940982818603516, 0.3044760525226593, 0.24652715027332306, 0.20790338516235352, 0.21086235344409943, 0.21006469428539276, 0.24587291479110718, 0.21464945375919342, 0.2241738885641098, 0.24345441162586212, 0.21444670855998993, 0.1880122423171997, 0.185899555683136, 0.15030790865421295, 0.13051728904247284, 0.18589268624782562, 0.15253424644470215, 0.1256236881017685, 0.1786390095949173, 0.1398882418870926, 0.1589517593383789, 0.13127970695495605, 0.12711448967456818, 0.10240141302347183, 0.13977476954460144, 0.10523752123117447, 0.08379736542701721, 0.09305151551961899, 0.1086428090929985, 0.094269298017025, 0.07896982878446579, 0.059669628739356995, 0.08883211761713028, 0.06156493350863457, 0.07254909723997116, 0.06053607538342476, 0.0954180657863617, 0.09301332384347916, 0.08126647770404816, 0.05356974899768829, 0.040087856352329254, 0.051838506013154984, 0.0391218364238739, 0.034689776599407196, 0.040645528584718704, 0.024391157552599907, 0.036751776933670044, 0.03210696205496788, 0.0286154355853796, 0.034096669405698776, 0.02055002935230732, 0.010752414353191853, 0.03049910068511963, 0.027595805004239082, 0.0353887639939785, 0.01860511116683483, 0.020057274028658867, 0.023591801524162292, 0.01866745762526989, 0.0198412723839283, 0.029065055772662163, 0.013935662806034088, 0.008437326177954674, 0.026453772559762, 0.02451075054705143, 0.02315630577504635, 0.01336734090000391, 0.013007757253944874, 0.007274262141436338, 0.02218932844698429, 0.012802496552467346, 0.014433946460485458, 0.013896550983190536, 0.015990711748600006, 0.013676423579454422, 0.010898876935243607, 0.008303756825625896, 0.010393628850579262, 0.013151771388947964, 0.028333665803074837, 0.011538955383002758, 0.01143272127956152, 0.00965916458517313, 0.01633298397064209, 0.011887882836163044, 0.005016124341636896, 0.0212209764868021, 0.00861517246812582, 0.008148977532982826, 0.008396153338253498, 0.005766300018876791, 0.016111087054014206, 0.012956728227436543, 0.01365518569946289, 0.004312589764595032, 0.013716663233935833, 0.03214309737086296, 0.015468974597752094, 0.012744195759296417, 0.004801545757800341, 0.00730431592091918, 0.002191654872149229, 0.008026926778256893, 0.011066701263189316, 0.006563369184732437, 0.00461531151086092, 0.01629778742790222, 0.002980244578793645, 0.0021768268197774887, 0.00899211410433054, 0.008602901361882687, 0.0031668783631175756, 0.006814587861299515, 0.0034141724463552237, 0.009216559119522572, 0.004645637236535549, 0.001993242185562849, 0.002219755668193102, 0.012894862331449986, 0.001665296615101397, 0.010410281829535961, 0.005029711872339249, 0.008611480705440044, 0.004929449874907732, 0.0019282085122540593, 0.00461938139051199, 0.007129518780857325, 0.0015163527568802238, 0.003161307657137513, 0.0037472806870937347, 0.004885017406195402, 0.00648709200322628, 0.0058498927392065525, 0.00333525356836617, 0.0049093556590378284, 0.0007757499697618186, 0.0031734127551317215, 0.009252790361642838, 0.005097410175949335, 0.003232788061723113, 0.005410528276115656, 0.002183993114158511, 0.0038344934582710266, 0.011632976122200489, 0.004773575346916914, 0.002292250981554389, 0.007211185526102781, 0.007020941469818354, 0.005625235382467508, 0.0031400397419929504, 0.00916052982211113, 0.005104603245854378, 0.0016858158633112907, 0.00540059944614768, 0.0017476292559877038, 0.006235925480723381, 0.010907438583672047, 0.0012583198258653283, 0.00791087280958891, 0.005278178956359625, 0.0031051693949848413, 0.0035182188730686903, 0.0007066710968501866, 0.003207962727174163, 0.01073118019849062, 0.002006836934015155, 0.003276970935985446, 0.004228129982948303, 0.00592410983517766, 0.0023163440637290478, 0.002938780700787902, 0.0033459607511758804, 0.0021084679756313562, 0.0093753756955266, 0.0059065804816782475, 0.0032801569905132055, 0.006097113247960806, 0.017053809016942978, 0.002272355603054166, 0.0010357985738664865, 0.002772565931081772, 0.002490466693416238, 0.005454178433865309, 0.0007685495656915009, 0.0026554549112915993, 0.0007491772994399071, 0.015994848683476448, 0.00204344536177814, 0.0007114061154425144, 0.01361309364438057, 0.002986254869028926, 0.008331946097314358, 0.001202376908622682, 0.005905504804104567, 0.0044431439600884914, 0.005826413631439209, 0.0015684342943131924, 0.0018023578450083733], [0.11354543268680573, 0.19766317307949066, 0.21055516600608826, 0.2108885794878006, 0.211007222533226, 0.2110101580619812, 0.21102315187454224, 0.2110235095024109, 0.21102412045001984, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482, 0.2110242247581482]]

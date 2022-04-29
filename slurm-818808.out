@@ -1,0 +1,42 @@
+2021-11-10 03:00:06.988941: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-11-10 03:00:07.770855: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38426 MB memory:  -> device: 0, name: A100-PCIE-40GB, pci bus id: 0000:21:00.0, compute capability: 8.0
+Input file is " ./agnet.14.res
+Output file is " 
+Image path is " ./databaserelease2/MixedDataset/test
+--------------------
+
+
+Traceback (most recent call last):
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 602, in <module>
+    main(sys.argv[1:])
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 597, in main
+    test(modelin,imagepath)
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 484, in test
+    model = models.load_model(modelin)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/saving/save.py", line 205, in load_model
+    return saved_model_load.load(filepath, compile, options)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/saving/saved_model/load.py", line 143, in load
+    keras_loader.finalize_objects()
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/saving/saved_model/load.py", line 644, in finalize_objects
+    self._reconstruct_all_models()
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/saving/saved_model/load.py", line 663, in _reconstruct_all_models
+    self._reconstruct_model(model_id, model, layers)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/saving/saved_model/load.py", line 708, in _reconstruct_model
+    created_layers) = functional_lib.reconstruct_from_config(
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/functional.py", line 1283, in reconstruct_from_config
+    process_node(layer, node_data)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/functional.py", line 1231, in process_node
+    output_tensors = layer(input_tensors, **kwargs)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/base_layer.py", line 976, in __call__
+    return self._functional_construction_call(inputs, args, kwargs,
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/base_layer.py", line 1114, in _functional_construction_call
+    outputs = self._keras_tensor_symbolic_call(
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/base_layer.py", line 848, in _keras_tensor_symbolic_call
+    return self._infer_output_signature(inputs, args, kwargs, input_masks)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/base_layer.py", line 888, in _infer_output_signature
+    outputs = call_fn(inputs, *args, **kwargs)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/layers/merge.py", line 117, in call
+    raise ValueError('A merge layer should be called on a list of inputs.')
+ValueError: A merge layer should be called on a list of inputs.
+srun: error: nodegpu002: task 0: Exited with exit code 1

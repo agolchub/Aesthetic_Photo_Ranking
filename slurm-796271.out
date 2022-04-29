@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "./train.py", line 3, in <module>
+    import skimage
+ModuleNotFoundError: No module named 'skimage'
+srun: error: node030: task 0: Exited with exit code 1

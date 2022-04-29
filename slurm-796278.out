@@ -1,0 +1,93 @@
+Collecting tensorflow-gpu==2.6
+  Downloading tensorflow_gpu-2.6.0-cp38-cp38-manylinux2010_x86_64.whl (458.4 MB)
+Collecting wrapt~=1.12.1
+  Using cached wrapt-1.12.1.tar.gz (27 kB)
+Collecting grpcio<2.0,>=1.37.0
+  Downloading grpcio-1.41.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.9 MB)
+Requirement already satisfied: wheel~=0.35 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.6) (0.35.1)
+Collecting typing-extensions~=3.7.4
+  Using cached typing_extensions-3.7.4.3-py3-none-any.whl (22 kB)
+Collecting gast==0.4.0
+  Using cached gast-0.4.0-py3-none-any.whl (9.8 kB)
+Collecting clang~=5.0
+  Downloading clang-5.0.tar.gz (30 kB)
+Collecting absl-py~=0.10
+  Downloading absl_py-0.15.0-py3-none-any.whl (132 kB)
+Collecting flatbuffers~=1.12.0
+  Using cached flatbuffers-1.12-py2.py3-none-any.whl (15 kB)
+Collecting numpy~=1.19.2
+  Downloading numpy-1.19.5-cp38-cp38-manylinux2010_x86_64.whl (14.9 MB)
+Collecting opt-einsum~=3.3.0
+  Using cached opt_einsum-3.3.0-py3-none-any.whl (65 kB)
+Collecting protobuf>=3.9.2
+  Downloading protobuf-3.19.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.1 MB)
+Collecting astunparse~=1.6.3
+  Using cached astunparse-1.6.3-py2.py3-none-any.whl (12 kB)
+Collecting google-pasta~=0.2
+  Using cached google_pasta-0.2.0-py3-none-any.whl (57 kB)
+Collecting keras~=2.6
+  Downloading keras-2.6.0-py2.py3-none-any.whl (1.3 MB)
+Collecting h5py~=3.1.0
+  Downloading h5py-3.1.0-cp38-cp38-manylinux1_x86_64.whl (4.4 MB)
+Collecting termcolor~=1.1.0
+  Using cached termcolor-1.1.0.tar.gz (3.9 kB)
+Requirement already satisfied: six~=1.15.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.6) (1.15.0)
+Collecting tensorboard~=2.6
+  Downloading tensorboard-2.7.0-py3-none-any.whl (5.8 MB)
+Collecting tensorflow-estimator~=2.6
+  Downloading tensorflow_estimator-2.6.0-py2.py3-none-any.whl (462 kB)
+Collecting keras-preprocessing~=1.1.2
+  Using cached Keras_Preprocessing-1.1.2-py2.py3-none-any.whl (42 kB)
+Collecting werkzeug>=0.11.15
+  Downloading Werkzeug-2.0.2-py3-none-any.whl (288 kB)
+Requirement already satisfied: requests<3,>=2.21.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (2.24.0)
+Collecting markdown>=2.6.8
+  Downloading Markdown-3.3.4-py3-none-any.whl (97 kB)
+Requirement already satisfied: setuptools>=41.0.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (50.3.1.post20201107)
+Collecting tensorboard-data-server<0.7.0,>=0.6.0
+  Downloading tensorboard_data_server-0.6.1-py3-none-manylinux2010_x86_64.whl (4.9 MB)
+Collecting google-auth-oauthlib<0.5,>=0.4.1
+  Downloading google_auth_oauthlib-0.4.6-py2.py3-none-any.whl (18 kB)
+Collecting tensorboard-plugin-wit>=1.6.0
+  Downloading tensorboard_plugin_wit-1.8.0-py3-none-any.whl (781 kB)
+Collecting google-auth<3,>=1.6.3
+  Downloading google_auth-2.3.0-py2.py3-none-any.whl (154 kB)
+Requirement already satisfied: chardet<4,>=3.0.2 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard~=2.6->tensorflow-gpu==2.6) (3.0.4)
+Requirement already satisfied: certifi>=2017.4.17 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard~=2.6->tensorflow-gpu==2.6) (2020.6.20)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard~=2.6->tensorflow-gpu==2.6) (1.25.11)
+Requirement already satisfied: idna<3,>=2.5 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard~=2.6->tensorflow-gpu==2.6) (2.10)
+Collecting requests-oauthlib>=0.7.0
+  Using cached requests_oauthlib-1.3.0-py2.py3-none-any.whl (23 kB)
+Collecting pyasn1-modules>=0.2.1
+  Using cached pyasn1_modules-0.2.8-py2.py3-none-any.whl (155 kB)
+Collecting rsa<5,>=3.1.4
+  Downloading rsa-4.7.2-py3-none-any.whl (34 kB)
+Collecting cachetools<5.0,>=2.0.0
+  Downloading cachetools-4.2.4-py3-none-any.whl (10 kB)
+Collecting oauthlib>=3.0.0
+  Downloading oauthlib-3.1.1-py2.py3-none-any.whl (146 kB)
+Collecting pyasn1<0.5.0,>=0.4.6
+  Using cached pyasn1-0.4.8-py2.py3-none-any.whl (77 kB)
+Building wheels for collected packages: wrapt, clang, termcolor
+  Building wheel for wrapt (setup.py): started
+  Building wheel for wrapt (setup.py): finished with status 'done'
+  Created wheel for wrapt: filename=wrapt-1.12.1-cp38-cp38-linux_x86_64.whl size=78673 sha256=acd2df327eb2341d5dd6cf9ee9c403dcf465e3fb745b91949bcdc1440d7deae0
+  Stored in directory: /mnt/beegfs/home/agolchub/.cache/pip/wheels/5f/fd/9e/b6cf5890494cb8ef0b5eaff72e5d55a70fb56316007d6dfe73
+  Building wheel for clang (setup.py): started
+  Building wheel for clang (setup.py): finished with status 'done'
+  Created wheel for clang: filename=clang-5.0-py3-none-any.whl size=30705 sha256=27e5c3d21a3a1a34b98001268dd201654f6cfe684fc1535844bc6357addd7f9d
+  Stored in directory: /mnt/beegfs/home/agolchub/.cache/pip/wheels/f1/60/77/22b9b5887bd47801796a856f47650d9789c74dc3161a26d608
+  Building wheel for termcolor (setup.py): started
+  Building wheel for termcolor (setup.py): finished with status 'done'
+  Created wheel for termcolor: filename=termcolor-1.1.0-py3-none-any.whl size=4830 sha256=1cc0090f8802d556df5def985650972e9714b8a4e10d3c77b015c50fe4dd501c
+  Stored in directory: /mnt/beegfs/home/agolchub/.cache/pip/wheels/a0/16/9c/5473df82468f958445479c59e784896fa24f4a5fc024b0f501
+Successfully built wrapt clang termcolor
+Installing collected packages: wrapt, grpcio, typing-extensions, gast, clang, absl-py, flatbuffers, numpy, opt-einsum, protobuf, astunparse, google-pasta, keras, h5py, termcolor, werkzeug, markdown, tensorboard-data-server, pyasn1, pyasn1-modules, rsa, cachetools, google-auth, oauthlib, requests-oauthlib, google-auth-oauthlib, tensorboard-plugin-wit, tensorboard, tensorflow-estimator, keras-preprocessing, tensorflow-gpu
+Successfully installed absl-py-0.15.0 astunparse-1.6.3 cachetools-4.2.4 clang-5.0 flatbuffers-1.12 gast-0.4.0 google-auth-2.3.0 google-auth-oauthlib-0.4.6 google-pasta-0.2.0 grpcio-1.41.0 h5py-3.1.0 keras-2.6.0 keras-preprocessing-1.1.2 markdown-3.3.4 numpy-1.19.5 oauthlib-3.1.1 opt-einsum-3.3.0 protobuf-3.19.0 pyasn1-0.4.8 pyasn1-modules-0.2.8 requests-oauthlib-1.3.0 rsa-4.7.2 tensorboard-2.7.0 tensorboard-data-server-0.6.1 tensorboard-plugin-wit-1.8.0 tensorflow-estimator-2.6.0 tensorflow-gpu-2.6.0 termcolor-1.1.0 typing-extensions-3.7.4.3 werkzeug-2.0.2 wrapt-1.12.1
+Collecting scikit-learn
+  Downloading scikit_learn-1.0-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (25.8 MB)
+srun: got SIGCONT
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 796278 ON node030 CANCELLED AT 2021-10-22T12:51:50 ***
+srun: forcing job termination
+slurmstepd: error: *** STEP 796278.0 ON node030 CANCELLED AT 2021-10-22T12:51:50 ***

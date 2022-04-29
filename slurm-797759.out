@@ -1,0 +1,5 @@
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: got SIGCONT
+slurmstepd: error: *** JOB 797759 ON nodegpu002 CANCELLED AT 2021-10-26T22:02:47 ***
+srun: forcing job termination
+slurmstepd: error: *** STEP 797759.0 ON nodegpu002 CANCELLED AT 2021-10-26T22:02:47 ***

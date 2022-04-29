@@ -1,0 +1,2 @@
+slurmstepd: error: execve(): train.sh: Exec format error
+srun: error: node030: task 0: Exited with exit code 8

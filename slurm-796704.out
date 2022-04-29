@@ -1,0 +1,79 @@
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+Requirement already satisfied: tensorflow-gpu==2.6 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (2.6.0)
+Requirement already satisfied: grpcio<2.0,>=1.37.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (1.41.0)
+Requirement already satisfied: astunparse~=1.6.3 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (1.6.3)
+Requirement already satisfied: opt-einsum~=3.3.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (3.3.0)
+Requirement already satisfied: protobuf>=3.9.2 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (3.19.0)
+Requirement already satisfied: six~=1.15.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (1.15.0)
+Requirement already satisfied: tensorboard~=2.6 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (2.7.0)
+Requirement already satisfied: absl-py~=0.10 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (0.15.0)
+Requirement already satisfied: keras~=2.6 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (2.6.0)
+Requirement already satisfied: wrapt~=1.12.1 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (1.12.1)
+Requirement already satisfied: tensorflow-estimator~=2.6 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (2.6.0)
+Requirement already satisfied: h5py~=3.1.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (3.1.0)
+Requirement already satisfied: wheel~=0.35 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (0.37.0)
+Requirement already satisfied: termcolor~=1.1.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (1.1.0)
+Requirement already satisfied: numpy~=1.19.2 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (1.19.5)
+Requirement already satisfied: keras-preprocessing~=1.1.2 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (1.1.2)
+Requirement already satisfied: flatbuffers~=1.12.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (1.12)
+Requirement already satisfied: typing-extensions~=3.7.4 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (3.7.4.3)
+Requirement already satisfied: google-pasta~=0.2 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (0.2.0)
+Requirement already satisfied: gast==0.4.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (0.4.0)
+Requirement already satisfied: clang~=5.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorflow-gpu==2.6) (5.0)
+Requirement already satisfied: google-auth<3,>=1.6.3 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (2.3.0)
+Requirement already satisfied: setuptools>=41.0.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (58.0.4)
+Requirement already satisfied: tensorboard-data-server<0.7.0,>=0.6.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (0.6.1)
+Requirement already satisfied: markdown>=2.6.8 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (3.3.4)
+Requirement already satisfied: requests<3,>=2.21.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (2.26.0)
+Requirement already satisfied: tensorboard-plugin-wit>=1.6.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (1.8.0)
+Requirement already satisfied: google-auth-oauthlib<0.5,>=0.4.1 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (0.4.6)
+Requirement already satisfied: werkzeug>=0.11.15 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from tensorboard~=2.6->tensorflow-gpu==2.6) (2.0.2)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from google-auth<3,>=1.6.3->tensorboard~=2.6->tensorflow-gpu==2.6) (0.2.8)
+Requirement already satisfied: cachetools<5.0,>=2.0.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from google-auth<3,>=1.6.3->tensorboard~=2.6->tensorflow-gpu==2.6) (4.2.4)
+Requirement already satisfied: rsa<5,>=3.1.4 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from google-auth<3,>=1.6.3->tensorboard~=2.6->tensorflow-gpu==2.6) (4.7.2)
+Requirement already satisfied: requests-oauthlib>=0.7.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from google-auth-oauthlib<0.5,>=0.4.1->tensorboard~=2.6->tensorflow-gpu==2.6) (1.3.0)
+Requirement already satisfied: pyasn1<0.5.0,>=0.4.6 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from pyasn1-modules>=0.2.1->google-auth<3,>=1.6.3->tensorboard~=2.6->tensorflow-gpu==2.6) (0.4.8)
+Requirement already satisfied: certifi>=2017.4.17 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from requests<3,>=2.21.0->tensorboard~=2.6->tensorflow-gpu==2.6) (2021.10.8)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from requests<3,>=2.21.0->tensorboard~=2.6->tensorflow-gpu==2.6) (2.0.7)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from requests<3,>=2.21.0->tensorboard~=2.6->tensorflow-gpu==2.6) (1.26.7)
+Requirement already satisfied: idna<4,>=2.5 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from requests<3,>=2.21.0->tensorboard~=2.6->tensorflow-gpu==2.6) (3.3)
+Requirement already satisfied: oauthlib>=3.0.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib<0.5,>=0.4.1->tensorboard~=2.6->tensorflow-gpu==2.6) (3.1.1)
+Requirement already satisfied: scikit-learn in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (1.0)
+Requirement already satisfied: numpy>=1.14.6 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from scikit-learn) (1.19.5)
+Requirement already satisfied: scipy>=1.1.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from scikit-learn) (1.7.1)
+Requirement already satisfied: threadpoolctl>=2.0.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from scikit-learn) (3.0.0)
+Requirement already satisfied: joblib>=0.11 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from scikit-learn) (1.1.0)
+Requirement already satisfied: scikit-image in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (0.18.3)
+Requirement already satisfied: matplotlib!=3.0.0,>=2.0.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from scikit-image) (3.4.3)
+Requirement already satisfied: numpy>=1.16.5 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from scikit-image) (1.19.5)
+Requirement already satisfied: PyWavelets>=1.1.1 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from scikit-image) (1.1.1)
+Requirement already satisfied: pillow!=7.1.0,!=7.1.1,>=4.3.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from scikit-image) (8.4.0)
+Requirement already satisfied: networkx>=2.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from scikit-image) (2.6.3)
+Requirement already satisfied: tifffile>=2019.7.26 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from scikit-image) (2021.10.12)
+Requirement already satisfied: imageio>=2.3.0 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from scikit-image) (2.9.0)
+Requirement already satisfied: scipy>=1.0.1 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from scikit-image) (1.7.1)
+Requirement already satisfied: cycler>=0.10 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from matplotlib!=3.0.0,>=2.0.0->scikit-image) (0.10.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from matplotlib!=3.0.0,>=2.0.0->scikit-image) (1.3.2)
+Requirement already satisfied: pyparsing>=2.2.1 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from matplotlib!=3.0.0,>=2.0.0->scikit-image) (3.0.1)
+Requirement already satisfied: python-dateutil>=2.7 in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from matplotlib!=3.0.0,>=2.0.0->scikit-image) (2.8.2)
+Requirement already satisfied: six in /mnt/beegfs/home/agolchub/miniconda3/envs/tf-gpu2/lib/python3.9/site-packages (from cycler>=0.10->matplotlib!=3.0.0,>=2.0.0->scikit-image) (1.15.0)
+train.py -i <modelin> -o <modelout> -p <imagepath>
+srun: error: nodegpu002: task 0: Exited with exit code 2

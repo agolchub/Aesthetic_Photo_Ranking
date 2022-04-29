@@ -1,0 +1,30 @@
+2021-10-25 14:28:01.139632: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-10-25 14:28:02.047152: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38426 MB memory:  -> device: 0, name: A100-PCIE-40GB, pci bus id: 0000:21:00.0, compute capability: 8.0
+2021-10-25 14:28:06.379231: W tensorflow/core/util/tensor_slice_reader.cc:95] Could not open ./agnet-wide.model.checkpoint: Data loss: file is too short to be an sstable: perhaps your file is in a different file format and you need to use a different restore operator?
+Input file is " ./agnet-wide.model
+Output file is " 
+Image path is " ./databaserelease2/NatureDataset/test
+--------------------
+
+
+./agnet-wide.model.checkpoint
+Traceback (most recent call last):
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 478, in <module>
+    main(sys.argv[1:])
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 473, in main
+    test(modelin,imagepath)
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 384, in test
+    model.load_weights(checkpointpath)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/training.py", line 2354, in load_weights
+    with h5py.File(filepath, 'r') as f:
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/h5py/_hl/files.py", line 424, in __init__
+    fid = make_fid(name, mode, userblock_size,
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/h5py/_hl/files.py", line 190, in make_fid
+    fid = h5f.open(name, flags, fapl=fapl)
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File "h5py/h5f.pyx", line 96, in h5py.h5f.open
+OSError: Unable to open file (file read failed: time = Mon Oct 25 14:28:06 2021
+, filename = './agnet-wide.model.checkpoint', file descriptor = 24, errno = 21, error message = 'Is a directory', buf = 0x7fff792b2338, total read size = 8, bytes this sub-read = 8, bytes actually read = 18446744073709551615, offset = 18446744073709551615)
+srun: error: nodegpu002: task 0: Exited with exit code 1

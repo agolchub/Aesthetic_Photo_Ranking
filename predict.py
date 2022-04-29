@@ -123,8 +123,8 @@ K.image_data_format()
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
-run_filepath = './model-3-train1'
-checkpoint_filepath = './checkpoint/.data-00000-of-00001'
+run_filepath = './agnet-wide.model/'
+checkpoint_filepath = './agnet-wide.model.checkpoint/checkpoint'
 history_path = run_filepath+".history"
 
 print("Loading Model")

@@ -1,0 +1,1380 @@
+2021-10-26 02:04:10.531109: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-10-26 02:04:11.359241: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38426 MB memory:  -> device: 0, name: A100-PCIE-40GB, pci bus id: 0000:21:00.0, compute capability: 8.0
+Input file is " ./agnet.model.2.checkpoint
+Output file is " 
+Image path is " ./databaserelease2/NatureDataset2/test
+--------------------
+
+
+Model Loaded
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 1024, 680, 3 0                                            
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 298, 297, 32) 1115168     input_1[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 298, 297, 32) 128         conv2d[0][0]                     
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 298, 297, 32) 0           batch_normalization[0][0]        
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 117, 116, 64) 8921152     dropout[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 117, 116, 64) 256         conv2d_1[0][0]                   
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 117, 116, 64) 0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, 51, 51, 128)  2097280     dropout_1[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 51, 51, 128)  512         conv2d_2[0][0]                   
+__________________________________________________________________________________________________
+dropout_2 (Dropout)             (None, 51, 51, 128)  0           batch_normalization_2[0][0]      
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, 23, 23, 256)  1605888     dropout_2[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 23, 23, 256)  1024        conv2d_3[0][0]                   
+__________________________________________________________________________________________________
+dropout_3 (Dropout)             (None, 23, 23, 256)  0           batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+conv2d_4 (Conv2D)               (None, 21, 21, 512)  1180160     dropout_3[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 21, 21, 512)  2048        conv2d_4[0][0]                   
+__________________________________________________________________________________________________
+dropout_4 (Dropout)             (None, 21, 21, 512)  0           batch_normalization_4[0][0]      
+__________________________________________________________________________________________________
+conv2d_5 (Conv2D)               (None, 20, 20, 256)  524544      dropout_4[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 20, 20, 256)  1024        conv2d_5[0][0]                   
+__________________________________________________________________________________________________
+dropout_5 (Dropout)             (None, 20, 20, 256)  0           batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+conv2d_6 (Conv2D)               (None, 19, 19, 128)  131200      dropout_5[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 19, 19, 128)  512         conv2d_6[0][0]                   
+__________________________________________________________________________________________________
+dropout_6 (Dropout)             (None, 19, 19, 128)  0           batch_normalization_6[0][0]      
+__________________________________________________________________________________________________
+conv2d_7 (Conv2D)               (None, 18, 18, 64)   32832       dropout_6[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 18, 18, 64)   256         conv2d_7[0][0]                   
+__________________________________________________________________________________________________
+dropout_7 (Dropout)             (None, 18, 18, 64)   0           batch_normalization_7[0][0]      
+__________________________________________________________________________________________________
+conv2d_8 (Conv2D)               (None, 17, 17, 64)   16448       dropout_7[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_8 (BatchNor (None, 17, 17, 64)   256         conv2d_8[0][0]                   
+__________________________________________________________________________________________________
+dropout_8 (Dropout)             (None, 17, 17, 64)   0           batch_normalization_8[0][0]      
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 2832192)      0           dropout[0][0]                    
+__________________________________________________________________________________________________
+flatten_1 (Flatten)             (None, 868608)       0           dropout_1[0][0]                  
+__________________________________________________________________________________________________
+flatten_2 (Flatten)             (None, 332928)       0           dropout_2[0][0]                  
+__________________________________________________________________________________________________
+flatten_3 (Flatten)             (None, 135424)       0           dropout_3[0][0]                  
+__________________________________________________________________________________________________
+flatten_4 (Flatten)             (None, 225792)       0           dropout_4[0][0]                  
+__________________________________________________________________________________________________
+flatten_5 (Flatten)             (None, 102400)       0           dropout_5[0][0]                  
+__________________________________________________________________________________________________
+flatten_6 (Flatten)             (None, 46208)        0           dropout_6[0][0]                  
+__________________________________________________________________________________________________
+flatten_7 (Flatten)             (None, 20736)        0           dropout_7[0][0]                  
+__________________________________________________________________________________________________
+flatten_8 (Flatten)             (None, 18496)        0           dropout_8[0][0]                  
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 5)            14160965    flatten[0][0]                    
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 5)            4343045     flatten_1[0][0]                  
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 5)            1664645     flatten_2[0][0]                  
+__________________________________________________________________________________________________
+dense_3 (Dense)                 (None, 5)            677125      flatten_3[0][0]                  
+__________________________________________________________________________________________________
+dense_4 (Dense)                 (None, 5)            1128965     flatten_4[0][0]                  
+__________________________________________________________________________________________________
+dense_5 (Dense)                 (None, 5)            512005      flatten_5[0][0]                  
+__________________________________________________________________________________________________
+dense_6 (Dense)                 (None, 5)            231045      flatten_6[0][0]                  
+__________________________________________________________________________________________________
+dense_7 (Dense)                 (None, 5)            103685      flatten_7[0][0]                  
+__________________________________________________________________________________________________
+dense_8 (Dense)                 (None, 128)          2367616     flatten_8[0][0]                  
+__________________________________________________________________________________________________
+concatenate (Concatenate)       (None, 168)          0           dense[0][0]                      
+                                                                 dense_1[0][0]                    
+                                                                 dense_2[0][0]                    
+                                                                 dense_3[0][0]                    
+                                                                 dense_4[0][0]                    
+                                                                 dense_5[0][0]                    
+                                                                 dense_6[0][0]                    
+                                                                 dense_7[0][0]                    
+                                                                 dense_8[0][0]                    
+__________________________________________________________________________________________________
+dense_9 (Dense)                 (None, 256)          43264       concatenate[0][0]                
+__________________________________________________________________________________________________
+dropout_9 (Dropout)             (None, 256)          0           dense_9[0][0]                    
+__________________________________________________________________________________________________
+dense_10 (Dense)                (None, 128)          32896       dropout_9[0][0]                  
+__________________________________________________________________________________________________
+dropout_10 (Dropout)            (None, 128)          0           dense_10[0][0]                   
+__________________________________________________________________________________________________
+dense_11 (Dense)                (None, 1)            129         dropout_10[0][0]                 
+==================================================================================================
+Total params: 40,896,073
+Trainable params: 40,893,065
+Non-trainable params: 3,008
+__________________________________________________________________________________________________
+None
+Adding Images: Reading ./databaserelease2/NatureDataset2/test/1-waters511.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters524.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters530.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters544.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters549.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters556.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters584.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters602.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters607.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters621.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters651.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters653.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters657.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters685.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters691.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters716.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters72.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters723.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters725.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters747.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters767.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters78.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters785.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters79.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters791.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters810.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters811.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters815.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters819.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters820.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters838.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters844.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters850.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/1-waters893.jpg
+1
+Reading ./databaserelease2/NatureDataset2/test/10-waters696.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters701.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters702.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters707.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters708.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters714.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters717.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters722.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters731.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters740.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters745.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters746.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters757.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters792.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters797.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters798.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters800.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters812.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters831.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters834.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters840.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters842.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters847.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters849.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters873.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters876.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters879.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/10-waters89.jpg
+10
+Reading ./databaserelease2/NatureDataset2/test/2-waters412.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters414.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters43.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters440.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters459.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters466.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters479.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters48.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters510.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters522.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters523.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters533.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters539.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters567.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters568.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters589.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters595.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters596.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters61.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters612.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters62.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters67.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters674.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters700.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters71.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters737.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters742.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters766.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters769.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters770.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters822.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters827.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters84.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters86.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters862.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters881.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters885.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters890.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters892.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters895.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/2-waters99.jpg
+2
+Reading ./databaserelease2/NatureDataset2/test/3-waters402.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters408.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters419.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters450.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters455.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters46.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters476.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters486.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters490.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters495.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters5.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters52.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters526.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters54.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters541.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters545.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters546.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters57.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters588.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters610.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters628.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters630.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters642.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters656.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters669.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters670.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters689.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters710.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters724.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters74.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters75.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters780.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters781.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters821.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters829.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters848.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters858.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters87.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters877.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters882.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters896.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters90.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/3-waters93.jpg
+3
+Reading ./databaserelease2/NatureDataset2/test/4-waters449.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters461.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters465.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters467.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters468.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters471.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters483.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters488.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters493.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters496.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters517.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters528.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters537.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters557.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters574.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters58.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters609.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters614.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters617.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters641.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters672.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters715.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters748.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters764.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters796.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters809.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters814.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters837.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters839.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters85.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters868.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters872.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters874.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters887.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters888.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters891.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters92.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters95.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/4-waters96.jpg
+4
+Reading ./databaserelease2/NatureDataset2/test/5-waters575.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters587.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters598.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters60.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters601.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters605.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters620.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters634.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters658.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters659.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters66.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters660.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters665.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters671.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters681.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters694.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters697.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters706.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters713.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters718.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters728.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters736.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters741.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters750.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters758.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters760.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters762.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters763.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters774.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters779.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters8.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters804.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters817.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters823.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters826.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters835.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters846.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters854.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters860.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters864.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters869.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters88.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters880.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters884.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters894.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/5-waters91.jpg
+5
+Reading ./databaserelease2/NatureDataset2/test/6-waters543.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters569.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters582.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters615.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters637.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters638.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters661.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters662.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters673.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters678.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters68.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters699.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters70.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters711.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters721.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters727.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters733.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters734.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters738.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters739.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters759.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters76.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters782.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters786.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters790.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters794.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters802.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters803.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters805.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters808.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters825.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters828.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters83.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters832.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters851.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters855.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters878.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters889.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters897.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters9.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/6-waters97.jpg
+6
+Reading ./databaserelease2/NatureDataset2/test/7-waters548.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters550.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters553.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters560.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters562.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters565.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters571.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters583.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters586.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters594.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters599.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters6.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters604.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters618.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters635.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters645.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters647.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters649.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters65.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters652.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters664.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters676.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters683.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters686.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters687.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters69.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters7.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters705.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters712.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters720.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters726.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters754.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters756.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters768.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters771.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters775.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters776.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters777.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters789.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters795.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters80.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters801.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters806.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters81.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters813.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters82.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters830.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters841.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters845.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters859.jpg
+7
+2021-10-26 02:05:05.129557: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:185] None of the MLIR Optimization Passes are enabled (registered 2)
+2021-10-26 02:05:06.411685: I tensorflow/stream_executor/cuda/cuda_dnn.cc:369] Loaded cuDNN version 8201
+2021-10-26 02:05:08.467747: W tensorflow/stream_executor/gpu/asm_compiler.cc:77] Couldn't get ptxas version string: Internal: Running ptxas --version returned 32512
+2021-10-26 02:05:08.512044: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] Internal: ptxas exited with non-zero error code 32512, output: 
+Relying on driver to perform ptx compilation. 
+Modify $PATH to customize ptxas location.
+This message will be only logged once.
+2021-10-26 02:05:28.441733: I tensorflow/stream_executor/cuda/cuda_blas.cc:1760] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+Reading ./databaserelease2/NatureDataset2/test/7-waters863.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters866.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters870.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters883.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters94.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/7-waters98.jpg
+7
+Reading ./databaserelease2/NatureDataset2/test/8-waters613.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters627.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters631.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters632.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters64.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters650.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters654.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters663.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters666.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters668.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters675.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters677.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters684.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters695.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters698.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters704.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters729.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters73.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters732.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters735.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters744.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters752.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters753.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters755.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters765.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters773.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters783.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters787.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters799.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters856.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters857.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters861.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters865.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters871.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters886.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters898.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters899.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/8-waters900.jpg
+8
+Reading ./databaserelease2/NatureDataset2/test/9-waters593.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters597.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters606.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters63.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters633.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters639.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters640.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters688.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters690.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters693.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters703.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters709.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters719.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters730.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters743.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters749.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters751.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters761.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters77.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters772.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters778.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters784.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters788.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters793.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters807.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters816.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters818.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters824.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters833.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters836.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters843.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters852.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters853.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters867.jpg
+9
+Reading ./databaserelease2/NatureDataset2/test/9-waters875.jpg
+9
+
+Read 401 images.
+
+
+[ 1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
+  1  1  1  1  1  1  1  1  1  1 10 10 10 10 10 10 10 10 10 10 10 10 10 10
+ 10 10 10 10 10 10 10 10 10 10 10 10 10 10  2  2  2  2  2  2  2  2  2  2
+  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2
+  2  2  2  2  2  2  2  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3
+  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3
+  3  3  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4
+  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  5  5  5  5  5  5  5
+  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5
+  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  6  6  6  6  6  6  6  6  6
+  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6
+  6  6  6  6  6  6  6  6  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7
+  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7
+  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  7  8  8  8  8  8  8  8  8
+  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8
+  8  8  8  8  8  8  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9
+  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9]
+[[ 6.304225  ]
+ [ 6.783511  ]
+ [ 4.664016  ]
+ [ 4.468906  ]
+ [ 3.8015025 ]
+ [ 6.425856  ]
+ [ 6.1932554 ]
+ [ 4.5064483 ]
+ [ 6.1279964 ]
+ [ 7.4498296 ]
+ [ 3.2829735 ]
+ [ 5.2454786 ]
+ [ 4.597027  ]
+ [ 4.768777  ]
+ [ 4.475667  ]
+ [ 4.8961744 ]
+ [ 3.7664552 ]
+ [ 2.1964307 ]
+ [ 6.21059   ]
+ [ 3.0450044 ]
+ [ 4.752792  ]
+ [ 2.8818529 ]
+ [ 4.729022  ]
+ [ 5.8715096 ]
+ [ 2.8053958 ]
+ [ 0.7948299 ]
+ [ 5.39948   ]
+ [ 7.139426  ]
+ [ 3.526625  ]
+ [ 2.20369   ]
+ [ 3.1387074 ]
+ [ 6.339761  ]
+ [ 5.913428  ]
+ [ 5.3503656 ]
+ [ 7.216184  ]
+ [ 5.816183  ]
+ [ 7.9099426 ]
+ [ 2.3847086 ]
+ [ 4.719299  ]
+ [ 5.4075785 ]
+ [ 7.937346  ]
+ [ 7.1779957 ]
+ [ 4.502561  ]
+ [ 2.0538428 ]
+ [ 5.658075  ]
+ [ 6.431363  ]
+ [ 5.43425   ]
+ [ 1.8650949 ]
+ [ 3.490339  ]
+ [ 8.534783  ]
+ [ 5.601679  ]
+ [ 4.6711454 ]
+ [ 4.629775  ]
+ [ 5.686398  ]
+ [ 2.69569   ]
+ [ 3.3690398 ]
+ [ 7.2772136 ]
+ [ 5.0815187 ]
+ [ 5.290034  ]
+ [ 8.652499  ]
+ [ 3.6154637 ]
+ [ 4.166438  ]
+ [ 2.675543  ]
+ [ 4.8404183 ]
+ [ 3.4637918 ]
+ [ 6.715605  ]
+ [ 8.506031  ]
+ [ 4.8564754 ]
+ [ 5.622089  ]
+ [ 7.07582   ]
+ [ 7.1065955 ]
+ [ 5.139764  ]
+ [ 7.1704288 ]
+ [ 5.881218  ]
+ [ 3.9800255 ]
+ [ 6.7650976 ]
+ [ 5.4954824 ]
+ [ 5.427681  ]
+ [ 4.658431  ]
+ [ 8.464762  ]
+ [ 2.804056  ]
+ [ 4.356558  ]
+ [ 4.1918955 ]
+ [ 3.9647062 ]
+ [ 7.838603  ]
+ [ 4.2905207 ]
+ [ 5.4605803 ]
+ [ 5.1304603 ]
+ [ 3.6229115 ]
+ [ 3.6258376 ]
+ [ 2.2757528 ]
+ [ 1.9655383 ]
+ [ 3.5736701 ]
+ [ 3.7766254 ]
+ [ 6.2338614 ]
+ [ 6.1248274 ]
+ [ 4.501033  ]
+ [ 8.391671  ]
+ [ 7.3904676 ]
+ [ 2.137833  ]
+ [ 6.797083  ]
+ [ 1.1999513 ]
+ [ 6.084787  ]
+ [ 7.7596674 ]
+ [ 6.815914  ]
+ [ 5.85724   ]
+ [ 6.519168  ]
+ [ 6.9966397 ]
+ [ 4.645647  ]
+ [ 6.4347234 ]
+ [ 5.194161  ]
+ [ 3.814964  ]
+ [ 7.7124467 ]
+ [ 4.1165943 ]
+ [ 4.75237   ]
+ [ 4.6510634 ]
+ [ 3.282823  ]
+ [ 2.2830818 ]
+ [ 4.737442  ]
+ [ 3.5509355 ]
+ [ 5.457971  ]
+ [ 5.419652  ]
+ [ 8.442227  ]
+ [ 6.7507668 ]
+ [ 3.958516  ]
+ [ 5.209735  ]
+ [ 4.6189747 ]
+ [ 1.9790198 ]
+ [ 5.6578207 ]
+ [ 2.2376277 ]
+ [ 4.2307215 ]
+ [ 7.8874903 ]
+ [ 6.2846117 ]
+ [ 5.918454  ]
+ [ 4.968624  ]
+ [ 0.7532108 ]
+ [ 4.8178782 ]
+ [ 4.826365  ]
+ [ 2.9846013 ]
+ [ 4.9209795 ]
+ [ 7.554554  ]
+ [ 6.450639  ]
+ [ 0.82496405]
+ [ 3.7142031 ]
+ [ 2.4104986 ]
+ [ 5.0386314 ]
+ [ 2.2033906 ]
+ [ 1.565616  ]
+ [ 7.5236363 ]
+ [ 4.9848595 ]
+ [ 5.9424767 ]
+ [ 5.2339373 ]
+ [ 2.2516909 ]
+ [ 4.668422  ]
+ [ 6.8049135 ]
+ [ 4.174387  ]
+ [ 4.764295  ]
+ [ 5.2724333 ]
+ [ 4.4169474 ]
+ [ 2.2022886 ]
+ [ 7.3572836 ]
+ [ 9.2684555 ]
+ [ 5.2452564 ]
+ [ 5.2569866 ]
+ [ 7.1421175 ]
+ [ 5.6586995 ]
+ [ 6.0349903 ]
+ [ 3.4900944 ]
+ [10.101235  ]
+ [ 1.7448565 ]
+ [ 3.8598325 ]
+ [ 6.4446106 ]
+ [ 3.9472578 ]
+ [ 5.9389315 ]
+ [ 6.098551  ]
+ [ 3.9978473 ]
+ [ 1.012601  ]
+ [ 2.5377033 ]
+ [ 3.001551  ]
+ [ 4.890052  ]
+ [ 2.3294551 ]
+ [ 3.1384213 ]
+ [ 7.1112638 ]
+ [ 4.847624  ]
+ [ 4.1413803 ]
+ [ 5.227236  ]
+ [ 3.3871608 ]
+ [ 5.1101193 ]
+ [ 3.6140552 ]
+ [ 6.786372  ]
+ [ 5.913533  ]
+ [ 5.691567  ]
+ [ 4.2897353 ]
+ [ 2.8807552 ]
+ [ 5.8332357 ]
+ [ 3.0046906 ]
+ [ 5.4808784 ]
+ [ 3.8882787 ]
+ [ 1.9868066 ]
+ [ 7.4371667 ]
+ [ 7.3896713 ]
+ [ 2.564675  ]
+ [ 5.3273406 ]
+ [ 5.8703537 ]
+ [ 2.2251315 ]
+ [ 3.1082008 ]
+ [11.089118  ]
+ [ 7.426841  ]
+ [ 8.24053   ]
+ [ 5.0182915 ]
+ [ 4.048346  ]
+ [ 2.7609355 ]
+ [ 3.3311005 ]
+ [ 4.150559  ]
+ [ 4.7505026 ]
+ [ 5.3271375 ]
+ [ 3.0729175 ]
+ [ 8.354908  ]
+ [ 3.1558263 ]
+ [ 3.6355052 ]
+ [ 2.8066008 ]
+ [ 3.8898752 ]
+ [ 5.3264956 ]
+ [ 3.273608  ]
+ [ 4.9401274 ]
+ [ 4.964321  ]
+ [ 5.7889295 ]
+ [ 1.9677132 ]
+ [ 4.4234285 ]
+ [ 3.3626344 ]
+ [ 2.9365892 ]
+ [ 3.3664877 ]
+ [ 4.3821654 ]
+ [ 4.440213  ]
+ [ 3.280378  ]
+ [ 7.1896563 ]
+ [ 4.5180397 ]
+ [ 9.115566  ]
+ [ 2.5470452 ]
+ [ 5.262849  ]
+ [ 2.5291433 ]
+ [ 6.0052667 ]
+ [ 7.2242136 ]
+ [ 5.164771  ]
+ [ 7.3938684 ]
+ [ 5.429557  ]
+ [ 5.052467  ]
+ [ 4.8045835 ]
+ [ 5.236937  ]
+ [ 5.5510983 ]
+ [ 7.6487136 ]
+ [ 4.096061  ]
+ [ 2.7093356 ]
+ [ 3.6834712 ]
+ [ 5.2442546 ]
+ [ 7.636468  ]
+ [10.968089  ]
+ [ 5.666486  ]
+ [ 3.7632768 ]
+ [ 6.2316313 ]
+ [ 4.2646136 ]
+ [ 2.7483342 ]
+ [ 4.122066  ]
+ [ 8.368617  ]
+ [ 4.9527063 ]
+ [ 3.8584025 ]
+ [ 4.3153534 ]
+ [ 6.3518987 ]
+ [ 3.7897134 ]
+ [ 6.000547  ]
+ [ 3.9358966 ]
+ [ 3.3321779 ]
+ [ 4.7535644 ]
+Traceback (most recent call last):
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 557, in <module>
+ [ 5.098331  ]
+ [ 2.985809  ]
+ [ 4.6507635 ]
+ [ 6.041132  ]
+ [ 9.410359  ]
+ [ 5.152949  ]
+ [ 4.443038  ]
+ [ 6.6023426 ]
+ [ 3.9549334 ]
+ [ 5.0603204 ]
+ [ 2.585084  ]
+ [ 5.376601  ]
+ [ 7.9259915 ]
+ [ 6.0417337 ]
+ [ 5.1788306 ]
+ [ 3.3812473 ]
+ [ 7.821542  ]
+ [ 8.244329  ]
+ [ 4.115957  ]
+ [ 4.425701  ]
+ [ 4.437035  ]
+ [ 9.585389  ]
+ [ 4.4590945 ]
+ [ 5.0330606 ]
+ [ 3.877754  ]
+ [ 4.888739  ]
+ [ 5.514109  ]
+ [ 4.40042   ]
+ [ 6.797703  ]
+ [ 4.584381  ]
+ [ 6.972654  ]
+ [ 5.369767  ]
+ [ 4.872506  ]
+ [ 6.002387  ]
+ [ 8.400941  ]
+ [ 5.093313  ]
+ [ 4.1788874 ]
+ [ 4.29889   ]
+ [ 7.9057055 ]
+ [ 5.043497  ]
+ [ 2.7872074 ]
+ [ 6.763878  ]
+ [ 5.209032  ]
+ [ 5.333146  ]
+ [ 5.631901  ]
+ [ 4.917042  ]
+ [ 5.990254  ]
+ [ 4.9102106 ]
+ [ 3.9858289 ]
+ [ 4.0007715 ]
+ [ 6.4841995 ]
+ [ 6.5855293 ]
+ [ 3.6032703 ]
+ [ 4.094613  ]
+ [ 5.2332954 ]
+ [ 7.5200953 ]
+ [ 4.9762526 ]
+ [ 5.8215733 ]
+ [ 7.2439404 ]
+ [ 5.178424  ]
+ [ 3.8654206 ]
+ [ 4.9340706 ]
+ [ 3.2865515 ]
+ [ 5.9428945 ]
+ [ 4.8411117 ]
+ [ 4.8925967 ]
+ [ 7.087288  ]
+ [ 7.9717603 ]
+ [ 2.8522255 ]
+ [ 5.0705323 ]
+ [ 5.0072565 ]
+ [ 3.791527  ]
+ [ 7.136898  ]
+ [ 9.74669   ]
+ [ 3.1709545 ]
+ [ 7.1383667 ]
+ [ 5.025039  ]
+ [ 8.453145  ]
+ [ 2.1020744 ]
+ [ 3.7413347 ]
+ [ 5.005045  ]
+ [ 5.922948  ]
+ [ 4.065469  ]
+ [ 7.290673  ]
+ [ 3.7391078 ]
+ [ 7.6507473 ]
+ [ 6.024027  ]
+ [ 2.9873471 ]
+ [ 5.0573263 ]
+ [ 4.173911  ]
+ [ 3.6266968 ]
+ [ 5.3219147 ]
+ [ 2.8423355 ]
+ [ 5.2886143 ]
+ [ 4.907688  ]
+ [ 8.235732  ]
+ [ 5.873678  ]
+ [ 9.345336  ]
+ [ 4.317336  ]
+ [ 6.1130247 ]
+ [ 6.177949  ]
+ [ 3.9427085 ]
+ [ 6.612318  ]
+ [ 8.455129  ]
+ [ 6.9825726 ]
+ [ 4.9762526 ]
+ [ 4.7442374 ]
+ [ 4.4421263 ]
+ [ 3.6651626 ]
+ [ 4.5204754 ]
+ [ 5.9954243 ]
+ [ 3.7725325 ]
+ [ 2.3851225 ]
+ [ 4.134209  ]
+ [ 6.752739  ]
+ [ 3.1650183 ]
+ [ 5.523936  ]
+ [ 5.0723953 ]
+ [ 5.4032717 ]
+ [ 7.932585  ]
+ [ 5.126767  ]
+ [ 6.635088  ]
+ [ 5.3036594 ]
+ [ 5.2941895 ]
+ [ 5.0518007 ]
+ [ 5.337939  ]
+ [ 3.7240167 ]
+ [ 4.2056127 ]]
+    main(sys.argv[1:])
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 552, in main
+    test(modelin,imagepath)
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 463, in test
+    loss, acc = model.evaluate(x, y, verbose=2)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/training.py", line 1466, in evaluate
+    data_handler = data_adapter.get_data_handler(
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/data_adapter.py", line 1383, in get_data_handler
+    return DataHandler(*args, **kwargs)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/data_adapter.py", line 1137, in __init__
+    adapter_cls = select_data_adapter(x, y)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/data_adapter.py", line 976, in select_data_adapter
+    raise ValueError(
+ValueError: Failed to find data adapter that can handle input: (<class 'list'> containing values of types {"<class 'numpy.ndarray'>"}), (<class 'list'> containing values of types {"<class 'int'>"})
+srun: error: nodegpu002: task 0: Exited with exit code 1

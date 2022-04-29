@@ -1,0 +1,6 @@
+Input file is " ./agnet-wide.model
+Output file is " 
+Image path is " ./databaserelease2/NatureDataset/test
+Missing required parameter.
+train.py -i <modelin> -o <modelout> -p <imagepath>
+srun: error: nodegpu002: task 0: Exited with exit code 2

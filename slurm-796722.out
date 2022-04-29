@@ -1,0 +1,354 @@
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+Mon Oct 25 02:53:58 2021       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 460.32.03    Driver Version: 460.32.03    CUDA Version: 11.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  A100-PCIE-40GB      Off  | 00000000:21:00.0 Off |                    0 |
+| N/A   43C    P0    41W / 250W |      0MiB / 40536MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+2021-10-25 02:54:10.505927: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-10-25 02:54:11.312506: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38426 MB memory:  -> device: 0, name: A100-PCIE-40GB, pci bus id: 0000:21:00.0, compute capability: 8.0
+2021-10-25 02:54:11.964406: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38426 MB memory:  -> device: 0, name: A100-PCIE-40GB, pci bus id: 0000:21:00.0, compute capability: 8.0
+/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/optimizer_v2/optimizer_v2.py:355: UserWarning: The `lr` argument is deprecated, use `learning_rate` instead.
+  warnings.warn(
+Input file is " 
+Output file is " agnet-wide.model
+Image path is " 
+--------------------
+
+
+input_1  re-initilized
+initializing kernel weights
+conv2d  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f12242ba8c0>)
+batch_normalization  re-initilized
+dropout  re-initilized
+initializing kernel weights
+conv2d_2  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f1224282740>)
+batch_normalization_2  re-initilized
+dropout_2  re-initilized
+initializing kernel weights
+conv2d_4  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f12242820c0>)
+batch_normalization_4  re-initilized
+dropout_4  re-initilized
+initializing kernel weights
+conv2d_6  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f1224283100>)
+batch_normalization_6  re-initilized
+dropout_6  re-initilized
+initializing kernel weights
+conv2d_8  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f1224283480>)
+batch_normalization_8  re-initilized
+dropout_8  re-initilized
+initializing kernel weights
+conv2d_10  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f1224283640>)
+batch_normalization_10  re-initilized
+dropout_10  re-initilized
+initializing kernel weights
+conv2d_12  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f12242837c0>)
+batch_normalization_12  re-initilized
+dropout_12  re-initilized
+initializing kernel weights
+conv2d_14  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f1224283940>)
+batch_normalization_14  re-initilized
+dropout_14  re-initilized
+initializing kernel weights
+conv2d_1  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f1224283740>)
+initializing kernel weights
+conv2d_3  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f12242837c0>)
+initializing kernel weights
+conv2d_5  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f1224283840>)
+initializing kernel weights
+conv2d_7  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f12242838c0>)
+initializing kernel weights
+conv2d_9  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f1224283940>)
+initializing kernel weights
+conv2d_11  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f1224283900>)
+initializing kernel weights
+conv2d_13  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f12242836c0>)
+initializing kernel weights
+conv2d_15  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f1224283740>)
+initializing kernel weights
+conv2d_16  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f12242837c0>)
+batch_normalization_1  re-initilized
+batch_normalization_3  re-initilized
+batch_normalization_5  re-initilized
+batch_normalization_7  re-initilized
+batch_normalization_9  re-initilized
+batch_normalization_11  re-initilized
+batch_normalization_13  re-initilized
+batch_normalization_15  re-initilized
+batch_normalization_16  re-initilized
+dropout_1  re-initilized
+dropout_3  re-initilized
+dropout_5  re-initilized
+dropout_7  re-initilized
+dropout_9  re-initilized
+dropout_11  re-initilized
+dropout_13  re-initilized
+dropout_15  re-initilized
+dropout_16  re-initilized
+flatten  re-initilized
+flatten_1  re-initilized
+flatten_2  re-initilized
+flatten_3  re-initilized
+flatten_4  re-initilized
+flatten_5  re-initilized
+flatten_6  re-initilized
+flatten_7  re-initilized
+flatten_8  re-initilized
+initializing kernel weights
+dense  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f12242837c0>)
+initializing kernel weights
+dense_1  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f1224283840>)
+initializing kernel weights
+dense_2  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f12242838c0>)
+initializing kernel weights
+dense_3  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f1224283940>)
+initializing kernel weights
+dense_4  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f1224283900>)
+initializing kernel weights
+dense_5  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f12242836c0>)
+initializing kernel weights
+dense_6  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f1224283740>)
+initializing kernel weights
+dense_7  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f12242837c0>)
+initializing kernel weights
+dense_8  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f1224283840>)
+concatenate  re-initilized
+initializing kernel weights
+dense_19  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f1224283940>)
+dropout_17  re-initilized
+initializing kernel weights
+dense_20  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f12242836c0>)
+dropout_18  re-initilized
+initializing kernel weights
+dense_21  could not be re-initilized (<class 'AttributeError'>, AttributeError("'NoneType' object has no attribute 'run'"), <traceback object at 0x7f12242837c0>)
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 1024, 680, 3 0                                            
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 298, 297, 32) 1115168     input_1[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 298, 297, 32) 128         conv2d[0][0]                     
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 298, 297, 32) 0           batch_normalization[0][0]        
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, 117, 116, 64) 8921152     dropout[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 117, 116, 64) 256         conv2d_2[0][0]                   
+__________________________________________________________________________________________________
+dropout_2 (Dropout)             (None, 117, 116, 64) 0           batch_normalization_2[0][0]      
+__________________________________________________________________________________________________
+conv2d_4 (Conv2D)               (None, 51, 51, 128)  2097280     dropout_2[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 51, 51, 128)  512         conv2d_4[0][0]                   
+__________________________________________________________________________________________________
+dropout_4 (Dropout)             (None, 51, 51, 128)  0           batch_normalization_4[0][0]      
+__________________________________________________________________________________________________
+conv2d_6 (Conv2D)               (None, 23, 23, 256)  1605888     dropout_4[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 23, 23, 256)  1024        conv2d_6[0][0]                   
+__________________________________________________________________________________________________
+dropout_6 (Dropout)             (None, 23, 23, 256)  0           batch_normalization_6[0][0]      
+__________________________________________________________________________________________________
+conv2d_8 (Conv2D)               (None, 21, 21, 512)  1180160     dropout_6[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_8 (BatchNor (None, 21, 21, 512)  2048        conv2d_8[0][0]                   
+__________________________________________________________________________________________________
+dropout_8 (Dropout)             (None, 21, 21, 512)  0           batch_normalization_8[0][0]      
+__________________________________________________________________________________________________
+conv2d_10 (Conv2D)              (None, 20, 20, 256)  524544      dropout_8[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_10 (BatchNo (None, 20, 20, 256)  1024        conv2d_10[0][0]                  
+__________________________________________________________________________________________________
+dropout_10 (Dropout)            (None, 20, 20, 256)  0           batch_normalization_10[0][0]     
+__________________________________________________________________________________________________
+conv2d_12 (Conv2D)              (None, 19, 19, 128)  131200      dropout_10[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_12 (BatchNo (None, 19, 19, 128)  512         conv2d_12[0][0]                  
+__________________________________________________________________________________________________
+dropout_12 (Dropout)            (None, 19, 19, 128)  0           batch_normalization_12[0][0]     
+__________________________________________________________________________________________________
+conv2d_14 (Conv2D)              (None, 18, 18, 64)   32832       dropout_12[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_14 (BatchNo (None, 18, 18, 64)   256         conv2d_14[0][0]                  
+__________________________________________________________________________________________________
+dropout_14 (Dropout)            (None, 18, 18, 64)   0           batch_normalization_14[0][0]     
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 266, 265, 128 4460672     dropout[0][0]                    
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, 102, 101, 128 2097280     dropout_2[0][0]                  
+__________________________________________________________________________________________________
+conv2d_5 (Conv2D)               (None, 36, 36, 128)  4194432     dropout_4[0][0]                  
+__________________________________________________________________________________________________
+conv2d_7 (Conv2D)               (None, 17, 17, 128)  1605760     dropout_6[0][0]                  
+__________________________________________________________________________________________________
+conv2d_9 (Conv2D)               (None, 19, 19, 128)  589952      dropout_8[0][0]                  
+__________________________________________________________________________________________________
+conv2d_11 (Conv2D)              (None, 19, 19, 128)  131200      dropout_10[0][0]                 
+__________________________________________________________________________________________________
+conv2d_13 (Conv2D)              (None, 18, 18, 128)  65664       dropout_12[0][0]                 
+__________________________________________________________________________________________________
+conv2d_15 (Conv2D)              (None, 17, 17, 128)  32896       dropout_14[0][0]                 
+__________________________________________________________________________________________________
+conv2d_16 (Conv2D)              (None, 17, 17, 32)   8224        dropout_14[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 266, 265, 128 512         conv2d_1[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 102, 101, 128 512         conv2d_3[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 36, 36, 128)  512         conv2d_5[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 17, 17, 128)  512         conv2d_7[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_9 (BatchNor (None, 19, 19, 128)  512         conv2d_9[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_11 (BatchNo (None, 19, 19, 128)  512         conv2d_11[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_13 (BatchNo (None, 18, 18, 128)  512         conv2d_13[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_15 (BatchNo (None, 17, 17, 128)  512         conv2d_15[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_16 (BatchNo (None, 17, 17, 32)   128         conv2d_16[0][0]                  
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 266, 265, 128 0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+dropout_3 (Dropout)             (None, 102, 101, 128 0           batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+dropout_5 (Dropout)             (None, 36, 36, 128)  0           batch_normalization_5[0][0]      
+/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/training.py:1972: UserWarning: `Model.fit_generator` is deprecated and will be removed in a future version. Please use `Model.fit`, which supports generators.
+  warnings.warn('`Model.fit_generator` is deprecated and '
+2021-10-25 02:54:18.157758: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:185] None of the MLIR Optimization Passes are enabled (registered 2)
+2021-10-25 02:54:26.633481: I tensorflow/stream_executor/cuda/cuda_dnn.cc:369] Loaded cuDNN version 8201
+2021-10-25 02:54:29.307911: W tensorflow/stream_executor/gpu/asm_compiler.cc:77] Couldn't get ptxas version string: Internal: Running ptxas --version returned 32512
+2021-10-25 02:54:29.357695: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] Internal: ptxas exited with non-zero error code 32512, output: 
+Relying on driver to perform ptx compilation. 
+Modify $PATH to customize ptxas location.
+This message will be only logged once.
+2021-10-25 02:55:42.335963: I tensorflow/stream_executor/cuda/cuda_blas.cc:1760] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+__________________________________________________________________________________________________
+dropout_7 (Dropout)             (None, 17, 17, 128)  0           batch_normalization_7[0][0]      
+__________________________________________________________________________________________________
+dropout_9 (Dropout)             (None, 19, 19, 128)  0           batch_normalization_9[0][0]      
+__________________________________________________________________________________________________
+dropout_11 (Dropout)            (None, 19, 19, 128)  0           batch_normalization_11[0][0]     
+__________________________________________________________________________________________________
+dropout_13 (Dropout)            (None, 18, 18, 128)  0           batch_normalization_13[0][0]     
+__________________________________________________________________________________________________
+dropout_15 (Dropout)            (None, 17, 17, 128)  0           batch_normalization_15[0][0]     
+__________________________________________________________________________________________________
+dropout_16 (Dropout)            (None, 17, 17, 32)   0           batch_normalization_16[0][0]     
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 9022720)      0           dropout_1[0][0]                  
+__________________________________________________________________________________________________
+flatten_1 (Flatten)             (None, 1318656)      0           dropout_3[0][0]                  
+__________________________________________________________________________________________________
+flatten_2 (Flatten)             (None, 165888)       0           dropout_5[0][0]                  
+__________________________________________________________________________________________________
+flatten_3 (Flatten)             (None, 36992)        0           dropout_7[0][0]                  
+__________________________________________________________________________________________________
+flatten_4 (Flatten)             (None, 46208)        0           dropout_9[0][0]                  
+__________________________________________________________________________________________________
+flatten_5 (Flatten)             (None, 46208)        0           dropout_11[0][0]                 
+__________________________________________________________________________________________________
+flatten_6 (Flatten)             (None, 41472)        0           dropout_13[0][0]                 
+__________________________________________________________________________________________________
+flatten_7 (Flatten)             (None, 36992)        0           dropout_15[0][0]                 
+__________________________________________________________________________________________________
+flatten_8 (Flatten)             (None, 9248)         0           dropout_16[0][0]                 
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 25)           225568025   flatten[0][0]                    
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 25)           32966425    flatten_1[0][0]                  
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 25)           4147225     flatten_2[0][0]                  
+__________________________________________________________________________________________________
+dense_3 (Dense)                 (None, 25)           924825      flatten_3[0][0]                  
+__________________________________________________________________________________________________
+dense_4 (Dense)                 (None, 25)           1155225     flatten_4[0][0]                  
+__________________________________________________________________________________________________
+dense_5 (Dense)                 (None, 25)           1155225     flatten_5[0][0]                  
+__________________________________________________________________________________________________
+dense_6 (Dense)                 (None, 25)           1036825     flatten_6[0][0]                  
+__________________________________________________________________________________________________
+dense_7 (Dense)                 (None, 25)           924825      flatten_7[0][0]                  
+__________________________________________________________________________________________________
+dense_8 (Dense)                 (None, 128)          1183872     flatten_8[0][0]                  
+__________________________________________________________________________________________________
+concatenate (Concatenate)       (None, 328)          0           dense[0][0]                      
+                                                                 dense_1[0][0]                    
+                                                                 dense_2[0][0]                    
+                                                                 dense_3[0][0]                    
+                                                                 dense_4[0][0]                    
+                                                                 dense_5[0][0]                    
+                                                                 dense_6[0][0]                    
+                                                                 dense_7[0][0]                    
+                                                                 dense_8[0][0]                    
+__________________________________________________________________________________________________
+dense_19 (Dense)                (None, 256)          84224       concatenate[0][0]                
+__________________________________________________________________________________________________
+dropout_17 (Dropout)            (None, 256)          0           dense_19[0][0]                   
+__________________________________________________________________________________________________
+dense_20 (Dense)                (None, 128)          32896       dropout_17[0][0]                 
+__________________________________________________________________________________________________
+dropout_18 (Dropout)            (None, 128)          0           dense_20[0][0]                   
+__________________________________________________________________________________________________
+dense_21 (Dense)                (None, 1)            129         dropout_18[0][0]                 
+==================================================================================================
+Total params: 297,984,009
+Trainable params: 297,979,017
+Non-trainable params: 4,992
+__________________________________________________________________________________________________
+None
+Epoch 1/100
+ 1/23 [>.............................] - ETA: 52:50 - loss: 8.4175 2/23 [=>............................] - ETA: 2:16 - loss: 8.5494  3/23 [==>...........................] - ETA: 2:31 - loss: 9.3827 4/23 [====>.........................] - ETA: 2:27 - loss: 9.0698 5/23 [=====>........................] - ETA: 2:21 - loss: 8.7430 6/23 [======>.......................] - ETA: 2:15 - loss: 8.1384 7/23 [========>.....................] - ETA: 2:08 - loss: 7.6635 8/23 [=========>....................] - ETA: 2:01 - loss: 7.5235 9/23 [==========>...................] - ETA: 1:53 - loss: 7.244110/23 [============>.................] - ETA: 1:46 - loss: 7.070111/23 [=============>................] - ETA: 1:38 - loss: 7.001612/23 [==============>...............] - ETA: 1:31 - loss: 6.996413/23 [===============>..............] - ETA: 1:23 - loss: 6.878014/23 [=================>............] - ETA: 1:15 - loss: 6.611215/23 [==================>...........] - ETA: 1:06 - loss: 6.450116/23 [===================>..........] - ETA: 58s - loss: 6.3630 17/23 [=====================>........] - ETA: 50s - loss: 6.306818/23 [======================>.......] - ETA: 41s - loss: 6.174819/23 [=======================>......] - ETA: 33s - loss: 6.160320/23 [=========================>....] - ETA: 25s - loss: 6.016521/23 [==========================>...] - ETA: 16s - loss: 5.884122/23 [===========================>..] - ETA: 8s - loss: 5.7741 23/23 [==============================] - ETA: 0s - loss: 5.696623/23 [==============================] - 384s 11s/step - loss: 5.6966 - val_loss: 21.8201
+The temperature of the GPU is  50
+Epoch 2/100
+ 1/23 [>.............................] - ETA: 4:40 - loss: 4.1017 2/23 [=>............................] - ETA: 2:58 - loss: 3.8601 3/23 [==>...........................] - ETA: 2:53 - loss: 4.0012 4/23 [====>.........................] - ETA: 2:38 - loss: 4.2627 5/23 [=====>........................] - ETA: 2:33 - loss: 4.1657 6/23 [======>.......................] - ETA: 2:24 - loss: 4.1420 7/23 [========>.....................] - ETA: 2:15 - loss: 4.1063 8/23 [=========>....................] - ETA: 2:06 - loss: 4.4295 9/23 [==========>...................] - ETA: 1:58 - loss: 4.335510/23 [============>.................] - ETA: 1:49 - loss: 4.231011/23 [=============>................] - ETA: 1:41 - loss: 4.218512/23 [==============>...............] - ETA: 1:33 - loss: 4.091313/23 [===============>..............] - ETA: 1:24 - loss: 4.025714/23 [=================>............] - ETA: 1:16 - loss: 4.053715/23 [==================>...........] - ETA: 1:07 - loss: 4.034516/23 [===================>..........] - ETA: 59s - loss: 3.9835 17/23 [=====================>........] - ETA: 50s - loss: 3.901918/23 [======================>.......] - ETA: 42s - loss: 3.821619/23 [=======================>......] - ETA: 33s - loss: 3.808320/23 [=========================>....] - ETA: 25s - loss: 3.798121/23 [==========================>...] - ETA: 16s - loss: 3.786222/23 [===========================>..] - ETA: 8s - loss: 3.8160 23/23 [==============================] - ETA: 0s - loss: 3.780423/23 [==============================] - 247s 11s/step - loss: 3.7804 - val_loss: 4.6569
+The temperature of the GPU is  52
+Epoch 3/100
+ 1/23 [>.............................] - ETA: 4:39 - loss: 2.1126 2/23 [=>............................] - ETA: 3:08 - loss: 3.7204 3/23 [==>...........................] - ETA: 2:56 - loss: 3.6863 4/23 [====>.........................] - ETA: 2:43 - loss: 3.7375 5/23 [=====>........................] - ETA: 2:35 - loss: 3.6717 6/23 [======>.......................] - ETA: 2:25 - loss: 3.7132 7/23 [========>.....................] - ETA: 2:16 - loss: 3.5952 8/23 [=========>....................] - ETA: 2:08 - loss: 3.5035 9/23 [==========>...................] - ETA: 1:59 - loss: 3.499210/23 [============>.................] - ETA: 1:50 - loss: 3.495911/23 [=============>................] - ETA: 1:42 - loss: 3.604712/23 [==============>...............] - ETA: 1:33 - loss: 3.544713/23 [===============>..............] - ETA: 1:25 - loss: 3.562014/23 [=================>............] - ETA: 1:16 - loss: 3.567815/23 [==================>...........] - ETA: 1:07 - loss: 3.561616/23 [===================>..........] - ETA: 59s - loss: 3.5131 17/23 [=====================>........] - ETA: 50s - loss: 3.498818/23 [======================>.......] - ETA: 42s - loss: 3.532519/23 [=======================>......] - ETA: 33s - loss: 3.507420/23 [=========================>....] - ETA: 25s - loss: 3.473921/23 [==========================>...] - ETA: 17s - loss: 3.459622/23 [===========================>..] - ETA: 8s - loss: 3.4428 23/23 [==============================] - ETA: 0s - loss: 3.473323/23 [==============================] - 248s 11s/step - loss: 3.4733 - val_loss: 3.1785
+The temperature of the GPU is  52
+Epoch 4/100
+ 1/23 [>.............................] - ETA: 4:51 - loss: 2.9554 2/23 [=>............................] - ETA: 2:45 - loss: 2.7706 3/23 [==>...........................] - ETA: 2:45 - loss: 2.7730 4/23 [====>.........................] - ETA: 2:37 - loss: 2.8199 5/23 [=====>........................] - ETA: 2:30 - loss: 3.1816 6/23 [======>.......................] - ETA: 2:22 - loss: 3.1682 7/23 [========>.....................] - ETA: 2:14 - loss: 3.0942 8/23 [=========>....................] - ETA: 2:07 - loss: 3.0724 9/23 [==========>...................] - ETA: 1:58 - loss: 3.071410/23 [============>.................] - ETA: 1:50 - loss: 3.074311/23 [=============>................] - ETA: 1:42 - loss: 3.098612/23 [==============>...............] - ETA: 1:33 - loss: 3.055713/23 [===============>..............] - ETA: 1:25 - loss: 3.041814/23 [=================>............] - ETA: 1:16 - loss: 3.064115/23 [==================>...........] - ETA: 1:07 - loss: 3.140116/23 [===================>..........] - ETA: 59s - loss: 3.1824 17/23 [=====================>........] - ETA: 50s - loss: 3.175618/23 [======================>.......] - ETA: 42s - loss: 3.185819/23 [=======================>......] - ETA: 33s - loss: 3.193220/23 [=========================>....] - ETA: 25s - loss: 3.198521/23 [==========================>...] - ETA: 16s - loss: 3.240622/23 [===========================>..] - ETA: 8s - loss: 3.1929 23/23 [==============================] - ETA: 0s - loss: 3.161323/23 [==============================] - 248s 11s/step - loss: 3.1613 - val_loss: 2.3686
+The temperature of the GPU is  52
+Epoch 5/100
+ 1/23 [>.............................] - ETA: 4:51 - loss: 3.0631 2/23 [=>............................] - ETA: 3:01 - loss: 2.9246 3/23 [==>...........................] - ETA: 2:49 - loss: 2.9682 4/23 [====>.........................] - ETA: 2:39 - loss: 3.2247 5/23 [=====>........................] - ETA: 2:33 - loss: 3.0213 6/23 [======>.......................] - ETA: 2:25 - loss: 2.9182 7/23 [========>.....................] - ETA: 2:16 - loss: 3.1722 8/23 [=========>....................] - ETA: 2:07 - loss: 3.1142 9/23 [==========>...................] - ETA: 1:59 - loss: 2.991310/23 [============>.................] - ETA: 1:50 - loss: 2.948211/23 [=============>................] - ETA: 1:42 - loss: 2.943212/23 [==============>...............] - ETA: 1:33 - loss: 3.051313/23 [===============>..............] - ETA: 1:25 - loss: 3.052514/23 [=================>............] - ETA: 1:16 - loss: 3.044415/23 [==================>...........] - ETA: 1:08 - loss: 3.022116/23 [===================>..........] - ETA: 59s - loss: 2.9504 17/23 [=====================>........] - ETA: 51s - loss: 2.922718/23 [======================>.......] - ETA: 42s - loss: 2.891519/23 [=======================>......] - ETA: 33s - loss: 2.871420/23 [=========================>....] - ETA: 25s - loss: 2.862321/23 [==========================>...] - ETA: 16s - loss: 2.868822/23 [===========================>..] - ETA: 8s - loss: 2.8477 23/23 [==============================] - ETA: 0s - loss: 2.847923/23 [==============================] - 247s 11s/step - loss: 2.8479 - val_loss: 2.8982
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: got SIGCONT
+slurmstepd: error: *** STEP 796722.0 ON nodegpu002 CANCELLED AT 2021-10-25T03:19:08 ***
+slurmstepd: error: *** JOB 796722 ON nodegpu002 CANCELLED AT 2021-10-25T03:19:08 ***
+srun: forcing job termination

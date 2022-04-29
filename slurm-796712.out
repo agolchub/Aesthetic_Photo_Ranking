@@ -1,0 +1,283 @@
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+Collecting tensorflow-gpu==2.4
+  Using cached tensorflow_gpu-2.4.0-cp38-cp38-manylinux2010_x86_64.whl (394.8 MB)
+Requirement already satisfied: google-pasta~=0.2 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (0.2.0)
+Requirement already satisfied: flatbuffers~=1.12.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (1.12)
+Requirement already satisfied: absl-py~=0.10 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (0.15.0)
+Requirement already satisfied: six~=1.15.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (1.15.0)
+Collecting grpcio~=1.32.0
+  Using cached grpcio-1.32.0-cp38-cp38-manylinux2014_x86_64.whl (3.8 MB)
+Requirement already satisfied: protobuf>=3.9.2 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (3.19.0)
+Requirement already satisfied: keras-preprocessing~=1.1.2 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (1.1.2)
+Requirement already satisfied: numpy~=1.19.2 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (1.19.5)
+Requirement already satisfied: astunparse~=1.6.3 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (1.6.3)
+Collecting tensorflow-estimator<2.5.0,>=2.4.0rc0
+  Using cached tensorflow_estimator-2.4.0-py2.py3-none-any.whl (462 kB)
+Requirement already satisfied: wheel~=0.35 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (0.35.1)
+Requirement already satisfied: opt-einsum~=3.3.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (3.3.0)
+Requirement already satisfied: wrapt~=1.12.1 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (1.12.1)
+Requirement already satisfied: typing-extensions~=3.7.4 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (3.7.4.3)
+Requirement already satisfied: tensorboard~=2.4 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (2.7.0)
+Requirement already satisfied: termcolor~=1.1.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorflow-gpu==2.4) (1.1.0)
+Collecting h5py~=2.10.0
+  Using cached h5py-2.10.0-cp38-cp38-manylinux1_x86_64.whl (2.9 MB)
+Collecting gast==0.3.3
+  Using cached gast-0.3.3-py2.py3-none-any.whl (9.7 kB)
+Requirement already satisfied: werkzeug>=0.11.15 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorboard~=2.4->tensorflow-gpu==2.4) (2.0.2)
+Requirement already satisfied: markdown>=2.6.8 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorboard~=2.4->tensorflow-gpu==2.4) (3.3.4)
+Requirement already satisfied: google-auth-oauthlib<0.5,>=0.4.1 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorboard~=2.4->tensorflow-gpu==2.4) (0.4.6)
+Requirement already satisfied: tensorboard-data-server<0.7.0,>=0.6.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorboard~=2.4->tensorflow-gpu==2.4) (0.6.1)
+Requirement already satisfied: setuptools>=41.0.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorboard~=2.4->tensorflow-gpu==2.4) (50.3.1.post20201107)
+Requirement already satisfied: google-auth<3,>=1.6.3 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorboard~=2.4->tensorflow-gpu==2.4) (2.3.0)
+Requirement already satisfied: requests<3,>=2.21.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorboard~=2.4->tensorflow-gpu==2.4) (2.24.0)
+Requirement already satisfied: tensorboard-plugin-wit>=1.6.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from tensorboard~=2.4->tensorflow-gpu==2.4) (1.8.0)
+Requirement already satisfied: requests-oauthlib>=0.7.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from google-auth-oauthlib<0.5,>=0.4.1->tensorboard~=2.4->tensorflow-gpu==2.4) (1.3.0)
+Requirement already satisfied: cachetools<5.0,>=2.0.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from google-auth<3,>=1.6.3->tensorboard~=2.4->tensorflow-gpu==2.4) (4.2.4)
+Requirement already satisfied: rsa<5,>=3.1.4 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from google-auth<3,>=1.6.3->tensorboard~=2.4->tensorflow-gpu==2.4) (4.7.2)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from google-auth<3,>=1.6.3->tensorboard~=2.4->tensorflow-gpu==2.4) (0.2.8)
+Requirement already satisfied: chardet<4,>=3.0.2 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard~=2.4->tensorflow-gpu==2.4) (3.0.4)
+Requirement already satisfied: certifi>=2017.4.17 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard~=2.4->tensorflow-gpu==2.4) (2020.6.20)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard~=2.4->tensorflow-gpu==2.4) (1.25.11)
+Requirement already satisfied: idna<3,>=2.5 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard~=2.4->tensorflow-gpu==2.4) (2.10)
+Requirement already satisfied: oauthlib>=3.0.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib<0.5,>=0.4.1->tensorboard~=2.4->tensorflow-gpu==2.4) (3.1.1)
+Requirement already satisfied: pyasn1>=0.1.3 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from rsa<5,>=3.1.4->google-auth<3,>=1.6.3->tensorboard~=2.4->tensorflow-gpu==2.4) (0.4.8)
+Installing collected packages: grpcio, tensorflow-estimator, h5py, gast, tensorflow-gpu
+  Attempting uninstall: grpcio
+    Found existing installation: grpcio 1.41.0
+    Uninstalling grpcio-1.41.0:
+      Successfully uninstalled grpcio-1.41.0
+  Attempting uninstall: tensorflow-estimator
+    Found existing installation: tensorflow-estimator 2.6.0
+    Uninstalling tensorflow-estimator-2.6.0:
+      Successfully uninstalled tensorflow-estimator-2.6.0
+  Attempting uninstall: h5py
+    Found existing installation: h5py 3.1.0
+    Uninstalling h5py-3.1.0:
+      Successfully uninstalled h5py-3.1.0
+  Attempting uninstall: gast
+    Found existing installation: gast 0.4.0
+    Uninstalling gast-0.4.0:
+      Successfully uninstalled gast-0.4.0
+  Attempting uninstall: tensorflow-gpu
+    Found existing installation: tensorflow-gpu 2.6.0
+    Uninstalling tensorflow-gpu-2.6.0:
+      Successfully uninstalled tensorflow-gpu-2.6.0
+Successfully installed gast-0.3.3 grpcio-1.32.0 h5py-2.10.0 tensorflow-estimator-2.4.0 tensorflow-gpu-2.4.0
+Requirement already satisfied: scikit-learn in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (1.0)
+Requirement already satisfied: threadpoolctl>=2.0.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from scikit-learn) (3.0.0)
+Requirement already satisfied: numpy>=1.14.6 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from scikit-learn) (1.19.5)
+Requirement already satisfied: scipy>=1.1.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from scikit-learn) (1.7.1)
+Requirement already satisfied: joblib>=0.11 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from scikit-learn) (1.1.0)
+Requirement already satisfied: scikit-image in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (0.18.3)
+Requirement already satisfied: networkx>=2.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from scikit-image) (2.6.3)
+Requirement already satisfied: scipy>=1.0.1 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from scikit-image) (1.7.1)
+Requirement already satisfied: tifffile>=2019.7.26 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from scikit-image) (2021.10.12)
+Requirement already satisfied: PyWavelets>=1.1.1 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from scikit-image) (1.1.1)
+Requirement already satisfied: numpy>=1.16.5 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from scikit-image) (1.19.5)
+Requirement already satisfied: imageio>=2.3.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from scikit-image) (2.9.0)
+Requirement already satisfied: matplotlib!=3.0.0,>=2.0.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from scikit-image) (3.4.3)
+Requirement already satisfied: pillow!=7.1.0,!=7.1.1,>=4.3.0 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from scikit-image) (8.4.0)
+Requirement already satisfied: python-dateutil>=2.7 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from matplotlib!=3.0.0,>=2.0.0->scikit-image) (2.8.2)
+Requirement already satisfied: pyparsing>=2.2.1 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from matplotlib!=3.0.0,>=2.0.0->scikit-image) (2.4.7)
+Requirement already satisfied: kiwisolver>=1.0.1 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from matplotlib!=3.0.0,>=2.0.0->scikit-image) (1.3.2)
+Requirement already satisfied: cycler>=0.10 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from matplotlib!=3.0.0,>=2.0.0->scikit-image) (0.10.0)
+Requirement already satisfied: six>=1.5 in /mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages (from python-dateutil>=2.7->matplotlib!=3.0.0,>=2.0.0->scikit-image) (1.15.0)
+2021-10-25 00:43:55.744701: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2021-10-25 00:43:55.744758: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2021-10-25 00:44:03.894081: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-10-25 00:44:03.901784: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcuda.so.1
+2021-10-25 00:44:04.745944: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:21:00.0 name: A100-PCIE-40GB computeCapability: 8.0
+coreClock: 1.41GHz coreCount: 108 deviceMemorySize: 39.59GiB deviceMemoryBandwidth: 1.41TiB/s
+2021-10-25 00:44:04.748378: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2021-10-25 00:44:04.748925: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcublas.so.11'; dlerror: libcublas.so.11: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2021-10-25 00:44:04.749356: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcublasLt.so.11'; dlerror: libcublasLt.so.11: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2021-10-25 00:44:04.749885: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcufft.so.10'; dlerror: libcufft.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2021-10-25 00:44:04.750484: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcurand.so.10'; dlerror: libcurand.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2021-10-25 00:44:04.750903: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcusolver.so.10'; dlerror: libcusolver.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2021-10-25 00:44:04.751350: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcusparse.so.11'; dlerror: libcusparse.so.11: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2021-10-25 00:44:04.751817: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudnn.so.8'; dlerror: libcudnn.so.8: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2021-10-25 00:44:04.751829: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1757] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2021-10-25 00:44:04.752218: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-10-25 00:44:04.752239: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1261] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-10-25 00:44:04.752243: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1267]      
+Input file is " 
+Output file is " sptest.model
+Image path is " 
+--------------------
+
+
+input_1  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388980>)
+conv2d  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388a80>)
+batch_normalization  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388bc0>)
+dropout  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf683889c0>)
+conv2d_1  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf683888c0>)
+batch_normalization_1  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388b00>)
+dropout_1  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388a40>)
+conv2d_2  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388c00>)
+batch_normalization_2  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388b40>)
+dropout_2  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388b80>)
+conv2d_3  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388a00>)
+batch_normalization_3  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388880>)
+dropout_3  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388980>)
+conv2d_4  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388a80>)
+batch_normalization_4  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388bc0>)
+dropout_4  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf683889c0>)
+conv2d_5  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf683888c0>)
+batch_normalization_5  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388b00>)
+dropout_5  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388a40>)
+conv2d_6  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388c00>)
+batch_normalization_6  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388b40>)
+dropout_6  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388b80>)
+conv2d_7  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388a00>)
+batch_normalization_7  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388880>)
+dropout_7  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388980>)
+conv2d_8  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388a80>)
+batch_normalization_8  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388bc0>)
+dropout_8  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf683889c0>)
+flatten  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf683888c0>)
+flatten_1  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388b00>)
+flatten_2  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388a40>)
+flatten_3  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388c00>)
+flatten_4  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388b40>)
+flatten_5  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388b80>)
+flatten_6  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388a00>)
+flatten_7  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388880>)
+flatten_8  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388980>)
+dense  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388a80>)
+dense_1  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388bc0>)
+dense_2  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf683889c0>)
+dense_3  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf683888c0>)
+dense_4  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388b00>)
+dense_5  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388a40>)
+dense_6  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388c00>)
+dense_7  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388b40>)
+dense_8  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388b80>)
+concatenate  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388a00>)
+dense_19  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf683889c0>)
+dropout_9  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388980>)
+dense_20  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388b80>)
+dropout_10  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf68388a80>)
+dense_21  could not be re-initilized (<class 'ImportError'>, ImportError("cannot import name 'get_config' from 'tensorflow.python.eager.context' (/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/eager/context.py)"), <traceback object at 0x7fdf683888c0>)
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 1024, 680, 3 0                                            
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 298, 297, 32) 1115168     input_1[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 298, 297, 32) 128         conv2d[0][0]                     
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 298, 297, 32) 0           batch_normalization[0][0]        
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 117, 116, 64) 8921152     dropout[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 117, 116, 64) 256         conv2d_1[0][0]                   
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 117, 116, 64) 0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, 51, 51, 128)  2097280     dropout_1[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 51, 51, 128)  512         conv2d_2[0][0]                   
+__________________________________________________________________________________________________
+dropout_2 (Dropout)             (None, 51, 51, 128)  0           batch_normalization_2[0][0]      
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, 23, 23, 256)  1605888     dropout_2[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 23, 23, 256)  1024        conv2d_3[0][0]                   
+__________________________________________________________________________________________________
+dropout_3 (Dropout)             (None, 23, 23, 256)  0           batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+conv2d_4 (Conv2D)               (None, 21, 21, 512)  1180160     dropout_3[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 21, 21, 512)  2048        conv2d_4[0][0]                   
+__________________________________________________________________________________________________
+dropout_4 (Dropout)             (None, 21, 21, 512)  0           batch_normalization_4[0][0]      
+__________________________________________________________________________________________________
+conv2d_5 (Conv2D)               (None, 20, 20, 256)  524544      dropout_4[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 20, 20, 256)  1024        conv2d_5[0][0]                   
+__________________________________________________________________________________________________
+dropout_5 (Dropout)             (None, 20, 20, 256)  0           batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+conv2d_6 (Conv2D)               (None, 19, 19, 128)  131200      dropout_5[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 19, 19, 128)  512         conv2d_6[0][0]                   
+__________________________________________________________________________________________________
+dropout_6 (Dropout)             (None, 19, 19, 128)  0           batch_normalization_6[0][0]      
+__________________________________________________________________________________________________
+conv2d_7 (Conv2D)               (None, 18, 18, 64)   32832       dropout_6[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 18, 18, 64)   256         conv2d_7[0][0]                   
+__________________________________________________________________________________________________
+dropout_7 (Dropout)             (None, 18, 18, 64)   0           batch_normalization_7[0][0]      
+__________________________________________________________________________________________________
+conv2d_8 (Conv2D)               (None, 17, 17, 64)   16448       dropout_7[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_8 (BatchNor (None, 17, 17, 64)   256         conv2d_8[0][0]                   
+__________________________________________________________________________________________________
+dropout_8 (Dropout)             (None, 17, 17, 64)   0           batch_normalization_8[0][0]      
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 2832192)      0           dropout[0][0]                    
+__________________________________________________________________________________________________
+flatten_1 (Flatten)             (None, 868608)       0           dropout_1[0][0]                  
+__________________________________________________________________________________________________
+flatten_2 (Flatten)             (None, 332928)       0           dropout_2[0][0]                  
+__________________________________________________________________________________________________
+flatten_3 (Flatten)             (None, 135424)       0           dropout_3[0][0]                  
+__________________________________________________________________________________________________
+flatten_4 (Flatten)             (None, 225792)       0           dropout_4[0][0]                  
+__________________________________________________________________________________________________
+flatten_5 (Flatten)             (None, 102400)       0           dropout_5[0][0]                  
+__________________________________________________________________________________________________
+flatten_6 (Flatten)             (None, 46208)        0           dropout_6[0][0]                  
+__________________________________________________________________________________________________
+flatten_7 (Flatten)             (None, 20736)        0           dropout_7[0][0]                  
+__________________________________________________________________________________________________
+flatten_8 (Flatten)             (None, 18496)        0           dropout_8[0][0]                  
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 5)            14160965    flatten[0][0]                    
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 5)            4343045     flatten_1[0][0]                  
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 5)            1664645     flatten_2[0][0]                  
+__________________________________________________________________________________________________
+dense_3 (Dense)                 (None, 5)            677125      flatten_3[0][0]                  
+__________________________________________________________________________________________________
+dense_4 (Dense)                 (None, 5)            1128965     flatten_4[0][0]                  
+__________________________________________________________________________________________________
+dense_5 (Dense)                 (None, 5)            512005      flatten_5[0][0]                  
+__________________________________________________________________________________________________
+dense_6 (Dense)                 (None, 5)            231045      flatten_6[0][0]                  
+__________________________________________________________________________________________________
+dense_7 (Dense)                 (None, 5)            103685      flatten_7[0][0]                  
+__________________________________________________________________________________________________
+dense_8 (Dense)                 (None, 128)          2367616     flatten_8[0][0]                  
+__________________________________________________________________________________________________
+2021-10-25 00:44:07.056468: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:116] None of the MLIR optimization passes are enabled (registered 2)
+2021-10-25 00:44:07.058715: I tensorflow/core/platform/profile_utils/cpu_utils.cc:112] CPU Frequency: 2794610000 Hz
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: got SIGCONT
+slurmstepd: error: *** JOB 796712 ON nodegpu002 CANCELLED AT 2021-10-25T00:44:21 ***
+slurmstepd: error: *** STEP 796712.0 ON nodegpu002 CANCELLED AT 2021-10-25T00:44:21 ***
+srun: forcing job termination

@@ -1,0 +1,416 @@
+2021-10-27 20:00:50.545783: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-10-27 20:00:51.341331: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38426 MB memory:  -> device: 0, name: A100-PCIE-40GB, pci bus id: 0000:21:00.0, compute capability: 8.0
+Input file is " ./agnet.specialmodel2.newbinary.checkpoint
+Output file is " 
+Image path is " ./databaserelease2/NatureDataset4/test2
+--------------------
+
+
+Model Loaded
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 1024, 680, 3 0                                            
+__________________________________________________________________________________________________
+conv2d_4 (Conv2D)               (None, 336, 338, 48) 15600       input_1[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 336, 338, 48) 192         conv2d_4[0][0]                   
+__________________________________________________________________________________________________
+dropout_4 (Dropout)             (None, 336, 338, 48) 0           batch_normalization_4[0][0]      
+__________________________________________________________________________________________________
+conv2d_7 (Conv2D)               (None, 164, 165, 80) 311120      dropout_4[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 164, 165, 80) 320         conv2d_7[0][0]                   
+__________________________________________________________________________________________________
+dropout_7 (Dropout)             (None, 164, 165, 80) 0           batch_normalization_7[0][0]      
+__________________________________________________________________________________________________
+conv2d_10 (Conv2D)              (None, 79, 80, 160)  627360      dropout_7[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_10 (BatchNo (None, 79, 80, 160)  640         conv2d_10[0][0]                  
+__________________________________________________________________________________________________
+dropout_10 (Dropout)            (None, 79, 80, 160)  0           batch_normalization_10[0][0]     
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 989, 669, 48) 62256       input_1[0][0]                    
+__________________________________________________________________________________________________
+conv2d_13 (Conv2D)              (None, 38, 38, 160)  640160      dropout_10[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 989, 669, 48) 192         conv2d[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_13 (BatchNo (None, 38, 38, 160)  640         conv2d_13[0][0]                  
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 989, 669, 48) 0           batch_normalization[0][0]        
+__________________________________________________________________________________________________
+dropout_13 (Dropout)            (None, 38, 38, 160)  0           batch_normalization_13[0][0]     
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 491, 331, 80) 311120      dropout[0][0]                    
+__________________________________________________________________________________________________
+conv2d_16 (Conv2D)              (None, 19, 19, 320)  205120      dropout_13[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 491, 331, 80) 320         conv2d_1[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_16 (BatchNo (None, 19, 19, 320)  1280        conv2d_16[0][0]                  
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 491, 331, 80) 0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+dropout_16 (Dropout)            (None, 19, 19, 320)  0           batch_normalization_16[0][0]     
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, 245, 165, 80) 57680       dropout_1[0][0]                  
+__________________________________________________________________________________________________
+conv2d_5 (Conv2D)               (None, 164, 165, 80) 311120      dropout_4[0][0]                  
+__________________________________________________________________________________________________
+conv2d_8 (Conv2D)               (None, 80, 81, 160)  320160      dropout_7[0][0]                  
+__________________________________________________________________________________________________
+conv2d_11 (Conv2D)              (None, 37, 37, 320)  2509120     dropout_10[0][0]                 
+__________________________________________________________________________________________________
+conv2d_14 (Conv2D)              (None, 18, 18, 320)  461120      dropout_13[0][0]                 
+__________________________________________________________________________________________________
+conv2d_17 (Conv2D)              (None, 9, 9, 320)    409920      dropout_16[0][0]                 
+__________________________________________________________________________________________________
+conv2d_19 (Conv2D)              (None, 9, 9, 320)    409920      dropout_16[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 245, 165, 80) 320         conv2d_2[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 164, 165, 80) 320         conv2d_5[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_8 (BatchNor (None, 80, 81, 160)  640         conv2d_8[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_11 (BatchNo (None, 37, 37, 320)  1280        conv2d_11[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_14 (BatchNo (None, 18, 18, 320)  1280        conv2d_14[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_17 (BatchNo (None, 9, 9, 320)    1280        conv2d_17[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_19 (BatchNo (None, 9, 9, 320)    1280        conv2d_19[0][0]                  
+__________________________________________________________________________________________________
+dropout_2 (Dropout)             (None, 245, 165, 80) 0           batch_normalization_2[0][0]      
+__________________________________________________________________________________________________
+dropout_5 (Dropout)             (None, 164, 165, 80) 0           batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+dropout_8 (Dropout)             (None, 80, 81, 160)  0           batch_normalization_8[0][0]      
+__________________________________________________________________________________________________
+dropout_11 (Dropout)            (None, 37, 37, 320)  0           batch_normalization_11[0][0]     
+__________________________________________________________________________________________________
+dropout_14 (Dropout)            (None, 18, 18, 320)  0           batch_normalization_14[0][0]     
+__________________________________________________________________________________________________
+dropout_17 (Dropout)            (None, 9, 9, 320)    0           batch_normalization_17[0][0]     
+__________________________________________________________________________________________________
+dropout_19 (Dropout)            (None, 9, 9, 320)    0           batch_normalization_19[0][0]     
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, 122, 82, 80)  25680       dropout_2[0][0]                  
+__________________________________________________________________________________________________
+conv2d_6 (Conv2D)               (None, 78, 79, 160)  1036960     dropout_5[0][0]                  
+__________________________________________________________________________________________________
+conv2d_9 (Conv2D)               (None, 38, 39, 320)  1280320     dropout_8[0][0]                  
+__________________________________________________________________________________________________
+conv2d_12 (Conv2D)              (None, 16, 16, 320)  5017920     dropout_11[0][0]                 
+__________________________________________________________________________________________________
+conv2d_15 (Conv2D)              (None, 8, 8, 320)    921920      dropout_14[0][0]                 
+__________________________________________________________________________________________________
+conv2d_18 (Conv2D)              (None, 4, 4, 320)    409920      dropout_17[0][0]                 
+__________________________________________________________________________________________________
+conv2d_20 (Conv2D)              (None, 4, 4, 320)    409920      dropout_19[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 122, 82, 80)  320         conv2d_3[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 78, 79, 160)  640         conv2d_6[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_9 (BatchNor (None, 38, 39, 320)  1280        conv2d_9[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_12 (BatchNo (None, 16, 16, 320)  1280        conv2d_12[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_15 (BatchNo (None, 8, 8, 320)    1280        conv2d_15[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_18 (BatchNo (None, 4, 4, 320)    1280        conv2d_18[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_20 (BatchNo (None, 4, 4, 320)    1280        conv2d_20[0][0]                  
+__________________________________________________________________________________________________
+dropout_3 (Dropout)             (None, 122, 82, 80)  0           batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+dropout_6 (Dropout)             (None, 78, 79, 160)  0           batch_normalization_6[0][0]      
+__________________________________________________________________________________________________
+dropout_9 (Dropout)             (None, 38, 39, 320)  0           batch_normalization_9[0][0]      
+__________________________________________________________________________________________________
+dropout_12 (Dropout)            (None, 16, 16, 320)  0           batch_normalization_12[0][0]     
+__________________________________________________________________________________________________
+dropout_15 (Dropout)            (None, 8, 8, 320)    0           batch_normalization_15[0][0]     
+__________________________________________________________________________________________________
+dropout_18 (Dropout)            (None, 4, 4, 320)    0           batch_normalization_18[0][0]     
+__________________________________________________________________________________________________
+dropout_20 (Dropout)            (None, 4, 4, 320)    0           batch_normalization_20[0][0]     
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 800320)       0           dropout_3[0][0]                  
+__________________________________________________________________________________________________
+flatten_1 (Flatten)             (None, 985920)       0           dropout_6[0][0]                  
+__________________________________________________________________________________________________
+flatten_2 (Flatten)             (None, 474240)       0           dropout_9[0][0]                  
+__________________________________________________________________________________________________
+flatten_3 (Flatten)             (None, 81920)        0           dropout_12[0][0]                 
+__________________________________________________________________________________________________
+flatten_4 (Flatten)             (None, 20480)        0           dropout_15[0][0]                 
+__________________________________________________________________________________________________
+flatten_5 (Flatten)             (None, 5120)         0           dropout_18[0][0]                 
+__________________________________________________________________________________________________
+flatten_6 (Flatten)             (None, 5120)         0           dropout_20[0][0]                 
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 128)          102441088   flatten[0][0]                    
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 25)           24648025    flatten_1[0][0]                  
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 25)           11856025    flatten_2[0][0]                  
+__________________________________________________________________________________________________
+dense_3 (Dense)                 (None, 25)           2048025     flatten_3[0][0]                  
+__________________________________________________________________________________________________
+dense_4 (Dense)                 (None, 25)           512025      flatten_4[0][0]                  
+__________________________________________________________________________________________________
+dense_5 (Dense)                 (None, 25)           128025      flatten_5[0][0]                  
+__________________________________________________________________________________________________
+dense_6 (Dense)                 (None, 25)           128025      flatten_6[0][0]                  
+__________________________________________________________________________________________________
+concatenate (Concatenate)       (None, 278)          0           dense[0][0]                      
+                                                                 dense_1[0][0]                    
+                                                                 dense_2[0][0]                    
+2021-10-27 20:01:06.002006: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:185] None of the MLIR Optimization Passes are enabled (registered 2)
+2021-10-27 20:01:07.373489: I tensorflow/stream_executor/cuda/cuda_dnn.cc:369] Loaded cuDNN version 8201
+2021-10-27 20:01:09.106832: W tensorflow/stream_executor/gpu/asm_compiler.cc:77] Couldn't get ptxas version string: Internal: Running ptxas --version returned 32512
+2021-10-27 20:01:09.145602: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] Internal: ptxas exited with non-zero error code 32512, output: 
+Relying on driver to perform ptx compilation. 
+Modify $PATH to customize ptxas location.
+This message will be only logged once.
+2021-10-27 20:01:21.959382: I tensorflow/stream_executor/cuda/cuda_blas.cc:1760] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+                                                                 dense_3[0][0]                    
+                                                                 dense_4[0][0]                    
+                                                                 dense_5[0][0]                    
+                                                                 dense_6[0][0]                    
+__________________________________________________________________________________________________
+dense_10 (Dense)                (None, 256)          71424       concatenate[0][0]                
+__________________________________________________________________________________________________
+dropout_26 (Dropout)            (None, 256)          0           dense_10[0][0]                   
+__________________________________________________________________________________________________
+dense_11 (Dense)                (None, 128)          32896       dropout_26[0][0]                 
+__________________________________________________________________________________________________
+dropout_27 (Dropout)            (None, 128)          0           dense_11[0][0]                   
+__________________________________________________________________________________________________
+dense_12 (Dense)                (None, 10)           1290        dropout_27[0][0]                 
+__________________________________________________________________________________________________
+dense_13 (Dense)                (None, 1)            11          dense_12[0][0]                   
+==================================================================================================
+Total params: 157,638,619
+Trainable params: 157,629,947
+Non-trainable params: 8,672
+__________________________________________________________________________________________________
+None
+Adding Images: Reading ./databaserelease2/NatureDataset4/test2/1-meadows283.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows253.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows145.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows222.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows16.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows471.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows383.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows453.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows464.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows172.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows61.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows219.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows379.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows51.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows2.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows371.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows398.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows280.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows320.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows164.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows224.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows491.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows234.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows436.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows426.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows251.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows10.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows200.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows375.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows450.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows393.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows24.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows20.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows22.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows131.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows128.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows405.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows366.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows325.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows385.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows173.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows358.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows137.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows467.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows201.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows456.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows54.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows53.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows182.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows384.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows345.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows25.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows171.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows401.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows242.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows402.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows100.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows152.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows55.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows348.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows223.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows272.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows423.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows150.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows415.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/0-meadows214.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows126.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test2/1-meadows154.jpg
+1.0
+
+Read 68 images.
+
+
+[1. 0. 1. 0. 0. 1. 1. 1. 1. 0. 0. 0. 0. 1. 0. 0. 1. 0. 0. 1. 0. 0. 0. 1.
+ 0. 0. 1. 1. 1. 0. 1. 1. 0. 1. 0. 0. 1. 1. 1. 0. 1. 0. 0. 0. 0. 0. 0. 0.
+ 1. 1. 0. 0. 0. 1. 0. 1. 0. 0. 1. 1. 1. 1. 1. 1. 0. 0. 1. 1.]
+[[0.41184172]
+ [0.40585402]
+ [0.3210376 ]
+ [0.46995014]
+ [0.27428827]
+ [0.36045548]
+ [0.27879634]
+ [0.417516  ]
+ [0.5029978 ]
+ [0.37205586]
+ [0.31495133]
+ [0.39492968]
+ [0.31136197]
+ [0.21094665]
+ [0.23749639]
+ [0.379095  ]
+ [0.24849728]
+ [0.33866143]
+ [0.35813448]
+ [0.5467477 ]
+ [0.48634225]
+ [0.40910074]
+ [0.39315462]
+ [0.3863149 ]
+ [0.3353399 ]
+ [0.4983885 ]
+ [0.3438589 ]
+ [0.3745986 ]
+ [0.23680685]
+ [0.38107187]
+ [0.4291443 ]
+ [0.3503178 ]
+ [0.39021173]
+ [0.36942825]
+ [0.4079047 ]
+ [0.39856952]
+ [0.47621125]
+ [0.5467884 ]
+ [0.4370704 ]
+ [0.37947074]
+ [0.41648263]
+ [0.48059815]
+ [0.4189566 ]
+ [0.416434  ]
+ [0.32401696]
+ [0.37703893]
+ [0.45142496]
+ [0.44494912]
+ [0.37332657]
+ [0.2794003 ]
+ [0.37298125]
+ [0.39163664]
+ [0.38631764]
+ [0.48215795]
+ [0.39013308]
+ [0.44358304]
+ [0.35678595]
+ [0.2730364 ]
+ [0.3689144 ]
+ [0.17776203]
+ [0.3399163 ]
+ [0.28932968]
+ [0.37425438]
+ [0.3629742 ]
+ [0.22948612]
+ [0.1852845 ]
+ [0.24951456]
+ [0.4594057 ]]
+3/3 - 1s - loss: 0.2666 - accuracy: 0.5735
+Restored model, accuracy: 57.35%

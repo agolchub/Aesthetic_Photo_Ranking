@@ -1,0 +1,1705 @@
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+Wed Dec  8 00:40:11 2021       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 460.32.03    Driver Version: 460.32.03    CUDA Version: 11.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  A100-PCIE-40GB      Off  | 00000000:21:00.0 Off |                    0 |
+| N/A   32C    P0    38W / 250W |      0MiB / 40536MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+2021-12-08 00:40:23.507998: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-12-08 00:40:24.954630: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38426 MB memory:  -> device: 0, name: A100-PCIE-40GB, pci bus id: 0000:21:00.0, compute capability: 8.0
+2021-12-08 00:40:25.736847: I tensorflow/core/profiler/lib/profiler_session.cc:131] Profiler session initializing.
+2021-12-08 00:40:25.736887: I tensorflow/core/profiler/lib/profiler_session.cc:146] Profiler session started.
+2021-12-08 00:40:25.737765: I tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1614] Profiler found 1 GPUs
+2021-12-08 00:40:25.740701: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcupti.so.11.2'; dlerror: libcupti.so.11.2: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2021-12-08 00:40:25.741143: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcupti.so'; dlerror: libcupti.so: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2021-12-08 00:40:25.741163: E tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1666] function cupti_interface_->Subscribe( &subscriber_, (CUpti_CallbackFunc)ApiCallback, this)failed with error CUPTI could not be loaded or symbol could not be found.
+2021-12-08 00:40:25.741182: I tensorflow/core/profiler/lib/profiler_session.cc:164] Profiler session tear down.
+2021-12-08 00:40:25.741202: E tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1757] function cupti_interface_->Finalize()failed with error CUPTI could not be loaded or symbol could not be found.
+/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/optimizer_v2/optimizer_v2.py:355: UserWarning: The `lr` argument is deprecated, use `learning_rate` instead.
+  warnings.warn(
+Input file is " 
+Output file is " agnet.17.res
+Image path is " 
+--------------------
+
+
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 1024, 680, 3 0                                            
+__________________________________________________________________________________________________
+conv2d_16 (Conv2D)              (None, 170, 168, 96) 23424       input_1[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization_16 (BatchNo (None, 170, 168, 96) 384         conv2d_16[0][0]                  
+__________________________________________________________________________________________________
+activation_12 (Activation)      (None, 170, 168, 96) 0           batch_normalization_16[0][0]     
+__________________________________________________________________________________________________
+conv2d_17 (Conv2D)              (None, 169, 167, 192 73920       activation_12[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_17 (BatchNo (None, 169, 167, 192 768         conv2d_17[0][0]                  
+__________________________________________________________________________________________________
+activation_13 (Activation)      (None, 169, 167, 192 0           batch_normalization_17[0][0]     
+__________________________________________________________________________________________________
+conv2d_18 (Conv2D)              (None, 168, 166, 384 295296      activation_13[0][0]              
+__________________________________________________________________________________________________
+conv2d_19 (Conv2D)              (None, 168, 166, 384 332160      activation_12[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_18 (BatchNo (None, 168, 166, 384 1536        conv2d_18[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_19 (BatchNo (None, 168, 166, 384 1536        conv2d_19[0][0]                  
+__________________________________________________________________________________________________
+add_4 (Add)                     (None, 168, 166, 384 0           batch_normalization_18[0][0]     
+                                                                 batch_normalization_19[0][0]     
+__________________________________________________________________________________________________
+activation_14 (Activation)      (None, 168, 166, 384 0           add_4[0][0]                      
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 330, 323, 96) 352896      input_1[0][0]                    
+__________________________________________________________________________________________________
+conv2d_20 (Conv2D)              (None, 81, 80, 384)  7225728     activation_14[0][0]              
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 330, 323, 96) 384         conv2d[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_20 (BatchNo (None, 81, 80, 384)  1536        conv2d_20[0][0]                  
+__________________________________________________________________________________________________
+activation (Activation)         (None, 330, 323, 96) 0           batch_normalization[0][0]        
+__________________________________________________________________________________________________
+activation_15 (Activation)      (None, 81, 80, 384)  0           batch_normalization_20[0][0]     
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 329, 322, 192 73920       activation[0][0]                 
+__________________________________________________________________________________________________
+conv2d_21 (Conv2D)              (None, 80, 79, 192)  295104      activation_15[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 329, 322, 192 768         conv2d_1[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_21 (BatchNo (None, 80, 79, 192)  768         conv2d_21[0][0]                  
+__________________________________________________________________________________________________
+activation_1 (Activation)       (None, 329, 322, 192 0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+activation_16 (Activation)      (None, 80, 79, 192)  0           batch_normalization_21[0][0]     
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, 328, 321, 384 295296      activation_1[0][0]               
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, 328, 321, 384 332160      activation[0][0]                 
+__________________________________________________________________________________________________
+conv2d_22 (Conv2D)              (None, 79, 78, 96)   73824       activation_16[0][0]              
+__________________________________________________________________________________________________
+conv2d_23 (Conv2D)              (None, 79, 78, 96)   331872      activation_15[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 328, 321, 384 1536        conv2d_2[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 328, 321, 384 1536        conv2d_3[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_22 (BatchNo (None, 79, 78, 96)   384         conv2d_22[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_23 (BatchNo (None, 79, 78, 96)   384         conv2d_23[0][0]                  
+__________________________________________________________________________________________________
+add (Add)                       (None, 328, 321, 384 0           batch_normalization_2[0][0]      
+                                                                 batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+add_5 (Add)                     (None, 79, 78, 96)   0           batch_normalization_22[0][0]     
+                                                                 batch_normalization_23[0][0]     
+__________________________________________________________________________________________________
+activation_2 (Activation)       (None, 328, 321, 384 0           add[0][0]                        
+__________________________________________________________________________________________________
+activation_17 (Activation)      (None, 79, 78, 96)   0           add_5[0][0]                      
+__________________________________________________________________________________________________
+conv2d_4 (Conv2D)               (None, 156, 152, 160 19906720    activation_2[0][0]               
+__________________________________________________________________________________________________
+conv2d_24 (Conv2D)              (None, 38, 37, 384)  921984      activation_17[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 156, 152, 160 640         conv2d_4[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_24 (BatchNo (None, 38, 37, 384)  1536        conv2d_24[0][0]                  
+__________________________________________________________________________________________________
+activation_3 (Activation)       (None, 156, 152, 160 0           batch_normalization_4[0][0]      
+__________________________________________________________________________________________________
+activation_18 (Activation)      (None, 38, 37, 384)  0           batch_normalization_24[0][0]     
+__________________________________________________________________________________________________
+conv2d_5 (Conv2D)               (None, 155, 151, 80) 51280       activation_3[0][0]               
+__________________________________________________________________________________________________
+conv2d_25 (Conv2D)              (None, 37, 36, 768)  1180416     activation_18[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 155, 151, 80) 320         conv2d_5[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_25 (BatchNo (None, 37, 36, 768)  3072        conv2d_25[0][0]                  
+__________________________________________________________________________________________________
+activation_4 (Activation)       (None, 155, 151, 80) 0           batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+activation_19 (Activation)      (None, 37, 36, 768)  0           batch_normalization_25[0][0]     
+__________________________________________________________________________________________________
+conv2d_6 (Conv2D)               (None, 154, 150, 40) 12840       activation_4[0][0]               
+__________________________________________________________________________________________________
+conv2d_7 (Conv2D)               (None, 154, 150, 40) 57640       activation_3[0][0]               
+__________________________________________________________________________________________________
+conv2d_26 (Conv2D)              (None, 36, 35, 1536) 4720128     activation_19[0][0]              
+__________________________________________________________________________________________________
+conv2d_27 (Conv2D)              (None, 36, 35, 1536) 5309952     activation_18[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 154, 150, 40) 160         conv2d_6[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 154, 150, 40) 160         conv2d_7[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_26 (BatchNo (None, 36, 35, 1536) 6144        conv2d_26[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_27 (BatchNo (None, 36, 35, 1536) 6144        conv2d_27[0][0]                  
+__________________________________________________________________________________________________
+add_1 (Add)                     (None, 154, 150, 40) 0           batch_normalization_6[0][0]      
+                                                                 batch_normalization_7[0][0]      
+__________________________________________________________________________________________________
+add_6 (Add)                     (None, 36, 35, 1536) 0           batch_normalization_26[0][0]     
+                                                                 batch_normalization_27[0][0]     
+__________________________________________________________________________________________________
+activation_5 (Activation)       (None, 154, 150, 40) 0           add_1[0][0]                      
+__________________________________________________________________________________________________
+activation_20 (Activation)      (None, 36, 35, 1536) 0           add_6[0][0]                      
+__________________________________________________________________________________________________
+conv2d_8 (Conv2D)               (None, 69, 67, 160)  2073760     activation_5[0][0]               
+__________________________________________________________________________________________________
+conv2d_28 (Conv2D)              (None, 17, 17, 384)  5308800     activation_20[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_8 (BatchNor (None, 69, 67, 160)  640         conv2d_8[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_28 (BatchNo (None, 17, 17, 384)  1536        conv2d_28[0][0]                  
+__________________________________________________________________________________________________
+activation_6 (Activation)       (None, 69, 67, 160)  0           batch_normalization_8[0][0]      
+__________________________________________________________________________________________________
+activation_21 (Activation)      (None, 17, 17, 384)  0           batch_normalization_28[0][0]     
+__________________________________________________________________________________________________
+conv2d_9 (Conv2D)               (None, 68, 66, 160)  102560      activation_6[0][0]               
+__________________________________________________________________________________________________
+conv2d_29 (Conv2D)              (None, 16, 16, 192)  295104      activation_21[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_9 (BatchNor (None, 68, 66, 160)  640         conv2d_9[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_29 (BatchNo (None, 16, 16, 192)  768         conv2d_29[0][0]                  
+__________________________________________________________________________________________________
+activation_7 (Activation)       (None, 68, 66, 160)  0           batch_normalization_9[0][0]      
+__________________________________________________________________________________________________
+activation_22 (Activation)      (None, 16, 16, 192)  0           batch_normalization_29[0][0]     
+__________________________________________________________________________________________________
+conv2d_10 (Conv2D)              (None, 67, 65, 160)  102560      activation_7[0][0]               
+__________________________________________________________________________________________________
+conv2d_11 (Conv2D)              (None, 67, 65, 160)  230560      activation_6[0][0]               
+__________________________________________________________________________________________________
+conv2d_30 (Conv2D)              (None, 15, 15, 96)   73824       activation_22[0][0]              
+__________________________________________________________________________________________________
+conv2d_31 (Conv2D)              (None, 15, 15, 96)   331872      activation_21[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_10 (BatchNo (None, 67, 65, 160)  640         conv2d_10[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_11 (BatchNo (None, 67, 65, 160)  640         conv2d_11[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_30 (BatchNo (None, 15, 15, 96)   384         conv2d_30[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_31 (BatchNo (None, 15, 15, 96)   384         conv2d_31[0][0]                  
+__________________________________________________________________________________________________
+add_2 (Add)                     (None, 67, 65, 160)  0           batch_normalization_10[0][0]     
+                                                                 batch_normalization_11[0][0]     
+__________________________________________________________________________________________________
+add_7 (Add)                     (None, 15, 15, 96)   0           batch_normalization_30[0][0]     
+                                                                 batch_normalization_31[0][0]     
+__________________________________________________________________________________________________
+activation_8 (Activation)       (None, 67, 65, 160)  0           add_2[0][0]                      
+__________________________________________________________________________________________________
+activation_23 (Activation)      (None, 15, 15, 96)   0           add_7[0][0]                      
+__________________________________________________________________________________________________
+conv2d_12 (Conv2D)              (None, 30, 29, 80)   1036880     activation_8[0][0]               
+__________________________________________________________________________________________________
+conv2d_32 (Conv2D)              (None, 7, 7, 160)    138400      activation_23[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_12 (BatchNo (None, 30, 29, 80)   320         conv2d_12[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_32 (BatchNo (None, 7, 7, 160)    640         conv2d_32[0][0]                  
+__________________________________________________________________________________________________
+activation_9 (Activation)       (None, 30, 29, 80)   0           batch_normalization_12[0][0]     
+__________________________________________________________________________________________________
+activation_24 (Activation)      (None, 7, 7, 160)    0           batch_normalization_32[0][0]     
+__________________________________________________________________________________________________
+conv2d_13 (Conv2D)              (None, 29, 28, 40)   12840       activation_9[0][0]               
+__________________________________________________________________________________________________
+conv2d_33 (Conv2D)              (None, 6, 6, 160)    102560      activation_24[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_13 (BatchNo (None, 29, 28, 40)   160         conv2d_13[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_33 (BatchNo (None, 6, 6, 160)    640         conv2d_33[0][0]                  
+__________________________________________________________________________________________________
+activation_10 (Activation)      (None, 29, 28, 40)   0           batch_normalization_13[0][0]     
+__________________________________________________________________________________________________
+activation_25 (Activation)      (None, 6, 6, 160)    0           batch_normalization_33[0][0]     
+__________________________________________________________________________________________________
+conv2d_14 (Conv2D)              (None, 28, 27, 20)   3220        activation_10[0][0]              
+__________________________________________________________________________________________________
+conv2d_15 (Conv2D)              (None, 28, 27, 20)   14420       activation_9[0][0]               
+__________________________________________________________________________________________________
+conv2d_34 (Conv2D)              (None, 5, 5, 160)    102560      activation_25[0][0]              
+__________________________________________________________________________________________________
+conv2d_35 (Conv2D)              (None, 5, 5, 160)    230560      activation_24[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_14 (BatchNo (None, 28, 27, 20)   80          conv2d_14[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_15 (BatchNo (None, 28, 27, 20)   80          conv2d_15[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_34 (BatchNo (None, 5, 5, 160)    640         conv2d_34[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_35 (BatchNo (None, 5, 5, 160)    640         conv2d_35[0][0]                  
+__________________________________________________________________________________________________
+add_3 (Add)                     (None, 28, 27, 20)   0           batch_normalization_14[0][0]     
+                                                                 batch_normalization_15[0][0]     
+__________________________________________________________________________________________________
+add_8 (Add)                     (None, 5, 5, 160)    0           batch_normalization_34[0][0]     
+                                                                 batch_normalization_35[0][0]     
+__________________________________________________________________________________________________
+activation_11 (Activation)      (None, 28, 27, 20)   0           add_3[0][0]                      
+__________________________________________________________________________________________________
+activation_26 (Activation)      (None, 5, 5, 160)    0           add_8[0][0]                      
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 15120)        0           activation_11[0][0]              
+__________________________________________________________________________________________________
+flatten_1 (Flatten)             (None, 4000)         0           activation_26[0][0]              
+__________________________________________________________________________________________________
+concatenate (Concatenate)       (None, 19120)        0           flatten[0][0]                    
+                                                                 flatten_1[0][0]                  
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 2048)         39159808    concatenate[0][0]                
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 2048)         0           dense[0][0]                      
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 1024)         2098176     dropout[0][0]                    
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 1024)         0           dense_1[0][0]                    
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 512)          524800      dropout_1[0][0]                  
+__________________________________________________________________________________________________
+dropout_2 (Dropout)             (None, 512)          0           dense_2[0][0]                    
+__________________________________________________________________________________________________
+dense_3 (Dense)                 (None, 256)          131328      dropout_2[0][0]                  
+__________________________________________________________________________________________________
+dropout_3 (Dropout)             (None, 256)          0           dense_3[0][0]                    
+__________________________________________________________________________________________________
+dense_4 (Dense)                 (None, 128)          32896       dropout_3[0][0]                  
+__________________________________________________________________________________________________
+dropout_4 (Dropout)             (None, 128)          0           dense_4[0][0]                    
+__________________________________________________________________________________________________
+dense_5 (Dense)                 (None, 64)           8256        dropout_4[0][0]                  
+__________________________________________________________________________________________________
+dropout_5 (Dropout)             (None, 64)           0           dense_5[0][0]                    
+__________________________________________________________________________________________________
+dense_6 (Dense)                 (None, 1)            65          dropout_5[0][0]                  
+==================================================================================================
+Total params: 94,020,897
+Trainable params: 94,001,633
+Non-trainable params: 19,264
+__________________________________________________________________________________________________
+None
+Adding Images: Reading ./databaserelease2/MixedDataset/train/0-130.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-121.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-57.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-124.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-84.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-36.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-92.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-72.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-136.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-1.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-1.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-116.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-52.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-18.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-68.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-37.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-29.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-121.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-78.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-118.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-70.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-26.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-100.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-29.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-64.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-69.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-77.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-125.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-24.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-11.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-60.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-12.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-63.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-86.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-124.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-51.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-107.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-66.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-37.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-92.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-46.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-128.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-114.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-75.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-74.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-20.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-94.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-22.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-31.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-98.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-106.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-101.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-95.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-108.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-88.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-69.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-8.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-114.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-23.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-80.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-119.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-42.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-48.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-45.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-71.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-95.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-82.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-28.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-89.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-133.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-17.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-36.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-21.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-54.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-35.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-105.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-137.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-18.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-54.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-101.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-81.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-43.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-104.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-113.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-10.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-136.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-59.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-91.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-26.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-137.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-19.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-112.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-28.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-97.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-15.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-87.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-6.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-44.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-99.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-61.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-40.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-33.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-61.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-131.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-58.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-93.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-9.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-76.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-138.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-55.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-71.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-3.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-2.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-113.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-79.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-31.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-32.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-126.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-102.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-83.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-38.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-125.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-16.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-90.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-44.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-43.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-139.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-62.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-88.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-106.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-123.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-49.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-109.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-132.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-38.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-40.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-97.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-104.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-133.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-47.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-134.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-72.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-120.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-139.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-6.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-91.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-53.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-14.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-127.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-79.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-10.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-24.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-14.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-99.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-27.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-129.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-5.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-102.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-134.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-12.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-62.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-58.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-51.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-22.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-117.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-13.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-11.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-93.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-87.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-120.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-123.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-105.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-59.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-86.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-75.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-115.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-138.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-77.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-70.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-53.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-130.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-73.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-50.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-34.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-127.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-60.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-21.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-135.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-8.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-112.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-46.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-32.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-109.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-117.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-34.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-49.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-81.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-13.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-65.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-68.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-98.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-33.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-96.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-35.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-131.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-47.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-55.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-65.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-110.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-73.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-9.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-4.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-23.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-76.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-5.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-48.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-96.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-85.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-2.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-110.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-122.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-30.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-39.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-107.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-45.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-25.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-84.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-111.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-57.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-67.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-56.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-4.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-80.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-94.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-30.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-42.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-7.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-56.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-122.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-52.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-19.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-50.jpg
+0.0
+/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/utils/generic_utils.py:494: CustomMaskWarning: Custom mask layers require a config and must override get_config. When loading, the custom mask layer must be passed to the custom_objects argument.
+  warnings.warn('Custom mask layers require a config and must override '
+2021-12-08 00:41:01.119712: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:185] None of the MLIR Optimization Passes are enabled (registered 2)
+2021-12-08 00:41:04.538499: I tensorflow/stream_executor/cuda/cuda_dnn.cc:369] Loaded cuDNN version 8201
+2021-12-08 00:41:06.635956: W tensorflow/stream_executor/gpu/asm_compiler.cc:77] Couldn't get ptxas version string: Internal: Running ptxas --version returned 32512
+2021-12-08 00:41:06.684014: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] Internal: ptxas exited with non-zero error code 32512, output: 
+Relying on driver to perform ptx compilation. 
+Modify $PATH to customize ptxas location.
+This message will be only logged once.
+2021-12-08 00:41:51.576414: I tensorflow/stream_executor/cuda/cuda_blas.cc:1760] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+2021-12-08 00:41:59.747104: W tensorflow/core/common_runtime/bfc_allocator.cc:272] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.78GiB with freed_by_count=0. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory were available.
+2021-12-08 00:41:59.747144: W tensorflow/core/kernels/gpu_utils.cc:49] Failed to allocate memory for convolution redzone checking; skipping this check. This is benign and only means that we won't check cudnn for out-of-bounds reads and writes. This message will only be printed once.
+Reading ./databaserelease2/MixedDataset/train/1-108.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-116.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-103.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-3.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-39.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-41.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-115.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-129.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-82.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-100.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-132.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-119.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-74.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-27.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-118.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-16.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-90.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-7.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-17.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-25.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-64.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-103.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-111.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-41.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-135.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-89.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-63.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-83.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-67.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-15.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-66.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-20.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-128.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-78.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-85.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-126.jpg
+0.0
+
+Read 278 images.
+
+
+Adding Images: Reading ./databaserelease2/MixedDataset/val/1-148.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-167.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-143.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-144.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-183.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-184.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-157.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-167.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-140.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-142.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-156.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-169.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-182.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-145.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-153.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-166.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-160.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-174.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-155.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-148.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-188.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-171.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-177.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-161.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-188.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-142.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-156.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-185.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-183.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-165.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-154.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-175.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-163.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-150.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-155.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-153.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-159.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-140.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-179.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-185.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-176.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-177.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-164.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-172.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-182.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-189.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-151.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-187.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-187.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-178.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-189.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-141.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-146.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-145.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-181.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-160.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-175.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-180.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-178.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-162.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-159.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-144.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-161.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-186.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-158.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-141.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-172.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-166.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-147.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-180.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-149.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-168.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-173.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-163.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-150.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-170.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-147.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-170.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-179.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-184.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-176.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-168.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-152.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-158.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-164.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-174.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-162.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-171.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-149.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-143.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-154.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-157.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-169.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-181.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-186.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-151.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-165.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-152.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-173.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-146.jpg
+0.0
+
+Read 100 images.
+
+
+Epoch 1/1000
+2021-12-08 00:42:33.175011: I tensorflow/core/profiler/lib/profiler_session.cc:131] Profiler session initializing.
+2021-12-08 00:42:33.175055: I tensorflow/core/profiler/lib/profiler_session.cc:146] Profiler session started.
+2021-12-08 00:42:33.175118: E tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1666] function cupti_interface_->Subscribe( &subscriber_, (CUpti_CallbackFunc)ApiCallback, this)failed with error CUPTI could not be loaded or symbol could not be found.
+2021-12-08 00:42:36.408253: I tensorflow/core/profiler/lib/profiler_session.cc:66] Profiler session collecting data.
+2021-12-08 00:42:36.408347: E tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1757] function cupti_interface_->Finalize()failed with error CUPTI could not be loaded or symbol could not be found.
+2021-12-08 00:42:36.419003: I tensorflow/core/profiler/internal/gpu/cupti_collector.cc:673]  GpuTracer has collected 0 callback api events and 0 activity events. 
+2021-12-08 00:42:36.421305: I tensorflow/core/profiler/lib/profiler_session.cc:164] Profiler session tear down.
+2021-12-08 00:42:36.658384: I tensorflow/core/profiler/rpc/client/save_profile.cc:136] Creating directory: agnet.17.res.logs/fit/20211208-004025/train/plugins/profile/2021_12_08_00_42_36
+
+2021-12-08 00:42:36.660111: I tensorflow/core/profiler/rpc/client/save_profile.cc:142] Dumped gzipped tool data for trace.json.gz to agnet.17.res.logs/fit/20211208-004025/train/plugins/profile/2021_12_08_00_42_36/nodegpu003.hpc.fau.edu.trace.json.gz
+2021-12-08 00:42:36.688978: I tensorflow/core/profiler/rpc/client/save_profile.cc:136] Creating directory: agnet.17.res.logs/fit/20211208-004025/train/plugins/profile/2021_12_08_00_42_36
+
+2021-12-08 00:42:36.696829: I tensorflow/core/profiler/rpc/client/save_profile.cc:142] Dumped gzipped tool data for memory_profile.json.gz to agnet.17.res.logs/fit/20211208-004025/train/plugins/profile/2021_12_08_00_42_36/nodegpu003.hpc.fau.edu.memory_profile.json.gz
+2021-12-08 00:42:36.703573: I tensorflow/core/profiler/rpc/client/capture_profile.cc:251] Creating directory: agnet.17.res.logs/fit/20211208-004025/train/plugins/profile/2021_12_08_00_42_36
+Dumped tool data for xplane.pb to agnet.17.res.logs/fit/20211208-004025/train/plugins/profile/2021_12_08_00_42_36/nodegpu003.hpc.fau.edu.xplane.pb
+Dumped tool data for overview_page.pb to agnet.17.res.logs/fit/20211208-004025/train/plugins/profile/2021_12_08_00_42_36/nodegpu003.hpc.fau.edu.overview_page.pb
+Dumped tool data for input_pipeline.pb to agnet.17.res.logs/fit/20211208-004025/train/plugins/profile/2021_12_08_00_42_36/nodegpu003.hpc.fau.edu.input_pipeline.pb
+Dumped tool data for tensorflow_stats.pb to agnet.17.res.logs/fit/20211208-004025/train/plugins/profile/2021_12_08_00_42_36/nodegpu003.hpc.fau.edu.tensorflow_stats.pb
+Dumped tool data for kernel_stats.pb to agnet.17.res.logs/fit/20211208-004025/train/plugins/profile/2021_12_08_00_42_36/nodegpu003.hpc.fau.edu.kernel_stats.pb
+
+WARNING:tensorflow:Callback method `on_train_batch_end` is slow compared to the batch time (batch time: 0.8070s vs `on_train_batch_end` time: 2.0842s). Check your callbacks.
+ 1/12 [=>............................] - ETA: 16:51 - loss: 0.3093 - accuracy: 0.4800 2/12 [====>.........................] - ETA: 33s - loss: 0.3390 - accuracy: 0.4200   3/12 [======>.......................] - ETA: 30s - loss: 0.3255 - accuracy: 0.4133 4/12 [=========>....................] - ETA: 26s - loss: 0.3040 - accuracy: 0.4800 5/12 [===========>..................] - ETA: 23s - loss: 0.2985 - accuracy: 0.4800 6/12 [==============>...............] - ETA: 19s - loss: 0.2946 - accuracy: 0.4933 7/12 [================>.............] - ETA: 16s - loss: 0.3003 - accuracy: 0.4743 8/12 [===================>..........] - ETA: 13s - loss: 0.3016 - accuracy: 0.4600 9/12 [=====================>........] - ETA: 9s - loss: 0.2932 - accuracy: 0.4711 10/12 [========================>.....] - ETA: 6s - loss: 0.2910 - accuracy: 0.476011/12 [==========================>...] - ETA: 3s - loss: 0.2862 - accuracy: 0.483612/12 [==============================] - ETA: 0s - loss: 0.2853 - accuracy: 0.482012/12 [==============================] - 143s 5s/step - loss: 0.2853 - accuracy: 0.4820 - val_loss: 0.5000 - val_accuracy: 0.5000
+2021-12-08 00:43:28.450180: W tensorflow/python/util/util.cc:348] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
+/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/utils/generic_utils.py:494: CustomMaskWarning: Custom mask layers require a config and must override get_config. When loading, the custom mask layer must be passed to the custom_objects argument.
+  warnings.warn('Custom mask layers require a config and must override '
+The temperature of the GPU is  45
+Epoch 2/1000
+ 1/12 [=>............................] - ETA: 35s - loss: 0.2389 - accuracy: 0.7200 2/12 [====>.........................] - ETA: 32s - loss: 0.3196 - accuracy: 0.5400 3/12 [======>.......................] - ETA: 28s - loss: 0.3081 - accuracy: 0.5333 4/12 [=========>....................] - ETA: 25s - loss: 0.3066 - accuracy: 0.5300 5/12 [===========>..................] - ETA: 22s - loss: 0.3051 - accuracy: 0.5040 6/12 [==============>...............] - ETA: 19s - loss: 0.2993 - accuracy: 0.5200 7/12 [================>.............] - ETA: 16s - loss: 0.2935 - accuracy: 0.5257 8/12 [===================>..........] - ETA: 12s - loss: 0.2959 - accuracy: 0.5200 9/12 [=====================>........] - ETA: 9s - loss: 0.2939 - accuracy: 0.5156 10/12 [========================>.....] - ETA: 6s - loss: 0.2878 - accuracy: 0.532011/12 [==========================>...] - ETA: 3s - loss: 0.2867 - accuracy: 0.538212/12 [==============================] - ETA: 0s - loss: 0.2898 - accuracy: 0.532412/12 [==============================] - 41s 3s/step - loss: 0.2898 - accuracy: 0.5324 - val_loss: 0.5000 - val_accuracy: 0.5000
+2021-12-08 00:44:28.132643: W tensorflow/core/common_runtime/bfc_allocator.cc:457] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.76GiB (rounded to 4043059200)requested by op gradient_tape/model/conv2d_4/Conv2D/Conv2DBackpropInput
+If the cause is memory fragmentation maybe the environment variable 'TF_GPU_ALLOCATOR=cuda_malloc_async' will improve the situation. 
+Current allocation summary follows.
+Current allocation summary follows.
+2021-12-08 00:44:28.132692: I tensorflow/core/common_runtime/bfc_allocator.cc:1004] BFCAllocator dump for GPU_0_bfc
+2021-12-08 00:44:28.132702: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (256): 	Total Chunks: 129, Chunks in use: 119. 32.2KiB allocated for chunks. 29.8KiB in use in bin. 4.0KiB client-requested in use in bin.
+2021-12-08 00:44:28.132709: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (512): 	Total Chunks: 119, Chunks in use: 110. 77.5KiB allocated for chunks. 72.0KiB in use in bin. 58.3KiB client-requested in use in bin.
+2021-12-08 00:44:28.132715: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (1024): 	Total Chunks: 62, Chunks in use: 56. 85.0KiB allocated for chunks. 77.2KiB in use in bin. 72.0KiB client-requested in use in bin.
+2021-12-08 00:44:28.132721: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (2048): 	Total Chunks: 13, Chunks in use: 11. 33.5KiB allocated for chunks. 27.8KiB in use in bin. 23.0KiB client-requested in use in bin.
+2021-12-08 00:44:28.132727: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (4096): 	Total Chunks: 13, Chunks in use: 10. 73.5KiB allocated for chunks. 56.2KiB in use in bin. 55.0KiB client-requested in use in bin.
+2021-12-08 00:44:28.132734: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (8192): 	Total Chunks: 4, Chunks in use: 3. 33.5KiB allocated for chunks. 25.5KiB in use in bin. 20.0KiB client-requested in use in bin.
+2021-12-08 00:44:28.132740: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (16384): 	Total Chunks: 1, Chunks in use: 1. 23.2KiB allocated for chunks. 23.2KiB in use in bin. 12.5KiB client-requested in use in bin.
+2021-12-08 00:44:28.132746: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (32768): 	Total Chunks: 3, Chunks in use: 3. 139.8KiB allocated for chunks. 139.8KiB in use in bin. 132.0KiB client-requested in use in bin.
+2021-12-08 00:44:28.132752: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (65536): 	Total Chunks: 3, Chunks in use: 2. 254.0KiB allocated for chunks. 159.8KiB in use in bin. 147.4KiB client-requested in use in bin.
+2021-12-08 00:44:28.132759: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (131072): 	Total Chunks: 5, Chunks in use: 3. 879.5KiB allocated for chunks. 553.0KiB in use in bin. 553.0KiB client-requested in use in bin.
+2021-12-08 00:44:28.132765: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (262144): 	Total Chunks: 7, Chunks in use: 6. 2.49MiB allocated for chunks. 2.01MiB in use in bin. 1.91MiB client-requested in use in bin.
+2021-12-08 00:44:28.132770: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (524288): 	Total Chunks: 7, Chunks in use: 5. 4.85MiB allocated for chunks. 3.47MiB in use in bin. 2.69MiB client-requested in use in bin.
+2021-12-08 00:44:28.132777: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (1048576): 	Total Chunks: 10, Chunks in use: 10. 13.17MiB allocated for chunks. 13.17MiB in use in bin. 11.79MiB client-requested in use in bin.
+2021-12-08 00:44:28.132782: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (2097152): 	Total Chunks: 2, Chunks in use: 2. 6.55MiB allocated for chunks. 6.55MiB in use in bin. 5.52MiB client-requested in use in bin.
+2021-12-08 00:44:28.132789: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (4194304): 	Total Chunks: 4, Chunks in use: 4. 23.44MiB allocated for chunks. 23.44MiB in use in bin. 19.88MiB client-requested in use in bin.
+2021-12-08 00:44:28.132799: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (8388608): 	Total Chunks: 2, Chunks in use: 1. 19.12MiB allocated for chunks. 8.00MiB in use in bin. 8.00MiB client-requested in use in bin.
+2021-12-08 00:44:28.132806: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (16777216): 	Total Chunks: 7, Chunks in use: 4. 150.22MiB allocated for chunks. 86.06MiB in use in bin. 86.06MiB client-requested in use in bin.
+2021-12-08 00:44:28.132812: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (33554432): 	Total Chunks: 4, Chunks in use: 3. 225.66MiB allocated for chunks. 169.24MiB in use in bin. 169.24MiB client-requested in use in bin.
+2021-12-08 00:44:28.132818: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (67108864): 	Total Chunks: 5, Chunks in use: 5. 479.73MiB allocated for chunks. 479.73MiB in use in bin. 439.73MiB client-requested in use in bin.
+2021-12-08 00:44:28.132824: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (134217728): 	Total Chunks: 6, Chunks in use: 4. 1.12GiB allocated for chunks. 823.20MiB in use in bin. 823.20MiB client-requested in use in bin.
+2021-12-08 00:44:28.132830: I tensorflow/core/common_runtime/bfc_allocator.cc:1011] Bin (268435456): 	Total Chunks: 22, Chunks in use: 18. 35.50GiB allocated for chunks. 28.66GiB in use in bin. 28.56GiB client-requested in use in bin.
+2021-12-08 00:44:28.132838: I tensorflow/core/common_runtime/bfc_allocator.cc:1027] Bin for 3.76GiB was 256.00MiB, Chunk State: 
+2021-12-08 00:44:28.132850: I tensorflow/core/common_runtime/bfc_allocator.cc:1033]   Size: 266.69MiB | Requested Size: 178.57MiB | in_use: 0 | bin_num: 20, prev:   Size: 56.41MiB | Requested Size: 56.41MiB | in_use: 1 | bin_num: -1, next:   Size: 115.72MiB | Requested Size: 115.72MiB | in_use: 1 | bin_num: -1
+2021-12-08 00:44:28.132859: I tensorflow/core/common_runtime/bfc_allocator.cc:1033]   Size: 361.82MiB | Requested Size: 361.82MiB | in_use: 0 | bin_num: 20, prev:   Size: 516.78MiB | Requested Size: 516.78MiB | in_use: 1 | bin_num: -1, next:   Size: 237.30MiB | Requested Size: 237.30MiB | in_use: 1 | bin_num: -1
+2021-12-08 00:44:28.132867: I tensorflow/core/common_runtime/bfc_allocator.cc:1033]   Size: 2.48GiB | Requested Size: 51.49MiB | in_use: 0 | bin_num: 20, prev:   Size: 56.41MiB | Requested Size: 56.41MiB | in_use: 1 | bin_num: -1, next:   Size: 516.78MiB | Requested Size: 516.78MiB | in_use: 1 | bin_num: -1
+2021-12-08 00:44:28.132874: I tensorflow/core/common_runtime/bfc_allocator.cc:1033]   Size: 3.75GiB | Requested Size: 361.82MiB | in_use: 0 | bin_num: 20, prev:   Size: 3.76GiB | Requested Size: 3.76GiB | in_use: 1 | bin_num: -1
+2021-12-08 00:44:28.132878: I tensorflow/core/common_runtime/bfc_allocator.cc:1040] Next region of size 40292777984
+2021-12-08 00:44:28.132885: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa000000 of size 1280 next 1
+2021-12-08 00:44:28.132889: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa000500 of size 256 next 2
+2021-12-08 00:44:28.132893: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa000600 of size 256 next 3
+2021-12-08 00:44:28.132897: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa000700 of size 256 next 4
+2021-12-08 00:44:28.132902: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa000800 of size 512 next 5
+2021-12-08 00:44:28.132906: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa000a00 of size 256 next 8
+2021-12-08 00:44:28.132911: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa000b00 of size 512 next 9
+2021-12-08 00:44:28.132915: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa000d00 of size 512 next 10
+2021-12-08 00:44:28.132919: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa000f00 of size 512 next 353
+2021-12-08 00:44:28.132923: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa001100 of size 256 next 374
+2021-12-08 00:44:28.132927: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa001200 of size 256 next 12
+2021-12-08 00:44:28.132931: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa001300 of size 256 next 13
+2021-12-08 00:44:28.132936: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa001400 of size 256 next 14
+2021-12-08 00:44:28.132940: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa001500 of size 768 next 15
+2021-12-08 00:44:28.132944: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa001800 of size 768 next 16
+2021-12-08 00:44:28.132948: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa001b00 of size 768 next 19
+2021-12-08 00:44:28.132953: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa001e00 of size 256 next 380
+2021-12-08 00:44:28.132957: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa001f00 of size 512 next 395
+2021-12-08 00:44:28.132961: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa002100 of size 768 next 21
+2021-12-08 00:44:28.132965: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa002400 of size 256 next 22
+2021-12-08 00:44:28.132970: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa002500 of size 256 next 23
+2021-12-08 00:44:28.132974: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa002600 of size 1536 next 26
+2021-12-08 00:44:28.132978: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa002c00 of size 1536 next 27
+2021-12-08 00:44:28.132982: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa003200 of size 1536 next 28
+2021-12-08 00:44:28.132986: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa003800 of size 1536 next 230
+2021-12-08 00:44:28.132991: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa003e00 of size 512 next 464
+2021-12-08 00:44:28.132995: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa004000 of size 1024 next 30
+2021-12-08 00:44:28.132999: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa004400 of size 256 next 31
+2021-12-08 00:44:28.133003: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa004500 of size 256 next 32
+2021-12-08 00:44:28.133007: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa004600 of size 1536 next 35
+2021-12-08 00:44:28.133011: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa004c00 of size 1536 next 36
+2021-12-08 00:44:28.133016: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa005200 of size 1536 next 37
+2021-12-08 00:44:28.133020: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa005800 of size 768 next 371
+2021-12-08 00:44:28.133024: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa005b00 of size 768 next 73
+2021-12-08 00:44:28.133028: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa005e00 of size 1536 next 39
+2021-12-08 00:44:28.133032: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa006400 of size 256 next 40
+2021-12-08 00:44:28.133036: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa006500 of size 256 next 41
+2021-12-08 00:44:28.133040: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa006600 of size 768 next 42
+2021-12-08 00:44:28.133045: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa006900 of size 768 next 45
+2021-12-08 00:44:28.133049: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa006c00 of size 768 next 46
+2021-12-08 00:44:28.133053: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa006f00 of size 1536 next 48
+2021-12-08 00:44:28.133057: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa007500 of size 256 next 49
+2021-12-08 00:44:28.133061: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa007600 of size 256 next 50
+2021-12-08 00:44:28.133065: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa007700 of size 512 next 51
+2021-12-08 00:44:28.133069: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa007900 of size 512 next 52
+2021-12-08 00:44:28.133074: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa007b00 of size 512 next 54
+2021-12-08 00:44:28.133078: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa007d00 of size 256 next 459
+2021-12-08 00:44:28.133082: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa007e00 of size 256 next 392
+2021-12-08 00:44:28.133086: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa007f00 of size 256 next 431
+2021-12-08 00:44:28.133090: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa008000 of size 256 next 56
+2021-12-08 00:44:28.133094: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa008100 of size 256 next 57
+2021-12-08 00:44:28.133099: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa008200 of size 256 next 58
+2021-12-08 00:44:28.133103: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa008300 of size 256 next 59
+2021-12-08 00:44:28.133107: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa008400 of size 256 next 60
+2021-12-08 00:44:28.133111: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa008500 of size 256 next 63
+2021-12-08 00:44:28.133115: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa008600 of size 256 next 418
+2021-12-08 00:44:28.133119: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa008700 of size 256 next 65
+2021-12-08 00:44:28.133123: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa008800 of size 256 next 66
+2021-12-08 00:44:28.133127: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa008900 of size 256 next 67
+2021-12-08 00:44:28.133132: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa008a00 of size 256 next 70
+2021-12-08 00:44:28.133136: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa008b00 of size 256 next 71
+2021-12-08 00:44:28.133140: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa008c00 of size 256 next 72
+2021-12-08 00:44:28.133144: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa008d00 of size 512 next 74
+2021-12-08 00:44:28.133148: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa008f00 of size 256 next 75
+2021-12-08 00:44:28.133152: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa009000 of size 256 next 76
+2021-12-08 00:44:28.133156: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa009100 of size 768 next 77
+2021-12-08 00:44:28.133160: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa009400 of size 768 next 80
+2021-12-08 00:44:28.133165: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa009700 of size 768 next 81
+2021-12-08 00:44:28.133169: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa009a00 of size 768 next 104
+2021-12-08 00:44:28.133174: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa009d00 of size 768 next 83
+2021-12-08 00:44:28.133178: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00a000 of size 256 next 84
+2021-12-08 00:44:28.133182: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00a100 of size 256 next 85
+2021-12-08 00:44:28.133186: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00a200 of size 768 next 88
+2021-12-08 00:44:28.133190: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00a500 of size 768 next 89
+2021-12-08 00:44:28.133195: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00a800 of size 768 next 90
+2021-12-08 00:44:28.133199: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00ab00 of size 512 next 447
+2021-12-08 00:44:28.133203: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00ad00 of size 1024 next 92
+2021-12-08 00:44:28.133207: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00b100 of size 768 next 93
+2021-12-08 00:44:28.133212: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00b400 of size 768 next 94
+2021-12-08 00:44:28.133216: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00b700 of size 768 next 95
+2021-12-08 00:44:28.133220: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa00ba00 of size 512 next 259
+2021-12-08 00:44:28.133224: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00bc00 of size 256 next 470
+2021-12-08 00:44:28.133229: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00bd00 of size 256 next 382
+2021-12-08 00:44:28.133233: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa00be00 of size 512 next 97
+2021-12-08 00:44:28.133238: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00c000 of size 256 next 98
+2021-12-08 00:44:28.133243: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00c100 of size 256 next 99
+2021-12-08 00:44:28.133248: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00c200 of size 768 next 100
+2021-12-08 00:44:28.133252: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00c500 of size 768 next 102
+2021-12-08 00:44:28.133257: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00c800 of size 768 next 103
+2021-12-08 00:44:28.133263: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa00cb00 of size 256 next 398
+2021-12-08 00:44:28.133267: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00cc00 of size 256 next 485
+2021-12-08 00:44:28.133272: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00cd00 of size 256 next 438
+2021-12-08 00:44:28.133276: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00ce00 of size 768 next 105
+2021-12-08 00:44:28.133280: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00d100 of size 256 next 106
+2021-12-08 00:44:28.133284: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00d200 of size 256 next 107
+2021-12-08 00:44:28.133289: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00d300 of size 512 next 108
+2021-12-08 00:44:28.133293: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00d500 of size 512 next 109
+2021-12-08 00:44:28.133297: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00d700 of size 512 next 111
+2021-12-08 00:44:28.133301: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00d900 of size 256 next 377
+2021-12-08 00:44:28.133306: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa00da00 of size 512 next 483
+2021-12-08 00:44:28.133310: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00dc00 of size 256 next 113
+2021-12-08 00:44:28.133314: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00dd00 of size 6144 next 214
+2021-12-08 00:44:28.133319: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00f500 of size 1536 next 157
+2021-12-08 00:44:28.133323: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00fb00 of size 768 next 495
+2021-12-08 00:44:28.133327: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa00fe00 of size 768 next 462
+2021-12-08 00:44:28.133331: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa010100 of size 1024 next 346
+2021-12-08 00:44:28.133336: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa010500 of size 1024 next 332
+2021-12-08 00:44:28.133340: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa010900 of size 768 next 96
+2021-12-08 00:44:28.133344: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa010c00 of size 768 next 344
+2021-12-08 00:44:28.133348: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa010f00 of size 768 next 406
+2021-12-08 00:44:28.133353: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa011200 of size 2560 next 414
+2021-12-08 00:44:28.133357: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa011c00 of size 256 next 474
+2021-12-08 00:44:28.133361: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa011d00 of size 768 next 358
+2021-12-08 00:44:28.133366: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa012000 of size 768 next 422
+2021-12-08 00:44:28.133370: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa012300 of size 256 next 361
+2021-12-08 00:44:28.133375: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa012400 of size 256 next 216
+2021-12-08 00:44:28.133379: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa012500 of size 256 next 217
+2021-12-08 00:44:28.133383: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa012600 of size 256 next 218
+2021-12-08 00:44:28.133387: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa012700 of size 6144 next 221
+2021-12-08 00:44:28.133391: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa013f00 of size 6144 next 222
+2021-12-08 00:44:28.133395: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa015700 of size 6144 next 223
+2021-12-08 00:44:28.133400: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa016f00 of size 4096 next 341
+2021-12-08 00:44:28.133404: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa017f00 of size 768 next 391
+2021-12-08 00:44:28.133408: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa018200 of size 768 next 337
+2021-12-08 00:44:28.133412: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa018500 of size 6656 next 225
+2021-12-08 00:44:28.133416: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa019f00 of size 1536 next 227
+2021-12-08 00:44:28.133420: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01a500 of size 1536 next 228
+2021-12-08 00:44:28.133424: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01ab00 of size 1536 next 229
+2021-12-08 00:44:28.133429: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa01b100 of size 256 next 480
+2021-12-08 00:44:28.133433: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01b200 of size 1280 next 452
+2021-12-08 00:44:28.133437: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa01b700 of size 1536 next 231
+2021-12-08 00:44:28.133441: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01bd00 of size 768 next 233
+2021-12-08 00:44:28.133445: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01c000 of size 768 next 234
+2021-12-08 00:44:28.133449: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01c300 of size 768 next 235
+2021-12-08 00:44:28.133454: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01c600 of size 1536 next 237
+2021-12-08 00:44:28.133458: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01cc00 of size 512 next 239
+2021-12-08 00:44:28.133462: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01ce00 of size 512 next 240
+2021-12-08 00:44:28.133466: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01d000 of size 512 next 241
+2021-12-08 00:44:28.133470: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa01d200 of size 256 next 479
+2021-12-08 00:44:28.133475: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01d300 of size 768 next 243
+2021-12-08 00:44:28.133479: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01d600 of size 512 next 245
+2021-12-08 00:44:28.133483: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01d800 of size 512 next 246
+2021-12-08 00:44:28.133487: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01da00 of size 512 next 247
+2021-12-08 00:44:28.133491: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01dc00 of size 256 next 359
+2021-12-08 00:44:28.133495: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01dd00 of size 256 next 366
+2021-12-08 00:44:28.133499: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01de00 of size 256 next 404
+2021-12-08 00:44:28.133504: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa01df00 of size 256 next 249
+2021-12-08 00:44:28.133508: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01e000 of size 768 next 250
+2021-12-08 00:44:28.133512: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01e300 of size 768 next 252
+2021-12-08 00:44:28.133516: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01e600 of size 768 next 253
+2021-12-08 00:44:28.133520: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01e900 of size 1536 next 255
+2021-12-08 00:44:28.133524: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01ef00 of size 768 next 256
+2021-12-08 00:44:28.133528: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01f200 of size 768 next 257
+2021-12-08 00:44:28.133533: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01f500 of size 768 next 258
+2021-12-08 00:44:28.133537: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01f800 of size 768 next 430
+2021-12-08 00:44:28.133541: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01fb00 of size 768 next 260
+2021-12-08 00:44:28.133553: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa01fe00 of size 768 next 261
+2021-12-08 00:44:28.133558: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa020100 of size 768 next 262
+2021-12-08 00:44:28.133562: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa020400 of size 768 next 263
+2021-12-08 00:44:28.133566: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa020700 of size 512 next 335
+2021-12-08 00:44:28.133570: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa020900 of size 1024 next 265
+2021-12-08 00:44:28.133574: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa020d00 of size 768 next 266
+2021-12-08 00:44:28.133579: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa021000 of size 1024 next 61
+2021-12-08 00:44:28.133583: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa021400 of size 51200 next 62
+2021-12-08 00:44:28.133588: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa02dc00 of size 186880 next 141
+2021-12-08 00:44:28.133592: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa05b600 of size 93440 next 140
+2021-12-08 00:44:28.133596: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa072300 of size 768 next 268
+2021-12-08 00:44:28.133600: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa072600 of size 1024 next 164
+2021-12-08 00:44:28.133604: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa072a00 of size 512 next 270
+2021-12-08 00:44:28.133609: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa072c00 of size 256 next 271
+2021-12-08 00:44:28.133613: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa072d00 of size 256 next 272
+2021-12-08 00:44:28.133617: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa072e00 of size 8192 next 273
+2021-12-08 00:44:28.133621: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa074e00 of size 256 next 276
+2021-12-08 00:44:28.133625: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa074f00 of size 256 next 277
+2021-12-08 00:44:28.133630: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa075000 of size 4096 next 278
+2021-12-08 00:44:28.133634: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa076000 of size 256 next 280
+2021-12-08 00:44:28.133638: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa076100 of size 256 next 281
+2021-12-08 00:44:28.133642: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa076200 of size 2048 next 282
+2021-12-08 00:44:28.133646: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa076a00 of size 256 next 283
+2021-12-08 00:44:28.133651: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa076b00 of size 256 next 285
+2021-12-08 00:44:28.133655: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa076c00 of size 1024 next 286
+2021-12-08 00:44:28.133659: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa077000 of size 256 next 288
+2021-12-08 00:44:28.133663: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa077100 of size 256 next 289
+2021-12-08 00:44:28.133667: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa077200 of size 512 next 292
+2021-12-08 00:44:28.133671: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa077400 of size 256 next 293
+2021-12-08 00:44:28.133675: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa077500 of size 256 next 294
+2021-12-08 00:44:28.133679: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa077600 of size 256 next 295
+2021-12-08 00:44:28.133684: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa077700 of size 256 next 296
+2021-12-08 00:44:28.133688: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa077800 of size 256 next 298
+2021-12-08 00:44:28.133692: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa077900 of size 256 next 299
+2021-12-08 00:44:28.133696: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa077a00 of size 256 next 300
+2021-12-08 00:44:28.133700: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa077b00 of size 256 next 301
+2021-12-08 00:44:28.133704: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa077c00 of size 256 next 302
+2021-12-08 00:44:28.133709: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa077d00 of size 256 next 303
+2021-12-08 00:44:28.133713: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa077e00 of size 256 next 304
+2021-12-08 00:44:28.133717: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa077f00 of size 256 next 372
+2021-12-08 00:44:28.133721: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa078000 of size 256 next 306
+2021-12-08 00:44:28.133725: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa078100 of size 1280 next 308
+2021-12-08 00:44:28.133730: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa078600 of size 256 next 309
+2021-12-08 00:44:28.133734: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa078700 of size 256 next 310
+2021-12-08 00:44:28.133738: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa078800 of size 256 next 311
+2021-12-08 00:44:28.133742: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa078900 of size 256 next 312
+2021-12-08 00:44:28.133746: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa078a00 of size 256 next 313
+2021-12-08 00:44:28.133750: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa078b00 of size 256 next 314
+2021-12-08 00:44:28.133754: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa078c00 of size 512 next 316
+2021-12-08 00:44:28.133758: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa078e00 of size 256 next 317
+2021-12-08 00:44:28.133763: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa078f00 of size 256 next 318
+2021-12-08 00:44:28.133767: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa079000 of size 256 next 319
+2021-12-08 00:44:28.133771: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa079100 of size 256 next 320
+2021-12-08 00:44:28.133775: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa079200 of size 256 next 321
+2021-12-08 00:44:28.133779: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa079300 of size 256 next 322
+2021-12-08 00:44:28.133783: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa079400 of size 256 next 323
+2021-12-08 00:44:28.133787: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa079500 of size 256 next 324
+2021-12-08 00:44:28.133792: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa079600 of size 256 next 325
+2021-12-08 00:44:28.133796: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa079700 of size 256 next 326
+2021-12-08 00:44:28.133800: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa079800 of size 6144 next 383
+2021-12-08 00:44:28.133804: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa07b000 of size 6912 next 408
+2021-12-08 00:44:28.133808: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa07cb00 of size 1536 next 445
+2021-12-08 00:44:28.133813: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa07d100 of size 1280 next 350
+2021-12-08 00:44:28.133817: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa07d600 of size 1536 next 369
+2021-12-08 00:44:28.133821: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa07dc00 of size 1792 next 357
+2021-12-08 00:44:28.133825: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa07e300 of size 1536 next 493
+2021-12-08 00:44:28.133829: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa07e900 of size 1536 next 424
+2021-12-08 00:44:28.133833: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa07ef00 of size 768 next 112
+2021-12-08 00:44:28.133838: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa07f200 of size 4352 next 248
+2021-12-08 00:44:28.133842: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa080300 of size 768 next 340
+2021-12-08 00:44:28.133846: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa080600 of size 768 next 401
+2021-12-08 00:44:28.133850: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa080900 of size 768 next 127
+2021-12-08 00:44:28.133855: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa080c00 of size 256 next 437
+2021-12-08 00:44:28.133859: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa080d00 of size 1024 next 444
+2021-12-08 00:44:28.133863: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa081100 of size 256 next 441
+2021-12-08 00:44:28.133867: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa081200 of size 1536 next 486
+2021-12-08 00:44:28.133871: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa081800 of size 3072 next 433
+2021-12-08 00:44:28.133875: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa082400 of size 8192 next 379
+2021-12-08 00:44:28.133880: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa084400 of size 8192 next 376
+2021-12-08 00:44:28.133884: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa086400 of size 512 next 351
+2021-12-08 00:44:28.133888: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa086600 of size 512 next 365
+2021-12-08 00:44:28.133892: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa086800 of size 1024 next 386
+2021-12-08 00:44:28.133896: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa086c00 of size 768 next 487
+2021-12-08 00:44:28.133901: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa086f00 of size 1536 next 373
+2021-12-08 00:44:28.133905: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa087500 of size 256 next 412
+2021-12-08 00:44:28.133909: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa087600 of size 256 next 297
+2021-12-08 00:44:28.133913: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa087700 of size 40704 next 17
+2021-12-08 00:44:28.133918: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa091600 of size 294912 next 18
+2021-12-08 00:44:28.133922: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa0d9600 of size 294912 next 146
+2021-12-08 00:44:28.133926: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa121600 of size 1639424 next 6
+2021-12-08 00:44:28.133930: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa2b1a00 of size 1411328 next 7
+2021-12-08 00:44:28.133935: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa40a300 of size 204800 next 53
+2021-12-08 00:44:28.133939: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43c300 of size 256 next 114
+2021-12-08 00:44:28.133943: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43c400 of size 256 next 117
+2021-12-08 00:44:28.133948: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43c500 of size 256 next 118
+2021-12-08 00:44:28.133952: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43c600 of size 512 next 120
+2021-12-08 00:44:28.133956: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43c800 of size 256 next 121
+2021-12-08 00:44:28.133960: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43c900 of size 256 next 122
+2021-12-08 00:44:28.133964: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43ca00 of size 256 next 123
+2021-12-08 00:44:28.133968: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43cb00 of size 256 next 124
+2021-12-08 00:44:28.133972: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43cc00 of size 256 next 126
+2021-12-08 00:44:28.133977: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43cd00 of size 256 next 150
+2021-12-08 00:44:28.133981: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa43ce00 of size 256 next 128
+2021-12-08 00:44:28.133985: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43cf00 of size 256 next 129
+2021-12-08 00:44:28.133989: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43d000 of size 256 next 130
+2021-12-08 00:44:28.133993: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43d100 of size 256 next 131
+2021-12-08 00:44:28.133997: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43d200 of size 256 next 133
+2021-12-08 00:44:28.134001: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43d300 of size 256 next 134
+2021-12-08 00:44:28.134005: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43d400 of size 512 next 136
+2021-12-08 00:44:28.134010: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43d600 of size 256 next 137
+2021-12-08 00:44:28.134014: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43d700 of size 256 next 138
+2021-12-08 00:44:28.134018: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43d800 of size 512 next 139
+2021-12-08 00:44:28.134022: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43da00 of size 512 next 142
+2021-12-08 00:44:28.134027: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43dc00 of size 512 next 143
+2021-12-08 00:44:28.134031: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43de00 of size 1024 next 145
+2021-12-08 00:44:28.134035: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43e200 of size 768 next 147
+2021-12-08 00:44:28.134039: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43e500 of size 768 next 148
+2021-12-08 00:44:28.134043: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43e800 of size 768 next 149
+2021-12-08 00:44:28.134047: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43eb00 of size 1536 next 151
+2021-12-08 00:44:28.134051: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43f100 of size 1536 next 154
+2021-12-08 00:44:28.134056: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43f700 of size 1536 next 155
+2021-12-08 00:44:28.134060: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa43fd00 of size 1536 next 156
+2021-12-08 00:44:28.134064: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa440300 of size 768 next 331
+2021-12-08 00:44:28.134069: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa440600 of size 768 next 490
+2021-12-08 00:44:28.134073: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa440900 of size 512 next 338
+2021-12-08 00:44:28.134077: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa440b00 of size 512 next 436
+2021-12-08 00:44:28.134081: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa440d00 of size 512 next 158
+2021-12-08 00:44:28.134085: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa440f00 of size 1536 next 161
+2021-12-08 00:44:28.134089: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa441500 of size 1536 next 162
+2021-12-08 00:44:28.134094: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa441b00 of size 1536 next 163
+2021-12-08 00:44:28.134098: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa442100 of size 768 next 348
+2021-12-08 00:44:28.134102: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa442400 of size 768 next 396
+2021-12-08 00:44:28.134106: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa442700 of size 2048 next 125
+2021-12-08 00:44:28.134110: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa442f00 of size 23808 next 115
+2021-12-08 00:44:28.134114: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa448c00 of size 51200 next 116
+2021-12-08 00:44:28.134119: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa455400 of size 256 next 165
+2021-12-08 00:44:28.134123: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa455500 of size 256 next 166
+2021-12-08 00:44:28.134127: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa455600 of size 1536 next 167
+2021-12-08 00:44:28.134131: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa455c00 of size 1536 next 170
+2021-12-08 00:44:28.134135: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa456200 of size 1536 next 171
+2021-12-08 00:44:28.134139: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa456800 of size 1536 next 409
+2021-12-08 00:44:28.134143: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa456e00 of size 1536 next 173
+2021-12-08 00:44:28.134148: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa457400 of size 768 next 174
+2021-12-08 00:44:28.134152: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa457700 of size 768 next 175
+2021-12-08 00:44:28.134156: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa457a00 of size 768 next 176
+2021-12-08 00:44:28.134160: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa457d00 of size 1536 next 178
+2021-12-08 00:44:28.134164: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa458300 of size 512 next 180
+2021-12-08 00:44:28.134169: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa458500 of size 512 next 181
+2021-12-08 00:44:28.134173: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa458700 of size 512 next 182
+2021-12-08 00:44:28.134178: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa458900 of size 1024 next 184
+2021-12-08 00:44:28.134183: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa458d00 of size 512 next 185
+2021-12-08 00:44:28.134189: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa458f00 of size 512 next 187
+2021-12-08 00:44:28.134194: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa459100 of size 512 next 188
+2021-12-08 00:44:28.134199: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa459300 of size 1024 next 190
+2021-12-08 00:44:28.134204: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa459700 of size 256 next 191
+2021-12-08 00:44:28.134210: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa459800 of size 256 next 192
+2021-12-08 00:44:28.134215: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa459900 of size 1536 next 193
+2021-12-08 00:44:28.134220: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa459f00 of size 1536 next 196
+2021-12-08 00:44:28.134225: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa45a500 of size 1536 next 197
+2021-12-08 00:44:28.134230: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa45ab00 of size 768 next 492
+2021-12-08 00:44:28.134236: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa45ae00 of size 2304 next 199
+2021-12-08 00:44:28.134241: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa45b700 of size 256 next 200
+2021-12-08 00:44:28.134246: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa45b800 of size 256 next 201
+2021-12-08 00:44:28.134251: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa45b900 of size 3072 next 204
+2021-12-08 00:44:28.134256: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa45c500 of size 3072 next 205
+2021-12-08 00:44:28.134262: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa45d100 of size 3072 next 206
+2021-12-08 00:44:28.134267: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa45dd00 of size 1536 next 448
+2021-12-08 00:44:28.134272: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa45e300 of size 2048 next 443
+2021-12-08 00:44:28.134277: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa45eb00 of size 768 next 367
+2021-12-08 00:44:28.134282: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa45ee00 of size 1792 next 208
+2021-12-08 00:44:28.134287: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa45f500 of size 256 next 209
+2021-12-08 00:44:28.134293: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa45f600 of size 256 next 210
+2021-12-08 00:44:28.134298: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa45f700 of size 6144 next 213
+2021-12-08 00:44:28.134303: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa460f00 of size 9728 next 132
+2021-12-08 00:44:28.134309: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa463500 of size 70144 next 69
+2021-12-08 00:44:28.134314: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa474700 of size 230400 next 68
+2021-12-08 00:44:28.134320: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa4acb00 of size 514048 next 25
+2021-12-08 00:44:28.134325: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa52a300 of size 1179648 next 24
+2021-12-08 00:44:28.134331: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa64a300 of size 1536 next 198
+2021-12-08 00:44:28.134336: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa64a900 of size 256 next 484
+2021-12-08 00:44:28.134341: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa64aa00 of size 512 next 144
+2021-12-08 00:44:28.134346: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa64ac00 of size 768 next 410
+2021-12-08 00:44:28.134351: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa64af00 of size 768 next 413
+2021-12-08 00:44:28.134356: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa64b200 of size 1024 next 388
+2021-12-08 00:44:28.134362: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa64b600 of size 1024 next 434
+2021-12-08 00:44:28.134367: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa64ba00 of size 1536 next 11
+2021-12-08 00:44:28.134372: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa64c000 of size 512 next 183
+2021-12-08 00:44:28.134377: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa64c200 of size 768 next 400
+2021-12-08 00:44:28.134382: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa64c500 of size 2560 next 343
+2021-12-08 00:44:28.134388: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa64cf00 of size 768 next 356
+2021-12-08 00:44:28.134393: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa64d200 of size 768 next 463
+2021-12-08 00:44:28.134398: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa64d500 of size 2304 next 38
+2021-12-08 00:44:28.134403: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa64de00 of size 3840 next 333
+2021-12-08 00:44:28.134408: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa64ed00 of size 512 next 305
+2021-12-08 00:44:28.134412: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa64ef00 of size 512 next 330
+2021-12-08 00:44:28.134417: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa64f100 of size 2304 next 390
+2021-12-08 00:44:28.134421: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa64fa00 of size 6144 next 215
+2021-12-08 00:44:28.134425: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa651200 of size 6144 next 427
+2021-12-08 00:44:28.134430: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa652a00 of size 96512 next 291
+2021-12-08 00:44:28.134434: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa66a300 of size 131072 next 290
+2021-12-08 00:44:28.134438: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa68a300 of size 147456 next 87
+2021-12-08 00:44:28.134443: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa6ae300 of size 409600 next 86
+2021-12-08 00:44:28.134447: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fa712300 of size 507904 next 34
+2021-12-08 00:44:28.134451: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa78e300 of size 1327104 next 33
+2021-12-08 00:44:28.134455: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa8d2300 of size 921600 next 101
+2021-12-08 00:44:28.134460: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa9b3300 of size 294912 next 179
+2021-12-08 00:44:28.134464: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fa9fb300 of size 294912 next 238
+2021-12-08 00:44:28.134468: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7faa43300 of size 589824 next 153
+2021-12-08 00:44:28.134472: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7faad3300 of size 1179648 next 152
+2021-12-08 00:44:28.134477: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fabf3300 of size 552960 next 251
+2021-12-08 00:44:28.134481: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fac7a300 of size 774144 next 160
+2021-12-08 00:44:28.134485: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fad37300 of size 1327104 next 159
+2021-12-08 00:44:28.134490: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fae7b300 of size 524288 next 287
+2021-12-08 00:44:28.134494: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7faefb300 of size 802816 next 186
+2021-12-08 00:44:28.134499: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fafbf300 of size 1953792 next 110
+2021-12-08 00:44:28.134503: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fb19c300 of size 7372800 next 79
+2021-12-08 00:44:28.134507: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fb8a4300 of size 8294400 next 78
+2021-12-08 00:44:28.134512: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fc08d300 of size 18874368 next 212
+2021-12-08 00:44:28.134516: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fd28d300 of size 18874368 next 211
+2021-12-08 00:44:28.134520: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7fe48d300 of size 8388608 next 279
+2021-12-08 00:44:28.134524: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa7fec8d300 of size 11665408 next 169
+2021-12-08 00:44:28.134529: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa7ff7ad300 of size 28901376 next 168
+2021-12-08 00:44:28.134533: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa80133d300 of size 4194304 next 284
+2021-12-08 00:44:28.134537: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa80173d300 of size 3178496 next 195
+2021-12-08 00:44:28.134542: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa801a45300 of size 3686400 next 194
+2021-12-08 00:44:28.134548: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa801dc9300 of size 1179648 next 232
+2021-12-08 00:44:28.134553: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa801ee9300 of size 1327104 next 244
+2021-12-08 00:44:28.134557: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa80202d300 of size 921600 next 267
+2021-12-08 00:44:28.134561: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa80210e300 of size 1290240 next 203
+2021-12-08 00:44:28.134566: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa802249300 of size 4718592 next 202
+2021-12-08 00:44:28.134570: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa8026c9300 of size 27168768 next 44
+2021-12-08 00:44:28.134574: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa8040b2300 of size 79626240 next 43
+2021-12-08 00:44:28.134579: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa808ca2300 of size 21233664 next 220
+2021-12-08 00:44:28.134583: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa80a0e2300 of size 21233664 next 219
+2021-12-08 00:44:28.134587: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa80b522300 of size 21233664 next 226
+2021-12-08 00:44:28.134592: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa80c962300 of size 313262080 next 275
+2021-12-08 00:44:28.134596: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa81f422300 of size 156631040 next 274
+2021-12-08 00:44:28.134600: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa828982300 of size 2322923520 next 307
+2021-12-08 00:44:28.134605: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa8b30d2300 of size 835584000 next 455
+2021-12-08 00:44:28.134609: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa8e4db2300 of size 208896000 next 172
+2021-12-08 00:44:28.134614: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa8f14ea300 of size 1023264000 next 468
+2021-12-08 00:44:28.134618: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fa92e4c6800 of size 59155200 next 334
+2021-12-08 00:44:28.134622: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa931d30b00 of size 88324352 next 457
+2021-12-08 00:44:28.134627: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa93716c400 of size 256 next 466
+2021-12-08 00:44:28.134631: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa93716c500 of size 1023264000 next 207
+2021-12-08 00:44:28.134635: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa974148a00 of size 274176000 next 177
+2021-12-08 00:44:28.134640: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa9846c2200 of size 2034009600 next 454
+2021-12-08 00:44:28.134644: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fa9fda8a800 of size 4043059200 next 55
+2021-12-08 00:44:28.134649: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7faaeea4d800 of size 541881600 next 236
+2021-12-08 00:44:28.134653: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fab0ef14d00 of size 1070899200 next 385
+2021-12-08 00:44:28.134657: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fab4ec5ed00 of size 2034009600 next 387
+2021-12-08 00:44:28.134661: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fabc8027300 of size 248832000 next 370
+2021-12-08 00:44:28.134666: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fabd6d75300 of size 187240192 next 402
+2021-12-08 00:44:28.134670: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fabe2006200 of size 121344000 next 355
+2021-12-08 00:44:28.134674: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fabe93bf200 of size 59155200 next 491
+2021-12-08 00:44:28.134678: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fabecc29500 of size 279640320 next 189
+2021-12-08 00:44:28.134683: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fabfd6d8e00 of size 121344000 next 435
+2021-12-08 00:44:28.134687: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fac04a91e00 of size 151555328 next 224
+2021-12-08 00:44:28.134691: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fac0db1ab00 of size 59155200 next 363
+2021-12-08 00:44:28.134695: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fac11384e00 of size 92400128 next 407
+2021-12-08 00:44:28.134699: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fac16ba3800 of size 59155200 next 439
+2021-12-08 00:44:28.134704: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fac1a40db00 of size 2663237632 next 336
+2021-12-08 00:44:28.134708: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7facb8fea300 of size 541881600 next 378
+2021-12-08 00:44:28.134712: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7facd94b1800 of size 379392000 next 472
+2021-12-08 00:44:28.134717: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7facefe82800 of size 248832000 next 446
+2021-12-08 00:44:28.134721: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7facfebd0800 of size 442675200 next 477
+2021-12-08 00:44:28.134725: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fad191fb800 of size 4043059200 next 482
+2021-12-08 00:44:28.134729: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fae0a1be800 of size 1070899200 next 458
+2021-12-08 00:44:28.134734: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7fae49f08800 of size 4043059200 next 469
+2021-12-08 00:44:28.134738: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7faf3aecb800 of size 1070899200 next 347
+2021-12-08 00:44:28.134742: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] InUse at 7faf7ac15800 of size 4043059200 next 315
+2021-12-08 00:44:28.134746: I tensorflow/core/common_runtime/bfc_allocator.cc:1060] Free  at 7fb06bbd8800 of size 4024793088 next 18446744073709551615
+2021-12-08 00:44:28.134750: I tensorflow/core/common_runtime/bfc_allocator.cc:1065]      Summary of in-use Chunks by size: 
+2021-12-08 00:44:28.134757: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 119 Chunks of size 256 totalling 29.8KiB
+2021-12-08 00:44:28.134762: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 42 Chunks of size 512 totalling 21.0KiB
+2021-12-08 00:44:28.134767: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 68 Chunks of size 768 totalling 51.0KiB
+2021-12-08 00:44:28.134771: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 12 Chunks of size 1024 totalling 12.0KiB
+2021-12-08 00:44:28.134776: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 4 Chunks of size 1280 totalling 5.0KiB
+2021-12-08 00:44:28.134781: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 39 Chunks of size 1536 totalling 58.5KiB
+2021-12-08 00:44:28.134786: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 1792 totalling 1.8KiB
+2021-12-08 00:44:28.134790: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 2 Chunks of size 2048 totalling 4.0KiB
+2021-12-08 00:44:28.134795: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 3 Chunks of size 2304 totalling 6.8KiB
+2021-12-08 00:44:28.134800: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 2 Chunks of size 2560 totalling 5.0KiB
+2021-12-08 00:44:28.134804: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 4 Chunks of size 3072 totalling 12.0KiB
+2021-12-08 00:44:28.134809: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 4096 totalling 4.0KiB
+2021-12-08 00:44:28.134814: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 4352 totalling 4.2KiB
+2021-12-08 00:44:28.134818: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 8 Chunks of size 6144 totalling 48.0KiB
+2021-12-08 00:44:28.134823: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 2 Chunks of size 8192 totalling 16.0KiB
+2021-12-08 00:44:28.134828: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 9728 totalling 9.5KiB
+2021-12-08 00:44:28.134833: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 23808 totalling 23.2KiB
+2021-12-08 00:44:28.134837: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 40704 totalling 39.8KiB
+2021-12-08 00:44:28.134842: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 2 Chunks of size 51200 totalling 100.0KiB
+2021-12-08 00:44:28.134847: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 70144 totalling 68.5KiB
+2021-12-08 00:44:28.134852: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 93440 totalling 91.2KiB
+2021-12-08 00:44:28.134857: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 131072 totalling 128.0KiB
+2021-12-08 00:44:28.134861: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 204800 totalling 200.0KiB
+2021-12-08 00:44:28.134866: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 230400 totalling 225.0KiB
+2021-12-08 00:44:28.134871: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 4 Chunks of size 294912 totalling 1.12MiB
+2021-12-08 00:44:28.134876: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 409600 totalling 400.0KiB
+2021-12-08 00:44:28.134881: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 514048 totalling 502.0KiB
+2021-12-08 00:44:28.134886: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 552960 totalling 540.0KiB
+2021-12-08 00:44:28.134890: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 589824 totalling 576.0KiB
+2021-12-08 00:44:28.134895: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 774144 totalling 756.0KiB
+2021-12-08 00:44:28.134900: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 802816 totalling 784.0KiB
+2021-12-08 00:44:28.134904: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 921600 totalling 900.0KiB
+2021-12-08 00:44:28.134909: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 3 Chunks of size 1179648 totalling 3.38MiB
+2021-12-08 00:44:28.134914: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 1290240 totalling 1.23MiB
+2021-12-08 00:44:28.134919: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 3 Chunks of size 1327104 totalling 3.80MiB
+2021-12-08 00:44:28.134923: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 1411328 totalling 1.35MiB
+2021-12-08 00:44:28.134928: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 1639424 totalling 1.56MiB
+2021-12-08 00:44:28.134932: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 1953792 totalling 1.86MiB
+2021-12-08 00:44:28.134937: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 3178496 totalling 3.03MiB
+2021-12-08 00:44:28.134942: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 3686400 totalling 3.52MiB
+2021-12-08 00:44:28.134947: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 4194304 totalling 4.00MiB
+2021-12-08 00:44:28.134951: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 4718592 totalling 4.50MiB
+2021-12-08 00:44:28.134956: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 7372800 totalling 7.03MiB
+2021-12-08 00:44:28.134960: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 8294400 totalling 7.91MiB
+2021-12-08 00:44:28.134965: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 8388608 totalling 8.00MiB
+2021-12-08 00:44:28.134970: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 18874368 totalling 18.00MiB
+2021-12-08 00:44:28.134975: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 2 Chunks of size 21233664 totalling 40.50MiB
+2021-12-08 00:44:28.134980: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 28901376 totalling 27.56MiB
+2021-12-08 00:44:28.134985: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 3 Chunks of size 59155200 totalling 169.24MiB
+2021-12-08 00:44:28.134989: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 79626240 totalling 75.94MiB
+2021-12-08 00:44:28.134994: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 88324352 totalling 84.23MiB
+2021-12-08 00:44:28.134999: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 92400128 totalling 88.12MiB
+2021-12-08 00:44:28.135004: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 2 Chunks of size 121344000 totalling 231.45MiB
+2021-12-08 00:44:28.135009: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 156631040 totalling 149.38MiB
+2021-12-08 00:44:28.135014: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 208896000 totalling 199.22MiB
+2021-12-08 00:44:28.135018: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 2 Chunks of size 248832000 totalling 474.61MiB
+2021-12-08 00:44:28.135023: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 274176000 totalling 261.47MiB
+2021-12-08 00:44:28.135028: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 313262080 totalling 298.75MiB
+2021-12-08 00:44:28.135033: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 442675200 totalling 422.17MiB
+2021-12-08 00:44:28.135037: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 2 Chunks of size 541881600 totalling 1.01GiB
+2021-12-08 00:44:28.135042: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 835584000 totalling 796.88MiB
+2021-12-08 00:44:28.135047: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 2 Chunks of size 1023264000 totalling 1.91GiB
+2021-12-08 00:44:28.135052: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 3 Chunks of size 1070899200 totalling 2.99GiB
+2021-12-08 00:44:28.135056: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 2 Chunks of size 2034009600 totalling 3.79GiB
+2021-12-08 00:44:28.135061: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 1 Chunks of size 2322923520 totalling 2.16GiB
+2021-12-08 00:44:28.135066: I tensorflow/core/common_runtime/bfc_allocator.cc:1068] 4 Chunks of size 4043059200 totalling 15.06GiB
+2021-12-08 00:44:28.135071: I tensorflow/core/common_runtime/bfc_allocator.cc:1072] Sum Total of in-use chunks: 30.24GiB
+2021-12-08 00:44:28.135075: I tensorflow/core/common_runtime/bfc_allocator.cc:1074] total_region_allocated_bytes_: 40292777984 memory_limit_: 40292777984 available bytes: 0 curr_region_allocation_bytes_: 80585555968
+2021-12-08 00:44:28.135083: I tensorflow/core/common_runtime/bfc_allocator.cc:1080] Stats: 
+Limit:                     40292777984
+InUse:                     32466389504
+MaxInUse:                  37028504832
+NumAllocs:                       24577
+MaxAllocSize:               4172272896
+Reserved:                            0
+PeakReserved:                        0
+LargestFreeBlock:                    0
+
+2021-12-08 00:44:28.135100: W tensorflow/core/common_runtime/bfc_allocator.cc:468] ********************************************______*****************************************_________
+2021-12-08 00:44:28.135132: W tensorflow/core/framework/op_kernel.cc:1692] OP_REQUIRES failed at conv_grad_input_ops.cc:334 : Resource exhausted: OOM when allocating tensor with shape[25,384,328,321] and type float on /job:localhost/replica:0/task:0/device:GPU:0 by allocator GPU_0_bfc
+The temperature of the GPU is  51
+Epoch 3/1000
+Traceback (most recent call last):
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 602, in <module>
+    main(sys.argv[1:])
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 599, in main
+    train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model,momentum,loss_function)
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 473, in train
+    history = model.fit(np.array(X_train), np.array(y_train),
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/training.py", line 1184, in fit
+    tmp_logs = self.train_function(iterator)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/tensorflow/python/eager/def_function.py", line 885, in __call__
+    result = self._call(*args, **kwds)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/tensorflow/python/eager/def_function.py", line 917, in _call
+    return self._stateless_fn(*args, **kwds)  # pylint: disable=not-callable
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/tensorflow/python/eager/function.py", line 3039, in __call__
+    return graph_function._call_flat(
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/tensorflow/python/eager/function.py", line 1963, in _call_flat
+    return self._build_call_outputs(self._inference_function.call(
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/tensorflow/python/eager/function.py", line 591, in call
+    outputs = execute.execute(
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/tensorflow/python/eager/execute.py", line 59, in quick_execute
+    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+tensorflow.python.framework.errors_impl.ResourceExhaustedError:  OOM when allocating tensor with shape[25,384,328,321] and type float on /job:localhost/replica:0/task:0/device:GPU:0 by allocator GPU_0_bfc
+	 [[node gradient_tape/model/conv2d_4/Conv2D/Conv2DBackpropInput (defined at /repo/Aesthetic_Photo_Ranking/./train.py:473) ]]
+Hint: If you want to see a list of allocated tensors when OOM happens, add report_tensor_allocations_upon_oom to RunOptions for current allocation info. This isn't available when running in Eager mode.
+ [Op:__inference_train_function_6357]
+
+Function call stack:
+train_function
+
+srun: error: nodegpu003: task 0: Exited with exit code 1

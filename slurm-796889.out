@@ -1,0 +1,5 @@
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 382
+    checkpointpath = modelin+".checkpoint/checkpoint
+                                                    ^
+SyntaxError: EOL while scanning string literal
+srun: error: nodegpu002: task 0: Exited with exit code 1

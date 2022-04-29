@@ -1,0 +1,1326 @@
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+Wed Nov 10 02:28:34 2021       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 460.32.03    Driver Version: 460.32.03    CUDA Version: 11.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  A100-PCIE-40GB      Off  | 00000000:21:00.0 Off |                    0 |
+| N/A   37C    P0    39W / 250W |      0MiB / 40536MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+2021-11-10 02:28:43.792741: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-11-10 02:28:44.625724: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38426 MB memory:  -> device: 0, name: A100-PCIE-40GB, pci bus id: 0000:21:00.0, compute capability: 8.0
+2021-11-10 02:28:45.412981: I tensorflow/core/profiler/lib/profiler_session.cc:131] Profiler session initializing.
+2021-11-10 02:28:45.413031: I tensorflow/core/profiler/lib/profiler_session.cc:146] Profiler session started.
+2021-11-10 02:28:45.414004: I tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1614] Profiler found 1 GPUs
+2021-11-10 02:28:45.416562: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcupti.so.11.2'; dlerror: libcupti.so.11.2: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2021-11-10 02:28:45.416898: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcupti.so'; dlerror: libcupti.so: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2021-11-10 02:28:45.416913: E tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1666] function cupti_interface_->Subscribe( &subscriber_, (CUpti_CallbackFunc)ApiCallback, this)failed with error CUPTI could not be loaded or symbol could not be found.
+2021-11-10 02:28:45.416930: I tensorflow/core/profiler/lib/profiler_session.cc:164] Profiler session tear down.
+2021-11-10 02:28:45.416947: E tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1757] function cupti_interface_->Finalize()failed with error CUPTI could not be loaded or symbol could not be found.
+/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/optimizer_v2/optimizer_v2.py:355: UserWarning: The `lr` argument is deprecated, use `learning_rate` instead.
+  warnings.warn(
+Input file is " 
+Output file is " agnet.14.res
+Image path is " 
+--------------------
+
+
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 1024, 680, 3 0                                            
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 165, 162, 96) 352896      input_1[0][0]                    
+__________________________________________________________________________________________________
+conv2d_20 (Conv2D)              (None, 170, 168, 96) 23424       input_1[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 165, 162, 96) 384         conv2d[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_20 (BatchNo (None, 170, 168, 96) 384         conv2d_20[0][0]                  
+__________________________________________________________________________________________________
+activation (Activation)         (None, 165, 162, 96) 0           batch_normalization[0][0]        
+__________________________________________________________________________________________________
+activation_15 (Activation)      (None, 170, 168, 96) 0           batch_normalization_20[0][0]     
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 164, 161, 192 73920       activation[0][0]                 
+__________________________________________________________________________________________________
+conv2d_21 (Conv2D)              (None, 169, 167, 192 73920       activation_15[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 164, 161, 192 768         conv2d_1[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_21 (BatchNo (None, 169, 167, 192 768         conv2d_21[0][0]                  
+__________________________________________________________________________________________________
+activation_1 (Activation)       (None, 164, 161, 192 0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+activation_16 (Activation)      (None, 169, 167, 192 0           batch_normalization_21[0][0]     
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, 163, 160, 384 295296      activation_1[0][0]               
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, 163, 160, 384 332160      activation[0][0]                 
+__________________________________________________________________________________________________
+conv2d_22 (Conv2D)              (None, 168, 166, 384 295296      activation_16[0][0]              
+__________________________________________________________________________________________________
+conv2d_23 (Conv2D)              (None, 168, 166, 384 332160      activation_15[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 163, 160, 384 1536        conv2d_2[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 163, 160, 384 1536        conv2d_3[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_22 (BatchNo (None, 168, 166, 384 1536        conv2d_22[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_23 (BatchNo (None, 168, 166, 384 1536        conv2d_23[0][0]                  
+__________________________________________________________________________________________________
+add (Add)                       (None, 163, 160, 384 0           batch_normalization_2[0][0]      
+                                                                 batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+add_5 (Add)                     (None, 168, 166, 384 0           batch_normalization_22[0][0]     
+                                                                 batch_normalization_23[0][0]     
+__________________________________________________________________________________________________
+activation_2 (Activation)       (None, 163, 160, 384 0           add[0][0]                        
+__________________________________________________________________________________________________
+activation_17 (Activation)      (None, 168, 166, 384 0           add_5[0][0]                      
+__________________________________________________________________________________________________
+conv2d_4 (Conv2D)               (None, 78, 76, 384)  11944320    activation_2[0][0]               
+__________________________________________________________________________________________________
+conv2d_24 (Conv2D)              (None, 81, 80, 384)  7225728     activation_17[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 78, 76, 384)  1536        conv2d_4[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_24 (BatchNo (None, 81, 80, 384)  1536        conv2d_24[0][0]                  
+__________________________________________________________________________________________________
+activation_3 (Activation)       (None, 78, 76, 384)  0           batch_normalization_4[0][0]      
+__________________________________________________________________________________________________
+activation_18 (Activation)      (None, 81, 80, 384)  0           batch_normalization_24[0][0]     
+__________________________________________________________________________________________________
+conv2d_5 (Conv2D)               (None, 77, 75, 192)  295104      activation_3[0][0]               
+__________________________________________________________________________________________________
+conv2d_25 (Conv2D)              (None, 80, 79, 192)  295104      activation_18[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 77, 75, 192)  768         conv2d_5[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_25 (BatchNo (None, 80, 79, 192)  768         conv2d_25[0][0]                  
+__________________________________________________________________________________________________
+activation_4 (Activation)       (None, 77, 75, 192)  0           batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+activation_19 (Activation)      (None, 80, 79, 192)  0           batch_normalization_25[0][0]     
+__________________________________________________________________________________________________
+conv2d_6 (Conv2D)               (None, 76, 74, 96)   73824       activation_4[0][0]               
+__________________________________________________________________________________________________
+conv2d_7 (Conv2D)               (None, 76, 74, 96)   331872      activation_3[0][0]               
+__________________________________________________________________________________________________
+conv2d_26 (Conv2D)              (None, 79, 78, 96)   73824       activation_19[0][0]              
+__________________________________________________________________________________________________
+conv2d_27 (Conv2D)              (None, 79, 78, 96)   331872      activation_18[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 76, 74, 96)   384         conv2d_6[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 76, 74, 96)   384         conv2d_7[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_26 (BatchNo (None, 79, 78, 96)   384         conv2d_26[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_27 (BatchNo (None, 79, 78, 96)   384         conv2d_27[0][0]                  
+__________________________________________________________________________________________________
+add_1 (Add)                     (None, 76, 74, 96)   0           batch_normalization_6[0][0]      
+                                                                 batch_normalization_7[0][0]      
+__________________________________________________________________________________________________
+add_6 (Add)                     (None, 79, 78, 96)   0           batch_normalization_26[0][0]     
+                                                                 batch_normalization_27[0][0]     
+__________________________________________________________________________________________________
+activation_5 (Activation)       (None, 76, 74, 96)   0           add_1[0][0]                      
+__________________________________________________________________________________________________
+activation_20 (Activation)      (None, 79, 78, 96)   0           add_6[0][0]                      
+__________________________________________________________________________________________________
+conv2d_8 (Conv2D)               (None, 36, 35, 384)  921984      activation_5[0][0]               
+__________________________________________________________________________________________________
+conv2d_28 (Conv2D)              (None, 38, 37, 384)  921984      activation_20[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_8 (BatchNor (None, 36, 35, 384)  1536        conv2d_8[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_28 (BatchNo (None, 38, 37, 384)  1536        conv2d_28[0][0]                  
+__________________________________________________________________________________________________
+activation_6 (Activation)       (None, 36, 35, 384)  0           batch_normalization_8[0][0]      
+__________________________________________________________________________________________________
+activation_21 (Activation)      (None, 38, 37, 384)  0           batch_normalization_28[0][0]     
+__________________________________________________________________________________________________
+conv2d_9 (Conv2D)               (None, 35, 34, 768)  1180416     activation_6[0][0]               
+__________________________________________________________________________________________________
+conv2d_29 (Conv2D)              (None, 37, 36, 768)  1180416     activation_21[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_9 (BatchNor (None, 35, 34, 768)  3072        conv2d_9[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_29 (BatchNo (None, 37, 36, 768)  3072        conv2d_29[0][0]                  
+__________________________________________________________________________________________________
+activation_7 (Activation)       (None, 35, 34, 768)  0           batch_normalization_9[0][0]      
+__________________________________________________________________________________________________
+activation_22 (Activation)      (None, 37, 36, 768)  0           batch_normalization_29[0][0]     
+__________________________________________________________________________________________________
+conv2d_10 (Conv2D)              (None, 34, 33, 1536) 4720128     activation_7[0][0]               
+__________________________________________________________________________________________________
+conv2d_11 (Conv2D)              (None, 34, 33, 1536) 5309952     activation_6[0][0]               
+__________________________________________________________________________________________________
+conv2d_30 (Conv2D)              (None, 36, 35, 1536) 4720128     activation_22[0][0]              
+__________________________________________________________________________________________________
+conv2d_31 (Conv2D)              (None, 36, 35, 1536) 5309952     activation_21[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_10 (BatchNo (None, 34, 33, 1536) 6144        conv2d_10[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_11 (BatchNo (None, 34, 33, 1536) 6144        conv2d_11[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_30 (BatchNo (None, 36, 35, 1536) 6144        conv2d_30[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_31 (BatchNo (None, 36, 35, 1536) 6144        conv2d_31[0][0]                  
+__________________________________________________________________________________________________
+add_2 (Add)                     (None, 34, 33, 1536) 0           batch_normalization_10[0][0]     
+                                                                 batch_normalization_11[0][0]     
+__________________________________________________________________________________________________
+add_7 (Add)                     (None, 36, 35, 1536) 0           batch_normalization_30[0][0]     
+                                                                 batch_normalization_31[0][0]     
+__________________________________________________________________________________________________
+activation_8 (Activation)       (None, 34, 33, 1536) 0           add_2[0][0]                      
+__________________________________________________________________________________________________
+activation_23 (Activation)      (None, 36, 35, 1536) 0           add_7[0][0]                      
+__________________________________________________________________________________________________
+conv2d_12 (Conv2D)              (None, 16, 16, 384)  5308800     activation_8[0][0]               
+__________________________________________________________________________________________________
+conv2d_32 (Conv2D)              (None, 17, 17, 384)  5308800     activation_23[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_12 (BatchNo (None, 16, 16, 384)  1536        conv2d_12[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_32 (BatchNo (None, 17, 17, 384)  1536        conv2d_32[0][0]                  
+__________________________________________________________________________________________________
+activation_9 (Activation)       (None, 16, 16, 384)  0           batch_normalization_12[0][0]     
+__________________________________________________________________________________________________
+activation_24 (Activation)      (None, 17, 17, 384)  0           batch_normalization_32[0][0]     
+__________________________________________________________________________________________________
+conv2d_13 (Conv2D)              (None, 15, 15, 192)  295104      activation_9[0][0]               
+__________________________________________________________________________________________________
+conv2d_33 (Conv2D)              (None, 16, 16, 192)  295104      activation_24[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_13 (BatchNo (None, 15, 15, 192)  768         conv2d_13[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_33 (BatchNo (None, 16, 16, 192)  768         conv2d_33[0][0]                  
+__________________________________________________________________________________________________
+activation_10 (Activation)      (None, 15, 15, 192)  0           batch_normalization_13[0][0]     
+__________________________________________________________________________________________________
+activation_25 (Activation)      (None, 16, 16, 192)  0           batch_normalization_33[0][0]     
+__________________________________________________________________________________________________
+conv2d_14 (Conv2D)              (None, 14, 14, 96)   73824       activation_10[0][0]              
+__________________________________________________________________________________________________
+conv2d_15 (Conv2D)              (None, 14, 14, 96)   331872      activation_9[0][0]               
+__________________________________________________________________________________________________
+conv2d_34 (Conv2D)              (None, 15, 15, 96)   73824       activation_25[0][0]              
+__________________________________________________________________________________________________
+conv2d_35 (Conv2D)              (None, 15, 15, 96)   331872      activation_24[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_14 (BatchNo (None, 14, 14, 96)   384         conv2d_14[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_15 (BatchNo (None, 14, 14, 96)   384         conv2d_15[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_34 (BatchNo (None, 15, 15, 96)   384         conv2d_34[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_35 (BatchNo (None, 15, 15, 96)   384         conv2d_35[0][0]                  
+__________________________________________________________________________________________________
+add_3 (Add)                     (None, 14, 14, 96)   0           batch_normalization_14[0][0]     
+                                                                 batch_normalization_15[0][0]     
+__________________________________________________________________________________________________
+add_8 (Add)                     (None, 15, 15, 96)   0           batch_normalization_34[0][0]     
+                                                                 batch_normalization_35[0][0]     
+__________________________________________________________________________________________________
+activation_11 (Activation)      (None, 14, 14, 96)   0           add_3[0][0]                      
+__________________________________________________________________________________________________
+activation_26 (Activation)      (None, 15, 15, 96)   0           add_8[0][0]                      
+__________________________________________________________________________________________________
+conv2d_16 (Conv2D)              (None, 6, 6, 160)    138400      activation_11[0][0]              
+__________________________________________________________________________________________________
+conv2d_36 (Conv2D)              (None, 7, 7, 160)    138400      activation_26[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_16 (BatchNo (None, 6, 6, 160)    640         conv2d_16[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_36 (BatchNo (None, 7, 7, 160)    640         conv2d_36[0][0]                  
+__________________________________________________________________________________________________
+activation_12 (Activation)      (None, 6, 6, 160)    0           batch_normalization_16[0][0]     
+__________________________________________________________________________________________________
+activation_27 (Activation)      (None, 7, 7, 160)    0           batch_normalization_36[0][0]     
+__________________________________________________________________________________________________
+conv2d_17 (Conv2D)              (None, 5, 5, 160)    102560      activation_12[0][0]              
+__________________________________________________________________________________________________
+conv2d_37 (Conv2D)              (None, 6, 6, 160)    102560      activation_27[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_17 (BatchNo (None, 5, 5, 160)    640         conv2d_17[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_37 (BatchNo (None, 6, 6, 160)    640         conv2d_37[0][0]                  
+__________________________________________________________________________________________________
+activation_13 (Activation)      (None, 5, 5, 160)    0           batch_normalization_17[0][0]     
+__________________________________________________________________________________________________
+activation_28 (Activation)      (None, 6, 6, 160)    0           batch_normalization_37[0][0]     
+__________________________________________________________________________________________________
+conv2d_18 (Conv2D)              (None, 4, 4, 160)    102560      activation_13[0][0]              
+__________________________________________________________________________________________________
+conv2d_19 (Conv2D)              (None, 4, 4, 160)    230560      activation_12[0][0]              
+__________________________________________________________________________________________________
+conv2d_38 (Conv2D)              (None, 5, 5, 160)    102560      activation_28[0][0]              
+__________________________________________________________________________________________________
+conv2d_39 (Conv2D)              (None, 5, 5, 160)    230560      activation_27[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_18 (BatchNo (None, 4, 4, 160)    640         conv2d_18[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_19 (BatchNo (None, 4, 4, 160)    640         conv2d_19[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_38 (BatchNo (None, 5, 5, 160)    640         conv2d_38[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_39 (BatchNo (None, 5, 5, 160)    640         conv2d_39[0][0]                  
+__________________________________________________________________________________________________
+add_4 (Add)                     (None, 4, 4, 160)    0           batch_normalization_18[0][0]     
+                                                                 batch_normalization_19[0][0]     
+__________________________________________________________________________________________________
+add_9 (Add)                     (None, 5, 5, 160)    0           batch_normalization_38[0][0]     
+                                                                 batch_normalization_39[0][0]     
+__________________________________________________________________________________________________
+activation_14 (Activation)      (None, 4, 4, 160)    0           add_4[0][0]                      
+__________________________________________________________________________________________________
+activation_29 (Activation)      (None, 5, 5, 160)    0           add_9[0][0]                      
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 2560)         0           activation_14[0][0]              
+__________________________________________________________________________________________________
+flatten_1 (Flatten)             (None, 4000)         0           activation_29[0][0]              
+__________________________________________________________________________________________________
+concatenate (Concatenate)       (None, 6560)         0           flatten[0][0]                    
+                                                                 flatten_1[0][0]                  
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 2048)         13436928    concatenate[0][0]                
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 2048)         0           dense[0][0]                      
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 1024)         2098176     dropout[0][0]                    
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 1024)         0           dense_1[0][0]                    
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 512)          524800      dropout_1[0][0]                  
+__________________________________________________________________________________________________
+dropout_2 (Dropout)             (None, 512)          0           dense_2[0][0]                    
+__________________________________________________________________________________________________
+dense_3 (Dense)                 (None, 256)          131328      dropout_2[0][0]                  
+__________________________________________________________________________________________________
+dropout_3 (Dropout)             (None, 256)          0           dense_3[0][0]                    
+__________________________________________________________________________________________________
+dense_4 (Dense)                 (None, 128)          32896       dropout_3[0][0]                  
+__________________________________________________________________________________________________
+dropout_4 (Dropout)             (None, 128)          0           dense_4[0][0]                    
+__________________________________________________________________________________________________
+dense_5 (Dense)                 (None, 64)           8256        dropout_4[0][0]                  
+__________________________________________________________________________________________________
+dropout_5 (Dropout)             (None, 64)           0           dense_5[0][0]                    
+__________________________________________________________________________________________________
+dense_6 (Dense)                 (None, 1)            65          dropout_5[0][0]                  
+==================================================================================================
+Total params: 76,075,137
+Trainable params: 76,045,313
+Non-trainable params: 29,824
+__________________________________________________________________________________________________
+None
+Adding Images: Reading ./databaserelease2/MixedDataset/train/0-104.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-48.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-1.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-128.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-79.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-11.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-112.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-132.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-103.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-89.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-9.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-50.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-124.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-123.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-104.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-75.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-87.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-19.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-123.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-111.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-14.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-3.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-24.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-125.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-56.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-69.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-135.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-57.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-7.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-16.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-129.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-15.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-67.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-113.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-73.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-6.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-113.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-58.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-79.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-48.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-50.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-43.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-99.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-47.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-67.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-107.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-38.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-49.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-139.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-107.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-39.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-101.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-17.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-70.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-47.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-135.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-100.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-62.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-132.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-134.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-136.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-81.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-1.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-121.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-63.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-111.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-38.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-106.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-77.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-14.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-69.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-42.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-70.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-16.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-65.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-55.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-5.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-118.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-37.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-93.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-30.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-122.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-76.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-7.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-84.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-97.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-46.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-36.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-100.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-13.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-2.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-85.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-114.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-26.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-126.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-27.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-17.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-55.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-21.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-11.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-137.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-59.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-30.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-98.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-33.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-40.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-133.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-117.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-129.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-91.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-93.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-64.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-127.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-42.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-95.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-77.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-60.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-51.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-138.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-26.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-43.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-96.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-87.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-134.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-31.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-90.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-25.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-4.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-5.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-138.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-84.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-88.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-109.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-103.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-31.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-45.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-75.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-72.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-120.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-112.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-35.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-72.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-131.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-97.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-52.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-88.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-10.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-20.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-102.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-105.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-80.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-106.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-45.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-34.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-122.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-20.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-94.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-33.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-28.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-102.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-18.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-130.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-10.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-91.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-23.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-109.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-58.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-51.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-34.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-120.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-44.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-98.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-118.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-108.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-95.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-65.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-49.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-94.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-74.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-105.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-35.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-64.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-99.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-27.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-41.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-63.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-44.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-62.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-139.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-78.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-117.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-110.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-25.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-133.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-13.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-18.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-131.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-8.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-52.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-83.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-32.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-136.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-32.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-82.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-39.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-96.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-121.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-116.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-66.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-130.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-115.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-137.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-29.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-89.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-68.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-3.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-2.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-46.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-61.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-8.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-115.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-125.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-56.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-119.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-68.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-76.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-53.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-19.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-61.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-36.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-40.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-86.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-74.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-92.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-71.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-37.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-85.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-66.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-86.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-41.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-15.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-28.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-23.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-78.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-54.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-57.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-12.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-82.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-22.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-12.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-6.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-116.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-60.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-110.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-80.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-24.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-126.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-124.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-54.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-128.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-83.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-73.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-108.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-90.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-29.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-92.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-22.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-81.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-127.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-71.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-21.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-114.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-4.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-9.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/0-59.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/0-119.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/train/1-53.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/train/1-101.jpg
+1.0
+
+Read 278 images.
+
+
+Adding Images: Reading ./databaserelease2/MixedDataset/val/1-168.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-142.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-183.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-175.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-142.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-187.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-173.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-172.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-165.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-155.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-153.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-146.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-182.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-160.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-174.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-180.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-176.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-184.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-189.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-181.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-171.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-157.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-182.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-141.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-167.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-167.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-161.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-143.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-163.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-144.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-149.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-162.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-158.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-156.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-150.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-171.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-189.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-179.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-154.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-177.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-188.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-161.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-164.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-152.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-181.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-187.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-178.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-177.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-144.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-145.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-159.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-162.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-149.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-154.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-151.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-170.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-178.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-173.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-165.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-140.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-170.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-166.jpg
+1.0
+/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/utils/generic_utils.py:494: CustomMaskWarning: Custom mask layers require a config and must override get_config. When loading, the custom mask layer must be passed to the custom_objects argument.
+  warnings.warn('Custom mask layers require a config and must override '
+2021-11-10 02:29:17.068360: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:185] None of the MLIR Optimization Passes are enabled (registered 2)
+2021-11-10 02:29:20.277340: I tensorflow/stream_executor/cuda/cuda_dnn.cc:369] Loaded cuDNN version 8201
+2021-11-10 02:29:21.677892: W tensorflow/stream_executor/gpu/asm_compiler.cc:77] Couldn't get ptxas version string: Internal: Running ptxas --version returned 32512
+2021-11-10 02:29:21.721872: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] Internal: ptxas exited with non-zero error code 32512, output: 
+Relying on driver to perform ptx compilation. 
+Modify $PATH to customize ptxas location.
+This message will be only logged once.
+2021-11-10 02:29:28.584545: I tensorflow/stream_executor/cuda/cuda_blas.cc:1760] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+Reading ./databaserelease2/MixedDataset/val/0-153.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-176.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-174.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-169.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-186.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-168.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-156.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-151.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-188.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-175.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-184.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-166.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-160.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-172.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-147.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-164.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-179.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-186.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-157.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-141.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-159.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-180.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-150.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-143.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-169.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-152.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-183.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-140.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-146.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/1-185.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-145.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-158.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-155.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-147.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-148.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/0-185.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/val/1-148.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/val/0-163.jpg
+0.0
+
+Read 100 images.
+
+
+Epoch 1/200
+2021-11-10 02:29:41.655911: I tensorflow/core/profiler/lib/profiler_session.cc:131] Profiler session initializing.
+2021-11-10 02:29:41.655972: I tensorflow/core/profiler/lib/profiler_session.cc:146] Profiler session started.
+2021-11-10 02:29:41.656022: E tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1666] function cupti_interface_->Subscribe( &subscriber_, (CUpti_CallbackFunc)ApiCallback, this)failed with error CUPTI could not be loaded or symbol could not be found.
+2021-11-10 02:29:42.266285: I tensorflow/core/profiler/lib/profiler_session.cc:66] Profiler session collecting data.
+2021-11-10 02:29:42.266390: E tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1757] function cupti_interface_->Finalize()failed with error CUPTI could not be loaded or symbol could not be found.
+2021-11-10 02:29:42.277552: I tensorflow/core/profiler/internal/gpu/cupti_collector.cc:673]  GpuTracer has collected 0 callback api events and 0 activity events. 
+2021-11-10 02:29:42.279835: I tensorflow/core/profiler/lib/profiler_session.cc:164] Profiler session tear down.
+2021-11-10 02:29:42.424738: I tensorflow/core/profiler/rpc/client/save_profile.cc:136] Creating directory: agnet.14.res.logs/fit/20211110-022845/train/plugins/profile/2021_11_10_02_29_42
+
+2021-11-10 02:29:42.426853: I tensorflow/core/profiler/rpc/client/save_profile.cc:142] Dumped gzipped tool data for trace.json.gz to agnet.14.res.logs/fit/20211110-022845/train/plugins/profile/2021_11_10_02_29_42/nodegpu002.hpc.fau.edu.trace.json.gz
+2021-11-10 02:29:42.457535: I tensorflow/core/profiler/rpc/client/save_profile.cc:136] Creating directory: agnet.14.res.logs/fit/20211110-022845/train/plugins/profile/2021_11_10_02_29_42
+
+2021-11-10 02:29:42.464716: I tensorflow/core/profiler/rpc/client/save_profile.cc:142] Dumped gzipped tool data for memory_profile.json.gz to agnet.14.res.logs/fit/20211110-022845/train/plugins/profile/2021_11_10_02_29_42/nodegpu002.hpc.fau.edu.memory_profile.json.gz
+2021-11-10 02:29:42.473126: I tensorflow/core/profiler/rpc/client/capture_profile.cc:251] Creating directory: agnet.14.res.logs/fit/20211110-022845/train/plugins/profile/2021_11_10_02_29_42
+Dumped tool data for xplane.pb to agnet.14.res.logs/fit/20211110-022845/train/plugins/profile/2021_11_10_02_29_42/nodegpu002.hpc.fau.edu.xplane.pb
+Dumped tool data for overview_page.pb to agnet.14.res.logs/fit/20211110-022845/train/plugins/profile/2021_11_10_02_29_42/nodegpu002.hpc.fau.edu.overview_page.pb
+Dumped tool data for input_pipeline.pb to agnet.14.res.logs/fit/20211110-022845/train/plugins/profile/2021_11_10_02_29_42/nodegpu002.hpc.fau.edu.input_pipeline.pb
+Dumped tool data for tensorflow_stats.pb to agnet.14.res.logs/fit/20211110-022845/train/plugins/profile/2021_11_10_02_29_42/nodegpu002.hpc.fau.edu.tensorflow_stats.pb
+Dumped tool data for kernel_stats.pb to agnet.14.res.logs/fit/20211110-022845/train/plugins/profile/2021_11_10_02_29_42/nodegpu002.hpc.fau.edu.kernel_stats.pb
+
+WARNING:tensorflow:Callback method `on_train_batch_end` is slow compared to the batch time (batch time: 0.2547s vs `on_train_batch_end` time: 0.3396s). Check your callbacks.
+ 1/12 [=>............................] - ETA: 4:29 - loss: 0.2039 - accuracy: 0.7600 2/12 [====>.........................] - ETA: 6s - loss: 0.2573 - accuracy: 0.6200   3/12 [======>.......................] - ETA: 6s - loss: 0.2786 - accuracy: 0.6000 4/12 [=========>....................] - ETA: 5s - loss: 0.2680 - accuracy: 0.6200 5/12 [===========>..................] - ETA: 4s - loss: 0.2699 - accuracy: 0.5920 6/12 [==============>...............] - ETA: 3s - loss: 0.2683 - accuracy: 0.5867 7/12 [================>.............] - ETA: 3s - loss: 0.2670 - accuracy: 0.5829 8/12 [===================>..........] - ETA: 2s - loss: 0.2614 - accuracy: 0.5800 9/12 [=====================>........] - ETA: 1s - loss: 0.2671 - accuracy: 0.560010/12 [========================>.....] - ETA: 1s - loss: 0.2648 - accuracy: 0.560011/12 [==========================>...] - ETA: 0s - loss: 0.2614 - accuracy: 0.567312/12 [==============================] - ETA: 0s - loss: 0.2610 - accuracy: 0.564712/12 [==============================] - 39s 1s/step - loss: 0.2610 - accuracy: 0.5647 - val_loss: 0.5000 - val_accuracy: 0.5000
+2021-11-10 02:30:01.278320: W tensorflow/python/util/util.cc:348] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
+/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/utils/generic_utils.py:494: CustomMaskWarning: Custom mask layers require a config and must override get_config. When loading, the custom mask layer must be passed to the custom_objects argument.
+  warnings.warn('Custom mask layers require a config and must override '
+The temperature of the GPU is  41
+Epoch 2/200
+ 1/12 [=>............................] - ETA: 7s - loss: 0.2611 - accuracy: 0.5200 2/12 [====>.........................] - ETA: 6s - loss: 0.2737 - accuracy: 0.5000 3/12 [======>.......................] - ETA: 5s - loss: 0.2732 - accuracy: 0.4800 4/12 [=========>....................] - ETA: 4s - loss: 0.2820 - accuracy: 0.4700 5/12 [===========>..................] - ETA: 4s - loss: 0.2751 - accuracy: 0.4640 6/12 [==============>...............] - ETA: 3s - loss: 0.2757 - accuracy: 0.4467 7/12 [================>.............] - ETA: 3s - loss: 0.2748 - accuracy: 0.4514 8/12 [===================>..........] - ETA: 2s - loss: 0.2749 - accuracy: 0.4450 9/12 [=====================>........] - ETA: 1s - loss: 0.2707 - accuracy: 0.475610/12 [========================>.....] - ETA: 1s - loss: 0.2691 - accuracy: 0.472011/12 [==========================>...] - ETA: 0s - loss: 0.2729 - accuracy: 0.472712/12 [==============================] - ETA: 0s - loss: 0.2734 - accuracy: 0.471212/12 [==============================] - 8s 674ms/step - loss: 0.2734 - accuracy: 0.4712 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  47
+Epoch 3/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.2734 - accuracy: 0.4000 2/12 [====>.........................] - ETA: 6s - loss: 0.2538 - accuracy: 0.5000 3/12 [======>.......................] - ETA: 5s - loss: 0.2485 - accuracy: 0.5200 4/12 [=========>....................] - ETA: 4s - loss: 0.2563 - accuracy: 0.4800 5/12 [===========>..................] - ETA: 4s - loss: 0.2577 - accuracy: 0.4880 6/12 [==============>...............] - ETA: 3s - loss: 0.2544 - accuracy: 0.5067 7/12 [================>.............] - ETA: 3s - loss: 0.2508 - accuracy: 0.5257 8/12 [===================>..........] - ETA: 2s - loss: 0.2539 - accuracy: 0.5200 9/12 [=====================>........] - ETA: 1s - loss: 0.2508 - accuracy: 0.537810/12 [========================>.....] - ETA: 1s - loss: 0.2520 - accuracy: 0.532011/12 [==========================>...] - ETA: 0s - loss: 0.2504 - accuracy: 0.534512/12 [==============================] - ETA: 0s - loss: 0.2506 - accuracy: 0.536012/12 [==============================] - 8s 678ms/step - loss: 0.2506 - accuracy: 0.5360 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  49
+Epoch 4/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.2562 - accuracy: 0.3600 2/12 [====>.........................] - ETA: 6s - loss: 0.2681 - accuracy: 0.3400 3/12 [======>.......................] - ETA: 5s - loss: 0.2514 - accuracy: 0.4667 4/12 [=========>....................] - ETA: 4s - loss: 0.2446 - accuracy: 0.5500 5/12 [===========>..................] - ETA: 4s - loss: 0.2405 - accuracy: 0.5840 6/12 [==============>...............] - ETA: 3s - loss: 0.2426 - accuracy: 0.5733 7/12 [================>.............] - ETA: 3s - loss: 0.2419 - accuracy: 0.5771 8/12 [===================>..........] - ETA: 2s - loss: 0.2387 - accuracy: 0.5850 9/12 [=====================>........] - ETA: 1s - loss: 0.2359 - accuracy: 0.604410/12 [========================>.....] - ETA: 1s - loss: 0.2359 - accuracy: 0.612011/12 [==========================>...] - ETA: 0s - loss: 0.2394 - accuracy: 0.607312/12 [==============================] - ETA: 0s - loss: 0.2394 - accuracy: 0.607912/12 [==============================] - 8s 676ms/step - loss: 0.2394 - accuracy: 0.6079 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  52
+Epoch 5/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.2347 - accuracy: 0.6400 2/12 [====>.........................] - ETA: 6s - loss: 0.2292 - accuracy: 0.6400 3/12 [======>.......................] - ETA: 5s - loss: 0.2263 - accuracy: 0.6267 4/12 [=========>....................] - ETA: 4s - loss: 0.2283 - accuracy: 0.6100 5/12 [===========>..................] - ETA: 4s - loss: 0.2288 - accuracy: 0.6000 6/12 [==============>...............] - ETA: 3s - loss: 0.2331 - accuracy: 0.5800 7/12 [================>.............] - ETA: 3s - loss: 0.2309 - accuracy: 0.5886 8/12 [===================>..........] - ETA: 2s - loss: 0.2327 - accuracy: 0.5700 9/12 [=====================>........] - ETA: 1s - loss: 0.2307 - accuracy: 0.586710/12 [========================>.....] - ETA: 1s - loss: 0.2287 - accuracy: 0.600011/12 [==========================>...] - ETA: 0s - loss: 0.2292 - accuracy: 0.596412/12 [==============================] - ETA: 0s - loss: 0.2290 - accuracy: 0.597112/12 [==============================] - 8s 679ms/step - loss: 0.2290 - accuracy: 0.5971 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  53
+Epoch 6/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.2056 - accuracy: 0.6800 2/12 [====>.........................] - ETA: 6s - loss: 0.2261 - accuracy: 0.6400 3/12 [======>.......................] - ETA: 5s - loss: 0.2251 - accuracy: 0.6400 4/12 [=========>....................] - ETA: 4s - loss: 0.2231 - accuracy: 0.6500 5/12 [===========>..................] - ETA: 4s - loss: 0.2176 - accuracy: 0.6880 6/12 [==============>...............] - ETA: 3s - loss: 0.2133 - accuracy: 0.6933 7/12 [================>.............] - ETA: 3s - loss: 0.2150 - accuracy: 0.6971 8/12 [===================>..........] - ETA: 2s - loss: 0.2157 - accuracy: 0.6850 9/12 [=====================>........] - ETA: 1s - loss: 0.2156 - accuracy: 0.684410/12 [========================>.....] - ETA: 1s - loss: 0.2146 - accuracy: 0.676011/12 [==========================>...] - ETA: 0s - loss: 0.2148 - accuracy: 0.683612/12 [==============================] - ETA: 0s - loss: 0.2144 - accuracy: 0.687112/12 [==============================] - 8s 681ms/step - loss: 0.2144 - accuracy: 0.6871 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  55
+Epoch 7/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.1940 - accuracy: 0.7600 2/12 [====>.........................] - ETA: 6s - loss: 0.2045 - accuracy: 0.7000 3/12 [======>.......................] - ETA: 5s - loss: 0.2028 - accuracy: 0.7067 4/12 [=========>....................] - ETA: 4s - loss: 0.1948 - accuracy: 0.7300 5/12 [===========>..................] - ETA: 4s - loss: 0.2064 - accuracy: 0.6960 6/12 [==============>...............] - ETA: 3s - loss: 0.2010 - accuracy: 0.7333 7/12 [================>.............] - ETA: 3s - loss: 0.1988 - accuracy: 0.7371 8/12 [===================>..........] - ETA: 2s - loss: 0.2016 - accuracy: 0.7250 9/12 [=====================>........] - ETA: 1s - loss: 0.1995 - accuracy: 0.733310/12 [========================>.....] - ETA: 1s - loss: 0.1995 - accuracy: 0.724011/12 [==========================>...] - ETA: 0s - loss: 0.1997 - accuracy: 0.723612/12 [==============================] - ETA: 0s - loss: 0.2000 - accuracy: 0.719412/12 [==============================] - 8s 681ms/step - loss: 0.2000 - accuracy: 0.7194 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  56
+Epoch 8/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.2368 - accuracy: 0.6000 2/12 [====>.........................] - ETA: 6s - loss: 0.2221 - accuracy: 0.6000 3/12 [======>.......................] - ETA: 5s - loss: 0.2107 - accuracy: 0.6133 4/12 [=========>....................] - ETA: 4s - loss: 0.2013 - accuracy: 0.6700 5/12 [===========>..................] - ETA: 4s - loss: 0.2067 - accuracy: 0.6720 6/12 [==============>...............] - ETA: 3s - loss: 0.2057 - accuracy: 0.6733 7/12 [================>.............] - ETA: 3s - loss: 0.2045 - accuracy: 0.6857 8/12 [===================>..........] - ETA: 2s - loss: 0.2028 - accuracy: 0.6850 9/12 [=====================>........] - ETA: 1s - loss: 0.1962 - accuracy: 0.706710/12 [========================>.....] - ETA: 1s - loss: 0.1954 - accuracy: 0.716011/12 [==========================>...] - ETA: 0s - loss: 0.1939 - accuracy: 0.716412/12 [==============================] - ETA: 0s - loss: 0.1957 - accuracy: 0.712212/12 [==============================] - 8s 679ms/step - loss: 0.1957 - accuracy: 0.7122 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  57
+Epoch 9/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.1845 - accuracy: 0.7600 2/12 [====>.........................] - ETA: 6s - loss: 0.1831 - accuracy: 0.7600 3/12 [======>.......................] - ETA: 5s - loss: 0.1868 - accuracy: 0.7600 4/12 [=========>....................] - ETA: 4s - loss: 0.1758 - accuracy: 0.7900 5/12 [===========>..................] - ETA: 4s - loss: 0.1754 - accuracy: 0.7920 6/12 [==============>...............] - ETA: 3s - loss: 0.1804 - accuracy: 0.7667 7/12 [================>.............] - ETA: 3s - loss: 0.1816 - accuracy: 0.7600 8/12 [===================>..........] - ETA: 2s - loss: 0.1833 - accuracy: 0.7600 9/12 [=====================>........] - ETA: 1s - loss: 0.1820 - accuracy: 0.764410/12 [========================>.....] - ETA: 1s - loss: 0.1795 - accuracy: 0.768011/12 [==========================>...] - ETA: 0s - loss: 0.1842 - accuracy: 0.749112/12 [==============================] - ETA: 0s - loss: 0.1848 - accuracy: 0.748212/12 [==============================] - 8s 681ms/step - loss: 0.1848 - accuracy: 0.7482 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  58
+Epoch 10/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.2056 - accuracy: 0.6800 2/12 [====>.........................] - ETA: 6s - loss: 0.1954 - accuracy: 0.6800 3/12 [======>.......................] - ETA: 5s - loss: 0.1980 - accuracy: 0.6667 4/12 [=========>....................] - ETA: 4s - loss: 0.2025 - accuracy: 0.6700 5/12 [===========>..................] - ETA: 4s - loss: 0.2043 - accuracy: 0.6800 6/12 [==============>...............] - ETA: 3s - loss: 0.1906 - accuracy: 0.7333 7/12 [================>.............] - ETA: 3s - loss: 0.1876 - accuracy: 0.7314 8/12 [===================>..........] - ETA: 2s - loss: 0.1805 - accuracy: 0.7500 9/12 [=====================>........] - ETA: 1s - loss: 0.1776 - accuracy: 0.760010/12 [========================>.....] - ETA: 1s - loss: 0.1761 - accuracy: 0.768011/12 [==========================>...] - ETA: 0s - loss: 0.1764 - accuracy: 0.770912/12 [==============================] - ETA: 0s - loss: 0.1754 - accuracy: 0.773412/12 [==============================] - 8s 681ms/step - loss: 0.1754 - accuracy: 0.7734 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  59
+Epoch 11/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.1796 - accuracy: 0.7600 2/12 [====>.........................] - ETA: 6s - loss: 0.1788 - accuracy: 0.7600 3/12 [======>.......................] - ETA: 5s - loss: 0.1644 - accuracy: 0.7733 4/12 [=========>....................] - ETA: 4s - loss: 0.1612 - accuracy: 0.7600 5/12 [===========>..................] - ETA: 4s - loss: 0.1614 - accuracy: 0.7600 6/12 [==============>...............] - ETA: 3s - loss: 0.1536 - accuracy: 0.7800 7/12 [================>.............] - ETA: 3s - loss: 0.1585 - accuracy: 0.7771 8/12 [===================>..........] - ETA: 2s - loss: 0.1617 - accuracy: 0.7750 9/12 [=====================>........] - ETA: 1s - loss: 0.1590 - accuracy: 0.782210/12 [========================>.....] - ETA: 1s - loss: 0.1619 - accuracy: 0.776011/12 [==========================>...] - ETA: 0s - loss: 0.1666 - accuracy: 0.760012/12 [==============================] - ETA: 0s - loss: 0.1686 - accuracy: 0.755412/12 [==============================] - 8s 683ms/step - loss: 0.1686 - accuracy: 0.7554 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  60
+Epoch 12/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.1544 - accuracy: 0.7200 2/12 [====>.........................] - ETA: 6s - loss: 0.1806 - accuracy: 0.6800 3/12 [======>.......................] - ETA: 5s - loss: 0.1642 - accuracy: 0.7333 4/12 [=========>....................] - ETA: 4s - loss: 0.1687 - accuracy: 0.7300 5/12 [===========>..................] - ETA: 4s - loss: 0.1742 - accuracy: 0.7280 6/12 [==============>...............] - ETA: 3s - loss: 0.1742 - accuracy: 0.7333 7/12 [================>.............] - ETA: 3s - loss: 0.1713 - accuracy: 0.7429 8/12 [===================>..........] - ETA: 2s - loss: 0.1640 - accuracy: 0.7600 9/12 [=====================>........] - ETA: 1s - loss: 0.1577 - accuracy: 0.777810/12 [========================>.....] - ETA: 1s - loss: 0.1523 - accuracy: 0.792011/12 [==========================>...] - ETA: 0s - loss: 0.1519 - accuracy: 0.789112/12 [==============================] - ETA: 0s - loss: 0.1516 - accuracy: 0.791412/12 [==============================] - 8s 685ms/step - loss: 0.1516 - accuracy: 0.7914 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  60
+Epoch 13/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.1165 - accuracy: 0.9200 2/12 [====>.........................] - ETA: 6s - loss: 0.1613 - accuracy: 0.8400 3/12 [======>.......................] - ETA: 5s - loss: 0.1473 - accuracy: 0.8667 4/12 [=========>....................] - ETA: 4s - loss: 0.1502 - accuracy: 0.8700 5/12 [===========>..................] - ETA: 4s - loss: 0.1678 - accuracy: 0.8240 6/12 [==============>...............] - ETA: 3s - loss: 0.1592 - accuracy: 0.8333 7/12 [================>.............] - ETA: 3s - loss: 0.1588 - accuracy: 0.8286 8/12 [===================>..........] - ETA: 2s - loss: 0.1546 - accuracy: 0.8300 9/12 [=====================>........] - ETA: 1s - loss: 0.1461 - accuracy: 0.844410/12 [========================>.....] - ETA: 1s - loss: 0.1482 - accuracy: 0.836011/12 [==========================>...] - ETA: 0s - loss: 0.1482 - accuracy: 0.832712/12 [==============================] - ETA: 0s - loss: 0.1484 - accuracy: 0.830912/12 [==============================] - 8s 686ms/step - loss: 0.1484 - accuracy: 0.8309 - val_loss: 0.3670 - val_accuracy: 0.4800
+/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/utils/generic_utils.py:494: CustomMaskWarning: Custom mask layers require a config and must override get_config. When loading, the custom mask layer must be passed to the custom_objects argument.
+  warnings.warn('Custom mask layers require a config and must override '
+The temperature of the GPU is  53
+Epoch 14/200
+ 1/12 [=>............................] - ETA: 7s - loss: 0.1345 - accuracy: 0.8000 2/12 [====>.........................] - ETA: 6s - loss: 0.1625 - accuracy: 0.7800 3/12 [======>.......................] - ETA: 5s - loss: 0.1431 - accuracy: 0.8133 4/12 [=========>....................] - ETA: 4s - loss: 0.1420 - accuracy: 0.8100 5/12 [===========>..................] - ETA: 4s - loss: 0.1367 - accuracy: 0.8320 6/12 [==============>...............] - ETA: 3s - loss: 0.1335 - accuracy: 0.8333 7/12 [================>.............] - ETA: 3s - loss: 0.1335 - accuracy: 0.8171 8/12 [===================>..........] - ETA: 2s - loss: 0.1342 - accuracy: 0.8250 9/12 [=====================>........] - ETA: 1s - loss: 0.1343 - accuracy: 0.831110/12 [========================>.....] - ETA: 1s - loss: 0.1328 - accuracy: 0.836011/12 [==========================>...] - ETA: 0s - loss: 0.1346 - accuracy: 0.829112/12 [==============================] - ETA: 0s - loss: 0.1346 - accuracy: 0.830912/12 [==============================] - 8s 680ms/step - loss: 0.1346 - accuracy: 0.8309 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  58
+Epoch 15/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.1241 - accuracy: 0.8800 2/12 [====>.........................] - ETA: 6s - loss: 0.1421 - accuracy: 0.8400 3/12 [======>.......................] - ETA: 5s - loss: 0.1501 - accuracy: 0.8267 4/12 [=========>....................] - ETA: 4s - loss: 0.1467 - accuracy: 0.8300 5/12 [===========>..................] - ETA: 4s - loss: 0.1417 - accuracy: 0.8320 6/12 [==============>...............] - ETA: 3s - loss: 0.1414 - accuracy: 0.8200 7/12 [================>.............] - ETA: 3s - loss: 0.1487 - accuracy: 0.8057 8/12 [===================>..........] - ETA: 2s - loss: 0.1486 - accuracy: 0.8100 9/12 [=====================>........] - ETA: 1s - loss: 0.1447 - accuracy: 0.813310/12 [========================>.....] - ETA: 1s - loss: 0.1463 - accuracy: 0.804011/12 [==========================>...] - ETA: 0s - loss: 0.1430 - accuracy: 0.814512/12 [==============================] - ETA: 0s - loss: 0.1430 - accuracy: 0.812912/12 [==============================] - 8s 682ms/step - loss: 0.1430 - accuracy: 0.8129 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  59
+Epoch 16/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.1127 - accuracy: 0.8800 2/12 [====>.........................] - ETA: 6s - loss: 0.1302 - accuracy: 0.8200 3/12 [======>.......................] - ETA: 5s - loss: 0.1358 - accuracy: 0.8267 4/12 [=========>....................] - ETA: 4s - loss: 0.1275 - accuracy: 0.8300 5/12 [===========>..................] - ETA: 4s - loss: 0.1243 - accuracy: 0.8400 6/12 [==============>...............] - ETA: 3s - loss: 0.1197 - accuracy: 0.8533 7/12 [================>.............] - ETA: 3s - loss: 0.1189 - accuracy: 0.8514 8/12 [===================>..........] - ETA: 2s - loss: 0.1245 - accuracy: 0.8350 9/12 [=====================>........] - ETA: 1s - loss: 0.1220 - accuracy: 0.840010/12 [========================>.....] - ETA: 1s - loss: 0.1256 - accuracy: 0.832011/12 [==========================>...] - ETA: 0s - loss: 0.1313 - accuracy: 0.829112/12 [==============================] - ETA: 0s - loss: 0.1314 - accuracy: 0.827312/12 [==============================] - 8s 684ms/step - loss: 0.1314 - accuracy: 0.8273 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  60
+Epoch 17/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0934 - accuracy: 0.9200 2/12 [====>.........................] - ETA: 6s - loss: 0.1081 - accuracy: 0.8600 3/12 [======>.......................] - ETA: 5s - loss: 0.1286 - accuracy: 0.8133 4/12 [=========>....................] - ETA: 4s - loss: 0.1342 - accuracy: 0.8200 5/12 [===========>..................] - ETA: 4s - loss: 0.1302 - accuracy: 0.8240 6/12 [==============>...............] - ETA: 3s - loss: 0.1314 - accuracy: 0.8133 7/12 [================>.............] - ETA: 3s - loss: 0.1309 - accuracy: 0.8229 8/12 [===================>..........] - ETA: 2s - loss: 0.1285 - accuracy: 0.8250 9/12 [=====================>........] - ETA: 1s - loss: 0.1257 - accuracy: 0.831110/12 [========================>.....] - ETA: 1s - loss: 0.1295 - accuracy: 0.824011/12 [==========================>...] - ETA: 0s - loss: 0.1259 - accuracy: 0.836412/12 [==============================] - ETA: 0s - loss: 0.1281 - accuracy: 0.830912/12 [==============================] - 8s 685ms/step - loss: 0.1281 - accuracy: 0.8309 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  61
+Epoch 18/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.1170 - accuracy: 0.9200 2/12 [====>.........................] - ETA: 6s - loss: 0.1075 - accuracy: 0.8800 3/12 [======>.......................] - ETA: 5s - loss: 0.1078 - accuracy: 0.8667 4/12 [=========>....................] - ETA: 4s - loss: 0.1108 - accuracy: 0.8700 5/12 [===========>..................] - ETA: 4s - loss: 0.1353 - accuracy: 0.8160 6/12 [==============>...............] - ETA: 3s - loss: 0.1358 - accuracy: 0.8133 7/12 [================>.............] - ETA: 3s - loss: 0.1384 - accuracy: 0.8114 8/12 [===================>..........] - ETA: 2s - loss: 0.1294 - accuracy: 0.8300 9/12 [=====================>........] - ETA: 1s - loss: 0.1317 - accuracy: 0.831110/12 [========================>.....] - ETA: 1s - loss: 0.1267 - accuracy: 0.844011/12 [==========================>...] - ETA: 0s - loss: 0.1248 - accuracy: 0.847312/12 [==============================] - ETA: 0s - loss: 0.1246 - accuracy: 0.848912/12 [==============================] - 8s 685ms/step - loss: 0.1246 - accuracy: 0.8489 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  61
+Epoch 19/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.1460 - accuracy: 0.8000 2/12 [====>.........................] - ETA: 6s - loss: 0.1614 - accuracy: 0.7800 3/12 [======>.......................] - ETA: 5s - loss: 0.1271 - accuracy: 0.8400 4/12 [=========>....................] - ETA: 4s - loss: 0.1254 - accuracy: 0.8500 5/12 [===========>..................] - ETA: 4s - loss: 0.1324 - accuracy: 0.8240 6/12 [==============>...............] - ETA: 3s - loss: 0.1442 - accuracy: 0.8067 7/12 [================>.............] - ETA: 3s - loss: 0.1342 - accuracy: 0.8286 8/12 [===================>..........] - ETA: 2s - loss: 0.1381 - accuracy: 0.8200 9/12 [=====================>........] - ETA: 1s - loss: 0.1295 - accuracy: 0.831110/12 [========================>.....] - ETA: 1s - loss: 0.1272 - accuracy: 0.828011/12 [==========================>...] - ETA: 0s - loss: 0.1205 - accuracy: 0.843612/12 [==============================] - ETA: 0s - loss: 0.1216 - accuracy: 0.841712/12 [==============================] - 8s 685ms/step - loss: 0.1216 - accuracy: 0.8417 - val_loss: 0.4953 - val_accuracy: 0.5000
+The temperature of the GPU is  62
+Epoch 20/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.1220 - accuracy: 0.8400 2/12 [====>.........................] - ETA: 6s - loss: 0.1105 - accuracy: 0.8800 3/12 [======>.......................] - ETA: 5s - loss: 0.1073 - accuracy: 0.8800 4/12 [=========>....................] - ETA: 4s - loss: 0.1088 - accuracy: 0.8700 5/12 [===========>..................] - ETA: 4s - loss: 0.1145 - accuracy: 0.8640 6/12 [==============>...............] - ETA: 3s - loss: 0.1110 - accuracy: 0.8600 7/12 [================>.............] - ETA: 3s - loss: 0.1106 - accuracy: 0.8686 8/12 [===================>..........] - ETA: 2s - loss: 0.1039 - accuracy: 0.8800 9/12 [=====================>........] - ETA: 1s - loss: 0.1053 - accuracy: 0.875610/12 [========================>.....] - ETA: 1s - loss: 0.1046 - accuracy: 0.876011/12 [==========================>...] - ETA: 0s - loss: 0.1070 - accuracy: 0.869112/12 [==============================] - ETA: 0s - loss: 0.1063 - accuracy: 0.870512/12 [==============================] - 8s 685ms/step - loss: 0.1063 - accuracy: 0.8705 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  63
+Epoch 21/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.1524 - accuracy: 0.8400 2/12 [====>.........................] - ETA: 6s - loss: 0.1369 - accuracy: 0.8600 3/12 [======>.......................] - ETA: 5s - loss: 0.1211 - accuracy: 0.8800 4/12 [=========>....................] - ETA: 4s - loss: 0.1189 - accuracy: 0.8900 5/12 [===========>..................] - ETA: 4s - loss: 0.1091 - accuracy: 0.9040 6/12 [==============>...............] - ETA: 3s - loss: 0.1138 - accuracy: 0.8867 7/12 [================>.............] - ETA: 3s - loss: 0.1161 - accuracy: 0.8857 8/12 [===================>..........] - ETA: 2s - loss: 0.1116 - accuracy: 0.8900 9/12 [=====================>........] - ETA: 1s - loss: 0.1092 - accuracy: 0.893310/12 [========================>.....] - ETA: 1s - loss: 0.1073 - accuracy: 0.892011/12 [==========================>...] - ETA: 0s - loss: 0.1098 - accuracy: 0.880012/12 [==============================] - ETA: 0s - loss: 0.1090 - accuracy: 0.881312/12 [==============================] - 8s 684ms/step - loss: 0.1090 - accuracy: 0.8813 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  63
+Epoch 22/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0758 - accuracy: 0.9200 2/12 [====>.........................] - ETA: 6s - loss: 0.1267 - accuracy: 0.8400 3/12 [======>.......................] - ETA: 5s - loss: 0.1293 - accuracy: 0.8400 4/12 [=========>....................] - ETA: 4s - loss: 0.1353 - accuracy: 0.8300 5/12 [===========>..................] - ETA: 4s - loss: 0.1334 - accuracy: 0.8160 6/12 [==============>...............] - ETA: 3s - loss: 0.1307 - accuracy: 0.8267 7/12 [================>.............] - ETA: 3s - loss: 0.1342 - accuracy: 0.8171 8/12 [===================>..........] - ETA: 2s - loss: 0.1279 - accuracy: 0.8300 9/12 [=====================>........] - ETA: 1s - loss: 0.1254 - accuracy: 0.831110/12 [========================>.....] - ETA: 1s - loss: 0.1201 - accuracy: 0.844011/12 [==========================>...] - ETA: 0s - loss: 0.1189 - accuracy: 0.847312/12 [==============================] - ETA: 0s - loss: 0.1216 - accuracy: 0.845312/12 [==============================] - 8s 686ms/step - loss: 0.1216 - accuracy: 0.8453 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  63
+Epoch 23/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0966 - accuracy: 0.8800 2/12 [====>.........................] - ETA: 6s - loss: 0.1096 - accuracy: 0.8600 3/12 [======>.......................] - ETA: 5s - loss: 0.0923 - accuracy: 0.9067 4/12 [=========>....................] - ETA: 4s - loss: 0.0851 - accuracy: 0.9200 5/12 [===========>..................] - ETA: 4s - loss: 0.0808 - accuracy: 0.9200 6/12 [==============>...............] - ETA: 3s - loss: 0.0858 - accuracy: 0.9133 7/12 [================>.............] - ETA: 3s - loss: 0.0860 - accuracy: 0.9086 8/12 [===================>..........] - ETA: 2s - loss: 0.0884 - accuracy: 0.9000 9/12 [=====================>........] - ETA: 1s - loss: 0.0853 - accuracy: 0.902210/12 [========================>.....] - ETA: 1s - loss: 0.0972 - accuracy: 0.884011/12 [==========================>...] - ETA: 0s - loss: 0.1034 - accuracy: 0.872712/12 [==============================] - ETA: 0s - loss: 0.1043 - accuracy: 0.870512/12 [==============================] - 8s 685ms/step - loss: 0.1043 - accuracy: 0.8705 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  63
+Epoch 24/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0836 - accuracy: 0.8800 2/12 [====>.........................] - ETA: 6s - loss: 0.0923 - accuracy: 0.8800 3/12 [======>.......................] - ETA: 5s - loss: 0.0803 - accuracy: 0.9067 4/12 [=========>....................] - ETA: 4s - loss: 0.0830 - accuracy: 0.9000 5/12 [===========>..................] - ETA: 4s - loss: 0.0884 - accuracy: 0.8880 6/12 [==============>...............] - ETA: 3s - loss: 0.0909 - accuracy: 0.8867 7/12 [================>.............] - ETA: 3s - loss: 0.0923 - accuracy: 0.8857 8/12 [===================>..........] - ETA: 2s - loss: 0.0979 - accuracy: 0.8750 9/12 [=====================>........] - ETA: 1s - loss: 0.0963 - accuracy: 0.880010/12 [========================>.....] - ETA: 1s - loss: 0.0956 - accuracy: 0.880011/12 [==========================>...] - ETA: 0s - loss: 0.0952 - accuracy: 0.880012/12 [==============================] - ETA: 0s - loss: 0.0956 - accuracy: 0.877712/12 [==============================] - 8s 684ms/step - loss: 0.0956 - accuracy: 0.8777 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  64
+Epoch 25/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0725 - accuracy: 0.9600 2/12 [====>.........................] - ETA: 6s - loss: 0.0583 - accuracy: 0.9800 3/12 [======>.......................] - ETA: 5s - loss: 0.0703 - accuracy: 0.9333 4/12 [=========>....................] - ETA: 4s - loss: 0.0688 - accuracy: 0.9300 5/12 [===========>..................] - ETA: 4s - loss: 0.0867 - accuracy: 0.9040 6/12 [==============>...............] - ETA: 3s - loss: 0.0955 - accuracy: 0.8867 7/12 [================>.............] - ETA: 3s - loss: 0.0860 - accuracy: 0.9029 8/12 [===================>..........] - ETA: 2s - loss: 0.0856 - accuracy: 0.9100 9/12 [=====================>........] - ETA: 1s - loss: 0.0868 - accuracy: 0.906710/12 [========================>.....] - ETA: 1s - loss: 0.0916 - accuracy: 0.896011/12 [==========================>...] - ETA: 0s - loss: 0.0956 - accuracy: 0.887312/12 [==============================] - ETA: 0s - loss: 0.0980 - accuracy: 0.884912/12 [==============================] - 8s 684ms/step - loss: 0.0980 - accuracy: 0.8849 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  64
+Epoch 26/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.1097 - accuracy: 0.8800 2/12 [====>.........................] - ETA: 6s - loss: 0.0697 - accuracy: 0.9400 3/12 [======>.......................] - ETA: 5s - loss: 0.0672 - accuracy: 0.9467 4/12 [=========>....................] - ETA: 4s - loss: 0.0750 - accuracy: 0.9300 5/12 [===========>..................] - ETA: 4s - loss: 0.0785 - accuracy: 0.9280 6/12 [==============>...............] - ETA: 3s - loss: 0.0834 - accuracy: 0.9200 7/12 [================>.............] - ETA: 3s - loss: 0.0860 - accuracy: 0.9143 8/12 [===================>..........] - ETA: 2s - loss: 0.0876 - accuracy: 0.9100 9/12 [=====================>........] - ETA: 1s - loss: 0.0860 - accuracy: 0.911110/12 [========================>.....] - ETA: 1s - loss: 0.0896 - accuracy: 0.908011/12 [==========================>...] - ETA: 0s - loss: 0.0986 - accuracy: 0.887312/12 [==============================] - ETA: 0s - loss: 0.0983 - accuracy: 0.888512/12 [==============================] - 8s 685ms/step - loss: 0.0983 - accuracy: 0.8885 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  64
+Epoch 27/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0883 - accuracy: 0.8400 2/12 [====>.........................] - ETA: 6s - loss: 0.1015 - accuracy: 0.8600 3/12 [======>.......................] - ETA: 5s - loss: 0.0995 - accuracy: 0.8800 4/12 [=========>....................] - ETA: 4s - loss: 0.1030 - accuracy: 0.8900 5/12 [===========>..................] - ETA: 4s - loss: 0.1173 - accuracy: 0.8560 6/12 [==============>...............] - ETA: 3s - loss: 0.1266 - accuracy: 0.8400 7/12 [================>.............] - ETA: 3s - loss: 0.1249 - accuracy: 0.8457 8/12 [===================>..........] - ETA: 2s - loss: 0.1177 - accuracy: 0.8550 9/12 [=====================>........] - ETA: 1s - loss: 0.1111 - accuracy: 0.866710/12 [========================>.....] - ETA: 1s - loss: 0.1040 - accuracy: 0.880011/12 [==========================>...] - ETA: 0s - loss: 0.0995 - accuracy: 0.887312/12 [==============================] - ETA: 0s - loss: 0.1033 - accuracy: 0.881312/12 [==============================] - 8s 685ms/step - loss: 0.1033 - accuracy: 0.8813 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  64
+Epoch 28/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.1131 - accuracy: 0.8800 2/12 [====>.........................] - ETA: 6s - loss: 0.0968 - accuracy: 0.8800 3/12 [======>.......................] - ETA: 5s - loss: 0.0946 - accuracy: 0.8667 4/12 [=========>....................] - ETA: 4s - loss: 0.1103 - accuracy: 0.8400 5/12 [===========>..................] - ETA: 4s - loss: 0.1106 - accuracy: 0.8480 6/12 [==============>...............] - ETA: 3s - loss: 0.1162 - accuracy: 0.8333 7/12 [================>.............] - ETA: 3s - loss: 0.1249 - accuracy: 0.8286 8/12 [===================>..........] - ETA: 2s - loss: 0.1220 - accuracy: 0.8400 9/12 [=====================>........] - ETA: 1s - loss: 0.1162 - accuracy: 0.853310/12 [========================>.....] - ETA: 1s - loss: 0.1148 - accuracy: 0.856011/12 [==========================>...] - ETA: 0s - loss: 0.1120 - accuracy: 0.865512/12 [==============================] - ETA: 0s - loss: 0.1168 - accuracy: 0.859712/12 [==============================] - 8s 684ms/step - loss: 0.1168 - accuracy: 0.8597 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  64
+Epoch 29/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0868 - accuracy: 0.9200 2/12 [====>.........................] - ETA: 6s - loss: 0.1250 - accuracy: 0.8600 3/12 [======>.......................] - ETA: 5s - loss: 0.1202 - accuracy: 0.8400 4/12 [=========>....................] - ETA: 4s - loss: 0.0978 - accuracy: 0.8800 5/12 [===========>..................] - ETA: 4s - loss: 0.0898 - accuracy: 0.9040 6/12 [==============>...............] - ETA: 3s - loss: 0.0888 - accuracy: 0.9067 7/12 [================>.............] - ETA: 3s - loss: 0.0916 - accuracy: 0.9029 8/12 [===================>..........] - ETA: 2s - loss: 0.1009 - accuracy: 0.8850 9/12 [=====================>........] - ETA: 1s - loss: 0.0993 - accuracy: 0.888910/12 [========================>.....] - ETA: 1s - loss: 0.0965 - accuracy: 0.892011/12 [==========================>...] - ETA: 0s - loss: 0.0943 - accuracy: 0.894512/12 [==============================] - ETA: 0s - loss: 0.0967 - accuracy: 0.888512/12 [==============================] - 8s 686ms/step - loss: 0.0967 - accuracy: 0.8885 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  65
+Epoch 30/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0838 - accuracy: 0.9200 2/12 [====>.........................] - ETA: 6s - loss: 0.0970 - accuracy: 0.8600 3/12 [======>.......................] - ETA: 5s - loss: 0.1232 - accuracy: 0.8267 4/12 [=========>....................] - ETA: 4s - loss: 0.1101 - accuracy: 0.8600 5/12 [===========>..................] - ETA: 4s - loss: 0.1098 - accuracy: 0.8640 6/12 [==============>...............] - ETA: 3s - loss: 0.1143 - accuracy: 0.8600 7/12 [================>.............] - ETA: 3s - loss: 0.1024 - accuracy: 0.8743 8/12 [===================>..........] - ETA: 2s - loss: 0.1022 - accuracy: 0.8800 9/12 [=====================>........] - ETA: 1s - loss: 0.0975 - accuracy: 0.884410/12 [========================>.....] - ETA: 1s - loss: 0.0954 - accuracy: 0.888011/12 [==========================>...] - ETA: 0s - loss: 0.0914 - accuracy: 0.894512/12 [==============================] - ETA: 0s - loss: 0.0922 - accuracy: 0.892112/12 [==============================] - 8s 685ms/step - loss: 0.0922 - accuracy: 0.8921 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  64
+Epoch 31/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0800 - accuracy: 0.9600 2/12 [====>.........................] - ETA: 6s - loss: 0.1194 - accuracy: 0.8800 3/12 [======>.......................] - ETA: 5s - loss: 0.1007 - accuracy: 0.8933 4/12 [=========>....................] - ETA: 4s - loss: 0.1120 - accuracy: 0.8800 5/12 [===========>..................] - ETA: 4s - loss: 0.0944 - accuracy: 0.9040 6/12 [==============>...............] - ETA: 3s - loss: 0.0888 - accuracy: 0.9067 7/12 [================>.............] - ETA: 3s - loss: 0.0921 - accuracy: 0.9029 8/12 [===================>..........] - ETA: 2s - loss: 0.0936 - accuracy: 0.9000 9/12 [=====================>........] - ETA: 1s - loss: 0.0919 - accuracy: 0.902210/12 [========================>.....] - ETA: 1s - loss: 0.0871 - accuracy: 0.908011/12 [==========================>...] - ETA: 0s - loss: 0.0897 - accuracy: 0.901812/12 [==============================] - ETA: 0s - loss: 0.0957 - accuracy: 0.892112/12 [==============================] - 8s 686ms/step - loss: 0.0957 - accuracy: 0.8921 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  64
+Epoch 32/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0630 - accuracy: 0.9600 2/12 [====>.........................] - ETA: 6s - loss: 0.0580 - accuracy: 0.9600 3/12 [======>.......................] - ETA: 5s - loss: 0.0521 - accuracy: 0.9600 4/12 [=========>....................] - ETA: 4s - loss: 0.0697 - accuracy: 0.9300 5/12 [===========>..................] - ETA: 4s - loss: 0.0802 - accuracy: 0.9200 6/12 [==============>...............] - ETA: 3s - loss: 0.0811 - accuracy: 0.9200 7/12 [================>.............] - ETA: 3s - loss: 0.0880 - accuracy: 0.9029 8/12 [===================>..........] - ETA: 2s - loss: 0.0930 - accuracy: 0.8900 9/12 [=====================>........] - ETA: 1s - loss: 0.0946 - accuracy: 0.893310/12 [========================>.....] - ETA: 1s - loss: 0.0941 - accuracy: 0.896011/12 [==========================>...] - ETA: 0s - loss: 0.0923 - accuracy: 0.898212/12 [==============================] - ETA: 0s - loss: 0.0924 - accuracy: 0.899312/12 [==============================] - 8s 685ms/step - loss: 0.0924 - accuracy: 0.8993 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  64
+Epoch 33/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.1119 - accuracy: 0.8000 2/12 [====>.........................] - ETA: 6s - loss: 0.1050 - accuracy: 0.8600 3/12 [======>.......................] - ETA: 5s - loss: 0.1027 - accuracy: 0.8667 4/12 [=========>....................] - ETA: 4s - loss: 0.0977 - accuracy: 0.8700 5/12 [===========>..................] - ETA: 4s - loss: 0.0880 - accuracy: 0.8880 6/12 [==============>...............] - ETA: 3s - loss: 0.0873 - accuracy: 0.8933 7/12 [================>.............] - ETA: 3s - loss: 0.0982 - accuracy: 0.8800 8/12 [===================>..........] - ETA: 2s - loss: 0.1032 - accuracy: 0.8700 9/12 [=====================>........] - ETA: 1s - loss: 0.1008 - accuracy: 0.871110/12 [========================>.....] - ETA: 1s - loss: 0.1011 - accuracy: 0.872011/12 [==========================>...] - ETA: 0s - loss: 0.0998 - accuracy: 0.872712/12 [==============================] - ETA: 0s - loss: 0.1002 - accuracy: 0.870512/12 [==============================] - 8s 686ms/step - loss: 0.1002 - accuracy: 0.8705 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  64
+Epoch 34/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0397 - accuracy: 0.9600 2/12 [====>.........................] - ETA: 6s - loss: 0.0644 - accuracy: 0.9400 3/12 [======>.......................] - ETA: 5s - loss: 0.0730 - accuracy: 0.9333 4/12 [=========>....................] - ETA: 4s - loss: 0.0805 - accuracy: 0.9200 5/12 [===========>..................] - ETA: 4s - loss: 0.0931 - accuracy: 0.8960 6/12 [==============>...............] - ETA: 3s - loss: 0.0935 - accuracy: 0.9000 7/12 [================>.............] - ETA: 3s - loss: 0.0912 - accuracy: 0.8971 8/12 [===================>..........] - ETA: 2s - loss: 0.0900 - accuracy: 0.9050 9/12 [=====================>........] - ETA: 1s - loss: 0.0884 - accuracy: 0.906710/12 [========================>.....] - ETA: 1s - loss: 0.0911 - accuracy: 0.904011/12 [==========================>...] - ETA: 0s - loss: 0.0886 - accuracy: 0.909112/12 [==============================] - ETA: 0s - loss: 0.0899 - accuracy: 0.906512/12 [==============================] - 8s 685ms/step - loss: 0.0899 - accuracy: 0.9065 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  64
+Epoch 35/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0273 - accuracy: 1.0000 2/12 [====>.........................] - ETA: 6s - loss: 0.0611 - accuracy: 0.9600 3/12 [======>.......................] - ETA: 5s - loss: 0.0601 - accuracy: 0.9600 4/12 [=========>....................] - ETA: 4s - loss: 0.0771 - accuracy: 0.9300 5/12 [===========>..................] - ETA: 4s - loss: 0.0746 - accuracy: 0.9200 6/12 [==============>...............] - ETA: 3s - loss: 0.0876 - accuracy: 0.9067 7/12 [================>.............] - ETA: 3s - loss: 0.0871 - accuracy: 0.9029 8/12 [===================>..........] - ETA: 2s - loss: 0.0875 - accuracy: 0.9000 9/12 [=====================>........] - ETA: 1s - loss: 0.0878 - accuracy: 0.897810/12 [========================>.....] - ETA: 1s - loss: 0.0855 - accuracy: 0.900011/12 [==========================>...] - ETA: 0s - loss: 0.0832 - accuracy: 0.909112/12 [==============================] - ETA: 0s - loss: 0.0828 - accuracy: 0.910112/12 [==============================] - 8s 685ms/step - loss: 0.0828 - accuracy: 0.9101 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  64
+Epoch 36/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0856 - accuracy: 0.9200 2/12 [====>.........................] - ETA: 6s - loss: 0.0784 - accuracy: 0.9200 3/12 [======>.......................] - ETA: 5s - loss: 0.0848 - accuracy: 0.8800 4/12 [=========>....................] - ETA: 4s - loss: 0.1063 - accuracy: 0.8600 5/12 [===========>..................] - ETA: 4s - loss: 0.1096 - accuracy: 0.8480 6/12 [==============>...............] - ETA: 3s - loss: 0.1056 - accuracy: 0.8600 7/12 [================>.............] - ETA: 3s - loss: 0.1040 - accuracy: 0.8629 8/12 [===================>..........] - ETA: 2s - loss: 0.1025 - accuracy: 0.8700 9/12 [=====================>........] - ETA: 1s - loss: 0.1016 - accuracy: 0.871110/12 [========================>.....] - ETA: 1s - loss: 0.1058 - accuracy: 0.872011/12 [==========================>...] - ETA: 0s - loss: 0.1019 - accuracy: 0.876412/12 [==============================] - ETA: 0s - loss: 0.1018 - accuracy: 0.874112/12 [==============================] - 8s 684ms/step - loss: 0.1018 - accuracy: 0.8741 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  64
+Epoch 37/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.1102 - accuracy: 0.8800 2/12 [====>.........................] - ETA: 6s - loss: 0.0865 - accuracy: 0.9200 3/12 [======>.......................] - ETA: 5s - loss: 0.0855 - accuracy: 0.9067 4/12 [=========>....................] - ETA: 4s - loss: 0.0867 - accuracy: 0.9100 5/12 [===========>..................] - ETA: 4s - loss: 0.0883 - accuracy: 0.9040 6/12 [==============>...............] - ETA: 3s - loss: 0.1033 - accuracy: 0.8733 7/12 [================>.............] - ETA: 3s - loss: 0.0967 - accuracy: 0.8800 8/12 [===================>..........] - ETA: 2s - loss: 0.0919 - accuracy: 0.8900 9/12 [=====================>........] - ETA: 1s - loss: 0.0860 - accuracy: 0.902210/12 [========================>.....] - ETA: 1s - loss: 0.0884 - accuracy: 0.900011/12 [==========================>...] - ETA: 0s - loss: 0.0897 - accuracy: 0.898212/12 [==============================] - ETA: 0s - loss: 0.0908 - accuracy: 0.895712/12 [==============================] - 8s 683ms/step - loss: 0.0908 - accuracy: 0.8957 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  64
+Epoch 38/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0629 - accuracy: 0.9600 2/12 [====>.........................] - ETA: 6s - loss: 0.0872 - accuracy: 0.9400 3/12 [======>.......................] - ETA: 5s - loss: 0.0999 - accuracy: 0.9200 4/12 [=========>....................] - ETA: 4s - loss: 0.0932 - accuracy: 0.9300 5/12 [===========>..................] - ETA: 4s - loss: 0.0887 - accuracy: 0.9280 6/12 [==============>...............] - ETA: 3s - loss: 0.0819 - accuracy: 0.9333 7/12 [================>.............] - ETA: 3s - loss: 0.0920 - accuracy: 0.9200 8/12 [===================>..........] - ETA: 2s - loss: 0.0890 - accuracy: 0.9200 9/12 [=====================>........] - ETA: 1s - loss: 0.0947 - accuracy: 0.906710/12 [========================>.....] - ETA: 1s - loss: 0.0975 - accuracy: 0.896011/12 [==========================>...] - ETA: 0s - loss: 0.0921 - accuracy: 0.901812/12 [==============================] - ETA: 0s - loss: 0.0912 - accuracy: 0.902912/12 [==============================] - 8s 683ms/step - loss: 0.0912 - accuracy: 0.9029 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  63
+Epoch 39/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0564 - accuracy: 0.9600 2/12 [====>.........................] - ETA: 6s - loss: 0.0703 - accuracy: 0.9400 3/12 [======>.......................] - ETA: 5s - loss: 0.0631 - accuracy: 0.9467 4/12 [=========>....................] - ETA: 4s - loss: 0.0667 - accuracy: 0.9400 5/12 [===========>..................] - ETA: 4s - loss: 0.0844 - accuracy: 0.9120 6/12 [==============>...............] - ETA: 3s - loss: 0.0780 - accuracy: 0.9267 7/12 [================>.............] - ETA: 3s - loss: 0.0789 - accuracy: 0.9257 8/12 [===================>..........] - ETA: 2s - loss: 0.0776 - accuracy: 0.9250 9/12 [=====================>........] - ETA: 1s - loss: 0.0744 - accuracy: 0.928910/12 [========================>.....] - ETA: 1s - loss: 0.0723 - accuracy: 0.932011/12 [==========================>...] - ETA: 0s - loss: 0.0807 - accuracy: 0.920012/12 [==============================] - ETA: 0s - loss: 0.0829 - accuracy: 0.917312/12 [==============================] - 8s 688ms/step - loss: 0.0829 - accuracy: 0.9173 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  64
+Epoch 40/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0653 - accuracy: 0.9200 2/12 [====>.........................] - ETA: 6s - loss: 0.0696 - accuracy: 0.9400 3/12 [======>.......................] - ETA: 5s - loss: 0.1067 - accuracy: 0.8933 4/12 [=========>....................] - ETA: 4s - loss: 0.0895 - accuracy: 0.9100 5/12 [===========>..................] - ETA: 4s - loss: 0.0823 - accuracy: 0.9200 6/12 [==============>...............] - ETA: 3s - loss: 0.0791 - accuracy: 0.9267 7/12 [================>.............] - ETA: 3s - loss: 0.0826 - accuracy: 0.9200 8/12 [===================>..........] - ETA: 2s - loss: 0.0738 - accuracy: 0.9300 9/12 [=====================>........] - ETA: 1s - loss: 0.0711 - accuracy: 0.937810/12 [========================>.....] - ETA: 1s - loss: 0.0702 - accuracy: 0.936011/12 [==========================>...] - ETA: 0s - loss: 0.0748 - accuracy: 0.930912/12 [==============================] - ETA: 0s - loss: 0.0743 - accuracy: 0.931712/12 [==============================] - 8s 687ms/step - loss: 0.0743 - accuracy: 0.9317 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  64
+Epoch 41/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.1207 - accuracy: 0.8800 2/12 [====>.........................] - ETA: 6s - loss: 0.0917 - accuracy: 0.9000 3/12 [======>.......................] - ETA: 5s - loss: 0.1023 - accuracy: 0.8800 4/12 [=========>....................] - ETA: 4s - loss: 0.1045 - accuracy: 0.8500 5/12 [===========>..................] - ETA: 4s - loss: 0.0880 - accuracy: 0.8800 6/12 [==============>...............] - ETA: 3s - loss: 0.0820 - accuracy: 0.8933 7/12 [================>.............] - ETA: 3s - loss: 0.0795 - accuracy: 0.8971 8/12 [===================>..........] - ETA: 2s - loss: 0.0800 - accuracy: 0.9000 9/12 [=====================>........] - ETA: 1s - loss: 0.0746 - accuracy: 0.911110/12 [========================>.....] - ETA: 1s - loss: 0.0712 - accuracy: 0.916011/12 [==========================>...] - ETA: 0s - loss: 0.0718 - accuracy: 0.916412/12 [==============================] - ETA: 0s - loss: 0.0712 - accuracy: 0.917312/12 [==============================] - 8s 685ms/step - loss: 0.0712 - accuracy: 0.9173 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  64
+Epoch 42/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0845 - accuracy: 0.9200 2/12 [====>.........................] - ETA: 6s - loss: 0.1076 - accuracy: 0.8800 3/12 [======>.......................] - ETA: 5s - loss: 0.0859 - accuracy: 0.9067 4/12 [=========>....................] - ETA: 4s - loss: 0.0805 - accuracy: 0.9200 5/12 [===========>..................] - ETA: 4s - loss: 0.0911 - accuracy: 0.9040 6/12 [==============>...............] - ETA: 3s - loss: 0.0870 - accuracy: 0.9133 7/12 [================>.............] - ETA: 3s - loss: 0.0892 - accuracy: 0.9086 8/12 [===================>..........] - ETA: 2s - loss: 0.0852 - accuracy: 0.9150 9/12 [=====================>........] - ETA: 1s - loss: 0.0852 - accuracy: 0.915610/12 [========================>.....] - ETA: 1s - loss: 0.0872 - accuracy: 0.912011/12 [==========================>...] - ETA: 0s - loss: 0.0887 - accuracy: 0.901812/12 [==============================] - ETA: 0s - loss: 0.0891 - accuracy: 0.899312/12 [==============================] - 8s 685ms/step - loss: 0.0891 - accuracy: 0.8993 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  64
+Epoch 43/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.1435 - accuracy: 0.8400 2/12 [====>.........................] - ETA: 6s - loss: 0.1262 - accuracy: 0.8400 3/12 [======>.......................] - ETA: 5s - loss: 0.1027 - accuracy: 0.8667 4/12 [=========>....................] - ETA: 4s - loss: 0.0989 - accuracy: 0.8800 5/12 [===========>..................] - ETA: 4s - loss: 0.0914 - accuracy: 0.8960 6/12 [==============>...............] - ETA: 3s - loss: 0.0829 - accuracy: 0.9067 7/12 [================>.............] - ETA: 3s - loss: 0.0776 - accuracy: 0.9086 8/12 [===================>..........] - ETA: 2s - loss: 0.0740 - accuracy: 0.9150 9/12 [=====================>........] - ETA: 1s - loss: 0.0766 - accuracy: 0.911110/12 [========================>.....] - ETA: 1s - loss: 0.0817 - accuracy: 0.904011/12 [==========================>...] - ETA: 0s - loss: 0.0807 - accuracy: 0.905512/12 [==============================] - ETA: 0s - loss: 0.0803 - accuracy: 0.906512/12 [==============================] - 8s 685ms/step - loss: 0.0803 - accuracy: 0.9065 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  63
+Epoch 44/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.1248 - accuracy: 0.8000 2/12 [====>.........................] - ETA: 6s - loss: 0.0912 - accuracy: 0.8800 3/12 [======>.......................] - ETA: 5s - loss: 0.0790 - accuracy: 0.8933 4/12 [=========>....................] - ETA: 4s - loss: 0.0793 - accuracy: 0.9100 5/12 [===========>..................] - ETA: 4s - loss: 0.0799 - accuracy: 0.9120 6/12 [==============>...............] - ETA: 3s - loss: 0.0727 - accuracy: 0.9200 7/12 [================>.............] - ETA: 3s - loss: 0.0796 - accuracy: 0.9143 8/12 [===================>..........] - ETA: 2s - loss: 0.0832 - accuracy: 0.9050 9/12 [=====================>........] - ETA: 1s - loss: 0.0766 - accuracy: 0.911110/12 [========================>.....] - ETA: 1s - loss: 0.0821 - accuracy: 0.904011/12 [==========================>...] - ETA: 0s - loss: 0.0835 - accuracy: 0.901812/12 [==============================] - ETA: 0s - loss: 0.0864 - accuracy: 0.895712/12 [==============================] - 8s 687ms/step - loss: 0.0864 - accuracy: 0.8957 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  63
+Epoch 45/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.1000 - accuracy: 0.8800 2/12 [====>.........................] - ETA: 6s - loss: 0.0759 - accuracy: 0.9200 3/12 [======>.......................] - ETA: 5s - loss: 0.0701 - accuracy: 0.9333 4/12 [=========>....................] - ETA: 4s - loss: 0.0655 - accuracy: 0.9400 5/12 [===========>..................] - ETA: 4s - loss: 0.0644 - accuracy: 0.9440 6/12 [==============>...............] - ETA: 3s - loss: 0.0690 - accuracy: 0.9400 7/12 [================>.............] - ETA: 3s - loss: 0.0750 - accuracy: 0.9314 8/12 [===================>..........] - ETA: 2s - loss: 0.0750 - accuracy: 0.9350 9/12 [=====================>........] - ETA: 1s - loss: 0.0812 - accuracy: 0.924410/12 [========================>.....] - ETA: 1s - loss: 0.0838 - accuracy: 0.920011/12 [==========================>...] - ETA: 0s - loss: 0.0792 - accuracy: 0.923612/12 [==============================] - ETA: 0s - loss: 0.0797 - accuracy: 0.920912/12 [==============================] - 8s 686ms/step - loss: 0.0797 - accuracy: 0.9209 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  63
+Epoch 46/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0759 - accuracy: 0.9200 2/12 [====>.........................] - ETA: 6s - loss: 0.1020 - accuracy: 0.8800 3/12 [======>.......................] - ETA: 5s - loss: 0.0999 - accuracy: 0.8800 4/12 [=========>....................] - ETA: 4s - loss: 0.0896 - accuracy: 0.9000 5/12 [===========>..................] - ETA: 4s - loss: 0.0881 - accuracy: 0.9040 6/12 [==============>...............] - ETA: 3s - loss: 0.0858 - accuracy: 0.9067 7/12 [================>.............] - ETA: 3s - loss: 0.0905 - accuracy: 0.8971 8/12 [===================>..........] - ETA: 2s - loss: 0.0850 - accuracy: 0.9050 9/12 [=====================>........] - ETA: 1s - loss: 0.0828 - accuracy: 0.906710/12 [========================>.....] - ETA: 1s - loss: 0.0808 - accuracy: 0.908011/12 [==========================>...] - ETA: 0s - loss: 0.0757 - accuracy: 0.916412/12 [==============================] - ETA: 0s - loss: 0.0780 - accuracy: 0.910112/12 [==============================] - 8s 688ms/step - loss: 0.0780 - accuracy: 0.9101 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  63
+Epoch 47/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0357 - accuracy: 1.0000 2/12 [====>.........................] - ETA: 6s - loss: 0.0327 - accuracy: 1.0000 3/12 [======>.......................] - ETA: 5s - loss: 0.0396 - accuracy: 0.9733 4/12 [=========>....................] - ETA: 4s - loss: 0.0366 - accuracy: 0.9700 5/12 [===========>..................] - ETA: 4s - loss: 0.0419 - accuracy: 0.9600 6/12 [==============>...............] - ETA: 3s - loss: 0.0453 - accuracy: 0.9533 7/12 [================>.............] - ETA: 3s - loss: 0.0613 - accuracy: 0.9257 8/12 [===================>..........] - ETA: 2s - loss: 0.0623 - accuracy: 0.9250 9/12 [=====================>........] - ETA: 1s - loss: 0.0631 - accuracy: 0.924410/12 [========================>.....] - ETA: 1s - loss: 0.0631 - accuracy: 0.924011/12 [==========================>...] - ETA: 0s - loss: 0.0687 - accuracy: 0.916412/12 [==============================] - ETA: 0s - loss: 0.0689 - accuracy: 0.917312/12 [==============================] - 8s 687ms/step - loss: 0.0689 - accuracy: 0.9173 - val_loss: 0.4863 - val_accuracy: 0.5100
+The temperature of the GPU is  63
+Epoch 48/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.1384 - accuracy: 0.7600 2/12 [====>.........................] - ETA: 6s - loss: 0.1089 - accuracy: 0.8400 3/12 [======>.......................] - ETA: 5s - loss: 0.1045 - accuracy: 0.8533 4/12 [=========>....................] - ETA: 4s - loss: 0.0931 - accuracy: 0.8700 5/12 [===========>..................] - ETA: 4s - loss: 0.1078 - accuracy: 0.8560 6/12 [==============>...............] - ETA: 3s - loss: 0.0959 - accuracy: 0.8733 7/12 [================>.............] - ETA: 3s - loss: 0.0896 - accuracy: 0.8857 8/12 [===================>..........] - ETA: 2s - loss: 0.0856 - accuracy: 0.8950 9/12 [=====================>........] - ETA: 1s - loss: 0.0828 - accuracy: 0.902210/12 [========================>.....] - ETA: 1s - loss: 0.0834 - accuracy: 0.900011/12 [==========================>...] - ETA: 0s - loss: 0.0822 - accuracy: 0.901812/12 [==============================] - ETA: 0s - loss: 0.0814 - accuracy: 0.902912/12 [==============================] - 8s 688ms/step - loss: 0.0814 - accuracy: 0.9029 - val_loss: 0.4878 - val_accuracy: 0.5100
+The temperature of the GPU is  63
+Epoch 49/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0534 - accuracy: 0.9600 2/12 [====>.........................] - ETA: 6s - loss: 0.0378 - accuracy: 0.9800 3/12 [======>.......................] - ETA: 5s - loss: 0.0733 - accuracy: 0.9333 4/12 [=========>....................] - ETA: 4s - loss: 0.0829 - accuracy: 0.9200 5/12 [===========>..................] - ETA: 4s - loss: 0.0751 - accuracy: 0.9200 6/12 [==============>...............] - ETA: 3s - loss: 0.0795 - accuracy: 0.9200 7/12 [================>.............] - ETA: 3s - loss: 0.0746 - accuracy: 0.9257 8/12 [===================>..........] - ETA: 2s - loss: 0.0730 - accuracy: 0.9200 9/12 [=====================>........] - ETA: 1s - loss: 0.0708 - accuracy: 0.920010/12 [========================>.....] - ETA: 1s - loss: 0.0701 - accuracy: 0.924011/12 [==========================>...] - ETA: 0s - loss: 0.0689 - accuracy: 0.927312/12 [==============================] - ETA: 0s - loss: 0.0718 - accuracy: 0.920912/12 [==============================] - 8s 687ms/step - loss: 0.0718 - accuracy: 0.9209 - val_loss: 0.4262 - val_accuracy: 0.5100
+The temperature of the GPU is  63
+Epoch 50/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.1152 - accuracy: 0.8400 2/12 [====>.........................] - ETA: 6s - loss: 0.0730 - accuracy: 0.9000 3/12 [======>.......................] - ETA: 5s - loss: 0.0742 - accuracy: 0.9067 4/12 [=========>....................] - ETA: 4s - loss: 0.0630 - accuracy: 0.9300 5/12 [===========>..................] - ETA: 4s - loss: 0.0728 - accuracy: 0.9200 6/12 [==============>...............] - ETA: 3s - loss: 0.0678 - accuracy: 0.9333 7/12 [================>.............] - ETA: 3s - loss: 0.0673 - accuracy: 0.9257 8/12 [===================>..........] - ETA: 2s - loss: 0.0670 - accuracy: 0.9300 9/12 [=====================>........] - ETA: 1s - loss: 0.0674 - accuracy: 0.928910/12 [========================>.....] - ETA: 1s - loss: 0.0737 - accuracy: 0.920011/12 [==========================>...] - ETA: 0s - loss: 0.0706 - accuracy: 0.923612/12 [==============================] - ETA: 0s - loss: 0.0699 - accuracy: 0.924512/12 [==============================] - 8s 687ms/step - loss: 0.0699 - accuracy: 0.9245 - val_loss: 0.4066 - val_accuracy: 0.5300
+The temperature of the GPU is  63
+Epoch 51/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.1908 - accuracy: 0.6800 2/12 [====>.........................] - ETA: 6s - loss: 0.1313 - accuracy: 0.7800 3/12 [======>.......................] - ETA: 5s - loss: 0.1001 - accuracy: 0.8400 4/12 [=========>....................] - ETA: 4s - loss: 0.0866 - accuracy: 0.8700 5/12 [===========>..................] - ETA: 4s - loss: 0.0856 - accuracy: 0.8720 6/12 [==============>...............] - ETA: 3s - loss: 0.0845 - accuracy: 0.8800 7/12 [================>.............] - ETA: 3s - loss: 0.0830 - accuracy: 0.8857 8/12 [===================>..........] - ETA: 2s - loss: 0.0797 - accuracy: 0.8850 9/12 [=====================>........] - ETA: 1s - loss: 0.0780 - accuracy: 0.893310/12 [========================>.....] - ETA: 1s - loss: 0.0753 - accuracy: 0.900011/12 [==========================>...] - ETA: 0s - loss: 0.0742 - accuracy: 0.901812/12 [==============================] - ETA: 0s - loss: 0.0749 - accuracy: 0.899312/12 [==============================] - 8s 687ms/step - loss: 0.0749 - accuracy: 0.8993 - val_loss: 0.4218 - val_accuracy: 0.5500
+The temperature of the GPU is  63
+Epoch 52/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.2063 - accuracy: 0.7600 2/12 [====>.........................] - ETA: 6s - loss: 0.1215 - accuracy: 0.8600 3/12 [======>.......................] - ETA: 5s - loss: 0.1185 - accuracy: 0.8533 4/12 [=========>....................] - ETA: 4s - loss: 0.1103 - accuracy: 0.8700 5/12 [===========>..................] - ETA: 4s - loss: 0.0921 - accuracy: 0.8960 6/12 [==============>...............] - ETA: 3s - loss: 0.0793 - accuracy: 0.9133 7/12 [================>.............] - ETA: 3s - loss: 0.0741 - accuracy: 0.9200 8/12 [===================>..........] - ETA: 2s - loss: 0.0732 - accuracy: 0.9250 9/12 [=====================>........] - ETA: 1s - loss: 0.0672 - accuracy: 0.933310/12 [========================>.....] - ETA: 1s - loss: 0.0683 - accuracy: 0.932011/12 [==========================>...] - ETA: 0s - loss: 0.0744 - accuracy: 0.916412/12 [==============================] - ETA: 0s - loss: 0.0781 - accuracy: 0.910112/12 [==============================] - 8s 685ms/step - loss: 0.0781 - accuracy: 0.9101 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  63
+Epoch 53/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0579 - accuracy: 0.9600 2/12 [====>.........................] - ETA: 6s - loss: 0.0501 - accuracy: 0.9600 3/12 [======>.......................] - ETA: 5s - loss: 0.0448 - accuracy: 0.9600 4/12 [=========>....................] - ETA: 4s - loss: 0.0422 - accuracy: 0.9700 5/12 [===========>..................] - ETA: 4s - loss: 0.0467 - accuracy: 0.9600 6/12 [==============>...............] - ETA: 3s - loss: 0.0523 - accuracy: 0.9533 7/12 [================>.............] - ETA: 3s - loss: 0.0585 - accuracy: 0.9486 8/12 [===================>..........] - ETA: 2s - loss: 0.0594 - accuracy: 0.9450 9/12 [=====================>........] - ETA: 1s - loss: 0.0630 - accuracy: 0.937810/12 [========================>.....] - ETA: 1s - loss: 0.0630 - accuracy: 0.940011/12 [==========================>...] - ETA: 0s - loss: 0.0639 - accuracy: 0.941812/12 [==============================] - ETA: 0s - loss: 0.0640 - accuracy: 0.942412/12 [==============================] - 8s 684ms/step - loss: 0.0640 - accuracy: 0.9424 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  63
+Epoch 54/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0603 - accuracy: 1.0000 2/12 [====>.........................] - ETA: 6s - loss: 0.0495 - accuracy: 0.9800 3/12 [======>.......................] - ETA: 5s - loss: 0.0944 - accuracy: 0.9200 4/12 [=========>....................] - ETA: 4s - loss: 0.0908 - accuracy: 0.9200 5/12 [===========>..................] - ETA: 4s - loss: 0.0881 - accuracy: 0.9200 6/12 [==============>...............] - ETA: 3s - loss: 0.0778 - accuracy: 0.9333 7/12 [================>.............] - ETA: 3s - loss: 0.0683 - accuracy: 0.9429 8/12 [===================>..........] - ETA: 2s - loss: 0.0649 - accuracy: 0.9500 9/12 [=====================>........] - ETA: 1s - loss: 0.0715 - accuracy: 0.937810/12 [========================>.....] - ETA: 1s - loss: 0.0729 - accuracy: 0.936011/12 [==========================>...] - ETA: 0s - loss: 0.0733 - accuracy: 0.934512/12 [==============================] - ETA: 0s - loss: 0.0731 - accuracy: 0.935312/12 [==============================] - 8s 684ms/step - loss: 0.0731 - accuracy: 0.9353 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  63
+Epoch 55/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0891 - accuracy: 0.9200 2/12 [====>.........................] - ETA: 6s - loss: 0.0611 - accuracy: 0.9400 3/12 [======>.......................] - ETA: 5s - loss: 0.0811 - accuracy: 0.9067 4/12 [=========>....................] - ETA: 4s - loss: 0.0715 - accuracy: 0.9300 5/12 [===========>..................] - ETA: 4s - loss: 0.0761 - accuracy: 0.9200 6/12 [==============>...............] - ETA: 3s - loss: 0.0812 - accuracy: 0.9133 7/12 [================>.............] - ETA: 3s - loss: 0.0785 - accuracy: 0.9086 8/12 [===================>..........] - ETA: 2s - loss: 0.0818 - accuracy: 0.9050 9/12 [=====================>........] - ETA: 1s - loss: 0.0746 - accuracy: 0.915610/12 [========================>.....] - ETA: 1s - loss: 0.0750 - accuracy: 0.916011/12 [==========================>...] - ETA: 0s - loss: 0.0755 - accuracy: 0.916412/12 [==============================] - ETA: 0s - loss: 0.0778 - accuracy: 0.913712/12 [==============================] - 8s 686ms/step - loss: 0.0778 - accuracy: 0.9137 - val_loss: 0.5000 - val_accuracy: 0.5000
+The temperature of the GPU is  63
+Epoch 56/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0417 - accuracy: 0.9600 2/12 [====>.........................] - ETA: 6s - loss: 0.0327 - accuracy: 0.9800 3/12 [======>.......................] - ETA: 5s - loss: 0.0660 - accuracy: 0.9333 4/12 [=========>....................] - ETA: 4s - loss: 0.0692 - accuracy: 0.9300 5/12 [===========>..................] - ETA: 4s - loss: 0.0798 - accuracy: 0.9200 6/12 [==============>...............] - ETA: 3s - loss: 0.0755 - accuracy: 0.9200 7/12 [================>.............] - ETA: 3s - loss: 0.0763 - accuracy: 0.9143 8/12 [===================>..........] - ETA: 2s - loss: 0.0764 - accuracy: 0.9100 9/12 [=====================>........] - ETA: 1s - loss: 0.0757 - accuracy: 0.911110/12 [========================>.....] - ETA: 1s - loss: 0.0795 - accuracy: 0.908011/12 [==========================>...] - ETA: 0s - loss: 0.0768 - accuracy: 0.912712/12 [==============================] - ETA: 0s - loss: 0.0776 - accuracy: 0.910112/12 [==============================] - 8s 684ms/step - loss: 0.0776 - accuracy: 0.9101 - val_loss: 0.4985 - val_accuracy: 0.5000
+The temperature of the GPU is  63
+Epoch 57/200
+ 1/12 [=>............................] - ETA: 6s - loss: 0.0460 - accuracy: 0.9600 2/12 [====>.........................] - ETA: 6s - loss: 0.0667 - accuracy: 0.9200 3/12 [======>.......................] - ETA: 5s - loss: 0.0817 - accuracy: 0.9067 4/12 [=========>....................] - ETA: 4s - loss: 0.1024 - accuracy: 0.8700 5/12 [===========>..................] - ETA: 4s - loss: 0.0997 - accuracy: 0.8800 6/12 [==============>...............] - ETA: 3s - loss: 0.0999 - accuracy: 0.8867 7/12 [================>.........srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 818804.0 ON nodegpu002 CANCELLED AT 2021-11-10T02:38:01 ***
+srun: got SIGCONT
+slurmstepd: error: *** JOB 818804 ON nodegpu002 CANCELLED AT 2021-11-10T02:38:01 ***
+srun: forcing job termination

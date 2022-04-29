@@ -1,1 +1,1 @@
-python ./train.py -i ./agnet-wide.model -p ./databaserelease2/NatureDataset/test
+python ./train.py --test -i ./agnet.15.res.checkpoint -p ./databaserelease2/MixedDataset/test

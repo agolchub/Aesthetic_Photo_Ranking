@@ -1,0 +1,90 @@
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job 796883 step creation temporarily disabled, retrying (Requested nodes are busy)
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: error: Unable to create step for job 796883: Job/step already completing or completed
+srun: got SIGCONT
+srun: got SIGCONT
+srun: got SIGCONT
+slurmstepd: error: *** STEP 796883.0 ON nodegpu002 CANCELLED AT 2021-10-25T14:10:49 ***
+srun: forcing job termination
+slurmstepd: error: *** JOB 796883 ON nodegpu002 CANCELLED AT 2021-10-25T14:10:49 ***
+srun: forcing job termination
+slurmstepd: error: *** STEP 796883.1 ON nodegpu002 CANCELLED AT 2021-10-25T14:10:49 ***
+srun: forcing job termination

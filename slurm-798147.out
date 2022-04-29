@@ -1,0 +1,716 @@
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+Wed Oct 27 20:22:07 2021       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 460.32.03    Driver Version: 460.32.03    CUDA Version: 11.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  A100-PCIE-40GB      Off  | 00000000:21:00.0 Off |                    0 |
+| N/A   37C    P0    39W / 250W |      0MiB / 40536MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+2021-10-27 20:22:19.064786: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-10-27 20:22:19.869202: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38426 MB memory:  -> device: 0, name: A100-PCIE-40GB, pci bus id: 0000:21:00.0, compute capability: 8.0
+/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/optimizer_v2/optimizer_v2.py:355: UserWarning: The `lr` argument is deprecated, use `learning_rate` instead.
+  warnings.warn(
+Input file is " 
+Output file is " agnet.specialmodel2.newbinary
+Image path is " 
+--------------------
+
+
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 1024, 680, 3 0                                            
+__________________________________________________________________________________________________
+conv2d_4 (Conv2D)               (None, 336, 338, 48) 15600       input_1[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 336, 338, 48) 192         conv2d_4[0][0]                   
+__________________________________________________________________________________________________
+dropout_4 (Dropout)             (None, 336, 338, 48) 0           batch_normalization_4[0][0]      
+__________________________________________________________________________________________________
+conv2d_7 (Conv2D)               (None, 164, 165, 80) 311120      dropout_4[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 164, 165, 80) 320         conv2d_7[0][0]                   
+__________________________________________________________________________________________________
+dropout_7 (Dropout)             (None, 164, 165, 80) 0           batch_normalization_7[0][0]      
+__________________________________________________________________________________________________
+conv2d_10 (Conv2D)              (None, 79, 80, 160)  627360      dropout_7[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_10 (BatchNo (None, 79, 80, 160)  640         conv2d_10[0][0]                  
+__________________________________________________________________________________________________
+dropout_10 (Dropout)            (None, 79, 80, 160)  0           batch_normalization_10[0][0]     
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 989, 669, 48) 62256       input_1[0][0]                    
+__________________________________________________________________________________________________
+conv2d_13 (Conv2D)              (None, 38, 38, 160)  640160      dropout_10[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 989, 669, 48) 192         conv2d[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_13 (BatchNo (None, 38, 38, 160)  640         conv2d_13[0][0]                  
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 989, 669, 48) 0           batch_normalization[0][0]        
+__________________________________________________________________________________________________
+dropout_13 (Dropout)            (None, 38, 38, 160)  0           batch_normalization_13[0][0]     
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 491, 331, 80) 311120      dropout[0][0]                    
+__________________________________________________________________________________________________
+conv2d_16 (Conv2D)              (None, 19, 19, 320)  205120      dropout_13[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 491, 331, 80) 320         conv2d_1[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_16 (BatchNo (None, 19, 19, 320)  1280        conv2d_16[0][0]                  
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 491, 331, 80) 0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+dropout_16 (Dropout)            (None, 19, 19, 320)  0           batch_normalization_16[0][0]     
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, 245, 165, 80) 57680       dropout_1[0][0]                  
+__________________________________________________________________________________________________
+conv2d_5 (Conv2D)               (None, 164, 165, 80) 311120      dropout_4[0][0]                  
+__________________________________________________________________________________________________
+conv2d_8 (Conv2D)               (None, 80, 81, 160)  320160      dropout_7[0][0]                  
+__________________________________________________________________________________________________
+conv2d_11 (Conv2D)              (None, 37, 37, 320)  2509120     dropout_10[0][0]                 
+__________________________________________________________________________________________________
+conv2d_14 (Conv2D)              (None, 18, 18, 320)  461120      dropout_13[0][0]                 
+__________________________________________________________________________________________________
+conv2d_17 (Conv2D)              (None, 9, 9, 320)    409920      dropout_16[0][0]                 
+__________________________________________________________________________________________________
+conv2d_19 (Conv2D)              (None, 9, 9, 320)    409920      dropout_16[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 245, 165, 80) 320         conv2d_2[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 164, 165, 80) 320         conv2d_5[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_8 (BatchNor (None, 80, 81, 160)  640         conv2d_8[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_11 (BatchNo (None, 37, 37, 320)  1280        conv2d_11[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_14 (BatchNo (None, 18, 18, 320)  1280        conv2d_14[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_17 (BatchNo (None, 9, 9, 320)    1280        conv2d_17[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_19 (BatchNo (None, 9, 9, 320)    1280        conv2d_19[0][0]                  
+__________________________________________________________________________________________________
+dropout_2 (Dropout)             (None, 245, 165, 80) 0           batch_normalization_2[0][0]      
+__________________________________________________________________________________________________
+dropout_5 (Dropout)             (None, 164, 165, 80) 0           batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+dropout_8 (Dropout)             (None, 80, 81, 160)  0           batch_normalization_8[0][0]      
+__________________________________________________________________________________________________
+dropout_11 (Dropout)            (None, 37, 37, 320)  0           batch_normalization_11[0][0]     
+__________________________________________________________________________________________________
+dropout_14 (Dropout)            (None, 18, 18, 320)  0           batch_normalization_14[0][0]     
+__________________________________________________________________________________________________
+dropout_17 (Dropout)            (None, 9, 9, 320)    0           batch_normalization_17[0][0]     
+__________________________________________________________________________________________________
+dropout_19 (Dropout)            (None, 9, 9, 320)    0           batch_normalization_19[0][0]     
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, 122, 82, 80)  25680       dropout_2[0][0]                  
+__________________________________________________________________________________________________
+conv2d_6 (Conv2D)               (None, 78, 79, 160)  1036960     dropout_5[0][0]                  
+__________________________________________________________________________________________________
+conv2d_9 (Conv2D)               (None, 38, 39, 320)  1280320     dropout_8[0][0]                  
+__________________________________________________________________________________________________
+conv2d_12 (Conv2D)              (None, 16, 16, 320)  5017920     dropout_11[0][0]                 
+__________________________________________________________________________________________________
+conv2d_15 (Conv2D)              (None, 8, 8, 320)    921920      dropout_14[0][0]                 
+__________________________________________________________________________________________________
+conv2d_18 (Conv2D)              (None, 4, 4, 320)    409920      dropout_17[0][0]                 
+__________________________________________________________________________________________________
+conv2d_20 (Conv2D)              (None, 4, 4, 320)    409920      dropout_19[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 122, 82, 80)  320         conv2d_3[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 78, 79, 160)  640         conv2d_6[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_9 (BatchNor (None, 38, 39, 320)  1280        conv2d_9[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_12 (BatchNo (None, 16, 16, 320)  1280        conv2d_12[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_15 (BatchNo (None, 8, 8, 320)    1280        conv2d_15[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_18 (BatchNo (None, 4, 4, 320)    1280        conv2d_18[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_20 (BatchNo (None, 4, 4, 320)    1280        conv2d_20[0][0]                  
+__________________________________________________________________________________________________
+dropout_3 (Dropout)             (None, 122, 82, 80)  0           batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+dropout_6 (Dropout)             (None, 78, 79, 160)  0           batch_normalization_6[0][0]      
+__________________________________________________________________________________________________
+dropout_9 (Dropout)             (None, 38, 39, 320)  0           batch_normalization_9[0][0]      
+__________________________________________________________________________________________________
+dropout_12 (Dropout)            (None, 16, 16, 320)  0           batch_normalization_12[0][0]     
+__________________________________________________________________________________________________
+dropout_15 (Dropout)            (None, 8, 8, 320)    0           batch_normalization_15[0][0]     
+__________________________________________________________________________________________________
+dropout_18 (Dropout)            (None, 4, 4, 320)    0           batch_normalization_18[0][0]     
+__________________________________________________________________________________________________
+dropout_20 (Dropout)            (None, 4, 4, 320)    0           batch_normalization_20[0][0]     
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 800320)       0           dropout_3[0][0]                  
+__________________________________________________________________________________________________
+flatten_1 (Flatten)             (None, 985920)       0           dropout_6[0][0]                  
+__________________________________________________________________________________________________
+flatten_2 (Flatten)             (None, 474240)       0           dropout_9[0][0]                  
+__________________________________________________________________________________________________
+flatten_3 (Flatten)             (None, 81920)        0           dropout_12[0][0]                 
+__________________________________________________________________________________________________
+flatten_4 (Flatten)             (None, 20480)        0           dropout_15[0][0]                 
+__________________________________________________________________________________________________
+flatten_5 (Flatten)             (None, 5120)         0           dropout_18[0][0]                 
+__________________________________________________________________________________________________
+flatten_6 (Flatten)             (None, 5120)         0           dropout_20[0][0]                 
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 128)          102441088   flatten[0][0]                    
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 25)           24648025    flatten_1[0][0]                  
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 25)           11856025    flatten_2[0][0]                  
+__________________________________________________________________________________________________
+dense_3 (Dense)                 (None, 25)           2048025     flatten_3[0][0]                  
+__________________________________________________________________________________________________
+dense_4 (Dense)                 (None, 25)           512025      flatten_4[0][0]                  
+__________________________________________________________________________________________________
+dense_5 (Dense)                 (None, 25)           128025      flatten_5[0][0]                  
+__________________________________________________________________________________________________
+dense_6 (Dense)                 (None, 25)           128025      flatten_6[0][0]                  
+__________________________________________________________________________________________________
+concatenate (Concatenate)       (None, 278)          0           dense[0][0]                      
+                                                                 dense_1[0][0]                    
+                                                                 dense_2[0][0]                    
+                                                                 dense_3[0][0]                    
+                                                                 dense_4[0][0]                    
+                                                                 dense_5[0][0]                    
+                                                                 dense_6[0][0]                    
+__________________________________________________________________________________________________
+dense_10 (Dense)                (None, 256)          71424       concatenate[0][0]                
+__________________________________________________________________________________________________
+dropout_26 (Dropout)            (None, 256)          0           dense_10[0][0]                   
+__________________________________________________________________________________________________
+dense_11 (Dense)                (None, 128)          32896       dropout_26[0][0]                 
+__________________________________________________________________________________________________
+dropout_27 (Dropout)            (None, 128)          0           dense_11[0][0]                   
+__________________________________________________________________________________________________
+dense_12 (Dense)                (None, 10)           1290        dropout_27[0][0]                 
+__________________________________________________________________________________________________
+dense_13 (Dense)                (None, 2)            22          dense_12[0][0]                   
+==================================================================================================
+Total params: 157,638,630
+Trainable params: 157,629,958
+Non-trainable params: 8,672
+__________________________________________________________________________________________________
+None
+Adding Images: Reading ./databaserelease2/NatureDataset4/train2/1-meadows360.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows86.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows343.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows149.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows463.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows119.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows310.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows83.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows21.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows70.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows129.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows485.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows174.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows427.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows213.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows59.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows190.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows494.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows311.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows36.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows284.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows316.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows103.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows329.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows46.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows120.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows151.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows124.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows243.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows432.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows202.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows498.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows274.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows72.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows40.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows245.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows302.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows454.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows88.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows369.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows439.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows473.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows459.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows178.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows196.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows106.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows324.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows300.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows50.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows33.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows351.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows407.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows296.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows101.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows93.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows493.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows477.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows205.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows241.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows396.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows216.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows317.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows84.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows147.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows12.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows238.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows431.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows413.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows68.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows175.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows435.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows98.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows359.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows194.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows229.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows77.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows299.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows75.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows217.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows162.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows500.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows41.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows314.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows31.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows271.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows233.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows380.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows165.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows278.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows207.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows11.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows285.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows265.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows153.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows183.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows125.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows335.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows108.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows446.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows43.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows57.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows365.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows263.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows256.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows390.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows488.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows89.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows354.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows29.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows203.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows273.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows342.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows457.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows180.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows269.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows62.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows347.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows66.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows244.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows35.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows448.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows204.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows400.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows406.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows338.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows139.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows138.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows433.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows303.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows321.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows355.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows417.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows414.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows298.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows381.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows121.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows113.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows23.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows220.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows279.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows96.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows198.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows469.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows157.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows421.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows170.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows451.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows286.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows297.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows315.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/0-meadows322.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows428.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/train2/1-meadows186.jpg
+[0, 1]
+
+Read 153 images.
+
+
+Adding Images: Reading ./databaserelease2/NatureDataset4/val2/0-meadows458.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows353.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows416.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows176.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows9.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows295.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows163.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows441.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows4.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows252.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows387.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows148.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows3.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows292.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows28.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows260.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows340.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows56.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows37.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows187.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows248.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows225.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows18.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows64.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows258.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows227.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows367.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows277.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows239.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows94.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows155.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows438.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows110.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows377.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows424.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows425.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows144.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows382.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows430.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows307.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows422.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows250.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows323.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows15.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows169.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows308.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows291.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows236.jpg
+[1, 0]
+2021-10-27 20:22:45.814315: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:185] None of the MLIR Optimization Passes are enabled (registered 2)
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows388.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows195.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows352.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows74.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows177.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows356.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/1-meadows30.jpg
+[0, 1]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows34.jpg
+[1, 0]
+Reading ./databaserelease2/NatureDataset4/val2/0-meadows112.jpg
+[1, 0]
+
+Read 57 images.
+
+
+Epoch 1/100
+Traceback (most recent call last):
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 642, in <module>
+    main(sys.argv[1:])
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 639, in main
+    train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model)
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 525, in train
+    history = model.fit(np.array(X_train), np.array(y_train),
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/training.py", line 1184, in fit
+    tmp_logs = self.train_function(iterator)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/tensorflow/python/eager/def_function.py", line 885, in __call__
+    result = self._call(*args, **kwds)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/tensorflow/python/eager/def_function.py", line 933, in _call
+    self._initialize(args, kwds, add_initializers_to=initializers)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/tensorflow/python/eager/def_function.py", line 759, in _initialize
+    self._stateful_fn._get_concrete_function_internal_garbage_collected(  # pylint: disable=protected-access
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/tensorflow/python/eager/function.py", line 3066, in _get_concrete_function_internal_garbage_collected
+    graph_function, _ = self._maybe_define_function(args, kwargs)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/tensorflow/python/eager/function.py", line 3463, in _maybe_define_function
+    graph_function = self._create_graph_function(args, kwargs)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/tensorflow/python/eager/function.py", line 3298, in _create_graph_function
+    func_graph_module.func_graph_from_py_func(
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/tensorflow/python/framework/func_graph.py", line 1007, in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/tensorflow/python/eager/def_function.py", line 668, in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/tensorflow/python/framework/func_graph.py", line 994, in wrapper
+    raise e.ag_error_metadata.to_exception(e)
+ValueError: in user code:
+
+    /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/training.py:853 train_function  *
+        return step_function(self, iterator)
+    /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/training.py:842 step_function  **
+        outputs = model.distribute_strategy.run(run_step, args=(data,))
+    /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/tensorflow/python/distribute/distribute_lib.py:1286 run
+        return self._extended.call_for_each_replica(fn, args=args, kwargs=kwargs)
+    /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/tensorflow/python/distribute/distribute_lib.py:2849 call_for_each_replica
+        return self._call_for_each_replica(fn, args, kwargs)
+    /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/tensorflow/python/distribute/distribute_lib.py:3632 _call_for_each_replica
+        return fn(*args, **kwargs)
+    /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/training.py:835 run_step  **
+        outputs = model.train_step(data)
+    /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/training.py:787 train_step
+        y_pred = self(x, training=True)
+    /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/base_layer.py:1020 __call__
+        input_spec.assert_input_compatibility(self.input_spec, inputs, self.name)
+    /mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/input_spec.py:266 assert_input_compatibility
+        raise ValueError('Input ' + str(input_index) +
+
+    ValueError: Input 0 is incompatible with layer model: expected shape=(None, 1024, 680, 3), found shape=(None, 224, 224, 3)
+
+srun: error: nodegpu002: task 0: Exited with exit code 1

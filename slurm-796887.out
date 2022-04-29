@@ -1,0 +1,13 @@
+Input file is " ./agnet-wide.model
+Output file is " 
+Image path is " ./databaserelease2/NatureDataset/test
+--------------------
+
+
+Traceback (most recent call last):
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 476, in <module>
+    main(sys.argv[1:])
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 471, in main
+    test(modelin,imagepath)
+TypeError: 'bool' object is not callable
+srun: error: nodegpu002: task 0: Exited with exit code 1

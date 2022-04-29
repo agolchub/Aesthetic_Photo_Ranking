@@ -1,0 +1,1720 @@
+2021-11-03 16:24:59.312386: E tensorflow/stream_executor/cuda/cuda_driver.cc:271] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2021-11-03 16:24:59.312428: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: nodenviv100004.hpc.fau.edu
+2021-11-03 16:24:59.312436: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: nodenviv100004.hpc.fau.edu
+2021-11-03 16:24:59.312525: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:200] libcuda reported version is: 460.32.3
+2021-11-03 16:24:59.312560: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:204] kernel reported version is: 460.32.3
+2021-11-03 16:24:59.312569: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:310] kernel version seems to match DSO: 460.32.3
+2021-11-03 16:24:59.312816: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Input file is " ./agnet.specialmodel2.3.batchnormalization.singleout.tensorboard.checkpoint
+Output file is " 
+Image path is " ./databaserelease2/NatureDataset5/test
+--------------------
+
+
+Model Loaded
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 1024, 680, 3 0                                            
+__________________________________________________________________________________________________
+conv2d_4 (Conv2D)               (None, 336, 338, 80) 26000       input_1[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 336, 338, 80) 320         conv2d_4[0][0]                   
+__________________________________________________________________________________________________
+activation_4 (Activation)       (None, 336, 338, 80) 0           batch_normalization_4[0][0]      
+__________________________________________________________________________________________________
+dropout_4 (Dropout)             (None, 336, 338, 80) 0           activation_4[0][0]               
+__________________________________________________________________________________________________
+conv2d_7 (Conv2D)               (None, 164, 165, 80) 518480      dropout_4[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 164, 165, 80) 320         conv2d_7[0][0]                   
+__________________________________________________________________________________________________
+activation_7 (Activation)       (None, 164, 165, 80) 0           batch_normalization_7[0][0]      
+__________________________________________________________________________________________________
+dropout_7 (Dropout)             (None, 164, 165, 80) 0           activation_7[0][0]               
+__________________________________________________________________________________________________
+conv2d_10 (Conv2D)              (None, 79, 80, 160)  627360      dropout_7[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_10 (BatchNo (None, 79, 80, 160)  640         conv2d_10[0][0]                  
+__________________________________________________________________________________________________
+activation_10 (Activation)      (None, 79, 80, 160)  0           batch_normalization_10[0][0]     
+__________________________________________________________________________________________________
+dropout_10 (Dropout)            (None, 79, 80, 160)  0           activation_10[0][0]              
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 989, 669, 48) 62256       input_1[0][0]                    
+__________________________________________________________________________________________________
+conv2d_13 (Conv2D)              (None, 38, 38, 160)  640160      dropout_10[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 989, 669, 48) 192         conv2d[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_13 (BatchNo (None, 38, 38, 160)  640         conv2d_13[0][0]                  
+__________________________________________________________________________________________________
+activation (Activation)         (None, 989, 669, 48) 0           batch_normalization[0][0]        
+__________________________________________________________________________________________________
+activation_13 (Activation)      (None, 38, 38, 160)  0           batch_normalization_13[0][0]     
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 989, 669, 48) 0           activation[0][0]                 
+__________________________________________________________________________________________________
+dropout_13 (Dropout)            (None, 38, 38, 160)  0           activation_13[0][0]              
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 491, 331, 80) 311120      dropout[0][0]                    
+__________________________________________________________________________________________________
+conv2d_16 (Conv2D)              (None, 19, 19, 320)  205120      dropout_13[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 491, 331, 80) 320         conv2d_1[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_16 (BatchNo (None, 19, 19, 320)  1280        conv2d_16[0][0]                  
+__________________________________________________________________________________________________
+activation_1 (Activation)       (None, 491, 331, 80) 0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+activation_16 (Activation)      (None, 19, 19, 320)  0           batch_normalization_16[0][0]     
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 491, 331, 80) 0           activation_1[0][0]               
+__________________________________________________________________________________________________
+dropout_16 (Dropout)            (None, 19, 19, 320)  0           activation_16[0][0]              
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, 245, 165, 80) 57680       dropout_1[0][0]                  
+__________________________________________________________________________________________________
+conv2d_5 (Conv2D)               (None, 164, 165, 80) 518480      dropout_4[0][0]                  
+__________________________________________________________________________________________________
+conv2d_8 (Conv2D)               (None, 80, 81, 160)  320160      dropout_7[0][0]                  
+__________________________________________________________________________________________________
+conv2d_11 (Conv2D)              (None, 37, 37, 160)  1254560     dropout_10[0][0]                 
+__________________________________________________________________________________________________
+conv2d_14 (Conv2D)              (None, 18, 18, 320)  461120      dropout_13[0][0]                 
+__________________________________________________________________________________________________
+conv2d_17 (Conv2D)              (None, 9, 9, 320)    409920      dropout_16[0][0]                 
+__________________________________________________________________________________________________
+conv2d_19 (Conv2D)              (None, 9, 9, 320)    409920      dropout_16[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 245, 165, 80) 320         conv2d_2[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 164, 165, 80) 320         conv2d_5[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_8 (BatchNor (None, 80, 81, 160)  640         conv2d_8[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_11 (BatchNo (None, 37, 37, 160)  640         conv2d_11[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_14 (BatchNo (None, 18, 18, 320)  1280        conv2d_14[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_17 (BatchNo (None, 9, 9, 320)    1280        conv2d_17[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_19 (BatchNo (None, 9, 9, 320)    1280        conv2d_19[0][0]                  
+__________________________________________________________________________________________________
+activation_2 (Activation)       (None, 245, 165, 80) 0           batch_normalization_2[0][0]      
+__________________________________________________________________________________________________
+activation_5 (Activation)       (None, 164, 165, 80) 0           batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+activation_8 (Activation)       (None, 80, 81, 160)  0           batch_normalization_8[0][0]      
+__________________________________________________________________________________________________
+activation_11 (Activation)      (None, 37, 37, 160)  0           batch_normalization_11[0][0]     
+__________________________________________________________________________________________________
+activation_14 (Activation)      (None, 18, 18, 320)  0           batch_normalization_14[0][0]     
+__________________________________________________________________________________________________
+activation_17 (Activation)      (None, 9, 9, 320)    0           batch_normalization_17[0][0]     
+__________________________________________________________________________________________________
+activation_19 (Activation)      (None, 9, 9, 320)    0           batch_normalization_19[0][0]     
+__________________________________________________________________________________________________
+dropout_2 (Dropout)             (None, 245, 165, 80) 0           activation_2[0][0]               
+__________________________________________________________________________________________________
+dropout_5 (Dropout)             (None, 164, 165, 80) 0           activation_5[0][0]               
+__________________________________________________________________________________________________
+dropout_8 (Dropout)             (None, 80, 81, 160)  0           activation_8[0][0]               
+__________________________________________________________________________________________________
+dropout_11 (Dropout)            (None, 37, 37, 160)  0           activation_11[0][0]              
+__________________________________________________________________________________________________
+dropout_14 (Dropout)            (None, 18, 18, 320)  0           activation_14[0][0]              
+__________________________________________________________________________________________________
+dropout_17 (Dropout)            (None, 9, 9, 320)    0           activation_17[0][0]              
+__________________________________________________________________________________________________
+dropout_19 (Dropout)            (None, 9, 9, 320)    0           activation_19[0][0]              
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, 122, 82, 80)  25680       dropout_2[0][0]                  
+__________________________________________________________________________________________________
+conv2d_6 (Conv2D)               (None, 78, 79, 160)  1036960     dropout_5[0][0]                  
+__________________________________________________________________________________________________
+conv2d_9 (Conv2D)               (None, 38, 39, 320)  1280320     dropout_8[0][0]                  
+__________________________________________________________________________________________________
+conv2d_12 (Conv2D)              (None, 16, 16, 320)  2509120     dropout_11[0][0]                 
+__________________________________________________________________________________________________
+conv2d_15 (Conv2D)              (None, 8, 8, 320)    921920      dropout_14[0][0]                 
+__________________________________________________________________________________________________
+conv2d_18 (Conv2D)              (None, 4, 4, 320)    409920      dropout_17[0][0]                 
+__________________________________________________________________________________________________
+conv2d_20 (Conv2D)              (None, 4, 4, 320)    409920      dropout_19[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 122, 82, 80)  320         conv2d_3[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 78, 79, 160)  640         conv2d_6[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_9 (BatchNor (None, 38, 39, 320)  1280        conv2d_9[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_12 (BatchNo (None, 16, 16, 320)  1280        conv2d_12[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_15 (BatchNo (None, 8, 8, 320)    1280        conv2d_15[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_18 (BatchNo (None, 4, 4, 320)    1280        conv2d_18[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_20 (BatchNo (None, 4, 4, 320)    1280        conv2d_20[0][0]                  
+__________________________________________________________________________________________________
+activation_3 (Activation)       (None, 122, 82, 80)  0           batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+activation_6 (Activation)       (None, 78, 79, 160)  0           batch_normalization_6[0][0]      
+__________________________________________________________________________________________________
+activation_9 (Activation)       (None, 38, 39, 320)  0           batch_normalization_9[0][0]      
+__________________________________________________________________________________________________
+activation_12 (Activation)      (None, 16, 16, 320)  0           batch_normalization_12[0][0]     
+__________________________________________________________________________________________________
+activation_15 (Activation)      (None, 8, 8, 320)    0           batch_normalization_15[0][0]     
+__________________________________________________________________________________________________
+activation_18 (Activation)      (None, 4, 4, 320)    0           batch_normalization_18[0][0]     
+__________________________________________________________________________________________________
+activation_20 (Activation)      (None, 4, 4, 320)    0           batch_normalization_20[0][0]     
+__________________________________________________________________________________________________
+dropout_3 (Dropout)             (None, 122, 82, 80)  0           activation_3[0][0]               
+__________________________________________________________________________________________________
+dropout_6 (Dropout)             (None, 78, 79, 160)  0           activation_6[0][0]               
+__________________________________________________________________________________________________
+dropout_9 (Dropout)             (None, 38, 39, 320)  0           activation_9[0][0]               
+__________________________________________________________________________________________________
+dropout_12 (Dropout)            (None, 16, 16, 320)  0           activation_12[0][0]              
+__________________________________________________________________________________________________
+dropout_15 (Dropout)            (None, 8, 8, 320)    0           activation_15[0][0]              
+__________________________________________________________________________________________________
+dropout_18 (Dropout)            (None, 4, 4, 320)    0           activation_18[0][0]              
+__________________________________________________________________________________________________
+dropout_20 (Dropout)            (None, 4, 4, 320)    0           activation_20[0][0]              
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 800320)       0           dropout_3[0][0]                  
+__________________________________________________________________________________________________
+flatten_1 (Flatten)             (None, 985920)       0           dropout_6[0][0]                  
+__________________________________________________________________________________________________
+flatten_2 (Flatten)             (None, 474240)       0           dropout_9[0][0]                  
+__________________________________________________________________________________________________
+flatten_3 (Flatten)             (None, 81920)        0           dropout_12[0][0]                 
+__________________________________________________________________________________________________
+flatten_4 (Flatten)             (None, 20480)        0           dropout_15[0][0]                 
+__________________________________________________________________________________________________
+flatten_5 (Flatten)             (None, 5120)         0           dropout_18[0][0]                 
+__________________________________________________________________________________________________
+flatten_6 (Flatten)             (None, 5120)         0           dropout_20[0][0]                 
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 256)          204882176   flatten[0][0]                    
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 25)           24648025    flatten_1[0][0]                  
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 25)           11856025    flatten_2[0][0]                  
+__________________________________________________________________________________________________
+dense_3 (Dense)                 (None, 25)           2048025     flatten_3[0][0]                  
+__________________________________________________________________________________________________
+dense_4 (Dense)                 (None, 25)           512025      flatten_4[0][0]                  
+__________________________________________________________________________________________________
+dense_5 (Dense)                 (None, 25)           128025      flatten_5[0][0]                  
+__________________________________________________________________________________________________
+dense_6 (Dense)                 (None, 256)          1310976     flatten_6[0][0]                  
+__________________________________________________________________________________________________
+dropout_21 (Dropout)            (None, 256)          0           dense[0][0]                      
+__________________________________________________________________________________________________
+dropout_22 (Dropout)            (None, 25)           0           dense_1[0][0]                    
+__________________________________________________________________________________________________
+dropout_23 (Dropout)            (None, 25)           0           dense_2[0][0]                    
+__________________________________________________________________________________________________
+dropout_24 (Dropout)            (None, 25)           0           dense_3[0][0]                    
+__________________________________________________________________________________________________
+dropout_25 (Dropout)            (None, 25)           0           dense_4[0][0]                    
+__________________________________________________________________________________________________
+dropout_26 (Dropout)            (None, 25)           0           dense_5[0][0]                    
+__________________________________________________________________________________________________
+dropout_27 (Dropout)            (None, 256)          0           dense_6[0][0]                    
+__________________________________________________________________________________________________
+concatenate (Concatenate)       (None, 637)          0           dropout_21[0][0]                 
+                                                                 dropout_22[0][0]                 
+                                                                 dropout_23[0][0]                 
+                                                                 dropout_24[0][0]                 
+                                                                 dropout_25[0][0]                 
+                                                                 dropout_26[0][0]                 
+                                                                 dropout_27[0][0]                 
+__________________________________________________________________________________________________
+dense_7 (Dense)                 (None, 256)          163328      concatenate[0][0]                
+__________________________________________________________________________________________________
+dropout_28 (Dropout)            (None, 256)          0           dense_7[0][0]                    
+__________________________________________________________________________________________________
+dense_9 (Dense)                 (None, 128)          32896       dropout_28[0][0]                 
+__________________________________________________________________________________________________
+dropout_29 (Dropout)            (None, 128)          0           dense_9[0][0]                    
+__________________________________________________________________________________________________
+dense_10 (Dense)                (None, 10)           1290        dropout_29[0][0]                 
+__________________________________________________________________________________________________
+dropout_30 (Dropout)            (None, 10)           0           dense_10[0][0]                   
+__________________________________________________________________________________________________
+dense_11 (Dense)                (None, 5)            55          dropout_30[0][0]                 
+==================================================================================================
+Total params: 258,015,854
+Trainable params: 258,007,438
+Non-trainable params: 8,416
+__________________________________________________________________________________________________
+None
+Adding Images: Reading ./databaserelease2/NatureDataset5/test/1-waters539.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters294.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest4.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows363.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows186.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters663.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows263.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters658.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows392.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-forest262.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters99.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters419.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters716.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest19.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-forest476.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/4-waters577.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest197.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest329.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters65.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows32.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters397.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest277.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters272.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows331.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters28.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest70.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows16.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters568.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows281.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest143.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows196.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters843.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters719.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters842.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows495.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters551.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows432.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows211.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters102.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters753.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/3-forest306.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters612.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters264.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters396.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters639.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows66.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters851.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters5.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest260.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest334.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows151.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters362.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters560.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows265.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest509.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows316.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters828.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/2-forest347.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest474.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows31.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows395.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters759.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows390.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows339.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters737.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters630.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters103.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters187.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters869.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest99.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters182.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters67.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows360.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest472.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters793.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows5.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters328.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows12.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest3.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows29.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters199.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters154.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest557.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters6.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters715.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters290.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters388.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters453.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest140.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters375.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters813.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters309.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters288.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-meadows343.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters286.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters873.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters605.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest320.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters600.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters335.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest256.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest549.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest335.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest268.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters483.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows236.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters153.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows215.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows492.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows249.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows38.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows282.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters68.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters785.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters350.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/4-forest207.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows84.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters120.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows369.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows224.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters696.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest18.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters566.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters497.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest77.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest394.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows467.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest211.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters410.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/4-waters824.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters444.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters634.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows21.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-meadows94.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows373.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters893.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest425.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters667.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/4-waters295.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows112.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows124.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest42.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows99.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters139.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest292.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters93.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters787.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest209.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest385.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters172.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows208.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters671.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows328.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows374.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows418.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters538.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows116.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest221.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters226.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows482.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters380.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-forest132.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest193.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters4.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows305.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows287.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters256.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows93.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest215.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-forest226.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters423.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters244.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows308.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters475.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters454.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-forest76.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters443.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows277.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest467.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters849.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/4-waters7.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest315.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest495.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest403.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters365.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/3-forest460.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters773.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest20.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest105.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters283.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest307.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest179.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters342.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters427.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest525.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows178.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters409.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters738.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters800.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters818.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/3-waters768.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters271.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters761.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest339.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters161.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows226.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest22.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters751.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest7.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters304.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows294.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows403.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest578.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest395.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters37.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters320.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest526.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows165.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters637.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows91.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows264.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows411.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest548.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest232.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest338.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows464.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters266.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters726.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows179.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows172.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest245.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters195.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters277.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters160.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters473.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest114.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters707.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/3-forest566.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters221.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows33.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-meadows342.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters698.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters242.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest96.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows230.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters699.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters415.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters144.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows442.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters131.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/4-forest98.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows97.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters212.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters445.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest326.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters861.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows103.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters25.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest596.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows320.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters179.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest278.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters109.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest295.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows364.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest581.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters500.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/2-forest399.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters56.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest538.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters173.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest415.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters521.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters464.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows300.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters704.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-meadows337.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest146.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest317.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows85.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters515.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest159.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters614.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows83.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters255.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters15.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters142.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows60.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters458.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters476.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters107.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest203.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters848.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows114.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters790.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest149.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters860.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters224.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters210.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows352.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest170.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest470.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters417.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-meadows347.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest270.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows109.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters636.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/3-waters490.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest383.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows391.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters474.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters267.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows417.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest117.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest393.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-meadows298.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters616.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows209.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters868.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest101.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest267.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters284.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters701.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/1-waters810.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters766.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest364.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-meadows353.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows75.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows384.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters628.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters748.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest258.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters805.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows129.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters523.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest58.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows188.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows350.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest359.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters222.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/2-forest594.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters510.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest271.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest430.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters3.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows422.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest445.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest556.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows416.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters215.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/1-waters575.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows246.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters110.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/3-forest176.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters302.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest273.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest227.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters595.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters774.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters262.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters574.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters729.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters133.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows181.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows102.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest412.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest573.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters583.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows128.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters341.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters877.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows423.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters519.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters610.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows469.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows382.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters78.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest457.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows121.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-forest351.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest546.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest136.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows25.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows11.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows272.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-forest396.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/2-waters330.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows254.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters728.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters157.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest293.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-forest180.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters174.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters713.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest477.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest420.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows9.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows267.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters569.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows266.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows381.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters33.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters398.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/2-forest352.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest219.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows459.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows465.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows393.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-meadows436.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/2-forest235.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest45.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest210.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows428.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters537.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters176.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest397.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows498.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest450.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest442.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest276.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters743.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest473.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters892.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows303.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows435.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows295.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest296.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-forest527.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest427.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest529.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest166.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest428.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters613.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters23.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows497.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows433.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest482.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters670.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters168.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest531.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest564.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters29.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows323.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters812.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest313.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters36.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows359.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters74.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest438.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows36.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows17.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows349.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows98.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters788.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters865.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/2-forest288.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest89.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters718.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters467.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters770.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows157.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters888.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest559.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters602.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters216.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/2-waters345.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters197.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/3-waters555.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters466.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters66.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters114.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest407.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters674.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows111.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters402.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters185.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows100.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters593.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows42.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters685.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows424.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest82.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters846.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters300.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows324.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest493.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters679.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/1-forest321.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows438.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows451.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters536.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows220.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest433.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest483.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters73.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows333.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows258.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest157.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-meadows161.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows222.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest152.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters431.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/1-waters124.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters495.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest60.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters234.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters196.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest324.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest478.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters338.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters757.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters243.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters96.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters820.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters509.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters8.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows190.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters647.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest282.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters279.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters76.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows434.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters563.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters834.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/4-waters203.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows383.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows445.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters894.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows64.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest595.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters548.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest54.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters470.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest568.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows470.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters308.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters460.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/3-waters155.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows18.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows365.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters369.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest75.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters14.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters837.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters184.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters710.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters545.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters485.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest480.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest27.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows137.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters85.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/2-forest130.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows37.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters688.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows231.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest236.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest233.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters706.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest283.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest202.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters368.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters391.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows289.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest194.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows89.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest368.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters274.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters514.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters494.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters619.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters79.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters529.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters64.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters836.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/2-waters635.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters60.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows484.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters115.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest302.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters1.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters792.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/4-forest73.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows218.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters193.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest487.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest145.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows444.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters361.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters258.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows276.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows490.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest93.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest175.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters285.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters426.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters116.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows162.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows195.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest591.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters45.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows460.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters533.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters874.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters147.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters516.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters75.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest539.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters35.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters206.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows447.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows44.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest238.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters825.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-meadows197.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest354.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows288.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters169.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters829.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters356.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters280.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows166.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters438.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest28.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters733.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest147.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters389.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters477.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters854.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest437.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows313.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters676.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters303.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters282.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest220.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters189.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows107.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters306.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows488.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows326.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-forest39.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/2-forest100.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest465.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows486.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows430.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters496.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows280.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters376.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest371.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters528.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters347.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters349.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters326.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters436.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters772.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters425.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/1-waters354.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows269.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters386.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters359.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/2-waters471.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest419.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters618.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters166.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters26.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters756.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows142.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows471.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters405.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest16.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters882.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest231.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters412.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest109.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters98.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows61.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows57.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest443.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows163.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows115.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows425.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows296.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows136.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows4.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest133.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest31.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters201.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows134.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest400.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-forest410.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest318.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters307.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters146.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters705.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest181.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters870.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows78.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest165.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows68.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows483.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows389.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows367.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows301.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-meadows452.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows310.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-waters795.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters125.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/5-waters622.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/2-forest589.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest382.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest314.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows72.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters853.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-waters87.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-forest23.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/4-forest452.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters609.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters799.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/5-waters501.jpg
+[0, 0, 0, 0, 1]
+Reading ./databaserelease2/NatureDataset5/test/2-waters864.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters325.jpg
+[1, 0, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-waters430.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest319.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-forest384.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/4-meadows213.jpg
+[0, 0, 0, 1, 0]
+Reading ./databaserelease2/NatureDataset5/test/2-forest405.jpg
+[0, 1, 0, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/3-meadows207.jpg
+[0, 0, 1, 0, 0]
+Reading ./databaserelease2/NatureDataset5/test/1-waters86.jpg
+[1, 0, 0, 0, 0]
+2021-11-03 16:27:45.619656: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:185] None of the MLIR Optimization Passes are enabled (registered 2)
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: got SIGCONT
+slurmstepd: error: *** STEP 802340.0 ON nodenviv100004 CANCELLED AT 2021-11-03T16:51:25 ***
+slurmstepd: error: *** JOB 802340 ON nodenviv100004 CANCELLED AT 2021-11-03T16:51:25 ***
+srun: forcing job termination

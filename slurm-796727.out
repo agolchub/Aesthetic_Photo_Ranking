@@ -1,0 +1,25 @@
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+Input file is " 
+Output file is " agnet-wide.model
+Image path is " 
+Missing required parameter.
+train.py -i <modelin> -o <modelout> -p <imagepath>
+srun: error: nodegpu002: task 0: Exited with exit code 2

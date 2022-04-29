@@ -1,0 +1,5 @@
+slurmstepd: error: *** JOB 802820 ON nodegpu002 CANCELLED AT 2021-11-03T18:27:27 ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 802820.0 ON nodegpu002 CANCELLED AT 2021-11-03T18:27:27 ***
+srun: got SIGCONT
+srun: forcing job termination

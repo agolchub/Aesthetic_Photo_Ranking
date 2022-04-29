@@ -1,0 +1,185 @@
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+2021-10-25 01:04:30.540785: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-10-25 01:04:36.658916: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-10-25 01:04:36.666625: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcuda.so.1
+2021-10-25 01:04:37.510925: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:21:00.0 name: A100-PCIE-40GB computeCapability: 8.0
+coreClock: 1.41GHz coreCount: 108 deviceMemorySize: 39.59GiB deviceMemoryBandwidth: 1.41TiB/s
+2021-10-25 01:04:37.510978: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-10-25 01:04:37.534457: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-10-25 01:04:37.534526: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+2021-10-25 01:04:37.545824: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2021-10-25 01:04:37.553222: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2021-10-25 01:04:37.553821: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcusolver.so.10'; dlerror: libcusolver.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2021-10-25 01:04:37.559574: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.11
+2021-10-25 01:04:37.562491: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.8
+2021-10-25 01:04:37.562514: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1757] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2021-10-25 01:04:37.562995: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-10-25 01:04:37.563030: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1261] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-10-25 01:04:37.563037: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1267]      
+Input file is " 
+Output file is " sptest.model
+Image path is " 
+--------------------
+
+
+input_1  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ed3c0>)
+conv2d  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed446fb00>)
+batch_normalization  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41fbec0>)
+dropout  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed446f780>)
+conv2d_1  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41c1400>)
+batch_normalization_1  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ed3c0>)
+dropout_1  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ef440>)
+conv2d_2  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41fbec0>)
+batch_normalization_2  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41c1400>)
+dropout_2  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ed3c0>)
+conv2d_3  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ef440>)
+batch_normalization_3  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41fbec0>)
+dropout_3  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41c1400>)
+conv2d_4  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ed3c0>)
+batch_normalization_4  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ef440>)
+dropout_4  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41fbec0>)
+conv2d_5  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41c1400>)
+batch_normalization_5  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ed3c0>)
+dropout_5  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ef440>)
+conv2d_6  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41fbec0>)
+batch_normalization_6  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41c1400>)
+dropout_6  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ed3c0>)
+conv2d_7  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ef440>)
+batch_normalization_7  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41fbec0>)
+dropout_7  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41c1400>)
+conv2d_8  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ed3c0>)
+batch_normalization_8  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ef440>)
+dropout_8  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41fbec0>)
+flatten  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41c1400>)
+flatten_1  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ed3c0>)
+flatten_2  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ef440>)
+flatten_3  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41fbec0>)
+flatten_4  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41c1400>)
+flatten_5  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ed3c0>)
+flatten_6  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ef440>)
+flatten_7  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41fbec0>)
+flatten_8  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41c1400>)
+dense  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ed3c0>)
+dense_1  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ef440>)
+dense_2  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41fbec0>)
+dense_3  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41c1400>)
+dense_4  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ed3c0>)
+dense_5  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ef440>)
+dense_6  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41fbec0>)
+dense_7  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41c1400>)
+dense_8  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ed3c0>)
+concatenate  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ef440>)
+dense_19  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41fbec0>)
+dropout_9  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41c1400>)
+dense_20  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ed3c0>)
+dropout_10  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41ef440>)
+dense_21  could not be re-initilized (<class 'ModuleNotFoundError'>, ModuleNotFoundError("No module named 'keras'"), <traceback object at 0x7efed41fbec0>)
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 1024, 680, 3 0                                            
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 298, 297, 32) 1115168     input_1[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 298, 297, 32) 128         conv2d[0][0]                     
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 298, 297, 32) 0           batch_normalization[0][0]        
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 117, 116, 64) 8921152     dropout[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 117, 116, 64) 256         conv2d_1[0][0]                   
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 117, 116, 64) 0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, 51, 51, 128)  2097280     dropout_1[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 51, 51, 128)  512         conv2d_2[0][0]                   
+__________________________________________________________________________________________________
+dropout_2 (Dropout)             (None, 51, 51, 128)  0           batch_normalization_2[0][0]      
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, 23, 23, 256)  1605888     dropout_2[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 23, 23, 256)  1024        conv2d_3[0][0]                   
+__________________________________________________________________________________________________
+dropout_3 (Dropout)             (None, 23, 23, 256)  0           batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+conv2d_4 (Conv2D)               (None, 21, 21, 512)  1180160     dropout_3[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 21, 21, 512)  2048        conv2d_4[0][0]                   
+__________________________________________________________________________________________________
+dropout_4 (Dropout)             (None, 21, 21, 512)  0           batch_normalization_4[0][0]      
+__________________________________________________________________________________________________
+conv2d_5 (Conv2D)               (None, 20, 20, 256)  524544      dropout_4[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 20, 20, 256)  1024        conv2d_5[0][0]                   
+__________________________________________________________________________________________________
+dropout_5 (Dropout)             (None, 20, 20, 256)  0           batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+conv2d_6 (Conv2D)               (None, 19, 19, 128)  131200      dropout_5[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 19, 19, 128)  512         conv2d_6[0][0]                   
+__________________________________________________________________________________________________
+dropout_6 (Dropout)             (None, 19, 19, 128)  0           batch_normalization_6[0][0]      
+__________________________________________________________________________________________________
+conv2d_7 (Conv2D)               (None, 18, 18, 64)   32832       dropout_6[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 18, 18, 64)   256         conv2d_7[0][0]                   
+__________________________________________________________________________________________________
+dropout_7 (Dropout)             (None, 18, 18, 64)   0           batch_normalization_7[0][0]      
+__________________________________________________________________________________________________
+conv2d_8 (Conv2D)               (None, 17, 17, 64)   16448       dropout_7[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_8 (BatchNor (None, 17, 17, 64)   256         conv2d_8[0][0]                   
+__________________________________________________________________________________________________
+dropout_8 (Dropout)             (None, 17, 17, 64)   0           batch_normalization_8[0][0]      
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 2832192)      0           dropout[0][0]                    
+__________________________________________________________________________________________________
+flatten_1 (Flatten)             (None, 868608)       0           dropout_1[0][0]                  
+__________________________________________________________________________________________________
+flatten_2 (Flatten)             (None, 332928)       0           dropout_2[0][0]                  
+__________________________________________________________________________________________________
+flatten_3 (Flatten)             (None, 135424)       0           dropout_3[0][0]                  
+__________________________________________________________________________________________________
+flatten_4 (Flatten)             (None, 225792)       0           dropout_4[0][0]                  
+__________________________________________________________________________________________________
+flatten_5 (Flatten)             (None, 102400)       0           dropout_5[0][0]                  
+__________________________________________________________________________________________________
+flatten_6 (Flatten)             (None, 46208)        0           dropout_6[0][0]                  
+__________________________________________________________________________________________________
+flatten_7 (Flatten)             (None, 20736)        0           dropout_7[0][0]                  
+__________________________________________________________________________________________________
+flatten_8 (Flatten)             (None, 18496)        0           dropout_8[0][0]                  
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 5)            14160965    flatten[0][0]                    
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 5)            4343045     flatten_1[0][0]                  
+__________________________________________________________________________________________________
+2021-10-25 01:04:38.810061: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:116] None of the MLIR optimization passes are enabled (registered 2)
+2021-10-25 01:04:38.811872: I tensorflow/core/platform/profile_utils/cpu_utils.cc:112] CPU Frequency: 2794610000 Hz
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: got SIGCONT
+slurmstepd: error: *** JOB 796716 ON nodegpu002 CANCELLED AT 2021-10-25T01:06:24 ***
+srun: forcing job termination
+slurmstepd: error: *** STEP 796716.0 ON nodegpu002 CANCELLED AT 2021-10-25T01:06:24 ***

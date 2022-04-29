@@ -1,0 +1,876 @@
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+Wed Nov  3 17:56:13 2021       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 460.32.03    Driver Version: 460.32.03    CUDA Version: 11.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  A100-PCIE-40GB      Off  | 00000000:21:00.0 Off |                    0 |
+| N/A   36C    P0    38W / 250W |      0MiB / 40536MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+2021-11-03 17:58:08.369702: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-11-03 17:58:09.076354: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38426 MB memory:  -> device: 0, name: A100-PCIE-40GB, pci bus id: 0000:21:00.0, compute capability: 8.0
+2021-11-03 17:58:09.854700: I tensorflow/core/profiler/lib/profiler_session.cc:131] Profiler session initializing.
+2021-11-03 17:58:09.854739: I tensorflow/core/profiler/lib/profiler_session.cc:146] Profiler session started.
+2021-11-03 17:58:09.855588: I tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1614] Profiler found 1 GPUs
+2021-11-03 17:58:09.954862: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcupti.so.11.2'; dlerror: libcupti.so.11.2: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2021-11-03 17:58:09.955381: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcupti.so'; dlerror: libcupti.so: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2021-11-03 17:58:09.955402: E tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1666] function cupti_interface_->Subscribe( &subscriber_, (CUpti_CallbackFunc)ApiCallback, this)failed with error CUPTI could not be loaded or symbol could not be found.
+2021-11-03 17:58:09.955421: I tensorflow/core/profiler/lib/profiler_session.cc:164] Profiler session tear down.
+2021-11-03 17:58:09.955443: E tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1757] function cupti_interface_->Finalize()failed with error CUPTI could not be loaded or symbol could not be found.
+/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/optimizer_v2/optimizer_v2.py:355: UserWarning: The `lr` argument is deprecated, use `learning_rate` instead.
+  warnings.warn(
+Input file is " 
+Output file is " agnet.specialmodel2.3.batchnormalization.singleout.tensorboard
+Image path is " 
+--------------------
+
+
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 1024, 680, 3 0                                            
+__________________________________________________________________________________________________
+conv2d_4 (Conv2D)               (None, 336, 338, 80) 26000       input_1[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 336, 338, 80) 320         conv2d_4[0][0]                   
+__________________________________________________________________________________________________
+activation_4 (Activation)       (None, 336, 338, 80) 0           batch_normalization_4[0][0]      
+__________________________________________________________________________________________________
+dropout_4 (Dropout)             (None, 336, 338, 80) 0           activation_4[0][0]               
+__________________________________________________________________________________________________
+conv2d_7 (Conv2D)               (None, 164, 165, 80) 518480      dropout_4[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 164, 165, 80) 320         conv2d_7[0][0]                   
+__________________________________________________________________________________________________
+activation_7 (Activation)       (None, 164, 165, 80) 0           batch_normalization_7[0][0]      
+__________________________________________________________________________________________________
+dropout_7 (Dropout)             (None, 164, 165, 80) 0           activation_7[0][0]               
+__________________________________________________________________________________________________
+conv2d_10 (Conv2D)              (None, 79, 80, 160)  627360      dropout_7[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_10 (BatchNo (None, 79, 80, 160)  640         conv2d_10[0][0]                  
+__________________________________________________________________________________________________
+activation_10 (Activation)      (None, 79, 80, 160)  0           batch_normalization_10[0][0]     
+__________________________________________________________________________________________________
+dropout_10 (Dropout)            (None, 79, 80, 160)  0           activation_10[0][0]              
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 989, 669, 48) 62256       input_1[0][0]                    
+__________________________________________________________________________________________________
+conv2d_13 (Conv2D)              (None, 38, 38, 160)  640160      dropout_10[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 989, 669, 48) 192         conv2d[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_13 (BatchNo (None, 38, 38, 160)  640         conv2d_13[0][0]                  
+__________________________________________________________________________________________________
+activation (Activation)         (None, 989, 669, 48) 0           batch_normalization[0][0]        
+__________________________________________________________________________________________________
+activation_13 (Activation)      (None, 38, 38, 160)  0           batch_normalization_13[0][0]     
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 989, 669, 48) 0           activation[0][0]                 
+__________________________________________________________________________________________________
+dropout_13 (Dropout)            (None, 38, 38, 160)  0           activation_13[0][0]              
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 491, 331, 80) 311120      dropout[0][0]                    
+__________________________________________________________________________________________________
+conv2d_16 (Conv2D)              (None, 19, 19, 320)  205120      dropout_13[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 491, 331, 80) 320         conv2d_1[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_16 (BatchNo (None, 19, 19, 320)  1280        conv2d_16[0][0]                  
+__________________________________________________________________________________________________
+activation_1 (Activation)       (None, 491, 331, 80) 0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+activation_16 (Activation)      (None, 19, 19, 320)  0           batch_normalization_16[0][0]     
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 491, 331, 80) 0           activation_1[0][0]               
+__________________________________________________________________________________________________
+dropout_16 (Dropout)            (None, 19, 19, 320)  0           activation_16[0][0]              
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, 245, 165, 80) 57680       dropout_1[0][0]                  
+__________________________________________________________________________________________________
+conv2d_5 (Conv2D)               (None, 164, 165, 80) 518480      dropout_4[0][0]                  
+__________________________________________________________________________________________________
+conv2d_8 (Conv2D)               (None, 80, 81, 160)  320160      dropout_7[0][0]                  
+__________________________________________________________________________________________________
+conv2d_11 (Conv2D)              (None, 37, 37, 160)  1254560     dropout_10[0][0]                 
+__________________________________________________________________________________________________
+conv2d_14 (Conv2D)              (None, 18, 18, 320)  461120      dropout_13[0][0]                 
+__________________________________________________________________________________________________
+conv2d_17 (Conv2D)              (None, 9, 9, 320)    409920      dropout_16[0][0]                 
+__________________________________________________________________________________________________
+conv2d_19 (Conv2D)              (None, 9, 9, 320)    409920      dropout_16[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 245, 165, 80) 320         conv2d_2[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 164, 165, 80) 320         conv2d_5[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_8 (BatchNor (None, 80, 81, 160)  640         conv2d_8[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_11 (BatchNo (None, 37, 37, 160)  640         conv2d_11[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_14 (BatchNo (None, 18, 18, 320)  1280        conv2d_14[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_17 (BatchNo (None, 9, 9, 320)    1280        conv2d_17[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_19 (BatchNo (None, 9, 9, 320)    1280        conv2d_19[0][0]                  
+__________________________________________________________________________________________________
+activation_2 (Activation)       (None, 245, 165, 80) 0           batch_normalization_2[0][0]      
+__________________________________________________________________________________________________
+activation_5 (Activation)       (None, 164, 165, 80) 0           batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+activation_8 (Activation)       (None, 80, 81, 160)  0           batch_normalization_8[0][0]      
+__________________________________________________________________________________________________
+activation_11 (Activation)      (None, 37, 37, 160)  0           batch_normalization_11[0][0]     
+__________________________________________________________________________________________________
+activation_14 (Activation)      (None, 18, 18, 320)  0           batch_normalization_14[0][0]     
+__________________________________________________________________________________________________
+activation_17 (Activation)      (None, 9, 9, 320)    0           batch_normalization_17[0][0]     
+__________________________________________________________________________________________________
+activation_19 (Activation)      (None, 9, 9, 320)    0           batch_normalization_19[0][0]     
+__________________________________________________________________________________________________
+dropout_2 (Dropout)             (None, 245, 165, 80) 0           activation_2[0][0]               
+__________________________________________________________________________________________________
+dropout_5 (Dropout)             (None, 164, 165, 80) 0           activation_5[0][0]               
+__________________________________________________________________________________________________
+dropout_8 (Dropout)             (None, 80, 81, 160)  0           activation_8[0][0]               
+__________________________________________________________________________________________________
+dropout_11 (Dropout)            (None, 37, 37, 160)  0           activation_11[0][0]              
+__________________________________________________________________________________________________
+dropout_14 (Dropout)            (None, 18, 18, 320)  0           activation_14[0][0]              
+__________________________________________________________________________________________________
+dropout_17 (Dropout)            (None, 9, 9, 320)    0           activation_17[0][0]              
+__________________________________________________________________________________________________
+dropout_19 (Dropout)            (None, 9, 9, 320)    0           activation_19[0][0]              
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, 122, 82, 80)  25680       dropout_2[0][0]                  
+__________________________________________________________________________________________________
+conv2d_6 (Conv2D)               (None, 78, 79, 160)  1036960     dropout_5[0][0]                  
+__________________________________________________________________________________________________
+conv2d_9 (Conv2D)               (None, 38, 39, 320)  1280320     dropout_8[0][0]                  
+__________________________________________________________________________________________________
+conv2d_12 (Conv2D)              (None, 16, 16, 320)  2509120     dropout_11[0][0]                 
+__________________________________________________________________________________________________
+conv2d_15 (Conv2D)              (None, 8, 8, 320)    921920      dropout_14[0][0]                 
+__________________________________________________________________________________________________
+conv2d_18 (Conv2D)              (None, 4, 4, 320)    409920      dropout_17[0][0]                 
+__________________________________________________________________________________________________
+conv2d_20 (Conv2D)              (None, 4, 4, 320)    409920      dropout_19[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 122, 82, 80)  320         conv2d_3[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 78, 79, 160)  640         conv2d_6[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_9 (BatchNor (None, 38, 39, 320)  1280        conv2d_9[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_12 (BatchNo (None, 16, 16, 320)  1280        conv2d_12[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_15 (BatchNo (None, 8, 8, 320)    1280        conv2d_15[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_18 (BatchNo (None, 4, 4, 320)    1280        conv2d_18[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_20 (BatchNo (None, 4, 4, 320)    1280        conv2d_20[0][0]                  
+__________________________________________________________________________________________________
+activation_3 (Activation)       (None, 122, 82, 80)  0           batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+activation_6 (Activation)       (None, 78, 79, 160)  0           batch_normalization_6[0][0]      
+__________________________________________________________________________________________________
+activation_9 (Activation)       (None, 38, 39, 320)  0           batch_normalization_9[0][0]      
+__________________________________________________________________________________________________
+activation_12 (Activation)      (None, 16, 16, 320)  0           batch_normalization_12[0][0]     
+__________________________________________________________________________________________________
+activation_15 (Activation)      (None, 8, 8, 320)    0           batch_normalization_15[0][0]     
+__________________________________________________________________________________________________
+activation_18 (Activation)      (None, 4, 4, 320)    0           batch_normalization_18[0][0]     
+__________________________________________________________________________________________________
+activation_20 (Activation)      (None, 4, 4, 320)    0           batch_normalization_20[0][0]     
+__________________________________________________________________________________________________
+dropout_3 (Dropout)             (None, 122, 82, 80)  0           activation_3[0][0]               
+__________________________________________________________________________________________________
+dropout_6 (Dropout)             (None, 78, 79, 160)  0           activation_6[0][0]               
+__________________________________________________________________________________________________
+dropout_9 (Dropout)             (None, 38, 39, 320)  0           activation_9[0][0]               
+__________________________________________________________________________________________________
+dropout_12 (Dropout)            (None, 16, 16, 320)  0           activation_12[0][0]              
+__________________________________________________________________________________________________
+dropout_15 (Dropout)            (None, 8, 8, 320)    0           activation_15[0][0]              
+__________________________________________________________________________________________________
+dropout_18 (Dropout)            (None, 4, 4, 320)    0           activation_18[0][0]              
+__________________________________________________________________________________________________
+dropout_20 (Dropout)            (None, 4, 4, 320)    0           activation_20[0][0]              
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 800320)       0           dropout_3[0][0]                  
+__________________________________________________________________________________________________
+flatten_1 (Flatten)             (None, 985920)       0           dropout_6[0][0]                  
+__________________________________________________________________________________________________
+flatten_2 (Flatten)             (None, 474240)       0           dropout_9[0][0]                  
+__________________________________________________________________________________________________
+flatten_3 (Flatten)             (None, 81920)        0           dropout_12[0][0]                 
+__________________________________________________________________________________________________
+flatten_4 (Flatten)             (None, 20480)        0           dropout_15[0][0]                 
+__________________________________________________________________________________________________
+flatten_5 (Flatten)             (None, 5120)         0           dropout_18[0][0]                 
+__________________________________________________________________________________________________
+flatten_6 (Flatten)             (None, 5120)         0           dropout_20[0][0]                 
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 256)          204882176   flatten[0][0]                    
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 25)           24648025    flatten_1[0][0]                  
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 25)           11856025    flatten_2[0][0]                  
+__________________________________________________________________________________________________
+dense_3 (Dense)                 (None, 25)           2048025     flatten_3[0][0]                  
+__________________________________________________________________________________________________
+dense_4 (Dense)                 (None, 25)           512025      flatten_4[0][0]                  
+__________________________________________________________________________________________________
+dense_5 (Dense)                 (None, 25)           128025      flatten_5[0][0]                  
+__________________________________________________________________________________________________
+dense_6 (Dense)                 (None, 256)          1310976     flatten_6[0][0]                  
+__________________________________________________________________________________________________
+dropout_21 (Dropout)            (None, 256)          0           dense[0][0]                      
+__________________________________________________________________________________________________
+dropout_22 (Dropout)            (None, 25)           0           dense_1[0][0]                    
+__________________________________________________________________________________________________
+dropout_23 (Dropout)            (None, 25)           0           dense_2[0][0]                    
+__________________________________________________________________________________________________
+dropout_24 (Dropout)            (None, 25)           0           dense_3[0][0]                    
+__________________________________________________________________________________________________
+dropout_25 (Dropout)            (None, 25)           0           dense_4[0][0]                    
+__________________________________________________________________________________________________
+dropout_26 (Dropout)            (None, 25)           0           dense_5[0][0]                    
+__________________________________________________________________________________________________
+dropout_27 (Dropout)            (None, 256)          0           dense_6[0][0]                    
+__________________________________________________________________________________________________
+concatenate (Concatenate)       (None, 637)          0           dropout_21[0][0]                 
+                                                                 dropout_22[0][0]                 
+                                                                 dropout_23[0][0]                 
+                                                                 dropout_24[0][0]                 
+                                                                 dropout_25[0][0]                 
+                                                                 dropout_26[0][0]                 
+                                                                 dropout_27[0][0]                 
+__________________________________________________________________________________________________
+dense_7 (Dense)                 (None, 256)          163328      concatenate[0][0]                
+__________________________________________________________________________________________________
+dropout_28 (Dropout)            (None, 256)          0           dense_7[0][0]                    
+__________________________________________________________________________________________________
+dense_9 (Dense)                 (None, 128)          32896       dropout_28[0][0]                 
+__________________________________________________________________________________________________
+dropout_29 (Dropout)            (None, 128)          0           dense_9[0][0]                    
+__________________________________________________________________________________________________
+dense_10 (Dense)                (None, 10)           1290        dropout_29[0][0]                 
+__________________________________________________________________________________________________
+dropout_30 (Dropout)            (None, 10)           0           dense_10[0][0]                   
+__________________________________________________________________________________________________
+dense_11 (Dense)                (None, 1)            11          dropout_30[0][0]                 
+==================================================================================================
+Total params: 258,015,810
+Trainable params: 258,007,394
+Non-trainable params: 8,416
+__________________________________________________________________________________________________
+None
+Adding Images: Reading ./databaserelease2/NatureDataset5/train3/5-waters840.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters16.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-forest366.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters749.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters646.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters821.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-forest448.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters299.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters544.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters343.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-forest275.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters802.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters717.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters183.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters393.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters130.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters275.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters141.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters629.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters782.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters22.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters129.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters626.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters491.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters844.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters269.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters855.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters84.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-forest506.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters62.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters542.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters298.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters411.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters556.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters526.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters324.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters251.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters579.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters220.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters546.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-forest301.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-forest26.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters781.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters875.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-meadows253.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters421.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-forest183.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters608.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters590.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters885.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-meadows357.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters589.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters744.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters374.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-forest121.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters522.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters31.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters239.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters83.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters257.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters850.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters657.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters143.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters145.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-forest570.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters815.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters91.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters682.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters322.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-forest107.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters576.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-forest369.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters378.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters791.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters94.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters627.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters746.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/5-forest12.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters180.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-meadows366.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-meadows59.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters642.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-meadows487.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-forest94.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/5-forest43.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-meadows43.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters584.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters525.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters780.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters352.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters106.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters493.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-forest229.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters434.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-meadows147.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters847.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters763.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-forest243.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters567.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters367.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters488.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters113.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters881.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters831.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters165.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters623.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters331.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters832.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters573.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/5-forest169.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-meadows77.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-meadows23.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters263.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-meadows184.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-forest225.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters838.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters723.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters194.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters482.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters621.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters644.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters414.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-meadows443.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-forest40.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-forest67.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-forest135.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters89.jpg
+5.0
+2021-11-03 17:58:55.516234: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:185] None of the MLIR Optimization Passes are enabled (registered 2)
+2021-11-03 17:58:58.733432: I tensorflow/stream_executor/cuda/cuda_dnn.cc:369] Loaded cuDNN version 8201
+2021-11-03 17:59:00.334060: W tensorflow/stream_executor/gpu/asm_compiler.cc:77] Couldn't get ptxas version string: Internal: Running ptxas --version returned 32512
+2021-11-03 17:59:00.385900: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] Internal: ptxas exited with non-zero error code 32512, output: 
+Relying on driver to perform ptx compilation. 
+Modify $PATH to customize ptxas location.
+This message will be only logged once.
+2021-11-03 17:59:06.181007: I tensorflow/stream_executor/cuda/cuda_blas.cc:1760] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+Reading ./databaserelease2/NatureDataset5/train3/5-waters535.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-meadows234.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-meadows319.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters32.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-forest328.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-forest64.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters34.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters17.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters765.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters700.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters247.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-forest2.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters384.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters645.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters811.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-meadows95.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters549.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters77.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters552.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters653.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters550.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters684.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-forest187.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters455.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-meadows238.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters43.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-meadows90.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters54.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-meadows362.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters769.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters513.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters72.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-meadows329.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters261.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters607.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters254.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-meadows67.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters876.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters714.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-meadows39.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-meadows130.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters236.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters301.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters777.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters159.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters655.jpg
+5.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters664.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters585.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters105.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters13.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-waters314.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-meadows322.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/1-meadows298.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/train3/5-waters10.jpg
+5.0
+
+Read 181 images.
+
+
+Adding Images: Reading ./databaserelease2/NatureDataset5/val2/2-meadows139.jpg
+2.0
+Reading ./databaserelease2/NatureDataset5/val2/2-meadows193.jpg
+2.0
+Reading ./databaserelease2/NatureDataset5/val2/3-meadows104.jpg
+3.0
+Reading ./databaserelease2/NatureDataset5/val2/2-meadows28.jpg
+2.0
+Reading ./databaserelease2/NatureDataset5/val2/2-meadows34.jpg
+2.0
+Reading ./databaserelease2/NatureDataset5/val2/3-meadows88.jpg
+3.0
+Reading ./databaserelease2/NatureDataset5/val2/3-meadows167.jpg
+3.0
+Reading ./databaserelease2/NatureDataset5/val2/3-meadows26.jpg
+3.0
+Reading ./databaserelease2/NatureDataset5/val2/3-meadows127.jpg
+3.0
+Reading ./databaserelease2/NatureDataset5/val2/2-meadows437.jpg
+2.0
+Reading ./databaserelease2/NatureDataset5/val2/2-meadows132.jpg
+2.0
+Reading ./databaserelease2/NatureDataset5/val2/2-meadows346.jpg
+2.0
+Reading ./databaserelease2/NatureDataset5/val2/3-meadows274.jpg
+3.0
+Reading ./databaserelease2/NatureDataset5/val2/2-meadows214.jpg
+2.0
+Reading ./databaserelease2/NatureDataset5/val2/3-meadows375.jpg
+3.0
+Reading ./databaserelease2/NatureDataset5/val2/2-meadows458.jpg
+2.0
+Reading ./databaserelease2/NatureDataset5/val2/2-meadows304.jpg
+2.0
+Reading ./databaserelease2/NatureDataset5/val2/4-meadows261.jpg
+4.0
+Reading ./databaserelease2/NatureDataset5/val2/3-meadows148.jpg
+3.0
+Reading ./databaserelease2/NatureDataset5/val2/2-meadows386.jpg
+2.0
+Reading ./databaserelease2/NatureDataset5/val2/2-meadows293.jpg
+2.0
+Reading ./databaserelease2/NatureDataset5/val2/3-meadows297.jpg
+3.0
+Reading ./databaserelease2/NatureDataset5/val2/3-meadows3.jpg
+3.0
+Reading ./databaserelease2/NatureDataset5/val2/4-meadows240.jpg
+4.0
+Reading ./databaserelease2/NatureDataset5/val2/2-meadows55.jpg
+2.0
+Reading ./databaserelease2/NatureDataset5/val2/4-meadows154.jpg
+4.0
+Reading ./databaserelease2/NatureDataset5/val2/2-meadows450.jpg
+2.0
+Reading ./databaserelease2/NatureDataset5/val2/2-meadows290.jpg
+2.0
+Reading ./databaserelease2/NatureDataset5/val2/3-meadows13.jpg
+3.0
+Reading ./databaserelease2/NatureDataset5/val2/2-meadows14.jpg
+2.0
+Reading ./databaserelease2/NatureDataset5/val2/3-meadows180.jpg
+3.0
+Reading ./databaserelease2/NatureDataset5/val2/4-meadows51.jpg
+4.0
+Reading ./databaserelease2/NatureDataset5/val2/2-meadows50.jpg
+2.0
+Reading ./databaserelease2/NatureDataset5/val2/3-meadows63.jpg
+3.0
+Reading ./databaserelease2/NatureDataset5/val2/3-meadows260.jpg
+3.0
+Reading ./databaserelease2/NatureDataset5/val2/3-meadows71.jpg
+3.0
+Reading ./databaserelease2/NatureDataset5/val2/3-meadows405.jpg
+3.0
+Reading ./databaserelease2/NatureDataset5/val2/3-meadows194.jpg
+3.0
+Reading ./databaserelease2/NatureDataset5/val2/3-meadows429.jpg
+3.0
+Reading ./databaserelease2/NatureDataset5/val2/2-meadows480.jpg
+2.0
+Reading ./databaserelease2/NatureDataset5/val2/3-meadows200.jpg
+3.0
+Reading ./databaserelease2/NatureDataset5/val2/2-meadows54.jpg
+2.0
+Reading ./databaserelease2/NatureDataset5/val2/4-meadows176.jpg
+4.0
+Reading ./databaserelease2/NatureDataset5/val2/3-meadows306.jpg
+3.0
+Reading ./databaserelease2/NatureDataset5/val2/2-meadows321.jpg
+2.0
+Reading ./databaserelease2/NatureDataset5/val2/4-meadows485.jpg
+4.0
+Reading ./databaserelease2/NatureDataset5/val2/4-meadows311.jpg
+4.0
+Reading ./databaserelease2/NatureDataset5/val2/1-meadows376.jpg
+1.0
+Reading ./databaserelease2/NatureDataset5/val2/3-meadows169.jpg
+3.0
+Reading ./databaserelease2/NatureDataset5/val2/2-meadows199.jpg
+2.0
+Reading ./databaserelease2/NatureDataset5/val2/4-meadows409.jpg
+4.0
+Reading ./databaserelease2/NatureDataset5/val2/2-meadows413.jpg
+2.0
+
+Read 52 images.
+
+
+Epoch 1/380
+2021-11-03 17:59:18.997103: I tensorflow/core/profiler/lib/profiler_session.cc:131] Profiler session initializing.
+2021-11-03 17:59:18.997148: I tensorflow/core/profiler/lib/profiler_session.cc:146] Profiler session started.
+2021-11-03 17:59:18.997199: E tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1666] function cupti_interface_->Subscribe( &subscriber_, (CUpti_CallbackFunc)ApiCallback, this)failed with error CUPTI could not be loaded or symbol could not be found.
+2021-11-03 17:59:19.322021: I tensorflow/core/profiler/lib/profiler_session.cc:66] Profiler session collecting data.
+2021-11-03 17:59:19.322094: E tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1757] function cupti_interface_->Finalize()failed with error CUPTI could not be loaded or symbol could not be found.
+2021-11-03 17:59:19.330818: I tensorflow/core/profiler/internal/gpu/cupti_collector.cc:673]  GpuTracer has collected 0 callback api events and 0 activity events. 
+2021-11-03 17:59:19.332700: I tensorflow/core/profiler/lib/profiler_session.cc:164] Profiler session tear down.
+2021-11-03 17:59:19.831125: I tensorflow/core/profiler/rpc/client/save_profile.cc:136] Creating directory: agnet.specialmodel2.3.batchnormalization.singleout.tensorboard.logs/fit/20211103-175809/train/plugins/profile/2021_11_03_17_59_19
+
+2021-11-03 17:59:19.875100: I tensorflow/core/profiler/rpc/client/save_profile.cc:142] Dumped gzipped tool data for trace.json.gz to agnet.specialmodel2.3.batchnormalization.singleout.tensorboard.logs/fit/20211103-175809/train/plugins/profile/2021_11_03_17_59_19/nodegpu003.hpc.fau.edu.trace.json.gz
+2021-11-03 17:59:19.902413: I tensorflow/core/profiler/rpc/client/save_profile.cc:136] Creating directory: agnet.specialmodel2.3.batchnormalization.singleout.tensorboard.logs/fit/20211103-175809/train/plugins/profile/2021_11_03_17_59_19
+
+2021-11-03 17:59:20.131445: I tensorflow/core/profiler/rpc/client/save_profile.cc:142] Dumped gzipped tool data for memory_profile.json.gz to agnet.specialmodel2.3.batchnormalization.singleout.tensorboard.logs/fit/20211103-175809/train/plugins/profile/2021_11_03_17_59_19/nodegpu003.hpc.fau.edu.memory_profile.json.gz
+2021-11-03 17:59:20.466494: I tensorflow/core/profiler/rpc/client/capture_profile.cc:251] Creating directory: agnet.specialmodel2.3.batchnormalization.singleout.tensorboard.logs/fit/20211103-175809/train/plugins/profile/2021_11_03_17_59_19
+Dumped tool data for xplane.pb to agnet.specialmodel2.3.batchnormalization.singleout.tensorboard.logs/fit/20211103-175809/train/plugins/profile/2021_11_03_17_59_19/nodegpu003.hpc.fau.edu.xplane.pb
+Dumped tool data for overview_page.pb to agnet.specialmodel2.3.batchnormalization.singleout.tensorboard.logs/fit/20211103-175809/train/plugins/profile/2021_11_03_17_59_19/nodegpu003.hpc.fau.edu.overview_page.pb
+Dumped tool data for input_pipeline.pb to agnet.specialmodel2.3.batchnormalization.singleout.tensorboard.logs/fit/20211103-175809/train/plugins/profile/2021_11_03_17_59_19/nodegpu003.hpc.fau.edu.input_pipeline.pb
+Dumped tool data for tensorflow_stats.pb to agnet.specialmodel2.3.batchnormalization.singleout.tensorboard.logs/fit/20211103-175809/train/plugins/profile/2021_11_03_17_59_19/nodegpu003.hpc.fau.edu.tensorflow_stats.pb
+Dumped tool data for kernel_stats.pb to agnet.specialmodel2.3.batchnormalization.singleout.tensorboard.logs/fit/20211103-175809/train/plugins/profile/2021_11_03_17_59_19/nodegpu003.hpc.fau.edu.kernel_stats.pb
+
+WARNING:tensorflow:Callback method `on_train_batch_end` is slow compared to the batch time (batch time: 0.1683s vs `on_train_batch_end` time: 0.3269s). Check your callbacks.
+ 1/19 [>.............................] - ETA: 7:00 - loss: 22.4850 - accuracy: 0.0000e+00 2/19 [==>...........................] - ETA: 6s - loss: 73717792768.0000 - accuracy: 0.1000 3/19 [===>..........................] - ETA: 14s - loss: nan - accuracy: 0.0667             4/19 [=====>........................] - ETA: 10s - loss: nan - accuracy: 0.0500 5/19 [======>.......................] - ETA: 8s - loss: nan - accuracy: 0.0400  6/19 [========>.....................] - ETA: 7s - loss: nan - accuracy: 0.0333 7/19 [==========>...................] - ETA: 6s - loss: nan - accuracy: 0.0286 8/19 [===========>..................] - ETA: 5s - loss: nan - accuracy: 0.0250 9/19 [=============>................] - ETA: 4s - loss: nan - accuracy: 0.022210/19 [==============>...............] - ETA: 4s - loss: nan - accuracy: 0.020011/19 [================>.............] - ETA: 3s - loss: nan - accuracy: 0.018212/19 [=================>............] - ETA: 2s - loss: nan - accuracy: 0.016713/19 [===================>..........] - ETA: 2s - loss: nan - accuracy: 0.015414/19 [=====================>........] - ETA: 2s - loss: nan - accuracy: 0.014315/19 [======================>.......] - ETA: 1s - loss: nan - accuracy: 0.013316/19 [========================>.....] - ETA: 1s - loss: nan - accuracy: 0.012517/19 [=========================>....] - ETA: 0s - loss: nan - accuracy: 0.011818/19 [===========================>..] - ETA: 0s - loss: nan - accuracy: 0.011119/19 [==============================] - ETA: 0s - loss: nan - accuracy: 0.011019/19 [==============================] - 43s 1s/step - loss: nan - accuracy: 0.0110 - val_loss: nan - val_accuracy: 0.0000e+00
+The temperature of the GPU is  37
+Epoch 2/380
+ 1/19 [>.............................] - ETA: 6s - loss: nan - accuracy: 0.0000e+00 2/19 [==>...........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 3/19 [===>..........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 4/19 [=====>........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 5/19 [======>.......................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 6/19 [========>.....................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 7/19 [==========>...................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 8/19 [===========>..................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 9/19 [=============>................] - ETA: 3s - loss: nan - accuracy: 0.0000e+0010/19 [==============>...............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0011/19 [================>.............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0012/19 [=================>............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0013/19 [===================>..........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0014/19 [=====================>........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0015/19 [======================>.......] - ETA: 1s - loss: nan - accuracy: 0.0000e+0016/19 [========================>.....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0017/19 [=========================>....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0018/19 [===========================>..] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - 6s 332ms/step - loss: nan - accuracy: 0.0000e+00 - val_loss: nan - val_accuracy: 0.0000e+00
+The temperature of the GPU is  45
+Epoch 3/380
+ 1/19 [>.............................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 2/19 [==>...........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 3/19 [===>..........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 4/19 [=====>........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 5/19 [======>.......................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 6/19 [========>.....................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 7/19 [==========>...................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 8/19 [===========>..................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 9/19 [=============>................] - ETA: 3s - loss: nan - accuracy: 0.0000e+0010/19 [==============>...............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0011/19 [================>.............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0012/19 [=================>............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0013/19 [===================>..........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0014/19 [=====================>........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0015/19 [======================>.......] - ETA: 1s - loss: nan - accuracy: 0.0000e+0016/19 [========================>.....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0017/19 [=========================>....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0018/19 [===========================>..] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - 6s 332ms/step - loss: nan - accuracy: 0.0000e+00 - val_loss: nan - val_accuracy: 0.0000e+00
+The temperature of the GPU is  48
+Epoch 4/380
+ 1/19 [>.............................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 2/19 [==>...........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 3/19 [===>..........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 4/19 [=====>........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 5/19 [======>.......................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 6/19 [========>.....................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 7/19 [==========>...................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 8/19 [===========>..................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 9/19 [=============>................] - ETA: 3s - loss: nan - accuracy: 0.0000e+0010/19 [==============>...............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0011/19 [================>.............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0012/19 [=================>............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0013/19 [===================>..........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0014/19 [=====================>........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0015/19 [======================>.......] - ETA: 1s - loss: nan - accuracy: 0.0000e+0016/19 [========================>.....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0017/19 [=========================>....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0018/19 [===========================>..] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - 6s 333ms/step - loss: nan - accuracy: 0.0000e+00 - val_loss: nan - val_accuracy: 0.0000e+00
+The temperature of the GPU is  49
+Epoch 5/380
+ 1/19 [>.............................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 2/19 [==>...........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 3/19 [===>..........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 4/19 [=====>........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 5/19 [======>.......................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 6/19 [========>.....................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 7/19 [==========>...................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 8/19 [===========>..................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 9/19 [=============>................] - ETA: 3s - loss: nan - accuracy: 0.0000e+0010/19 [==============>...............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0011/19 [================>.............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0012/19 [=================>............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0013/19 [===================>..........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0014/19 [=====================>........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0015/19 [======================>.......] - ETA: 1s - loss: nan - accuracy: 0.0000e+0016/19 [========================>.....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0017/19 [=========================>....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0018/19 [===========================>..] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - 6s 333ms/step - loss: nan - accuracy: 0.0000e+00 - val_loss: nan - val_accuracy: 0.0000e+00
+The temperature of the GPU is  50
+Epoch 6/380
+ 1/19 [>.............................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 2/19 [==>...........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 3/19 [===>..........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 4/19 [=====>........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 5/19 [======>.......................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 6/19 [========>.....................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 7/19 [==========>...................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 8/19 [===========>..................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 9/19 [=============>................] - ETA: 3s - loss: nan - accuracy: 0.0000e+0010/19 [==============>...............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0011/19 [================>.............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0012/19 [=================>............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0013/19 [===================>..........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0014/19 [=====================>........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0015/19 [======================>.......] - ETA: 1s - loss: nan - accuracy: 0.0000e+0016/19 [========================>.....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0017/19 [=========================>....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0018/19 [===========================>..] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - 6s 333ms/step - loss: nan - accuracy: 0.0000e+00 - val_loss: nan - val_accuracy: 0.0000e+00
+The temperature of the GPU is  52
+Epoch 7/380
+ 1/19 [>.............................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 2/19 [==>...........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 3/19 [===>..........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 4/19 [=====>........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 5/19 [======>.......................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 6/19 [========>.....................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 7/19 [==========>...................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 8/19 [===========>..................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 9/19 [=============>................] - ETA: 3s - loss: nan - accuracy: 0.0000e+0010/19 [==============>...............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0011/19 [================>.............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0012/19 [=================>............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0013/19 [===================>..........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0014/19 [=====================>........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0015/19 [======================>.......] - ETA: 1s - loss: nan - accuracy: 0.0000e+0016/19 [========================>.....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0017/19 [=========================>....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0018/19 [===========================>..] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - 6s 333ms/step - loss: nan - accuracy: 0.0000e+00 - val_loss: nan - val_accuracy: 0.0000e+00
+The temperature of the GPU is  52
+Epoch 8/380
+ 1/19 [>.............................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 2/19 [==>...........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 3/19 [===>..........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 4/19 [=====>........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 5/19 [======>.......................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 6/19 [========>.....................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 7/19 [==========>...................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 8/19 [===========>..................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 9/19 [=============>................] - ETA: 3s - loss: nan - accuracy: 0.0000e+0010/19 [==============>...............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0011/19 [================>.............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0012/19 [=================>............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0013/19 [===================>..........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0014/19 [=====================>........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0015/19 [======================>.......] - ETA: 1s - loss: nan - accuracy: 0.0000e+0016/19 [========================>.....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0017/19 [=========================>....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0018/19 [===========================>..] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - 6s 334ms/step - loss: nan - accuracy: 0.0000e+00 - val_loss: nan - val_accuracy: 0.0000e+00
+The temperature of the GPU is  53
+Epoch 9/380
+ 1/19 [>.............................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 2/19 [==>...........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 3/19 [===>..........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 4/19 [=====>........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 5/19 [======>.......................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 6/19 [========>.....................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 7/19 [==========>...................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 8/19 [===========>..................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 9/19 [=============>................] - ETA: 3s - loss: nan - accuracy: 0.0000e+0010/19 [==============>...............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0011/19 [================>.............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0012/19 [=================>............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0013/19 [===================>..........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0014/19 [=====================>........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0015/19 [======================>.......] - ETA: 1s - loss: nan - accuracy: 0.0000e+0016/19 [========================>.....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0017/19 [=========================>....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0018/19 [===========================>..] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - 6s 333ms/step - loss: nan - accuracy: 0.0000e+00 - val_loss: nan - val_accuracy: 0.0000e+00
+The temperature of the GPU is  57
+Epoch 10/380
+ 1/19 [>.............................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 2/19 [==>...........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 3/19 [===>..........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 4/19 [=====>........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 5/19 [======>.......................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 6/19 [========>.....................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 7/19 [==========>...................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 8/19 [===========>..................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 9/19 [=============>................] - ETA: 3s - loss: nan - accuracy: 0.0000e+0010/19 [==============>...............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0011/19 [================>.............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0012/19 [=================>............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0013/19 [===================>..........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0014/19 [=====================>........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0015/19 [======================>.......] - ETA: 1s - loss: nan - accuracy: 0.0000e+0016/19 [========================>.....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0017/19 [=========================>....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0018/19 [===========================>..] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - 6s 334ms/step - loss: nan - accuracy: 0.0000e+00 - val_loss: nan - val_accuracy: 0.0000e+00
+The temperature of the GPU is  56
+Epoch 11/380
+ 1/19 [>.............................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 2/19 [==>...........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 3/19 [===>..........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 4/19 [=====>........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 5/19 [======>.......................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 6/19 [========>.....................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 7/19 [==========>...................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 8/19 [===========>..................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 9/19 [=============>................] - ETA: 3s - loss: nan - accuracy: 0.0000e+0010/19 [==============>...............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0011/19 [================>.............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0012/19 [=================>............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0013/19 [===================>..........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0014/19 [=====================>........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0015/19 [======================>.......] - ETA: 1s - loss: nan - accuracy: 0.0000e+0016/19 [========================>.....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0017/19 [=========================>....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0018/19 [===========================>..] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - 6s 334ms/step - loss: nan - accuracy: 0.0000e+00 - val_loss: nan - val_accuracy: 0.0000e+00
+The temperature of the GPU is  56
+Epoch 12/380
+ 1/19 [>.............................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 2/19 [==>...........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 3/19 [===>..........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 4/19 [=====>........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 5/19 [======>.......................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 6/19 [========>.....................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 7/19 [==========>...................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 8/19 [===========>..................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 9/19 [=============>................] - ETA: 3s - loss: nan - accuracy: 0.0000e+0010/19 [==============>...............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0011/19 [================>.............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0012/19 [=================>............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0013/19 [===================>..........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0014/19 [=====================>........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0015/19 [======================>.......] - ETA: 1s - loss: nan - accuracy: 0.0000e+0016/19 [========================>.....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0017/19 [=========================>....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0018/19 [===========================>..] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - 6s 334ms/step - loss: nan - accuracy: 0.0000e+00 - val_loss: nan - val_accuracy: 0.0000e+00
+The temperature of the GPU is  59
+Epoch 13/380
+ 1/19 [>.............................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 2/19 [==>...........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 3/19 [===>..........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 4/19 [=====>........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 5/19 [======>.......................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 6/19 [========>.....................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 7/19 [==========>...................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 8/19 [===========>..................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 9/19 [=============>................] - ETA: 3s - loss: nan - accuracy: 0.0000e+0010/19 [==============>...............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0011/19 [================>.............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0012/19 [=================>............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0013/19 [===================>..........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0014/19 [=====================>........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0015/19 [======================>.......] - ETA: 1s - loss: nan - accuracy: 0.0000e+0016/19 [========================>.....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0017/19 [=========================>....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0018/19 [===========================>..] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - 6s 334ms/step - loss: nan - accuracy: 0.0000e+00 - val_loss: nan - val_accuracy: 0.0000e+00
+The temperature of the GPU is  58
+Epoch 14/380
+ 1/19 [>.............................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 2/19 [==>...........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 3/19 [===>..........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 4/19 [=====>........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 5/19 [======>.......................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 6/19 [========>.....................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 7/19 [==========>...................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 8/19 [===========>..................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 9/19 [=============>................] - ETA: 3s - loss: nan - accuracy: 0.0000e+0010/19 [==============>...............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0011/19 [================>.............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0012/19 [=================>............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0013/19 [===================>..........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0014/19 [=====================>........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0015/19 [======================>.......] - ETA: 1s - loss: nan - accuracy: 0.0000e+0016/19 [========================>.....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0017/19 [=========================>....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0018/19 [===========================>..] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - 6s 334ms/step - loss: nan - accuracy: 0.0000e+00 - val_loss: nan - val_accuracy: 0.0000e+00
+The temperature of the GPU is  59
+Epoch 15/380
+ 1/19 [>.............................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 2/19 [==>...........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 3/19 [===>..........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 4/19 [=====>........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 5/19 [======>.......................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 6/19 [========>.....................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 7/19 [==========>...................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 8/19 [===========>..................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 9/19 [=============>................] - ETA: 3s - loss: nan - accuracy: 0.0000e+0010/19 [==============>...............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0011/19 [================>.............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0012/19 [=================>............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0013/19 [===================>..........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0014/19 [=====================>........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0015/19 [======================>.......] - ETA: 1s - loss: nan - accuracy: 0.0000e+0016/19 [========================>.....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0017/19 [=========================>....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0018/19 [===========================>..] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - 6s 334ms/step - loss: nan - accuracy: 0.0000e+00 - val_loss: nan - val_accuracy: 0.0000e+00
+The temperature of the GPU is  61
+Epoch 16/380
+ 1/19 [>.............................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 2/19 [==>...........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 3/19 [===>..........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 4/19 [=====>........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 5/19 [======>.......................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 6/19 [========>.....................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 7/19 [==========>...................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 8/19 [===========>..................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 9/19 [=============>................] - ETA: 3s - loss: nan - accuracy: 0.0000e+0010/19 [==============>...............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0011/19 [================>.............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0012/19 [=================>............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0013/19 [===================>..........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0014/19 [=====================>........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0015/19 [======================>.......] - ETA: 1s - loss: nan - accuracy: 0.0000e+0016/19 [========================>.....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0017/19 [=========================>....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0018/19 [===========================>..] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - 6s 334ms/step - loss: nan - accuracy: 0.0000e+00 - val_loss: nan - val_accuracy: 0.0000e+00
+The temperature of the GPU is  60
+Epoch 17/380
+ 1/19 [>.............................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 2/19 [==>...........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 3/19 [===>..........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 4/19 [=====>........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 5/19 [======>.......................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 6/19 [========>.....................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 7/19 [==========>...................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 8/19 [===========>..................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 9/19 [=============>................] - ETA: 3s - loss: nan - accuracy: 0.0000e+0010/19 [==============>...............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0011/19 [================>.............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0012/19 [=================>............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0013/19 [===================>..........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0014/19 [=====================>........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0015/19 [======================>.......] - ETA: 1s - loss: nan - accuracy: 0.0000e+0016/19 [========================>.....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0017/19 [=========================>....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0018/19 [===========================>..] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - 6s 334ms/step - loss: nan - accuracy: 0.0000e+00 - val_loss: nan - val_accuracy: 0.0000e+00
+The temperature of the GPU is  61
+Epoch 18/380
+ 1/19 [>.............................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 2/19 [==>...........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 3/19 [===>..........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 4/19 [=====>........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 5/19 [======>.......................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 6/19 [========>.....................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 7/19 [==========>...................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 8/19 [===========>..................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 9/19 [=============>................] - ETA: 3s - loss: nan - accuracy: 0.0000e+0010/19 [==============>...............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0011/19 [================>.............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0012/19 [=================>............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0013/19 [===================>..........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0014/19 [=====================>........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0015/19 [======================>.......] - ETA: 1s - loss: nan - accuracy: 0.0000e+0016/19 [========================>.....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0017/19 [=========================>....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0018/19 [===========================>..] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - 6s 334ms/step - loss: nan - accuracy: 0.0000e+00 - val_loss: nan - val_accuracy: 0.0000e+00
+The temperature of the GPU is  61
+Epoch 19/380
+ 1/19 [>.............................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 2/19 [==>...........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 3/19 [===>..........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 4/19 [=====>........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 5/19 [======>.......................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 6/19 [========>.....................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 7/19 [==========>...................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 8/19 [===========>..................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 9/19 [=============>................] - ETA: 3s - loss: nan - accuracy: 0.0000e+0010/19 [==============>...............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0011/19 [================>.............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0012/19 [=================>............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0013/19 [===================>..........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0014/19 [=====================>........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0015/19 [======================>.......] - ETA: 1s - loss: nan - accuracy: 0.0000e+0016/19 [========================>.....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0017/19 [=========================>....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0018/19 [===========================>..] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - 6s 335ms/step - loss: nan - accuracy: 0.0000e+00 - val_loss: nan - val_accuracy: 0.0000e+00
+The temperature of the GPU is  62
+Epoch 20/380
+ 1/19 [>.............................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 2/19 [==>...........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 3/19 [===>..........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 4/19 [=====>........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 5/19 [======>.......................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 6/19 [========>.....................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 7/19 [==========>...................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 8/19 [===========>..................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 9/19 [=============>................] - ETA: 3s - loss: nan - accuracy: 0.0000e+0010/19 [==============>...............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0011/19 [================>.............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0012/19 [=================>............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0013/19 [===================>..........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0014/19 [=====================>........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0015/19 [======================>.......] - ETA: 1s - loss: nan - accuracy: 0.0000e+0016/19 [========================>.....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0017/19 [=========================>....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0018/19 [===========================>..] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - 6s 335ms/step - loss: nan - accuracy: 0.0000e+00 - val_loss: nan - val_accuracy: 0.0000e+00
+The temperature of the GPU is  62
+Epoch 21/380
+ 1/19 [>.............................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 2/19 [==>...........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 3/19 [===>..........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 4/19 [=====>........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 5/19 [======>.......................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 6/19 [========>.....................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 7/19 [==========>...................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 8/19 [===========>..................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 9/19 [=============>................] - ETA: 3s - loss: nan - accuracy: 0.0000e+0010/19 [==============>...............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0011/19 [================>.............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0012/19 [=================>............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0013/19 [===================>..........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0014/19 [=====================>........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0015/19 [======================>.......] - ETA: 1s - loss: nan - accuracy: 0.0000e+0016/19 [========================>.....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0017/19 [=========================>....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0018/19 [===========================>..] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - 6s 335ms/step - loss: nan - accuracy: 0.0000e+00 - val_loss: nan - val_accuracy: 0.0000e+00
+The temperature of the GPU is  63
+Epoch 22/380
+ 1/19 [>.............................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 2/19 [==>...........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 3/19 [===>..........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 4/19 [=====>........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 5/19 [======>.......................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 6/19 [========>.....................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 7/19 [==========>...................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 8/19 [===========>..................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 9/19 [=============>................] - ETA: 3s - loss: nan - accuracy: 0.0000e+0010/19 [==============>...............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0011/19 [================>.............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0012/19 [=================>............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0013/19 [===================>..........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0014/19 [=====================>........] - ETA: 1s - loss: nan - accuracy: 0.0000e+0015/19 [======================>.......] - ETA: 1s - loss: nan - accuracy: 0.0000e+0016/19 [========================>.....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0017/19 [=========================>....] - ETA: 0s - loss: nan - accuracy: 0.0000e+0018/19 [===========================>..] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - ETA: 0s - loss: nan - accuracy: 0.0000e+0019/19 [==============================] - 6s 335ms/step - loss: nan - accuracy: 0.0000e+00 - val_loss: nan - val_accuracy: 0.0000e+00
+The temperature of the GPU is  63
+Epoch 23/380
+ 1/19 [>.............................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 2/19 [==>...........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 3/19 [===>..........................] - ETA: 5s - loss: nan - accuracy: 0.0000e+00 4/19 [=====>........................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 5/19 [======>.......................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 6/19 [========>.....................] - ETA: 4s - loss: nan - accuracy: 0.0000e+00 7/19 [==========>...................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 8/19 [===========>..................] - ETA: 3s - loss: nan - accuracy: 0.0000e+00 9/19 [=============>................] - ETA: 3s - loss: nan - accuracy: 0.0000e+0010/19 [==============>...............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0011/19 [================>.............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0012/19 [=================>............] - ETA: 2s - loss: nan - accuracy: 0.0000e+0013/19 [===================>..........] - ETsrun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 802716.0 ON nodegpu003 CANCELLED AT 2021-11-03T18:01:59 ***
+slurmstepd: error: *** JOB 802716 ON nodegpu003 CANCELLED AT 2021-11-03T18:01:59 ***
+srun: got SIGCONT
+srun: forcing job termination

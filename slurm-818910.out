@@ -1,0 +1,805 @@
+2021-11-10 13:25:45.222253: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-11-10 13:25:46.138159: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38426 MB memory:  -> device: 0, name: A100-PCIE-40GB, pci bus id: 0000:21:00.0, compute capability: 8.0
+Input file is " ./agnet.15.res.checkpoint
+Output file is " 
+Image path is " ./databaserelease2/MixedDataset/test
+--------------------
+
+
+Model Loaded
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 1024, 680, 3 0                                            
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 165, 162, 96) 352896      input_1[0][0]                    
+__________________________________________________________________________________________________
+conv2d_20 (Conv2D)              (None, 170, 168, 96) 23424       input_1[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 165, 162, 96) 384         conv2d[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_20 (BatchNo (None, 170, 168, 96) 384         conv2d_20[0][0]                  
+__________________________________________________________________________________________________
+activation (Activation)         (None, 165, 162, 96) 0           batch_normalization[0][0]        
+__________________________________________________________________________________________________
+activation_15 (Activation)      (None, 170, 168, 96) 0           batch_normalization_20[0][0]     
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 164, 161, 192 73920       activation[0][0]                 
+__________________________________________________________________________________________________
+conv2d_21 (Conv2D)              (None, 169, 167, 192 73920       activation_15[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 164, 161, 192 768         conv2d_1[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_21 (BatchNo (None, 169, 167, 192 768         conv2d_21[0][0]                  
+__________________________________________________________________________________________________
+activation_1 (Activation)       (None, 164, 161, 192 0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+activation_16 (Activation)      (None, 169, 167, 192 0           batch_normalization_21[0][0]     
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, 163, 160, 384 295296      activation_1[0][0]               
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, 163, 160, 384 332160      activation[0][0]                 
+__________________________________________________________________________________________________
+conv2d_22 (Conv2D)              (None, 168, 166, 384 295296      activation_16[0][0]              
+__________________________________________________________________________________________________
+conv2d_23 (Conv2D)              (None, 168, 166, 384 332160      activation_15[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 163, 160, 384 1536        conv2d_2[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 163, 160, 384 1536        conv2d_3[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_22 (BatchNo (None, 168, 166, 384 1536        conv2d_22[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_23 (BatchNo (None, 168, 166, 384 1536        conv2d_23[0][0]                  
+__________________________________________________________________________________________________
+add (Add)                       (None, 163, 160, 384 0           batch_normalization_2[0][0]      
+                                                                 batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+add_5 (Add)                     (None, 168, 166, 384 0           batch_normalization_22[0][0]     
+                                                                 batch_normalization_23[0][0]     
+__________________________________________________________________________________________________
+activation_2 (Activation)       (None, 163, 160, 384 0           add[0][0]                        
+__________________________________________________________________________________________________
+activation_17 (Activation)      (None, 168, 166, 384 0           add_5[0][0]                      
+__________________________________________________________________________________________________
+conv2d_4 (Conv2D)               (None, 78, 76, 384)  11944320    activation_2[0][0]               
+__________________________________________________________________________________________________
+conv2d_24 (Conv2D)              (None, 81, 80, 384)  7225728     activation_17[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 78, 76, 384)  1536        conv2d_4[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_24 (BatchNo (None, 81, 80, 384)  1536        conv2d_24[0][0]                  
+__________________________________________________________________________________________________
+activation_3 (Activation)       (None, 78, 76, 384)  0           batch_normalization_4[0][0]      
+__________________________________________________________________________________________________
+activation_18 (Activation)      (None, 81, 80, 384)  0           batch_normalization_24[0][0]     
+__________________________________________________________________________________________________
+conv2d_5 (Conv2D)               (None, 77, 75, 192)  295104      activation_3[0][0]               
+__________________________________________________________________________________________________
+conv2d_25 (Conv2D)              (None, 80, 79, 192)  295104      activation_18[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 77, 75, 192)  768         conv2d_5[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_25 (BatchNo (None, 80, 79, 192)  768         conv2d_25[0][0]                  
+__________________________________________________________________________________________________
+activation_4 (Activation)       (None, 77, 75, 192)  0           batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+activation_19 (Activation)      (None, 80, 79, 192)  0           batch_normalization_25[0][0]     
+__________________________________________________________________________________________________
+conv2d_6 (Conv2D)               (None, 76, 74, 96)   73824       activation_4[0][0]               
+__________________________________________________________________________________________________
+conv2d_7 (Conv2D)               (None, 76, 74, 96)   331872      activation_3[0][0]               
+__________________________________________________________________________________________________
+conv2d_26 (Conv2D)              (None, 79, 78, 96)   73824       activation_19[0][0]              
+__________________________________________________________________________________________________
+conv2d_27 (Conv2D)              (None, 79, 78, 96)   331872      activation_18[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 76, 74, 96)   384         conv2d_6[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 76, 74, 96)   384         conv2d_7[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_26 (BatchNo (None, 79, 78, 96)   384         conv2d_26[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_27 (BatchNo (None, 79, 78, 96)   384         conv2d_27[0][0]                  
+__________________________________________________________________________________________________
+add_1 (Add)                     (None, 76, 74, 96)   0           batch_normalization_6[0][0]      
+                                                                 batch_normalization_7[0][0]      
+__________________________________________________________________________________________________
+add_6 (Add)                     (None, 79, 78, 96)   0           batch_normalization_26[0][0]     
+                                                                 batch_normalization_27[0][0]     
+__________________________________________________________________________________________________
+activation_5 (Activation)       (None, 76, 74, 96)   0           add_1[0][0]                      
+__________________________________________________________________________________________________
+activation_20 (Activation)      (None, 79, 78, 96)   0           add_6[0][0]                      
+__________________________________________________________________________________________________
+conv2d_8 (Conv2D)               (None, 36, 35, 384)  921984      activation_5[0][0]               
+__________________________________________________________________________________________________
+conv2d_28 (Conv2D)              (None, 38, 37, 384)  921984      activation_20[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_8 (BatchNor (None, 36, 35, 384)  1536        conv2d_8[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_28 (BatchNo (None, 38, 37, 384)  1536        conv2d_28[0][0]                  
+__________________________________________________________________________________________________
+activation_6 (Activation)       (None, 36, 35, 384)  0           batch_normalization_8[0][0]      
+__________________________________________________________________________________________________
+activation_21 (Activation)      (None, 38, 37, 384)  0           batch_normalization_28[0][0]     
+__________________________________________________________________________________________________
+conv2d_9 (Conv2D)               (None, 35, 34, 768)  1180416     activation_6[0][0]               
+__________________________________________________________________________________________________
+conv2d_29 (Conv2D)              (None, 37, 36, 768)  1180416     activation_21[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_9 (BatchNor (None, 35, 34, 768)  3072        conv2d_9[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_29 (BatchNo (None, 37, 36, 768)  3072        conv2d_29[0][0]                  
+__________________________________________________________________________________________________
+activation_7 (Activation)       (None, 35, 34, 768)  0           batch_normalization_9[0][0]      
+__________________________________________________________________________________________________
+activation_22 (Activation)      (None, 37, 36, 768)  0           batch_normalization_29[0][0]     
+__________________________________________________________________________________________________
+conv2d_10 (Conv2D)              (None, 34, 33, 1536) 4720128     activation_7[0][0]               
+__________________________________________________________________________________________________
+conv2d_11 (Conv2D)              (None, 34, 33, 1536) 5309952     activation_6[0][0]               
+__________________________________________________________________________________________________
+conv2d_30 (Conv2D)              (None, 36, 35, 1536) 4720128     activation_22[0][0]              
+__________________________________________________________________________________________________
+conv2d_31 (Conv2D)              (None, 36, 35, 1536) 5309952     activation_21[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_10 (BatchNo (None, 34, 33, 1536) 6144        conv2d_10[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_11 (BatchNo (None, 34, 33, 1536) 6144        conv2d_11[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_30 (BatchNo (None, 36, 35, 1536) 6144        conv2d_30[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_31 (BatchNo (None, 36, 35, 1536) 6144        conv2d_31[0][0]                  
+__________________________________________________________________________________________________
+add_2 (Add)                     (None, 34, 33, 1536) 0           batch_normalization_10[0][0]     
+                                                                 batch_normalization_11[0][0]     
+__________________________________________________________________________________________________
+add_7 (Add)                     (None, 36, 35, 1536) 0           batch_normalization_30[0][0]     
+                                                                 batch_normalization_31[0][0]     
+__________________________________________________________________________________________________
+activation_8 (Activation)       (None, 34, 33, 1536) 0           add_2[0][0]                      
+__________________________________________________________________________________________________
+activation_23 (Activation)      (None, 36, 35, 1536) 0           add_7[0][0]                      
+__________________________________________________________________________________________________
+conv2d_12 (Conv2D)              (None, 16, 16, 384)  5308800     activation_8[0][0]               
+__________________________________________________________________________________________________
+conv2d_32 (Conv2D)              (None, 17, 17, 384)  5308800     activation_23[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_12 (BatchNo (None, 16, 16, 384)  1536        conv2d_12[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_32 (BatchNo (None, 17, 17, 384)  1536        conv2d_32[0][0]                  
+__________________________________________________________________________________________________
+activation_9 (Activation)       (None, 16, 16, 384)  0           batch_normalization_12[0][0]     
+__________________________________________________________________________________________________
+activation_24 (Activation)      (None, 17, 17, 384)  0           batch_normalization_32[0][0]     
+__________________________________________________________________________________________________
+conv2d_13 (Conv2D)              (None, 15, 15, 192)  295104      activation_9[0][0]               
+__________________________________________________________________________________________________
+conv2d_33 (Conv2D)              (None, 16, 16, 192)  295104      activation_24[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_13 (BatchNo (None, 15, 15, 192)  768         conv2d_13[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_33 (BatchNo (None, 16, 16, 192)  768         conv2d_33[0][0]                  
+__________________________________________________________________________________________________
+activation_10 (Activation)      (None, 15, 15, 192)  0           batch_normalization_13[0][0]     
+__________________________________________________________________________________________________
+activation_25 (Activation)      (None, 16, 16, 192)  0           batch_normalization_33[0][0]     
+__________________________________________________________________________________________________
+conv2d_14 (Conv2D)              (None, 14, 14, 96)   73824       activation_10[0][0]              
+__________________________________________________________________________________________________
+conv2d_15 (Conv2D)              (None, 14, 14, 96)   331872      activation_9[0][0]               
+__________________________________________________________________________________________________
+conv2d_34 (Conv2D)              (None, 15, 15, 96)   73824       activation_25[0][0]              
+__________________________________________________________________________________________________
+conv2d_35 (Conv2D)              (None, 15, 15, 96)   331872      activation_24[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_14 (BatchNo (None, 14, 14, 96)   384         conv2d_14[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_15 (BatchNo (None, 14, 14, 96)   384         conv2d_15[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_34 (BatchNo (None, 15, 15, 96)   384         conv2d_34[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_35 (BatchNo (None, 15, 15, 96)   384         conv2d_35[0][0]                  
+__________________________________________________________________________________________________
+add_3 (Add)                     (None, 14, 14, 96)   0           batch_normalization_14[0][0]     
+                                                                 batch_normalization_15[0][0]     
+__________________________________________________________________________________________________
+add_8 (Add)                     (None, 15, 15, 96)   0           batch_normalization_34[0][0]     
+                                                                 batch_normalization_35[0][0]     
+__________________________________________________________________________________________________
+activation_11 (Activation)      (None, 14, 14, 96)   0           add_3[0][0]                      
+__________________________________________________________________________________________________
+activation_26 (Activation)      (None, 15, 15, 96)   0           add_8[0][0]                      
+__________________________________________________________________________________________________
+conv2d_16 (Conv2D)              (None, 6, 6, 160)    138400      activation_11[0][0]              
+__________________________________________________________________________________________________
+conv2d_36 (Conv2D)              (None, 7, 7, 160)    138400      activation_26[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_16 (BatchNo (None, 6, 6, 160)    640         conv2d_16[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_36 (BatchNo (None, 7, 7, 160)    640         conv2d_36[0][0]                  
+__________________________________________________________________________________________________
+activation_12 (Activation)      (None, 6, 6, 160)    0           batch_normalization_16[0][0]     
+__________________________________________________________________________________________________
+activation_27 (Activation)      (None, 7, 7, 160)    0           batch_normalization_36[0][0]     
+__________________________________________________________________________________________________
+conv2d_17 (Conv2D)              (None, 5, 5, 160)    102560      activation_12[0][0]              
+__________________________________________________________________________________________________
+conv2d_37 (Conv2D)              (None, 6, 6, 160)    102560      activation_27[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_17 (BatchNo (None, 5, 5, 160)    640         conv2d_17[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_37 (BatchNo (None, 6, 6, 160)    640         conv2d_37[0][0]                  
+__________________________________________________________________________________________________
+activation_13 (Activation)      (None, 5, 5, 160)    0           batch_normalization_17[0][0]     
+__________________________________________________________________________________________________
+activation_28 (Activation)      (None, 6, 6, 160)    0           batch_normalization_37[0][0]     
+__________________________________________________________________________________________________
+conv2d_18 (Conv2D)              (None, 4, 4, 160)    102560      activation_13[0][0]              
+__________________________________________________________________________________________________
+conv2d_19 (Conv2D)              (None, 4, 4, 160)    230560      activation_12[0][0]              
+__________________________________________________________________________________________________
+conv2d_38 (Conv2D)              (None, 5, 5, 160)    102560      activation_28[0][0]              
+__________________________________________________________________________________________________
+conv2d_39 (Conv2D)              (None, 5, 5, 160)    230560      activation_27[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_18 (BatchNo (None, 4, 4, 160)    640         conv2d_18[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_19 (BatchNo (None, 4, 4, 160)    640         conv2d_19[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_38 (BatchNo (None, 5, 5, 160)    640         conv2d_38[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_39 (BatchNo (None, 5, 5, 160)    640         conv2d_39[0][0]                  
+__________________________________________________________________________________________________
+add_4 (Add)                     (None, 4, 4, 160)    0           batch_normalization_18[0][0]     
+                                                                 batch_normalization_19[0][0]     
+__________________________________________________________________________________________________
+add_9 (Add)                     (None, 5, 5, 160)    0           batch_normalization_38[0][0]     
+                                                                 batch_normalization_39[0][0]     
+__________________________________________________________________________________________________
+activation_14 (Activation)      (None, 4, 4, 160)    0           add_4[0][0]                      
+__________________________________________________________________________________________________
+activation_29 (Activation)      (None, 5, 5, 160)    0           add_9[0][0]                      
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 2560)         0           activation_14[0][0]              
+__________________________________________________________________________________________________
+flatten_1 (Flatten)             (None, 4000)         0           activation_29[0][0]              
+__________________________________________________________________________________________________
+concatenate (Concatenate)       (None, 6560)         0           flatten[0][0]                    
+                                                                 flatten_1[0][0]                  
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 2048)         13436928    concatenate[0][0]                
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 2048)         0           dense[0][0]                      
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 1024)         2098176     dropout[0][0]                    
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 1024)         0           dense_1[0][0]                    
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 512)          524800      dropout_1[0][0]                  
+__________________________________________________________________________________________________
+dropout_2 (Dropout)             (None, 512)          0           dense_2[0][0]                    
+__________________________________________________________________________________________________
+dense_3 (Dense)                 (None, 256)          131328      dropout_2[0][0]                  
+__________________________________________________________________________________________________
+dropout_3 (Dropout)             (None, 256)          0           dense_3[0][0]                    
+__________________________________________________________________________________________________
+dense_4 (Dense)                 (None, 128)          32896       dropout_3[0][0]                  
+__________________________________________________________________________________________________
+dropout_4 (Dropout)             (None, 128)          0           dense_4[0][0]                    
+__________________________________________________________________________________________________
+dense_5 (Dense)                 (None, 64)           8256        dropout_4[0][0]                  
+__________________________________________________________________________________________________
+dropout_5 (Dropout)             (None, 64)           0           dense_5[0][0]                    
+__________________________________________________________________________________________________
+dense_6 (Dense)                 (None, 1)            65          dropout_5[0][0]                  
+==================================================================================================
+Total params: 76,075,137
+Trainable params: 76,045,313
+Non-trainable params: 29,824
+__________________________________________________________________________________________________
+None
+Adding Images: Reading ./databaserelease2/MixedDataset/test/1-199.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/1-195.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-280.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-207.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-213.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-193.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-270.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-259.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-230.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/1-228.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-199.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-206.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/1-191.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-302.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-292.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-211.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-225.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-266.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-262.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-212.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-203.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-294.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-219.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/1-200.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-198.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-269.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-235.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-212.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/1-226.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-248.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-288.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-200.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-256.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-277.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-221.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-208.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-301.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-274.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-244.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-201.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-231.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-282.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-216.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/1-218.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-190.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-281.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-297.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-217.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/1-197.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/1-201.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/1-198.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/1-190.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/1-227.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-249.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-273.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-238.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-291.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-214.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-250.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-209.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-191.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-223.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-257.jpg
+0.0
+2021-11-10 13:26:05.665467: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:185] None of the MLIR Optimization Passes are enabled (registered 2)
+2021-11-10 13:26:07.721477: I tensorflow/stream_executor/cuda/cuda_dnn.cc:369] Loaded cuDNN version 8201
+2021-11-10 13:26:09.013448: W tensorflow/stream_executor/gpu/asm_compiler.cc:77] Couldn't get ptxas version string: Internal: Running ptxas --version returned 32512
+2021-11-10 13:26:09.052707: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] Internal: ptxas exited with non-zero error code 32512, output: 
+Relying on driver to perform ptx compilation. 
+Modify $PATH to customize ptxas location.
+This message will be only logged once.
+2021-11-10 13:26:17.372893: I tensorflow/stream_executor/cuda/cuda_blas.cc:1760] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+Reading ./databaserelease2/MixedDataset/test/0-223.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-205.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-192.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-290.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-195.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-251.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-276.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-260.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-222.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-217.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-255.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-283.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-230.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-272.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-285.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-202.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-220.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-194.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-258.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-229.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-237.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-278.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-299.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-300.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-234.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-226.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-229.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-271.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-303.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-228.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-241.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-214.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-216.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-242.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-204.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/1-202.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-284.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-222.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-204.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-261.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-236.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-275.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-218.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-220.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-246.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-252.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-296.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-219.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-253.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-213.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-268.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-210.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-215.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-232.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-196.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-289.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-293.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-304.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-221.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-203.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-208.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-263.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-245.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-227.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-210.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-196.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-209.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-267.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-224.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-206.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-243.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-224.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-240.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-298.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-264.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-286.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-287.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-233.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-207.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-247.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-265.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-295.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-239.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-254.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-192.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-197.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-279.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-225.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/1-193.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/1-194.jpg
+1.0
+Reading ./databaserelease2/MixedDataset/test/0-211.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/0-215.jpg
+0.0
+Reading ./databaserelease2/MixedDataset/test/1-205.jpg
+1.0
+
+Read 156 images.
+
+
+[1. 1. 0. 1. 0. 0. 0. 0. 1. 1. 0. 1. 1. 0. 0. 1. 0. 0. 0. 0. 1. 0. 1. 1.
+ 0. 0. 0. 1. 1. 0. 0. 0. 0. 0. 0. 1. 0. 0. 0. 0. 0. 0. 1. 1. 0. 0. 0. 1.
+ 1. 1. 1. 1. 1. 0. 0. 0. 0. 1. 0. 0. 0. 1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 1.
+ 0. 0. 0. 0. 0. 0. 0. 1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 1. 0. 0. 0. 0. 0. 0.
+ 0. 1. 1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 1. 0. 0. 1. 0. 1. 0. 0.
+ 0. 1. 0. 0. 0. 0. 0. 1. 0. 1. 0. 1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
+ 0. 0. 0. 1. 0. 0. 1. 1. 1. 0. 0. 1.]
+[[9.84571934e-01]
+ [9.69934225e-01]
+ [4.39446867e-01]
+ [5.83949506e-01]
+ [1.13798997e-04]
+ [2.59512067e-01]
+ [6.45785406e-02]
+ [8.70461404e-01]
+ [7.58127961e-03]
+ [9.90596294e-01]
+ [6.11182787e-02]
+ [9.90496993e-01]
+ [8.90126884e-01]
+ [3.13086659e-02]
+ [6.09242618e-02]
+ [9.53879178e-01]
+ [7.60868425e-03]
+ [3.36814485e-02]
+ [1.62037537e-02]
+ [9.64626670e-03]
+ [9.99734461e-01]
+ [2.09199667e-01]
+ [6.32069290e-01]
+ [9.21261668e-01]
+ [6.73382282e-02]
+ [7.85375386e-02]
+ [1.61594450e-02]
+ [8.35902691e-01]
+ [9.25295949e-01]
+ [2.80184299e-01]
+ [7.27994442e-02]
+ [2.82734752e-01]
+ [2.51030736e-03]
+ [4.57965136e-02]
+ [1.19159125e-01]
+ [9.98576403e-01]
+ [1.69123840e-02]
+ [3.36474515e-02]
+ [2.86744628e-02]
+ [3.78562927e-01]
+ [2.13806666e-02]
+ [3.88618931e-02]
+ [9.10162449e-01]
+ [9.86823440e-01]
+ [7.32707009e-02]
+ [3.17581045e-03]
+ [1.40832216e-01]
+ [9.90980685e-01]
+ [8.46458077e-01]
+ [9.85107958e-01]
+ [9.51188445e-01]
+ [8.84724081e-01]
+ [9.17919159e-01]
+ [7.45370146e-03]
+ [1.59649596e-01]
+ [9.71231520e-01]
+ [1.19347256e-02]
+ [9.99749959e-01]
+ [3.00296068e-01]
+ [9.85674202e-01]
+ [2.71335822e-02]
+ [8.13417733e-01]
+ [6.51124045e-02]
+ [1.09376138e-04]
+ [5.48081882e-02]
+ [1.44118696e-01]
+ [8.14605132e-03]
+ [5.90981007e-01]
+ [3.30221131e-02]
+ [3.50855172e-01]
+ [1.21180326e-01]
+ [9.72550750e-01]
+ [9.81915355e-01]
+ [1.30463261e-02]
+ [1.19504392e-01]
+ [2.25140035e-01]
+ [1.74439307e-02]
+ [3.36445048e-02]
+ [1.46262841e-02]
+ [9.32394743e-01]
+ [6.53044209e-02]
+ [5.89226093e-03]
+ [3.34627807e-01]
+ [2.86744628e-02]
+ [1.41986599e-02]
+ [2.25140035e-01]
+ [2.10507929e-01]
+ [9.40657616e-01]
+ [5.82108796e-02]
+ [9.74560916e-01]
+ [1.25316001e-04]
+ [2.51628645e-02]
+ [2.93723010e-02]
+ [2.26578359e-02]
+ [2.32137963e-02]
+ [6.61210669e-03]
+ [1.11012748e-02]
+ [8.42327416e-01]
+ [9.91647005e-01]
+ [8.90826732e-02]
+ [3.87556255e-02]
+ [2.93273211e-01]
+ [1.43271480e-02]
+ [8.45461935e-02]
+ [3.20740432e-01]
+ [3.78216803e-01]
+ [1.76884625e-02]
+ [8.54582638e-02]
+ [2.61942800e-02]
+ [1.09468224e-02]
+ [3.23437639e-02]
+ [9.46988910e-03]
+ [9.88511562e-01]
+ [1.27273807e-02]
+ [8.57606158e-03]
+ [2.06087604e-02]
+ [5.34245279e-03]
+ [9.83284652e-01]
+ [7.97683820e-02]
+ [5.75159431e-01]
+ [2.14054838e-01]
+ [7.93639105e-03]
+ [1.79311395e-01]
+ [8.01714435e-02]
+ [2.06993986e-02]
+ [3.79586756e-01]
+ [1.39675051e-01]
+ [2.72175372e-02]
+ [7.92043284e-02]
+ [9.73053515e-01]
+ [2.45528091e-02]
+ [9.90223467e-01]
+ [1.11435264e-01]
+ [3.57257813e-01]
+ [1.22712806e-01]
+ [5.64262606e-02]
+ [9.38311517e-02]
+ [8.91372263e-02]
+ [1.86264634e-01]
+ [2.19373405e-02]
+ [3.93129140e-02]
+ [7.46342689e-02]
+ [3.83243889e-01]
+ [2.57558364e-04]
+ [1.01059154e-02]
+ [9.84791458e-01]
+ [4.01754975e-01]
+ [8.49094748e-01]
+ [6.19655708e-03]
+ [2.09150929e-02]
+ [9.26705122e-01]
+ [9.97767925e-01]
+ [9.98440087e-01]
+ [5.89475632e-02]
+ [1.18230889e-02]
+ [9.81458247e-01]]
+Traceback (most recent call last):
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 602, in <module>
+    main(sys.argv[1:])
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 597, in main
+    test(modelin,imagepath)
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train.py", line 496, in test
+    print(np.argmax(np.array(y),axis=1))
+  File "<__array_function__ internals>", line 5, in argmax
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/numpy/core/fromnumeric.py", line 1188, in argmax
+    return _wrapfunc(a, 'argmax', axis=axis, out=out)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/numpy/core/fromnumeric.py", line 58, in _wrapfunc
+    return bound(*args, **kwds)
+numpy.AxisError: axis 1 is out of bounds for array of dimension 1
+srun: error: nodegpu002: task 0: Exited with exit code 1
