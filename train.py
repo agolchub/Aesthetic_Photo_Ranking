@@ -468,12 +468,12 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
     if(batched_reader):
         history = model.fit_generator(generator=training_generator,
                     validation_data=validation_generator,
-                    epochs=epochs,callbacks=[model_checkpoint_callback,wait_callback,tensorboard_callback])
+                    epochs=epochs,callbacks=[model_checkpoint_callback])#,wait_callback,tensorboard_callback])
     else:
         history = model.fit(np.array(X_train), np.array(y_train),
         validation_data=(np.array(X_val), np.array(y_val)),
             epochs=epochs, batch_size=batch_size,
-            callbacks=[model_checkpoint_callback,wait_callback,tensorboard_callback])
+            callbacks=[model_checkpoint_callback])#,wait_callback,tensorboard_callback])
 
     #save model
     model.save(modelout)
