@@ -1,0 +1,1318 @@
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+Sun May  1 15:21:32 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 510.47.03    Driver Version: 510.47.03    CUDA Version: 11.6     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA A100-PCI...  Off  | 00000000:21:00.0 Off |                    0 |
+| N/A   40C    P0    38W / 250W |      0MiB / 40960MiB |      5%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+2022-05-01 15:21:47.818466: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-05-01 15:21:48.752026: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38246 MB memory:  -> device: 0, name: NVIDIA A100-PCIE-40GB, pci bus id: 0000:21:00.0, compute capability: 8.0
+2022-05-01 15:21:49.509084: I tensorflow/core/profiler/lib/profiler_session.cc:131] Profiler session initializing.
+2022-05-01 15:21:49.509144: I tensorflow/core/profiler/lib/profiler_session.cc:146] Profiler session started.
+2022-05-01 15:21:49.510126: I tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1614] Profiler found 1 GPUs
+2022-05-01 15:21:49.513593: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcupti.so.11.2'; dlerror: libcupti.so.11.2: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2022-05-01 15:21:49.514120: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcupti.so'; dlerror: libcupti.so: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2022-05-01 15:21:49.514136: E tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1666] function cupti_interface_->Subscribe( &subscriber_, (CUpti_CallbackFunc)ApiCallback, this)failed with error CUPTI could not be loaded or symbol could not be found.
+2022-05-01 15:21:49.514153: I tensorflow/core/profiler/lib/profiler_session.cc:164] Profiler session tear down.
+2022-05-01 15:21:49.514169: E tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1757] function cupti_interface_->Finalize()failed with error CUPTI could not be loaded or symbol could not be found.
+/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/optimizer_v2/optimizer_v2.py:355: UserWarning: The `lr` argument is deprecated, use `learning_rate` instead.
+  warnings.warn(
+Input file is " 
+Output file is " agnet.19.res
+Image path is " 
+--------------------
+
+
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 1024, 680, 3 0                                            
+__________________________________________________________________________________________________
+conv2d_16 (Conv2D)              (None, 170, 168, 96) 23424       input_1[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization_16 (BatchNo (None, 170, 168, 96) 384         conv2d_16[0][0]                  
+__________________________________________________________________________________________________
+activation_12 (Activation)      (None, 170, 168, 96) 0           batch_normalization_16[0][0]     
+__________________________________________________________________________________________________
+conv2d_17 (Conv2D)              (None, 169, 167, 192 73920       activation_12[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_17 (BatchNo (None, 169, 167, 192 768         conv2d_17[0][0]                  
+__________________________________________________________________________________________________
+activation_13 (Activation)      (None, 169, 167, 192 0           batch_normalization_17[0][0]     
+__________________________________________________________________________________________________
+conv2d_18 (Conv2D)              (None, 168, 166, 384 295296      activation_13[0][0]              
+__________________________________________________________________________________________________
+conv2d_19 (Conv2D)              (None, 168, 166, 384 332160      activation_12[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_18 (BatchNo (None, 168, 166, 384 1536        conv2d_18[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_19 (BatchNo (None, 168, 166, 384 1536        conv2d_19[0][0]                  
+__________________________________________________________________________________________________
+add_4 (Add)                     (None, 168, 166, 384 0           batch_normalization_18[0][0]     
+                                                                 batch_normalization_19[0][0]     
+__________________________________________________________________________________________________
+activation_14 (Activation)      (None, 168, 166, 384 0           add_4[0][0]                      
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 330, 323, 96) 352896      input_1[0][0]                    
+__________________________________________________________________________________________________
+conv2d_20 (Conv2D)              (None, 81, 80, 384)  7225728     activation_14[0][0]              
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 330, 323, 96) 384         conv2d[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_20 (BatchNo (None, 81, 80, 384)  1536        conv2d_20[0][0]                  
+__________________________________________________________________________________________________
+activation (Activation)         (None, 330, 323, 96) 0           batch_normalization[0][0]        
+__________________________________________________________________________________________________
+activation_15 (Activation)      (None, 81, 80, 384)  0           batch_normalization_20[0][0]     
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 329, 322, 192 73920       activation[0][0]                 
+__________________________________________________________________________________________________
+conv2d_21 (Conv2D)              (None, 80, 79, 192)  295104      activation_15[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 329, 322, 192 768         conv2d_1[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_21 (BatchNo (None, 80, 79, 192)  768         conv2d_21[0][0]                  
+__________________________________________________________________________________________________
+activation_1 (Activation)       (None, 329, 322, 192 0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+activation_16 (Activation)      (None, 80, 79, 192)  0           batch_normalization_21[0][0]     
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, 328, 321, 384 295296      activation_1[0][0]               
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, 328, 321, 384 332160      activation[0][0]                 
+__________________________________________________________________________________________________
+conv2d_22 (Conv2D)              (None, 79, 78, 96)   73824       activation_16[0][0]              
+__________________________________________________________________________________________________
+conv2d_23 (Conv2D)              (None, 79, 78, 96)   331872      activation_15[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 328, 321, 384 1536        conv2d_2[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 328, 321, 384 1536        conv2d_3[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_22 (BatchNo (None, 79, 78, 96)   384         conv2d_22[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_23 (BatchNo (None, 79, 78, 96)   384         conv2d_23[0][0]                  
+__________________________________________________________________________________________________
+add (Add)                       (None, 328, 321, 384 0           batch_normalization_2[0][0]      
+                                                                 batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+add_5 (Add)                     (None, 79, 78, 96)   0           batch_normalization_22[0][0]     
+                                                                 batch_normalization_23[0][0]     
+__________________________________________________________________________________________________
+activation_2 (Activation)       (None, 328, 321, 384 0           add[0][0]                        
+__________________________________________________________________________________________________
+activation_17 (Activation)      (None, 79, 78, 96)   0           add_5[0][0]                      
+__________________________________________________________________________________________________
+conv2d_4 (Conv2D)               (None, 156, 152, 160 19906720    activation_2[0][0]               
+__________________________________________________________________________________________________
+conv2d_24 (Conv2D)              (None, 38, 37, 384)  921984      activation_17[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 156, 152, 160 640         conv2d_4[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_24 (BatchNo (None, 38, 37, 384)  1536        conv2d_24[0][0]                  
+__________________________________________________________________________________________________
+activation_3 (Activation)       (None, 156, 152, 160 0           batch_normalization_4[0][0]      
+__________________________________________________________________________________________________
+activation_18 (Activation)      (None, 38, 37, 384)  0           batch_normalization_24[0][0]     
+__________________________________________________________________________________________________
+conv2d_5 (Conv2D)               (None, 155, 151, 80) 51280       activation_3[0][0]               
+__________________________________________________________________________________________________
+conv2d_25 (Conv2D)              (None, 37, 36, 768)  1180416     activation_18[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 155, 151, 80) 320         conv2d_5[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_25 (BatchNo (None, 37, 36, 768)  3072        conv2d_25[0][0]                  
+__________________________________________________________________________________________________
+activation_4 (Activation)       (None, 155, 151, 80) 0           batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+activation_19 (Activation)      (None, 37, 36, 768)  0           batch_normalization_25[0][0]     
+__________________________________________________________________________________________________
+conv2d_6 (Conv2D)               (None, 154, 150, 40) 12840       activation_4[0][0]               
+__________________________________________________________________________________________________
+conv2d_7 (Conv2D)               (None, 154, 150, 40) 57640       activation_3[0][0]               
+__________________________________________________________________________________________________
+conv2d_26 (Conv2D)              (None, 36, 35, 1536) 4720128     activation_19[0][0]              
+__________________________________________________________________________________________________
+conv2d_27 (Conv2D)              (None, 36, 35, 1536) 5309952     activation_18[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 154, 150, 40) 160         conv2d_6[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 154, 150, 40) 160         conv2d_7[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_26 (BatchNo (None, 36, 35, 1536) 6144        conv2d_26[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_27 (BatchNo (None, 36, 35, 1536) 6144        conv2d_27[0][0]                  
+__________________________________________________________________________________________________
+add_1 (Add)                     (None, 154, 150, 40) 0           batch_normalization_6[0][0]      
+                                                                 batch_normalization_7[0][0]      
+__________________________________________________________________________________________________
+add_6 (Add)                     (None, 36, 35, 1536) 0           batch_normalization_26[0][0]     
+                                                                 batch_normalization_27[0][0]     
+__________________________________________________________________________________________________
+activation_5 (Activation)       (None, 154, 150, 40) 0           add_1[0][0]                      
+__________________________________________________________________________________________________
+activation_20 (Activation)      (None, 36, 35, 1536) 0           add_6[0][0]                      
+__________________________________________________________________________________________________
+conv2d_8 (Conv2D)               (None, 69, 67, 160)  2073760     activation_5[0][0]               
+__________________________________________________________________________________________________
+conv2d_28 (Conv2D)              (None, 17, 17, 384)  5308800     activation_20[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_8 (BatchNor (None, 69, 67, 160)  640         conv2d_8[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_28 (BatchNo (None, 17, 17, 384)  1536        conv2d_28[0][0]                  
+__________________________________________________________________________________________________
+activation_6 (Activation)       (None, 69, 67, 160)  0           batch_normalization_8[0][0]      
+__________________________________________________________________________________________________
+activation_21 (Activation)      (None, 17, 17, 384)  0           batch_normalization_28[0][0]     
+__________________________________________________________________________________________________
+conv2d_9 (Conv2D)               (None, 68, 66, 160)  102560      activation_6[0][0]               
+__________________________________________________________________________________________________
+conv2d_29 (Conv2D)              (None, 16, 16, 192)  295104      activation_21[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_9 (BatchNor (None, 68, 66, 160)  640         conv2d_9[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_29 (BatchNo (None, 16, 16, 192)  768         conv2d_29[0][0]                  
+__________________________________________________________________________________________________
+activation_7 (Activation)       (None, 68, 66, 160)  0           batch_normalization_9[0][0]      
+__________________________________________________________________________________________________
+activation_22 (Activation)      (None, 16, 16, 192)  0           batch_normalization_29[0][0]     
+__________________________________________________________________________________________________
+conv2d_10 (Conv2D)              (None, 67, 65, 160)  102560      activation_7[0][0]               
+__________________________________________________________________________________________________
+conv2d_11 (Conv2D)              (None, 67, 65, 160)  230560      activation_6[0][0]               
+__________________________________________________________________________________________________
+conv2d_30 (Conv2D)              (None, 15, 15, 96)   73824       activation_22[0][0]              
+__________________________________________________________________________________________________
+conv2d_31 (Conv2D)              (None, 15, 15, 96)   331872      activation_21[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_10 (BatchNo (None, 67, 65, 160)  640         conv2d_10[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_11 (BatchNo (None, 67, 65, 160)  640         conv2d_11[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_30 (BatchNo (None, 15, 15, 96)   384         conv2d_30[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_31 (BatchNo (None, 15, 15, 96)   384         conv2d_31[0][0]                  
+__________________________________________________________________________________________________
+add_2 (Add)                     (None, 67, 65, 160)  0           batch_normalization_10[0][0]     
+                                                                 batch_normalization_11[0][0]     
+__________________________________________________________________________________________________
+add_7 (Add)                     (None, 15, 15, 96)   0           batch_normalization_30[0][0]     
+                                                                 batch_normalization_31[0][0]     
+__________________________________________________________________________________________________
+activation_8 (Activation)       (None, 67, 65, 160)  0           add_2[0][0]                      
+__________________________________________________________________________________________________
+activation_23 (Activation)      (None, 15, 15, 96)   0           add_7[0][0]                      
+__________________________________________________________________________________________________
+conv2d_12 (Conv2D)              (None, 30, 29, 80)   1036880     activation_8[0][0]               
+__________________________________________________________________________________________________
+conv2d_32 (Conv2D)              (None, 7, 7, 160)    138400      activation_23[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_12 (BatchNo (None, 30, 29, 80)   320         conv2d_12[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_32 (BatchNo (None, 7, 7, 160)    640         conv2d_32[0][0]                  
+__________________________________________________________________________________________________
+activation_9 (Activation)       (None, 30, 29, 80)   0           batch_normalization_12[0][0]     
+__________________________________________________________________________________________________
+activation_24 (Activation)      (None, 7, 7, 160)    0           batch_normalization_32[0][0]     
+__________________________________________________________________________________________________
+conv2d_13 (Conv2D)              (None, 29, 28, 40)   12840       activation_9[0][0]               
+__________________________________________________________________________________________________
+conv2d_33 (Conv2D)              (None, 6, 6, 160)    102560      activation_24[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_13 (BatchNo (None, 29, 28, 40)   160         conv2d_13[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_33 (BatchNo (None, 6, 6, 160)    640         conv2d_33[0][0]                  
+__________________________________________________________________________________________________
+activation_10 (Activation)      (None, 29, 28, 40)   0           batch_normalization_13[0][0]     
+__________________________________________________________________________________________________
+activation_25 (Activation)      (None, 6, 6, 160)    0           batch_normalization_33[0][0]     
+__________________________________________________________________________________________________
+conv2d_14 (Conv2D)              (None, 28, 27, 20)   3220        activation_10[0][0]              
+__________________________________________________________________________________________________
+conv2d_15 (Conv2D)              (None, 28, 27, 20)   14420       activation_9[0][0]               
+__________________________________________________________________________________________________
+conv2d_34 (Conv2D)              (None, 5, 5, 160)    102560      activation_25[0][0]              
+__________________________________________________________________________________________________
+conv2d_35 (Conv2D)              (None, 5, 5, 160)    230560      activation_24[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_14 (BatchNo (None, 28, 27, 20)   80          conv2d_14[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_15 (BatchNo (None, 28, 27, 20)   80          conv2d_15[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_34 (BatchNo (None, 5, 5, 160)    640         conv2d_34[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_35 (BatchNo (None, 5, 5, 160)    640         conv2d_35[0][0]                  
+__________________________________________________________________________________________________
+add_3 (Add)                     (None, 28, 27, 20)   0           batch_normalization_14[0][0]     
+                                                                 batch_normalization_15[0][0]     
+__________________________________________________________________________________________________
+add_8 (Add)                     (None, 5, 5, 160)    0           batch_normalization_34[0][0]     
+                                                                 batch_normalization_35[0][0]     
+__________________________________________________________________________________________________
+activation_11 (Activation)      (None, 28, 27, 20)   0           add_3[0][0]                      
+__________________________________________________________________________________________________
+activation_26 (Activation)      (None, 5, 5, 160)    0           add_8[0][0]                      
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 15120)        0           activation_11[0][0]              
+__________________________________________________________________________________________________
+flatten_1 (Flatten)             (None, 4000)         0           activation_26[0][0]              
+__________________________________________________________________________________________________
+concatenate (Concatenate)       (None, 19120)        0           flatten[0][0]                    
+                                                                 flatten_1[0][0]                  
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 2048)         39159808    concatenate[0][0]                
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 2048)         0           dense[0][0]                      
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 1024)         2098176     dropout[0][0]                    
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 1024)         0           dense_1[0][0]                    
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 512)          524800      dropout_1[0][0]                  
+__________________________________________________________________________________________________
+dropout_2 (Dropout)             (None, 512)          0           dense_2[0][0]                    
+__________________________________________________________________________________________________
+dense_3 (Dense)                 (None, 256)          131328      dropout_2[0][0]                  
+__________________________________________________________________________________________________
+dropout_3 (Dropout)             (None, 256)          0           dense_3[0][0]                    
+__________________________________________________________________________________________________
+dense_4 (Dense)                 (None, 128)          32896       dropout_3[0][0]                  
+__________________________________________________________________________________________________
+dropout_4 (Dropout)             (None, 128)          0           dense_4[0][0]                    
+__________________________________________________________________________________________________
+dense_5 (Dense)                 (None, 64)           8256        dropout_4[0][0]                  
+__________________________________________________________________________________________________
+dropout_5 (Dropout)             (None, 64)           0           dense_5[0][0]                    
+__________________________________________________________________________________________________
+dense_6 (Dense)                 (None, 1)            65          dropout_5[0][0]                  
+==================================================================================================
+Total params: 94,020,897
+Trainable params: 94,001,633
+Non-trainable params: 19,264
+__________________________________________________________________________________________________
+None
+Adding Images: Reading ./databaserelease2/NatureDataset/train2/10-waters797.jpg
+10.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters424.jpg
+10.0
+Reading ./databaserelease2/NatureDataset/train2/10-forest12.jpg
+10.0
+Reading ./databaserelease2/NatureDataset/train2/1-waters458.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters579.jpg
+10.0
+Reading ./databaserelease2/NatureDataset/train2/1-waters530.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters222.jpg
+10.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters831.jpg
+10.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters147.jpg
+10.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters798.jpg
+10.0
+Reading ./databaserelease2/NatureDataset/train2/1-waters607.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters159.jpg
+10.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters593.jpg
+10.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters484.jpg
+10.0
+Reading ./databaserelease2/NatureDataset/train2/1-waters180.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters682.jpg
+10.0
+Reading ./databaserelease2/NatureDataset/train2/1-waters820.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/train2/1-waters844.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters740.jpg
+10.0
+Reading ./databaserelease2/NatureDataset/train2/10-forest23.jpg
+10.0
+Reading ./databaserelease2/NatureDataset/train2/1-waters443.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters717.jpg
+10.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters460.jpg
+10.0
+Reading ./databaserelease2/NatureDataset/train2/10-waters431.jpg
+10.0
+
+Read 24 images.
+
+
+Adding Images: Reading ./databaserelease2/NatureDataset/val/5-meadows481.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/5-meadows172.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/5-forest312.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows383.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/5-meadows155.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/4-waters22.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/2-forest118.jpg
+2.0
+Reading ./databaserelease2/NatureDataset/val/5-forest273.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/8-waters590.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/7-forest432.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/5-waters74.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows84.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/4-forest302.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/7-forest90.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/6-waters237.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/5-forest65.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/6-forest593.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-waters351.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/10-waters257.jpg
+10.0
+Reading ./databaserelease2/NatureDataset/val/7-waters773.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/5-forest124.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/3-waters377.jpg
+3.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows106.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-forest590.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/5-forest444.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/3-waters105.jpg
+3.0
+Reading ./databaserelease2/NatureDataset/val/8-waters824.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/8-waters538.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/5-forest238.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/7-waters803.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows93.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/5-waters882.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/6-forest188.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/5-meadows163.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows352.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows217.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/8-waters390.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows488.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/6-waters534.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/7-forest561.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/4-waters211.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/7-forest123.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/5-waters27.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/7-waters618.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/6-waters35.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-forest11.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-forest535.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/5-meadows346.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows422.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows180.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/7-waters555.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/9-waters648.jpg
+9.0
+Reading ./databaserelease2/NatureDataset/val/7-forest449.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/8-forest545.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/4-meadows199.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/5-meadows208.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/7-waters427.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/3-waters260.jpg
+3.0
+Reading ./databaserelease2/NatureDataset/val/8-waters592.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows446.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-waters41.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows417.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/3-forest321.jpg
+3.0
+Reading ./databaserelease2/NatureDataset/val/8-waters347.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/7-waters501.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/6-waters493.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/5-meadows25.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/5-forest253.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/6-waters104.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows286.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/8-waters743.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/9-waters113.jpg
+9.0
+Reading ./databaserelease2/NatureDataset/val/8-forest203.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/8-meadows431.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows274.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows452.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/7-waters247.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/4-forest578.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/4-forest66.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows467.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/2-waters18.jpg
+2.0
+Reading ./databaserelease2/NatureDataset/val/4-forest352.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/7-forest179.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/7-forest54.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/5-meadows243.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/7-forest482.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/9-forest448.jpg
+9.0
+Reading ./databaserelease2/NatureDataset/val/8-meadows307.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/8-waters375.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows453.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/5-waters15.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/5-forest171.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/7-waters795.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/7-forest186.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/7-waters841.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/6-waters464.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/8-waters245.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/6-forest50.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/5-waters545.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/7-waters69.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/6-forest99.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/9-forest47.jpg
+9.0
+Reading ./databaserelease2/NatureDataset/val/5-forest278.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/6-waters166.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/7-waters647.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/9-waters707.jpg
+9.0
+Reading ./databaserelease2/NatureDataset/val/9-waters646.jpg
+9.0
+Reading ./databaserelease2/NatureDataset/val/8-meadows277.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/8-forest542.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/8-waters216.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/7-waters754.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/4-waters67.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/8-waters709.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/10-waters131.jpg
+10.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows165.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/4-forest576.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/8-waters787.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/7-waters786.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/8-forest380.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/7-forest430.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/1-waters361.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows378.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/7-waters51.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows85.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-forest404.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/9-waters302.jpg
+9.0
+Reading ./databaserelease2/NatureDataset/val/5-waters450.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/5-meadows79.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/6-forest570.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-forest58.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-forest401.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/7-forest355.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/10-waters194.jpg
+10.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows205.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/7-forest310.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/6-waters496.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/4-forest330.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/7-forest499.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/5-forest155.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/5-forest527.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/4-meadows120.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/3-waters395.jpg
+3.0
+Reading ./databaserelease2/NatureDataset/val/8-waters485.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows148.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-forest548.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows237.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-waters115.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-waters598.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-forest425.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/5-forest86.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/6-waters288.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-forest478.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows178.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-waters846.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/7-forest511.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/8-waters677.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/7-waters897.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/9-waters129.jpg
+9.0
+Reading ./databaserelease2/NatureDataset/val/6-forest156.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-forest176.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/9-waters89.jpg
+9.0
+Reading ./databaserelease2/NatureDataset/val/7-waters213.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/8-waters339.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/7-waters771.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/8-waters666.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/5-waters43.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/8-forest405.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/8-waters398.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/6-waters713.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/3-meadows193.jpg
+3.0
+Reading ./databaserelease2/NatureDataset/val/5-waters178.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/6-waters823.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows236.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/4-meadows361.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows271.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/5-forest366.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/4-waters466.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/6-waters370.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/5-forest536.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows339.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows151.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/4-meadows35.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/5-forest289.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/8-meadows390.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/7-waters475.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/7-waters550.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows119.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/5-meadows250.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/7-forest389.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows298.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/2-waters328.jpg
+2.0
+Reading ./databaserelease2/NatureDataset/val/4-meadows54.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/8-waters606.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/6-forest530.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/7-waters507.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/9-waters847.jpg
+9.0
+Reading ./databaserelease2/NatureDataset/val/4-meadows183.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/1-waters716.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/val/8-forest242.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/5-forest21.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows150.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/6-waters400.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/7-forest147.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/7-forest568.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/6-waters265.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/7-forest191.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/9-waters722.jpg
+9.0
+Reading ./databaserelease2/NatureDataset/val/5-meadows11.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/7-forest427.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows98.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/7-waters576.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/9-forest407.jpg
+9.0
+Reading ./databaserelease2/NatureDataset/val/8-waters401.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/8-waters210.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/1-waters343.jpg
+1.0
+Reading ./databaserelease2/NatureDataset/val/3-waters130.jpg
+3.0
+Reading ./databaserelease2/NatureDataset/val/10-waters679.jpg
+10.0
+Reading ./databaserelease2/NatureDataset/val/4-meadows34.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows485.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/3-meadows364.jpg
+3.0
+Reading ./databaserelease2/NatureDataset/val/6-forest258.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/8-waters519.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/9-waters616.jpg
+9.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows295.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/4-waters72.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/6-waters227.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/7-waters720.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/7-waters195.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows314.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/5-waters526.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/6-waters281.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/4-waters510.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/6-forest15.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/5-forest260.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/4-forest72.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/5-waters5.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/5-forest1.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/5-forest17.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/9-waters696.jpg
+9.0
+Reading ./databaserelease2/NatureDataset/val/5-meadows251.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/7-forest101.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/7-forest127.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/6-forest293.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/5-meadows170.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/7-waters241.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows412.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-waters872.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/7-waters327.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/8-waters807.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/8-waters315.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows397.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/4-waters263.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/5-forest309.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows196.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/7-forest137.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/5-meadows358.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/6-forest237.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/5-forest342.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/5-waters75.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/9-waters626.jpg
+9.0
+Reading ./databaserelease2/NatureDataset/val/7-waters515.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/5-waters52.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/7-forest213.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/4-waters657.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/6-waters711.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/7-waters306.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/7-waters583.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/9-waters619.jpg
+9.0
+Reading ./databaserelease2/NatureDataset/val/8-waters600.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/3-meadows39.jpg
+3.0
+Reading ./databaserelease2/NatureDataset/val/3-forest226.jpg
+3.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows473.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/10-waters378.jpg
+10.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows38.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-waters854.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/9-waters577.jpg
+9.0
+Reading ./databaserelease2/NatureDataset/val/8-waters852.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/9-meadows55.jpg
+9.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows113.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/4-waters86.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/6-waters497.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows441.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/7-forest159.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows336.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/6-waters58.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/8-waters875.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/3-meadows47.jpg
+3.0
+Reading ./databaserelease2/NatureDataset/val/5-waters173.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/8-waters749.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows15.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/9-forest225.jpg
+9.0
+Reading ./databaserelease2/NatureDataset/val/9-waters364.jpg
+9.0
+Reading ./databaserelease2/NatureDataset/val/7-waters635.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/8-meadows398.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/4-waters479.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/4-forest350.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/8-waters836.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/8-meadows185.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/8-forest562.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/8-waters730.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/7-waters217.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/4-forest539.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/5-meadows219.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows500.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/4-waters890.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/5-forest326.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/2-waters621.jpg
+2.0
+Reading ./databaserelease2/NatureDataset/val/6-forest217.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/4-meadows301.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/8-waters49.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/2-meadows235.jpg
+2.0
+Reading ./databaserelease2/NatureDataset/val/5-forest180.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/8-waters487.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/6-waters802.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/8-waters793.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/6-forest420.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows348.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/7-forest111.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/7-waters845.jpg
+7.0
+2022-05-01 15:22:45.147692: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:185] None of the MLIR Optimization Passes are enabled (registered 2)
+2022-05-01 15:22:48.228475: I tensorflow/stream_executor/cuda/cuda_dnn.cc:369] Loaded cuDNN version 8201
+2022-05-01 15:22:50.044182: W tensorflow/stream_executor/gpu/asm_compiler.cc:77] Couldn't get ptxas version string: Internal: Running ptxas --version returned 32512
+2022-05-01 15:22:50.101053: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] Internal: ptxas exited with non-zero error code 32512, output: 
+Relying on driver to perform ptx compilation. 
+Modify $PATH to customize ptxas location.
+This message will be only logged once.
+2022-05-01 15:23:25.564107: I tensorflow/stream_executor/cuda/cuda_blas.cc:1760] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+Reading ./databaserelease2/NatureDataset/val/4-waters228.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/6-waters671.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/4-forest485.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/6-forest37.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/8-waters570.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/8-meadows102.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/3-forest78.jpg
+3.0
+Reading ./databaserelease2/NatureDataset/val/7-forest254.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/6-waters171.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/2-waters584.jpg
+2.0
+Reading ./databaserelease2/NatureDataset/val/5-forest157.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows92.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows70.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-forest361.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/8-waters865.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/4-meadows97.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/10-waters491.jpg
+10.0
+Reading ./databaserelease2/NatureDataset/val/6-waters342.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows433.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/6-forest557.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-waters66.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-forest283.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/7-forest63.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/3-meadows293.jpg
+3.0
+Reading ./databaserelease2/NatureDataset/val/6-waters614.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/7-waters805.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows127.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/8-meadows175.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/7-waters442.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/9-forest523.jpg
+9.0
+Reading ./databaserelease2/NatureDataset/val/7-waters721.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/7-waters870.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/5-forest423.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows103.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows24.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/6-forest470.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/8-waters470.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/8-forest51.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/6-forest35.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/4-waters61.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows404.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/3-waters325.jpg
+3.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows379.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows267.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows108.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/8-waters753.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows9.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/9-forest169.jpg
+9.0
+Reading ./databaserelease2/NatureDataset/val/5-forest146.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/7-waters230.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/5-meadows142.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/4-waters685.jpg
+4.0
+Reading ./databaserelease2/NatureDataset/val/7-forest95.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows111.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/6-meadows67.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/5-meadows329.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/7-forest70.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/5-meadows284.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/3-forest165.jpg
+3.0
+Reading ./databaserelease2/NatureDataset/val/7-forest532.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/5-waters332.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/8-waters542.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/6-waters186.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/5-waters100.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/6-forest364.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/7-forest148.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/7-forest244.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/7-waters508.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/6-waters45.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/5-forest359.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/8-forest365.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/5-meadows37.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/8-meadows212.jpg
+8.0
+Reading ./databaserelease2/NatureDataset/val/7-waters176.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/6-waters868.jpg
+6.0
+Reading ./databaserelease2/NatureDataset/val/7-meadows169.jpg
+7.0
+Reading ./databaserelease2/NatureDataset/val/5-meadows46.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/5-waters236.jpg
+5.0
+Reading ./databaserelease2/NatureDataset/val/8-waters182.jpg
+8.0
+
+Read 398 images.
+
+
+Epoch 1/100
+1/2 [==============>...............] - ETA: 1:11 - loss: 69.7289 - accuracy: 0.10002/2 [==============================] - ETA: 0s - loss: 64.8574 - accuracy: 0.1667  2/2 [==============================] - 135s 63s/step - loss: 64.8574 - accuracy: 0.1667 - val_loss: 29.9372 - val_accuracy: 0.0075
+2022-05-01 15:25:04.724201: W tensorflow/python/util/util.cc:348] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
+/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/utils/generic_utils.py:494: CustomMaskWarning: Custom mask layers require a config and must override get_config. When loading, the custom mask layer must be passed to the custom_objects argument.
+  warnings.warn('Custom mask layers require a config and must override '
+Epoch 2/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 3/100
+1/2 [==============>...............] - ETA: 2s - loss: 52.6500 - accuracy: 0.35002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 4/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 5/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 6/100
+1/2 [==============>...............] - ETA: 2s - loss: 52.6500 - accuracy: 0.35002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 7/100
+1/2 [==============>...............] - ETA: 2s - loss: 60.7500 - accuracy: 0.25002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 8/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 9/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 10/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 11/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 12/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 13/100
+1/2 [==============>...............] - ETA: 2s - loss: 60.7500 - accuracy: 0.25002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 14/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 15/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 16/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 17/100
+1/2 [==============>...............] - ETA: 2s - loss: 52.6500 - accuracy: 0.35002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 18/100
+1/2 [==============>...............] - ETA: 2s - loss: 52.6500 - accuracy: 0.35002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 19/100
+1/2 [==============>...............] - ETA: 2s - loss: 52.6500 - accuracy: 0.35002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 20/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 21/100
+1/2 [==============>...............] - ETA: 2s - loss: 60.7500 - accuracy: 0.25002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 22/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 23/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 24/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 25/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 26/100
+1/2 [==============>...............] - ETA: 2s - loss: 52.6500 - accuracy: 0.35002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 27/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 28/100
+1/2 [==============>...............] - ETA: 2s - loss: 60.7500 - accuracy: 0.25002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 29/100
+1/2 [==============>...............] - ETA: 2s - loss: 52.6500 - accuracy: 0.35002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 30/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 31/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 32/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 33/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 34/100
+1/2 [==============>...............] - ETA: 2s - loss: 52.6500 - accuracy: 0.35002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 35/100
+1/2 [==============>...............] - ETA: 2s - loss: 64.8000 - accuracy: 0.20002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 36/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 37/100
+1/2 [==============>...............] - ETA: 2s - loss: 52.6500 - accuracy: 0.35002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 38/100
+1/2 [==============>...............] - ETA: 2s - loss: 60.7500 - accuracy: 0.25002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 39/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 40/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 41/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 42/100
+1/2 [==============>...............] - ETA: 2s - loss: 60.7500 - accuracy: 0.25002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 43/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 44/100
+1/2 [==============>...............] - ETA: 2s - loss: 52.6500 - accuracy: 0.35002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 45/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 46/100
+1/2 [==============>...............] - ETA: 2s - loss: 60.7500 - accuracy: 0.25002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 47/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 48/100
+1/2 [==============>...............] - ETA: 2s - loss: 52.6500 - accuracy: 0.35002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 49/100
+1/2 [==============>...............] - ETA: 2s - loss: 52.6500 - accuracy: 0.35002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 50/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 51/100
+1/2 [==============>...............] - ETA: 2s - loss: 52.6500 - accuracy: 0.35002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 52/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 53/100
+1/2 [==============>...............] - ETA: 2s - loss: 52.6500 - accuracy: 0.35002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 54/100
+1/2 [==============>...............] - ETA: 2s - loss: 52.6500 - accuracy: 0.35002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 55/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 56/100
+1/2 [==============>...............] - ETA: 2s - loss: 60.7500 - accuracy: 0.25002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 57/100
+1/2 [==============>...............] - ETA: 2s - loss: 60.7500 - accuracy: 0.25002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 58/100
+1/2 [==============>...............] - ETA: 2s - loss: 52.6500 - accuracy: 0.35002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 59/100
+1/2 [==============>...............] - ETA: 2s - loss: 52.6500 - accuracy: 0.35002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 60/100
+1/2 [==============>...............] - ETA: 2s - loss: 56.7000 - accuracy: 0.30002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 61/100
+1/2 [==============>...............] - ETA: 2s - loss: 60.7500 - accuracy: 0.25002/2 [==============================] - ETA: 0s - loss: 57.3750 - accuracy: 0.29172/2 [==============================] - 14s 12s/step - loss: 57.3750 - accuracy: 0.2917 - val_loss: 29.9372 - val_accuracy: 0.0075
+Epoch 62/100
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 1562784.0 ON nodegpu002 CANCELLED AT 2022-05-01T15:39:37 ***
+slurmstepd: error: *** JOB 1562784 ON nodegpu002 CANCELLED AT 2022-05-01T15:39:37 ***
+srun: got SIGCONT
+srun: forcing job termination

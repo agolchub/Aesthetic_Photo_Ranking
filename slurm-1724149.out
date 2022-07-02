@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train_segmented.py", line 3, in <module>
+    import skimage
+ModuleNotFoundError: No module named 'skimage'
+srun: error: nodenviv100007: task 0: Exited with exit code 1

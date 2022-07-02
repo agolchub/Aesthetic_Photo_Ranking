@@ -1,0 +1,651 @@
+2022-05-05 03:05:16.626355: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2022-05-05 03:05:16.626389: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-05-05 03:05:44.522105: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2022-05-05 03:05:44.522751: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcublas.so.11'; dlerror: libcublas.so.11: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2022-05-05 03:05:44.523301: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcublasLt.so.11'; dlerror: libcublasLt.so.11: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2022-05-05 03:05:44.523814: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcufft.so.10'; dlerror: libcufft.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2022-05-05 03:05:44.524309: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcurand.so.10'; dlerror: libcurand.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2022-05-05 03:05:44.524788: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcusolver.so.11'; dlerror: libcusolver.so.11: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2022-05-05 03:05:44.525450: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcusparse.so.11'; dlerror: libcusparse.so.11: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2022-05-05 03:05:44.525936: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudnn.so.8'; dlerror: libcudnn.so.8: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2022-05-05 03:05:44.525980: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1850] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2022-05-05 03:05:44.546831: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+/mnt/beegfs/home/agolchub/miniconda3/envs/tf2_8_gpu/lib/python3.9/site-packages/keras/optimizer_v2/adam.py:105: UserWarning: The `lr` argument is deprecated, use `learning_rate` instead.
+  super(Adam, self).__init__(name, **kwargs)
+Input file is " segment_complete.nolock.train
+Output file is " segment_complete.nolock.train.2
+Image path is " 
+--------------------
+
+
+Model: "model"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_1 (InputLayer)           [(None, 244, 244, 3  0           []                               
+                                )]                                                                
+                                                                                                  
+ conv2d (Conv2D)                (None, 45, 45, 80)   96080       ['input_1[0][0]']                
+                                                                                                  
+ conv2d_4 (Conv2D)              (None, 45, 45, 80)   96080       ['input_1[0][0]']                
+                                                                                                  
+ conv2d_8 (Conv2D)              (None, 45, 45, 80)   96080       ['input_1[0][0]']                
+                                                                                                  
+ conv2d_12 (Conv2D)             (None, 45, 45, 80)   96080       ['input_1[0][0]']                
+                                                                                                  
+ batch_normalization (BatchNorm  (None, 45, 45, 80)  320         ['conv2d[0][0]']                 
+ alization)                                                                                       
+                                                                                                  
+ batch_normalization_4 (BatchNo  (None, 45, 45, 80)  320         ['conv2d_4[0][0]']               
+ rmalization)                                                                                     
+                                                                                                  
+ batch_normalization_8 (BatchNo  (None, 45, 45, 80)  320         ['conv2d_8[0][0]']               
+ rmalization)                                                                                     
+                                                                                                  
+ batch_normalization_12 (BatchN  (None, 45, 45, 80)  320         ['conv2d_12[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ activation (Activation)        (None, 45, 45, 80)   0           ['batch_normalization[0][0]']    
+                                                                                                  
+ activation_4 (Activation)      (None, 45, 45, 80)   0           ['batch_normalization_4[0][0]']  
+                                                                                                  
+ activation_8 (Activation)      (None, 45, 45, 80)   0           ['batch_normalization_8[0][0]']  
+                                                                                                  
+ activation_12 (Activation)     (None, 45, 45, 80)   0           ['batch_normalization_12[0][0]'] 
+                                                                                                  
+ dropout (Dropout)              (None, 45, 45, 80)   0           ['activation[0][0]']             
+                                                                                                  
+ dropout_4 (Dropout)            (None, 45, 45, 80)   0           ['activation_4[0][0]']           
+                                                                                                  
+ dropout_8 (Dropout)            (None, 45, 45, 80)   0           ['activation_8[0][0]']           
+                                                                                                  
+ dropout_12 (Dropout)           (None, 45, 45, 80)   0           ['activation_12[0][0]']          
+                                                                                                  
+ conv2d_1 (Conv2D)              (None, 14, 14, 80)   160080      ['dropout[0][0]']                
+                                                                                                  
+ conv2d_5 (Conv2D)              (None, 14, 14, 80)   160080      ['dropout_4[0][0]']              
+                                                                                                  
+ conv2d_9 (Conv2D)              (None, 14, 14, 80)   160080      ['dropout_8[0][0]']              
+                                                                                                  
+ conv2d_13 (Conv2D)             (None, 14, 14, 80)   160080      ['dropout_12[0][0]']             
+                                                                                                  
+ batch_normalization_1 (BatchNo  (None, 14, 14, 80)  320         ['conv2d_1[0][0]']               
+ rmalization)                                                                                     
+                                                                                                  
+ batch_normalization_5 (BatchNo  (None, 14, 14, 80)  320         ['conv2d_5[0][0]']               
+ rmalization)                                                                                     
+                                                                                                  
+ batch_normalization_9 (BatchNo  (None, 14, 14, 80)  320         ['conv2d_9[0][0]']               
+ rmalization)                                                                                     
+                                                                                                  
+ batch_normalization_13 (BatchN  (None, 14, 14, 80)  320         ['conv2d_13[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ activation_1 (Activation)      (None, 14, 14, 80)   0           ['batch_normalization_1[0][0]']  
+                                                                                                  
+ activation_5 (Activation)      (None, 14, 14, 80)   0           ['batch_normalization_5[0][0]']  
+                                                                                                  
+ activation_9 (Activation)      (None, 14, 14, 80)   0           ['batch_normalization_9[0][0]']  
+                                                                                                  
+ activation_13 (Activation)     (None, 14, 14, 80)   0           ['batch_normalization_13[0][0]'] 
+                                                                                                  
+ dropout_1 (Dropout)            (None, 14, 14, 80)   0           ['activation_1[0][0]']           
+                                                                                                  
+ dropout_5 (Dropout)            (None, 14, 14, 80)   0           ['activation_5[0][0]']           
+                                                                                                  
+ dropout_9 (Dropout)            (None, 14, 14, 80)   0           ['activation_9[0][0]']           
+                                                                                                  
+ dropout_13 (Dropout)           (None, 14, 14, 80)   0           ['activation_13[0][0]']          
+                                                                                                  
+ conv2d_2 (Conv2D)              (None, 6, 6, 80)     57680       ['dropout_1[0][0]']              
+                                                                                                  
+ conv2d_6 (Conv2D)              (None, 6, 6, 80)     57680       ['dropout_5[0][0]']              
+                                                                                                  
+ conv2d_10 (Conv2D)             (None, 6, 6, 80)     57680       ['dropout_9[0][0]']              
+                                                                                                  
+ conv2d_14 (Conv2D)             (None, 6, 6, 80)     57680       ['dropout_13[0][0]']             
+                                                                                                  
+ batch_normalization_2 (BatchNo  (None, 6, 6, 80)    320         ['conv2d_2[0][0]']               
+ rmalization)                                                                                     
+                                                                                                  
+ batch_normalization_6 (BatchNo  (None, 6, 6, 80)    320         ['conv2d_6[0][0]']               
+ rmalization)                                                                                     
+                                                                                                  
+ batch_normalization_10 (BatchN  (None, 6, 6, 80)    320         ['conv2d_10[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ batch_normalization_14 (BatchN  (None, 6, 6, 80)    320         ['conv2d_14[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ activation_2 (Activation)      (None, 6, 6, 80)     0           ['batch_normalization_2[0][0]']  
+                                                                                                  
+ activation_6 (Activation)      (None, 6, 6, 80)     0           ['batch_normalization_6[0][0]']  
+                                                                                                  
+ activation_10 (Activation)     (None, 6, 6, 80)     0           ['batch_normalization_10[0][0]'] 
+                                                                                                  
+ activation_14 (Activation)     (None, 6, 6, 80)     0           ['batch_normalization_14[0][0]'] 
+                                                                                                  
+ dropout_2 (Dropout)            (None, 6, 6, 80)     0           ['activation_2[0][0]']           
+                                                                                                  
+ dropout_6 (Dropout)            (None, 6, 6, 80)     0           ['activation_6[0][0]']           
+                                                                                                  
+ dropout_10 (Dropout)           (None, 6, 6, 80)     0           ['activation_10[0][0]']          
+                                                                                                  
+ dropout_14 (Dropout)           (None, 6, 6, 80)     0           ['activation_14[0][0]']          
+                                                                                                  
+ conv2d_3 (Conv2D)              (None, 5, 5, 80)     25680       ['dropout_2[0][0]']              
+                                                                                                  
+ conv2d_7 (Conv2D)              (None, 5, 5, 80)     25680       ['dropout_6[0][0]']              
+                                                                                                  
+ conv2d_11 (Conv2D)             (None, 5, 5, 80)     25680       ['dropout_10[0][0]']             
+                                                                                                  
+ conv2d_15 (Conv2D)             (None, 5, 5, 80)     25680       ['dropout_14[0][0]']             
+                                                                                                  
+ batch_normalization_3 (BatchNo  (None, 5, 5, 80)    320         ['conv2d_3[0][0]']               
+ rmalization)                                                                                     
+                                                                                                  
+ batch_normalization_7 (BatchNo  (None, 5, 5, 80)    320         ['conv2d_7[0][0]']               
+ rmalization)                                                                                     
+                                                                                                  
+ batch_normalization_11 (BatchN  (None, 5, 5, 80)    320         ['conv2d_11[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ batch_normalization_15 (BatchN  (None, 5, 5, 80)    320         ['conv2d_15[0][0]']              
+ ormalization)                                                                                    
+                                                                                                  
+ activation_3 (Activation)      (None, 5, 5, 80)     0           ['batch_normalization_3[0][0]']  
+                                                                                                  
+ activation_7 (Activation)      (None, 5, 5, 80)     0           ['batch_normalization_7[0][0]']  
+                                                                                                  
+ activation_11 (Activation)     (None, 5, 5, 80)     0           ['batch_normalization_11[0][0]'] 
+                                                                                                  
+ activation_15 (Activation)     (None, 5, 5, 80)     0           ['batch_normalization_15[0][0]'] 
+                                                                                                  
+ dropout_3 (Dropout)            (None, 5, 5, 80)     0           ['activation_3[0][0]']           
+                                                                                                  
+ dropout_7 (Dropout)            (None, 5, 5, 80)     0           ['activation_7[0][0]']           
+                                                                                                  
+ dropout_11 (Dropout)           (None, 5, 5, 80)     0           ['activation_11[0][0]']          
+                                                                                                  
+ dropout_15 (Dropout)           (None, 5, 5, 80)     0           ['activation_15[0][0]']          
+                                                                                                  
+ flatten_1 (Flatten)            (None, 2000)         0           ['dropout_3[0][0]']              
+                                                                                                  
+ flatten_2 (Flatten)            (None, 2000)         0           ['dropout_7[0][0]']              
+                                                                                                  
+ flatten_3 (Flatten)            (None, 2000)         0           ['dropout_11[0][0]']             
+                                                                                                  
+ flatten_4 (Flatten)            (None, 2000)         0           ['dropout_15[0][0]']             
+                                                                                                  
+ concatenate (Concatenate)      (None, 8000)         0           ['flatten_1[0][0]',              
+                                                                  'flatten_2[0][0]',              
+                                                                  'flatten_3[0][0]',              
+                                                                  'flatten_4[0][0]']              
+                                                                                                  
+ dense (Dense)                  (None, 256)          2048256     ['concatenate[0][0]']            
+                                                                                                  
+ dropout_20 (Dropout)           (None, 256)          0           ['dense[0][0]']                  
+                                                                                                  
+ dense_2 (Dense)                (None, 64)           16448       ['dropout_20[0][0]']             
+                                                                                                  
+ dropout_22 (Dropout)           (None, 64)           0           ['dense_2[0][0]']                
+                                                                                                  
+ dense_3 (Dense)                (None, 10)           650         ['dropout_22[0][0]']             
+                                                                                                  
+ dropout_23 (Dropout)           (None, 10)           0           ['dense_3[0][0]']                
+                                                                                                  
+ dense_4 (Dense)                (None, 1)            11          ['dropout_23[0][0]']             
+                                                                                                  
+==================================================================================================
+Total params: 3,428,565
+Trainable params: 3,426,005
+Non-trainable params: 2,560
+__________________________________________________________________________________________________
+None
+Adding Images: Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/﻿Filename'
+['\ufeffFilename', 'Source', 'Link (if available)', "Arash's Scores", "Maria's Scores", 'Color Saturation', 'Framing', 'Lighting', 'Clarity', 'Symmetry', 'Objective Score', 'Random', 'Set']
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows466.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows467.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows396.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows435.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows481.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows422.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows484.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows105.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows493.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows276.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows363.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows461.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows228.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows127.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows142.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows338.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows496.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows434.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows248.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows297.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows415.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows226.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows450.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows252.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows79.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows404.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows424.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows21.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows94.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows325.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows192.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows285.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows39.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows31.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows328.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows275.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows323.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows273.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows92.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows284.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows296.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows286.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows113.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows302.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows89.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows354.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows169.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows389.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows51.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows28.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows230.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows482.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows487.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows137.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows172.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows271.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows436.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows87.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows46.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows211.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows123.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows164.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows291.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows175.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows185.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows442.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows427.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows332.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows468.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows242.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows207.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows475.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows238.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows378.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows392.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows293.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows86.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows313.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows138.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows360.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows83.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows452.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows462.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows479.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows15.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows395.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows8.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows469.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows143.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows114.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows82.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows292.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows458.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows441.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows191.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows256.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows465.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows443.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows312.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows71.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows33.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows499.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows168.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows130.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows205.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows135.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows345.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows272.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows190.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows355.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows430.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows124.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows40.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows407.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows12.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows463.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows456.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows67.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows7.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows150.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows227.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows203.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows65.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows431.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows364.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows425.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows263.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows166.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows333.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows159.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows59.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows170.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows171.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows249.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows186.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows6.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows160.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows229.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows77.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows321.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows266.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows451.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows366.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows318.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows112.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows34.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows18.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows75.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows337.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows3.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows406.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows250.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows330.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows384.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows306.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows199.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows111.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows278.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows267.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows41.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows107.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows109.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows74.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows84.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows317.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows146.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows455.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows492.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows288.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows17.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows413.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows38.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows43.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows486.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows488.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows473.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows131.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows239.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows474.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows258.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows361.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows36.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows165.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows322.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows10.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows280.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows2.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows119.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows95.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows214.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows385.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows147.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows268.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows410.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows163.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows134.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows405.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows287.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows133.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows100.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows270.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows448.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows327.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows243.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows180.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows240.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows181.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows78.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows402.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows445.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows423.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows189.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows16.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows429.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows464.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows49.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows29.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows193.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows255.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows37.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows310.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows103.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows35.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows231.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows344.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows264.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows432.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows108.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows204.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows298.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows495.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows394.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows329.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows480.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows421.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows347.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows247.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows374.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows22.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows419.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows440.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows308.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows61.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows153.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows341.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows352.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows449.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows283.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows225.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows120.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows237.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows117.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows391.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows122.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows483.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows245.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows316.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows216.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows380.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows386.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows157.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows428.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows19.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows320.jpg
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadws118.jpg'
+['meadws118.jpg', 'unsplash', 'https://unsplash.com/photos/1kGvoC9g2DY', '0.333333333', '4', '1', '0', '1', '1', '0', '3', '265', 'Train']
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows11.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows307.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows241.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows222.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows381.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows4.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows367.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows281.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows126.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows315.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows152.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows91.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows477.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows377.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows47.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows27.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows439.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows235.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows246.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows282.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows251.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows390.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows290.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows176.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows173.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows438.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows412.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows45.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows90.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows69.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows411.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows490.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows233.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows331.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows213.jpg
+Adding Images: Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/﻿Filename'
+['\ufeffFilename', 'Source', 'Link (if available)', "Arash's Scores", "Maria's Scores", 'Color Saturation', 'Framing', 'Lighting', 'Clarity', 'Symmetry', 'Objective Score', 'Random', 'Set']
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows64.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows485.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows261.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows254.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows305.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows140.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows53.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows372.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows25.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows314.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows121.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows409.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows161.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows304.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows277.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows183.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows489.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows24.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows253.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows101.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows257.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows326.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows1.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows85.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows472.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows408.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows403.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows110.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows179.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows201.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows348.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows437.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows342.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows20.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows9.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows219.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows128.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows397.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows224.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows144.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows444.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows58.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows136.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows375.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows368.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows156.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows218.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows335.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows188.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows324.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows349.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows303.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows52.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows420.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows353.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows210.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows182.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows26.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows476.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows167.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows13.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows129.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows208.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows97.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows48.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows73.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows212.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows309.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows102.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows98.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows62.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows162.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows340.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows141.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows365.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows299.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows236.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows57.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows379.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows393.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows32.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows446.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows139.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows447.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows426.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows500.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows206.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows371.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows494.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows125.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows50.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows358.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows351.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows72.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows106.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows145.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows60.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows221.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows116.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows76.jpg
+Epoch 1/1000
+1/8 [==>...........................] - ETA: 54s - loss: 0.1804 - accuracy: 0.77502/8 [======>.......................] - ETA: 23s - loss: 0.2030 - accuracy: 0.77503/8 [==========>...................] - ETA: 19s - loss: 0.1884 - accuracy: 0.77504/8 [==============>...............] - ETA: 15s - loss: 0.1856 - accuracy: 0.76255/8 [=================>............] - ETA: 12s - loss: 0.1926 - accuracy: 0.73506/8 [=====================>........] - ETA: 8s - loss: 0.1924 - accuracy: 0.7458 7/8 [=========================>....] - ETA: 4s2022-05-05 03:07:57.462354: W tensorflow/python/util/util.cc:368] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
+ - loss: 0.2053 - accuracy: 0.72508/8 [==============================] - ETA: 0s - loss: 0.2035 - accuracy: 0.72588/8 [==============================] - 45s 5s/step - loss: 0.2035 - accuracy: 0.7258 - val_loss: 0.2242 - val_accuracy: 0.5600
+Epoch 2/1000
+1/8 [==>...........................] - ETA: 28s - loss: 0.1848 - accuracy: 0.70002/8 [======>.......................] - ETA: 24s - loss: 0.1826 - accuracy: 0.71253/8 [==========>...................] - ETA: 20s - loss: 0.1688 - accuracy: 0.77504/8 [==============>...............] - ETA: 15s - loss: 0.1730 - accuracy: 0.76255/8 [=================>............] - ETA: 12s - loss: 0.1842 - accuracy: 0.75506/8 [=====================>........] - ETA: 8s - loss: 0.1792 - accuracy: 0.7625 7/8 [=========================>....] - ETA: 4s - loss: 0.1884 - accuracy: 0.75718/8 [==============================] - ETA: 0s - loss: 0.1853 - accuracy: 0.75928/8 [==============================] - 33s 4s/step - loss: 0.1853 - accuracy: 0.7592 - val_loss: 0.2255 - val_accuracy: 0.5600
+Epoch 3/1000
+1/8 [==>...........................] - ETA: 28s - loss: 0.1371 - accuracy: 0.80002/8 [======>.......................] - ETA: 23s - loss: 0.1764 - accuracy: 0.77503/8 [==========>...................] - ETA: 19s - loss: 0.1762 - accuracy: 0.78334/8 [==============>...............] - ETA: 15s - loss: 0.1783 - accuracy: 0.79375/8 [=================>............] - ETA: 11s - loss: 0.1918 - accuracy: 0.77506/8 [=====================>........] - ETA: 7s - loss: 0.1851 - accuracy: 0.7792 7/8 [=========================>....] - ETA: 3s - loss: 0.1885 - accuracy: 0.76798/8 [==============================] - ETA: 0s - loss: 0.1880 - accuracy: 0.76928/8 [==============================] - 32s 4s/step - loss: 0.1880 - accuracy: 0.7692 - val_loss: 0.2255 - val_accuracy: 0.5700
+Epoch 4/1000
+1/8 [==>...........................] - ETA: 27s - loss: 0.1776 - accuracy: 0.67502/8 [======>.......................] - ETA: 22s - loss: 0.1653 - accuracy: 0.77503/8 [==========>...................] - ETA: 19s - loss: 0.1539 - accuracy: 0.78334/8 [==============>...............] - ETA: 15s - loss: 0.1687 - accuracy: 0.78125/8 [=================>............] - ETA: 11s - loss: 0.1972 - accuracy: 0.74006/8 [=====================>........] - ETA: 7s - loss: 0.2011 - accuracy: 0.7458 7/8 [=========================>....] - ETA: 3s - loss: 0.2022 - accuracy: 0.75008/8 [==============================] - ETA: 0s - loss: 0.2008 - accuracy: 0.74928/8 [==============================] - 31s 4s/step - loss: 0.2008 - accuracy: 0.7492 - val_loss: 0.2262 - val_accuracy: 0.5800
+Epoch 5/1000
+1/8 [==>...........................] - ETA: 26s - loss: 0.1805 - accuracy: 0.77502/8 [======>.......................] - ETA: 23s - loss: 0.1823 - accuracy: 0.78753/8 [==========>...................] - ETA: 19s - loss: 0.1692 - accuracy: 0.80004/8 [==============>...............] - ETA: 15s - loss: 0.1928 - accuracy: 0.76885/8 [=================>............] - ETA: 11s - loss: 0.1892 - accuracy: 0.77006/8 [=====================>........] - ETA: 7s - loss: 0.1794 - accuracy: 0.7792 7/8 [=========================>....] - ETA: 3s - loss: 0.1821 - accuracy: 0.78938/8 [==============================] - ETA: 0s - loss: 0.1833 - accuracy: 0.78268/8 [==============================] - 31s 4s/step - loss: 0.1833 - accuracy: 0.7826 - val_loss: 0.2260 - val_accuracy: 0.5800
+Epoch 6/1000
+1/8 [==>...........................] - ETA: 26s - loss: 0.1538 - accuracy: 0.77502/8 [======>.......................] - ETA: 22s - loss: 0.1602 - accuracy: 0.75003/8 [==========>...................] - ETA: 19s - loss: 0.1780 - accuracy: 0.74174/8 [==============>...............] - ETA: 15s - loss: 0.2014 - accuracy: 0.71255/8 [=================>............] - ETA: 11s - loss: 0.1932 - accuracy: 0.74006/8 [=====================>........] - ETA: 7s - loss: 0.1943 - accuracy: 0.7500 7/8 [=========================>....] - ETA: 3s - loss: 0.1946 - accuracy: 0.74648/8 [==============================] - ETA: 0s - loss: 0.1907 - accuracy: 0.75598/8 [==============================] - 31s 4s/step - loss: 0.1907 - accuracy: 0.7559 - val_loss: 0.2253 - val_accuracy: 0.5900
+Epoch 7/1000
+1/8 [==>...........................] - ETA: 26s - loss: 0.1664 - accuracy: 0.75002/8 [======>.......................] - ETA: 23s - loss: 0.1963 - accuracy: 0.72503/8 [==========>...................] - ETA: 19s - loss: 0.1953 - accuracy: 0.74174/8 [==============>...............] - ETA: 15s - loss: 0.1876 - accuracy: 0.75005/8 [=================>............] - ETA: 11s - loss: 0.1747 - accuracy: 0.75506/8 [=====================>........] - ETA: 7s - loss: 0.1932 - accuracy: 0.7417 7/8 [=========================>....] - ETA: 3s - loss: 0.1911 - accuracy: 0.74298/8 [==============================] - ETA: 0s - loss: 0.1965 - accuracy: 0.72918/8 [==============================] - 31s 4s/step - loss: 0.1965 - accuracy: 0.7291 - val_loss: 0.2246 - val_accuracy: 0.5800
+Epoch 8/1000
+1/8 [==>...........................] - ETA: 26s - loss: 0.1403 - accuracy: 0.87502/8 [======>.......................] - ETA: 23s - loss: 0.1947 - accuracy: 0.81253/8 [==========>...................] - ETA: 19s - loss: 0.1821 - accuracy: 0.79174/8 [==============>...............] - ETA: 15s - loss: 0.1698 - accuracy: 0.77505/8 [=================>............] - ETA: 11s - loss: 0.1610 - accuracy: 0.79006/8 [=====================>........] - ETA: 7s - loss: 0.1611 - accuracy: 0.7917 7/8 [=========================>....] - ETA: 3s - loss: 0.1537 - accuracy: 0.80368/8 [==============================] - ETA: 0s - loss: 0.1519 - accuracy: 0.80948/8 [==============================] - 38s 5s/step - loss: 0.1519 - accuracy: 0.8094 - val_loss: 0.2242 - val_accuracy: 0.5800
+Epoch 9/1000
+1/8 [==>...........................] - ETA: 26s - loss: 0.2168 - accuracy: 0.72502/8 [======>.......................] - ETA: 22s - loss: 0.2216 - accuracy: 0.71253/8 [==========>...................] - ETA: 19s - loss: 0.2158 - accuracy: 0.71674/8 [==============>...............] - ETA: 15s - loss: 0.2151 - accuracy: 0.73755/8 [=================>............] - ETA: 11s - loss: 0.2143 - accuracy: 0.73006/8 [=====================>........] - ETA: 7s - loss: 0.2147 - accuracy: 0.7417 7/8 [=========================>....] - ETA: 3s - loss: 0.2034 - accuracy: 0.75718/8 [==============================] - ETA: 0s - loss: 0.2041 - accuracy: 0.75258/8 [==============================] - 38s 5s/step - loss: 0.2041 - accuracy: 0.7525 - val_loss: 0.2240 - val_accuracy: 0.5600
+Epoch 10/1000
+1/8 [==>...........................] - ETA: 26s - loss: 0.2216 - accuracy: 0.72502/8 [======>.......................] - ETA: 22s - loss: 0.1943 - accuracy: 0.77503/8 [==========>...................] - ETA: 19s - loss: 0.1851 - accuracy: 0.76674/8 [==============>...............] - ETA: 15s - loss: 0.1750 - accuracy: 0.78125/8 [=================>............] - ETA: 11s - loss: 0.1782 - accuracy: 0.78006/8 [=====================>........] - ETA: 7s - loss: 0.1696 - accuracy: 0.7792 7/8 [=========================>....] - ETA: 3s - loss: 0.1695 - accuracy: 0.78578/8 [==============================] - ETA: 0s - loss: 0.1734 - accuracy: 0.78608/8 [==============================] - 38s 5s/step - loss: 0.1734 - accuracy: 0.7860 - val_loss: 0.2233 - val_accuracy: 0.5500
+Epoch 11/1000
+1/8 [==>...........................] - ETA: 26s - loss: 0.1395 - accuracy: 0.85002/8 [======>.......................] - ETA: 22s - loss: 0.1755 - accuracy: 0.80003/8 [==========>...................] - ETA: 19s - loss: 0.1775 - accuracy: 0.82504/8 [==============>...............] - ETA: 15s - loss: 0.1819 - accuracy: 0.81885/8 [=================>............] - ETA: 11s - loss: 0.1735 - accuracy: 0.81506/8 [=====================>........] - ETA: 7s - loss: 0.1754 - accuracy: 0.7958 7/8 [=========================>....] - ETA: 3s - loss: 0.1782 - accuracy: 0.78938/8 [==============================] - ETA: 0s - loss: 0.1779 - accuracy: 0.79268/8 [==============================] - 38s 5s/step - loss: 0.1779 - accuracy: 0.7926 - val_loss: 0.2228 - val_accuracy: 0.5400
+Epoch 12/1000
+1/8 [==>...........................] - ETA: 26s - loss: 0.2199 - accuracy: 0.75002/8 [======>.......................] - ETA: 22s - loss: 0.2258 - accuracy: 0.75003/8 [==========>...................] - ETA: 19s - loss: 0.2079 - accuracy: 0.75004/8 [==============>...............] - ETA: 15s - loss: 0.2050 - accuracy: 0.77505/8 [=================>............] - ETA: 11s - loss: 0.1911 - accuracy: 0.80006/8 [=====================>........] - ETA: 7s - loss: 0.1903 - accuracy: 0.8000 7/8 [=========================>....] - ETA: 3s - loss: 0.1896 - accuracy: 0.78578/8 [==============================] - ETA: 0s - loss: 0.1935 - accuracy: 0.77268/8 [==============================] - 38s 5s/step - loss: 0.1935 - accuracy: 0.7726 - val_loss: 0.2222 - val_accuracy: 0.5400
+Epoch 13/1000
+1/8 [==>...........................] - ETA: 26s - loss: 0.1382 - accuracy: 0.80002/8 [======>.......................] - ETA: 23s - loss: 0.1565 - accuracy: 0.78753/8 [==========>...................] - ETA: 19s - loss: 0.1809 - accuracy: 0.75834/8 [==============>...............] - ETA: 15s - loss: 0.1671 - accuracy: 0.78125/8 [=================>............] - ETA: 11s - loss: 0.1724 - accuracy: 0.77006/8 [=====================>........] - ETA: 7s - loss: 0.1724 - accuracy: 0.7708 7/8 [=========================>....] - ETA: 3s - loss: 0.1643 - accuracy: 0.78578/8 [==============================] - ETA: 0s - loss: 0.1641 - accuracy: 0.78268/8 [==============================] - 31s 4s/step - loss: 0.1641 - accuracy: 0.7826 - val_loss: 0.2224 - val_accuracy: 0.5600
+Epoch 14/1000
+1/8 [==>...........................] - ETA: 26s - loss: 0.2457 - accuracy: 0.82502/8 [======>.......................] - ETA: 23s - loss: 0.2098 - accuracy: 0.80003/8 [==========>...................] - ETA: 19s - loss: 0.1945 - accuracy: 0.80834/8 [==============>...............] - ETA: 15s - loss: 0.1893 - accuracy: 0.80625/8 [=================>............] - ETA: 11s - loss: 0.1841 - accuracy: 0.81506/8 [=====================>........] - ETA: 7s - loss: 0.1911 - accuracy: 0.8042 7/8 [=========================>....] - ETA: 3s - loss: 0.2004 - accuracy: 0.78218/8 [==============================] - ETA: 0s - loss: 0.2018 - accuracy: 0.77598/8 [==============================] - 32s 4s/step - loss: 0.2018 - accuracy: 0.7759 - val_loss: 0.2231 - val_accuracy: 0.5500
+Epoch 15/1000
+1/8 [==>...........................] - ETA: 28s - loss: 0.2018 - accuracy: 0.72502/8 [======>.......................] - ETA: 24s - loss: 0.2074 - accuracy: 0.73753/8 [==========>...................] - ETA: 20s - loss: 0.2037 - accuracy: 0.75834/8 [==============>...............] - ETA: 16s - loss: 0.2031 - accuracy: 0.75635/8 [=================>............] - ETA: 12s - loss: 0.1849 - accuracy: 0.77506/8 [=====================>........] - ETA: 8s - loss: 0.1874 - accuracy: 0.7792 7/8 [=========================>....] - ETA: 4s - loss: 0.1975 - accuracy: 0.75718/8 [==============================] - ETA: 0s - loss: 0.1968 - accuracy: 0.75258/8 [==============================] - 34s 4s/step - loss: 0.1968 - accuracy: 0.7525 - val_loss: 0.2230 - val_accuracy: 0.5500
+Epoch 16/1000
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: got SIGCONT
+slurmstepd: error: *** STEP 1884736.0 ON nodegpu001 CANCELLED AT 2022-05-05T03:16:05 ***
+slurmstepd: error: *** JOB 1884736 ON nodegpu001 CANCELLED AT 2022-05-05T03:16:05 ***
+srun: forcing job termination

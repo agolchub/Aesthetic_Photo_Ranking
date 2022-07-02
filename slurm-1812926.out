@@ -1,0 +1,24 @@
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+srun: got SIGCONT
+slurmstepd: error: *** STEP 1812926.0 ON nodenviv100011 CANCELLED AT 2022-05-04T02:13:34 ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 1812926 ON nodenviv100011 CANCELLED AT 2022-05-04T02:13:34 ***
+srun: forcing job termination

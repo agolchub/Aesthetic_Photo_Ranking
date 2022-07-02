@@ -1,0 +1,1302 @@
+2022-05-03 03:28:20.658491: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2022-05-03 03:28:20.658522: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-05-03 03:28:31.018951: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2022-05-03 03:28:31.019431: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcublas.so.11'; dlerror: libcublas.so.11: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2022-05-03 03:28:31.019957: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcublasLt.so.11'; dlerror: libcublasLt.so.11: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2022-05-03 03:28:31.020314: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcufft.so.10'; dlerror: libcufft.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2022-05-03 03:28:31.020701: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcurand.so.10'; dlerror: libcurand.so.10: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2022-05-03 03:28:31.021127: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcusolver.so.11'; dlerror: libcusolver.so.11: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2022-05-03 03:28:31.021545: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcusparse.so.11'; dlerror: libcusparse.so.11: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2022-05-03 03:28:31.021912: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudnn.so.8'; dlerror: libcudnn.so.8: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2022-05-03 03:28:31.021943: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1850] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2022-05-03 03:28:31.022836: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+/mnt/beegfs/home/agolchub/miniconda3/envs/tf2_8_gpu/lib/python3.9/site-packages/keras/optimizer_v2/adam.py:105: UserWarning: The `lr` argument is deprecated, use `learning_rate` instead.
+  super(Adam, self).__init__(name, **kwargs)
+Input file is " 
+Output file is " ./segmented_models/symmetry
+Image path is " 
+--------------------
+
+
+Model: "model"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_1 (InputLayer)        [(None, 244, 244, 3)]     0         
+                                                                 
+ conv2d (Conv2D)             (None, 45, 45, 80)        96080     
+                                                                 
+ batch_normalization (BatchN  (None, 45, 45, 80)       320       
+ ormalization)                                                   
+                                                                 
+ activation (Activation)     (None, 45, 45, 80)        0         
+                                                                 
+ dropout (Dropout)           (None, 45, 45, 80)        0         
+                                                                 
+ conv2d_1 (Conv2D)           (None, 14, 14, 80)        160080    
+                                                                 
+ batch_normalization_1 (Batc  (None, 14, 14, 80)       320       
+ hNormalization)                                                 
+                                                                 
+ activation_1 (Activation)   (None, 14, 14, 80)        0         
+                                                                 
+ dropout_1 (Dropout)         (None, 14, 14, 80)        0         
+                                                                 
+ conv2d_2 (Conv2D)           (None, 6, 6, 80)          57680     
+                                                                 
+ batch_normalization_2 (Batc  (None, 6, 6, 80)         320       
+ hNormalization)                                                 
+                                                                 
+ activation_2 (Activation)   (None, 6, 6, 80)          0         
+                                                                 
+ dropout_2 (Dropout)         (None, 6, 6, 80)          0         
+                                                                 
+ conv2d_3 (Conv2D)           (None, 5, 5, 80)          25680     
+                                                                 
+ batch_normalization_3 (Batc  (None, 5, 5, 80)         320       
+ hNormalization)                                                 
+                                                                 
+ activation_3 (Activation)   (None, 5, 5, 80)          0         
+                                                                 
+ dropout_3 (Dropout)         (None, 5, 5, 80)          0         
+                                                                 
+ flatten (Flatten)           (None, 2000)              0         
+                                                                 
+ dense (Dense)               (None, 64)                128064    
+                                                                 
+ dropout_4 (Dropout)         (None, 64)                0         
+                                                                 
+ dense_1 (Dense)             (None, 64)                4160      
+                                                                 
+ dropout_5 (Dropout)         (None, 64)                0         
+                                                                 
+ dense_2 (Dense)             (None, 1)                 65        
+                                                                 
+=================================================================
+Total params: 473,089
+Trainable params: 472,449
+Non-trainable params: 640
+_________________________________________________________________
+None
+Adding Images: Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/﻿Filename'
+['\ufeffFilename', 'Source', 'Link (if available)', "Arash's Scores", "Maria's Scores", 'Color Saturation', 'Framing', 'Lighting', 'Clarity', 'Symmetry', 'Objective Score', 'Random', 'Set']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows466.jpg'
+['meadows466.jpg', 'pixabay', 'https://pixabay.com/photos/poppies-field-of-poppies-klatschmohn-4278376/', '0.222222222', '3', '0', '0', '1', '1', '0', '2', '1', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows467.jpg'
+['meadows467.jpg', 'pixabay', 'https://pixabay.com/photos/wild-flower-meadow-flowers-bloom-3417207/', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '2', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows396.jpg'
+['meadows396.jpg', 'pixabay', 'https://pixabay.com/photos/meadow-grass-flowers-fantasy-4920663/', '0.444444444', '5', '0', '1', '1', '1', '0', '3', '3', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows435.jpg'
+['meadows435.jpg', 'pixabay', 'https://pixabay.com/photos/crocus-spring-blossom-bloom-300045/', '0.777777778', '8', '1', '0', '1', '1', '0', '3', '4', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows481.jpg'
+['meadows481.jpg', 'pixabay', 'https://pixabay.com/photos/wild-flowers-mark-flowers-summer-626278/', '0.222222222', '3', '0', '0', '0', '1', '0', '1', '5', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows422.jpg'
+['meadows422.jpg', 'pixabay', 'https://pixabay.com/photos/meadow-flower-meadow-daisies-spring-5229203/', '0.555555556', '6', '0', '0', '1', '1', '0', '2', '6', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows484.jpg'
+['meadows484.jpg', 'pixabay', 'https://pixabay.com/photos/poppy-flowers-colorful-779547/', '0.777777778', '8', '1', '0', '1', '1', '0', '3', '7', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows105.jpg'
+['meadows105.jpg', 'unsplash', 'https://unsplash.com/photos/hEjbjw9PpHE', '0.333333333', '4', '1', '1', '1', '1', '0', '4', '8', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows493.jpg'
+['meadows493.jpg', 'pixabay', 'https://pixabay.com/photos/fog-lake-bank-mist-water-grass-5756914/https://pixabay.com/photos/fog-lake-bank-mist-water-grass-5756914/', '0.222222222', '3', '0', '1', '1', '1', '0', '3', '9', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows276.jpg'
+['meadows276.jpg', 'unsplash', 'https://unsplash.com/photos/ypj0GvTSV74', '0.222222222', '3', '0', '0', '1', '1', '0', '2', '10', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows363.jpg'
+['meadows363.jpg', 'flickr', 'https://www.flickr.com/photos/pete_and_emma/9057441463/in/photolist-aWD4C4-p3hyX3-HNzXFz-4NsjUc-ybH5Cv-6CUkCU-6rNpqx-5VBkZQ-6QSr4K-2JPoV1-Vxmzmp-5vNCsU-9XbsQp-d869wh-6DyyhA-6LQyMp-t9ga9g-adUU2n-HNtAP1-nrX35t-yRPdA-NSe7U-2FmoSJ-6er6yf-6emW2x-tBDeE8-g4zwsy-qd69bW-6FjLwE-doMgB-HVZP6y-a2D6pE-eNnKMR-uVyKsW-fjocYf-f8NYtx-9FL56p-KpwgB5-nUfBDW-XCkv9o-nhwLQ1-uQ9TDN-8kKU5p-akRCUR-KX5FJ3-JqxaAq-X74QkQ-dvzZ5A-7T2z3x-Ke3Mao/', '0.333333333', '4', '1', '0', '1', '0', '0', '2', '11', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows461.jpg'
+['meadows461.jpg', 'pixabay', 'https://pixabay.com/photos/dandelion-meadow-flower-meadow-4212767/', '0.444444444', '5', '1', '0', '1', '1', '0', '3', '12', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows228.jpg'
+['meadows228.jpg', 'unsplash', 'https://unsplash.com/photos/kz31XDZpYa4', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '13', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows127.jpg'
+['meadows127.jpg', 'unsplash', 'https://unsplash.com/photos/r0rPKph38RI', '0.555555556', '6', '1', '0', '0', '1', '1', '3', '14', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows142.jpg'
+['meadows142.jpg', 'unsplash', 'https://unsplash.com/photos/0Xe14j3Oj0s', '0.444444444', '5', '1', '0', '1', '0', '1', '3', '15', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows338.jpg'
+['meadows338.jpg', 'flickr', 'https://www.flickr.com/photos/j33pman/5756809828/in/photolist-4NYiuF-vEuuSX-npDnjR-LACabQ-DYrv9S-f7x5xT-GM845e-Mt2Qj-npUAyq-9LH9ZS-aGSxuR-9LEn2n-JnQSDa-o1ADFc-af7fgS-qsYyDA-nJ86k2-9XvWYS-5iCk2v-jksKVv-tcFkys-2Xi7hu-usazf9-akdDyB-wkzb2D-G8CzY3-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-6cjEi9-PXwpN-evCbN8-FSSEUW-5jQWRU-eH7LBD-suy3xD-tQivkp-4YZVUw-a1evUA-cwrzvS-fKZiH-a8G3zo-bVuWNk-cVrmAJ-5gPGwo/', '0.333333333', '4', '1', '0', '1', '1', '0', '3', '16', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows496.jpg'
+['meadows496.jpg', 'pixabay', 'https://pixabay.com/photos/gold-poppy-poppy-sleepy-flowers-5316743/', '0.333333333', '4', '0', '0', '1', '1', '0', '2', '17', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows434.jpg'
+['meadows434.jpg', 'pixabay', 'https://pixabay.com/photos/outlook-landscape-meadow-mountains-2365696/', '0.333333333', '4', '0', '1', '1', '1', '0', '3', '18', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows248.jpg'
+['meadows248.jpg', 'unsplash', 'https://unsplash.com/photos/D3InShujWj4', '0.666666667', '7', '0', '0', '1', '1', '1', '3', '19', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows297.jpg'
+['meadows297.jpg', 'unsplash', 'https://unsplash.com/photos/-POAM_j9Zgw', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '20', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows415.jpg'
+['meadows415.jpg', 'pixabay', 'https://pixabay.com/photos/agriculture-field-landscape-3363932/', '0.222222222', '3', '1', '0', '0', '1', '0', '2', '21', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows226.jpg'
+['meadows226.jpg', 'unsplash', 'https://unsplash.com/photos/GDtK_T_lrEI', '0.444444444', '5', '0', '0', '0', '0', '1', '1', '22', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows450.jpg'
+['meadows450.jpg', 'pixabay', 'https://pixabay.com/photos/flower-meadow-klatschmohn-5246887/', '0.222222222', '3', '0', '0', '0', '1', '0', '1', '23', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows252.jpg'
+['meadows252.jpg', 'unsplash', 'https://unsplash.com/photos/zYV4j5Tv0Ro', '0.333333333', '4', '0', '0', '0', '0', '0', '0', '24', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows79.jpg'
+['meadows79.jpg', 'flickr', 'https://www.flickr.com/photos/walter_moar/15789628211/in/photolist-d7nVUw-r9KaWU-LACaMu-LScWTt-nrER99-uVzc1Y-o2TGBZ-CycvUi-r4uZH4-cMA3hy-cFuVFN-u5bWGQ-buqn7C-eC7yJz-aVrZnX-zBnxqG-q4gYna-eyUBAk-s955dH-aMRPsc-fWxTax-cqWwbW-pcs11R-r3EmzT-foBHsP-s27Mp3-7K1Aor-cAybvf-bxRKeG-4gPU3E-cLWpa7-KM8S5S-neDcJX-FBivnA-bvbm4U-KnP5Fe-rUTiKi-PTQ1ja-umBgUH-fAJTUP-o9EE2t-nchtB7-qbvq9z-HwdeoK-cZLvB9-pTomtA-uBsTtu-pKmb9N-anK8yT-eTGDqq/', '0.222222222', '3', '0', '0', '1', '0', '1', '2', '25', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows404.jpg'
+['meadows404.jpg', 'pixabay', 'https://pixabay.com/photos/the-alps-spring-meadows-mountains-4209272/', '0.555555556', '6', '0', '0', '0', '1', '0', '1', '26', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows424.jpg'
+['meadows424.jpg', 'pixabay', 'https://pixabay.com/photos/tatras-mountains-sky-clouds-haze-2470928/', '0.222222222', '3', '1', '0', '1', '0', '1', '3', '27', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows21.jpg'
+['meadows21.jpg', 'flickr', 'https://www.flickr.com/photos/ryantaylorphotography/8671370924/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB/', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '28', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows94.jpg'
+['meadows94.jpg', 'flickr', 'https://www.flickr.com/photos/germanlissy2207/23126068346/in/photolist-PMe1Md-nRBNHo-mWBthA-oFZNFP-Jq9hA5-9C3iMT-niDgPq-GW6xtm-6t5p8e-aoE8RY-bE1LRf-rZLu4E-BQXQgz-bkBqV8-eQp6aY-9J6576-65J9xR-9sLmbg-xiKHtw-Xcgu3C-aym9TD-ocRHna-hNHRNW-pCQ97b-JRa7aT-cDCbKL-cew6yb-sRH5dB-oY335b-f9iHaj-ezUVZj-rXt2hT-tWRrvW-f6VV6t-t2WJsp-uap7C5-gaH9K4-6r4qmx-Bez9qj-nXDG9T-dcf33f-bjzRf-afQQSV-bvboAW-cSaXyG-5bUaV1-vZoCmW-zkEJPx-4TKPhQ-ecJBfn/', '0.111111111', '2', '1', '0', '1', '0', '0', '2', '29', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows325.jpg'
+['meadows325.jpg', 'pixabay', 'https://pixabay.com/photos/tree-flowers-meadow-tree-trunk-276014/', '0.333333333', '4', '1', '1', '1', '1', '0', '4', '30', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows192.jpg'
+['meadows192.jpg', 'unsplash', 'https://unsplash.com/photos/uMo-M14gmZc', '0.444444444', '5', '1', '0', '1', '1', '0', '3', '31', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows285.jpg'
+['meadows285.jpg', 'unsplash', 'https://unsplash.com/photos/NYzwSmtoGVQ', '0.444444444', '5', '0', '0', '1', '1', '0', '2', '32', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows39.jpg'
+['meadows39.jpg', 'flickr', 'https://www.flickr.com/photos/brandonschauer/2837954661/in/photolist-5iCk2v-usazf9-akdDyB-6cjEi9-5jQWRU-eH7LBD-FSSEUW-evCbN8-a8G3zo-auG8yV-bVuWNk-5jMg3M-H1QWRE-G8CzY3-2Xi7hu-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-PXwpN-tQivkp-4YZVUw-a1evUA-fKZiH-cwrzvS-cVrmAJ-5gPGwo-suy3xD-cqWHby-exZUjs-nb3mzt-MWoBcN-C56vbK-6uv9b2-2GoR1-3CGr4-peMefW-LxvZrC-8YE9oc-g7u6sY-vCqxjE-85Apj2-Kn4GJq-vHpaa4-cyZpQA-JgD4Hs/', '0.111111111', '2', '0', '1', '0', '1', '0', '2', '33', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows31.jpg'
+['meadows31.jpg', 'flickr', 'https://www.flickr.com/photos/37177488@N06/18674086240/in/photolist-5iCk2v-usazf9-akdDyB-6cjEi9-5jQWRU-eH7LBD-FSSEUW-evCbN8-a8G3zo-auG8yV-bVuWNk-5jMg3M-H1QWRE-G8CzY3-2Xi7hu-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-PXwpN-tQivkp-4YZVUw-a1evUA-fKZiH-cwrzvS-cVrmAJ-5gPGwo-suy3xD-cqWHby-exZUjs-nb3mzt-MWoBcN-C56vbK-6uv9b2-2GoR1-3CGr4-peMefW-LxvZrC-8YE9oc-g7u6sY-vCqxjE-85Apj2-Kn4GJq-vHpaa4-cyZpQA-JgD4Hs/', '0.333333333', '4', '0', '0', '0', '0', '0', '0', '34', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows328.jpg'
+['meadows328.jpg', 'pixabay', 'https://pixabay.com/photos/cosmos-flowers-flowers-meadow-1138041/', '0.777777778', '8', '1', '0', '1', '1', '0', '3', '35', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows275.jpg'
+['meadows275.jpg', 'unsplash', 'https://unsplash.com/photos/e58U10DyfHg', '0.333333333', '4', '1', '0', '1', '1', '0', '3', '36', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows323.jpg'
+['meadows323.jpg', 'flickr', 'https://www.flickr.com/photos/97178374@N07/29965957324/in/photolist-rUTiKi-6TzfV3-HVZP6y-EPPwzS-MDZn7C-rZL959-ar6N26-HVsGe1-KX5FJ3-GM845e-FHVsPG-zkEJPx-KKa3za-K4WNqw-A1j17b-KjvqE2-vQng3N-vJazqu-J2dBvd-Hyuhew-H2yRpC-LPFwSq-LoZNNC-MuTQwK-uEecqZ-HbT4zf-GBKZcS-Kkcewu-g4qFjZ-ww9CjP-WeoZJN-HbEbgF-KGqA4k-9QiD9S-28YgYFw-eMRieu-JtQK61-MSJTw3-LScWTt-u4fAf2-xk6vCj-oJyStT-xegJEb-HWdTMA-rN8WjQ-vvNLov-MfJ3vq-VcF1yC-R6kAkf-ziBY1L/', '0.555555556', '6', '0', '0', '1', '1', '0', '2', '37', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows273.jpg'
+['meadows273.jpg', 'unsplash', 'https://unsplash.com/photos/Az8P8lOcgPA', '0.555555556', '6', '1', '1', '1', '0', '0', '3', '38', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows92.jpg'
+['meadows92.jpg', 'flickr', 'https://www.flickr.com/photos/fooming_hoh/28123269325/in/photolist-PMe1Md-nRBNHo-mWBthA-oFZNFP-Jq9hA5-9C3iMT-niDgPq-GW6xtm-6t5p8e-aoE8RY-bE1LRf-rZLu4E-BQXQgz-bkBqV8-eQp6aY-9J6576-65J9xR-9sLmbg-xiKHtw-Xcgu3C-aym9TD-ocRHna-hNHRNW-pCQ97b-JRa7aT-cDCbKL-cew6yb-sRH5dB-oY335b-f9iHaj-ezUVZj-rXt2hT-tWRrvW-f6VV6t-t2WJsp-uap7C5-gaH9K4-6r4qmx-Bez9qj-nXDG9T-dcf33f-bjzRf-afQQSV-bvboAW-cSaXyG-5bUaV1-vZoCmW-zkEJPx-4TKPhQ-ecJBfn/', '0.666666667', '7', '0', '1', '1', '1', '0', '3', '39', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows284.jpg'
+['meadows284.jpg', 'unsplash', 'https://unsplash.com/photos/790-zbaDXuM', '0.222222222', '3', '1', '0', '1', '1', '0', '3', '40', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows296.jpg'
+['meadows296.jpg', 'unsplash', 'https://unsplash.com/photos/-P3UfhSwluU', '0.555555556', '6', '0', '1', '0', '0', '0', '1', '41', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows286.jpg'
+['meadows286.jpg', 'unsplash', 'https://unsplash.com/photos/QehxpJJHcIc', '0.555555556', '6', '1', '0', '1', '1', '1', '4', '42', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows113.jpg'
+['meadows113.jpg', 'unsplash', 'https://unsplash.com/photos/YhZt03_OJKs', '0.222222222', '3', '0', '1', '0', '1', '1', '3', '43', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows302.jpg'
+['meadows302.jpg', 'pexels', 'https://www.pexels.com/photo/landscape-nature-field-flowers-6876105/', '0.444444444', '5', '0', '0', '1', '1', '1', '3', '44', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows89.jpg'
+['meadows89.jpg', 'flickr', 'https://www.flickr.com/photos/laura_cooper/3588187471/in/photolist-PMe1Md-nRBNHo-mWBthA-oFZNFP-Jq9hA5-9C3iMT-niDgPq-GW6xtm-6t5p8e-aoE8RY-bE1LRf-rZLu4E-BQXQgz-bkBqV8-eQp6aY-9J6576-65J9xR-9sLmbg-xiKHtw-Xcgu3C-aym9TD-ocRHna-hNHRNW-pCQ97b-JRa7aT-cDCbKL-cew6yb-sRH5dB-oY335b-f9iHaj-ezUVZj-rXt2hT-tWRrvW-f6VV6t-t2WJsp-uap7C5-gaH9K4-6r4qmx-Bez9qj-nXDG9T-dcf33f-bjzRf-afQQSV-bvboAW-cSaXyG-5bUaV1-vZoCmW-zkEJPx-4TKPhQ-ecJBfn/', '0.555555556', '6', '1', '0', '1', '1', '1', '4', '45', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows354.jpg'
+['meadows354.jpg', 'flickr', 'https://www.flickr.com/photos/nigelsmith99/515829020/in/photolist-Vc7D1Y-vBRtZ9-aggsH2-HEXdCE-aRnpy4-5iFYN8-Jd4zsi-4YdwLW-pPzcxb-7u3k7z-bRUJFK-6dKAQX-9un39U-6Dyz2q-JbwJDS-HU4Jom-24GY2U-cMjwmU-tnYz6k-88mVq1-eNnSYT-5FCYdu-MzKZN-ekYutv-Q8pu8-9Xv1TJ-4NYiuF-vEuuSX-npDnjR-LACabQ-DYrv9S-f7x5xT-GM845e-Mt2Qj-npUAyq-9LH9ZS-aGSxuR-JnQSDa-9LEn2n-o1ADFc-af7fgS-qsYyDA-nJ86k2-9XvWYS-5iCk2v-jksKVv-tcFkys-2Xi7hu-usazf9-8ZUeso/', '0.333333333', '4', '0', '0', '0', '1', '0', '1', '46', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows169.jpg'
+['meadows169.jpg', 'unsplash', 'https://unsplash.com/photos/hOhlYhAiizc', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '47', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows389.jpg'
+['meadows389.jpg', 'pixabay', 'https://pixabay.com/photos/cosmos-flowers-nature-plants-3669022/', '0.555555556', '6', '1', '0', '0', '1', '0', '2', '48', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows51.jpg'
+['meadows51.jpg', 'flickr', 'https://www.flickr.com/photos/127537396@N03/30151556232/in/photolist-5iCk2v-usazf9-akdDyB-6cjEi9-5jQWRU-eH7LBD-FSSEUW-evCbN8-a8G3zo-auG8yV-bVuWNk-5jMg3M-H1QWRE-G8CzY3-2Xi7hu-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-PXwpN-tQivkp-4YZVUw-a1evUA-fKZiH-cwrzvS-cVrmAJ-5gPGwo-suy3xD-cqWHby-exZUjs-nb3mzt-MWoBcN-C56vbK-6uv9b2-2GoR1-3CGr4-peMefW-LxvZrC-8YE9oc-g7u6sY-vCqxjE-85Apj2-Kn4GJq-vHpaa4-cyZpQA-JgD4Hs/', '0.666666667', '7', '1', '0', '1', '1', '1', '4', '49', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows28.jpg'
+['meadows28.jpg', 'flickr', 'https://www.flickr.com/photos/prescottspies/2714329142/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB/', '0.333333333', '4', '0', '0', '0', '1', '0', '1', '50', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows230.jpg'
+['meadows230.jpg', 'unsplash', 'https://unsplash.com/photos/Gqc1jl2kd1U', '0.222222222', '3', '1', '1', '1', '1', '0', '4', '51', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows482.jpg'
+['meadows482.jpg', 'pixabay', 'https://pixabay.com/photos/tulips-field-of-rapeseeds-mountains-3357866/', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '52', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows487.jpg'
+['meadows487.jpg', 'pixabay', 'https://pixabay.com/photos/flowers-meadow-flower-meadow-1343743/', '0.111111111', '2', '1', '0', '1', '1', '0', '3', '53', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows137.jpg'
+['meadows137.jpg', 'unsplash', 'https://unsplash.com/photos/HOCCH6oPVmw', '0.333333333', '4', '1', '1', '0', '1', '0', '3', '54', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows172.jpg'
+['meadows172.jpg', 'unsplash', 'https://unsplash.com/photos/biDzE37RcaU', '0.333333333', '4', '0', '0', '0', '1', '0', '1', '55', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows271.jpg'
+['meadows271.jpg', 'unsplash', 'https://unsplash.com/photos/qD9euGqbYac', '0.444444444', '5', '0', '1', '0', '1', '0', '2', '56', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows436.jpg'
+['meadows436.jpg', 'pixabay', 'https://pixabay.com/photos/meadow-light-dandelion-flowers-3866009/', '0.888888889', '9', '1', '0', '1', '1', '1', '4', '57', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows87.jpg'
+['meadows87.jpg', 'flickr', 'https://www.flickr.com/photos/65089906@N00/14892470677/in/photolist-PMe1Md-nRBNHo-mWBthA-oFZNFP-Jq9hA5-9C3iMT-niDgPq-GW6xtm-6t5p8e-aoE8RY-bE1LRf-rZLu4E-BQXQgz-bkBqV8-eQp6aY-9J6576-65J9xR-9sLmbg-xiKHtw-Xcgu3C-aym9TD-ocRHna-hNHRNW-pCQ97b-JRa7aT-cDCbKL-cew6yb-sRH5dB-oY335b-f9iHaj-ezUVZj-rXt2hT-tWRrvW-f6VV6t-t2WJsp-uap7C5-gaH9K4-6r4qmx-Bez9qj-nXDG9T-dcf33f-bjzRf-afQQSV-bvboAW-cSaXyG-5bUaV1-vZoCmW-zkEJPx-4TKPhQ-ecJBfn/', '0.333333333', '4', '0', '1', '0', '1', '0', '2', '58', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows46.jpg'
+['meadows46.jpg', 'flickr', 'https://www.flickr.com/photos/78143664@N00/167013535/in/photolist-5iCk2v-usazf9-akdDyB-6cjEi9-5jQWRU-eH7LBD-FSSEUW-evCbN8-a8G3zo-auG8yV-bVuWNk-5jMg3M-H1QWRE-G8CzY3-2Xi7hu-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-PXwpN-tQivkp-4YZVUw-a1evUA-fKZiH-cwrzvS-cVrmAJ-5gPGwo-suy3xD-cqWHby-exZUjs-nb3mzt-MWoBcN-C56vbK-6uv9b2-2GoR1-3CGr4-peMefW-LxvZrC-8YE9oc-g7u6sY-vCqxjE-85Apj2-Kn4GJq-vHpaa4-cyZpQA-JgD4Hs/', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '59', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows211.jpg'
+['meadows211.jpg', 'unsplash', 'https://unsplash.com/photos/HbZR2Fw52DU', '0.333333333', '4', '1', '0', '1', '1', '0', '3', '60', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows123.jpg'
+['meadows123.jpg', 'unsplash', 'https://unsplash.com/photos/Yis49IPlFws', '0.777777778', '8', '1', '1', '1', '1', '1', '5', '61', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows164.jpg'
+['meadows164.jpg', 'unsplash', 'https://unsplash.com/photos/G5ji9kwi1jk', '0.444444444', '5', '0', '1', '0', '1', '0', '2', '62', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows291.jpg'
+['meadows291.jpg', 'unsplash', 'https://unsplash.com/photos/Gce-bD-4KLM', '0.333333333', '4', '0', '0', '1', '1', '0', '2', '63', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows175.jpg'
+['meadows175.jpg', 'unsplash', 'https://unsplash.com/photos/KNFLFWgWlMw', '0.777777778', '8', '1', '0', '0', '1', '1', '3', '64', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows185.jpg'
+['meadows185.jpg', 'unsplash', 'https://unsplash.com/photos/F9E0JdgnVdk', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '65', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows442.jpg'
+['meadows442.jpg', 'pixabay', 'https://pixabay.com/photos/cosmos-field-cosmos-wind-950004/', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '66', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows427.jpg'
+['meadows427.jpg', 'pixabay', 'https://pixabay.com/photos/flowers-poppies-field-landscape-63755/', '0.777777778', '8', '1', '0', '1', '1', '1', '4', '67', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows332.jpg'
+['meadows332.jpg', 'flickr', 'https://www.flickr.com/photos/domrik/20055999413/in/photolist-HVsGe1-JycKky-tpYKQd-n9bUZB-KHZW2Y-wyheTk-bVsena-cfZeof-Jd5bVT-f9cjMv-9Qvkwk-nZLAST-5pLP3V-9zMM9o-JfDgh1-f7Asnm-XhcKos-KQhdL3-a3WUVL-edg3tf-EQAZvV-ovPYLW-HFgAf3-D92GqX-9DUt6D-z38M9f-KkhWe1-4iXVno-cLcJAG-6qCVAo-58RDuj-6qCVrq-sHNtNH-cQk8hL-ey5CbM-ScAQPv-6DupyK-74ciXB-akdE3v-Vc7D1Y-vBRtZ9-aggsH2-HEXdCE-aRnpy4-Jd4zsi-4YdwLW-7u3k7z-bRUJFK-6dKAQX-9un39U/', '0.555555556', '6', '1', '0', '1', '0', '0', '2', '68', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows468.jpg'
+['meadows468.jpg', 'pixabay', 'https://pixabay.com/photos/sage-wild-flowers-plants-6313758/', '0.444444444', '5', '1', '0', '1', '1', '0', '3', '69', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows242.jpg'
+['meadows242.jpg', 'unsplash', 'https://unsplash.com/photos/1uDMf7NXSew', '0.444444444', '5', '1', '0', '1', '1', '0', '3', '70', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows207.jpg'
+['meadows207.jpg', 'unsplash', 'https://unsplash.com/photos/S9BP8kBYOlU', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '71', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows475.jpg'
+['meadows475.jpg', 'pixabay', 'https://pixabay.com/photos/meadow-lake-primrose-landscape-2453345/', '0.333333333', '4', '0', '0', '0', '1', '0', '1', '72', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows238.jpg'
+['meadows238.jpg', 'unsplash', 'https://unsplash.com/photos/tjF82lmqD3E', '0.111111111', '2', '1', '1', '1', '1', '0', '4', '73', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows378.jpg'
+['meadows378.jpg', 'pixabay', 'https://pixabay.com/photos/flowers-meadow-grass-bloom-blossom-1516734/', '0.444444444', '5', '1', '0', '1', '1', '0', '3', '74', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows392.jpg'
+['meadows392.jpg', 'pixabay', 'https://pixabay.com/photos/dandelion-meadow-dandelion-meadow-3494398/', '0.666666667', '7', '1', '1', '1', '1', '0', '4', '75', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows293.jpg'
+['meadows293.jpg', 'unsplash', 'https://unsplash.com/photos/zjcufdUl7CU', '0.222222222', '3', '0', '0', '0', '1', '0', '1', '76', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows86.jpg'
+['meadows86.jpg', 'flickr', 'https://www.flickr.com/photos/jbsnowfish/31360549494/in/photolist-PMe1Md-nRBNHo-mWBthA-oFZNFP-Jq9hA5-9C3iMT-niDgPq-GW6xtm-6t5p8e-aoE8RY-bE1LRf-rZLu4E-BQXQgz-bkBqV8-eQp6aY-9J6576-65J9xR-9sLmbg-xiKHtw-Xcgu3C-aym9TD-ocRHna-hNHRNW-pCQ97b-JRa7aT-cDCbKL-cew6yb-sRH5dB-oY335b-f9iHaj-ezUVZj-rXt2hT-tWRrvW-f6VV6t-t2WJsp-uap7C5-gaH9K4-6r4qmx-Bez9qj-nXDG9T-dcf33f-bjzRf-afQQSV-bvboAW-cSaXyG-5bUaV1-vZoCmW-zkEJPx-4TKPhQ-ecJBfn', '0.777777778', '8', '1', '1', '1', '1', '0', '4', '77', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows313.jpg'
+['meadows313.jpg', 'flickr', 'https://www.flickr.com/photos/woolgenie/17853789358/in/photolist-tcFkys-usazf9-jksKVv-akdDyB-2Xi7hu-S1uLa-6DuovR-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-6cjEi9-PXwpN-5jQWRU-eH7LBD-tQivkp-4YZVUw-FSSEUW-evCbN8-a1evUA-fKZiH-cwrzvS-cVrmAJ-5gPGwo-suy3xD-cqWHby-bVuWNk-nb3mzt-MWoBcN-5jMg3M-C56vbK-6uv9b2-2GoR1-3CGr4-peMefW-LxvZrC-8YE9oc-g7u6sY-vCqxjE-85Apj2-vHpaa4-cyZpQA-JgD4Hs-coYoes-4Qpa4b-xutinB-6cbz2j-JqxaAq-R6kAkf', '0.333333333', '4', '1', '0', '1', '1', '0', '3', '78', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows138.jpg'
+['meadows138.jpg', 'unsplash', 'https://unsplash.com/photos/eddJKMcqi-0', '0.444444444', '5', '1', '0', '1', '1', '0', '3', '79', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows360.jpg'
+['meadows360.jpg', 'flickr', 'https://www.flickr.com/photos/antrimlens/14077142675/in/photolist-aWD4C4-p3hyX3-HNzXFz-4NsjUc-ybH5Cv-6CUkCU-6rNpqx-5VBkZQ-6QSr4K-2JPoV1-Vxmzmp-5vNCsU-9XbsQp-d869wh-6DyyhA-6LQyMp-t9ga9g-adUU2n-HNtAP1-nrX35t-yRPdA-NSe7U-2FmoSJ-6er6yf-6emW2x-tBDeE8-g4zwsy-qd69bW-6FjLwE-doMgB-HVZP6y-a2D6pE-eNnKMR-uVyKsW-fjocYf-f8NYtx-9FL56p-KpwgB5-nUfBDW-XCkv9o-nhwLQ1-uQ9TDN-8kKU5p-akRCUR-KX5FJ3-JqxaAq-X74QkQ-dvzZ5A-7T2z3x-Ke3Mao/', '0.777777778', '8', '0', '0', '1', '1', '0', '2', '80', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows83.jpg'
+['meadows83.jpg', 'flickr', 'https://www.flickr.com/photos/abbieinwonderland/6924084990/in/photolist-d7nVUw-r9KaWU-LACaMu-LScWTt-nrER99-uVzc1Y-o2TGBZ-CycvUi-r4uZH4-cMA3hy-cFuVFN-u5bWGQ-buqn7C-eC7yJz-aVrZnX-zBnxqG-q4gYna-eyUBAk-s955dH-aMRPsc-fWxTax-cqWwbW-pcs11R-r3EmzT-foBHsP-s27Mp3-7K1Aor-cAybvf-bxRKeG-4gPU3E-cLWpa7-KM8S5S-neDcJX-FBivnA-bvbm4U-KnP5Fe-rUTiKi-PTQ1ja-umBgUH-fAJTUP-o9EE2t-nchtB7-qbvq9z-HwdeoK-cZLvB9-pTomtA-uBsTtu-pKmb9N-anK8yT-eTGDqq/', '0.555555556', '6', '0', '0', '1', '1', '0', '2', '81', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows452.jpg'
+['meadows452.jpg', 'pixabay', 'https://pixabay.com/photos/landscape-field-flowers-meadow-sky-5281383/', '0.333333333', '4', '0', '0', '1', '1', '0', '2', '82', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows462.jpg'
+['meadows462.jpg', 'pixabay', 'https://pixabay.com/photos/spring-meadow-meadow-april-spring-1362557/', '0.333333333', '4', '0', '0', '1', '1', '0', '2', '83', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows479.jpg'
+['meadows479.jpg', 'pixabay', 'https://pixabay.com/photos/schladming-lake-nature-landscape-3507754/', '0.333333333', '4', '0', '1', '1', '1', '0', '3', '84', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows15.jpg'
+['meadows15.jpg', 'flickr', 'https://www.flickr.com/photos/37065582@N06/28769697546/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB/', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '85', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows395.jpg'
+['meadows395.jpg', 'pixabay', 'https://pixabay.com/photos/pointed-flower-grass-nature-grasses-1420072/', '0.333333333', '4', '1', '0', '1', '1', '0', '3', '86', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows8.jpg'
+['meadows8.jpg', 'flickr', 'https://www.flickr.com/photos/77411255@N07/27931404146/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB/', '0.333333333', '4', '1', '0', '0', '1', '1', '3', '87', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows469.jpg'
+['meadows469.jpg', 'pixabay', 'https://pixabay.com/photos/wildflowers-meadow-tall-grass-817178/', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '88', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows143.jpg'
+['meadows143.jpg', 'unsplash', 'https://unsplash.com/photos/jr7bl8PVOfw', '0.333333333', '4', '0', '0', '0', '1', '1', '2', '89', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows114.jpg'
+['meadows114.jpg', 'unsplash', 'https://unsplash.com/photos/-By1_DpPsBk', '0.222222222', '3', '0', '0', '0', '1', '0', '1', '90', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows82.jpg'
+['meadows82.jpg', 'flickr', 'https://www.flickr.com/photos/61493251@N05/7610964232/in/photolist-d7nVUw-r9KaWU-LACaMu-LScWTt-nrER99-uVzc1Y-o2TGBZ-CycvUi-r4uZH4-cMA3hy-cFuVFN-u5bWGQ-buqn7C-eC7yJz-aVrZnX-zBnxqG-q4gYna-eyUBAk-s955dH-aMRPsc-fWxTax-cqWwbW-pcs11R-r3EmzT-foBHsP-s27Mp3-7K1Aor-cAybvf-bxRKeG-4gPU3E-cLWpa7-KM8S5S-neDcJX-FBivnA-bvbm4U-KnP5Fe-rUTiKi-PTQ1ja-umBgUH-fAJTUP-o9EE2t-nchtB7-qbvq9z-HwdeoK-cZLvB9-pTomtA-uBsTtu-pKmb9N-anK8yT-eTGDqq/', '0.333333333', '4', '1', '0', '0', '1', '0', '2', '91', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows292.jpg'
+['meadows292.jpg', 'unsplash', 'https://unsplash.com/photos/HlROCjDQm9A', '0.333333333', '4', '1', '0', '1', '1', '0', '3', '92', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows458.jpg'
+['meadows458.jpg', 'pixabay', 'https://pixabay.com/illustrations/flower-meadow-colorful-cornflowers-2509889/', '0.333333333', '4', '0', '0', '0', '1', '0', '1', '93', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows441.jpg'
+['meadows441.jpg', 'pixabay', 'https://pixabay.com/photos/dandelion-flowers-seeds-meadow-5161516/', '0.333333333', '4', '1', '0', '1', '1', '0', '3', '94', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows191.jpg'
+['meadows191.jpg', 'unsplash', 'https://unsplash.com/photos/ljTvnaeQ84E', '0.333333333', '4', '1', '1', '1', '1', '0', '4', '95', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows256.jpg'
+['meadows256.jpg', 'unsplash', 'https://unsplash.com/photos/6LJqVhPtjEU', '0.777777778', '8', '1', '0', '1', '1', '0', '3', '96', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows465.jpg'
+['meadows465.jpg', 'pixabay', 'https://pixabay.com/photos/mountains-landscape-nature-sky-4366770/', '0.555555556', '6', '0', '1', '1', '1', '0', '3', '97', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows443.jpg'
+['meadows443.jpg', 'pixabay', 'https://pixabay.com/photos/lavender-sunbeam-lavender-field-3118882/', '0.888888889', '9', '0', '0', '1', '1', '0', '2', '98', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows312.jpg'
+['meadows312.jpg', 'pexels', 'https://www.pexels.com/photo/macro-shot-photography-of-purple-plants-under-sunny-sky-during-daytime-139396/', '0.555555556', '6', '1', '0', '1', '1', '1', '4', '99', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows71.jpg'
+['meadows71.jpg', 'flickr', 'https://www.flickr.com/photos/rambynas/5812260481/in/photolist-o3zc7-objLKu-JCgUQS-tEZ29L-eNgfWw-f6TtZ2-JfB9gq-QYrsdn-o9BKJf-GCaSBS-jSRvTi-myU9GP-HMtE3f-7T2z3x-2n8zT2-Q82oQ-Ngjk1H-8enUew-rDx8B-akUrKh-8sn6ez-8adtGr-WEdbmi-rF3AXz-Kkcewu-szeSbP-8ekBRV-QqjcuU-mLpzFc-Fnp1og-72fqfX-o2jTAR-KGCDRY-vLUmHE-hKRLN-yHqo3r-EgMamq-FKUNa5-JNeThC-9RBmxB-G1QzTj-sqzWZx-HpVs5z-HL7DtK-akUs8C-tTW5KH-yPB1Lr-ongUVG-WT8Adw-xegJEb/', '0.555555556', '6', '1', '0', '1', '1', '1', '4', '100', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows33.jpg'
+['meadows33.jpg', 'flickr', 'https://www.flickr.com/photos/gcwest/2838673926/in/photolist-5iCk2v-usazf9-akdDyB-6cjEi9-5jQWRU-eH7LBD-FSSEUW-evCbN8-a8G3zo-auG8yV-bVuWNk-5jMg3M-H1QWRE-G8CzY3-2Xi7hu-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-PXwpN-tQivkp-4YZVUw-a1evUA-fKZiH-cwrzvS-cVrmAJ-5gPGwo-suy3xD-cqWHby-exZUjs-nb3mzt-MWoBcN-C56vbK-6uv9b2-2GoR1-3CGr4-peMefW-LxvZrC-8YE9oc-g7u6sY-vCqxjE-85Apj2-Kn4GJq-vHpaa4-cyZpQA-JgD4Hs/', '0.222222222', '3', '0', '1', '0', '0', '0', '1', '101', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows499.jpg'
+['meadows499.jpg', 'pixabay', 'https://pixabay.com/photos/landscape-sunset-panorama-nature-3088508/', '0.777777778', '8', '0', '0', '1', '1', '0', '2', '102', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows168.jpg'
+['meadows168.jpg', 'unsplash', 'https://unsplash.com/photos/0PxZUDLIREk', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '103', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows130.jpg'
+['meadows130.jpg', 'unsplash', 'https://unsplash.com/photos/Zao_ZsHQrCM', '0.111111111', '2', '0', '0', '0', '0', '1', '1', '104', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows205.jpg'
+['meadows205.jpg', 'unsplash', 'https://unsplash.com/photos/fU2gh87jAw0', '0.444444444', '5', '0', '0', '1', '0', '0', '1', '105', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows135.jpg'
+['meadows135.jpg', 'unsplash', 'https://unsplash.com/photos/y6MGRgpsnPQ', '0.222222222', '3', '0', '0', '1', '0', '0', '1', '106', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows345.jpg'
+['meadows345.jpg', 'flickr', 'https://www.flickr.com/photos/b-o-k/7128365401/in/photolist-Vc7D1Y-vBRtZ9-aggsH2-HEXdCE-aRnpy4-5iFYN8-Jd4zsi-4YdwLW-pPzcxb-7u3k7z-bRUJFK-6dKAQX-9un39U-6Dyz2q-JbwJDS-HU4Jom-24GY2U-cMjwmU-tnYz6k-88mVq1-eNnSYT-5FCYdu-MzKZN-ekYutv-Q8pu8-9Xv1TJ-4NYiuF-vEuuSX-npDnjR-LACabQ-DYrv9S-f7x5xT-GM845e-Mt2Qj-npUAyq-9LH9ZS-aGSxuR-JnQSDa-9LEn2n-o1ADFc-af7fgS-qsYyDA-nJ86k2-9XvWYS-5iCk2v-jksKVv-tcFkys-2Xi7hu-usazf9-8ZUeso/', '0.555555556', '6', '1', '0', '1', '1', '1', '4', '107', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows272.jpg'
+['meadows272.jpg', 'unsplash', 'https://unsplash.com/photos/qJ6fzppb39Y', '0.222222222', '3', '0', '1', '1', '1', '0', '3', '108', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows190.jpg'
+['meadows190.jpg', 'unsplash', 'https://unsplash.com/photos/nDlR5_YlXpk', '0.222222222', '3', '0', '1', '0', '1', '0', '2', '109', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows355.jpg'
+['meadows355.jpg', 'flickr', 'https://www.flickr.com/photos/bangbyalexyork/5878922672/in/photolist-Vc7D1Y-vBRtZ9-aggsH2-HEXdCE-aRnpy4-5iFYN8-Jd4zsi-4YdwLW-pPzcxb-7u3k7z-bRUJFK-6dKAQX-9un39U-6Dyz2q-JbwJDS-HU4Jom-24GY2U-cMjwmU-tnYz6k-88mVq1-eNnSYT-5FCYdu-MzKZN-ekYutv-Q8pu8-9Xv1TJ-4NYiuF-vEuuSX-npDnjR-LACabQ-DYrv9S-f7x5xT-GM845e-Mt2Qj-npUAyq-9LH9ZS-aGSxuR-JnQSDa-9LEn2n-o1ADFc-af7fgS-qsYyDA-nJ86k2-9XvWYS-5iCk2v-jksKVv-tcFkys-2Xi7hu-usazf9-8ZUeso/', '0.333333333', '4', '1', '0', '1', '1', '0', '3', '110', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows430.jpg'
+['meadows430.jpg', 'pixabay', 'https://pixabay.com/photos/flowers-flower-meadow-nature-meadow-3383031/', '0.333333333', '4', '1', '0', '1', '1', '0', '3', '111', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows124.jpg'
+['meadows124.jpg', 'unsplash', 'https://unsplash.com/photos/cjvHM7GqzQg', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '112', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows40.jpg'
+['meadows40.jpg', 'flickr', 'https://www.flickr.com/photos/lapstrake/26920177400/in/photolist-5iCk2v-usazf9-akdDyB-6cjEi9-5jQWRU-eH7LBD-FSSEUW-evCbN8-a8G3zo-auG8yV-bVuWNk-5jMg3M-H1QWRE-G8CzY3-2Xi7hu-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-PXwpN-tQivkp-4YZVUw-a1evUA-fKZiH-cwrzvS-cVrmAJ-5gPGwo-suy3xD-cqWHby-exZUjs-nb3mzt-MWoBcN-C56vbK-6uv9b2-2GoR1-3CGr4-peMefW-LxvZrC-8YE9oc-g7u6sY-vCqxjE-85Apj2-Kn4GJq-vHpaa4-cyZpQA-JgD4Hs/', '0.333333333', '4', '1', '0', '0', '0', '0', '1', '113', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows407.jpg'
+['meadows407.jpg', 'pixabay', 'https://pixabay.com/photos/meadow-flowers-spread-2153223/', '0.222222222', '3', '0', '1', '1', '1', '0', '3', '114', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows12.jpg'
+['meadows12.jpg', 'flickr', 'https://www.flickr.com/photos/tr7vsh/7168459839/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB/', '0.555555556', '6', '1', '0', '1', '0', '1', '3', '115', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows463.jpg'
+['meadows463.jpg', 'pixabay', 'https://pixabay.com/photos/meadow-butterfly-grass-spring-mood-4136257/', '0.333333333', '4', '1', '0', '1', '0', '0', '2', '116', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows456.jpg'
+['meadows456.jpg', 'pixabay', 'https://pixabay.com/photos/forget-me-not-flowers-blue-meadow-4178247/', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '117', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows67.jpg'
+['meadows67.jpg', 'flickr', 'https://www.flickr.com/photos/cpalmatier/4892841231/in/photolist-o3zc7-objLKu-JCgUQS-tEZ29L-eNgfWw-f6TtZ2-JfB9gq-QYrsdn-o9BKJf-GCaSBS-jSRvTi-myU9GP-HMtE3f-7T2z3x-2n8zT2-Q82oQ-Ngjk1H-8enUew-rDx8B-akUrKh-8sn6ez-8adtGr-WEdbmi-rF3AXz-Kkcewu-szeSbP-8ekBRV-QqjcuU-mLpzFc-Fnp1og-72fqfX-o2jTAR-KGCDRY-vLUmHE-hKRLN-yHqo3r-EgMamq-FKUNa5-JNeThC-9RBmxB-G1QzTj-sqzWZx-HpVs5z-HL7DtK-akUs8C-tTW5KH-yPB1Lr-ongUVG-WT8Adw-xegJEb/', '0.111111111', '2', '1', '0', '0', '0', '1', '2', '118', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows7.jpg'
+['meadows7.jpg', 'flickr', 'https://www.flickr.com/photos/133754632@N07/29989270785/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB/', '0.222222222', '3', '0', '1', '0', '1', '0', '2', '119', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows150.jpg'
+['meadows150.jpg', 'unsplash', 'https://unsplash.com/photos/DD4QXxCN3yk', '0.555555556', '6', '1', '1', '1', '1', '0', '4', '120', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows227.jpg'
+['meadows227.jpg', 'unsplash', 'https://unsplash.com/photos/Gi1sQnqDusw', '0.333333333', '4', '0', '1', '1', '1', '0', '3', '121', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows203.jpg'
+['meadows203.jpg', 'unsplash', 'https://unsplash.com/photos/CygBtZuDlL8', '0.444444444', '5', '1', '0', '1', '1', '0', '3', '122', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows65.jpg'
+['meadows65.jpg', 'flickr', 'https://www.flickr.com/photos/theotherdan/290236269/in/photolist-o3zc7-objLKu-JCgUQS-tEZ29L-eNgfWw-f6TtZ2-JfB9gq-QYrsdn-o9BKJf-GCaSBS-jSRvTi-myU9GP-HMtE3f-7T2z3x-2n8zT2-Q82oQ-Ngjk1H-8enUew-rDx8B-akUrKh-8sn6ez-8adtGr-WEdbmi-rF3AXz-Kkcewu-szeSbP-8ekBRV-QqjcuU-mLpzFc-Fnp1og-72fqfX-o2jTAR-KGCDRY-vLUmHE-hKRLN-yHqo3r-EgMamq-FKUNa5-JNeThC-9RBmxB-G1QzTj-sqzWZx-HpVs5z-HL7DtK-akUs8C-tTW5KH-yPB1Lr-ongUVG-WT8Adw-xegJEb/', '0.222222222', '3', '0', '0', '0', '0', '0', '0', '123', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows431.jpg'
+['meadows431.jpg', 'pixabay', 'https://pixabay.com/photos/sunset-field-nature-meadow-sun-731307/', '0.555555556', '6', '0', '1', '0', '0', '0', '1', '124', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows364.jpg'
+['meadows364.jpg', 'flickr', 'https://www.flickr.com/photos/woodmatthewsphotographs/4818075799/in/photolist-aWD4C4-p3hyX3-HNzXFz-4NsjUc-ybH5Cv-6CUkCU-6rNpqx-5VBkZQ-6QSr4K-2JPoV1-Vxmzmp-5vNCsU-9XbsQp-d869wh-6DyyhA-6LQyMp-t9ga9g-adUU2n-HNtAP1-nrX35t-yRPdA-NSe7U-2FmoSJ-6er6yf-6emW2x-tBDeE8-g4zwsy-qd69bW-6FjLwE-doMgB-HVZP6y-a2D6pE-eNnKMR-uVyKsW-fjocYf-f8NYtx-9FL56p-KpwgB5-nUfBDW-XCkv9o-nhwLQ1-uQ9TDN-8kKU5p-akRCUR-KX5FJ3-JqxaAq-X74QkQ-dvzZ5A-7T2z3x-Ke3Mao/', '0.222222222', '3', '0', '0', '0', '1', '0', '1', '125', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows425.jpg'
+['meadows425.jpg', 'pixabay', 'https://pixabay.com/photos/summer-dandelion-nature-flower-2120023/', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '126', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows263.jpg'
+['meadows263.jpg', 'unsplash', 'https://unsplash.com/photos/bkmgg-qNzXU', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '127', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows166.jpg'
+['meadows166.jpg', 'unsplash', 'https://unsplash.com/photos/1TFKuRU0l8Y', '0.555555556', '6', '1', '0', '0', '1', '0', '2', '128', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows333.jpg'
+['meadows333.jpg', 'flickr', 'https://www.flickr.com/photos/27469793@N08/19469933403/in/photolist-4NYiuF-vEuuSX-npDnjR-LACabQ-DYrv9S-f7x5xT-GM845e-Mt2Qj-npUAyq-9LH9ZS-aGSxuR-9LEn2n-JnQSDa-o1ADFc-af7fgS-qsYyDA-nJ86k2-9XvWYS-5iCk2v-jksKVv-tcFkys-2Xi7hu-usazf9-akdDyB-wkzb2D-G8CzY3-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-6cjEi9-PXwpN-evCbN8-FSSEUW-5jQWRU-eH7LBD-suy3xD-tQivkp-4YZVUw-a1evUA-cwrzvS-fKZiH-a8G3zo-bVuWNk-cVrmAJ-5gPGwo/', '0.333333333', '4', '0', '0', '0', '1', '0', '1', '129', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows159.jpg'
+['meadows159.jpg', 'unsplash', 'https://unsplash.com/photos/qYzQjxsvknU', '0.444444444', '5', '1', '0', '1', '1', '1', '4', '130', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows59.jpg'
+['meadows59.jpg', 'flickr', 'https://www.flickr.com/photos/webdoc/9056173738/in/photolist-o3zc7-objLKu-JCgUQS-tEZ29L-eNgfWw-f6TtZ2-JfB9gq-QYrsdn-o9BKJf-GCaSBS-jSRvTi-myU9GP-HMtE3f-7T2z3x-2n8zT2-Q82oQ-Ngjk1H-8enUew-rDx8B-akUrKh-8sn6ez-8adtGr-WEdbmi-rF3AXz-Kkcewu-szeSbP-8ekBRV-QqjcuU-mLpzFc-Fnp1og-72fqfX-o2jTAR-KGCDRY-vLUmHE-hKRLN-yHqo3r-EgMamq-FKUNa5-JNeThC-9RBmxB-G1QzTj-sqzWZx-HpVs5z-HL7DtK-akUs8C-tTW5KH-yPB1Lr-ongUVG-WT8Adw-xegJEb/', '0.111111111', '2', '0', '1', '1', '1', '1', '4', '131', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows170.jpg'
+['meadows170.jpg', 'unsplash', 'https://unsplash.com/photos/DhkO9wC97os', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '132', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows171.jpg'
+['meadows171.jpg', 'unsplash', 'https://unsplash.com/photos/-F5ik109zfU', '0.555555556', '6', '1', '1', '1', '1', '0', '4', '133', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows249.jpg'
+['meadows249.jpg', 'unsplash', 'https://unsplash.com/photos/xgTzpL2iAxo', '0.555555556', '6', '0', '1', '0', '1', '0', '2', '134', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows186.jpg'
+['meadows186.jpg', 'unsplash', 'https://unsplash.com/photos/4IhRv2utrFs', '0.444444444', '5', '1', '0', '1', '0', '0', '2', '135', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows6.jpg'
+['meadows6.jpg', 'flickr', 'https://www.flickr.com/photos/144818418@N02/29946368321/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB/', '0.444444444', '5', '1', '1', '1', '1', '0', '4', '136', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows160.jpg'
+['meadows160.jpg', 'unsplash', 'https://unsplash.com/photos/2sHkNyP4CgU', '0.222222222', '3', '0', '0', '1', '1', '0', '2', '137', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows229.jpg'
+['meadows229.jpg', 'unsplash', 'https://unsplash.com/photos/KmrkQRSsAIM', '0.666666667', '7', '0', '0', '1', '1', '0', '2', '138', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows77.jpg'
+['meadows77.jpg', 'flickr', 'https://www.flickr.com/photos/harryshots/23993218341/in/photolist-d7nVUw-r9KaWU-LACaMu-LScWTt-nrER99-uVzc1Y-o2TGBZ-CycvUi-r4uZH4-cMA3hy-cFuVFN-u5bWGQ-buqn7C-eC7yJz-aVrZnX-zBnxqG-q4gYna-eyUBAk-s955dH-aMRPsc-fWxTax-cqWwbW-pcs11R-r3EmzT-foBHsP-s27Mp3-7K1Aor-cAybvf-bxRKeG-4gPU3E-cLWpa7-KM8S5S-neDcJX-FBivnA-bvbm4U-KnP5Fe-rUTiKi-PTQ1ja-umBgUH-fAJTUP-o9EE2t-nchtB7-qbvq9z-HwdeoK-cZLvB9-pTomtA-uBsTtu-pKmb9N-anK8yT-eTGDqq/', '0.111111111', '2', '0', '1', '0', '1', '1', '3', '139', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows321.jpg'
+['meadows321.jpg', 'flickr', 'https://www.flickr.com/photos/sanodi/34048107944/in/photolist-HNzXFz-D92GqX-JqxaAq-JrfyHs-BQXQgz-PTQ1ja-JSHWSd-TrRRAm-VmVmQG-XCkv9o-TV2f3K-E6uMbg-GTFWfH-QxHcZE-G8EAt3-Mz1JzS-KpePn8-FSSEUW-UJmdo3-sEKSii-QRiMoo-NDZfb6-VPefEa-PLCMKw-XhcKos-XSH8kE-VGXypE-Vxmzmp-LaAjwg-vLUmHE-v63raA-vv2APv-FwDS5u-LL5Cb-2jZvYuw-Hqupzi-wkzb2D-o2QnqB-58NVRh-JKjP2f-H61Xby-2jjgMG7-5YNZUv-rcbWHP-TSHsgS-V19Srd-HU1AKw-FFJD7D-HpVs5z-sHNtNH/', '0.333333333', '4', '1', '1', '1', '1', '0', '4', '140', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows266.jpg'
+['meadows266.jpg', 'unsplash', 'https://unsplash.com/photos/pH-jZ4-l9PE', '0.333333333', '4', '1', '0', '1', '1', '0', '3', '141', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows451.jpg'
+['meadows451.jpg', 'pixabay', 'https://pixabay.com/photos/crocus-spring-flowers-bloom-meadow-4851627/', '0.555555556', '6', '1', '0', '1', '1', '1', '4', '142', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows366.jpg'
+['meadows366.jpg', 'pixabay', 'https://pixabay.com/photos/sunset-poppies-field-red-poppies-815270/', '0.888888889', '9', '1', '0', '1', '1', '1', '4', '143', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows318.jpg'
+['meadows318.jpg', 'flickr', 'https://www.flickr.com/photos/149815099@N03/31353871856/in/photolist-HNzXFz-D92GqX-JqxaAq-JrfyHs-BQXQgz-PTQ1ja-JSHWSd-TrRRAm-VmVmQG-XCkv9o-TV2f3K-E6uMbg-GTFWfH-QxHcZE-G8EAt3-Mz1JzS-KpePn8-FSSEUW-UJmdo3-sEKSii-QRiMoo-NDZfb6-VPefEa-PLCMKw-XhcKos-XSH8kE-VGXypE-Vxmzmp-LaAjwg-vLUmHE-v63raA-vv2APv-FwDS5u-LL5Cb-2jZvYuw-Hqupzi-wkzb2D-o2QnqB-58NVRh-JKjP2f-H61Xby-2jjgMG7-5YNZUv-rcbWHP-TSHsgS-V19Srd-HU1AKw-FFJD7D-HpVs5z-sHNtNH/', '0.222222222', '3', '1', '0', '1', '1', '0', '3', '144', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows112.jpg'
+['meadows112.jpg', 'unsplash', 'https://unsplash.com/photos/9xqalG4kme0', '0.333333333', '4', '1', '0', '0', '1', '0', '2', '145', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows34.jpg'
+['meadows34.jpg', 'flickr', 'https://www.flickr.com/photos/joannarb2009/26173625254/in/photolist-5iCk2v-usazf9-akdDyB-6cjEi9-5jQWRU-eH7LBD-FSSEUW-evCbN8-a8G3zo-auG8yV-bVuWNk-5jMg3M-H1QWRE-G8CzY3-2Xi7hu-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-PXwpN-tQivkp-4YZVUw-a1evUA-fKZiH-cwrzvS-cVrmAJ-5gPGwo-suy3xD-cqWHby-exZUjs-nb3mzt-MWoBcN-C56vbK-6uv9b2-2GoR1-3CGr4-peMefW-LxvZrC-8YE9oc-g7u6sY-vCqxjE-85Apj2-Kn4GJq-vHpaa4-cyZpQA-JgD4Hs/', '0.333333333', '4', '1', '0', '0', '0', '1', '2', '146', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows18.jpg'
+['meadows18.jpg', 'flickr', 'https://www.flickr.com/photos/kbeads/5679801475/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB/', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '147', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows75.jpg'
+['meadows75.jpg', 'flickr', 'https://www.flickr.com/photos/bill-clark1/7948458882/in/photolist-d7nVUw-r9KaWU-LACaMu-LScWTt-nrER99-uVzc1Y-o2TGBZ-CycvUi-r4uZH4-cMA3hy-cFuVFN-u5bWGQ-buqn7C-eC7yJz-aVrZnX-zBnxqG-q4gYna-eyUBAk-s955dH-aMRPsc-fWxTax-cqWwbW-pcs11R-r3EmzT-foBHsP-s27Mp3-7K1Aor-cAybvf-bxRKeG-4gPU3E-cLWpa7-KM8S5S-neDcJX-FBivnA-bvbm4U-KnP5Fe-rUTiKi-PTQ1ja-umBgUH-fAJTUP-o9EE2t-nchtB7-qbvq9z-HwdeoK-cZLvB9-pTomtA-uBsTtu-pKmb9N-anK8yT-eTGDqq', '0.444444444', '5', '1', '0', '1', '1', '1', '4', '148', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows337.jpg'
+['meadows337.jpg', 'flickr', 'https://www.flickr.com/photos/j33pman/5756809828/in/photolist-4NYiuF-vEuuSX-npDnjR-LACabQ-DYrv9S-f7x5xT-GM845e-Mt2Qj-npUAyq-9LH9ZS-aGSxuR-9LEn2n-JnQSDa-o1ADFc-af7fgS-qsYyDA-nJ86k2-9XvWYS-5iCk2v-jksKVv-tcFkys-2Xi7hu-usazf9-akdDyB-wkzb2D-G8CzY3-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-6cjEi9-PXwpN-evCbN8-FSSEUW-5jQWRU-eH7LBD-suy3xD-tQivkp-4YZVUw-a1evUA-cwrzvS-fKZiH-a8G3zo-bVuWNk-cVrmAJ-5gPGwo/', '0.111111111', '2', '1', '1', '0', '1', '0', '3', '149', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows3.jpg'
+['meadows3.jpg', 'flickr', 'https://www.flickr.com/photos/61711720@N03/27703599421/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB/', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '150', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows406.jpg'
+['meadows406.jpg', 'pixabay', 'https://pixabay.com/photos/meadow-flowers-flower-meadow-spring-3383969/', '0.222222222', '3', '0', '0', '1', '0', '0', '1', '151', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows250.jpg'
+['meadows250.jpg', 'unsplash', 'https://unsplash.com/photos/jeXs6JrgQ1c', '0.444444444', '5', '1', '0', '1', '1', '0', '3', '152', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows330.jpg'
+['meadows330.jpg', 'pixabay', 'https://pixabay.com/photos/dandelion-meadow-dandelion-meadow-3381676/', '0.333333333', '4', '1', '1', '1', '1', '0', '4', '153', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows384.jpg'
+['meadows384.jpg', 'pixabay', 'https://pixabay.com/photos/field-nature-meadow-grass-flowers-2309468/', '0.444444444', '5', '0', '0', '1', '1', '0', '2', '154', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows306.jpg'
+['meadows306.jpg', 'pexels', 'https://www.pexels.com/photo/blue-white-and-red-poppy-flower-field-712876/', '0.444444444', '5', '0', '0', '1', '1', '0', '2', '155', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows199.jpg'
+['meadows199.jpg', 'unsplash', 'https://unsplash.com/photos/ukN7C7LvQoA', '0.333333333', '4', '1', '0', '1', '1', '0', '3', '156', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows111.jpg'
+['meadows111.jpg', 'unsplash', 'https://unsplash.com/photos/QvjL4y7SF9k', '0.777777778', '8', '1', '0', '1', '1', '0', '3', '157', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows278.jpg'
+['meadows278.jpg', 'unsplash', 'https://unsplash.com/photos/0HmSBZtIHfI', '0.555555556', '6', '1', '1', '1', '1', '0', '4', '158', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows267.jpg'
+['meadows267.jpg', 'unsplash', 'https://unsplash.com/photos/drflx0OBmz0', '0.555555556', '6', '0', '0', '1', '1', '0', '2', '159', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows41.jpg'
+['meadows41.jpg', 'flickr', 'https://www.flickr.com/photos/oatsy40/19438724545/in/photolist-5iCk2v-usazf9-akdDyB-6cjEi9-5jQWRU-eH7LBD-FSSEUW-evCbN8-a8G3zo-auG8yV-bVuWNk-5jMg3M-H1QWRE-G8CzY3-2Xi7hu-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-PXwpN-tQivkp-4YZVUw-a1evUA-fKZiH-cwrzvS-cVrmAJ-5gPGwo-suy3xD-cqWHby-exZUjs-nb3mzt-MWoBcN-C56vbK-6uv9b2-2GoR1-3CGr4-peMefW-LxvZrC-8YE9oc-g7u6sY-vCqxjE-85Apj2-Kn4GJq-vHpaa4-cyZpQA-JgD4Hs/', '0.333333333', '4', '0', '0', '0', '1', '0', '1', '160', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows107.jpg'
+['meadows107.jpg', 'unsplash', 'https://unsplash.com/photos/rEjfqRCFVFo', '0.555555556', '6', '1', '0', '1', '1', '1', '4', '161', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows109.jpg'
+['meadows109.jpg', 'unsplash', 'https://unsplash.com/photos/w1eWvv5U628', '0.444444444', '5', '1', '0', '0', '1', '0', '2', '162', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows74.jpg'
+['meadows74.jpg', 'flickr', 'https://www.flickr.com/photos/47148237@N06/36021887654/in/photolist-o3zc7-objLKu-JCgUQS-tEZ29L-eNgfWw-f6TtZ2-JfB9gq-QYrsdn-o9BKJf-GCaSBS-jSRvTi-myU9GP-HMtE3f-7T2z3x-2n8zT2-Q82oQ-Ngjk1H-8enUew-rDx8B-akUrKh-8sn6ez-8adtGr-WEdbmi-rF3AXz-Kkcewu-szeSbP-8ekBRV-QqjcuU-mLpzFc-Fnp1og-72fqfX-o2jTAR-KGCDRY-vLUmHE-hKRLN-yHqo3r-EgMamq-FKUNa5-JNeThC-9RBmxB-G1QzTj-sqzWZx-HpVs5z-HL7DtK-akUs8C-tTW5KH-yPB1Lr-ongUVG-WT8Adw-xegJEb/', '0.333333333', '4', '1', '1', '1', '1', '1', '5', '163', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows84.jpg'
+['meadows84.jpg', 'flickr', 'https://www.flickr.com/photos/22225489@N05/2148163090/in/photolist-d7nVUw-r9KaWU-LACaMu-LScWTt-nrER99-uVzc1Y-o2TGBZ-CycvUi-r4uZH4-cMA3hy-cFuVFN-u5bWGQ-buqn7C-eC7yJz-aVrZnX-zBnxqG-q4gYna-eyUBAk-s955dH-aMRPsc-fWxTax-cqWwbW-pcs11R-r3EmzT-foBHsP-s27Mp3-7K1Aor-cAybvf-bxRKeG-4gPU3E-cLWpa7-KM8S5S-neDcJX-FBivnA-bvbm4U-KnP5Fe-rUTiKi-PTQ1ja-umBgUH-fAJTUP-o9EE2t-nchtB7-qbvq9z-HwdeoK-cZLvB9-pTomtA-uBsTtu-pKmb9N-anK8yT-eTGDqq/', '0.222222222', '3', '1', '0', '0', '1', '0', '2', '164', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows317.jpg'
+['meadows317.jpg', 'flickr', 'https://www.flickr.com/photos/peter_quinn1/35023649664/in/photolist-HNzXFz-D92GqX-JqxaAq-JrfyHs-BQXQgz-PTQ1ja-JSHWSd-TrRRAm-VmVmQG-XCkv9o-TV2f3K-E6uMbg-GTFWfH-QxHcZE-G8EAt3-Mz1JzS-KpePn8-FSSEUW-UJmdo3-sEKSii-QRiMoo-NDZfb6-VPefEa-PLCMKw-XhcKos-XSH8kE-VGXypE-Vxmzmp-LaAjwg-vLUmHE-v63raA-vv2APv-FwDS5u-LL5Cb-2jZvYuw-Hqupzi-wkzb2D-o2QnqB-58NVRh-JKjP2f-H61Xby-2jjgMG7-5YNZUv-rcbWHP-TSHsgS-V19Srd-HU1AKw-FFJD7D-HpVs5z-sHNtNH/', '0.333333333', '4', '0', '1', '1', '1', '0', '3', '165', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows146.jpg'
+['meadows146.jpg', 'unsplash', 'https://unsplash.com/photos/5HEwNcpkKLI', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '166', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows455.jpg'
+['meadows455.jpg', 'pixabay', 'https://pixabay.com/photos/bluebell-flowers-spring-meadow-4032047/', '0.555555556', '6', '1', '1', '1', '1', '0', '4', '167', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows492.jpg'
+['meadows492.jpg', 'pixabay', 'https://pixabay.com/photos/flowers-daisies-meadow-wild-flowers-5434600/', '0.555555556', '6', '1', '1', '1', '1', '0', '4', '168', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows288.jpg'
+['meadows288.jpg', 'unsplash', 'https://unsplash.com/photos/LMRcFFevBZg', '0.333333333', '4', '1', '0', '1', '1', '0', '3', '169', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows17.jpg'
+['meadows17.jpg', 'flickr', 'https://www.flickr.com/photos/germanlissy2207/25491576283/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB/', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '170', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows413.jpg'
+['meadows413.jpg', 'pixabay', 'https://pixabay.com/photos/lake-evening-sunset-nature-water-5424344/', '0.333333333', '4', '1', '1', '1', '1', '0', '4', '171', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows38.jpg'
+['meadows38.jpg', 'flickr', 'https://www.flickr.com/photos/er1k4/7168989447/in/photolist-5iCk2v-usazf9-akdDyB-6cjEi9-5jQWRU-eH7LBD-FSSEUW-evCbN8-a8G3zo-auG8yV-bVuWNk-5jMg3M-H1QWRE-G8CzY3-2Xi7hu-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-PXwpN-tQivkp-4YZVUw-a1evUA-fKZiH-cwrzvS-cVrmAJ-5gPGwo-suy3xD-cqWHby-exZUjs-nb3mzt-MWoBcN-C56vbK-6uv9b2-2GoR1-3CGr4-peMefW-LxvZrC-8YE9oc-g7u6sY-vCqxjE-85Apj2-Kn4GJq-vHpaa4-cyZpQA-JgD4Hs/', '0.333333333', '4', '1', '0', '1', '1', '1', '4', '172', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows43.jpg'
+['meadows43.jpg', 'flickr', 'https://www.flickr.com/photos/gunta_urbanovica/7988677044/in/photolist-5iCk2v-usazf9-akdDyB-6cjEi9-5jQWRU-eH7LBD-FSSEUW-evCbN8-a8G3zo-auG8yV-bVuWNk-5jMg3M-H1QWRE-G8CzY3-2Xi7hu-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-PXwpN-tQivkp-4YZVUw-a1evUA-fKZiH-cwrzvS-cVrmAJ-5gPGwo-suy3xD-cqWHby-exZUjs-nb3mzt-MWoBcN-C56vbK-6uv9b2-2GoR1-3CGr4-peMefW-LxvZrC-8YE9oc-g7u6sY-vCqxjE-85Apj2-Kn4GJq-vHpaa4-cyZpQA-JgD4Hs/', '0', '1', '0', '0', '0', '1', '0', '1', '173', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows486.jpg'
+['meadows486.jpg', 'pixabay', 'https://pixabay.com/photos/poppy-field-of-poppies-klatschmohn-3501838/', '0.555555556', '6', '0', '0', '1', '0', '0', '1', '174', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows488.jpg'
+['meadows488.jpg', 'pixabay', 'https://pixabay.com/photos/meadow-field-flowers-bloom-blossom-731392/', '0.444444444', '5', '0', '1', '1', '1', '0', '3', '175', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows473.jpg'
+['meadows473.jpg', 'pixabay', 'https://pixabay.com/photos/flower-meadow-crown-anthemideae-1090253/', '0.555555556', '6', '1', '0', '1', '0', '0', '2', '176', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows131.jpg'
+['meadows131.jpg', 'unsplash', 'https://unsplash.com/photos/i4DGg3fU-Jg', '0.444444444', '5', '0', '0', '0', '1', '0', '1', '177', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows239.jpg'
+['meadows239.jpg', 'unsplash', 'https://unsplash.com/photos/PsltpPo3MMo', '0.333333333', '4', '0', '1', '0', '1', '0', '2', '178', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows474.jpg'
+['meadows474.jpg', 'pixabay', 'https://pixabay.com/photos/lavender-lavender-field-1595579/', '0.444444444', '5', '0', '0', '1', '1', '0', '2', '179', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows258.jpg'
+['meadows258.jpg', 'unsplash', 'https://unsplash.com/photos/KBnDj_-LZ-M', '0.333333333', '4', '0', '0', '0', '1', '0', '1', '180', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows361.jpg'
+['meadows361.jpg', 'flickr', 'https://www.flickr.com/photos/richardthomas78/530358548/in/photolist-aWD4C4-p3hyX3-HNzXFz-4NsjUc-ybH5Cv-6CUkCU-6rNpqx-5VBkZQ-6QSr4K-2JPoV1-Vxmzmp-5vNCsU-9XbsQp-d869wh-6DyyhA-6LQyMp-t9ga9g-adUU2n-HNtAP1-nrX35t-yRPdA-NSe7U-2FmoSJ-6er6yf-6emW2x-tBDeE8-g4zwsy-qd69bW-6FjLwE-doMgB-HVZP6y-a2D6pE-eNnKMR-uVyKsW-fjocYf-f8NYtx-9FL56p-KpwgB5-nUfBDW-XCkv9o-nhwLQ1-uQ9TDN-8kKU5p-akRCUR-KX5FJ3-JqxaAq-X74QkQ-dvzZ5A-7T2z3x-Ke3Mao/', '0.333333333', '4', '0', '0', '0', '1', '0', '1', '181', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows36.jpg'
+['meadows36.jpg', 'flickr', 'https://www.flickr.com/photos/tristanf/5994239528/in/photolist-5iCk2v-usazf9-akdDyB-6cjEi9-5jQWRU-eH7LBD-FSSEUW-evCbN8-a8G3zo-auG8yV-bVuWNk-5jMg3M-H1QWRE-G8CzY3-2Xi7hu-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-PXwpN-tQivkp-4YZVUw-a1evUA-fKZiH-cwrzvS-cVrmAJ-5gPGwo-suy3xD-cqWHby-exZUjs-nb3mzt-MWoBcN-C56vbK-6uv9b2-2GoR1-3CGr4-peMefW-LxvZrC-8YE9oc-g7u6sY-vCqxjE-85Apj2-Kn4GJq-vHpaa4-cyZpQA-JgD4Hs/', '0.555555556', '6', '0', '0', '0', '1', '1', '2', '182', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows165.jpg'
+['meadows165.jpg', 'unsplash', 'https://unsplash.com/photos/P7bEq3loN7k', '0.333333333', '4', '0', '1', '0', '1', '0', '2', '183', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows322.jpg'
+['meadows322.jpg', 'flickr', 'https://www.flickr.com/photos/142475862@N05/27499202180/in/photolist-HNzXFz-D92GqX-JqxaAq-JrfyHs-BQXQgz-PTQ1ja-JSHWSd-TrRRAm-VmVmQG-XCkv9o-TV2f3K-E6uMbg-GTFWfH-QxHcZE-G8EAt3-Mz1JzS-KpePn8-FSSEUW-UJmdo3-sEKSii-QRiMoo-NDZfb6-VPefEa-PLCMKw-XhcKos-XSH8kE-VGXypE-Vxmzmp-LaAjwg-vLUmHE-v63raA-vv2APv-FwDS5u-LL5Cb-2jZvYuw-Hqupzi-wkzb2D-o2QnqB-58NVRh-JKjP2f-H61Xby-2jjgMG7-5YNZUv-rcbWHP-TSHsgS-V19Srd-HU1AKw-FFJD7D-HpVs5z-sHNtNH/', '0.111111111', '2', '1', '0', '1', '1', '0', '3', '184', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows10.jpg'
+['meadows10.jpg', 'flickr', 'https://www.flickr.com/photos/28573051@N08/2894449685/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB/', '0.444444444', '5', '1', '0', '1', '0', '0', '2', '185', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows280.jpg'
+['meadows280.jpg', 'unsplash', 'https://unsplash.com/photos/DkniLV75w6E', '0.555555556', '6', '0', '0', '1', '1', '0', '2', '186', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows2.jpg'
+['meadows2.jpg', 'flickr', 'https://www.flickr.com/photos/the-father/3865414004/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '187', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows119.jpg'
+['meadows119.jpg', 'unsplash', 'https://unsplash.com/photos/Lsl77spibYI', '0.444444444', '5', '1', '0', '1', '0', '0', '2', '188', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows95.jpg'
+['meadows95.jpg', 'flickr', 'https://www.flickr.com/photos/jeremyhiebert/6075171657/in/photolist-PMe1Md-nRBNHo-mWBthA-oFZNFP-Jq9hA5-9C3iMT-niDgPq-GW6xtm-6t5p8e-aoE8RY-bE1LRf-rZLu4E-BQXQgz-bkBqV8-eQp6aY-9J6576-65J9xR-9sLmbg-xiKHtw-Xcgu3C-aym9TD-ocRHna-hNHRNW-pCQ97b-JRa7aT-cDCbKL-cew6yb-sRH5dB-oY335b-f9iHaj-ezUVZj-rXt2hT-tWRrvW-f6VV6t-t2WJsp-uap7C5-gaH9K4-6r4qmx-Bez9qj-nXDG9T-dcf33f-bjzRf-afQQSV-bvboAW-cSaXyG-5bUaV1-vZoCmW-zkEJPx-4TKPhQ-ecJBfn/', '0.111111111', '2', '1', '0', '1', '1', '0', '3', '189', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows214.jpg'
+['meadows214.jpg', 'unsplash', 'https://unsplash.com/photos/4Al1nKRgQCI', '0.222222222', '3', '0', '0', '0', '1', '0', '1', '190', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows385.jpg'
+['meadows385.jpg', 'pixabay', 'https://pixabay.com/photos/meadow-flowers-nature-flower-field-4568533/', '0.777777778', '8', '1', '0', '1', '1', '1', '4', '191', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows147.jpg'
+['meadows147.jpg', 'unsplash', 'https://unsplash.com/photos/me5udcSd2H8', '0.111111111', '2', '0', '0', '0', '1', '0', '1', '192', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows268.jpg'
+['meadows268.jpg', 'unsplash', 'https://unsplash.com/photos/BfJIJHHHuLQ', '0.333333333', '4', '0', '1', '1', '1', '1', '4', '193', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows410.jpg'
+['meadows410.jpg', 'pixabay', 'https://pixabay.com/photos/agriculture-landscape-field-rural-3648986/', '0.777777778', '8', '0', '0', '1', '1', '1', '3', '194', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows163.jpg'
+['meadows163.jpg', 'unsplash', 'https://unsplash.com/photos/JwU7PDGoiPw', '0.333333333', '4', '0', '1', '0', '1', '0', '2', '195', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows134.jpg'
+['meadows134.jpg', 'unsplash', 'https://unsplash.com/photos/XQu7djaRx-c', '0.333333333', '4', '1', '0', '1', '1', '0', '3', '196', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows405.jpg'
+['meadows405.jpg', 'pixabay', 'https://pixabay.com/photos/flowers-meadow-garden-3524938/', '0.444444444', '5', '1', '0', '0', '1', '0', '2', '197', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows287.jpg'
+['meadows287.jpg', 'unsplash', 'https://unsplash.com/photos/b0UYqRA4bsQ', '0.555555556', '6', '0', '0', '0', '1', '0', '1', '198', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows133.jpg'
+['meadows133.jpg', 'unsplash', 'https://unsplash.com/photos/t33Cg8AzrbQ', '0.666666667', '7', '1', '1', '1', '1', '0', '4', '199', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows100.jpg'
+['meadows100.jpg', 'flickr', 'https://www.flickr.com/photos/red5standingby/2619307686/in/photolist-AjU5Ge-buj6ku-bwHZtK-ezPtRr-cGg4yu-yHkdjs-4SRMi7-ssN5c2-JRLNfF-ah5jLd-eEP1qF-nU6xNx-okGkJy-JzbmQo-4ZsCVm-9xqpgB-nYPTn5-pfHkJA-uuPybc-eENVYp-vd9wuc-cfdW6y-AuFyvq-f6dxdj-4UP3JL-Kw3tG7-JiJxex-E6uMbg-FfXYav-r2c5mv-KKzvy-vccnz6-bHk9we-tqkkvF-6t9x4h-s48Hwh-a1sSiM-8syGV8-qQ9JPK-oftWVA-nxeUJ1-GTqpkD-LkZCgu-VmVmQG-VeJ3Sc-tF38Jz-6sobfb-LoAdMc-LVjJBG-LkZtjw/', '0.555555556', '6', '0', '1', '1', '1', '0', '3', '200', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows270.jpg'
+['meadows270.jpg', 'unsplash', 'https://unsplash.com/photos/Hyk4KHHx94A', '0.444444444', '5', '0', '1', '0', '1', '0', '2', '201', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows448.jpg'
+['meadows448.jpg', 'pixabay', 'https://pixabay.com/photos/wildflower-flower-flora-meadow-322659/', '0.777777778', '8', '0', '0', '1', '0', '0', '1', '202', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows327.jpg'
+['meadows327.jpg', 'pixabay', 'https://pixabay.com/photos/mountains-alps-meadow-736886/', '0.444444444', '5', '0', '0', '1', '1', '0', '2', '203', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows243.jpg'
+['meadows243.jpg', 'unsplash', 'https://unsplash.com/photos/FRCzgiu5kLU', '0.444444444', '5', '0', '0', '1', '1', '0', '2', '204', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows180.jpg'
+['meadows180.jpg', 'unsplash', 'https://unsplash.com/photos/5yFOafLI88M', '0.555555556', '6', '0', '0', '1', '1', '0', '2', '205', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows240.jpg'
+['meadows240.jpg', 'unsplash', 'https://unsplash.com/photos/8uPuLgQg2dY', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '206', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows181.jpg'
+['meadows181.jpg', 'unsplash', 'https://unsplash.com/photos/q5c84C6h_Y8', '0.444444444', '5', '1', '0', '1', '1', '0', '3', '207', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows78.jpg'
+['meadows78.jpg', 'flickr', 'https://www.flickr.com/photos/14284440@N04/7735808264/in/photolist-d7nVUw-r9KaWU-LACaMu-LScWTt-nrER99-uVzc1Y-o2TGBZ-CycvUi-r4uZH4-cMA3hy-cFuVFN-u5bWGQ-buqn7C-eC7yJz-aVrZnX-zBnxqG-q4gYna-eyUBAk-s955dH-aMRPsc-fWxTax-cqWwbW-pcs11R-r3EmzT-foBHsP-s27Mp3-7K1Aor-cAybvf-bxRKeG-4gPU3E-cLWpa7-KM8S5S-neDcJX-FBivnA-bvbm4U-KnP5Fe-rUTiKi-PTQ1ja-umBgUH-fAJTUP-o9EE2t-nchtB7-qbvq9z-HwdeoK-cZLvB9-pTomtA-uBsTtu-pKmb9N-anK8yT-eTGDqq/', '0.444444444', '5', '1', '0', '1', '1', '0', '3', '208', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows402.jpg'
+['meadows402.jpg', 'pixabay', 'https://pixabay.com/photos/field-of-poppies-poppy-poppies-364162/', '0.777777778', '8', '1', '0', '1', '1', '0', '3', '209', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows445.jpg'
+['meadows445.jpg', 'pixabay', 'https://pixabay.com/photos/nature-landscape-spring-heyday-3350357/', '0.666666667', '7', '1', '1', '1', '1', '0', '4', '210', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows423.jpg'
+['meadows423.jpg', 'pixabay', 'https://pixabay.com/photos/lavender-field-cypress-avenue-1595580/', '0.555555556', '6', '0', '1', '0', '1', '0', '2', '211', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows189.jpg'
+['meadows189.jpg', 'unsplash', 'https://unsplash.com/photos/OPHPCNY0tSY', '0.333333333', '4', '1', '1', '1', '1', '0', '4', '212', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows16.jpg'
+['meadows16.jpg', 'flickr', 'https://www.flickr.com/photos/bangbyalexyork/5940557998/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB/', '0.333333333', '4', '1', '0', '1', '1', '1', '4', '213', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows429.jpg'
+['meadows429.jpg', 'pixabay', 'https://pixabay.com/photos/plant-purple-nature-pointed-flower-5128079/', '0.444444444', '5', '1', '0', '1', '1', '0', '3', '214', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows464.jpg'
+['meadows464.jpg', 'pixabay', 'https://pixabay.com/photos/meadow-mountains-alpine-mountain-4216797/', '0.444444444', '5', '0', '0', '0', '1', '0', '1', '215', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows49.jpg'
+['meadows49.jpg', 'flickr', 'https://www.flickr.com/photos/water_mint/17388390003/in/photolist-5iCk2v-usazf9-akdDyB-6cjEi9-5jQWRU-eH7LBD-FSSEUW-evCbN8-a8G3zo-auG8yV-bVuWNk-5jMg3M-H1QWRE-G8CzY3-2Xi7hu-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-PXwpN-tQivkp-4YZVUw-a1evUA-fKZiH-cwrzvS-cVrmAJ-5gPGwo-suy3xD-cqWHby-exZUjs-nb3mzt-MWoBcN-C56vbK-6uv9b2-2GoR1-3CGr4-peMefW-LxvZrC-8YE9oc-g7u6sY-vCqxjE-85Apj2-Kn4GJq-vHpaa4-cyZpQA-JgD4Hs/', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '216', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows29.jpg'
+['meadows29.jpg', 'flickr', 'https://www.flickr.com/photos/148350482@N07/32949117891/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB/', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '217', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows193.jpg'
+['meadows193.jpg', 'unsplash', 'https://unsplash.com/photos/kGwSzeJ9HZI', '0.222222222', '3', '1', '0', '0', '1', '0', '2', '218', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows255.jpg'
+['meadows255.jpg', 'unsplash', 'https://unsplash.com/photos/Y3a0yVVWEoM', '0.444444444', '5', '0', '0', '1', '1', '0', '2', '219', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows37.jpg'
+['meadows37.jpg', 'flickr', 'https://www.flickr.com/photos/disarmid/6231902737/in/photolist-5iCk2v-usazf9-akdDyB-6cjEi9-5jQWRU-eH7LBD-FSSEUW-evCbN8-a8G3zo-auG8yV-bVuWNk-5jMg3M-H1QWRE-G8CzY3-2Xi7hu-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-PXwpN-tQivkp-4YZVUw-a1evUA-fKZiH-cwrzvS-cVrmAJ-5gPGwo-suy3xD-cqWHby-exZUjs-nb3mzt-MWoBcN-C56vbK-6uv9b2-2GoR1-3CGr4-peMefW-LxvZrC-8YE9oc-g7u6sY-vCqxjE-85Apj2-Kn4GJq-vHpaa4-cyZpQA-JgD4Hs/', '0.222222222', '3', '0', '0', '0', '1', '0', '1', '220', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows310.jpg'
+['meadows310.jpg', 'pexels', 'https://www.pexels.com/photo/blooming-wildflowers-growing-in-green-meadow-4946723/', '0.444444444', '5', '1', '0', '1', '0', '0', '2', '221', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows103.jpg'
+['meadows103.jpg', 'unsplash', 'https://unsplash.com/photos/31aKveRnvcA', '0.666666667', '7', '1', '0', '0', '1', '0', '2', '222', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows35.jpg'
+['meadows35.jpg', 'flickr', 'https://www.flickr.com/photos/max-12/8867876715/in/photolist-5iCk2v-usazf9-akdDyB-6cjEi9-5jQWRU-eH7LBD-FSSEUW-evCbN8-a8G3zo-auG8yV-bVuWNk-5jMg3M-H1QWRE-G8CzY3-2Xi7hu-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-PXwpN-tQivkp-4YZVUw-a1evUA-fKZiH-cwrzvS-cVrmAJ-5gPGwo-suy3xD-cqWHby-exZUjs-nb3mzt-MWoBcN-C56vbK-6uv9b2-2GoR1-3CGr4-peMefW-LxvZrC-8YE9oc-g7u6sY-vCqxjE-85Apj2-Kn4GJq-vHpaa4-cyZpQA-JgD4Hs/', '0.444444444', '5', '1', '0', '1', '1', '0', '3', '223', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows231.jpg'
+['meadows231.jpg', 'unsplash', 'https://unsplash.com/photos/cPyk1WR4D8g', '0.333333333', '4', '0', '1', '0', '1', '0', '2', '224', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows344.jpg'
+['meadows344.jpg', 'flickr', 'https://www.flickr.com/photos/homini/4255457017/in/photolist-Vc7D1Y-vBRtZ9-aggsH2-HEXdCE-aRnpy4-5iFYN8-Jd4zsi-4YdwLW-pPzcxb-7u3k7z-bRUJFK-6dKAQX-9un39U-6Dyz2q-JbwJDS-HU4Jom-24GY2U-cMjwmU-tnYz6k-88mVq1-eNnSYT-5FCYdu-MzKZN-ekYutv-Q8pu8-9Xv1TJ-4NYiuF-vEuuSX-npDnjR-LACabQ-DYrv9S-f7x5xT-GM845e-Mt2Qj-npUAyq-9LH9ZS-aGSxuR-JnQSDa-9LEn2n-o1ADFc-af7fgS-qsYyDA-nJ86k2-9XvWYS-5iCk2v-jksKVv-tcFkys-2Xi7hu-usazf9-8ZUeso/', '0.444444444', '5', '0', '0', '1', '1', '0', '2', '225', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows264.jpg'
+['meadows264.jpg', 'unsplash', 'https://unsplash.com/photos/hlZC1zoRp7o', '0.777777778', '8', '1', '1', '1', '1', '0', '4', '226', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows432.jpg'
+['meadows432.jpg', 'pixabay', 'https://pixabay.com/photos/flowers-dandelions-grass-meadow-6282792/', '0.444444444', '5', '1', '0', '0', '1', '0', '2', '227', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows108.jpg'
+['meadows108.jpg', 'unsplash', 'https://unsplash.com/photos/mQuuDjNXeH8', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '228', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows204.jpg'
+['meadows204.jpg', 'unsplash', 'https://unsplash.com/photos/clCNIVc_Skc', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '229', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows298.jpg'
+['meadows298.jpg', 'unsplash', 'https://unsplash.com/photos/8NMFDLbhOuE', '0.111111111', '2', '1', '0', '1', '0', '0', '2', '230', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows495.jpg'
+['meadows495.jpg', 'pixabay', 'https://pixabay.com/photos/cosmea-flowers-bloom-nature-3555292/', '0.444444444', '5', '1', '0', '1', '1', '0', '3', '231', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows394.jpg'
+['meadows394.jpg', 'pixabay', 'https://pixabay.com/illustrations/flower-meadow-wild-flowers-2509969/', '0.444444444', '5', '1', '0', '1', '1', '0', '3', '232', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows329.jpg'
+['meadows329.jpg', 'pixabay', 'https://pixabay.com/photos/trees-hill-grass-meadow-field-sky-790220/', '0.111111111', '2', '0', '0', '0', '1', '0', '1', '233', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows480.jpg'
+['meadows480.jpg', 'pixabay', 'https://pixabay.com/photos/landscape-field-sunflower-clouds-4428455/', '0.333333333', '4', '0', '0', '0', '1', '0', '1', '234', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows421.jpg'
+['meadows421.jpg', 'pixabay', 'https://pixabay.com/photos/crocus-flower-meadow-white-flowers-4077705/', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '235', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows347.jpg'
+['meadows347.jpg', 'flickr', 'https://www.flickr.com/photos/swanrichter/5571820628/in/photolist-Vc7D1Y-vBRtZ9-aggsH2-HEXdCE-aRnpy4-5iFYN8-Jd4zsi-4YdwLW-pPzcxb-7u3k7z-bRUJFK-6dKAQX-9un39U-6Dyz2q-JbwJDS-HU4Jom-24GY2U-cMjwmU-tnYz6k-88mVq1-eNnSYT-5FCYdu-MzKZN-ekYutv-Q8pu8-9Xv1TJ-4NYiuF-vEuuSX-npDnjR-LACabQ-DYrv9S-f7x5xT-GM845e-Mt2Qj-npUAyq-9LH9ZS-aGSxuR-JnQSDa-9LEn2n-o1ADFc-af7fgS-qsYyDA-nJ86k2-9XvWYS-5iCk2v-jksKVv-tcFkys-2Xi7hu-usazf9-8ZUeso/', '0.111111111', '2', '1', '0', '1', '1', '0', '3', '236', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows247.jpg'
+['meadows247.jpg', 'unsplash', 'https://unsplash.com/photos/5IlBhDsGlNU', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '237', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows374.jpg'
+['meadows374.jpg', 'pixabay', 'https://pixabay.com/photos/meadow-flower-meadow-flowers-garden-5229169/', '0.777777778', '8', '1', '0', '1', '1', '0', '3', '238', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows22.jpg'
+['meadows22.jpg', 'flickr', 'https://www.flickr.com/photos/61711720@N03/27355012702/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB/', '0.555555556', '6', '1', '0', '1', '1', '1', '4', '239', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows419.jpg'
+['meadows419.jpg', 'pixabay', 'https://pixabay.com/photos/wild-flowers-meadows-mountains-5236308/', '0.222222222', '3', '0', '1', '1', '1', '0', '3', '240', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows440.jpg'
+['meadows440.jpg', 'pixabay', 'https://pixabay.com/photos/echinacea-flower-meadow-bloom-4356407/', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '241', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows308.jpg'
+['meadows308.jpg', 'pexels', 'https://www.pexels.com/photo/selective-focus-photo-of-blue-and-white-flowers-field-51548/', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '242', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows61.jpg'
+['meadows61.jpg', 'flickr', 'https://www.flickr.com/photos/55038032@N03/27732271926/in/photolist-o3zc7-objLKu-JCgUQS-tEZ29L-eNgfWw-f6TtZ2-JfB9gq-QYrsdn-o9BKJf-GCaSBS-jSRvTi-myU9GP-HMtE3f-7T2z3x-2n8zT2-Q82oQ-Ngjk1H-8enUew-rDx8B-akUrKh-8sn6ez-8adtGr-WEdbmi-rF3AXz-Kkcewu-szeSbP-8ekBRV-QqjcuU-mLpzFc-Fnp1og-72fqfX-o2jTAR-KGCDRY-vLUmHE-hKRLN-yHqo3r-EgMamq-FKUNa5-JNeThC-9RBmxB-G1QzTj-sqzWZx-HpVs5z-HL7DtK-akUs8C-tTW5KH-yPB1Lr-ongUVG-WT8Adw-xegJEb/', '0.333333333', '4', '0', '0', '0', '1', '1', '2', '243', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows153.jpg'
+['meadows153.jpg', 'unsplash', 'https://unsplash.com/photos/cPaGBl8R_1M', '0.666666667', '7', '0', '1', '1', '1', '0', '3', '244', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows341.jpg'
+['meadows341.jpg', 'flickr', 'https://www.flickr.com/photos/126710094@N04/19912188895/in/photolist-4NYiuF-vEuuSX-npDnjR-LACabQ-DYrv9S-f7x5xT-GM845e-Mt2Qj-npUAyq-9LH9ZS-aGSxuR-9LEn2n-JnQSDa-o1ADFc-af7fgS-qsYyDA-nJ86k2-9XvWYS-5iCk2v-jksKVv-tcFkys-2Xi7hu-usazf9-akdDyB-wkzb2D-G8CzY3-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-6cjEi9-PXwpN-evCbN8-FSSEUW-5jQWRU-eH7LBD-suy3xD-tQivkp-4YZVUw-a1evUA-cwrzvS-fKZiH-a8G3zo-bVuWNk-cVrmAJ-5gPGwo/', '0.555555556', '6', '1', '1', '1', '1', '0', '4', '245', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows352.jpg'
+['meadows352.jpg', 'flickr', 'https://www.flickr.com/photos/pete_and_emma/9057465651/in/photolist-Vc7D1Y-vBRtZ9-aggsH2-HEXdCE-aRnpy4-5iFYN8-Jd4zsi-4YdwLW-pPzcxb-7u3k7z-bRUJFK-6dKAQX-9un39U-6Dyz2q-JbwJDS-HU4Jom-24GY2U-cMjwmU-tnYz6k-88mVq1-eNnSYT-5FCYdu-MzKZN-ekYutv-Q8pu8-9Xv1TJ-4NYiuF-vEuuSX-npDnjR-LACabQ-DYrv9S-f7x5xT-GM845e-Mt2Qj-npUAyq-9LH9ZS-aGSxuR-JnQSDa-9LEn2n-o1ADFc-af7fgS-qsYyDA-nJ86k2-9XvWYS-5iCk2v-jksKVv-tcFkys-2Xi7hu-usazf9-8ZUeso/', '0.222222222', '3', '0', '0', '1', '1', '0', '2', '246', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows449.jpg'
+['meadows449.jpg', 'pixabay', 'https://pixabay.com/photos/cornflowers-wildflowers-blue-meadow-4280431/', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '247', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows283.jpg'
+['meadows283.jpg', 'unsplash', 'https://unsplash.com/photos/Exvm0yhjjoo', '0.333333333', '4', '0', '0', '1', '1', '0', '2', '248', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows225.jpg'
+['meadows225.jpg', 'unsplash', 'https://unsplash.com/photos/NX-Atqk4tKk', '0.555555556', '6', '1', '0', '1', '0', '0', '2', '249', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows120.jpg'
+['meadows120.jpg', 'unsplash', 'https://unsplash.com/photos/9goYHROaqMo', '0.222222222', '3', '0', '0', '1', '1', '1', '3', '250', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows237.jpg'
+['meadows237.jpg', 'unsplash', 'https://unsplash.com/photos/1ekWAhB8RZw', '0.333333333', '4', '1', '0', '0', '1', '0', '2', '251', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows117.jpg'
+['meadows117.jpg', 'unsplash', 'https://unsplash.com/photos/nvxhaXOlsik', '0.333333333', '4', '1', '0', '0', '1', '0', '2', '252', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows391.jpg'
+['meadows391.jpg', 'pixabay', 'https://pixabay.com/photos/tree-landscape-meadow-sky-clouds-7835/', '0.222222222', '3', '1', '0', '1', '1', '0', '3', '253', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows122.jpg'
+['meadows122.jpg', 'unsplash', 'https://unsplash.com/photos/DUubGalK--I', '0.333333333', '4', '1', '0', '0', '1', '0', '2', '254', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows483.jpg'
+['meadows483.jpg', 'pixabay', 'https://pixabay.com/photos/background-image-flower-meadow-3256919/', '0.222222222', '3', '1', '0', '1', '1', '1', '4', '255', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows245.jpg'
+['meadows245.jpg', 'unsplash', 'https://unsplash.com/photos/q0Sorbxn948', '0.222222222', '3', '1', '0', '1', '1', '0', '3', '256', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows316.jpg'
+['meadows316.jpg', 'flickr', 'https://www.flickr.com/photos/142475862@N05/27844660904/in/photolist-HNzXFz-D92GqX-JqxaAq-JrfyHs-BQXQgz-PTQ1ja-JSHWSd-TrRRAm-VmVmQG-XCkv9o-TV2f3K-E6uMbg-GTFWfH-QxHcZE-G8EAt3-Mz1JzS-KpePn8-FSSEUW-UJmdo3-sEKSii-QRiMoo-NDZfb6-VPefEa-PLCMKw-XhcKos-XSH8kE-VGXypE-Vxmzmp-LaAjwg-vLUmHE-v63raA-vv2APv-FwDS5u-LL5Cb-2jZvYuw-Hqupzi-wkzb2D-o2QnqB-58NVRh-JKjP2f-H61Xby-2jjgMG7-5YNZUv-rcbWHP-TSHsgS-V19Srd-HU1AKw-FFJD7D-HpVs5z-sHNtNH/', '0.222222222', '3', '1', '0', '1', '1', '0', '3', '257', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows216.jpg'
+['meadows216.jpg', 'unsplash', 'https://unsplash.com/photos/ZcMsPqvRzEE', '0.333333333', '4', '0', '0', '0', '1', '0', '1', '258', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows380.jpg'
+['meadows380.jpg', 'pixabay', 'https://pixabay.com/photos/poppy-poppy-flower-poppy-field-2447327/', '0.777777778', '8', '1', '0', '0', '1', '0', '2', '259', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows386.jpg'
+['meadows386.jpg', 'pixabay', 'https://pixabay.com/photos/wild-flower-meadow-flowers-bloom-3386078/', '0.333333333', '4', '0', '0', '0', '1', '0', '1', '260', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows157.jpg'
+['meadows157.jpg', 'unsplash', 'https://unsplash.com/photos/qsLc1vN86Zg', '0.444444444', '5', '1', '1', '1', '1', '0', '4', '261', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows428.jpg'
+['meadows428.jpg', 'pixabay', 'https://pixabay.com/photos/barn-field-barn-summer-meadow-392967/', '0.333333333', '4', '0', '0', '1', '1', '0', '2', '262', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows19.jpg'
+['meadows19.jpg', 'flickr', 'https://www.flickr.com/photos/bangbyalexyork/6124693657/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB/', '0.444444444', '5', '0', '0', '1', '0', '1', '2', '263', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows320.jpg'
+['meadows320.jpg', 'flickr', 'https://www.flickr.com/photos/45481002@N05/16535535857/in/photolist-HNzXFz-D92GqX-JqxaAq-JrfyHs-BQXQgz-PTQ1ja-JSHWSd-TrRRAm-VmVmQG-XCkv9o-TV2f3K-E6uMbg-GTFWfH-QxHcZE-G8EAt3-Mz1JzS-KpePn8-FSSEUW-UJmdo3-sEKSii-QRiMoo-NDZfb6-VPefEa-PLCMKw-XhcKos-XSH8kE-VGXypE-Vxmzmp-LaAjwg-vLUmHE-v63raA-vv2APv-FwDS5u-LL5Cb-2jZvYuw-Hqupzi-wkzb2D-o2QnqB-58NVRh-JKjP2f-H61Xby-2jjgMG7-5YNZUv-rcbWHP-TSHsgS-V19Srd-HU1AKw-FFJD7D-HpVs5z-sHNtNH/', '0.222222222', '3', '1', '0', '1', '1', '0', '3', '264', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadws118.jpg'
+['meadws118.jpg', 'unsplash', 'https://unsplash.com/photos/1kGvoC9g2DY', '0.333333333', '4', '1', '0', '1', '1', '0', '3', '265', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows11.jpg'
+['meadows11.jpg', 'flickr', 'https://www.flickr.com/photos/keriarpi/28698620514/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB/', '0.333333333', '4', '0', '1', '0', '1', '0', '2', '266', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows307.jpg'
+['meadows307.jpg', 'pexels', 'https://www.pexels.com/photo/landscape-nature-flowers-summer-46164/', '0.777777778', '8', '1', '0', '1', '1', '1', '4', '267', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows241.jpg'
+['meadows241.jpg', 'unsplash', 'https://unsplash.com/photos/Bbow9KE_Z9w', '0.555555556', '6', '1', '0', '0', '1', '0', '2', '268', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows222.jpg'
+['meadows222.jpg', 'unsplash', 'https://unsplash.com/photos/_ITfzPFGlow', '0.666666667', '7', '0', '0', '0', '1', '0', '1', '269', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows381.jpg'
+['meadows381.jpg', 'pixabay', 'https://pixabay.com/photos/meadow-grass-tree-landscape-summer-5263664/', '0.666666667', '7', '0', '1', '1', '0', '0', '2', '270', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows4.jpg'
+['meadows4.jpg', 'flickr', 'https://www.flickr.com/photos/kelehen/7389522116/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB/', '0.333333333', '4', '1', '0', '1', '1', '0', '3', '271', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows367.jpg'
+['meadows367.jpg', 'pixabay', 'https://pixabay.com/photos/oilseed-rape-field-of-rapeseeds-2135026/', '0.777777778', '8', '1', '0', '1', '1', '0', '3', '272', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows281.jpg'
+['meadows281.jpg', 'unsplash', 'https://unsplash.com/photos/igIytd2W7to', '0.444444444', '5', '0', '0', '0', '1', '1', '2', '273', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows126.jpg'
+['meadows126.jpg', 'unsplash', 'https://unsplash.com/photos/GN_QG18L5_I', '0.333333333', '4', '1', '0', '1', '1', '0', '3', '274', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows315.jpg'
+['meadows315.jpg', 'flickr', 'https://www.flickr.com/photos/128354622@N06/27437812315/in/photolist-HNzXFz-D92GqX-JqxaAq-JrfyHs-BQXQgz-PTQ1ja-JSHWSd-TrRRAm-VmVmQG-XCkv9o-TV2f3K-E6uMbg-GTFWfH-QxHcZE-G8EAt3-Mz1JzS-KpePn8-FSSEUW-UJmdo3-sEKSii-QRiMoo-NDZfb6-VPefEa-PLCMKw-XhcKos-XSH8kE-VGXypE-Vxmzmp-LaAjwg-vLUmHE-v63raA-vv2APv-FwDS5u-LL5Cb-2jZvYuw-Hqupzi-wkzb2D-o2QnqB-58NVRh-JKjP2f-H61Xby-2jjgMG7-5YNZUv-rcbWHP-TSHsgS-V19Srd-HU1AKw-FFJD7D-HpVs5z-sHNtNH', '0.333333333', '4', '0', '0', '1', '0', '0', '1', '275', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows152.jpg'
+['meadows152.jpg', 'unsplash', 'https://unsplash.com/photos/70Kv81fiWaM', '0.444444444', '5', '1', '0', '0', '0', '1', '2', '276', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows91.jpg'
+['meadows91.jpg', 'flickr', 'https://www.flickr.com/photos/88078350@N06/14574029991/in/photolist-PMe1Md-nRBNHo-mWBthA-oFZNFP-Jq9hA5-9C3iMT-niDgPq-GW6xtm-6t5p8e-aoE8RY-bE1LRf-rZLu4E-BQXQgz-bkBqV8-eQp6aY-9J6576-65J9xR-9sLmbg-xiKHtw-Xcgu3C-aym9TD-ocRHna-hNHRNW-pCQ97b-JRa7aT-cDCbKL-cew6yb-sRH5dB-oY335b-f9iHaj-ezUVZj-rXt2hT-tWRrvW-f6VV6t-t2WJsp-uap7C5-gaH9K4-6r4qmx-Bez9qj-nXDG9T-dcf33f-bjzRf-afQQSV-bvboAW-cSaXyG-5bUaV1-vZoCmW-zkEJPx-4TKPhQ-ecJBfn/', '0.333333333', '4', '1', '0', '1', '1', '0', '3', '277', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows477.jpg'
+['meadows477.jpg', 'pixabay', 'https://pixabay.com/photos/grass-nature-field-haymaking-3089790/', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '278', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows377.jpg'
+['meadows377.jpg', 'pixabay', 'https://pixabay.com/photos/poppies-field-flowers-bloom-1836375/', '0.555555556', '6', '1', '0', '1', '1', '1', '4', '279', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows47.jpg'
+['meadows47.jpg', 'flickr', 'https://www.flickr.com/photos/missus_h/7564409872/in/photolist-5iCk2v-usazf9-akdDyB-6cjEi9-5jQWRU-eH7LBD-FSSEUW-evCbN8-a8G3zo-auG8yV-bVuWNk-5jMg3M-H1QWRE-G8CzY3-2Xi7hu-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-PXwpN-tQivkp-4YZVUw-a1evUA-fKZiH-cwrzvS-cVrmAJ-5gPGwo-suy3xD-cqWHby-exZUjs-nb3mzt-MWoBcN-C56vbK-6uv9b2-2GoR1-3CGr4-peMefW-LxvZrC-8YE9oc-g7u6sY-vCqxjE-85Apj2-Kn4GJq-vHpaa4-cyZpQA-JgD4Hs/', '0.222222222', '3', '0', '0', '0', '1', '0', '1', '280', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows27.jpg'
+['meadows27.jpg', 'flickr', 'https://www.flickr.com/photos/sorbus/3560584062/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB/', '0.666666667', '7', '0', '0', '0', '1', '0', '1', '281', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows439.jpg'
+['meadows439.jpg', 'pixabay', 'https://pixabay.com/photos/flower-meadow-daisy-poppy-meadow-5246317/', '0.222222222', '3', '0', '0', '1', '1', '0', '2', '282', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows235.jpg'
+['meadows235.jpg', 'unsplash', 'https://unsplash.com/photos/HJQTpHn36Oc', '0.111111111', '2', '0', '1', '0', '1', '0', '2', '283', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows246.jpg'
+['meadows246.jpg', 'unsplash', 'https://unsplash.com/photos/Ce3VscIzizE', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '284', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows282.jpg'
+['meadows282.jpg', 'unsplash', 'https://unsplash.com/photos/FkAWSXAUqVo', '0.333333333', '4', '0', '0', '1', '1', '0', '2', '285', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows251.jpg'
+['meadows251.jpg', 'unsplash', 'https://unsplash.com/photos/QuFr3kqnSW4', '0.333333333', '4', '0', '1', '0', '1', '0', '2', '286', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows390.jpg'
+['meadows390.jpg', 'pixabay', 'https://pixabay.com/photos/lake-field-meadow-flowers-weeds-5477367/', '0.666666667', '7', '1', '1', '0', '1', '0', '3', '287', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows290.jpg'
+['meadows290.jpg', 'unsplash', 'https://unsplash.com/photos/YsVw9QzXmEw', '0.222222222', '3', '0', '0', '0', '1', '0', '1', '288', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows176.jpg'
+['meadows176.jpg', 'unsplash', 'https://unsplash.com/photos/Cxjh4S2Pmt8', '0.666666667', '7', '0', '0', '1', '1', '0', '2', '289', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows173.jpg'
+['meadows173.jpg', 'unsplash', 'https://unsplash.com/photos/LOzltn8O19E', '0.666666667', '7', '1', '1', '1', '1', '0', '4', '290', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows438.jpg'
+['meadows438.jpg', 'pixabay', 'https://pixabay.com/photos/field-of-poppies-poppy-poppies-364163/', '0.444444444', '5', '1', '0', '1', '1', '0', '3', '291', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows412.jpg'
+['meadows412.jpg', 'pixabay', 'https://pixabay.com/photos/flowers-plants-mountains-landscape-2451042/', '0.555555556', '6', '1', '0', '1', '1', '1', '4', '292', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows45.jpg'
+['meadows45.jpg', 'flickr', 'https://www.flickr.com/photos/mezzamorphis/5909847974/in/photolist-5iCk2v-usazf9-akdDyB-6cjEi9-5jQWRU-eH7LBD-FSSEUW-evCbN8-a8G3zo-auG8yV-bVuWNk-5jMg3M-H1QWRE-G8CzY3-2Xi7hu-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-PXwpN-tQivkp-4YZVUw-a1evUA-fKZiH-cwrzvS-cVrmAJ-5gPGwo-suy3xD-cqWHby-exZUjs-nb3mzt-MWoBcN-C56vbK-6uv9b2-2GoR1-3CGr4-peMefW-LxvZrC-8YE9oc-g7u6sY-vCqxjE-85Apj2-Kn4GJq-vHpaa4-cyZpQA-JgD4Hs/', '0.666666667', '7', '1', '0', '1', '1', '1', '4', '293', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows90.jpg'
+['meadows90.jpg', 'flickr', 'https://www.flickr.com/photos/redheadwondering/36227124720/in/photolist-PMe1Md-nRBNHo-mWBthA-oFZNFP-Jq9hA5-9C3iMT-niDgPq-GW6xtm-6t5p8e-aoE8RY-bE1LRf-rZLu4E-BQXQgz-bkBqV8-eQp6aY-9J6576-65J9xR-9sLmbg-xiKHtw-Xcgu3C-aym9TD-ocRHna-hNHRNW-pCQ97b-JRa7aT-cDCbKL-cew6yb-sRH5dB-oY335b-f9iHaj-ezUVZj-rXt2hT-tWRrvW-f6VV6t-t2WJsp-uap7C5-gaH9K4-6r4qmx-Bez9qj-nXDG9T-dcf33f-bjzRf-afQQSV-bvboAW-cSaXyG-5bUaV1-vZoCmW-zkEJPx-4TKPhQ-ecJBfn/', '0.888888889', '9', '1', '0', '1', '1', '1', '4', '294', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows69.jpg'
+['meadows69.jpg', 'flickr', 'https://www.flickr.com/photos/koprivnjak/4745439587/in/photolist-o3zc7-objLKu-JCgUQS-tEZ29L-eNgfWw-f6TtZ2-JfB9gq-QYrsdn-o9BKJf-GCaSBS-jSRvTi-myU9GP-HMtE3f-7T2z3x-2n8zT2-Q82oQ-Ngjk1H-8enUew-rDx8B-akUrKh-8sn6ez-8adtGr-WEdbmi-rF3AXz-Kkcewu-szeSbP-8ekBRV-QqjcuU-mLpzFc-Fnp1og-72fqfX-o2jTAR-KGCDRY-vLUmHE-hKRLN-yHqo3r-EgMamq-FKUNa5-JNeThC-9RBmxB-G1QzTj-sqzWZx-HpVs5z-HL7DtK-akUs8C-tTW5KH-yPB1Lr-ongUVG-WT8Adw-xegJEb/', '0.666666667', '7', '1', '0', '1', '0', '0', '2', '295', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows411.jpg'
+['meadows411.jpg', 'pixabay', 'https://pixabay.com/photos/landscape-summer-meadow-field-3848590/', '0.333333333', '4', '0', '1', '1', '1', '0', '3', '296', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows490.jpg'
+['meadows490.jpg', 'pixabay', 'https://pixabay.com/photos/spring-meadow-flower-meadow-crocus-1227178/', '0.666666667', '7', '1', '0', '0', '1', '0', '2', '297', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows233.jpg'
+['meadows233.jpg', 'unsplash', 'https://unsplash.com/photos/tjwvq0cMF5Y', '0.222222222', '3', '0', '0', '0', '1', '0', '1', '298', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows331.jpg'
+['meadows331.jpg', 'flickr', 'https://www.flickr.com/photos/domrik/20055999413/in/photolist-HVsGe1-JycKky-tpYKQd-n9bUZB-KHZW2Y-wyheTk-bVsena-cfZeof-Jd5bVT-f9cjMv-9Qvkwk-nZLAST-5pLP3V-9zMM9o-JfDgh1-f7Asnm-XhcKos-KQhdL3-a3WUVL-edg3tf-EQAZvV-ovPYLW-HFgAf3-D92GqX-9DUt6D-z38M9f-KkhWe1-4iXVno-cLcJAG-6qCVAo-58RDuj-6qCVrq-sHNtNH-cQk8hL-ey5CbM-ScAQPv-6DupyK-74ciXB-akdE3v-Vc7D1Y-vBRtZ9-aggsH2-HEXdCE-aRnpy4-Jd4zsi-4YdwLW-7u3k7z-bRUJFK-6dKAQX-9un39U/', '0.444444444', '5', '1', '0', '1', '1', '0', '3', '299', 'Train']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows213.jpg'
+['meadows213.jpg', 'unsplash', 'https://unsplash.com/photos/Exfno0bitNc', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '300', 'Train']
+Adding Images: Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/﻿Filename'
+['\ufeffFilename', 'Source', 'Link (if available)', "Arash's Scores", "Maria's Scores", 'Color Saturation', 'Framing', 'Lighting', 'Clarity', 'Symmetry', 'Objective Score', 'Random', 'Set']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows64.jpg'
+['meadows64.jpg', 'flickr', 'https://www.flickr.com/photos/mg4/544562280/in/photolist-o3zc7-objLKu-JCgUQS-tEZ29L-eNgfWw-f6TtZ2-JfB9gq-QYrsdn-o9BKJf-GCaSBS-jSRvTi-myU9GP-HMtE3f-7T2z3x-2n8zT2-Q82oQ-Ngjk1H-8enUew-rDx8B-akUrKh-8sn6ez-8adtGr-WEdbmi-rF3AXz-Kkcewu-szeSbP-8ekBRV-QqjcuU-mLpzFc-Fnp1og-72fqfX-o2jTAR-KGCDRY-vLUmHE-hKRLN-yHqo3r-EgMamq-FKUNa5-JNeThC-9RBmxB-G1QzTj-sqzWZx-HpVs5z-HL7DtK-akUs8C-tTW5KH-yPB1Lr-ongUVG-WT8Adw-xegJEb/', '0.555555556', '6', '1', '1', '1', '0', '0', '3', '301', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows485.jpg'
+['meadows485.jpg', 'pixabay', 'https://pixabay.com/photos/sunflower-flower-meadow-flowers-3598559/', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '302', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows261.jpg'
+['meadows261.jpg', 'unsplash', 'https://unsplash.com/photos/IAkqIgTYkHI', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '303', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows254.jpg'
+['meadows254.jpg', 'unsplash', 'https://unsplash.com/photos/I0KPCMQPXVE', '0.222222222', '3', '0', '0', '0', '1', '0', '1', '304', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows305.jpg'
+['meadows305.jpg', 'pexels', 'https://www.pexels.com/photo/pink-flower-field-414083/', '0.666666667', '7', '1', '1', '1', '1', '0', '4', '305', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows140.jpg'
+['meadows140.jpg', 'unsplash', 'https://unsplash.com/photos/wL6RbNLuFaQ', '0.555555556', '6', '1', '0', '1', '1', '1', '4', '306', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows53.jpg'
+['meadows53.jpg', 'flickr', 'https://www.flickr.com/photos/smrtskoso/29793037/in/photolist-5iCk2v-usazf9-akdDyB-6cjEi9-5jQWRU-eH7LBD-FSSEUW-evCbN8-a8G3zo-auG8yV-bVuWNk-5jMg3M-H1QWRE-G8CzY3-2Xi7hu-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-PXwpN-tQivkp-4YZVUw-a1evUA-fKZiH-cwrzvS-cVrmAJ-5gPGwo-suy3xD-cqWHby-exZUjs-nb3mzt-MWoBcN-C56vbK-6uv9b2-2GoR1-3CGr4-peMefW-LxvZrC-8YE9oc-g7u6sY-vCqxjE-85Apj2-Kn4GJq-vHpaa4-cyZpQA-JgD4Hs/', '0.444444444', '5', '0', '0', '0', '0', '0', '0', '307', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows372.jpg'
+['meadows372.jpg', 'pixabay', 'https://pixabay.com/photos/landscape-spacious-field-meadow-2211587/', '0.222222222', '3', '0', '0', '1', '1', '0', '2', '308', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows25.jpg'
+['meadows25.jpg', 'flickr', 'https://www.flickr.com/photos/sloejoe/2172361428/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB/', '0.444444444', '5', '1', '0', '1', '0', '0', '2', '309', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows314.jpg'
+['meadows314.jpg', 'flickr', 'https://www.flickr.com/photos/49694864@N04/12034655915/in/photolist-tcFkys-usazf9-jksKVv-akdDyB-2Xi7hu-S1uLa-6DuovR-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-6cjEi9-PXwpN-5jQWRU-eH7LBD-tQivkp-4YZVUw-FSSEUW-evCbN8-a1evUA-fKZiH-cwrzvS-cVrmAJ-5gPGwo-suy3xD-cqWHby-bVuWNk-nb3mzt-MWoBcN-5jMg3M-C56vbK-6uv9b2-2GoR1-3CGr4-peMefW-LxvZrC-8YE9oc-g7u6sY-vCqxjE-85Apj2-vHpaa4-cyZpQA-JgD4Hs-coYoes-4Qpa4b-xutinB-6cbz2j-JqxaAq-R6kAkf/', '0.444444444', '5', '0', '0', '1', '1', '0', '2', '310', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows121.jpg'
+['meadows121.jpg', 'unsplash', 'https://unsplash.com/photos/h5ZPU1hU5CM', '0.555555556', '6', '1', '1', '1', '1', '0', '4', '311', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows409.jpg'
+['meadows409.jpg', 'pixabay', 'https://pixabay.com/photos/marigold-flowers-bl%C3%BCtenmeer-555811/', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '312', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows161.jpg'
+['meadows161.jpg', 'unsplash', 'https://unsplash.com/photos/P8WEwaORR20', '0.111111111', '2', '0', '0', '1', '1', '0', '2', '313', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows304.jpg'
+['meadows304.jpg', 'pexels', 'https://www.pexels.com/photo/landscape-photography-of-flower-garden-570041/', '0.222222222', '3', '0', '0', '1', '1', '0', '2', '314', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows277.jpg'
+['meadows277.jpg', 'unsplash', 'https://unsplash.com/photos/K9cCqYhmodk', '0.444444444', '5', '0', '1', '0', '1', '0', '2', '315', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows183.jpg'
+['meadows183.jpg', 'unsplash', 'https://unsplash.com/photos/hmQYoT7p_Wk', '0.555555556', '6', '1', '1', '1', '1', '0', '4', '316', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows489.jpg'
+['meadows489.jpg', 'pixabay', 'https://pixabay.com/photos/daisies-meadow-flowers-bloom-5209880/', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '317', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows24.jpg'
+['meadows24.jpg', 'flickr', 'https://www.flickr.com/photos/129811409@N07/28441658650/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB/', '0.222222222', '3', '0', '1', '1', '1', '0', '3', '318', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows253.jpg'
+['meadows253.jpg', 'unsplash', 'https://unsplash.com/photos/756bkJZZ5CE', '0.111111111', '2', '1', '0', '1', '1', '0', '3', '319', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows101.jpg'
+['meadows101.jpg', 'unsplash', 'https://unsplash.com/photos/Zm2n2O7Fph4', '0.666666667', '7', '1', '1', '1', '1', '0', '4', '320', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows257.jpg'
+['meadows257.jpg', 'unsplash', 'https://unsplash.com/photos/XLCNxblrkaI', '0.444444444', '5', '0', '1', '0', '1', '0', '2', '321', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows326.jpg'
+['meadows326.jpg', 'pixabay', 'https://pixabay.com/photos/flower-field-flowers-field-trees-250016/', '0.666666667', '7', '1', '1', '1', '1', '0', '4', '322', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows1.jpg'
+['meadows1.jpg', 'flickr', 'https://www.flickr.com/photos/the-father/3865414004/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB', '0.444444444', '5', '0', '0', '1', '1', '0', '2', '323', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows85.jpg'
+['meadows85.jpg', 'flickr', 'https://www.flickr.com/photos/beppenob/6046917995/in/photolist-eRNV5h-adm33P-9fDRp1-bQjSrZ-aeBCaK-ei5zF1-eC2TNj-9WkoW9-U3xH9M-J5Qdpq-taDoWT-2Cp6w-9tv9RE-ehR1km-aaqQSo-gqDkRk-NDZfb6-eqcYVj-XcdZHs-n2U6XP-o7CP4c-vCag1D-nPLTTs-eM9kFk-reZY9q-X1YbBn-dfL236-obQ9cn-eECB62-q9WdYx-brziqR-bQugSp-8pi4gE-ei9uc3-KH2n7k-Jw6yc4-nQTzns-6xoivj-88DJbi-roGGo7-MuTQwK-d2iwBS-HRnggF-GK5bhu-PMe1Md-nRBNHo-mWBthA-oFZNFP-Jq9hA5-9C3iMT/', '0.444444444', '5', '1', '0', '1', '1', '1', '4', '324', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows472.jpg'
+['meadows472.jpg', 'pixabay', 'https://pixabay.com/photos/flowers-blossom-bloom-meadow-5425300/', '0.444444444', '5', '1', '0', '1', '1', '0', '3', '325', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows408.jpg'
+['meadows408.jpg', 'pixabay', 'https://pixabay.com/photos/meadow-flower-meadow-wild-flowers-3557289/', '0.777777778', '8', '1', '0', '1', '1', '1', '4', '326', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows403.jpg'
+['meadows403.jpg', 'pixabay', 'https://pixabay.com/photos/flower-meadow-daffodils-osterglocken-3341273/', '0.666666667', '7', '1', '1', '1', '1', '0', '4', '327', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows110.jpg'
+['meadows110.jpg', 'unsplash', 'https://unsplash.com/photos/ZAy8srF4rRM', '0.222222222', '3', '1', '0', '1', '1', '1', '4', '328', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows179.jpg'
+['meadows179.jpg', 'unsplash', 'https://unsplash.com/photos/jTjQ6omj_ms', '0.333333333', '4', '1', '0', '1', '1', '0', '3', '329', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows201.jpg'
+['meadows201.jpg', 'unsplash', 'https://unsplash.com/photos/x8VBb6gGgl4', '0.222222222', '3', '0', '0', '1', '1', '0', '2', '330', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows348.jpg'
+['meadows348.jpg', 'flickr', 'https://www.flickr.com/photos/77411255@N07/27686146060/in/photolist-Vc7D1Y-vBRtZ9-aggsH2-HEXdCE-aRnpy4-5iFYN8-Jd4zsi-4YdwLW-pPzcxb-7u3k7z-bRUJFK-6dKAQX-9un39U-6Dyz2q-JbwJDS-HU4Jom-24GY2U-cMjwmU-tnYz6k-88mVq1-eNnSYT-5FCYdu-MzKZN-ekYutv-Q8pu8-9Xv1TJ-4NYiuF-vEuuSX-npDnjR-LACabQ-DYrv9S-f7x5xT-GM845e-Mt2Qj-npUAyq-9LH9ZS-aGSxuR-JnQSDa-9LEn2n-o1ADFc-af7fgS-qsYyDA-nJ86k2-9XvWYS-5iCk2v-jksKVv-tcFkys-2Xi7hu-usazf9-8ZUeso/', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '331', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows437.jpg'
+['meadows437.jpg', 'pixabay', 'https://pixabay.com/photos/flower-meadow-farbenpracht-summer-260301/', '0.333333333', '4', '0', '0', '1', '1', '0', '2', '332', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows342.jpg'
+['meadows342.jpg', 'flickr', 'https://www.flickr.com/photos/nicolamilnsphotography/6465895799/in/photolist-Vc7D1Y-vBRtZ9-aggsH2-HEXdCE-aRnpy4-5iFYN8-Jd4zsi-4YdwLW-pPzcxb-7u3k7z-bRUJFK-6dKAQX-9un39U-6Dyz2q-JbwJDS-HU4Jom-24GY2U-cMjwmU-tnYz6k-88mVq1-eNnSYT-5FCYdu-MzKZN-ekYutv-Q8pu8-9Xv1TJ-4NYiuF-vEuuSX-npDnjR-LACabQ-DYrv9S-f7x5xT-GM845e-Mt2Qj-npUAyq-9LH9ZS-aGSxuR-JnQSDa-9LEn2n-o1ADFc-af7fgS-qsYyDA-nJ86k2-9XvWYS-5iCk2v-jksKVv-tcFkys-2Xi7hu-usazf9-8ZUeso', '0', '1', '0', '0', '0', '0', '0', '0', '333', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows20.jpg'
+['meadows20.jpg', 'flickr', 'https://www.flickr.com/photos/22223130@N05/5633230418/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB/', '0.222222222', '3', '0', '0', '1', '1', '0', '2', '334', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows9.jpg'
+['meadows9.jpg', 'flickr', 'https://www.flickr.com/photos/sdmarriott/17992985864/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB/', '0.333333333', '4', '1', '0', '1', '1', '0', '3', '335', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows219.jpg'
+['meadows219.jpg', 'unsplash', 'https://unsplash.com/photos/S3tALNxBswE', '0.222222222', '3', '0', '1', '0', '1', '0', '2', '336', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows128.jpg'
+['meadows128.jpg', 'unsplash', 'https://unsplash.com/photos/8s3ELxAvKPs', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '337', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows397.jpg'
+['meadows397.jpg', 'pixabay', 'https://pixabay.com/photos/wild-flowers-meadow-nature-summer-3592932/', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '338', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows224.jpg'
+['meadows224.jpg', 'unsplash', 'https://unsplash.com/photos/hcG9mwC6anI', '0.444444444', '5', '0', '0', '0', '1', '0', '1', '339', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows144.jpg'
+['meadows144.jpg', 'unsplash', 'https://unsplash.com/photos/oibM9Oqp64U', '0.555555556', '6', '1', '0', '0', '1', '0', '2', '340', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows444.jpg'
+['meadows444.jpg', 'pixabay', 'https://pixabay.com/photos/crocus-snowdrop-spring-flowers-4001031/', '0.333333333', '4', '1', '0', '1', '1', '0', '3', '341', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows58.jpg'
+['meadows58.jpg', 'flickr', 'https://www.flickr.com/photos/spurls/249464792/in/photolist-o3zc7-objLKu-JCgUQS-tEZ29L-eNgfWw-f6TtZ2-JfB9gq-QYrsdn-o9BKJf-GCaSBS-jSRvTi-myU9GP-HMtE3f-7T2z3x-2n8zT2-Q82oQ-Ngjk1H-8enUew-rDx8B-akUrKh-8sn6ez-8adtGr-WEdbmi-rF3AXz-Kkcewu-szeSbP-8ekBRV-QqjcuU-mLpzFc-Fnp1og-72fqfX-o2jTAR-KGCDRY-vLUmHE-hKRLN-yHqo3r-EgMamq-FKUNa5-JNeThC-9RBmxB-G1QzTj-sqzWZx-HpVs5z-HL7DtK-akUs8C-tTW5KH-yPB1Lr-ongUVG-WT8Adw-xegJEb', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '342', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows136.jpg'
+['meadows136.jpg', 'unsplash', 'https://unsplash.com/photos/qkVrnY0Q2Kg', '0.333333333', '4', '1', '0', '1', '1', '0', '3', '343', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows375.jpg'
+['meadows375.jpg', 'pixabay', 'https://pixabay.com/photos/poppy-flowers-field-buds-1447203/', '0.444444444', '5', '1', '0', '1', '1', '0', '3', '344', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows368.jpg'
+['meadows368.jpg', 'pixabay', 'https://pixabay.com/photos/marguerite-flowers-field-buds-1510602/', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '345', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows156.jpg'
+['meadows156.jpg', 'unsplash', 'https://unsplash.com/photos/DUiRJVNG_Tg', '0.333333333', '4', '0', '0', '1', '1', '0', '2', '346', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows218.jpg'
+['meadows218.jpg', 'unsplash', 'https://unsplash.com/photos/tQlD9c4eXNU', '0.555555556', '6', '1', '0', '0', '1', '1', '3', '347', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows335.jpg'
+['meadows335.jpg', 'flickr', 'https://www.flickr.com/photos/132432076@N03/24923900062/in/photolist-4NYiuF-vEuuSX-npDnjR-LACabQ-DYrv9S-f7x5xT-GM845e-Mt2Qj-npUAyq-9LH9ZS-aGSxuR-9LEn2n-JnQSDa-o1ADFc-af7fgS-qsYyDA-nJ86k2-9XvWYS-5iCk2v-jksKVv-tcFkys-2Xi7hu-usazf9-akdDyB-wkzb2D-G8CzY3-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-6cjEi9-PXwpN-evCbN8-FSSEUW-5jQWRU-eH7LBD-suy3xD-tQivkp-4YZVUw-a1evUA-cwrzvS-fKZiH-a8G3zo-bVuWNk-cVrmAJ-5gPGwo/', '0.444444444', '5', '1', '0', '1', '1', '0', '3', '348', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows188.jpg'
+['meadows188.jpg', 'unsplash', 'https://unsplash.com/photos/cPRIr-cWPqE', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '349', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows324.jpg'
+['meadows324.jpg', 'flickr', 'https://www.flickr.com/photos/113952666@N06/28711715011/in/photolist-rUTiKi-6TzfV3-HVZP6y-EPPwzS-MDZn7C-rZL959-ar6N26-HVsGe1-KX5FJ3-GM845e-FHVsPG-zkEJPx-KKa3za-K4WNqw-A1j17b-KjvqE2-vQng3N-vJazqu-J2dBvd-Hyuhew-H2yRpC-LPFwSq-LoZNNC-MuTQwK-uEecqZ-HbT4zf-GBKZcS-Kkcewu-g4qFjZ-ww9CjP-WeoZJN-HbEbgF-KGqA4k-9QiD9S-28YgYFw-eMRieu-JtQK61-MSJTw3-LScWTt-u4fAf2-xk6vCj-oJyStT-xegJEb-HWdTMA-rN8WjQ-vvNLov-MfJ3vq-VcF1yC-R6kAkf-ziBY1L/', '0.222222222', '3', '1', '0', '0', '1', '0', '2', '350', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows349.jpg'
+['meadows349.jpg', 'flickr', 'https://www.flickr.com/photos/61711720@N03/27499813200/in/photolist-Vc7D1Y-vBRtZ9-aggsH2-HEXdCE-aRnpy4-5iFYN8-Jd4zsi-4YdwLW-pPzcxb-7u3k7z-bRUJFK-6dKAQX-9un39U-6Dyz2q-JbwJDS-HU4Jom-24GY2U-cMjwmU-tnYz6k-88mVq1-eNnSYT-5FCYdu-MzKZN-ekYutv-Q8pu8-9Xv1TJ-4NYiuF-vEuuSX-npDnjR-LACabQ-DYrv9S-f7x5xT-GM845e-Mt2Qj-npUAyq-9LH9ZS-aGSxuR-JnQSDa-9LEn2n-o1ADFc-af7fgS-qsYyDA-nJ86k2-9XvWYS-5iCk2v-jksKVv-tcFkys-2Xi7hu-usazf9-8ZUeso/', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '351', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows303.jpg'
+['meadows303.jpg', 'pexels', 'https://www.pexels.com/photo/green-grass-field-near-mountain-under-blue-sky-7343372/', '0.222222222', '3', '1', '1', '1', '1', '0', '4', '352', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows52.jpg'
+['meadows52.jpg', 'flickr', 'https://www.flickr.com/photos/bertiebertiebertie/3604331469/in/photolist-5iCk2v-usazf9-akdDyB-6cjEi9-5jQWRU-eH7LBD-FSSEUW-evCbN8-a8G3zo-auG8yV-bVuWNk-5jMg3M-H1QWRE-G8CzY3-2Xi7hu-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-PXwpN-tQivkp-4YZVUw-a1evUA-fKZiH-cwrzvS-cVrmAJ-5gPGwo-suy3xD-cqWHby-exZUjs-nb3mzt-MWoBcN-C56vbK-6uv9b2-2GoR1-3CGr4-peMefW-LxvZrC-8YE9oc-g7u6sY-vCqxjE-85Apj2-Kn4GJq-vHpaa4-cyZpQA-JgD4Hs/', '0.222222222', '3', '1', '0', '1', '1', '0', '3', '353', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows420.jpg'
+['meadows420.jpg', 'pixabay', 'https://pixabay.com/photos/landscape-mountains-clouds-sky-5405932/', '0.333333333', '4', '0', '1', '0', '1', '0', '2', '354', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows353.jpg'
+['meadows353.jpg', 'flickr', 'https://www.flickr.com/photos/brotherlywalks/3073983556/in/photolist-Vc7D1Y-vBRtZ9-aggsH2-HEXdCE-aRnpy4-5iFYN8-Jd4zsi-4YdwLW-pPzcxb-7u3k7z-bRUJFK-6dKAQX-9un39U-6Dyz2q-JbwJDS-HU4Jom-24GY2U-cMjwmU-tnYz6k-88mVq1-eNnSYT-5FCYdu-MzKZN-ekYutv-Q8pu8-9Xv1TJ-4NYiuF-vEuuSX-npDnjR-LACabQ-DYrv9S-f7x5xT-GM845e-Mt2Qj-npUAyq-9LH9ZS-aGSxuR-JnQSDa-9LEn2n-o1ADFc-af7fgS-qsYyDA-nJ86k2-9XvWYS-5iCk2v-jksKVv-tcFkys-2Xi7hu-usazf9-8ZUeso/', '0.111111111', '2', '0', '1', '0', '0', '0', '1', '355', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows210.jpg'
+['meadows210.jpg', 'unsplash', 'https://unsplash.com/photos/SHcItJMZKG4', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '356', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows182.jpg'
+['meadows182.jpg', 'unsplash', 'https://unsplash.com/photos/RV04GmYRlzw', '0.555555556', '6', '1', '1', '0', '1', '1', '4', '357', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows26.jpg'
+['meadows26.jpg', 'flickr', 'https://www.flickr.com/photos/126710094@N04/17538320993/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB/', '0.555555556', '6', '1', '1', '1', '1', '1', '5', '358', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows476.jpg'
+['meadows476.jpg', 'pixabay', 'https://pixabay.com/photos/androsace-rattling-pot-flowers-183897/', '0.666666667', '7', '1', '1', '1', '1', '0', '4', '359', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows167.jpg'
+['meadows167.jpg', 'unsplash', 'https://unsplash.com/photos/qDW6NOxnqFM', '0.444444444', '5', '0', '0', '0', '1', '0', '1', '360', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows13.jpg'
+['meadows13.jpg', 'flickr', 'https://www.flickr.com/photos/emsee_bristol/5799769875/in/photolist-6TzfV3-VqsPAx-ej3HxP-f6Tu6g-Jd5bVT-XhcKos-gjy9Nc-82Qhq4-U54HoA-cfZetJ-chhbVC-MCfXZc-MG3RoR-HVsGe1-JycKky-tpYKQd-5pLP3V-n9bUZB-KHZW2Y-bVsena-wyheTk-cfZeof-f9cjMv-9Qvkwk-nZLAST-KQhdL3-f7Asnm-D92GqX-a3WUVL-EQAZvV-9DUt6D-cLcJAG-akdE3v-JfDgh1-9zMM9o-edg3tf-ovPYLW-HFgAf3-z38M9f-KkhWe1-4iXVno-sHNtNH-6qCVAo-6qCVrq-58RDuj-cQk8hL-ScAQPv-ey5CbM-6DupyK-74ciXB/', '0.444444444', '5', '0', '1', '0', '1', '0', '2', '361', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows129.jpg'
+['meadows129.jpg', 'unsplash', 'https://unsplash.com/photos/KT-C8E4_3gM', '0.222222222', '3', '1', '1', '1', '1', '0', '4', '362', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows208.jpg'
+['meadows208.jpg', 'unsplash', 'https://unsplash.com/photos/yhHX9kfq0AI', '0.444444444', '5', '0', '0', '1', '1', '0', '2', '363', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows97.jpg'
+['meadows97.jpg', 'flickr', 'https://www.flickr.com/photos/11833575@N05/7675522944/in/photolist-AjU5Ge-buj6ku-bwHZtK-ezPtRr-cGg4yu-yHkdjs-4SRMi7-ssN5c2-JRLNfF-ah5jLd-eEP1qF-nU6xNx-okGkJy-JzbmQo-4ZsCVm-9xqpgB-nYPTn5-pfHkJA-uuPybc-eENVYp-vd9wuc-cfdW6y-AuFyvq-f6dxdj-4UP3JL-Kw3tG7-JiJxex-E6uMbg-FfXYav-r2c5mv-KKzvy-vccnz6-bHk9we-tqkkvF-6t9x4h-s48Hwh-a1sSiM-8syGV8-qQ9JPK-oftWVA-nxeUJ1-GTqpkD-LkZCgu-VmVmQG-VeJ3Sc-tF38Jz-6sobfb-LoAdMc-LVjJBG-LkZtjw/', '0.222222222', '3', '1', '0', '1', '1', '0', '3', '364', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows48.jpg'
+['meadows48.jpg', 'flickr', 'https://www.flickr.com/photos/lunco/2804481098/in/photolist-5iCk2v-usazf9-akdDyB-6cjEi9-5jQWRU-eH7LBD-FSSEUW-evCbN8-a8G3zo-auG8yV-bVuWNk-5jMg3M-H1QWRE-G8CzY3-2Xi7hu-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-PXwpN-tQivkp-4YZVUw-a1evUA-fKZiH-cwrzvS-cVrmAJ-5gPGwo-suy3xD-cqWHby-exZUjs-nb3mzt-MWoBcN-C56vbK-6uv9b2-2GoR1-3CGr4-peMefW-LxvZrC-8YE9oc-g7u6sY-vCqxjE-85Apj2-Kn4GJq-vHpaa4-cyZpQA-JgD4Hs/', '0.333333333', '4', '0', '0', '0', '1', '0', '1', '365', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows73.jpg'
+['meadows73.jpg', 'flickr', 'https://www.flickr.com/photos/science_shows/6132458066/in/photolist-o3zc7-objLKu-JCgUQS-tEZ29L-eNgfWw-f6TtZ2-JfB9gq-QYrsdn-o9BKJf-GCaSBS-jSRvTi-myU9GP-HMtE3f-7T2z3x-2n8zT2-Q82oQ-Ngjk1H-8enUew-rDx8B-akUrKh-8sn6ez-8adtGr-WEdbmi-rF3AXz-Kkcewu-szeSbP-8ekBRV-QqjcuU-mLpzFc-Fnp1og-72fqfX-o2jTAR-KGCDRY-vLUmHE-hKRLN-yHqo3r-EgMamq-FKUNa5-JNeThC-9RBmxB-G1QzTj-sqzWZx-HpVs5z-HL7DtK-akUs8C-tTW5KH-yPB1Lr-ongUVG-WT8Adw-xegJEb/', '0.222222222', '3', '0', '0', '0', '1', '0', '1', '366', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows212.jpg'
+['meadows212.jpg', 'unsplash', 'https://unsplash.com/photos/txhJTkNyhFw', '0.444444444', '5', '0', '0', '0', '1', '0', '1', '367', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows309.jpg'
+['meadows309.jpg', 'pexels', 'https://www.pexels.com/photo/bed-of-white-petaled-flower-605494/', '0.777777778', '8', '0', '0', '1', '1', '0', '2', '368', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows102.jpg'
+['meadows102.jpg', 'unsplash', 'https://unsplash.com/photos/TRhGEGdw-YY', '0.555555556', '6', '1', '0', '0', '1', '0', '2', '369', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows98.jpg'
+['meadows98.jpg', 'flickr', 'https://www.flickr.com/photos/15693951@N00/6089118412/in/photolist-AjU5Ge-buj6ku-bwHZtK-ezPtRr-cGg4yu-yHkdjs-4SRMi7-ssN5c2-JRLNfF-ah5jLd-eEP1qF-nU6xNx-okGkJy-JzbmQo-4ZsCVm-9xqpgB-nYPTn5-pfHkJA-uuPybc-eENVYp-vd9wuc-cfdW6y-AuFyvq-f6dxdj-4UP3JL-Kw3tG7-JiJxex-E6uMbg-FfXYav-r2c5mv-KKzvy-vccnz6-bHk9we-tqkkvF-6t9x4h-s48Hwh-a1sSiM-8syGV8-qQ9JPK-oftWVA-nxeUJ1-GTqpkD-LkZCgu-VmVmQG-VeJ3Sc-tF38Jz-6sobfb-LoAdMc-LVjJBG-LkZtjw/', '0.555555556', '6', '0', '1', '0', '1', '0', '2', '370', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows62.jpg'
+['meadows62.jpg', 'flickr', 'https://www.flickr.com/photos/my_lala/4515588175/in/photolist-o3zc7-objLKu-JCgUQS-tEZ29L-eNgfWw-f6TtZ2-JfB9gq-QYrsdn-o9BKJf-GCaSBS-jSRvTi-myU9GP-HMtE3f-7T2z3x-2n8zT2-Q82oQ-Ngjk1H-8enUew-rDx8B-akUrKh-8sn6ez-8adtGr-WEdbmi-rF3AXz-Kkcewu-szeSbP-8ekBRV-QqjcuU-mLpzFc-Fnp1og-72fqfX-o2jTAR-KGCDRY-vLUmHE-hKRLN-yHqo3r-EgMamq-FKUNa5-JNeThC-9RBmxB-G1QzTj-sqzWZx-HpVs5z-HL7DtK-akUs8C-tTW5KH-yPB1Lr-ongUVG-WT8Adw-xegJEb/', '0.444444444', '5', '1', '0', '1', '1', '0', '3', '371', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows162.jpg'
+['meadows162.jpg', 'unsplash', 'https://unsplash.com/photos/5GgK6aI6V54', '0.555555556', '6', '1', '1', '0', '1', '0', '3', '372', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows340.jpg'
+['meadows340.jpg', 'flickr', 'https://www.flickr.com/photos/bangbyalexyork/6124692039/in/photolist-4NYiuF-vEuuSX-npDnjR-LACabQ-DYrv9S-f7x5xT-GM845e-Mt2Qj-npUAyq-9LH9ZS-aGSxuR-9LEn2n-JnQSDa-o1ADFc-af7fgS-qsYyDA-nJ86k2-9XvWYS-5iCk2v-jksKVv-tcFkys-2Xi7hu-usazf9-akdDyB-wkzb2D-G8CzY3-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-6cjEi9-PXwpN-evCbN8-FSSEUW-5jQWRU-eH7LBD-suy3xD-tQivkp-4YZVUw-a1evUA-cwrzvS-fKZiH-a8G3zo-bVuWNk-cVrmAJ-5gPGwo/', '0.222222222', '3', '1', '0', '1', '0', '0', '2', '373', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows141.jpg'
+['meadows141.jpg', 'unsplash', 'https://unsplash.com/photos/eg1tI6DsO3k', '0.444444444', '5', '1', '1', '1', '1', '0', '4', '374', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows365.jpg'
+['meadows365.jpg', 'flickr', 'https://www.flickr.com/photos/kimpickering2405/3408327504/in/photolist-6cbz2j-R6kAkf-aWD4C4-p3hyX3-HNzXFz-4NsjUc-ybH5Cv-6CUkCU-6rNpqx-5VBkZQ-6QSr4K-2JPoV1-Vxmzmp-5vNCsU-9XbsQp-d869wh-6DyyhA-6LQyMp-t9ga9g-adUU2n-HNtAP1-nrX35t-yRPdA-NSe7U-2FmoSJ-6er6yf-6emW2x-tBDeE8-g4zwsy-qd69bW-6FjLwE-doMgB-HVZP6y-a2D6pE-eNnKMR-uVyKsW-fjocYf-f8NYtx-9FL56p-KpwgB5-nUfBDW-XCkv9o-nhwLQ1-uQ9TDN-8kKU5p-akRCUR-KX5FJ3-JqxaAq-X74QkQ-dvzZ5A', '0.777777778', '8', '1', '1', '1', '1', '0', '4', '375', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows299.jpg'
+['meadows299.jpg', 'unsplash', 'https://unsplash.com/photos/G6XuLVk5SJ4', '0.333333333', '4', '1', '0', '0', '1', '1', '3', '376', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows236.jpg'
+['meadows236.jpg', 'unsplash', 'https://unsplash.com/photos/zPiz-kBOh_8', '0.444444444', '5', '1', '0', '1', '1', '0', '3', '377', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows57.jpg'
+['meadows57.jpg', 'flickr', 'https://www.flickr.com/photos/61711720@N03/27743963336/in/photolist-5iCk2v-usazf9-akdDyB-6cjEi9-5jQWRU-eH7LBD-FSSEUW-evCbN8-a8G3zo-auG8yV-bVuWNk-5jMg3M-H1QWRE-G8CzY3-2Xi7hu-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-PXwpN-tQivkp-4YZVUw-a1evUA-fKZiH-cwrzvS-cVrmAJ-5gPGwo-suy3xD-cqWHby-exZUjs-nb3mzt-MWoBcN-C56vbK-6uv9b2-2GoR1-3CGr4-peMefW-LxvZrC-8YE9oc-g7u6sY-vCqxjE-85Apj2-Kn4GJq-vHpaa4-cyZpQA-JgD4Hs/', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '378', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows379.jpg'
+['meadows379.jpg', 'pixabay', 'https://pixabay.com/photos/cornflowers-wildflowers-meadow-3432162/', '0.333333333', '4', '0', '0', '0', '1', '0', '1', '379', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows393.jpg'
+['meadows393.jpg', 'pixabay', 'https://pixabay.com/photos/dandelion-seeds-meadow-flowers-6241640/', '0.555555556', '6', '1', '0', '1', '1', '0', '3', '380', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows32.jpg'
+['meadows32.jpg', 'flickr', 'https://www.flickr.com/photos/wedgemondo/3409906138/in/photolist-5iCk2v-usazf9-akdDyB-6cjEi9-5jQWRU-eH7LBD-FSSEUW-evCbN8-a8G3zo-auG8yV-bVuWNk-5jMg3M-H1QWRE-G8CzY3-2Xi7hu-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-PXwpN-tQivkp-4YZVUw-a1evUA-fKZiH-cwrzvS-cVrmAJ-5gPGwo-suy3xD-cqWHby-exZUjs-nb3mzt-MWoBcN-C56vbK-6uv9b2-2GoR1-3CGr4-peMefW-LxvZrC-8YE9oc-g7u6sY-vCqxjE-85Apj2-Kn4GJq-vHpaa4-cyZpQA-JgD4Hs/', '0.333333333', '4', '0', '1', '0', '0', '1', '2', '381', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows446.jpg'
+['meadows446.jpg', 'pixabay', 'https://pixabay.com/photos/wild-flowers-meadow-flowers-sunset-3528618/', '0.444444444', '5', '1', '0', '1', '1', '0', '3', '382', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows139.jpg'
+['meadows139.jpg', 'unsplash', 'https://unsplash.com/photos/PfCmd2nRQPE', '0.333333333', '4', '1', '0', '0', '1', '0', '2', '383', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows447.jpg'
+['meadows447.jpg', 'pixabay', 'https://pixabay.com/photos/flowers-plants-garden-tulips-6274514/', '0.555555556', '6', '1', '0', '0', '1', '0', '2', '384', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows426.jpg'
+['meadows426.jpg', 'pixabay', 'https://pixabay.com/photos/spring-flowers-meadow-ranunculaceae-2184004/', '0.777777778', '8', '1', '1', '1', '1', '0', '4', '385', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows500.jpg'
+['meadows500.jpg', 'pixabay', 'https://pixabay.com/photos/alpine-rose-azalea-rhododendron-3143376/', '0.666666667', '7', '1', '1', '1', '1', '0', '4', '386', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows206.jpg'
+['meadows206.jpg', 'unsplash', 'https://unsplash.com/photos/S34M7o0KSQw', '0.555555556', '6', '0', '1', '1', '1', '0', '3', '387', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows371.jpg'
+['meadows371.jpg', 'pixabay', 'https://pixabay.com/photos/chamomile-flowers-field-1261796/', '0.666666667', '7', '1', '0', '1', '1', '0', '3', '388', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows494.jpg'
+['meadows494.jpg', 'pixabay', 'https://pixabay.com/photos/nature-landscape-spring-heyday-3350353/', '0.333333333', '4', '0', '1', '1', '1', '0', '3', '389', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows125.jpg'
+['meadows125.jpg', 'unsplash', 'https://unsplash.com/photos/l1rz9qKzzn8', '0.444444444', '5', '0', '0', '0', '1', '0', '1', '390', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows50.jpg'
+['meadows50.jpg', 'flickr', 'https://www.flickr.com/photos/annaasenhed/7502194936/in/photolist-5iCk2v-usazf9-akdDyB-6cjEi9-5jQWRU-eH7LBD-FSSEUW-evCbN8-a8G3zo-auG8yV-bVuWNk-5jMg3M-H1QWRE-G8CzY3-2Xi7hu-S1uLa-6DuovR-e27EBf-vBJxzc-nSoELv-4N2ke2-daW4n7-gKz6y-PXwpN-tQivkp-4YZVUw-a1evUA-fKZiH-cwrzvS-cVrmAJ-5gPGwo-suy3xD-cqWHby-exZUjs-nb3mzt-MWoBcN-C56vbK-6uv9b2-2GoR1-3CGr4-peMefW-LxvZrC-8YE9oc-g7u6sY-vCqxjE-85Apj2-Kn4GJq-vHpaa4-cyZpQA-JgD4Hs/', '0.222222222', '3', '0', '1', '0', '1', '0', '2', '391', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows358.jpg'
+['meadows358.jpg', 'flickr', 'https://www.flickr.com/photos/sampsak/3789185321/in/photolist-aWD4C4-p3hyX3-HNzXFz-4NsjUc-ybH5Cv-6CUkCU-6rNpqx-5VBkZQ-6QSr4K-2JPoV1-Vxmzmp-5vNCsU-9XbsQp-d869wh-6DyyhA-6LQyMp-t9ga9g-adUU2n-HNtAP1-nrX35t-yRPdA-NSe7U-2FmoSJ-6er6yf-6emW2x-tBDeE8-g4zwsy-qd69bW-6FjLwE-doMgB-HVZP6y-a2D6pE-eNnKMR-uVyKsW-fjocYf-f8NYtx-9FL56p-KpwgB5-nUfBDW-XCkv9o-nhwLQ1-uQ9TDN-8kKU5p-akRCUR-KX5FJ3-JqxaAq-X74QkQ-dvzZ5A-7T2z3x-Ke3Mao/', '0.444444444', '5', '0', '0', '0', '1', '0', '1', '392', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows351.jpg'
+['meadows351.jpg', 'flickr', 'https://www.flickr.com/photos/kelehen/7732780916/in/photolist-Vc7D1Y-vBRtZ9-aggsH2-HEXdCE-aRnpy4-5iFYN8-Jd4zsi-4YdwLW-pPzcxb-7u3k7z-bRUJFK-6dKAQX-9un39U-6Dyz2q-JbwJDS-HU4Jom-24GY2U-cMjwmU-tnYz6k-88mVq1-eNnSYT-5FCYdu-MzKZN-ekYutv-Q8pu8-9Xv1TJ-4NYiuF-vEuuSX-npDnjR-LACabQ-DYrv9S-f7x5xT-GM845e-Mt2Qj-npUAyq-9LH9ZS-aGSxuR-JnQSDa-9LEn2n-o1ADFc-af7fgS-qsYyDA-nJ86k2-9XvWYS-5iCk2v-jksKVv-tcFkys-2Xi7hu-usazf9-8ZUeso/', '0.444444444', '5', '1', '0', '1', '1', '0', '3', '393', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows72.jpg'
+['meadows72.jpg', 'flickr', 'https://www.flickr.com/photos/stephenwild/27409850061/in/photolist-o3zc7-objLKu-JCgUQS-tEZ29L-eNgfWw-f6TtZ2-JfB9gq-QYrsdn-o9BKJf-GCaSBS-jSRvTi-myU9GP-HMtE3f-7T2z3x-2n8zT2-Q82oQ-Ngjk1H-8enUew-rDx8B-akUrKh-8sn6ez-8adtGr-WEdbmi-rF3AXz-Kkcewu-szeSbP-8ekBRV-QqjcuU-mLpzFc-Fnp1og-72fqfX-o2jTAR-KGCDRY-vLUmHE-hKRLN-yHqo3r-EgMamq-FKUNa5-JNeThC-9RBmxB-G1QzTj-sqzWZx-HpVs5z-HL7DtK-akUs8C-tTW5KH-yPB1Lr-ongUVG-WT8Adw-xegJEb/', '0.444444444', '5', '1', '0', '1', '0', '1', '3', '394', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows106.jpg'
+['meadows106.jpg', 'unsplash', 'https://unsplash.com/photos/3TPDdXG0FwM', '0.333333333', '4', '1', '1', '1', '1', '0', '4', '395', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows145.jpg'
+['meadows145.jpg', 'unsplash', 'https://unsplash.com/photos/CUWC-6MRcNg', '0.222222222', '3', '1', '0', '1', '1', '0', '3', '396', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows60.jpg'
+['meadows60.jpg', 'flickr', 'https://www.flickr.com/photos/kelehen/9255622079/in/photolist-o3zc7-objLKu-JCgUQS-tEZ29L-eNgfWw-f6TtZ2-JfB9gq-QYrsdn-o9BKJf-GCaSBS-jSRvTi-myU9GP-HMtE3f-7T2z3x-2n8zT2-Q82oQ-Ngjk1H-8enUew-rDx8B-akUrKh-8sn6ez-8adtGr-WEdbmi-rF3AXz-Kkcewu-szeSbP-8ekBRV-QqjcuU-mLpzFc-Fnp1og-72fqfX-o2jTAR-KGCDRY-vLUmHE-hKRLN-yHqo3r-EgMamq-FKUNa5-JNeThC-9RBmxB-G1QzTj-sqzWZx-HpVs5z-HL7DtK-akUs8C-tTW5KH-yPB1Lr-ongUVG-WT8Adw-xegJEb/', '0.444444444', '5', '0', '1', '1', '1', '0', '3', '397', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows221.jpg'
+['meadows221.jpg', 'unsplash', 'https://unsplash.com/photos/C6SAUG_hmzU', '0.444444444', '5', '1', '1', '1', '1', '0', '4', '398', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows116.jpg'
+['meadows116.jpg', 'unsplash', 'https://unsplash.com/photos/YbjMkkF2dF0', '0.444444444', '5', '1', '0', '0', '1', '0', '2', '399', 'Val']
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows76.jpg'
+['meadows76.jpg', 'flickr', 'https://www.flickr.com/photos/130897172@N02/18984239548/in/photolist-d7nVUw-r9KaWU-LACaMu-LScWTt-nrER99-uVzc1Y-o2TGBZ-CycvUi-r4uZH4-cMA3hy-cFuVFN-u5bWGQ-buqn7C-eC7yJz-aVrZnX-zBnxqG-q4gYna-eyUBAk-s955dH-aMRPsc-fWxTax-cqWwbW-pcs11R-r3EmzT-foBHsP-s27Mp3-7K1Aor-cAybvf-bxRKeG-4gPU3E-cLWpa7-KM8S5S-neDcJX-FBivnA-bvbm4U-KnP5Fe-rUTiKi-PTQ1ja-umBgUH-fAJTUP-o9EE2t-nchtB7-qbvq9z-HwdeoK-cZLvB9-pTomtA-uBsTtu-pKmb9N-anK8yT-eTGDqq/', '0.222222222', '3', '0', '1', '0', '1', '0', '2', '400', 'Val']
+Epoch 1/1000
+Traceback (most recent call last):
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train_segmented.py", line 522, in <module>
+    main(sys.argv[1:])
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train_segmented.py", line 519, in main
+    train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model,momentum,loss_function,catalog,WIDTH,HEIGHT,outColumn)
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train_segmented.py", line 381, in train
+    history = model.fit(np.array(X_train), np.array(y_train),
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2_8_gpu/lib/python3.9/site-packages/keras/utils/traceback_utils.py", line 67, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2_8_gpu/lib/python3.9/site-packages/keras/engine/training.py", line 1395, in fit
+    raise ValueError('Unexpected result of `train_function` '
+ValueError: Unexpected result of `train_function` (Empty logs). Please use `Model.compile(..., run_eagerly=True)`, or `tf.config.run_functions_eagerly(True)` for more information of where went wrong, or file a issue/bug to `tf.keras`.
+srun: error: nodenviv100008: task 0: Exited with exit code 1
