@@ -1,0 +1,711 @@
+2022-07-03 22:52:48.914967: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-07-03 22:52:57.605498: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38246 MB memory:  -> device: 0, name: NVIDIA A100-PCIE-40GB, pci bus id: 0000:21:00.0, compute capability: 8.0
+Input file is " ./agnet.19.res.checkpoint
+Output file is " 
+Image path is " ./databaserelease2/NatureDataset4/test
+--------------------
+
+
+Model Loaded
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 1024, 680, 3 0                                            
+__________________________________________________________________________________________________
+conv2d_16 (Conv2D)              (None, 170, 168, 96) 23424       input_1[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization_16 (BatchNo (None, 170, 168, 96) 384         conv2d_16[0][0]                  
+__________________________________________________________________________________________________
+activation_12 (Activation)      (None, 170, 168, 96) 0           batch_normalization_16[0][0]     
+__________________________________________________________________________________________________
+conv2d_17 (Conv2D)              (None, 169, 167, 192 73920       activation_12[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_17 (BatchNo (None, 169, 167, 192 768         conv2d_17[0][0]                  
+__________________________________________________________________________________________________
+activation_13 (Activation)      (None, 169, 167, 192 0           batch_normalization_17[0][0]     
+__________________________________________________________________________________________________
+conv2d_18 (Conv2D)              (None, 168, 166, 384 295296      activation_13[0][0]              
+__________________________________________________________________________________________________
+conv2d_19 (Conv2D)              (None, 168, 166, 384 332160      activation_12[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_18 (BatchNo (None, 168, 166, 384 1536        conv2d_18[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_19 (BatchNo (None, 168, 166, 384 1536        conv2d_19[0][0]                  
+__________________________________________________________________________________________________
+add_4 (Add)                     (None, 168, 166, 384 0           batch_normalization_18[0][0]     
+                                                                 batch_normalization_19[0][0]     
+__________________________________________________________________________________________________
+activation_14 (Activation)      (None, 168, 166, 384 0           add_4[0][0]                      
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 330, 323, 96) 352896      input_1[0][0]                    
+__________________________________________________________________________________________________
+conv2d_20 (Conv2D)              (None, 81, 80, 384)  7225728     activation_14[0][0]              
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 330, 323, 96) 384         conv2d[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_20 (BatchNo (None, 81, 80, 384)  1536        conv2d_20[0][0]                  
+__________________________________________________________________________________________________
+activation (Activation)         (None, 330, 323, 96) 0           batch_normalization[0][0]        
+__________________________________________________________________________________________________
+activation_15 (Activation)      (None, 81, 80, 384)  0           batch_normalization_20[0][0]     
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 329, 322, 192 73920       activation[0][0]                 
+__________________________________________________________________________________________________
+conv2d_21 (Conv2D)              (None, 80, 79, 192)  295104      activation_15[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 329, 322, 192 768         conv2d_1[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_21 (BatchNo (None, 80, 79, 192)  768         conv2d_21[0][0]                  
+__________________________________________________________________________________________________
+activation_1 (Activation)       (None, 329, 322, 192 0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+activation_16 (Activation)      (None, 80, 79, 192)  0           batch_normalization_21[0][0]     
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, 328, 321, 384 295296      activation_1[0][0]               
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, 328, 321, 384 332160      activation[0][0]                 
+__________________________________________________________________________________________________
+conv2d_22 (Conv2D)              (None, 79, 78, 96)   73824       activation_16[0][0]              
+__________________________________________________________________________________________________
+conv2d_23 (Conv2D)              (None, 79, 78, 96)   331872      activation_15[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 328, 321, 384 1536        conv2d_2[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 328, 321, 384 1536        conv2d_3[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_22 (BatchNo (None, 79, 78, 96)   384         conv2d_22[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_23 (BatchNo (None, 79, 78, 96)   384         conv2d_23[0][0]                  
+__________________________________________________________________________________________________
+add (Add)                       (None, 328, 321, 384 0           batch_normalization_2[0][0]      
+                                                                 batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+add_5 (Add)                     (None, 79, 78, 96)   0           batch_normalization_22[0][0]     
+                                                                 batch_normalization_23[0][0]     
+__________________________________________________________________________________________________
+activation_2 (Activation)       (None, 328, 321, 384 0           add[0][0]                        
+__________________________________________________________________________________________________
+activation_17 (Activation)      (None, 79, 78, 96)   0           add_5[0][0]                      
+__________________________________________________________________________________________________
+conv2d_4 (Conv2D)               (None, 156, 152, 160 19906720    activation_2[0][0]               
+__________________________________________________________________________________________________
+conv2d_24 (Conv2D)              (None, 38, 37, 384)  921984      activation_17[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 156, 152, 160 640         conv2d_4[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_24 (BatchNo (None, 38, 37, 384)  1536        conv2d_24[0][0]                  
+__________________________________________________________________________________________________
+activation_3 (Activation)       (None, 156, 152, 160 0           batch_normalization_4[0][0]      
+__________________________________________________________________________________________________
+activation_18 (Activation)      (None, 38, 37, 384)  0           batch_normalization_24[0][0]     
+__________________________________________________________________________________________________
+conv2d_5 (Conv2D)               (None, 155, 151, 80) 51280       activation_3[0][0]               
+__________________________________________________________________________________________________
+conv2d_25 (Conv2D)              (None, 37, 36, 768)  1180416     activation_18[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 155, 151, 80) 320         conv2d_5[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_25 (BatchNo (None, 37, 36, 768)  3072        conv2d_25[0][0]                  
+__________________________________________________________________________________________________
+activation_4 (Activation)       (None, 155, 151, 80) 0           batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+activation_19 (Activation)      (None, 37, 36, 768)  0           batch_normalization_25[0][0]     
+__________________________________________________________________________________________________
+conv2d_6 (Conv2D)               (None, 154, 150, 40) 12840       activation_4[0][0]               
+__________________________________________________________________________________________________
+conv2d_7 (Conv2D)               (None, 154, 150, 40) 57640       activation_3[0][0]               
+__________________________________________________________________________________________________
+conv2d_26 (Conv2D)              (None, 36, 35, 1536) 4720128     activation_19[0][0]              
+__________________________________________________________________________________________________
+conv2d_27 (Conv2D)              (None, 36, 35, 1536) 5309952     activation_18[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 154, 150, 40) 160         conv2d_6[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 154, 150, 40) 160         conv2d_7[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_26 (BatchNo (None, 36, 35, 1536) 6144        conv2d_26[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_27 (BatchNo (None, 36, 35, 1536) 6144        conv2d_27[0][0]                  
+__________________________________________________________________________________________________
+add_1 (Add)                     (None, 154, 150, 40) 0           batch_normalization_6[0][0]      
+                                                                 batch_normalization_7[0][0]      
+__________________________________________________________________________________________________
+add_6 (Add)                     (None, 36, 35, 1536) 0           batch_normalization_26[0][0]     
+                                                                 batch_normalization_27[0][0]     
+__________________________________________________________________________________________________
+activation_5 (Activation)       (None, 154, 150, 40) 0           add_1[0][0]                      
+__________________________________________________________________________________________________
+activation_20 (Activation)      (None, 36, 35, 1536) 0           add_6[0][0]                      
+__________________________________________________________________________________________________
+conv2d_8 (Conv2D)               (None, 69, 67, 160)  2073760     activation_5[0][0]               
+__________________________________________________________________________________________________
+conv2d_28 (Conv2D)              (None, 17, 17, 384)  5308800     activation_20[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_8 (BatchNor (None, 69, 67, 160)  640         conv2d_8[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_28 (BatchNo (None, 17, 17, 384)  1536        conv2d_28[0][0]                  
+__________________________________________________________________________________________________
+activation_6 (Activation)       (None, 69, 67, 160)  0           batch_normalization_8[0][0]      
+__________________________________________________________________________________________________
+activation_21 (Activation)      (None, 17, 17, 384)  0           batch_normalization_28[0][0]     
+__________________________________________________________________________________________________
+conv2d_9 (Conv2D)               (None, 68, 66, 160)  102560      activation_6[0][0]               
+__________________________________________________________________________________________________
+conv2d_29 (Conv2D)              (None, 16, 16, 192)  295104      activation_21[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_9 (BatchNor (None, 68, 66, 160)  640         conv2d_9[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_29 (BatchNo (None, 16, 16, 192)  768         conv2d_29[0][0]                  
+__________________________________________________________________________________________________
+activation_7 (Activation)       (None, 68, 66, 160)  0           batch_normalization_9[0][0]      
+__________________________________________________________________________________________________
+activation_22 (Activation)      (None, 16, 16, 192)  0           batch_normalization_29[0][0]     
+__________________________________________________________________________________________________
+conv2d_10 (Conv2D)              (None, 67, 65, 160)  102560      activation_7[0][0]               
+__________________________________________________________________________________________________
+conv2d_11 (Conv2D)              (None, 67, 65, 160)  230560      activation_6[0][0]               
+__________________________________________________________________________________________________
+conv2d_30 (Conv2D)              (None, 15, 15, 96)   73824       activation_22[0][0]              
+__________________________________________________________________________________________________
+conv2d_31 (Conv2D)              (None, 15, 15, 96)   331872      activation_21[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_10 (BatchNo (None, 67, 65, 160)  640         conv2d_10[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_11 (BatchNo (None, 67, 65, 160)  640         conv2d_11[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_30 (BatchNo (None, 15, 15, 96)   384         conv2d_30[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_31 (BatchNo (None, 15, 15, 96)   384         conv2d_31[0][0]                  
+__________________________________________________________________________________________________
+add_2 (Add)                     (None, 67, 65, 160)  0           batch_normalization_10[0][0]     
+                                                                 batch_normalization_11[0][0]     
+__________________________________________________________________________________________________
+add_7 (Add)                     (None, 15, 15, 96)   0           batch_normalization_30[0][0]     
+                                                                 batch_normalization_31[0][0]     
+__________________________________________________________________________________________________
+activation_8 (Activation)       (None, 67, 65, 160)  0           add_2[0][0]                      
+__________________________________________________________________________________________________
+activation_23 (Activation)      (None, 15, 15, 96)   0           add_7[0][0]                      
+__________________________________________________________________________________________________
+conv2d_12 (Conv2D)              (None, 30, 29, 80)   1036880     activation_8[0][0]               
+__________________________________________________________________________________________________
+conv2d_32 (Conv2D)              (None, 7, 7, 160)    138400      activation_23[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_12 (BatchNo (None, 30, 29, 80)   320         conv2d_12[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_32 (BatchNo (None, 7, 7, 160)    640         conv2d_32[0][0]                  
+__________________________________________________________________________________________________
+activation_9 (Activation)       (None, 30, 29, 80)   0           batch_normalization_12[0][0]     
+__________________________________________________________________________________________________
+activation_24 (Activation)      (None, 7, 7, 160)    0           batch_normalization_32[0][0]     
+__________________________________________________________________________________________________
+conv2d_13 (Conv2D)              (None, 29, 28, 40)   12840       activation_9[0][0]               
+__________________________________________________________________________________________________
+conv2d_33 (Conv2D)              (None, 6, 6, 160)    102560      activation_24[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_13 (BatchNo (None, 29, 28, 40)   160         conv2d_13[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_33 (BatchNo (None, 6, 6, 160)    640         conv2d_33[0][0]                  
+__________________________________________________________________________________________________
+activation_10 (Activation)      (None, 29, 28, 40)   0           batch_normalization_13[0][0]     
+__________________________________________________________________________________________________
+activation_25 (Activation)      (None, 6, 6, 160)    0           batch_normalization_33[0][0]     
+__________________________________________________________________________________________________
+conv2d_14 (Conv2D)              (None, 28, 27, 20)   3220        activation_10[0][0]              
+__________________________________________________________________________________________________
+conv2d_15 (Conv2D)              (None, 28, 27, 20)   14420       activation_9[0][0]               
+__________________________________________________________________________________________________
+conv2d_34 (Conv2D)              (None, 5, 5, 160)    102560      activation_25[0][0]              
+__________________________________________________________________________________________________
+conv2d_35 (Conv2D)              (None, 5, 5, 160)    230560      activation_24[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_14 (BatchNo (None, 28, 27, 20)   80          conv2d_14[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_15 (BatchNo (None, 28, 27, 20)   80          conv2d_15[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_34 (BatchNo (None, 5, 5, 160)    640         conv2d_34[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_35 (BatchNo (None, 5, 5, 160)    640         conv2d_35[0][0]                  
+__________________________________________________________________________________________________
+add_3 (Add)                     (None, 28, 27, 20)   0           batch_normalization_14[0][0]     
+                                                                 batch_normalization_15[0][0]     
+__________________________________________________________________________________________________
+add_8 (Add)                     (None, 5, 5, 160)    0           batch_normalization_34[0][0]     
+                                                                 batch_normalization_35[0][0]     
+__________________________________________________________________________________________________
+activation_11 (Activation)      (None, 28, 27, 20)   0           add_3[0][0]                      
+__________________________________________________________________________________________________
+activation_26 (Activation)      (None, 5, 5, 160)    0           add_8[0][0]                      
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 15120)        0           activation_11[0][0]              
+__________________________________________________________________________________________________
+flatten_1 (Flatten)             (None, 4000)         0           activation_26[0][0]              
+__________________________________________________________________________________________________
+concatenate (Concatenate)       (None, 19120)        0           flatten[0][0]                    
+                                                                 flatten_1[0][0]                  
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 2048)         39159808    concatenate[0][0]                
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 2048)         0           dense[0][0]                      
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 1024)         2098176     dropout[0][0]                    
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 1024)         0           dense_1[0][0]                    
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 512)          524800      dropout_1[0][0]                  
+__________________________________________________________________________________________________
+dropout_2 (Dropout)             (None, 512)          0           dense_2[0][0]                    
+__________________________________________________________________________________________________
+dense_3 (Dense)                 (None, 256)          131328      dropout_2[0][0]                  
+__________________________________________________________________________________________________
+dropout_3 (Dropout)             (None, 256)          0           dense_3[0][0]                    
+__________________________________________________________________________________________________
+dense_4 (Dense)                 (None, 128)          32896       dropout_3[0][0]                  
+__________________________________________________________________________________________________
+dropout_4 (Dropout)             (None, 128)          0           dense_4[0][0]                    
+__________________________________________________________________________________________________
+dense_5 (Dense)                 (None, 64)           8256        dropout_4[0][0]                  
+__________________________________________________________________________________________________
+dropout_5 (Dropout)             (None, 64)           0           dense_5[0][0]                    
+__________________________________________________________________________________________________
+dense_6 (Dense)                 (None, 1)            65          dropout_5[0][0]                  
+==================================================================================================
+Total params: 94,020,897
+Trainable params: 94,001,633
+Non-trainable params: 19,264
+__________________________________________________________________________________________________
+None
+Adding Images: Reading ./databaserelease2/NatureDataset4/test/1-waters182.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest430.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest25.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows379.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters879.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters836.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters352.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters535.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest404.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters687.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters592.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters552.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest168.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters720.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters669.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest249.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters20.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters783.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters571.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters845.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters335.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters196.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters444.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters710.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest198.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest348.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters639.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest69.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-meadows126.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters385.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters56.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters300.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-meadows471.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters698.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters127.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows20.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters231.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters440.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest165.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest13.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-meadows150.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters635.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters699.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows320.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters542.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows345.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters451.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest112.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters627.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters508.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters881.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest566.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest113.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters104.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters880.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-meadows164.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters862.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters438.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest591.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest19.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest369.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters108.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows242.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters439.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters823.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest521.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest376.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-meadows384.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters448.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows131.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters423.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest475.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters163.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters369.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest492.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters709.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters355.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest54.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest356.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters22.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest452.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest386.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters113.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest435.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest237.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters501.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest124.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows450.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters401.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest567.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest186.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters105.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest534.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters531.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters60.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters36.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters701.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters455.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters331.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows280.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters868.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest387.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest128.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest211.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters43.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest8.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters518.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters211.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows137.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-meadows173.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-meadows51.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters565.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters578.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters230.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters258.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest144.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters11.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest6.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-meadows453.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters652.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters153.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows251.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters522.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest418.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-meadows22.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest236.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-meadows398.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows25.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows201.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-meadows325.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest147.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows16.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters766.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-meadows10.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters296.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters313.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters280.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters704.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters324.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters745.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest259.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters298.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows358.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest584.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters133.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows491.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest559.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest335.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest141.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest150.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters743.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters688.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest62.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-meadows383.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters429.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters623.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows415.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows2.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-meadows145.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-meadows405.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest397.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest111.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters362.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest542.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters787.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters513.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows456.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters239.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows253.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows61.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters541.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters638.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-meadows283.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters889.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters814.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-meadows182.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows54.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters800.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest412.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters495.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest414.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest402.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-meadows366.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest446.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters555.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest375.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters178.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows234.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest79.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters619.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows426.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters143.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters550.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest338.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows171.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows467.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-meadows348.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters169.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters758.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-meadows272.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest256.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest200.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest95.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters392.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest271.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters213.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest181.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest108.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/1-waters789.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-waters728.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest383.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/1-forest316.jpg
+1.0
+Reading ./databaserelease2/NatureDataset4/test/0-forest263.jpg
+0.0
+Reading ./databaserelease2/NatureDataset4/test/0-meadows53.jpg
+0.0
+./test.sh: line 1:  1559 Killed                  python ./train.py --test -i ./agnet.19.res.checkpoint -p ./databaserelease2/NatureDataset4/test
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=2638774.0 cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.
+srun: error: nodegpu002: task 0: Out Of Memory
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=2638774.batch cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.

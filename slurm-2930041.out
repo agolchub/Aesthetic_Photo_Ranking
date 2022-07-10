@@ -1,0 +1,517 @@
+2022-07-10 11:49:30.480938: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-07-10 11:49:31.360143: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38246 MB memory:  -> device: 0, name: NVIDIA A100-PCIE-40GB, pci bus id: 0000:21:00.0, compute capability: 8.0
+Input file is " ./model3.1.train
+Output file is " 
+Image path is " ./databaserelease2/train.csv
+--------------------
+
+
+Model Loaded
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 1024, 1024,  0                                            
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 1018, 1018, 6 9472        input_1[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 1018, 1018, 6 256         conv2d[0][0]                     
+__________________________________________________________________________________________________
+activation (Activation)         (None, 1018, 1018, 6 0           batch_normalization[0][0]        
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 1018, 1018, 6 0           activation[0][0]                 
+__________________________________________________________________________________________________
+max_pooling2d (MaxPooling2D)    (None, 509, 509, 64) 0           dropout[0][0]                    
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 509, 509, 64) 36928       max_pooling2d[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 509, 509, 64) 256         conv2d_1[0][0]                   
+__________________________________________________________________________________________________
+activation_1 (Activation)       (None, 509, 509, 64) 0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, 509, 509, 64) 36928       activation_1[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 509, 509, 64) 256         conv2d_2[0][0]                   
+__________________________________________________________________________________________________
+add (Add)                       (None, 509, 509, 64) 0           batch_normalization_2[0][0]      
+                                                                 max_pooling2d[0][0]              
+__________________________________________________________________________________________________
+activation_2 (Activation)       (None, 509, 509, 64) 0           add[0][0]                        
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, 509, 509, 64) 36928       activation_2[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 509, 509, 64) 256         conv2d_3[0][0]                   
+__________________________________________________________________________________________________
+activation_3 (Activation)       (None, 509, 509, 64) 0           batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+conv2d_4 (Conv2D)               (None, 509, 509, 64) 36928       activation_3[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 509, 509, 64) 256         conv2d_4[0][0]                   
+__________________________________________________________________________________________________
+add_1 (Add)                     (None, 509, 509, 64) 0           batch_normalization_4[0][0]      
+                                                                 activation_2[0][0]               
+__________________________________________________________________________________________________
+activation_4 (Activation)       (None, 509, 509, 64) 0           add_1[0][0]                      
+__________________________________________________________________________________________________
+conv2d_5 (Conv2D)               (None, 509, 509, 64) 36928       activation_4[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 509, 509, 64) 256         conv2d_5[0][0]                   
+__________________________________________________________________________________________________
+activation_5 (Activation)       (None, 509, 509, 64) 0           batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+conv2d_6 (Conv2D)               (None, 509, 509, 64) 36928       activation_5[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 509, 509, 64) 256         conv2d_6[0][0]                   
+__________________________________________________________________________________________________
+add_2 (Add)                     (None, 509, 509, 64) 0           batch_normalization_6[0][0]      
+                                                                 activation_4[0][0]               
+__________________________________________________________________________________________________
+activation_6 (Activation)       (None, 509, 509, 64) 0           add_2[0][0]                      
+__________________________________________________________________________________________________
+conv2d_8 (Conv2D)               (None, 255, 255, 128 73856       activation_6[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 255, 255, 128 512         conv2d_8[0][0]                   
+__________________________________________________________________________________________________
+activation_7 (Activation)       (None, 255, 255, 128 0           batch_normalization_7[0][0]      
+__________________________________________________________________________________________________
+conv2d_9 (Conv2D)               (None, 255, 255, 128 147584      activation_7[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_8 (BatchNor (None, 255, 255, 128 512         conv2d_9[0][0]                   
+__________________________________________________________________________________________________
+conv2d_7 (Conv2D)               (None, 255, 255, 128 8320        activation_6[0][0]               
+__________________________________________________________________________________________________
+add_3 (Add)                     (None, 255, 255, 128 0           batch_normalization_8[0][0]      
+                                                                 conv2d_7[0][0]                   
+__________________________________________________________________________________________________
+activation_8 (Activation)       (None, 255, 255, 128 0           add_3[0][0]                      
+__________________________________________________________________________________________________
+conv2d_10 (Conv2D)              (None, 255, 255, 128 147584      activation_8[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_9 (BatchNor (None, 255, 255, 128 512         conv2d_10[0][0]                  
+__________________________________________________________________________________________________
+activation_9 (Activation)       (None, 255, 255, 128 0           batch_normalization_9[0][0]      
+__________________________________________________________________________________________________
+conv2d_11 (Conv2D)              (None, 255, 255, 128 147584      activation_9[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_10 (BatchNo (None, 255, 255, 128 512         conv2d_11[0][0]                  
+__________________________________________________________________________________________________
+add_4 (Add)                     (None, 255, 255, 128 0           batch_normalization_10[0][0]     
+                                                                 activation_8[0][0]               
+__________________________________________________________________________________________________
+activation_10 (Activation)      (None, 255, 255, 128 0           add_4[0][0]                      
+__________________________________________________________________________________________________
+conv2d_12 (Conv2D)              (None, 255, 255, 128 147584      activation_10[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_11 (BatchNo (None, 255, 255, 128 512         conv2d_12[0][0]                  
+__________________________________________________________________________________________________
+activation_11 (Activation)      (None, 255, 255, 128 0           batch_normalization_11[0][0]     
+__________________________________________________________________________________________________
+conv2d_13 (Conv2D)              (None, 255, 255, 128 147584      activation_11[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_12 (BatchNo (None, 255, 255, 128 512         conv2d_13[0][0]                  
+__________________________________________________________________________________________________
+add_5 (Add)                     (None, 255, 255, 128 0           batch_normalization_12[0][0]     
+                                                                 activation_10[0][0]              
+__________________________________________________________________________________________________
+activation_12 (Activation)      (None, 255, 255, 128 0           add_5[0][0]                      
+__________________________________________________________________________________________________
+conv2d_14 (Conv2D)              (None, 255, 255, 128 147584      activation_12[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_13 (BatchNo (None, 255, 255, 128 512         conv2d_14[0][0]                  
+__________________________________________________________________________________________________
+activation_13 (Activation)      (None, 255, 255, 128 0           batch_normalization_13[0][0]     
+__________________________________________________________________________________________________
+conv2d_15 (Conv2D)              (None, 255, 255, 128 147584      activation_13[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_14 (BatchNo (None, 255, 255, 128 512         conv2d_15[0][0]                  
+__________________________________________________________________________________________________
+add_6 (Add)                     (None, 255, 255, 128 0           batch_normalization_14[0][0]     
+                                                                 activation_12[0][0]              
+__________________________________________________________________________________________________
+activation_14 (Activation)      (None, 255, 255, 128 0           add_6[0][0]                      
+__________________________________________________________________________________________________
+conv2d_17 (Conv2D)              (None, 128, 128, 256 295168      activation_14[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_15 (BatchNo (None, 128, 128, 256 1024        conv2d_17[0][0]                  
+__________________________________________________________________________________________________
+activation_15 (Activation)      (None, 128, 128, 256 0           batch_normalization_15[0][0]     
+__________________________________________________________________________________________________
+conv2d_18 (Conv2D)              (None, 128, 128, 256 590080      activation_15[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_16 (BatchNo (None, 128, 128, 256 1024        conv2d_18[0][0]                  
+__________________________________________________________________________________________________
+conv2d_16 (Conv2D)              (None, 128, 128, 256 33024       activation_14[0][0]              
+__________________________________________________________________________________________________
+add_7 (Add)                     (None, 128, 128, 256 0           batch_normalization_16[0][0]     
+                                                                 conv2d_16[0][0]                  
+__________________________________________________________________________________________________
+activation_16 (Activation)      (None, 128, 128, 256 0           add_7[0][0]                      
+__________________________________________________________________________________________________
+conv2d_19 (Conv2D)              (None, 128, 128, 256 590080      activation_16[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_17 (BatchNo (None, 128, 128, 256 1024        conv2d_19[0][0]                  
+__________________________________________________________________________________________________
+activation_17 (Activation)      (None, 128, 128, 256 0           batch_normalization_17[0][0]     
+__________________________________________________________________________________________________
+conv2d_20 (Conv2D)              (None, 128, 128, 256 590080      activation_17[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_18 (BatchNo (None, 128, 128, 256 1024        conv2d_20[0][0]                  
+__________________________________________________________________________________________________
+add_8 (Add)                     (None, 128, 128, 256 0           batch_normalization_18[0][0]     
+                                                                 activation_16[0][0]              
+__________________________________________________________________________________________________
+activation_18 (Activation)      (None, 128, 128, 256 0           add_8[0][0]                      
+__________________________________________________________________________________________________
+conv2d_21 (Conv2D)              (None, 128, 128, 256 590080      activation_18[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_19 (BatchNo (None, 128, 128, 256 1024        conv2d_21[0][0]                  
+__________________________________________________________________________________________________
+activation_19 (Activation)      (None, 128, 128, 256 0           batch_normalization_19[0][0]     
+__________________________________________________________________________________________________
+conv2d_22 (Conv2D)              (None, 128, 128, 256 590080      activation_19[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_20 (BatchNo (None, 128, 128, 256 1024        conv2d_22[0][0]                  
+__________________________________________________________________________________________________
+add_9 (Add)                     (None, 128, 128, 256 0           batch_normalization_20[0][0]     
+                                                                 activation_18[0][0]              
+__________________________________________________________________________________________________
+activation_20 (Activation)      (None, 128, 128, 256 0           add_9[0][0]                      
+__________________________________________________________________________________________________
+conv2d_23 (Conv2D)              (None, 128, 128, 256 590080      activation_20[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_21 (BatchNo (None, 128, 128, 256 1024        conv2d_23[0][0]                  
+__________________________________________________________________________________________________
+activation_21 (Activation)      (None, 128, 128, 256 0           batch_normalization_21[0][0]     
+__________________________________________________________________________________________________
+conv2d_24 (Conv2D)              (None, 128, 128, 256 590080      activation_21[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_22 (BatchNo (None, 128, 128, 256 1024        conv2d_24[0][0]                  
+__________________________________________________________________________________________________
+add_10 (Add)                    (None, 128, 128, 256 0           batch_normalization_22[0][0]     
+                                                                 activation_20[0][0]              
+__________________________________________________________________________________________________
+activation_22 (Activation)      (None, 128, 128, 256 0           add_10[0][0]                     
+__________________________________________________________________________________________________
+conv2d_25 (Conv2D)              (None, 128, 128, 256 590080      activation_22[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_23 (BatchNo (None, 128, 128, 256 1024        conv2d_25[0][0]                  
+__________________________________________________________________________________________________
+activation_23 (Activation)      (None, 128, 128, 256 0           batch_normalization_23[0][0]     
+__________________________________________________________________________________________________
+conv2d_26 (Conv2D)              (None, 128, 128, 256 590080      activation_23[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_24 (BatchNo (None, 128, 128, 256 1024        conv2d_26[0][0]                  
+__________________________________________________________________________________________________
+add_11 (Add)                    (None, 128, 128, 256 0           batch_normalization_24[0][0]     
+                                                                 activation_22[0][0]              
+__________________________________________________________________________________________________
+activation_24 (Activation)      (None, 128, 128, 256 0           add_11[0][0]                     
+__________________________________________________________________________________________________
+conv2d_27 (Conv2D)              (None, 128, 128, 256 590080      activation_24[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_25 (BatchNo (None, 128, 128, 256 1024        conv2d_27[0][0]                  
+__________________________________________________________________________________________________
+activation_25 (Activation)      (None, 128, 128, 256 0           batch_normalization_25[0][0]     
+__________________________________________________________________________________________________
+conv2d_28 (Conv2D)              (None, 128, 128, 256 590080      activation_25[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_26 (BatchNo (None, 128, 128, 256 1024        conv2d_28[0][0]                  
+__________________________________________________________________________________________________
+add_12 (Add)                    (None, 128, 128, 256 0           batch_normalization_26[0][0]     
+                                                                 activation_24[0][0]              
+__________________________________________________________________________________________________
+activation_26 (Activation)      (None, 128, 128, 256 0           add_12[0][0]                     
+__________________________________________________________________________________________________
+conv2d_30 (Conv2D)              (None, 64, 64, 512)  1180160     activation_26[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_27 (BatchNo (None, 64, 64, 512)  2048        conv2d_30[0][0]                  
+__________________________________________________________________________________________________
+activation_27 (Activation)      (None, 64, 64, 512)  0           batch_normalization_27[0][0]     
+__________________________________________________________________________________________________
+conv2d_31 (Conv2D)              (None, 64, 64, 512)  2359808     activation_27[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_28 (BatchNo (None, 64, 64, 512)  2048        conv2d_31[0][0]                  
+__________________________________________________________________________________________________
+conv2d_29 (Conv2D)              (None, 64, 64, 512)  131584      activation_26[0][0]              
+__________________________________________________________________________________________________
+add_13 (Add)                    (None, 64, 64, 512)  0           batch_normalization_28[0][0]     
+                                                                 conv2d_29[0][0]                  
+__________________________________________________________________________________________________
+activation_28 (Activation)      (None, 64, 64, 512)  0           add_13[0][0]                     
+__________________________________________________________________________________________________
+conv2d_32 (Conv2D)              (None, 64, 64, 512)  2359808     activation_28[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_29 (BatchNo (None, 64, 64, 512)  2048        conv2d_32[0][0]                  
+__________________________________________________________________________________________________
+activation_29 (Activation)      (None, 64, 64, 512)  0           batch_normalization_29[0][0]     
+__________________________________________________________________________________________________
+conv2d_33 (Conv2D)              (None, 64, 64, 512)  2359808     activation_29[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_30 (BatchNo (None, 64, 64, 512)  2048        conv2d_33[0][0]                  
+__________________________________________________________________________________________________
+add_14 (Add)                    (None, 64, 64, 512)  0           batch_normalization_30[0][0]     
+                                                                 activation_28[0][0]              
+__________________________________________________________________________________________________
+activation_30 (Activation)      (None, 64, 64, 512)  0           add_14[0][0]                     
+__________________________________________________________________________________________________
+conv2d_34 (Conv2D)              (None, 64, 64, 512)  2359808     activation_30[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_31 (BatchNo (None, 64, 64, 512)  2048        conv2d_34[0][0]                  
+__________________________________________________________________________________________________
+activation_31 (Activation)      (None, 64, 64, 512)  0           batch_normalization_31[0][0]     
+__________________________________________________________________________________________________
+conv2d_35 (Conv2D)              (None, 64, 64, 512)  2359808     activation_31[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_32 (BatchNo (None, 64, 64, 512)  2048        conv2d_35[0][0]                  
+__________________________________________________________________________________________________
+add_15 (Add)                    (None, 64, 64, 512)  0           batch_normalization_32[0][0]     
+                                                                 activation_30[0][0]              
+__________________________________________________________________________________________________
+activation_32 (Activation)      (None, 64, 64, 512)  0           add_15[0][0]                     
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 2097152)      0           activation_32[0][0]              
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 1)            2097153     flatten[0][0]                    
+==================================================================================================
+Total params: 23,403,777
+Trainable params: 23,388,545
+Non-trainable params: 15,232
+__________________________________________________________________________________________________
+None
+Adding Images: Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/﻿Filename'
+['\ufeffFilename', 'Source', 'Link (if available)', "Arash's Scores", "Maria's Scores", 'Color Saturation', 'Framing', 'Lighting', 'Clarity', 'Symmetry', 'Objective Score', 'ObjectiveClass', 'Random', 'Set']
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows466.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows467.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows396.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows435.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows481.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows422.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows484.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows105.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows493.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows276.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows363.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows461.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows228.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows127.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows142.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows338.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows496.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows434.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows248.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows297.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows415.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows226.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows450.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows252.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows79.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows404.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows424.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows21.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows94.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows325.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows192.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows285.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows39.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows31.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows328.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows275.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows323.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows273.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows92.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows284.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows296.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows286.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows113.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows302.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows89.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows354.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows169.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows389.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows51.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows28.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows230.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows482.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows487.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows137.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows172.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows271.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows436.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows87.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows46.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows211.jpg
+5 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows123.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows164.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows291.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows175.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows185.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows442.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows427.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows332.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows468.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows242.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows207.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows475.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows238.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows378.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows392.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows293.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows86.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows313.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows138.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows360.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows83.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows452.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows462.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows479.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows15.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows395.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows8.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows469.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows143.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows114.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows82.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows292.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows458.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows441.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows191.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows256.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows465.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows443.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows312.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows71.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows33.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows499.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows168.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows130.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows205.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows135.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows345.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows272.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows190.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows355.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows430.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows124.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows40.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows407.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows12.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows463.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows456.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows67.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows7.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows150.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows227.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows203.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows65.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows431.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows364.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows425.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows263.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows166.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows333.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows159.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows59.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows170.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows171.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows249.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows186.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows6.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows160.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows229.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows77.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows321.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows266.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows451.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows366.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows318.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows112.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows34.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows18.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows75.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows337.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows3.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows406.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows250.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows330.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows384.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows306.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows199.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows111.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows278.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows267.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows41.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows107.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows109.jpg
+5 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows74.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows84.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows317.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows146.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows455.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows492.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows288.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows17.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows413.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows38.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows43.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows486.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows488.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows473.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows131.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows239.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows474.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows258.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows361.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows36.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows165.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows322.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows10.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows280.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows2.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows119.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows95.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows214.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows385.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows147.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows268.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows410.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows163.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows134.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows405.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows287.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows133.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows100.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows270.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows448.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows327.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows243.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows180.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows240.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows181.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows78.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows402.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows445.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows423.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows189.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows16.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows429.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows464.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows49.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows29.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows193.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows255.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows37.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows310.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows103.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows35.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows231.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows344.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows264.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows432.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows108.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows204.jpg
+./test.sh: line 2: 26418 Killed                  python ./train_segmented.py --test -i ./model3.1.train -p ./databaserelease2/train.csv --width 1024 --height 1024 --outColumn 10
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=2930041.0 cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.
+srun: error: nodegpu002: task 0: Out Of Memory
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=2930041.batch cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.

@@ -1,0 +1,33 @@
+2022-07-03 22:49:12.197194: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2022-07-03 22:49:12.197502: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+Input file is " ./agnet.19.res.checkpoint
+Output file is " 
+Image path is " ./databaserelease2/NatureDataset4/test
+--------------------
+
+
+Traceback (most recent call last):
+  File "./train.py", line 602, in <module>
+    main(sys.argv[1:])
+  File "./train.py", line 597, in main
+    test(modelin,imagepath)
+  File "./train.py", line 484, in test
+    model = models.load_model(modelin)
+  File "/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/keras/saving/save.py", line 212, in load_model
+    return saved_model_load.load(filepath, compile, options)
+  File "/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/keras/saving/saved_model/load.py", line 138, in load
+    keras_loader.load_layers()
+  File "/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/keras/saving/saved_model/load.py", line 374, in load_layers
+    self.loaded_nodes[node_metadata.node_id] = self._load_layer(
+  File "/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/keras/saving/saved_model/load.py", line 385, in _load_layer
+    metadata = json_utils.decode(metadata)
+  File "/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/site-packages/tensorflow/python/keras/saving/saved_model/json_utils.py", line 69, in decode
+    return json.loads(json_string, object_hook=_decode_helper)
+  File "/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/json/__init__.py", line 370, in loads
+    return cls(**kw).decode(s)
+  File "/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/mnt/beegfs/home/agolchub/miniconda3/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+srun: error: nodegpu002: task 0: Exited with exit code 1

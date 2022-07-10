@@ -1,0 +1,796 @@
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+2022-07-10 04:55:04.524028: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-07-10 04:55:05.506146: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38246 MB memory:  -> device: 0, name: NVIDIA A100-PCIE-40GB, pci bus id: 0000:21:00.0, compute capability: 8.0
+2022-07-10 04:55:06.241906: I tensorflow/core/profiler/lib/profiler_session.cc:131] Profiler session initializing.
+2022-07-10 04:55:06.242101: I tensorflow/core/profiler/lib/profiler_session.cc:146] Profiler session started.
+2022-07-10 04:55:06.243195: I tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1614] Profiler found 1 GPUs
+2022-07-10 04:55:06.248022: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcupti.so.11.2'; dlerror: libcupti.so.11.2: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2022-07-10 04:55:06.249013: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcupti.so'; dlerror: libcupti.so: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/ohpc/pub/mpi/openmpi3-gnu8/3.1.4/lib:/opt/ohpc/pub/compiler/gcc/8.3.0/lib64
+2022-07-10 04:55:06.249142: E tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1666] function cupti_interface_->Subscribe( &subscriber_, (CUpti_CallbackFunc)ApiCallback, this)failed with error CUPTI could not be loaded or symbol could not be found.
+2022-07-10 04:55:06.249238: I tensorflow/core/profiler/lib/profiler_session.cc:164] Profiler session tear down.
+2022-07-10 04:55:06.249337: E tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1757] function cupti_interface_->Finalize()failed with error CUPTI could not be loaded or symbol could not be found.
+/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/optimizer_v2/optimizer_v2.py:355: UserWarning: The `lr` argument is deprecated, use `learning_rate` instead.
+  warnings.warn(
+Input file is " 
+Output file is " model3.train
+Image path is " 
+--------------------
+
+
+0
+1
+2
+0
+1
+2
+3
+0
+1
+2
+3
+4
+5
+0
+1
+2
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 1024, 1024,  0                                            
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 1018, 1018, 6 9472        input_1[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 1018, 1018, 6 256         conv2d[0][0]                     
+__________________________________________________________________________________________________
+activation (Activation)         (None, 1018, 1018, 6 0           batch_normalization[0][0]        
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 1018, 1018, 6 0           activation[0][0]                 
+__________________________________________________________________________________________________
+max_pooling2d (MaxPooling2D)    (None, 509, 509, 64) 0           dropout[0][0]                    
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 509, 509, 64) 36928       max_pooling2d[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 509, 509, 64) 256         conv2d_1[0][0]                   
+__________________________________________________________________________________________________
+activation_1 (Activation)       (None, 509, 509, 64) 0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, 509, 509, 64) 36928       activation_1[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 509, 509, 64) 256         conv2d_2[0][0]                   
+__________________________________________________________________________________________________
+add (Add)                       (None, 509, 509, 64) 0           batch_normalization_2[0][0]      
+                                                                 max_pooling2d[0][0]              
+__________________________________________________________________________________________________
+activation_2 (Activation)       (None, 509, 509, 64) 0           add[0][0]                        
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, 509, 509, 64) 36928       activation_2[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 509, 509, 64) 256         conv2d_3[0][0]                   
+__________________________________________________________________________________________________
+activation_3 (Activation)       (None, 509, 509, 64) 0           batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+conv2d_4 (Conv2D)               (None, 509, 509, 64) 36928       activation_3[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 509, 509, 64) 256         conv2d_4[0][0]                   
+__________________________________________________________________________________________________
+add_1 (Add)                     (None, 509, 509, 64) 0           batch_normalization_4[0][0]      
+                                                                 activation_2[0][0]               
+__________________________________________________________________________________________________
+activation_4 (Activation)       (None, 509, 509, 64) 0           add_1[0][0]                      
+__________________________________________________________________________________________________
+conv2d_5 (Conv2D)               (None, 509, 509, 64) 36928       activation_4[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 509, 509, 64) 256         conv2d_5[0][0]                   
+__________________________________________________________________________________________________
+activation_5 (Activation)       (None, 509, 509, 64) 0           batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+conv2d_6 (Conv2D)               (None, 509, 509, 64) 36928       activation_5[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 509, 509, 64) 256         conv2d_6[0][0]                   
+__________________________________________________________________________________________________
+add_2 (Add)                     (None, 509, 509, 64) 0           batch_normalization_6[0][0]      
+                                                                 activation_4[0][0]               
+__________________________________________________________________________________________________
+activation_6 (Activation)       (None, 509, 509, 64) 0           add_2[0][0]                      
+__________________________________________________________________________________________________
+conv2d_8 (Conv2D)               (None, 255, 255, 128 73856       activation_6[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 255, 255, 128 512         conv2d_8[0][0]                   
+__________________________________________________________________________________________________
+activation_7 (Activation)       (None, 255, 255, 128 0           batch_normalization_7[0][0]      
+__________________________________________________________________________________________________
+conv2d_9 (Conv2D)               (None, 255, 255, 128 147584      activation_7[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_8 (BatchNor (None, 255, 255, 128 512         conv2d_9[0][0]                   
+__________________________________________________________________________________________________
+conv2d_7 (Conv2D)               (None, 255, 255, 128 8320        activation_6[0][0]               
+__________________________________________________________________________________________________
+add_3 (Add)                     (None, 255, 255, 128 0           batch_normalization_8[0][0]      
+                                                                 conv2d_7[0][0]                   
+__________________________________________________________________________________________________
+activation_8 (Activation)       (None, 255, 255, 128 0           add_3[0][0]                      
+__________________________________________________________________________________________________
+conv2d_10 (Conv2D)              (None, 255, 255, 128 147584      activation_8[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_9 (BatchNor (None, 255, 255, 128 512         conv2d_10[0][0]                  
+__________________________________________________________________________________________________
+activation_9 (Activation)       (None, 255, 255, 128 0           batch_normalization_9[0][0]      
+__________________________________________________________________________________________________
+conv2d_11 (Conv2D)              (None, 255, 255, 128 147584      activation_9[0][0]               
+__________________________________________________________________________________________________
+batch_normalization_10 (BatchNo (None, 255, 255, 128 512         conv2d_11[0][0]                  
+__________________________________________________________________________________________________
+add_4 (Add)                     (None, 255, 255, 128 0           batch_normalization_10[0][0]     
+                                                                 activation_8[0][0]               
+__________________________________________________________________________________________________
+activation_10 (Activation)      (None, 255, 255, 128 0           add_4[0][0]                      
+__________________________________________________________________________________________________
+conv2d_12 (Conv2D)              (None, 255, 255, 128 147584      activation_10[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_11 (BatchNo (None, 255, 255, 128 512         conv2d_12[0][0]                  
+__________________________________________________________________________________________________
+activation_11 (Activation)      (None, 255, 255, 128 0           batch_normalization_11[0][0]     
+__________________________________________________________________________________________________
+conv2d_13 (Conv2D)              (None, 255, 255, 128 147584      activation_11[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_12 (BatchNo (None, 255, 255, 128 512         conv2d_13[0][0]                  
+__________________________________________________________________________________________________
+add_5 (Add)                     (None, 255, 255, 128 0           batch_normalization_12[0][0]     
+                                                                 activation_10[0][0]              
+__________________________________________________________________________________________________
+activation_12 (Activation)      (None, 255, 255, 128 0           add_5[0][0]                      
+__________________________________________________________________________________________________
+conv2d_14 (Conv2D)              (None, 255, 255, 128 147584      activation_12[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_13 (BatchNo (None, 255, 255, 128 512         conv2d_14[0][0]                  
+__________________________________________________________________________________________________
+activation_13 (Activation)      (None, 255, 255, 128 0           batch_normalization_13[0][0]     
+__________________________________________________________________________________________________
+conv2d_15 (Conv2D)              (None, 255, 255, 128 147584      activation_13[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_14 (BatchNo (None, 255, 255, 128 512         conv2d_15[0][0]                  
+__________________________________________________________________________________________________
+add_6 (Add)                     (None, 255, 255, 128 0           batch_normalization_14[0][0]     
+                                                                 activation_12[0][0]              
+__________________________________________________________________________________________________
+activation_14 (Activation)      (None, 255, 255, 128 0           add_6[0][0]                      
+__________________________________________________________________________________________________
+conv2d_17 (Conv2D)              (None, 128, 128, 256 295168      activation_14[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_15 (BatchNo (None, 128, 128, 256 1024        conv2d_17[0][0]                  
+__________________________________________________________________________________________________
+activation_15 (Activation)      (None, 128, 128, 256 0           batch_normalization_15[0][0]     
+__________________________________________________________________________________________________
+conv2d_18 (Conv2D)              (None, 128, 128, 256 590080      activation_15[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_16 (BatchNo (None, 128, 128, 256 1024        conv2d_18[0][0]                  
+__________________________________________________________________________________________________
+conv2d_16 (Conv2D)              (None, 128, 128, 256 33024       activation_14[0][0]              
+__________________________________________________________________________________________________
+add_7 (Add)                     (None, 128, 128, 256 0           batch_normalization_16[0][0]     
+                                                                 conv2d_16[0][0]                  
+__________________________________________________________________________________________________
+activation_16 (Activation)      (None, 128, 128, 256 0           add_7[0][0]                      
+__________________________________________________________________________________________________
+conv2d_19 (Conv2D)              (None, 128, 128, 256 590080      activation_16[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_17 (BatchNo (None, 128, 128, 256 1024        conv2d_19[0][0]                  
+__________________________________________________________________________________________________
+activation_17 (Activation)      (None, 128, 128, 256 0           batch_normalization_17[0][0]     
+__________________________________________________________________________________________________
+conv2d_20 (Conv2D)              (None, 128, 128, 256 590080      activation_17[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_18 (BatchNo (None, 128, 128, 256 1024        conv2d_20[0][0]                  
+__________________________________________________________________________________________________
+add_8 (Add)                     (None, 128, 128, 256 0           batch_normalization_18[0][0]     
+                                                                 activation_16[0][0]              
+__________________________________________________________________________________________________
+activation_18 (Activation)      (None, 128, 128, 256 0           add_8[0][0]                      
+__________________________________________________________________________________________________
+conv2d_21 (Conv2D)              (None, 128, 128, 256 590080      activation_18[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_19 (BatchNo (None, 128, 128, 256 1024        conv2d_21[0][0]                  
+__________________________________________________________________________________________________
+activation_19 (Activation)      (None, 128, 128, 256 0           batch_normalization_19[0][0]     
+__________________________________________________________________________________________________
+conv2d_22 (Conv2D)              (None, 128, 128, 256 590080      activation_19[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_20 (BatchNo (None, 128, 128, 256 1024        conv2d_22[0][0]                  
+__________________________________________________________________________________________________
+add_9 (Add)                     (None, 128, 128, 256 0           batch_normalization_20[0][0]     
+                                                                 activation_18[0][0]              
+__________________________________________________________________________________________________
+activation_20 (Activation)      (None, 128, 128, 256 0           add_9[0][0]                      
+__________________________________________________________________________________________________
+conv2d_23 (Conv2D)              (None, 128, 128, 256 590080      activation_20[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_21 (BatchNo (None, 128, 128, 256 1024        conv2d_23[0][0]                  
+__________________________________________________________________________________________________
+activation_21 (Activation)      (None, 128, 128, 256 0           batch_normalization_21[0][0]     
+__________________________________________________________________________________________________
+conv2d_24 (Conv2D)              (None, 128, 128, 256 590080      activation_21[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_22 (BatchNo (None, 128, 128, 256 1024        conv2d_24[0][0]                  
+__________________________________________________________________________________________________
+add_10 (Add)                    (None, 128, 128, 256 0           batch_normalization_22[0][0]     
+                                                                 activation_20[0][0]              
+__________________________________________________________________________________________________
+activation_22 (Activation)      (None, 128, 128, 256 0           add_10[0][0]                     
+__________________________________________________________________________________________________
+conv2d_25 (Conv2D)              (None, 128, 128, 256 590080      activation_22[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_23 (BatchNo (None, 128, 128, 256 1024        conv2d_25[0][0]                  
+__________________________________________________________________________________________________
+activation_23 (Activation)      (None, 128, 128, 256 0           batch_normalization_23[0][0]     
+__________________________________________________________________________________________________
+conv2d_26 (Conv2D)              (None, 128, 128, 256 590080      activation_23[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_24 (BatchNo (None, 128, 128, 256 1024        conv2d_26[0][0]                  
+__________________________________________________________________________________________________
+add_11 (Add)                    (None, 128, 128, 256 0           batch_normalization_24[0][0]     
+                                                                 activation_22[0][0]              
+__________________________________________________________________________________________________
+activation_24 (Activation)      (None, 128, 128, 256 0           add_11[0][0]                     
+__________________________________________________________________________________________________
+conv2d_27 (Conv2D)              (None, 128, 128, 256 590080      activation_24[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_25 (BatchNo (None, 128, 128, 256 1024        conv2d_27[0][0]                  
+__________________________________________________________________________________________________
+activation_25 (Activation)      (None, 128, 128, 256 0           batch_normalization_25[0][0]     
+__________________________________________________________________________________________________
+conv2d_28 (Conv2D)              (None, 128, 128, 256 590080      activation_25[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_26 (BatchNo (None, 128, 128, 256 1024        conv2d_28[0][0]                  
+__________________________________________________________________________________________________
+add_12 (Add)                    (None, 128, 128, 256 0           batch_normalization_26[0][0]     
+                                                                 activation_24[0][0]              
+__________________________________________________________________________________________________
+activation_26 (Activation)      (None, 128, 128, 256 0           add_12[0][0]                     
+__________________________________________________________________________________________________
+conv2d_30 (Conv2D)              (None, 64, 64, 512)  1180160     activation_26[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_27 (BatchNo (None, 64, 64, 512)  2048        conv2d_30[0][0]                  
+__________________________________________________________________________________________________
+activation_27 (Activation)      (None, 64, 64, 512)  0           batch_normalization_27[0][0]     
+__________________________________________________________________________________________________
+conv2d_31 (Conv2D)              (None, 64, 64, 512)  2359808     activation_27[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_28 (BatchNo (None, 64, 64, 512)  2048        conv2d_31[0][0]                  
+__________________________________________________________________________________________________
+conv2d_29 (Conv2D)              (None, 64, 64, 512)  131584      activation_26[0][0]              
+__________________________________________________________________________________________________
+add_13 (Add)                    (None, 64, 64, 512)  0           batch_normalization_28[0][0]     
+                                                                 conv2d_29[0][0]                  
+__________________________________________________________________________________________________
+activation_28 (Activation)      (None, 64, 64, 512)  0           add_13[0][0]                     
+__________________________________________________________________________________________________
+conv2d_32 (Conv2D)              (None, 64, 64, 512)  2359808     activation_28[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_29 (BatchNo (None, 64, 64, 512)  2048        conv2d_32[0][0]                  
+__________________________________________________________________________________________________
+activation_29 (Activation)      (None, 64, 64, 512)  0           batch_normalization_29[0][0]     
+__________________________________________________________________________________________________
+conv2d_33 (Conv2D)              (None, 64, 64, 512)  2359808     activation_29[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_30 (BatchNo (None, 64, 64, 512)  2048        conv2d_33[0][0]                  
+__________________________________________________________________________________________________
+add_14 (Add)                    (None, 64, 64, 512)  0           batch_normalization_30[0][0]     
+                                                                 activation_28[0][0]              
+__________________________________________________________________________________________________
+activation_30 (Activation)      (None, 64, 64, 512)  0           add_14[0][0]                     
+__________________________________________________________________________________________________
+conv2d_34 (Conv2D)              (None, 64, 64, 512)  2359808     activation_30[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_31 (BatchNo (None, 64, 64, 512)  2048        conv2d_34[0][0]                  
+__________________________________________________________________________________________________
+activation_31 (Activation)      (None, 64, 64, 512)  0           batch_normalization_31[0][0]     
+__________________________________________________________________________________________________
+conv2d_35 (Conv2D)              (None, 64, 64, 512)  2359808     activation_31[0][0]              
+__________________________________________________________________________________________________
+batch_normalization_32 (BatchNo (None, 64, 64, 512)  2048        conv2d_35[0][0]                  
+__________________________________________________________________________________________________
+add_15 (Add)                    (None, 64, 64, 512)  0           batch_normalization_32[0][0]     
+                                                                 activation_30[0][0]              
+__________________________________________________________________________________________________
+activation_32 (Activation)      (None, 64, 64, 512)  0           add_15[0][0]                     
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 2097152)      0           activation_32[0][0]              
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 1)            2097153     flatten[0][0]                    
+==================================================================================================
+Total params: 23,403,777
+Trainable params: 23,388,545
+Non-trainable params: 15,232
+__________________________________________________________________________________________________
+None
+Adding Images: Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/﻿Filename'
+['\ufeffFilename', 'Source', 'Link (if available)', "Arash's Scores", "Maria's Scores", 'Color Saturation', 'Framing', 'Lighting', 'Clarity', 'Symmetry', 'Objective Score', 'ObjectiveClass', 'Random', 'Set']
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows466.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows467.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows396.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows435.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows481.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows422.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows484.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows105.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows493.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows276.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows363.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows461.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows228.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows127.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows142.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows338.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows496.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows434.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows248.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows297.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows415.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows226.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows450.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows252.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows79.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows404.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows424.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows21.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows94.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows325.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows192.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows285.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows39.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows31.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows328.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows275.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows323.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows273.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows92.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows284.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows296.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows286.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows113.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows302.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows89.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows354.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows169.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows389.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows51.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows28.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows230.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows482.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows487.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows137.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows172.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows271.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows436.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows87.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows46.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows211.jpg
+5 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows123.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows164.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows291.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows175.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows185.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows442.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows427.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows332.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows468.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows242.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows207.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows475.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows238.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows378.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows392.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows293.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows86.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows313.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows138.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows360.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows83.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows452.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows462.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows479.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows15.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows395.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows8.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows469.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows143.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows114.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows82.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows292.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows458.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows441.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows191.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows256.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows465.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows443.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows312.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows71.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows33.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows499.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows168.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows130.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows205.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows135.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows345.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows272.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows190.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows355.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows430.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows124.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows40.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows407.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows12.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows463.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows456.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows67.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows7.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows150.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows227.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows203.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows65.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows431.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows364.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows425.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows263.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows166.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows333.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows159.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows59.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows170.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows171.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows249.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows186.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows6.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows160.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows229.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows77.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows321.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows266.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows451.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows366.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows318.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows112.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows34.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows18.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows75.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows337.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows3.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows406.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows250.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows330.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows384.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows306.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows199.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows111.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows278.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows267.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows41.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows107.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows109.jpg
+5 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows74.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows84.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows317.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows146.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows455.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows492.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows288.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows17.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows413.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows38.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows43.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows486.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows488.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows473.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows131.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows239.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows474.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows258.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows361.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows36.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows165.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows322.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows10.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows280.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows2.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows119.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows95.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows214.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows385.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows147.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows268.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows410.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows163.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows134.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows405.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows287.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows133.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows100.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows270.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows448.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows327.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows243.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows180.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows240.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows181.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows78.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows402.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows445.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows423.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows189.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows16.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows429.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows464.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows49.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows29.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows193.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows255.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows37.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows310.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows103.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows35.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows231.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows344.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows264.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows432.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows108.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows204.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows298.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows495.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows394.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows329.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows480.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows421.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows347.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows247.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows374.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows22.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows419.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows440.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows308.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows61.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows153.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows341.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows352.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows449.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows283.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows225.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows120.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows237.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows117.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows391.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows122.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows483.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows245.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows316.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows216.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows380.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows386.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows157.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows428.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows19.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows320.jpg
+Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadws118.jpg'
+['meadws118.jpg', 'unsplash', 'https://unsplash.com/photos/1kGvoC9g2DY', '0.333333333', '4', '1', '0', '1', '1', '0', '3', '1', '265', 'Train']
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows11.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows307.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows241.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows222.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows381.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows4.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows367.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows281.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows126.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows315.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows152.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows91.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows477.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows377.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows47.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows27.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows439.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows235.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows246.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows282.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows251.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows390.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows290.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows176.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows173.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows438.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows412.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows45.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows90.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows69.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows411.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows490.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows233.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows331.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows213.jpg
+Adding Images: Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/﻿Filename'
+['\ufeffFilename', 'Source', 'Link (if available)', "Arash's Scores", "Maria's Scores", 'Color Saturation', 'Framing', 'Lighting', 'Clarity', 'Symmetry', 'Objective Score', 'ObjectiveClass', 'Random', 'Set']
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows64.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows485.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows261.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows254.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows305.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows140.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows53.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows372.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows25.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows314.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows121.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows409.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows161.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows304.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows277.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows183.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows489.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows24.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows253.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows101.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows257.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows326.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows1.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows85.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows472.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows408.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows403.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows110.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows179.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows201.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows348.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows437.jpg
+0 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows342.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows20.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows9.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows219.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows128.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows397.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows224.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows144.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows444.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows58.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows136.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows375.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows368.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows156.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows218.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows335.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows188.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows324.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows349.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows303.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows52.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows420.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows353.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows210.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows182.jpg
+5 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows26.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows476.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows167.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows13.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows129.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows208.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows97.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows48.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows73.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows212.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows309.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows102.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows98.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows62.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows162.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows340.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows141.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows365.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows299.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows236.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows57.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows379.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows393.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows32.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows446.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows139.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows447.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows426.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows500.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows206.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows371.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows494.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows125.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows50.jpg
+1 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows358.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows351.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows72.jpg
+/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/utils/generic_utils.py:494: CustomMaskWarning: Custom mask layers require a config and must override get_config. When loading, the custom mask layer must be passed to the custom_objects argument.
+  warnings.warn('Custom mask layers require a config and must override '
+2022-07-10 04:56:08.276222: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:185] None of the MLIR Optimization Passes are enabled (registered 2)
+2022-07-10 04:56:11.297910: I tensorflow/stream_executor/cuda/cuda_dnn.cc:369] Loaded cuDNN version 8201
+2022-07-10 04:56:12.936824: W tensorflow/stream_executor/gpu/asm_compiler.cc:77] Couldn't get ptxas version string: Internal: Running ptxas --version returned 32512
+2022-07-10 04:56:13.007281: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] Internal: ptxas exited with non-zero error code 32512, output: 
+Relying on driver to perform ptx compilation. 
+Modify $PATH to customize ptxas location.
+This message will be only logged once.
+2022-07-10 04:56:18.573953: I tensorflow/stream_executor/cuda/cuda_blas.cc:1760] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows106.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows145.jpg
+3 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows60.jpg
+4 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows221.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows116.jpg
+2 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows76.jpg
+Epoch 1/100
+2022-07-10 04:56:25.511825: I tensorflow/core/profiler/lib/profiler_session.cc:131] Profiler session initializing.
+2022-07-10 04:56:25.512058: I tensorflow/core/profiler/lib/profiler_session.cc:146] Profiler session started.
+2022-07-10 04:56:25.512150: E tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1666] function cupti_interface_->Subscribe( &subscriber_, (CUpti_CallbackFunc)ApiCallback, this)failed with error CUPTI could not be loaded or symbol could not be found.
+2022-07-10 04:56:26.118955: I tensorflow/core/profiler/lib/profiler_session.cc:66] Profiler session collecting data.
+2022-07-10 04:56:26.119195: E tensorflow/core/profiler/internal/gpu/cupti_tracer.cc:1757] function cupti_interface_->Finalize()failed with error CUPTI could not be loaded or symbol could not be found.
+2022-07-10 04:56:26.156811: I tensorflow/core/profiler/internal/gpu/cupti_collector.cc:673]  GpuTracer has collected 0 callback api events and 0 activity events. 
+2022-07-10 04:56:26.159776: I tensorflow/core/profiler/lib/profiler_session.cc:164] Profiler session tear down.
+2022-07-10 04:56:26.234889: I tensorflow/core/profiler/rpc/client/save_profile.cc:136] Creating directory: model3.train.logs/fit/20220710-045506/train/plugins/profile/2022_07_10_04_56_26
+
+2022-07-10 04:56:26.237975: I tensorflow/core/profiler/rpc/client/save_profile.cc:142] Dumped gzipped tool data for trace.json.gz to model3.train.logs/fit/20220710-045506/train/plugins/profile/2022_07_10_04_56_26/nodegpu002.hpc.fau.edu.trace.json.gz
+2022-07-10 04:56:26.358191: I tensorflow/core/profiler/rpc/client/save_profile.cc:136] Creating directory: model3.train.logs/fit/20220710-045506/train/plugins/profile/2022_07_10_04_56_26
+
+2022-07-10 04:56:26.365952: I tensorflow/core/profiler/rpc/client/save_profile.cc:142] Dumped gzipped tool data for memory_profile.json.gz to model3.train.logs/fit/20220710-045506/train/plugins/profile/2022_07_10_04_56_26/nodegpu002.hpc.fau.edu.memory_profile.json.gz
+2022-07-10 04:56:26.374504: I tensorflow/core/profiler/rpc/client/capture_profile.cc:251] Creating directory: model3.train.logs/fit/20220710-045506/train/plugins/profile/2022_07_10_04_56_26
+Dumped tool data for xplane.pb to model3.train.logs/fit/20220710-045506/train/plugins/profile/2022_07_10_04_56_26/nodegpu002.hpc.fau.edu.xplane.pb
+Dumped tool data for overview_page.pb to model3.train.logs/fit/20220710-045506/train/plugins/profile/2022_07_10_04_56_26/nodegpu002.hpc.fau.edu.overview_page.pb
+Dumped tool data for input_pipeline.pb to model3.train.logs/fit/20220710-045506/train/plugins/profile/2022_07_10_04_56_26/nodegpu002.hpc.fau.edu.input_pipeline.pb
+Dumped tool data for tensorflow_stats.pb to model3.train.logs/fit/20220710-045506/train/plugins/profile/2022_07_10_04_56_26/nodegpu002.hpc.fau.edu.tensorflow_stats.pb
+Dumped tool data for kernel_stats.pb to model3.train.logs/fit/20220710-045506/train/plugins/profile/2022_07_10_04_56_26/nodegpu002.hpc.fau.edu.kernel_stats.pb
+
+ 1/30 [>.............................] - ETA: 8:16 - loss: 8.0329 - accuracy: 0.0000e+00 2/30 [=>............................] - ETA: 19s - loss: 89278216.0000 - accuracy: 0.1000 3/30 [==>...........................] - ETA: 20s - loss: 5797594949541406254827566122974314496.0000 - accuracy: 0.0667 4/30 [===>..........................] - ETA: 18s - loss: nan - accuracy: 0.0500                                        5/30 [====>.........................] - ETA: 16s - loss: nan - accuracy: 0.0400 6/30 [=====>........................] - ETA: 15s - loss: nan - accuracy: 0.0333 7/30 [======>.......................] - ETA: 14s - loss: nan - accuracy: 0.0286 8/30 [=======>......................] - ETA: 13s - loss: nan - accuracy: 0.0250 9/30 [========>.....................] - ETA: 13s - loss: nan - accuracy: 0.022210/30 [=========>....................] - ETA: 12s - loss: nan - accuracy: 0.030011/30 [==========>...................] - ETA: 11s - loss: nan - accuracy: 0.027312/30 [===========>..................] - ETA: 10s - loss: nan - accuracy: 0.025013/30 [============>.................] - ETA: 10s - loss: nan - accuracy: 0.023114/30 [=============>................] - ETA: 9s - loss: nan - accuracy: 0.0286 15/30 [==============>...............] - ETA: 8s - loss: nan - accuracy: 0.026716/30 [===============>..............] - ETA: 8s - loss: nan - accuracy: 0.025017/30 [================>.............] - ETA: 7s - loss: nan - accuracy: 0.023518/30 [=================>............] - ETA: 7s - loss: nan - accuracy: 0.022219/30 [==================>...........] - ETA: 6s - loss: nan - accuracy: 0.021120/30 [===================>..........] - ETA: 5s - loss: nan - accuracy: 0.020021/30 [====================>.........] - ETA: 5s - loss: nan - accuracy: 0.023822/30 [=====================>........] - ETA: 4s - loss: nan - accuracy: 0.022723/30 [======================>.......] - ETA: 4s - loss: nan - accuracy: 0.021724/30 [=======================>......] - ETA: 3s - loss: nan - accuracy: 0.020825/30 [========================>.....] - ETA: 2s - loss: nan - accuracy: 0.020026/30 [=========================>....] - ETA: 2s - loss: nan - accuracy: 0.019227/30 [==========================>...] - ETA: 1s - loss: nan - accuracy: 0.018528/30 [===========================>..] - ETA: 1s - loss: nan - accuracy: 0.017929/30 [============================>.] - ETA: 0s - loss: nan - accuracy: 0.017230/30 [==============================] - ETA: 0s - loss: nan - accuracy: 0.016730/30 [==============================] - 41s 837ms/step - loss: nan - accuracy: 0.0167 - val_loss: nan - val_accuracy: 0.0200
+Epoch 2/100
+ 1/30 [>.............................] - ETA: 16s - loss: nan - accuracy: 0.0000e+00 2/30 [=>............................] - ETA: 16s - loss: nan - accuracy: 0.0000e+00 3/30 [==>...........................] - ETA: 15s - loss: nan - accuracy: 0.0000e+00 4/30 [===>..........................] - ETA: 14s - loss: nan - accuracy: 0.0000e+00 5/30 [====>.........................] - ETA: 14s - loss: nan - accuracy: 0.0000e+00 6/30 [=====>........................] - ETA: 13s - loss: nan - accuracy: 0.0000e+00 7/30 [======>.......................] - ETA: 13s - loss: nan - accuracy: 0.0000e+00 8/30 [=======>......................] - ETA: 12s - loss: nan - accuracy: 0.0000e+00 9/30 [========>.....................] - ETA: 11s - loss: nan - accuracy: 0.0000e+0010/30 [=========>....................] - ETA: 11s - loss: nan - accuracy: 0.0000e+0011/30 [==========>...................] - ETA: 10s - loss: nan - accuracy: 0.0091    12/30 [===========>..................] - ETA: 10s - loss: nan - accuracy: 0.008313/30 [============>.................] - ETA: 9s - loss: nan - accuracy: 0.0077 14/30 [=============>................] - ETA: 9s - loss: nan - accuracy: 0.014315/30 [==============>...............] - ETA: 8s - loss: nan - accuracy: 0.013316/30 [===============>..............] - ETA: 7s - loss: nan - accuracy: 0.012517/30 [================>.............] - ETA: 7s - loss: nan - accuracy: 0.011818/30 [=================>............] - ETA: 6s - loss: nan - accuracy: 0.011119/30 [==================>...........] - ETA: 6s - loss: nan - accuracy: 0.010520/30 [===================>..........] - ETA: 5s - loss: nan - accuracy: 0.010021/30 [====================>.........] - ETA: 5s - loss: nan - accuracy: 0.009522/30 [=====================>........] - ETA: 4s - loss: nan - accuracy: 0.009123/30 [======================>.......] - ETA: 4s - loss: nan - accuracy: 0.008724/30 [=======================>......] - ETA: 3s - loss: nan - accuracy: 0.008325/30 [========================>.....] - ETA: 2s - loss: nan - accuracy: 0.008026/30 [=========================>....] - ETA: 2s - loss: nan - accuracy: 0.007727/30 [==========================>...] - ETA: 1s - loss: nan - accuracy: 0.007428/30 [===========================>..] - ETA: 1s - loss: nan - accuracy: 0.007129/30 [============================>.] - ETA: 0s - loss: nan - accuracy: 0.006930/30 [==============================] - ETA: 0s - loss: nan - accuracy: 0.010030/30 [==============================] - 20s 658ms/step - loss: nan - accuracy: 0.0100 - val_loss: nan - val_accuracy: 0.0200
+Epoch 3/100
+ 1/30 [>.............................] - ETA: 16s - loss: nan - accuracy: 0.0000e+00 2/30 [=>............................] - ETA: 15s - loss: nan - accuracy: 0.0500     3/30 [==>...........................] - ETA: 15s - loss: nan - accuracy: 0.0333 4/30 [===>..........................] - ETA: 14s - loss: nan - accuracy: 0.0250 5/30 [====>.........................] - ETA: 14s - loss: nan - accuracy: 0.0400 6/30 [=====>........................] - ETA: 13s - loss: nan - accuracy: 0.0333 7/30 [======>.......................] - ETA: 13s - loss: nan - accuracy: 0.0286 8/30 [=======>......................] - ETA: 12s - loss: nan - accuracy: 0.0250 9/30 [========>.....................] - ETA: 12s - loss: nan - accuracy: 0.022210/30 [=========>....................] - ETA: 11s - loss: nan - accuracy: 0.020011/30 [==========>...................] - ETA: 10s - loss: nan - accuracy: 0.018212/30 [===========>..................] - ETA: 10s - loss: nan - accuracy: 0.016713/30 [============>.................] - ETA: 9s - loss: nan - accuracy: 0.0154 14/30 [=============>................] - ETA: 9s - loss: nan - accuracy: 0.014315/30 [==============>...............] - ETA: 8s - loss: nan - accuracy: 0.013316/30 [===============>..............] - ETA: 8s - loss: nan - accuracy: 0.012517/30 [================>.............] - ETA: 7s - loss: nan - accuracy: 0.011818/30 [=================>............] - ETA: 6s - loss: nan - accuracy: 0.011119/30 [==================>...........] - ETA: 6s - loss: nan - accuracy: 0.010520/30 [===================>..........] - ETA: 5s - loss: nan - accuracy: 0.010021/30 [====================>.........] - ETA: 5s - loss: nan - accuracy: 0.009522/30 [=====================>........] - ETA: 4s - loss: nan - accuracy: 0.009123/30 [======================>.......] - ETA: 4s - loss: nan - accuracy: 0.008724/30 [=======================>......] - ETA: 3s - loss: nan - accuracy: 0.008325/30 [========================>.....] - ETA: 2s - loss: nan - accuracy: 0.012026/30 [=========================>....] - ETA: 2s - loss: nan - accuracy: 0.011527/30 [==========================>...] - ETA: 1s - loss: nan - accuracy: 0.011128/30 [===========================>..] - ETA: 1s - loss: nan - accuracy: 0.010729/30 [============================>.] - ETA: 0s - loss: nan - accuracy: 0.010330/30 [==============================] - ETA: 0s - loss: nan - accuracy: 0.010030/30 [==============================] - 20s 660ms/step - loss: nan - accuracy: 0.0100 - val_loss: nan - val_accuracy: 0.0200
+Epoch 4/100
+ 1/30 [>.............................] - ETA: 16s - loss: nan - accuracy: 0.0000e+00 2/30 [=>............................] - ETA: 15s - loss: nan - accuracy: 0.0000e+00 3/30 [==>...........................] - ETA: 15s - loss: nan - accuracy: 0.0000e+00 4/30 [===>..........................] - ETA: 14s - loss: nan - accuracy: 0.0000e+00 5/30 [====>.........................] - ETA: 14s - loss: nan - accuracy: 0.0000e+00 6/30 [=====>........................] - ETA: 13s - loss: nan - accuracy: 0.0000e+00 7/30 [======>.......................] - ETA: 13s - loss: nan - accuracy: 0.0000e+00 8/30 [=======>......................] - ETA: 12s - loss: nan - accuracy: 0.0000e+00 9/30 [========>.....................] - ETA: 12s - loss: nan - accuracy: 0.0000e+0010/30 [=========>....................] - ETA: 11s - loss: nan - accuracy: 0.0000e+0011/30 [==========>...................] - ETA: 10s - loss: nan - accuracy: 0.0000e+0012/30 [===========>..................] - ETA: 10s - loss: nan - accuracy: 0.0000e+0013/30 [============>.................] - ETA: 9s - loss: nan - accuracy: 0.0000e+00 14/30 [=============>................] - ETA: 9s - loss: nan - accuracy: 0.0000e+0015/30 [==============>...............] - ETA: 8s - loss: nan - accuracy: 0.0000e+0016/30 [===============>..............] - ETA: 8s - loss: nan - accuracy: 0.0000e+0017/30 [================>.............] - ETA: 7s - loss: nan - accuracy: 0.0059    18/30 [=================>............] - ETA: 6s - loss: nan - accuracy: 0.005619/30 [==================>...........] - ETA: 6s - loss: nan - accuracy: 0.005320/30 [===================>..........] - ETA: 5s - loss: nan - accuracy: 0.005021/30 [====================>.........] - ETA: 5s - loss: nan - accuracy: 0.004822/30 [=====================>........] - ETA: 4s - loss: nan - accuracy: 0.004523/30 [======================>.......] - ETA: 4s - loss: nan - accuracy: 0.004324/30 [=======================>......] - ETA: 3s - loss: nan - accuracy: 0.004225/30 [========================>.....] - ETA: 2s - loss: nan - accuracy: 0.008026/30 [=========================>....] - ETA: 2s - loss: nan - accuracy: 0.007727/30 [==========================>...] - ETA: 1s - loss: nan - accuracy: 0.007428/30 [===========================>..] - ETA: 1s - loss: nan - accuracy: 0.007129/30 [============================>.] - ETA: 0s - loss: nan - accuracy: 0.010330/30 [==============================] - ETA: 0s - loss: nan - accuracy: 0.010030/30 [==============================] - 20s 661ms/step - loss: nan - accuracy: 0.0100 - val_loss: nan - val_accuracy: 0.0200
+Epoch 5/100
+ 1/30 [>.............................] - ETA: 16s - loss: nan - accuracy: 0.0000e+00 2/30 [=>............................] - ETA: 16s - loss: nan - accuracy: 0.0000e+00 3/30 [==>...........................] - ETA: 15s - loss: nan - accuracy: 0.0000e+00 4/30 [===>..........................] - ETA: 14s - loss: nan - accuracy: 0.0000e+00 5/30 [====>.........................] - ETA: 14s - loss: nan - accuracy: 0.0000e+00 6/30 [=====>........................] - ETA: 13s - loss: nan - accuracy: 0.0000e+00 7/30 [======>.......................] - ETA: 13s - loss: nan - accuracy: 0.0000e+00 8/30 [=======>......................] - ETA: 12s - loss: nan - accuracy: 0.0000e+00 9/30 [========>.....................] - ETA: 12s - loss: nan - accuracy: 0.0000e+0010/30 [=========>....................] - ETA: 11s - loss: nan - accuracy: 0.0000e+0011/30 [==========>...................] - ETA: 10s - loss: nan - accuracy: 0.0000e+0012/30 [===========>..................] - ETA: 10s - loss: nan - accuracy: 0.0000e+0013/30 [============>.................] - ETA: 9s - loss: nan - accuracy: 0.0000e+00 14/30 [=============>................] - ETA: 9s - loss: nan - accuracy: 0.0000e+0015/30 [==============>...............] - ETA: 8s - loss: nan - accuracy: 0.0000e+0016/30 [===============>..............] - ETA: 8s - loss: nan - accuracy: 0.0000e+0017/30 [================>.............] - ETA: 7s - loss: nan - accuracy: 0.0000e+0018/30 [=================>............] - ETA: 6s - loss: nan - accuracy: 0.0000e+0019/30 [==================>...........] - ETA: 6s - loss: nan - accuracy: 0.0000e+0020/30 [===================>..........] - ETA: 5s - loss: nan - accuracy: 0.0000e+0021/30 [====================>.........] - ETA: 5s - loss: nan - accuracy: 0.0048    22/30 [=====================>........] - ETA: 4s - loss: nan - accuracy: 0.004523/30 [======================>.......] - ETA: 4s - loss: nan - accuracy: 0.004324/30 [=======================>......] - ETA: 3s - loss: nan - accuracy: 0.008325/30 [========================>.....] - ETA: 2s - loss: nan - accuracy: 0.012026/30 [=========================>....] - ETA: 2s - loss: nan - accuracy: 0.011527/30 [==========================>...] - ETA: 1s - loss: nan - accuracy: 0.011128/30 [===========================>..] - ETA: 1s - loss: nan - accuracy: 0.010729/30 [============================>.] - ETA: 0s - loss: nan - accuracy: 0.010330/30 [==============================] - ETA: 0s - loss: nan - accuracy: 0.010030/30 [==============================] - 20s 661ms/step - loss: nan - accuracy: 0.0100 - val_loss: nan - val_accuracy: 0.0200
+Epoch 6/100
+ 1/30 [>.............................] - ETA: 16s - loss: nan - accuracy: 0.0000e+00 2/30 [=>............................] - ETA: 16s - loss: nan - accuracy: 0.0000e+00 3/30 [==>...........................] - ETA: 15s - loss: nan - accuracy: 0.0333     4/30 [===>..........................] - ETA: 14s - loss: nan - accuracy: 0.0250 5/30 [====>.........................] - ETA: 14s - loss: nan - accuracy: 0.0200 6/30 [=====>........................] - ETA: 13s - loss: nan - accuracy: 0.0167 7/30 [======>.......................] - ETA: 13s - loss: nan - accuracy: 0.0143 8/30 [=======>......................] - ETA: 12s - loss: nan - accuracy: 0.0125 9/30 [========>.....................] - ETA: 12s - loss: nan - accuracy: 0.011110/30 [=========>....................] - ETA: 11s - loss: nan - accuracy: 0.010011/30 [==========>...................] - ETA: 10s - loss: nan - accuracy: 0.009112/30 [===========>..................] - ETA: 10s - loss: nan - accuracy: 0.008313/30 [============>.................] - ETA: 9s - loss: nan - accuracy: 0.0154 14/30 [=============>................] - ETA: 9s - loss: nan - accuracy: 0.014315/30 [==============>...............] - ETA: 8s - loss: nan - accuracy: 0.013316/30 [===============>..............] - ETA: 8s - loss: nan - accuracy: 0.012517/30 [================>.............] - ETA: 7s - loss: nan - accuracy: 0.011818/30 [=================>............] - ETA: 6s - loss: nan - accuracy: 0.011119/30 [==================>...........] - ETA: 6s - loss: nan - accuracy: 0.010520/30 [===================>..........] - ETA: 5s - loss: nan - accuracy: 0.010021/30 [====================>.........] - ETA: 5s - loss: nan - accuracy: 0.009522/30 [=====================>........] - ETA: 4s - loss: nan - accuracy: 0.009123/30 [======================>.......] - ETA: 4s - loss: nan - accuracy: 0.008724/30 [=======================>......] - ETA: 3s - loss: nan - accuracy: 0.008325/30 [========================>.....] - ETA: 2s - loss: nan - accuracy: 0.008026/30 [=========================>....] - ETA: 2s - loss: nan - accuracy: 0.007727/30 [==========================>...] - ETA: 1s - loss: nan - accuracy: 0.007428/30 [===========================>..] - ETA: 1s - loss: nan - accuracy: 0.007129/30 [============================>.] - ETA: 0s - loss: nan - accuracy: 0.010330/30 [==============================] - ETA: 0s - loss: nan - accuracy: 0.010030/30 [==============================] - 20s 662ms/step - loss: nan - accuracy: 0.0100 - val_loss: nan - val_accuracy: 0.0200
+Epoch 7/100
+ 1/30 [>.............................] - ETA: 16s - loss: nan - accuracy: 0.0000e+00 2/30 [=>............................] - ETA: 16s - loss: nan - accuracy: 0.0500     3/30 [==>...........................] - ETA: 15s - loss: nan - accuracy: 0.0333 4/30 [===>..........................] - ETA: 14s - loss: nan - accuracy: 0.0250 5/30 [====>.........................] - ETA: 14s - loss: nan - accuracy: 0.0200 6/30 [=====>........................] - ETA: 13s - loss: nan - accuracy: 0.0167 7/30 [======>.......................] - ETA: 13s - loss: nan - accuracy: 0.0143 8/30 [=======>......................] - ETA: 12s - loss: nan - accuracy: 0.0250 9/30 [========>.....................] - ETA: 12s - loss: nan - accuracy: 0.022210/30 [=========>....................] - ETA: 11s - loss: nan - accuracy: 0.020011/30 [==========>...................] - ETA: 10s - loss: nan - accuracy: 0.018212/30 [===========>..................] - ETA: 10s - loss: nan - accuracy: 0.016713/30 [============>.................] - ETA: 9s - loss: nan - accuracy: 0.0154 14/30 [=============>................] - ETA: 9s - loss: nan - accuracy: 0.014315/30 [==============>...............] - ETA: 8s - loss: nan - accuracy: 0.013316/30 [===============>..............] - ETA: 8s - loss: nan - accuracy: 0.012517/30 [================>.............] - ETA: 7s - loss: nan - accuracy: 0.011818/30 [=================>............] - ETA: 6s - loss: nan - accuracy: 0.011119/30 [==================>...........] - ETA: 6s - loss: nan - accuracy: 0.010520/30 [===================>..........] - ETA: 5s - loss: nan - accuracy: 0.015021/30 [====================>.........] - ETA: 5s - loss: nan - accuracy: 0.014322/30 [=====================>........] - ETA: 4s - loss: nan - accuracy: 0.013623/30 [======================>.......] - ETA: 4s - loss: nan - accuracy: 0.013024/30 [=======================>......] - ETA: 3s - loss: nan - accuracy: 0.012525/30 [========================>.....] - ETA: 2s - loss: nan - accuracy: 0.012026/30 [=========================>....] - ETA: 2s - loss: nan - accuracy: 0.011527/30 [==========================>...] - ETA: 1s - loss: nan - accuracy: 0.011128/30 [===========================>..] - ETA: 1s - loss: nan - accuracy: 0.010729/30 [============================>.] - ETA: 0s - loss: nan - accuracy: 0.010330/30 [==============================] - ETA: 0s - loss: nan - accuracy: 0.010030/30 [==============================] - 20s 662ms/step - loss: nan - accuracy: 0.0100 - val_loss: nan - val_accuracy: 0.0200
+Epoch 8/100
+ 1/30 [>.............................] - ETA: 16s - loss: nan - accuracy: 0.0000e+00 2/30 [=>............................] - ETA: 16s - loss: nan - accuracy: 0.0000e+00 3/30 [==>...........................] - ETA: 15s - loss: nan - accuracy: 0.0000e+00 4/30 [===>..........................] - ETA: 14s - loss: nan - accuracy: 0.0000e+00 5/30 [====>.........................] - ETA: 14s - loss: nan - accuracy: 0.0200     6/30 [=====>........................] - ETA: 13s - loss: nan - accuracy: 0.0167 7/30 [======>.......................] - ETA: 13s - loss: nan - accuracy: 0.0143 8/30 [=======>......................] - ETA: 12s - loss: nan - accuracy: 0.0125 9/30 [========>.....................] - ETA: 12s - loss: nan - accuracy: 0.011110/30 [=========>....................] - ETA: 11s - loss: nan - accuracy: 0.010011/30 [==========>...................] - ETA: 10s - loss: nan - accuracy: 0.009112/30 [===========>..................] - ETA: 10s - loss: nan - accuracy: 0.008313/30 [============>.................] - ETA: 9s - loss: nan - accuracy: 0.0077 14/30 [=============>................] - ETA: 9s - loss: nan - accuracy: 0.007115/30 [==============>...............] - ETA: 8s - loss: nan - accuracy: 0.006716/30 [===============>..............] - ETA: 8s - loss: nan - accuracy: 0.006317/30 [================>.............] - ETA: 7s - loss: nan - accuracy: 0.005918/30 [=================>............] - ETA: 6s - loss: nan - accuracy: 0.011119/30 [==================>...........] - ETA: 6s - loss: nan - accuracy: 0.015820/30 [===================>..........] - ETA: 5s - loss: nan - accuracy: 0.015021/30 [====================>.........] - ETA: 5s - loss: nan - accuracy: 0.014322/30 [=====================>........] - ETA: 4s - loss: nan - accuracy: 0.013623/30 [======================>.......] - ETA: 4s - loss: nan - accuracy: 0.013024/30 [=======================>......] - ETA: 3s - loss: nan - accuracy: 0.012525/30 [========================>.....] - ETA: 2s - loss: nan - accuracy: 0.012026/30 [=========================>....] - ETA: 2s - loss: nan - accuracy: 0.011527/30 [==========================>...] - ETA: 1s - loss: nan - accuracy: 0.011128/30 [===========================>..] - ETA: 1s - loss: nan - accuracy: 0.010729/30 [============================>.] - ETA: 0s - loss: nan - accuracy: 0.010330/30 [==============================] - ETA: 0s - loss: nan - accuracy: 0.010030/30 [==============================] - 20s 662ms/step - loss: nan - accuracy: 0.0100 - val_loss: nan - val_accuracy: 0.0200
+Epoch 9/100
+ 1/30 [>.............................] - ETA: 16s - loss: nan - accuracy: 0.0000e+00 2/30 [=>............................] - ETA: 16s - loss: nan - accuracy: 0.0000e+00 3/30 [==>...........................] - ETA: 15s - loss: nan - accuracy: 0.0333     4/30 [===>..........................] - ETA: 14s - loss: nan - accuracy: 0.0250 5/30 [====>.........................] - ETA: 14s - loss: nan - accuracy: 0.0400 6/30 [=====>........................] - ETA: 13s - loss: nan - accuracy: 0.0333 7/30 [======>.......................] - ETA: 13s - loss: nan - accuracy: 0.0286 8/30 [=======>......................] - ETA: 12s - loss: nan - accuracy: 0.0375 9/30 [========>.....................] - ETA: 12s - loss: nan - accuracy: 0.033310/30 [=========>....................] - ETA: 11s - loss: nan - accuracy: 0.030011/30 [==========>...................] - ETA: 10s - loss: nan - accuracy: 0.027312/30 [===========>..................] - ETA: 10s - loss: nan - accuracy: 0.025013/30 [============>.................] - ETA: 9s - loss: nan - accuracy: 0.0231 14/30 [=============>................] - ETA: 9s - loss: nan - accuracy: 0.021415/30 [==============>...............] - ETA: 8s - loss: nan - accuracy: 0.020016/30 [===============>..............] - ETA: 8s - loss: nan - accuracy: 0.018817/30 [================>.............] - ETA: 7s - loss: nan - accuracy: 0.017618/30 [=================>............] - ETA: 6s - loss: nan - accuracy: 0.016719/30 [==================>...........] - ETA: 6s - loss: nan - accuracy: 0.015820/30 [===================>..........] - ETA: 5s - loss: nan - accuracy: 0.015021/30 [====================>.........] - ETA: 5s - loss: nan - accuracy: 0.014322/30 [=====================>........] - ETA: 4s - loss: nan - accuracy: 0.013623/30 [======================>.......] - ETA: 4s - loss: nan - accuracy: 0.013024/30 [=======================>......] - ETA: 3s - loss: nan - accuracy: 0.012525/30 [========================>.....] - ETA: 2s - loss: nan - accuracy: 0.012026/30 [=========================>....] - ETA: 2s - loss: nan - accuracy: 0.011527/30 [==========================>...] - ETA: 1s - loss: nan - accuracy: 0.011128/30 [===========================>..] - ETA: 1s - loss: nan - accuracy: 0.010729/30 [============================>.] - ETA: 0s - loss: nan - accuracy: 0.010330/30 [==============================] - ETA: 0s - loss: nan - accuracy: 0.010030/30 [==============================] - 20s 662ms/step - loss: nan - accuracy: 0.0100 - val_loss: nan - val_accuracy: 0.0200
+Epoch 10/100
+ 1/30 [>.............................] - ETA: 16s - loss: nan - accuracy: 0.0000e+00 2/30 [=>............................] - ETA: 16s - loss: nan - accuracy: 0.0000e+00 3/30 [==>...........................] - ETA: 15s - loss: nan - accuracy: 0.0000e+00 4/30 [===>..........................] - ETA: 14s - loss: nan - accuracy: 0.0000e+00 5/30 [====>.........................] - ETA: 14s - loss: nan - accuracy: 0.0000e+00 6/30 [=====>........................] - ETA: 13s - loss: nan - accuracy: 0.0000e+00 7/30 [======>.......................] - ETA: 13s - loss: nan - accuracy: 0.0000e+00 8/30 [=======>......................] - ETA: 12s - loss: nan - accuracy: 0.0000e+00 9/30 [========>.....................] - ETA: 12s - loss: nan - accuracy: 0.0111    10/30 [=========>....................] - ETA: 11s - loss: nan - accuracy: 0.010011/30 [==========>...................] - ETA: 10s - loss: nan - accuracy: 0.009112/30 [===========>..................] - ETA: 10s - loss: nan - accuracy: 0.008313/30 [============>.................] - ETA: 9s - loss: nan - accuracy: 0.0077 14/30 [=============>................] - ETA: 9s - loss: nan - accuracy: 0.007115/30 [==============>...............] - ETA: 8s - loss: nan - accuracy: 0.006716/30 [===============>..............] - ETA: 8s - loss: nan - accuracy: 0.006317/30 [================>.............] - ETA: 7s - loss: nan - accuracy: 0.005918/30 [=================>............] - ETA: 6s - loss: nan - accuracy: 0.005619/30 [==================>...........] - ETA: 6s - loss: nan - accuracy: 0.010520/30 [===================>..........] - ETA: 5s - loss: nan - accuracy: 0.010021/30 [====================>.........] - ETA: 5s - loss: nan - accuracy: 0.009522/30 [=====================>........] - ETA: 4s - loss: nan - accuracy: 0.009123/30 [======================>.......] - ETA: 4s - loss: nan - accuracy: 0.008724/30 [=======================>......] - ETA: 3s - loss: nan - accuracy: 0.008325/30 [========================>.....] - ETA: 2s - loss: nan - accuracy: 0.012026/30 [=========================>....] - ETA: 2s - loss: nan - accuracy: 0.011527/30 [==========================>...] - ETA: 1s - loss: nan - accuracy: 0.011128/30 [===========================>..] - ETA: 1s - loss: nan - accuracy: 0.010729/30 [============================>.] - ETA: 0s - loss: nan - accuracy: 0.010330/30 [==============================] - ETA: 0s - loss: nan - accuracy: 0.010030/30 [==============================] - 20s 664ms/step - loss: nan - accuracy: 0.0100 - val_loss: nan - val_accuracy: 0.0200
+Epoch 11/100
+ 1/30 [>.............................] - ETA: 16s - loss: nan - accuracy: 0.0000e+00 2/30 [=>............................] - ETA: 16s - loss: nan - accuracy: 0.0000e+00 3/30 [==>...........................] - ETA: 15s - loss: nan - accuracy: 0.0000e+00 4/30 [===>..........................] - ETA: 14s - loss: nan - accuracy: 0.0000e+00 5/30 [====>.........................] - ETA: 14s - loss: nan - accuracy: 0.0000e+00 6/30 [=====>........................] - ETA: 13s - loss: nan - accuracy: 0.0000e+00 7/30 [======>.......................] - ETA: 13s - loss: nan - accuracy: 0.0000e+00 8/30 [=======>......................] - ETA: 12s - loss: nan - accuracy: 0.0250     9/30 [========>.....................] - ETA: 12s - loss: nan - accuracy: 0.022210/30 [=========>....................] - ETA: 11s - loss: nan - accuracy: 0.020011/30 [==========>...................] - ETA: 10s - loss: nan - accuracy: 0.018212/30 [===========>..................] - ETA: 10s - loss: nan - accuracy: 0.016713/30 [============>.................] - ETA: 9s - loss: nan - accuracy: 0.0154 14/30 [=============>................] - ETA: 9s - loss: nan - accuracy: 0.014315/30 [==============>...............] - ETA: 8s - loss: nan - accuracy: 0.013316/30 [===============>..............] - ETA: 8s - loss: nan - accuracy: 0.012517/30 [================>.............] - ETA: 7s - loss: nan - accuracy: 0.011818/30 [=================>............] - ETA: 6s - loss: nan - accuracy: 0.011119/30 [==================>...........] - ETA: 6s - loss: nan - accuracy: 0.010520/30 [===================>..........] - ETA: 5s - loss: nan - accuracy: 0.010021/30 [====================>.........] - ETA: 5s - loss: nan - accuracy: 0.009522/30 [=====================>........] - ETA: 4s - loss: nan - accuracy: 0.009123/30 [======================>.......] - ETA: 4s - loss: nan - accuracy: 0.013024/30 [=======================>......] - ETA: 3s - loss: nan - accuracy: 0.012525/30 [========================>.....] - ETA: 2s - loss: nan - accuracy: 0.012026/30 [=========================>....] - ETA: 2s - loss: nan - accuracy: 0.011527/30 [==========================>...] - ETA: 1s - loss: nan - accuracy: 0.011128/30 [===========================>..] - ETA: 1s - loss: nan - accuracy: 0.010729/30 [============================>.] - ETA: 0s - loss: nan - accuracy: 0.010330/30 [==============================] - ETA: 0s - loss: nan - accuracy: 0.010030/30 [==============================] - 20s 663ms/step - loss: nan - accuracy: 0.0100 - val_loss: nan - val_accuracy: 0.0200
+Epoch 12/100
+ 1/30 [>.............................] - ETA: 16s - loss: nan - accuracy: 0.0000e+00 2/30 [=>............................] - ETA: 16s - loss: nan - accuracy: 0.0000e+00 3/30 [==>...........................] - ETA: 15s - loss: nan - accuracy: 0.0000e+00 4/30 [===>..........................] - ETA: 14s - loss: nan - accuracy: 0.0000e+00 5/30 [====>.........................] - ETA: 14s - loss: nan - accuracy: 0.0000e+00 6/30 [=====>........................] - ETA: 13s - loss: nan - accuracy: 0.0000e+00 7/30 [======>.......................] - ETA: 13s - loss: nan - accuracy: 0.0000e+00 8/30 [=======>......................] - ETA: 12s - loss: nan - accuracy: 0.0000e+00 9/30 [========>.....................] - ETA: 12s - loss: nan - accuracy: 0.0000e+0010/30 [=========>....................] - ETA: 11s - loss: nan - accuracy: 0.0100    11/30 [==========>...................] - ETA: 10s - loss: nan - accuracy: 0.009112/30 [===========>..................] - ETA: 10s - loss: nan - accuracy: 0.008313/30 [============>.................] - ETA: 9s - loss: nan - accuracy: 0.0077 14/30 [=============>................] - ETA: 9s - loss: nan - accuracy: 0.007115/30 [==============>...............] - ETA: 8s - loss: nan - accuracy: 0.006716/30 [===============>..............] - ETA: 8s - loss: nan - accuracy: 0.006317/30 [================>.............] - ETA: 7s - loss: nan - accuracy: 0.005918/30 [=================>............] - ETA: 6s - loss: nan - accuracy: 0.005619/30 [==================>...........] - ETA: 6s - loss: nan - accuracy: 0.010520/30 [===================>..........] - ETA: 5s - loss: nan - accuracy: 0.010021/30 [====================>.........] - ETA: 5s - loss: nan - accuracy: 0.009522/30 [=====================>........] - ETA: 4s - loss: nan - accuracy: 0.009123/30 [======================>.......] - ETA: 4s - loss: nan - accuracy: 0.008724/30 [=======================>......] - ETA: 3s - loss: nan - accuracy: 0.008325/30 [========================>.....] - ETA: 2s - loss: nan - accuracy: 0.008026/30 [=========================>....] - ETA: 2s - loss: nan - accuracy: 0.011527/30 [==========================>...] - ETA: 1s - loss: nan - accuracy: 0.011128/30 [===========================>..] - ETA: 1s - loss: nan - accuracy: 0.010729/30 [============================>.] - ETA: 0s - loss: nan - accuracy: 0.010330/30 [==============================] - ETA: 0s - loss: nan - accuracy: 0.010030/30 [==============================] - 20s 663ms/step - loss: nan - accuracy: 0.0100 - val_loss: nan - val_accuracy: 0.0200
+Epoch 13/100
+ 1/30 [>.............................] - ETA: 16s - loss: nan - accuracy: 0.1000 2/30 [=>............................] - ETA: 16s - loss: nan - accuracy: 0.0500 3/30 [==>...........................] - ETA: 15s - loss: nan - accuracy: 0.0333 4/30 [===>..........................] - ETA: 14s - loss: nan - accuracy: 0.0250 5/30 [====>.........................] - ETA: 14s - loss: nan - accuracy: 0.0200 6/30 [=====>........................] - ETA: 13s - loss: nan - accuracy: 0.0167 7/30 [======>.......................] - ETA: 13s - loss: nan - accuracy: 0.0143 8/30 [=======>......................] - ETA: 12s - loss: nan - accuracy: 0.0125 9/30 [========>.....................] - ETA: 12s - loss: nan - accuracy: 0.011110/30 [=========>....................] - ETA: 11s - loss: nan - accuracy: 0.010011/30 [==========>...................] - ETA: 10s - loss: nan - accuracy: 0.009112/30 [===========>..................] - ETA: 10s - loss: nan - accuracy: 0.008313/30 [============>.................] - ETA: 9s - loss: nan - accuracy: 0.0077 14/30 [=============>................] - ETA: 9s - loss: nan - accuracy: 0.007115/30 [==============>...............] - ETA: 8s - loss: nan - accuracy: 0.006716/30 [===============>..............] - ETA: 8s - loss: nan - accuracy: 0.006317/30 [================>.............] - ETA: 7s - loss: nan - accuracy: 0.005918/30 [=================>............] - ETA: 6s - loss: nan - accuracy: 0.005619/30 [==================>...........] - ETA: 6s - loss: nan - accuracy: 0.005320/30 [===================>..........] - ETA: 5s - loss: nan - accuracy: 0.005021/30 [====================>.........] - ETA: 5s - loss: nan - accuracy: 0.004822/30 [=====================>........] - ETA: 4s - loss: nan - accuracy: 0.004523/30 [======================>.......] - ETA: 4s - loss: nan - accuracy: 0.004324/30 [=======================>......] - ETA: 3s - loss: nan - accuracy: 0.004225/30 [========================>.....] - ETA: 2s - loss: nan - accuracy: 0.004026/30 [=========================>....] - ETA: 2s - loss: nan - accuracy: 0.003827/30 [==========================>...] - ETA: 1s - loss: nan - accuracy: 0.003728/30 [===========================>..] - ETA: 1s - loss: nan - accuracy: 0.007129/30 [============================>.] - ETA: 0s - loss: nan - accuracy: 0.006930/30 [==============================] - ETA: 0s - loss: nan - accuracy: 0.010030/30 [==============================] - 20s 663ms/step - loss: nan - accuracy: 0.0100 - val_loss: nan - val_accuracy: 0.0200
+Epoch 14/100
+ 1/30 [>.............................] - ETA: 16s - loss: nan - accuracy: 0.0000e+00 2/30 [=>............................] - ETA: 16s - loss: nan - accuracy: 0.0000e+00 3/30 [==>...........................] - ETA: 15s - loss: nan - accuracy: 0.0000e+00 4/30 [===>..........................] - ETA: 14s - loss: nan - accuracy: 0.0000e+00 5/30 [====>.........................] - ETA: 14s - loss: nan - accuracy: 0.0000e+00 6/30 [=====>........................] - ETA: 13s - loss: nan - accuracy: 0.0000e+00 7/30 [======>.......................] - ETA: 13s - loss: nan - accuracy: 0.0143     8/30 [=======>......................] - ETA: 12s - loss: nan - accuracy: 0.0125 9/30 [========>.....................] - ETA: 12s - loss: nan - accuracy: 0.022210/30 [=========>....................] - ETA: 11s - loss: nan - accuracy: 0.020011/30 [==========>...................] - ETA: 10s - loss: nan - accuracy: 0.018212/30 [===========>..................] - ETA: 10s - loss: nan - accuracy: 0.016713/30 [============>.................] - ETA: 9s - loss: nan - accuracy: 0.0154 14/30 [=============>................] - ETA: 9s - loss: nan - accuracy: 0.014315/30 [==============>...............] - ETA: 8s - loss: nan - accuracy: 0.013316/30 [===============>..............] - ETA: 8s - loss: nan - accuracy: 0.012517/30 [================>.............] - ETA: 7s - loss: nan - accuracy: 0.011818/30 [=================>............] - ETA: 6s - loss: nan - accuracy: 0.016719/30 [==================>...........] - ETA: 6s - loss: nan - accuracy: 0.015820/30 [===================>..........] - ETA: 5s - loss: nan - accuracy: 0.015021/30 [====================>.........] - ETA: 5s - loss: nan - accuracy: 0.014322/30 [=====================>........] - ETA: 4s - loss: nan - accuracy: 0.013623/30 [======================>.......] - ETA: 4s - loss: nan - accuracy: 0.013024/30 [=======================>......] - ETA: 3s - loss: nan - accuracy: 0.012525/30 [========================>.....] - ETA: 2s - loss: nan - accuracy: 0.012026/30 [=========================>....] - ETA: 2s - loss: nan - accuracy: 0.011527/30 [==========================>...] - ETA: 1s - loss: nan - accuracy: 0.011128/30 [===========================>..] - ETA: 1s - loss: nan - accuracy: 0.010729/30 [============================>.] - ETA: 0s - loss: nan - accuracy: 0.010330/30 [==============================] - ETA: 0s - loss: nan - accuracy: 0.010030/30 [==============================] - 20s 662ms/step - loss: nan - accuracy: 0.0100 - val_loss: nan - val_accuracy: 0.0200
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: got SIGCONT
+slurmstepd: error: *** STEP 2929581.0 ON nodegpu002 CANCELLED AT 2022-07-10T05:01:07 ***
+slurmstepd: error: *** JOB 2929581 ON nodegpu002 CANCELLED AT 2022-07-10T05:01:07 ***
+srun: forcing job termination

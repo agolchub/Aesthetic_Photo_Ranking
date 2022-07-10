@@ -1,0 +1,418 @@
+2022-07-04 01:58:09.766360: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-07-04 01:58:11.085904: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38246 MB memory:  -> device: 0, name: NVIDIA A100-PCIE-40GB, pci bus id: 0000:81:00.0, compute capability: 8.0
+Input file is " ./segment_complete.nolock.train.3
+Output file is " 
+Image path is " ./databaserelease2/test.csv
+--------------------
+
+
+Model Loaded
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 244, 244, 3) 0                                            
+__________________________________________________________________________________________________
+conv2d (Conv2D)                 (None, 45, 45, 80)   96080       input_1[0][0]                    
+__________________________________________________________________________________________________
+conv2d_4 (Conv2D)               (None, 45, 45, 80)   96080       input_1[0][0]                    
+__________________________________________________________________________________________________
+conv2d_8 (Conv2D)               (None, 45, 45, 80)   96080       input_1[0][0]                    
+__________________________________________________________________________________________________
+conv2d_12 (Conv2D)              (None, 45, 45, 80)   96080       input_1[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 45, 45, 80)   320         conv2d[0][0]                     
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 45, 45, 80)   320         conv2d_4[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_8 (BatchNor (None, 45, 45, 80)   320         conv2d_8[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_12 (BatchNo (None, 45, 45, 80)   320         conv2d_12[0][0]                  
+__________________________________________________________________________________________________
+activation (Activation)         (None, 45, 45, 80)   0           batch_normalization[0][0]        
+__________________________________________________________________________________________________
+activation_4 (Activation)       (None, 45, 45, 80)   0           batch_normalization_4[0][0]      
+__________________________________________________________________________________________________
+activation_8 (Activation)       (None, 45, 45, 80)   0           batch_normalization_8[0][0]      
+__________________________________________________________________________________________________
+activation_12 (Activation)      (None, 45, 45, 80)   0           batch_normalization_12[0][0]     
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 45, 45, 80)   0           activation[0][0]                 
+__________________________________________________________________________________________________
+dropout_4 (Dropout)             (None, 45, 45, 80)   0           activation_4[0][0]               
+__________________________________________________________________________________________________
+dropout_8 (Dropout)             (None, 45, 45, 80)   0           activation_8[0][0]               
+__________________________________________________________________________________________________
+dropout_12 (Dropout)            (None, 45, 45, 80)   0           activation_12[0][0]              
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 14, 14, 80)   160080      dropout[0][0]                    
+__________________________________________________________________________________________________
+conv2d_5 (Conv2D)               (None, 14, 14, 80)   160080      dropout_4[0][0]                  
+__________________________________________________________________________________________________
+conv2d_9 (Conv2D)               (None, 14, 14, 80)   160080      dropout_8[0][0]                  
+__________________________________________________________________________________________________
+conv2d_13 (Conv2D)              (None, 14, 14, 80)   160080      dropout_12[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 14, 14, 80)   320         conv2d_1[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 14, 14, 80)   320         conv2d_5[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_9 (BatchNor (None, 14, 14, 80)   320         conv2d_9[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_13 (BatchNo (None, 14, 14, 80)   320         conv2d_13[0][0]                  
+__________________________________________________________________________________________________
+activation_1 (Activation)       (None, 14, 14, 80)   0           batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+activation_5 (Activation)       (None, 14, 14, 80)   0           batch_normalization_5[0][0]      
+__________________________________________________________________________________________________
+activation_9 (Activation)       (None, 14, 14, 80)   0           batch_normalization_9[0][0]      
+__________________________________________________________________________________________________
+activation_13 (Activation)      (None, 14, 14, 80)   0           batch_normalization_13[0][0]     
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 14, 14, 80)   0           activation_1[0][0]               
+__________________________________________________________________________________________________
+dropout_5 (Dropout)             (None, 14, 14, 80)   0           activation_5[0][0]               
+__________________________________________________________________________________________________
+dropout_9 (Dropout)             (None, 14, 14, 80)   0           activation_9[0][0]               
+__________________________________________________________________________________________________
+dropout_13 (Dropout)            (None, 14, 14, 80)   0           activation_13[0][0]              
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, 6, 6, 80)     57680       dropout_1[0][0]                  
+__________________________________________________________________________________________________
+conv2d_6 (Conv2D)               (None, 6, 6, 80)     57680       dropout_5[0][0]                  
+__________________________________________________________________________________________________
+conv2d_10 (Conv2D)              (None, 6, 6, 80)     57680       dropout_9[0][0]                  
+__________________________________________________________________________________________________
+conv2d_14 (Conv2D)              (None, 6, 6, 80)     57680       dropout_13[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 6, 6, 80)     320         conv2d_2[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 6, 6, 80)     320         conv2d_6[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_10 (BatchNo (None, 6, 6, 80)     320         conv2d_10[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_14 (BatchNo (None, 6, 6, 80)     320         conv2d_14[0][0]                  
+__________________________________________________________________________________________________
+activation_2 (Activation)       (None, 6, 6, 80)     0           batch_normalization_2[0][0]      
+__________________________________________________________________________________________________
+activation_6 (Activation)       (None, 6, 6, 80)     0           batch_normalization_6[0][0]      
+__________________________________________________________________________________________________
+activation_10 (Activation)      (None, 6, 6, 80)     0           batch_normalization_10[0][0]     
+__________________________________________________________________________________________________
+activation_14 (Activation)      (None, 6, 6, 80)     0           batch_normalization_14[0][0]     
+__________________________________________________________________________________________________
+dropout_2 (Dropout)             (None, 6, 6, 80)     0           activation_2[0][0]               
+__________________________________________________________________________________________________
+dropout_6 (Dropout)             (None, 6, 6, 80)     0           activation_6[0][0]               
+__________________________________________________________________________________________________
+dropout_10 (Dropout)            (None, 6, 6, 80)     0           activation_10[0][0]              
+__________________________________________________________________________________________________
+dropout_14 (Dropout)            (None, 6, 6, 80)     0           activation_14[0][0]              
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, 5, 5, 80)     25680       dropout_2[0][0]                  
+__________________________________________________________________________________________________
+conv2d_7 (Conv2D)               (None, 5, 5, 80)     25680       dropout_6[0][0]                  
+__________________________________________________________________________________________________
+conv2d_11 (Conv2D)              (None, 5, 5, 80)     25680       dropout_10[0][0]                 
+__________________________________________________________________________________________________
+conv2d_15 (Conv2D)              (None, 5, 5, 80)     25680       dropout_14[0][0]                 
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 5, 5, 80)     320         conv2d_3[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 5, 5, 80)     320         conv2d_7[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_11 (BatchNo (None, 5, 5, 80)     320         conv2d_11[0][0]                  
+__________________________________________________________________________________________________
+batch_normalization_15 (BatchNo (None, 5, 5, 80)     320         conv2d_15[0][0]                  
+__________________________________________________________________________________________________
+activation_3 (Activation)       (None, 5, 5, 80)     0           batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+activation_7 (Activation)       (None, 5, 5, 80)     0           batch_normalization_7[0][0]      
+__________________________________________________________________________________________________
+activation_11 (Activation)      (None, 5, 5, 80)     0           batch_normalization_11[0][0]     
+__________________________________________________________________________________________________
+activation_15 (Activation)      (None, 5, 5, 80)     0           batch_normalization_15[0][0]     
+__________________________________________________________________________________________________
+dropout_3 (Dropout)             (None, 5, 5, 80)     0           activation_3[0][0]               
+__________________________________________________________________________________________________
+dropout_7 (Dropout)             (None, 5, 5, 80)     0           activation_7[0][0]               
+__________________________________________________________________________________________________
+dropout_11 (Dropout)            (None, 5, 5, 80)     0           activation_11[0][0]              
+__________________________________________________________________________________________________
+dropout_15 (Dropout)            (None, 5, 5, 80)     0           activation_15[0][0]              
+__________________________________________________________________________________________________
+flatten_1 (Flatten)             (None, 2000)         0           dropout_3[0][0]                  
+__________________________________________________________________________________________________
+flatten_2 (Flatten)             (None, 2000)         0           dropout_7[0][0]                  
+__________________________________________________________________________________________________
+flatten_3 (Flatten)             (None, 2000)         0           dropout_11[0][0]                 
+__________________________________________________________________________________________________
+flatten_4 (Flatten)             (None, 2000)         0           dropout_15[0][0]                 
+__________________________________________________________________________________________________
+concatenate (Concatenate)       (None, 8000)         0           flatten_1[0][0]                  
+                                                                 flatten_2[0][0]                  
+                                                                 flatten_3[0][0]                  
+                                                                 flatten_4[0][0]                  
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 256)          2048256     concatenate[0][0]                
+__________________________________________________________________________________________________
+dropout_20 (Dropout)            (None, 256)          0           dense[0][0]                      
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 64)           16448       dropout_20[0][0]                 
+__________________________________________________________________________________________________
+dropout_22 (Dropout)            (None, 64)           0           dense_2[0][0]                    
+__________________________________________________________________________________________________
+dense_3 (Dense)                 (None, 10)           650         dropout_22[0][0]                 
+__________________________________________________________________________________________________
+dropout_23 (Dropout)            (None, 10)           0           dense_3[0][0]                    
+__________________________________________________________________________________________________
+dense_4 (Dense)                 (None, 1)            11          dropout_23[0][0]                 
+==================================================================================================
+Total params: 3,428,565
+Trainable params: 3,426,005
+Non-trainable params: 2,560
+__________________________________________________________________________________________________
+None
+Adding Images: Error ---- 
+No such file: '/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/﻿Filename'
+['\ufeffFilename', 'Source', 'Link (if available)', "Arash's Scores", "Maria's Scores", 'Color Saturation', 'Framing', 'Lighting', 'Clarity', 'Symmetry', 'Objective Score', 'Random', 'Set']
+0.555555556 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows88.jpg
+0.555555556 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows194.jpg
+0.333333333 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows66.jpg
+0.444444444 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows93.jpg
+0.666666667 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows497.jpg
+0.555555556 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows202.jpg
+0.333333333 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows80.jpg
+0.333333333 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows498.jpg
+0.333333333 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows382.jpg
+0.555555556 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows370.jpg
+0.222222222 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows81.jpg
+0.555555556 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows383.jpg
+0.666666667 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows470.jpg
+0.222222222 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows215.jpg
+0.666666667 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows115.jpg
+0.555555556 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows373.jpg
+0.444444444 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows262.jpg
+0.444444444 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows400.jpg
+0.111111111 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows197.jpg
+0.444444444 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows274.jpg
+0.333333333 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows454.jpg
+0.222222222 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows334.jpg
+0.333333333 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows209.jpg
+0.666666667 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows279.jpg
+0.444444444 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows457.jpg
+0.666666667 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows311.jpg
+0.666666667 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows174.jpg
+0.333333333 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows416.jpg
+0.777777778 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows388.jpg
+0.444444444 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows63.jpg
+0.222222222 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows294.jpg
+0.222222222 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows195.jpg
+0.222222222 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows217.jpg
+0.444444444 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows398.jpg
+0.444444444 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows42.jpg
+0.444444444 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows148.jpg
+0.777777778 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows154.jpg
+0.111111111 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows184.jpg
+0.666666667 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows336.jpg
+0.333333333 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows198.jpg
+0.444444444 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows478.jpg
+0.333333333 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows132.jpg
+0.333333333 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows346.jpg
+0.333333333 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows55.jpg
+0.555555556 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows339.jpg
+0.444444444 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows99.jpg
+0.555555556 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows56.jpg
+0.666666667 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows149.jpg
+0.333333333 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows399.jpg
+0.555555556 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows220.jpg
+0.555555556 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows259.jpg
+0.222222222 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows491.jpg
+0.333333333 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows301.jpg
+0.111111111 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows376.jpg
+0.666666667 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows269.jpg
+0.333333333 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows350.jpg
+0.444444444 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows155.jpg
+0.111111111 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows357.jpg
+0.666666667 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows460.jpg
+0.333333333 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows70.jpg
+0.222222222 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows459.jpg
+0.444444444 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows178.jpg
+0.666666667 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows359.jpg
+0.333333333 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows387.jpg
+0.555555556 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows44.jpg
+0.222222222 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows177.jpg
+0.777777778 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows289.jpg
+0.555555556 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows158.jpg
+0.444444444 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows187.jpg
+0.444444444 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows295.jpg
+0.111111111 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows319.jpg
+0.222222222 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows453.jpg
+0.333333333 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows14.jpg
+0.444444444 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows196.jpg
+0.111111111 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows343.jpg
+2022-07-04 01:58:25.778532: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:185] None of the MLIR Optimization Passes are enabled (registered 2)
+2022-07-04 01:58:27.249841: I tensorflow/stream_executor/cuda/cuda_dnn.cc:369] Loaded cuDNN version 8201
+2022-07-04 01:58:28.769181: W tensorflow/stream_executor/gpu/asm_compiler.cc:77] Couldn't get ptxas version string: Internal: Running ptxas --version returned 32512
+2022-07-04 01:58:28.811851: W tensorflow/stream_executor/gpu/redzone_allocator.cc:314] Internal: ptxas exited with non-zero error code 32512, output: 
+Relying on driver to perform ptx compilation. 
+Modify $PATH to customize ptxas location.
+This message will be only logged once.
+2022-07-04 01:58:31.042151: I tensorflow/stream_executor/cuda/cuda_blas.cc:1760] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+0.555555556 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows244.jpg
+0.444444444 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows414.jpg
+0.333333333 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows96.jpg
+0.111111111 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows234.jpg
+0.333333333 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows223.jpg
+0.555555556 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows151.jpg
+0.444444444 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows200.jpg
+0.333333333 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows54.jpg
+0.333333333 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows417.jpg
+0.555555556 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows260.jpg
+0.555555556 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows356.jpg
+0.222222222 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows232.jpg
+0.666666667 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows401.jpg
+0.444444444 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows30.jpg
+0.222222222 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows433.jpg
+0.555555556 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows68.jpg
+0.444444444 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows104.jpg
+0.111111111 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows362.jpg
+0.666666667 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows5.jpg
+0.111111111 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows23.jpg
+0.555555556 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows418.jpg
+0.444444444 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows300.jpg
+0.333333333 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows471.jpg
+0.444444444 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows265.jpg
+0.333333333 - /mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/databaserelease2/JPEG/meadows369.jpg
+[0.55555556 0.55555556 0.33333333 0.44444444 0.66666667 0.55555556
+ 0.33333333 0.33333333 0.33333333 0.55555556 0.22222222 0.55555556
+ 0.66666667 0.22222222 0.66666667 0.55555556 0.44444444 0.44444444
+ 0.11111111 0.44444444 0.33333333 0.22222222 0.33333333 0.66666667
+ 0.44444444 0.66666667 0.66666667 0.33333333 0.77777778 0.44444444
+ 0.22222222 0.22222222 0.22222222 0.44444444 0.44444444 0.44444444
+ 0.77777778 0.11111111 0.66666667 0.33333333 0.44444444 0.33333333
+ 0.33333333 0.33333333 0.55555556 0.44444444 0.55555556 0.66666667
+ 0.33333333 0.55555556 0.55555556 0.22222222 0.33333333 0.11111111
+ 0.66666667 0.33333333 0.44444444 0.11111111 0.66666667 0.33333333
+ 0.22222222 0.44444444 0.66666667 0.33333333 0.55555556 0.22222222
+ 0.77777778 0.55555556 0.44444444 0.44444444 0.11111111 0.22222222
+ 0.33333333 0.44444444 0.11111111 0.55555556 0.44444444 0.33333333
+ 0.11111111 0.33333333 0.55555556 0.44444444 0.33333333 0.33333333
+ 0.55555556 0.55555556 0.22222222 0.66666667 0.44444444 0.22222222
+ 0.55555556 0.44444444 0.11111111 0.66666667 0.11111111 0.55555556
+ 0.44444444 0.33333333 0.44444444 0.33333333]
+[[0.22565101]
+ [0.29549026]
+ [0.24120572]
+ [0.31837073]
+ [0.35075396]
+ [0.26448423]
+ [0.37514096]
+ [0.2555449 ]
+ [0.19830945]
+ [0.28438133]
+ [0.1578569 ]
+ [0.23403507]
+ [0.339113  ]
+ [0.21262605]
+ [0.15859485]
+ [0.25463352]
+ [0.18846157]
+ [0.178934  ]
+ [0.3028915 ]
+ [0.26877615]
+ [0.1922492 ]
+ [0.20390779]
+ [0.15468073]
+Traceback (most recent call last):
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train_segmented.py", line 525, in <module>
+ [0.31189722]
+ [0.2990893 ]
+ [0.2501763 ]
+ [0.17230338]
+ [0.3039238 ]
+ [0.22478656]
+ [0.29702988]
+ [0.2790619 ]
+ [0.21106511]
+ [0.2171655 ]
+ [0.2168252 ]
+ [0.29632285]
+ [0.14797723]
+ [0.36796397]
+ [0.2880587 ]
+ [0.3889507 ]
+ [0.26561508]
+ [0.2498259 ]
+ [0.3234696 ]
+ [0.28243223]
+ [0.19341412]
+ [0.17934094]
+ [0.21788995]
+ [0.21039084]
+ [0.2209805 ]
+ [0.22449502]
+ [0.23635235]
+ [0.17876533]
+ [0.17581093]
+ [0.22337636]
+ [0.33618337]
+ [0.3156187 ]
+ [0.24717517]
+ [0.18863305]
+ [0.20680606]
+ [0.27060246]
+ [0.1963059 ]
+ [0.16342182]
+ [0.22397408]
+ [0.32834643]
+ [0.35288525]
+ [0.29868716]
+ [0.30634025]
+ [0.20777462]
+ [0.14692248]
+ [0.21618809]
+ [0.21315423]
+ [0.26564726]
+ [0.29895166]
+ [0.20181723]
+ [0.2552373 ]
+ [0.19370191]
+ [0.31537598]
+ [0.19456348]
+ [0.2185447 ]
+ [0.23081402]
+ [0.24755421]
+ [0.26079005]
+ [0.21319377]
+ [0.23758054]
+ [0.34379488]
+ [0.27705097]
+ [0.19518931]
+ [0.17032108]
+ [0.31260926]
+ [0.29793176]
+ [0.27409953]
+ [0.40021417]
+ [0.35005102]
+ [0.19473474]
+ [0.26756704]
+ [0.258422  ]
+ [0.30363154]
+ [0.21894044]
+ [0.18668094]
+ [0.20145908]
+ [0.23369113]]
+    main(sys.argv[1:])
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train_segmented.py", line 520, in main
+    test(modelin,imagepath,WIDTH,HEIGHT,outColumn)
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train_segmented.py", line 404, in test
+    print(np.argmax(np.array(y),axis=1))
+  File "<__array_function__ internals>", line 5, in argmax
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/numpy/core/fromnumeric.py", line 1188, in argmax
+    return _wrapfunc(a, 'argmax', axis=axis, out=out)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/numpy/core/fromnumeric.py", line 58, in _wrapfunc
+    return bound(*args, **kwds)
+numpy.AxisError: axis 1 is out of bounds for array of dimension 1
+srun: error: nodegpu003: task 0: Exited with exit code 1

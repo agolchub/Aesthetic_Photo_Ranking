@@ -1,0 +1,247 @@
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+2022-07-04 14:53:45.193679: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-07-04 14:53:48.721594: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 38246 MB memory:  -> device: 0, name: NVIDIA A100-PCIE-40GB, pci bus id: 0000:21:00.0, compute capability: 8.0
+Input file is " 
+Output file is " segment_complte.train
+Image path is " 
+--------------------
+
+
+Traceback (most recent call last):
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train_segmented.py", line 595, in <module>
+    main(sys.argv[1:])
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train_segmented.py", line 592, in main
+    train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model,momentum,loss_function,catalog,WIDTH,HEIGHT,outColumn,unlock_segment_weights)
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train_segmented.py", line 372, in train
+    m1 = build_layers_for_model2(model1, input, unlock_segment_weights)
+  File "/mnt/beegfs/home/agolchub/repo/Aesthetic_Photo_Ranking/./train_segmented.py", line 310, in build_layers_for_model2
+    dense = layers.Dense(64, activation=activation,kernel_initializer="glorot_uniform", weights=model.layers[17].get_weights())(dropout)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/base_layer.py", line 976, in __call__
+    return self._functional_construction_call(inputs, args, kwargs,
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/base_layer.py", line 1114, in _functional_construction_call
+    outputs = self._keras_tensor_symbolic_call(
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/base_layer.py", line 848, in _keras_tensor_symbolic_call
+    return self._infer_output_signature(inputs, args, kwargs, input_masks)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/base_layer.py", line 886, in _infer_output_signature
+    self._maybe_build(inputs)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/base_layer.py", line 2670, in _maybe_build
+    self.set_weights(self._initial_weights)
+  File "/mnt/beegfs/home/agolchub/miniconda3/envs/tf2-gpu/lib/python3.9/site-packages/keras/engine/base_layer.py", line 1780, in set_weights
+    raise ValueError(
+ValueError: You called `set_weights(weights)` on layer "dense" with a weight list of length 0, but the layer was expecting 2 weights. Provided weights: []...
+WARNING:tensorflow:Unresolved object in checkpoint: (root).__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root)._default_save_signature
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-0.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-0.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-1.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-1.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-3.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-3.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-4.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-4.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-2.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-2.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-3.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-3.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-7.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-7.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-8.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-8.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-4.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-4.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-5.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-5.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-11.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-11.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-12.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-12.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-6.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-6.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-7.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-7.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-15.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-15.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-16.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-16.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-17.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-17.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-8.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-8.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-19.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-19.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-9.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-9.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-21.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-21.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-10.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-10.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).signatures.serving_default
+WARNING:tensorflow:A checkpoint was restored (e.g. tf.train.Checkpoint.restore or tf.keras.Model.load_weights) but not all checkpointed values were used. See above for specific issues. Use expect_partial() on the load status object, e.g. tf.train.Checkpoint.restore(...).expect_partial(), to silence these warnings, or use assert_consumed() to make the check explicit. See https://www.tensorflow.org/guide/checkpoint#loading_mechanics for details.
+WARNING:tensorflow:Unresolved object in checkpoint: (root).__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root)._default_save_signature
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-0.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-0.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-1.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-1.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-3.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-3.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-4.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-4.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-2.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-2.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-3.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-3.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-7.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-7.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-8.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-8.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-4.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-4.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-5.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-5.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-11.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-11.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-12.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-12.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-6.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-6.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-7.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-7.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-15.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-15.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-16.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-16.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-17.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-17.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-8.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-8.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-19.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-19.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-9.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-9.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-21.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-21.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-10.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-10.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).signatures.serving_default
+WARNING:tensorflow:A checkpoint was restored (e.g. tf.train.Checkpoint.restore or tf.keras.Model.load_weights) but not all checkpointed values were used. See above for specific issues. Use expect_partial() on the load status object, e.g. tf.train.Checkpoint.restore(...).expect_partial(), to silence these warnings, or use assert_consumed() to make the check explicit. See https://www.tensorflow.org/guide/checkpoint#loading_mechanics for details.
+WARNING:tensorflow:Unresolved object in checkpoint: (root).__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root)._default_save_signature
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-0.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-0.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-1.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-1.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-3.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-3.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-4.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-4.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-2.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-2.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-3.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-3.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-7.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-7.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-8.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-8.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-4.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-4.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-5.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-5.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-11.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-11.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-12.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-12.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-6.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-6.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-7.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-7.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-15.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-15.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-16.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-16.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-17.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-17.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-8.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-8.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-19.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-19.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-9.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-9.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-21.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-21.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-10.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-10.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).signatures.serving_default
+WARNING:tensorflow:A checkpoint was restored (e.g. tf.train.Checkpoint.restore or tf.keras.Model.load_weights) but not all checkpointed values were used. See above for specific issues. Use expect_partial() on the load status object, e.g. tf.train.Checkpoint.restore(...).expect_partial(), to silence these warnings, or use assert_consumed() to make the check explicit. See https://www.tensorflow.org/guide/checkpoint#loading_mechanics for details.
+WARNING:tensorflow:Unresolved object in checkpoint: (root).__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root)._default_save_signature
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-0.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-0.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-1.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-1.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-3.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-3.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-4.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-4.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-2.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-2.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-3.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-3.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-7.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-7.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-8.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-8.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-4.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-4.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-5.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-5.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-11.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-11.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-12.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-12.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-6.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-6.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-7.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-7.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-15.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-15.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-16.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-16.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-17.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-17.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-8.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-8.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-19.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-19.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-9.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-9.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-21.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer-21.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-10.__call__
+WARNING:tensorflow:Unresolved object in checkpoint: (root).layer_with_weights-10.call_and_return_all_conditional_losses
+WARNING:tensorflow:Unresolved object in checkpoint: (root).signatures.serving_default
+WARNING:tensorflow:A checkpoint was restored (e.g. tf.train.Checkpoint.restore or tf.keras.Model.load_weights) but not all checkpointed values were used. See above for specific issues. Use expect_partial() on the load status object, e.g. tf.train.Checkpoint.restore(...).expect_partial(), to silence these warnings, or use assert_consumed() to make the check explicit. See https://www.tensorflow.org/guide/checkpoint#loading_mechanics for details.
+srun: error: nodegpu002: task 0: Exited with exit code 1
