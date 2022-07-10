@@ -215,6 +215,26 @@ def new_res_block(input,n,m,size,strides):
     activation = layers.Activation("relu")(add)
     return activation
 
+def new_res_block_v2(input,n, size=3,strides=1,first_strides=1):
+    shortcut = input
+    if(first_strides!=strides):
+        shortcut = layers.Conv2D(n, (1,1), strides=first_strides, padding='same', activation=None)(shortcut)
+    conv2d = layers.Conv2D(n, size, strides=first_strides, padding='same', activation=None)(input)
+    batch_normalization = layers.BatchNormalization()(conv2d)
+    activation = layers.Activation("relu")(batch_normalization)
+    conv2d = layers.Conv2D(n, size, strides=strides, padding='same', activation=None)(activation)
+    batch_normalization = layers.BatchNormalization()(conv2d)
+    add = layers.Add()([batch_normalization, shortcut])
+    activation = layers.Activation("relu")(add)
+    return activation
+
+def new_res_block_collection_v2(blocks,input,n,size=3,strides=1,first_strides=1):
+    activation = input
+    for i in range(blocks):
+        print(i)
+        activation = new_res_block_v2(activation, n, size, strides, strides if i != 0 else first_strides)
+    return activation
+
 def build_layers_for_model(model,input,unlock_segment_weights):
     activation="relu"
     dropout_rate=0.2
@@ -307,28 +327,30 @@ def build_layers_for_model2(model,input,unlock_segment_weights):
 
     f1 = layers.Flatten()(dropout)
 
-    dense = layers.Dense(64, activation=activation,kernel_initializer="glorot_uniform", weights=model.layers[17].get_weights())(dropout)
-    dropout = layers.Dropout(dropout_rate, weights=model.layers[18].get_weights())(dense)
-    dense = layers.Dense(64, activation=activation,kernel_initializer="glorot_uniform", weights=model.layers[19].get_weights())(dropout)
-    dropout = layers.Dropout(dropout_rate,weights=model.layers[20].get_weights())(dense)
-    d4 = Dense(1, kernel_initializer="he_uniform", activation="hard_sigmoid", weights=model.layers[21].get_weights())(dropout)
+    dense = layers.Dense(64, activation=activation,kernel_initializer="glorot_uniform", weights=model.layers[18].get_weights())(f1)
+    dropout = layers.Dropout(dropout_rate, weights=model.layers[19].get_weights())(dense)
+    dense = layers.Dense(64, activation=activation,kernel_initializer="glorot_uniform", weights=model.layers[20].get_weights())(dropout)
+    dropout = layers.Dropout(dropout_rate,weights=model.layers[21].get_weights())(dense)
+    d4 = Dense(1, kernel_initializer="he_uniform", activation="hard_sigmoid", weights=model.layers[22].get_weights())(dropout)
 
     return d4
 
-def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model,momentum,loss_function,catalog,WIDTH,HEIGHT,outColumn,unlock_segment_weights):
+def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model,momentum,loss_function,catalog,WIDTH,HEIGHT,outColumn,unlock_segment_weights, model_design):
     #load model
     if(simple_model):
         input = layers.Input((WIDTH,HEIGHT,3))
-        do0 = new_conv2d(input,80,(20,20),(5,5))
-        do0 = new_conv2d(do0,80,(5,5),(3,3))
-        do0 = new_conv2d(do0,80,(3,3),(2,2))
-        do0 = new_conv2d(do0,80,(2,2),(1,1))
-        
+        do0 = new_conv2d(input,96,(7,7),(30,30))
+        #do0 = new_conv2d(do0,256,(5,5),(3,3))
+        #do0 = new_conv2d(do0,384,(3,3),(2,2))
+        #do0 = new_conv2d(do0,384,(2,2),(2,2))
+        #do0 = new_conv2d(do0, 256, (2, 2), (2, 2))
+
         f1   = layers.Flatten()(do0)
 
-        do1 = new_dense(f1, 64,dropout_rate=0.2)
-        do2   = new_dense(do1, 64, dropout_rate=0.2)
-        d4    = Dense(1, kernel_initializer="he_uniform", activation="hard_sigmoid")(do2)
+        do1 = new_dense(f1, 4096,dropout_rate=0.2)
+        do2   = new_dense(do1, 4096, dropout_rate=0.2)
+        do2 = new_dense(do2, 1024, dropout_rate=0.2)
+        d4    = Dense(1, kernel_initializer="he_uniform", activation="sigmoid")(do2)
         model = models.Model(inputs=input,outputs=d4)
     elif(special_model):
         input = layers.Input((WIDTH,HEIGHT,3))
@@ -377,6 +399,25 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         f1 = layers.Add()([m1, m2, m3, m4])
 
         model = models.Model(inputs=input, outputs=f1)
+    elif model_design == 3:
+        input = layers.Input((WIDTH, HEIGHT, 3))
+        conv2d = new_conv2d(input,64,(7,7),strides=(1,1))
+        maxpool = layers.MaxPooling2D()(conv2d)
+        res = new_res_block_collection_v2(3, maxpool, 64)
+        res = new_res_block_collection_v2(4, res, 128, first_strides=(2,2))
+        res = new_res_block_collection_v2(6, res, 256, first_strides=2)
+        res = new_res_block_collection_v2(3, res, 512, first_strides=2)
+        flat = layers.Flatten()(res)
+        #dense = new_dense(flat, 4096)
+        #dense = new_dense(dense, 2048)
+        #dense = new_dense(dense, 1024)
+        #dense = new_dense(dense, 512)
+        #dense = new_dense(dense, 256)
+        #dense = new_dense(dense, 128)
+        dense = Dense(1, kernel_initializer="he_uniform", activation="linear")(flat)
+        model = models.Model(inputs=input, outputs=dense)
+
+
     else:
         model = models.load_model(modelin)
 
@@ -506,8 +547,9 @@ def main(argv):
     outColumn = 5
     unlock_segment_weights = False
 
+
     try:
-        opts, args = getopt.getopt(argv,"hi:o:p:nd:l:b:e:c:t:v:xrm:f:",["unlock_segment_weights","outColumn=","width=","height=","catalog=","loss=","momentum=","special_model2","simple_model","test","build_only","modelin=","resnet50","special_model","modelout=","imagepath=","nesterov","decay=","learningrate=","batchsize","epochs","checkpoint_filepath=","train=","val=","test=","transfer_learning","randomize_weights","batched_reader"])
+        opts, args = getopt.getopt(argv,"hi:o:p:nd:l:b:e:c:t:v:xrm:f:",["unlock_segment_weights","outColumn=","width=","height=","catalog=","loss=","momentum=","special_model2","simple_model","test","build_only","modelin=","resnet50","special_model","modelout=","imagepath=","nesterov","decay=","learningrate=","batchsize","epochs","checkpoint_filepath=","train=","val=","test=","transfer_learning","randomize_weights","batched_reader","model_design="])
     except getopt.GetoptError:
         print ('train.py -i <modelin> -o <modelout> -p <imagepath>')
         sys.exit(2)
@@ -567,6 +609,8 @@ def main(argv):
             outColumn = int(arg)
         elif opt in ("--unlock_segment_weights"):
             unlock_segment_weights = True
+        elif opt in ("--model_design"):
+            mode_design = int(arg)
 
     checkpoint_filepath = modelout+".checkpoint/"
 
@@ -574,7 +618,7 @@ def main(argv):
     print ('Output file is "', modelout)
     print ('Image path is "', imagepath)
 
-    if(not testmode and ((modelin == '' and not use_resnet and not special_model and not special_model2 and not simple_model) or modelout == '' or (imagepath == '' and (train_path == '' or val_path == '')))):
+    if(not testmode and ((modelin == '' and not use_resnet and not special_model and not special_model2 and not simple_model and mode_design < 3) or modelout == '' or (imagepath == '' and (train_path == '' or val_path == '')))):
         print('Missing required parameter.')
         print ('train.py -i <modelin> -o <modelout> -p <imagepath>')
         sys.exit(2)
@@ -589,7 +633,7 @@ def main(argv):
     if(testmode):
         test(modelin,imagepath,WIDTH,HEIGHT,outColumn)
     else:
-        train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model,momentum,loss_function,catalog,WIDTH,HEIGHT,outColumn,unlock_segment_weights)
+        train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model,momentum,loss_function,catalog,WIDTH,HEIGHT,outColumn,unlock_segment_weights,mode_design)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
