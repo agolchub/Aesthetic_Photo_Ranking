@@ -19,50 +19,51 @@ from tensorflow.keras.layers import Conv2D, MaxPooling2D, Concatenate
 from tensorflow.keras.models import Sequential
 from datetime import datetime
 
+
 class CustomDataGen(tf.keras.utils.Sequence):
-    
+
     def __init__(self,
-                 batch_size,path,
+                 batch_size, path,
                  input_size=(1024, 680, 3),
-                 shuffle=True,resnet=False):
-        
+                 shuffle=True, resnet=False):
+
         self.batch_size = batch_size
         self.input_size = input_size
         self.shuffle = shuffle
         self.path = path
-        self.items = glob(os.path.join(self.path,"*.jpg"))
+        self.items = glob(os.path.join(self.path, "*.jpg"))
         self.n = len(self.items)
         self.resnet = resnet
-    
+
     def on_epoch_end(self):
         pass
-    
-    def __getitem__(self, index):
-        #import random
 
-        x = [] # images as arrays
-        y = [] # labels Infiltration or Not_infiltration
+    def __getitem__(self, index):
+        # import random
+
+        x = []  # images as arrays
+        y = []  # labels Infiltration or Not_infiltration
         WIDTH = 1024
         HEIGHT = 680
         if self.resnet:
-            WIDTH=HEIGHT=224
+            WIDTH = HEIGHT = 224
         j = 0
         images = []
         rawscore = 0.0
 
-        for i in range(index*self.batch_size, (index+1)*self.batch_size):
-            if(i>=len(self.items)):
+        for i in range(index * self.batch_size, (index + 1) * self.batch_size):
+            if (i >= len(self.items)):
                 break
             item = self.items[i]
-            #print("Reading " + item)
+            # print("Reading " + item)
             # Read and resize image
             full_size_image = io.imread(item)
             rawscore = float(os.path.basename(item).split("-")[0])
             out = rawscore
             y.append(out)
             images.append(item)
-            resizedImage = resize(full_size_image, (WIDTH,HEIGHT), anti_aliasing=True) 
-            if(len(resizedImage.shape) < 3):
+            resizedImage = resize(full_size_image, (WIDTH, HEIGHT), anti_aliasing=True)
+            if (len(resizedImage.shape) < 3):
                 resizedImage = skimage.color.gray2rgb(resizedImage)
 
             x.append(resizedImage)
@@ -71,61 +72,62 @@ class CustomDataGen(tf.keras.utils.Sequence):
         if self.resnet:
             x = tf.keras.applications.resnet.preprocess_input(x)
 
-        return x,y
-    
+        return x, y
+
     def __len__(self):
         return self.n // self.batch_size
 
+
 class WaitCallback(tf.keras.callbacks.Callback):
-        def on_epoch_end(self, epoch, logs):
-            import time
+    def on_epoch_end(self, epoch, logs):
+        import time
 
-            stream = os.popen("nvidia-smi -q -i 0 -d TEMPERATURE|grep 'GPU Current'|cut -d\" \" -f 30")
-            temp = int(stream.read())
-            print("The temperature of the GPU is ",temp)
+        stream = os.popen("nvidia-smi -q -i 0 -d TEMPERATURE|grep 'GPU Current'|cut -d\" \" -f 30")
+        temp = int(stream.read())
+        print("The temperature of the GPU is ", temp)
 
-            if(temp>75):
-                print("Cooling down...")
-                while(temp>55):
-                    time.sleep(15)
-                    stream = os.popen("nvidia-smi -q -i 0 -d TEMPERATURE|grep 'GPU Current'|cut -d\" \" -f 30")
-                    temp = int(stream.read())
+        if (temp > 75):
+            print("Cooling down...")
+            while (temp > 55):
+                time.sleep(15)
+                stream = os.popen("nvidia-smi -q -i 0 -d TEMPERATURE|grep 'GPU Current'|cut -d\" \" -f 30")
+                temp = int(stream.read())
 
-                print("Resuming -> ")
+            print("Resuming -> ")
 
-            return super().on_epoch_end(epoch, logs=logs)
+        return super().on_epoch_end(epoch, logs=logs)
 
-def proc_image_dir(Images_Path,scores="",categorical=False,WIDTH = 1024, HEIGHT = 680,scoreColumn=5):
+
+def proc_image_dir(Images_Path, scores="", categorical=False, WIDTH=1024, HEIGHT=680, scoreColumn=5):
     import random
     import csv
-#    image_classes = sorted([dirname for dirname in os.listdir(Images_Path)
-#                      if os.path.isdir(os.path.join(Images_Path, dirname)) and not dirname.startswith(".") and not dirname.startswith("mblur")])
-    
-#    print(image_classes)
-    
-    x = [] # images as arrays
-    y = [] # labels Infiltration or Not_infiltration
+    #    image_classes = sorted([dirname for dirname in os.listdir(Images_Path)
+    #                      if os.path.isdir(os.path.join(Images_Path, dirname)) and not dirname.startswith(".") and not dirname.startswith("mblur")])
 
-  
-    print("Adding Images: ",end="")
+    #    print(image_classes)
+
+    x = []  # images as arrays
+    y = []  # labels Infiltration or Not_infiltration
+
+    print("Adding Images: ", end="")
     i = 0
-#    for image_class in image_classes:
-    #print("Processing ", image_class)
-    items = glob(os.path.join(Images_Path,"*"))
+    #    for image_class in image_classes:
+    # print("Processing ", image_class)
+    items = glob(os.path.join(Images_Path, "*"))
     j = 0
     images = []
     rawscore = 0.0
     random.shuffle(items)
-    #items = items[:200]
+    # items = items[:200]
 
     if scores != "":
-        with open(scores,mode='r')as cat:
+        with open(scores, mode='r') as cat:
             csvFile = csv.reader(cat)
             for line in csvFile:
                 try:
-                    imagePath = Images_Path+line[0]
+                    imagePath = Images_Path + line[0]
                     full_size_image = io.imread(imagePath)
-                    resizedImage = resize(full_size_image, (WIDTH,HEIGHT), anti_aliasing=True)
+                    resizedImage = resize(full_size_image, (WIDTH, HEIGHT), anti_aliasing=True)
                     y.append(float(line[scoreColumn]))
                     x.append(resizedImage)
                     images.append(imagePath)
@@ -134,10 +136,10 @@ def proc_image_dir(Images_Path,scores="",categorical=False,WIDTH = 1024, HEIGHT 
                     print("Error ---- ")
                     print(e)
                     print(line)
-        return x,y,images
+        return x, y, images
 
     for item in items:
-        print("Reading "+item)
+        print("Reading " + item)
         if item.lower().endswith(".jpg") or item.lower().endswith(".bmp"):
             # Read and resize image
             full_size_image = io.imread(item)
@@ -145,27 +147,27 @@ def proc_image_dir(Images_Path,scores="",categorical=False,WIDTH = 1024, HEIGHT 
             rawscore = float(os.path.basename(item).split("-")[0])
 
             if rawscore >= 0:
-                #x.append(full_size_image)
-                if(categorical):
-                    out = [0]*5
-                    out[int(rawscore)-1] = 1
+                # x.append(full_size_image)
+                if (categorical):
+                    out = [0] * 5
+                    out[int(rawscore) - 1] = 1
                 else:
-                    out = rawscore#((rawscore - 1.0)/9.0)
+                    out = rawscore  # ((rawscore - 1.0)/9.0)
                 print(out)
                 y.append(out)
                 images.append(item)
-                resizedImage = resize(full_size_image, (WIDTH,HEIGHT), anti_aliasing=True) 
-                if(len(resizedImage.shape) < 3):
+                resizedImage = resize(full_size_image, (WIDTH, HEIGHT), anti_aliasing=True)
+                if (len(resizedImage.shape) < 3):
                     resizedImage = skimage.color.gray2rgb(resizedImage)
                 resizedImage = tf.keras.applications.resnet.preprocess_input(resizedImage)
                 x.append(resizedImage)
-                j+=1
-            #if j>3:
+                j += 1
+            # if j>3:
             #    break
-                
 
     print("\nRead " + str(j) + " images.\n\n")
-    return x,y,images
+    return x, y, images
+
 
 def init_layer(layer):
     try:
@@ -177,48 +179,51 @@ def init_layer(layer):
             layer.kernel.initializer.run(session=session)
         if hasattr(layer, 'bias_initializer'):
             print("initializing bias weights")
-            layer.bias.initializer.run(session=session) 
-        print(layer.name," re-initilized")
+            layer.bias.initializer.run(session=session)
+        print(layer.name, " re-initilized")
     except:
         print(layer.name, " could not be re-initilized", sys.exc_info())
 
-def new_conv2d(input,n,size=(2,2),strides=(2,2),activation="relu",kernel_initializer="glorot_uniform",batch_normalization=True,dropout_rate=0.2):
-    conv2d = layers.Conv2D(n, size, strides=strides, kernel_initializer=kernel_initializer)(input)
-    if(batch_normalization):
-        batchNormalization = layers.BatchNormalization()(conv2d)
-    else:
-        batchNormalization = conv2d
-    activationLayer = layers.Activation(activation)(batchNormalization)
-    dropout = layers.Dropout(dropout_rate)(activationLayer)
+
+def new_conv2d(input, n, size=(2, 2), strides=(2, 2), activation="relu", kernel_initializer="glorot_uniform",
+               batch_normalization=True, dropout_rate=0.2, padding="valid"):
+    conv2d = layers.Conv2D(n, size, strides=strides, kernel_initializer=kernel_initializer, padding=padding)(input)
+    batch_normalization_layer = layers.BatchNormalization()(conv2d) if batch_normalization else conv2d
+    activation_layer = layers.Activation(activation)(batch_normalization_layer) if activation is not None else batch_normalization_layer
+    dropout = layers.Dropout(dropout_rate)(activation_layer) if dropout_rate > 0 else activation_layer
+
     return dropout
 
-def new_dense(input,n,activation="relu",kernel_initializer="glorot_uniform",dropout_rate=0.2):
-    dense = layers.Dense(n, activation=activation,kernel_initializer=kernel_initializer)(input)
+
+def new_dense(input, n, activation="relu", kernel_initializer="glorot_uniform", dropout_rate=0.2):
+    dense = layers.Dense(n, activation=activation, kernel_initializer=kernel_initializer)(input)
     dropout = layers.Dropout(dropout_rate)(dense)
     return dropout
 
-def new_res_block(input,n,m,size,strides):
+
+def new_res_block(input, n, m, size, strides):
     conv2d = layers.Conv2D(n, size, strides=strides)(input)
     batchNormalization = layers.BatchNormalization()(conv2d)
     activation = layers.Activation("relu")(batchNormalization)
     shortcut = activation
-    conv2d = layers.Conv2D(n*m, (2,2), strides=(1,1))(activation)
+    conv2d = layers.Conv2D(n * m, (2, 2), strides=(1, 1))(activation)
     batchNormalization = layers.BatchNormalization()(conv2d)
     activation = layers.Activation("relu")(batchNormalization)
-    conv2d = layers.Conv2D(n*m*m, (2,2), strides=(1,1))(activation)
+    conv2d = layers.Conv2D(n * m * m, (2, 2), strides=(1, 1))(activation)
     batchNormalization = layers.BatchNormalization()(conv2d)
 
-    shortcut = layers.Conv2D(n*m*m, (3,3), strides=(1,1))(shortcut)
+    shortcut = layers.Conv2D(n * m * m, (3, 3), strides=(1, 1))(shortcut)
     shortcut = layers.BatchNormalization()(shortcut)
 
-    add = layers.Add()([batchNormalization,shortcut])
+    add = layers.Add()([batchNormalization, shortcut])
     activation = layers.Activation("relu")(add)
     return activation
 
-def new_res_block_v2(input,n, size=3,strides=1,first_strides=1):
+
+def new_res_block_v2(input, n, size=3, strides=1, first_strides=1):
     shortcut = input
-    if(first_strides!=strides):
-        shortcut = layers.Conv2D(n, (1,1), strides=first_strides, padding='same', activation=None)(shortcut)
+    if (first_strides != strides):
+        shortcut = layers.Conv2D(n, (1, 1), strides=first_strides, padding='same', activation=None)(shortcut)
     conv2d = layers.Conv2D(n, size, strides=first_strides, padding='same', activation=None)(input)
     batch_normalization = layers.BatchNormalization()(conv2d)
     activation = layers.Activation("relu")(batch_normalization)
@@ -228,132 +233,140 @@ def new_res_block_v2(input,n, size=3,strides=1,first_strides=1):
     activation = layers.Activation("relu")(add)
     return activation
 
-def new_res_block_collection_v2(blocks,input,n,size=3,strides=1,first_strides=1):
+
+def new_res_block_collection_v2(blocks, input, n, size=3, strides=1, first_strides=1):
     activation = input
     for i in range(blocks):
         print(i)
         activation = new_res_block_v2(activation, n, size, strides, strides if i != 0 else first_strides)
     return activation
 
-def build_layers_for_model(model,input,unlock_segment_weights):
-    activation="relu"
-    dropout_rate=0.2
-    conv2d = layers.Conv2D(80, (20,20), strides=(5,5), kernel_initializer="glorot_uniform", weights=model.layers[1].get_weights())(input)
+
+def build_layers_for_model(model, input, unlock_segment_weights):
+    activation = "relu"
+    dropout_rate = 0.2
+    conv2d = layers.Conv2D(80, (20, 20), strides=(5, 5), kernel_initializer="glorot_uniform",
+                           weights=model.layers[1].get_weights())(input)
     batchNormalization = layers.BatchNormalization(weights=model.layers[2].get_weights())(conv2d)
-    activationLayer = layers.Activation(activation,weights=model.layers[3].get_weights())(batchNormalization)
-    dropout = layers.Dropout(dropout_rate,weights=model.layers[4].get_weights())(activationLayer)
-    conv2d.trainable=unlock_segment_weights
-    batchNormalization.trainable=unlock_segment_weights
-    activationLayer.trainable=unlock_segment_weights
-    dropout.trainable=unlock_segment_weights
+    activationLayer = layers.Activation(activation, weights=model.layers[3].get_weights())(batchNormalization)
+    dropout = layers.Dropout(dropout_rate, weights=model.layers[4].get_weights())(activationLayer)
+    conv2d.trainable = unlock_segment_weights
+    batchNormalization.trainable = unlock_segment_weights
+    activationLayer.trainable = unlock_segment_weights
+    dropout.trainable = unlock_segment_weights
 
-
-
-    conv2d = layers.Conv2D(80, (5,5), strides=(3,3), kernel_initializer="glorot_uniform", weights=model.layers[5].get_weights())(dropout)
+    conv2d = layers.Conv2D(80, (5, 5), strides=(3, 3), kernel_initializer="glorot_uniform",
+                           weights=model.layers[5].get_weights())(dropout)
     batchNormalization = layers.BatchNormalization(weights=model.layers[6].get_weights())(conv2d)
-    activationLayer = layers.Activation(activation,weights=model.layers[7].get_weights())(batchNormalization)
-    dropout = layers.Dropout(dropout_rate,weights=model.layers[8].get_weights())(activationLayer)
-    conv2d.trainable=unlock_segment_weights
-    batchNormalization.trainable=unlock_segment_weights
-    activationLayer.trainable=unlock_segment_weights
-    dropout.trainable=unlock_segment_weights
+    activationLayer = layers.Activation(activation, weights=model.layers[7].get_weights())(batchNormalization)
+    dropout = layers.Dropout(dropout_rate, weights=model.layers[8].get_weights())(activationLayer)
+    conv2d.trainable = unlock_segment_weights
+    batchNormalization.trainable = unlock_segment_weights
+    activationLayer.trainable = unlock_segment_weights
+    dropout.trainable = unlock_segment_weights
 
-
-    conv2d = layers.Conv2D(80, (3,3), strides=(2,2), kernel_initializer="glorot_uniform", weights=model.layers[9].get_weights())(dropout)
+    conv2d = layers.Conv2D(80, (3, 3), strides=(2, 2), kernel_initializer="glorot_uniform",
+                           weights=model.layers[9].get_weights())(dropout)
     batchNormalization = layers.BatchNormalization(weights=model.layers[10].get_weights())(conv2d)
-    activationLayer = layers.Activation(activation,weights=model.layers[11].get_weights())(batchNormalization)
-    dropout = layers.Dropout(dropout_rate,weights=model.layers[12].get_weights())(activationLayer)
-    conv2d.trainable=unlock_segment_weights
-    batchNormalization.trainable=unlock_segment_weights
-    activationLayer.trainable=unlock_segment_weights
-    dropout.trainable=unlock_segment_weights
+    activationLayer = layers.Activation(activation, weights=model.layers[11].get_weights())(batchNormalization)
+    dropout = layers.Dropout(dropout_rate, weights=model.layers[12].get_weights())(activationLayer)
+    conv2d.trainable = unlock_segment_weights
+    batchNormalization.trainable = unlock_segment_weights
+    activationLayer.trainable = unlock_segment_weights
+    dropout.trainable = unlock_segment_weights
 
-
-
-    conv2d = layers.Conv2D(80, (2,2), strides=(1,1), kernel_initializer="glorot_uniform", weights=model.layers[13].get_weights())(dropout)
+    conv2d = layers.Conv2D(80, (2, 2), strides=(1, 1), kernel_initializer="glorot_uniform",
+                           weights=model.layers[13].get_weights())(dropout)
     batchNormalization = layers.BatchNormalization(weights=model.layers[14].get_weights())(conv2d)
-    activationLayer = layers.Activation(activation,weights=model.layers[15].get_weights())(batchNormalization)
-    dropout = layers.Dropout(dropout_rate,weights=model.layers[16].get_weights())(activationLayer)
-    conv2d.trainable=unlock_segment_weights
-    batchNormalization.trainable=unlock_segment_weights
-    activationLayer.trainable=unlock_segment_weights
-    dropout.trainable=unlock_segment_weights
+    activationLayer = layers.Activation(activation, weights=model.layers[15].get_weights())(batchNormalization)
+    dropout = layers.Dropout(dropout_rate, weights=model.layers[16].get_weights())(activationLayer)
+    conv2d.trainable = unlock_segment_weights
+    batchNormalization.trainable = unlock_segment_weights
+    activationLayer.trainable = unlock_segment_weights
+    dropout.trainable = unlock_segment_weights
 
     return dropout
 
-def build_layers_for_model2(model,input,unlock_segment_weights):
-    activation="relu"
-    dropout_rate=0.2
-    conv2d = layers.Conv2D(80, (20,20), strides=(5,5), kernel_initializer="glorot_uniform", weights=model.layers[1].get_weights())(input)
+
+def build_layers_for_model2(model, input, unlock_segment_weights):
+    activation = "relu"
+    dropout_rate = 0.2
+    conv2d = layers.Conv2D(80, (20, 20), strides=(5, 5), kernel_initializer="glorot_uniform",
+                           weights=model.layers[1].get_weights())(input)
     batchNormalization = layers.BatchNormalization(weights=model.layers[2].get_weights())(conv2d)
-    activationLayer = layers.Activation(activation,weights=model.layers[3].get_weights())(batchNormalization)
-    dropout = layers.Dropout(dropout_rate,weights=model.layers[4].get_weights())(activationLayer)
-    conv2d.trainable=unlock_segment_weights
-    batchNormalization.trainable=unlock_segment_weights
-    activationLayer.trainable=unlock_segment_weights
-    dropout.trainable=unlock_segment_weights
+    activationLayer = layers.Activation(activation, weights=model.layers[3].get_weights())(batchNormalization)
+    dropout = layers.Dropout(dropout_rate, weights=model.layers[4].get_weights())(activationLayer)
+    conv2d.trainable = unlock_segment_weights
+    batchNormalization.trainable = unlock_segment_weights
+    activationLayer.trainable = unlock_segment_weights
+    dropout.trainable = unlock_segment_weights
 
-
-
-    conv2d = layers.Conv2D(80, (5,5), strides=(3,3), kernel_initializer="glorot_uniform", weights=model.layers[5].get_weights())(dropout)
+    conv2d = layers.Conv2D(80, (5, 5), strides=(3, 3), kernel_initializer="glorot_uniform",
+                           weights=model.layers[5].get_weights())(dropout)
     batchNormalization = layers.BatchNormalization(weights=model.layers[6].get_weights())(conv2d)
-    activationLayer = layers.Activation(activation,weights=model.layers[7].get_weights())(batchNormalization)
-    dropout = layers.Dropout(dropout_rate,weights=model.layers[8].get_weights())(activationLayer)
-    conv2d.trainable=unlock_segment_weights
-    batchNormalization.trainable=unlock_segment_weights
-    activationLayer.trainable=unlock_segment_weights
-    dropout.trainable=unlock_segment_weights
+    activationLayer = layers.Activation(activation, weights=model.layers[7].get_weights())(batchNormalization)
+    dropout = layers.Dropout(dropout_rate, weights=model.layers[8].get_weights())(activationLayer)
+    conv2d.trainable = unlock_segment_weights
+    batchNormalization.trainable = unlock_segment_weights
+    activationLayer.trainable = unlock_segment_weights
+    dropout.trainable = unlock_segment_weights
 
-
-    conv2d = layers.Conv2D(80, (3,3), strides=(2,2), kernel_initializer="glorot_uniform", weights=model.layers[9].get_weights())(dropout)
+    conv2d = layers.Conv2D(80, (3, 3), strides=(2, 2), kernel_initializer="glorot_uniform",
+                           weights=model.layers[9].get_weights())(dropout)
     batchNormalization = layers.BatchNormalization(weights=model.layers[10].get_weights())(conv2d)
-    activationLayer = layers.Activation(activation,weights=model.layers[11].get_weights())(batchNormalization)
-    dropout = layers.Dropout(dropout_rate,weights=model.layers[12].get_weights())(activationLayer)
-    conv2d.trainable=unlock_segment_weights
-    batchNormalization.trainable=unlock_segment_weights
-    activationLayer.trainable=unlock_segment_weights
-    dropout.trainable=unlock_segment_weights
+    activationLayer = layers.Activation(activation, weights=model.layers[11].get_weights())(batchNormalization)
+    dropout = layers.Dropout(dropout_rate, weights=model.layers[12].get_weights())(activationLayer)
+    conv2d.trainable = unlock_segment_weights
+    batchNormalization.trainable = unlock_segment_weights
+    activationLayer.trainable = unlock_segment_weights
+    dropout.trainable = unlock_segment_weights
 
-
-
-    conv2d = layers.Conv2D(80, (2,2), strides=(1,1), kernel_initializer="glorot_uniform", weights=model.layers[13].get_weights())(dropout)
+    conv2d = layers.Conv2D(80, (2, 2), strides=(1, 1), kernel_initializer="glorot_uniform",
+                           weights=model.layers[13].get_weights())(dropout)
     batchNormalization = layers.BatchNormalization(weights=model.layers[14].get_weights())(conv2d)
-    activationLayer = layers.Activation(activation,weights=model.layers[15].get_weights())(batchNormalization)
-    dropout = layers.Dropout(dropout_rate,weights=model.layers[16].get_weights())(activationLayer)
-    conv2d.trainable=unlock_segment_weights
-    batchNormalization.trainable=unlock_segment_weights
-    activationLayer.trainable=unlock_segment_weights
-    dropout.trainable=unlock_segment_weights
+    activationLayer = layers.Activation(activation, weights=model.layers[15].get_weights())(batchNormalization)
+    dropout = layers.Dropout(dropout_rate, weights=model.layers[16].get_weights())(activationLayer)
+    conv2d.trainable = unlock_segment_weights
+    batchNormalization.trainable = unlock_segment_weights
+    activationLayer.trainable = unlock_segment_weights
+    dropout.trainable = unlock_segment_weights
 
     f1 = layers.Flatten()(dropout)
 
-    dense = layers.Dense(64, activation=activation,kernel_initializer="glorot_uniform", weights=model.layers[18].get_weights())(f1)
+    dense = layers.Dense(64, activation=activation, kernel_initializer="glorot_uniform",
+                         weights=model.layers[18].get_weights())(f1)
     dropout = layers.Dropout(dropout_rate, weights=model.layers[19].get_weights())(dense)
-    dense = layers.Dense(64, activation=activation,kernel_initializer="glorot_uniform", weights=model.layers[20].get_weights())(dropout)
-    dropout = layers.Dropout(dropout_rate,weights=model.layers[21].get_weights())(dense)
-    d4 = Dense(1, kernel_initializer="he_uniform", activation="hard_sigmoid", weights=model.layers[22].get_weights())(dropout)
+    dense = layers.Dense(64, activation=activation, kernel_initializer="glorot_uniform",
+                         weights=model.layers[20].get_weights())(dropout)
+    dropout = layers.Dropout(dropout_rate, weights=model.layers[21].get_weights())(dense)
+    d4 = Dense(1, kernel_initializer="he_uniform", activation="hard_sigmoid", weights=model.layers[22].get_weights())(
+        dropout)
 
     return d4
 
-def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model,momentum,loss_function,catalog,WIDTH,HEIGHT,outColumn,unlock_segment_weights, model_design):
-    #load model
-    if(simple_model):
-        input = layers.Input((WIDTH,HEIGHT,3))
-        do0 = new_conv2d(input,96,(7,7),(30,30))
-        #do0 = new_conv2d(do0,256,(5,5),(3,3))
-        #do0 = new_conv2d(do0,384,(3,3),(2,2))
-        #do0 = new_conv2d(do0,384,(2,2),(2,2))
-        #do0 = new_conv2d(do0, 256, (2, 2), (2, 2))
 
-        f1   = layers.Flatten()(do0)
+def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov, checkpoint_filepath, train_path,
+          val_path, transfer_learning, randomize_weights, use_resnet, special_model, build_only, special_model2,
+          batched_reader, simple_model, momentum, loss_function, catalog, WIDTH, HEIGHT, outColumn,
+          unlock_segment_weights, model_design):
+    # load model
+    if (simple_model):
+        input = layers.Input((WIDTH, HEIGHT, 3))
+        do0 = new_conv2d(input, 96, (7, 7), (30, 30))
+        # do0 = new_conv2d(do0,256,(5,5),(3,3))
+        # do0 = new_conv2d(do0,384,(3,3),(2,2))
+        # do0 = new_conv2d(do0,384,(2,2),(2,2))
+        # do0 = new_conv2d(do0, 256, (2, 2), (2, 2))
 
-        do1 = new_dense(f1, 4096,dropout_rate=0.2)
-        do2   = new_dense(do1, 4096, dropout_rate=0.2)
+        f1 = layers.Flatten()(do0)
+
+        do1 = new_dense(f1, 4096, dropout_rate=0.2)
+        do2 = new_dense(do1, 4096, dropout_rate=0.2)
         do2 = new_dense(do2, 1024, dropout_rate=0.2)
-        d4    = Dense(1, kernel_initializer="he_uniform", activation="sigmoid")(do2)
-        model = models.Model(inputs=input,outputs=d4)
-    elif(special_model):
-        input = layers.Input((WIDTH,HEIGHT,3))
+        d4 = Dense(1, kernel_initializer="he_uniform", activation="sigmoid")(do2)
+        model = models.Model(inputs=input, outputs=d4)
+    elif (special_model):
+        input = layers.Input((WIDTH, HEIGHT, 3))
         model1 = models.load_model("./segmented_models_3/color")
         model2 = models.load_model("./segmented_models_3/framing")
         model3 = models.load_model("./segmented_models_3/lighting")
@@ -361,27 +374,27 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
 
         model = models.Sequential()
 
-        m1 = build_layers_for_model(model1,input,unlock_segment_weights)
-        m2 = build_layers_for_model(model2,input,unlock_segment_weights)
-        m3 = build_layers_for_model(model3,input,unlock_segment_weights)
-        m4 = build_layers_for_model(model4,input,unlock_segment_weights)
-      
+        m1 = build_layers_for_model(model1, input, unlock_segment_weights)
+        m2 = build_layers_for_model(model2, input, unlock_segment_weights)
+        m3 = build_layers_for_model(model3, input, unlock_segment_weights)
+        m4 = build_layers_for_model(model4, input, unlock_segment_weights)
 
-        do0 = new_conv2d(input,80,(20,20),(5,5))
-        do0 = new_conv2d(do0,80,(5,5),(3,3))
-        do0 = new_conv2d(do0,80,(3,3),(2,2))
-        do0 = new_conv2d(do0,80,(2,2),(1,1))
-        
-        f1   = layers.Flatten()(do0)
+        do0 = new_conv2d(input, 80, (20, 20), (5, 5))
+        do0 = new_conv2d(do0, 80, (5, 5), (3, 3))
+        do0 = new_conv2d(do0, 80, (3, 3), (2, 2))
+        do0 = new_conv2d(do0, 80, (2, 2), (1, 1))
 
-        f1   = layers.Concatenate()([layers.Flatten()(m1),layers.Flatten()(m2),layers.Flatten()(m3),layers.Flatten()(m4)])
+        f1 = layers.Flatten()(do0)
 
-        do1 = new_dense(f1, 256,dropout_rate=0.2)
-        do2   = new_dense(do1, 128, dropout_rate=0.2)
-        do2   = new_dense(do1, 64, dropout_rate=0.2)
-        do2   = new_dense(do2, 10, dropout_rate=0.2)
-        d4    = Dense(1, kernel_initializer="he_uniform", activation="linear")(do2)
-        model = models.Model(inputs=input,outputs=d4)
+        f1 = layers.Concatenate()(
+            [layers.Flatten()(m1), layers.Flatten()(m2), layers.Flatten()(m3), layers.Flatten()(m4)])
+
+        do1 = new_dense(f1, 256, dropout_rate=0.2)
+        do2 = new_dense(do1, 128, dropout_rate=0.2)
+        do2 = new_dense(do1, 64, dropout_rate=0.2)
+        do2 = new_dense(do2, 10, dropout_rate=0.2)
+        d4 = Dense(1, kernel_initializer="he_uniform", activation="linear")(do2)
+        model = models.Model(inputs=input, outputs=d4)
     elif (special_model2):
         input = layers.Input((WIDTH, HEIGHT, 3))
         model1 = models.load_model("./segmented_models_3/color")
@@ -401,28 +414,28 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         model = models.Model(inputs=input, outputs=f1)
     elif model_design == 3:
         input = layers.Input((WIDTH, HEIGHT, 3))
-        conv2d = new_conv2d(input,64,(7,7),strides=(1,1))
+        conv2d = new_conv2d(input, 64, (7, 7), strides=(1, 1))
         maxpool = layers.MaxPooling2D()(conv2d)
         res = new_res_block_collection_v2(3, maxpool, 64)
-        res = new_res_block_collection_v2(4, res, 128, first_strides=(2,2))
+        res = new_res_block_collection_v2(4, res, 128, first_strides=(2, 2))
         res = new_res_block_collection_v2(6, res, 256, first_strides=2)
         res = new_res_block_collection_v2(3, res, 512, first_strides=2)
         flat = layers.Flatten()(res)
-        #dense = new_dense(flat, 4096)
-        #dense = new_dense(dense, 2048)
-        #dense = new_dense(dense, 1024)
-        #dense = new_dense(dense, 512)
-        #dense = new_dense(dense, 256)
-        #dense = new_dense(dense, 128)
+        # dense = new_dense(flat, 4096)
+        # dense = new_dense(dense, 2048)
+        # dense = new_dense(dense, 1024)
+        # dense = new_dense(dense, 512)
+        # dense = new_dense(dense, 256)
+        # dense = new_dense(dense, 128)
         dense = Dense(1, kernel_initializer="he_uniform", activation="linear")(flat)
         model = models.Model(inputs=input, outputs=dense)
 
     elif model_design == 4:
         input = layers.Input((WIDTH, HEIGHT, 3))
-        conv2d = new_conv2d(input,64,(7,7),strides=(1,1))
+        conv2d = new_conv2d(input, 64, (7, 7), strides=(1, 1))
         maxpool = layers.MaxPooling2D()(conv2d)
         res1 = new_res_block_collection_v2(3, maxpool, 64)
-        res2 = new_res_block_collection_v2(4, res1, 128, first_strides=(2,2))
+        res2 = new_res_block_collection_v2(4, res1, 128, first_strides=(2, 2))
         res3 = new_res_block_collection_v2(6, res2, 256, first_strides=2)
         res4 = new_res_block_collection_v2(3, res3, 512, first_strides=2)
 
@@ -439,72 +452,96 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         flat2 = layers.Flatten()(res2)
         flat3 = layers.Flatten()(res3)
         flat4 = layers.Flatten()(res4)
-        #dense = new_dense(flat, 4096)
-        #dense = new_dense(dense, 2048)
-        #dense = new_dense(dense, 1024)
-        #dense = new_dense(dense, 512)
-        #dense = new_dense(dense, 256)
-        #dense = new_dense(dense, 128)
 
         dense1 = new_dense(flat1, 16)
         dense2 = new_dense(flat2, 16)
         dense3 = new_dense(flat3, 16)
         dense4 = new_dense(flat4, 16)
 
-        concat = Concatenate()([dense1,dense2,dense3,dense4])
+        concat = Concatenate()([dense1, dense2, dense3, dense4])
 
         output = Dense(1, kernel_initializer="he_uniform", activation="linear")(concat)
         model = models.Model(inputs=input, outputs=output)
+
+    elif model_design == 5:
+        input = layers.Input((WIDTH, HEIGHT, 3))
+        conv2d = new_conv2d(input, 64, (7, 7), strides=(1, 1))
+        maxpool = layers.MaxPooling2D()(conv2d)
+        res1 = new_res_block_collection_v2(3, maxpool, 64)
+        res2 = new_res_block_collection_v2(4, res1, 128, first_strides=(2, 2))
+        res3 = new_res_block_collection_v2(6, res2, 256, first_strides=2)
+        res4 = new_res_block_collection_v2(3, res3, 512, first_strides=2)
+
+        res1 = new_conv2d(res1, 128, (3, 3), strides=(2, 2), padding="same")
+        res1 = new_conv2d(res1, 256, (2, 2), strides=(2, 2), padding="same")
+        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+
+        res2 = new_conv2d(res2, 256, (3, 3), strides=(2, 2), padding="same")
+        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+
+        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+
+        add = layers.Add()([res1, res2, res3, res4])
+        res_combined = layers.Activation("relu")(add)
+
+        flat = layers.Flatten()(res_combined)
+
+        output = Dense(1, kernel_initializer="he_uniform", activation="linear")(flat)
+        model = models.Model(inputs=input, outputs=output)
+
     else:
         model = models.load_model(modelin)
 
     if transfer_learning:
         for layer in model.layers:
             if (isinstance(layer, tf.keras.layers.Conv2D)):
-                print("conv layer",layer.name)
+                print("conv layer", layer.name)
                 layer.trainable = False
 
     if randomize_weights:
-        
+
         for layer in model.layers:
-            if(layer.trainable):
+            if (layer.trainable):
                 init_layer(layer)
 
     # Define the Keras TensorBoard callback.
-    logdir=modelout+".logs/fit/" + datetime.now().strftime("%Y%m%d-%H%M%S")
+    logdir = modelout + ".logs/fit/" + datetime.now().strftime("%Y%m%d-%H%M%S")
     tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=logdir)
 
-    #model.build()
+    # model.build()
     model.compile(
         loss='mse',
         optimizer=optimizers.Adam(lr=0.01, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0))
 
     print(model.summary())
-    if(build_only):
-        img_file = modelout+'-model_arch.png'
+    if (build_only):
+        img_file = modelout + '-model_arch.png'
         tf.keras.utils.plot_model(model, to_file=img_file, show_shapes=True, show_layer_names=True)
         model.save(modelout)
         exit(0)
 
-    if(imagepath!=''):
-        #load images
-        x2,y2,images = proc_image_dir(imagepath)
-        
+    if (imagepath != ''):
+        # load images
+        x2, y2, images = proc_image_dir(imagepath)
+
         # First split the data in two sets, 60% for training, 40% for Val/Test)
-        X_train, X_valtest, y_train, y_valtest = train_test_split(x2,y2, test_size=0.4, random_state=1)
+        X_train, X_valtest, y_train, y_valtest = train_test_split(x2, y2, test_size=0.4, random_state=1)
 
         # Second split the 40% into validation and test sets
         X_test, X_val, y_test, y_val = train_test_split(X_valtest, y_valtest, test_size=0.5, random_state=1)
-    elif(batched_reader):
-        training_generator = CustomDataGen(batch_size,train_path,resnet=use_resnet)
-        validation_generator = CustomDataGen(batch_size,val_path,resnet=use_resnet)
+    elif (batched_reader):
+        training_generator = CustomDataGen(batch_size, train_path, resnet=use_resnet)
+        validation_generator = CustomDataGen(batch_size, val_path, resnet=use_resnet)
     else:
-        X_train,y_train,image_list_train = proc_image_dir(os.path.dirname(os.path.abspath(train_path))+'/JPEG/',train_path,WIDTH=WIDTH,HEIGHT=HEIGHT,scoreColumn=outColumn)
-        X_val,y_val,image_list_val = proc_image_dir(os.path.dirname(os.path.abspath(val_path))+'/JPEG/',val_path,WIDTH=WIDTH,HEIGHT=HEIGHT,scoreColumn=outColumn)
+        X_train, y_train, image_list_train = proc_image_dir(os.path.dirname(os.path.abspath(train_path)) + '/JPEG/',
+                                                            train_path, WIDTH=WIDTH, HEIGHT=HEIGHT,
+                                                            scoreColumn=outColumn)
+        X_val, y_val, image_list_val = proc_image_dir(os.path.dirname(os.path.abspath(val_path)) + '/JPEG/', val_path,
+                                                      WIDTH=WIDTH, HEIGHT=HEIGHT, scoreColumn=outColumn)
 
-    #run training loop
+    # run training loop
     model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
-        filepath=checkpoint_filepath,   
+        filepath=checkpoint_filepath,
         save_weights_only=False,
         monitor='val_loss',
         mode='min',
@@ -514,46 +551,51 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
 
     model.compile(
         loss=loss_function,
-        optimizer=optimizers.SGD(learning_rate=lr,momentum = momentum, decay=decay, nesterov=nesterov),
+        optimizer=optimizers.SGD(learning_rate=lr, momentum=momentum, decay=decay, nesterov=nesterov),
         metrics=['accuracy'])
-    #model.build()
-    #history = model.fit(np.array(X_train), np.array(y_train),
+    # model.build()
+    # history = model.fit(np.array(X_train), np.array(y_train),
     #    validation_data=(np.array(X_val), np.array(y_val)),
     #        epochs=epochs, batch_size=batch_size,
     #        callbacks=[model_checkpoint_callback,wait_callback])
-    if(batched_reader):
+    if (batched_reader):
         history = model.fit_generator(generator=training_generator,
-                    validation_data=validation_generator,
-                    epochs=epochs,callbacks=[model_checkpoint_callback])#,wait_callback,tensorboard_callback])
+                                      validation_data=validation_generator,
+                                      epochs=epochs,
+                                      callbacks=[model_checkpoint_callback])  # ,wait_callback,tensorboard_callback])
     else:
         history = model.fit(np.array(X_train), np.array(y_train),
-        validation_data=(np.array(X_val), np.array(y_val)),
-            epochs=epochs, batch_size=batch_size,
-            callbacks=[model_checkpoint_callback,tensorboard_callback])#,wait_callback,tensorboard_callback])
+                            validation_data=(np.array(X_val), np.array(y_val)),
+                            epochs=epochs, batch_size=batch_size,
+                            callbacks=[model_checkpoint_callback,
+                                       tensorboard_callback])  # ,wait_callback,tensorboard_callback])
 
-    #save model
+    # save model
     model.save(modelout)
 
-    print ([model.history.history["loss"],model.history.history["val_loss"]])
+    print([model.history.history["loss"], model.history.history["val_loss"]])
 
-def test(modelin,imagepath,WIDTH,HEIGHT,outColumn):
+
+def test(modelin, imagepath, WIDTH, HEIGHT, outColumn):
     model = models.load_model(modelin)
-    #model.load_weights(modelin+".checkpoint/")
+    # model.load_weights(modelin+".checkpoint/")
     print("Model Loaded")
     print(model.summary())
-    x,y,images = proc_image_dir(os.path.dirname(os.path.abspath(imagepath))+'/JPEG/',imagepath,WIDTH=WIDTH,HEIGHT=HEIGHT,scoreColumn=outColumn)
-    a=np.array(x).astype(float)
+    x, y, images = proc_image_dir(os.path.dirname(os.path.abspath(imagepath)) + '/JPEG/', imagepath, WIDTH=WIDTH,
+                                  HEIGHT=HEIGHT, scoreColumn=outColumn)
+    a = np.array(x).astype(float)
     Y_pred = model.predict(a)
     print(np.array(y))
     print(Y_pred)
 
     np.set_printoptions(threshold=sys.maxsize)
 
-    print(np.argmax(np.array(y),axis=1))
-    print(np.argmax(Y_pred,axis=1))
+    print(np.argmax(np.array(y), axis=1))
+    print(np.argmax(Y_pred, axis=1))
 
     loss, acc = model.evaluate(a, np.array(y), verbose=2)
     print("Restored model, accuracy: {:5.2f}%".format(100 * acc))
+
 
 def main(argv):
     modelin = ''
@@ -576,7 +618,7 @@ def main(argv):
     special_model2 = False
     batched_reader = False
     simple_model = False
-    catalog=""
+    catalog = ""
     momentum = 0.0
     loss_function = 'mse'
     WIDTH = 1024
@@ -584,15 +626,20 @@ def main(argv):
     outColumn = 5
     unlock_segment_weights = False
 
-
     try:
-        opts, args = getopt.getopt(argv,"hi:o:p:nd:l:b:e:c:t:v:xrm:f:",["unlock_segment_weights","outColumn=","width=","height=","catalog=","loss=","momentum=","special_model2","simple_model","test","build_only","modelin=","resnet50","special_model","modelout=","imagepath=","nesterov","decay=","learningrate=","batchsize","epochs","checkpoint_filepath=","train=","val=","test=","transfer_learning","randomize_weights","batched_reader","model_design="])
+        opts, args = getopt.getopt(argv, "hi:o:p:nd:l:b:e:c:t:v:xrm:f:",
+                                   ["unlock_segment_weights", "outColumn=", "width=", "height=", "catalog=", "loss=",
+                                    "momentum=", "special_model2", "simple_model", "test", "build_only", "modelin=",
+                                    "resnet50", "special_model", "modelout=", "imagepath=", "nesterov", "decay=",
+                                    "learningrate=", "batchsize", "epochs", "checkpoint_filepath=", "train=", "val=",
+                                    "test=", "transfer_learning", "randomize_weights", "batched_reader",
+                                    "model_design="])
     except getopt.GetoptError:
-        print ('train.py -i <modelin> -o <modelout> -p <imagepath>')
+        print('train.py -i <modelin> -o <modelout> -p <imagepath>')
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
-            print ('train.py -i <modelin> -o <modelout> -p <imagepath>')
+            print('train.py -i <modelin> -o <modelout> -p <imagepath>')
             sys.exit()
         elif opt in ("-i", "--modelin"):
             modelin = arg
@@ -613,7 +660,7 @@ def main(argv):
         elif opt in ("-t", "--train"):
             train_path = arg
         elif opt in ("-v", "--val"):
-            val_path = arg  
+            val_path = arg
         elif opt in ("-x", "--transfer_learning"):
             transfer_learning = True
         elif opt in ("-r", "--randomize_weights"):
@@ -632,9 +679,9 @@ def main(argv):
             batched_reader = True
         elif opt in ("--simple_model"):
             simple_model = True
-        elif opt in ("-e","--momentum"):
+        elif opt in ("-e", "--momentum"):
             momentum = arg
-        elif opt in ("-f","--loss"):
+        elif opt in ("-f", "--loss"):
             loss_function = arg
         elif opt in ("--catalog"):
             catalog = arg
@@ -649,28 +696,34 @@ def main(argv):
         elif opt in ("--model_design"):
             mode_design = int(arg)
 
-    checkpoint_filepath = modelout+".checkpoint/"
+    checkpoint_filepath = modelout + ".checkpoint/"
 
-    print ('Input file is "', modelin)
-    print ('Output file is "', modelout)
-    print ('Image path is "', imagepath)
+    print('Input file is "', modelin)
+    print('Output file is "', modelout)
+    print('Image path is "', imagepath)
 
-    if(not testmode and ((modelin == '' and not use_resnet and not special_model and not special_model2 and not simple_model and mode_design < 3) or modelout == '' or (imagepath == '' and (train_path == '' or val_path == '')))):
+    if (not testmode and ((
+                                  modelin == '' and not use_resnet and not special_model and not special_model2 and not simple_model and mode_design < 3) or modelout == '' or (
+                                  imagepath == '' and (train_path == '' or val_path == '')))):
         print('Missing required parameter.')
-        print ('train.py -i <modelin> -o <modelout> -p <imagepath>')
+        print('train.py -i <modelin> -o <modelout> -p <imagepath>')
         sys.exit(2)
 
-    if(testmode and (modelin == '' or imagepath == '')):
+    if (testmode and (modelin == '' or imagepath == '')):
         print('Missing required parameter.')
-        print ('train.py --test -i <modelin> -p <imagepath>')
+        print('train.py --test -i <modelin> -p <imagepath>')
         sys.exit(2)
 
-    print ('--------------------\n\n')
+    print('--------------------\n\n')
 
-    if(testmode):
-        test(modelin,imagepath,WIDTH,HEIGHT,outColumn)
+    if (testmode):
+        test(modelin, imagepath, WIDTH, HEIGHT, outColumn)
     else:
-        train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model,momentum,loss_function,catalog,WIDTH,HEIGHT,outColumn,unlock_segment_weights,mode_design)
+        train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov, checkpoint_filepath, train_path,
+              val_path, transfer_learning, randomize_weights, use_resnet, special_model, build_only, special_model2,
+              batched_reader, simple_model, momentum, loss_function, catalog, WIDTH, HEIGHT, outColumn,
+              unlock_segment_weights, mode_design)
+
 
 if __name__ == "__main__":
     main(sys.argv[1:])
