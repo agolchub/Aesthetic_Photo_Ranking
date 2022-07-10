@@ -354,10 +354,10 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         model = models.Model(inputs=input,outputs=d4)
     elif(special_model):
         input = layers.Input((WIDTH,HEIGHT,3))
-        model1 = models.load_model("./segmented_models/color")
-        model2 = models.load_model("./segmented_models/framing")
-        model3 = models.load_model("./segmented_models/lighting")
-        model4 = models.load_model("./segmented_models/symmetry")
+        model1 = models.load_model("./segmented_models_3/color")
+        model2 = models.load_model("./segmented_models_3/framing")
+        model3 = models.load_model("./segmented_models_3/lighting")
+        model4 = models.load_model("./segmented_models_3/symmetry")
 
         model = models.Sequential()
 
@@ -384,10 +384,10 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         model = models.Model(inputs=input,outputs=d4)
     elif (special_model2):
         input = layers.Input((WIDTH, HEIGHT, 3))
-        model1 = models.load_model("./segmented_models/color")
-        model2 = models.load_model("./segmented_models/framing")
-        model3 = models.load_model("./segmented_models/lighting")
-        model4 = models.load_model("./segmented_models/symmetry")
+        model1 = models.load_model("./segmented_models_3/color")
+        model2 = models.load_model("./segmented_models_3/framing")
+        model3 = models.load_model("./segmented_models_3/lighting")
+        model4 = models.load_model("./segmented_models_3/symmetry")
 
         model = models.Sequential()
 
@@ -417,7 +417,44 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         dense = Dense(1, kernel_initializer="he_uniform", activation="linear")(flat)
         model = models.Model(inputs=input, outputs=dense)
 
+    elif model_design == 4:
+        input = layers.Input((WIDTH, HEIGHT, 3))
+        conv2d = new_conv2d(input,64,(7,7),strides=(1,1))
+        maxpool = layers.MaxPooling2D()(conv2d)
+        res1 = new_res_block_collection_v2(3, maxpool, 64)
+        res2 = new_res_block_collection_v2(4, res1, 128, first_strides=(2,2))
+        res3 = new_res_block_collection_v2(6, res2, 256, first_strides=2)
+        res4 = new_res_block_collection_v2(3, res3, 512, first_strides=2)
 
+        res1 = new_conv2d(res1, 128, (3, 3), strides=(2, 2))
+        res1 = new_conv2d(res1, 256, (3, 3), strides=(2, 2))
+        res1 = new_conv2d(res1, 512, (3, 3), strides=(2, 2))
+
+        res2 = new_conv2d(res2, 256, (3, 3), strides=(2, 2))
+        res2 = new_conv2d(res2, 512, (3, 3), strides=(2, 2))
+
+        res3 = new_conv2d(res3, 512, (3, 3), strides=(2, 2))
+
+        flat1 = layers.Flatten()(res1)
+        flat2 = layers.Flatten()(res2)
+        flat3 = layers.Flatten()(res3)
+        flat4 = layers.Flatten()(res4)
+        #dense = new_dense(flat, 4096)
+        #dense = new_dense(dense, 2048)
+        #dense = new_dense(dense, 1024)
+        #dense = new_dense(dense, 512)
+        #dense = new_dense(dense, 256)
+        #dense = new_dense(dense, 128)
+
+        dense1 = new_dense(flat1, 16)
+        dense2 = new_dense(flat2, 16)
+        dense3 = new_dense(flat3, 16)
+        dense4 = new_dense(flat4, 16)
+
+        concat = Concatenate()([dense1,dense2,dense3,dense4])
+
+        output = Dense(1, kernel_initializer="he_uniform", activation="linear")(concat)
+        model = models.Model(inputs=input, outputs=output)
     else:
         model = models.load_model(modelin)
 
