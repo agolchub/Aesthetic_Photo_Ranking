@@ -512,8 +512,9 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
 
         flat = layers.Flatten()(res_combined)
 
-        output = Dense(1, kernel_initializer="he_uniform", activation="linear")(flat)
-        output = tf.math.round(output)
+        dense = new_dense(flat, 128)
+
+        output = Dense(1, kernel_initializer="he_uniform", activation="linear")(dense)
         model = models.Model(inputs=input, outputs=output)
 
     else:
