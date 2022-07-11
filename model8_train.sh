@@ -8,4 +8,4 @@
 
 # Execute the task
 conda activate tf2-gpu
-srun python ./train_segmented.py --model_design 8 -o model8.1.train -b 5 --loss mse -e 200 -l 0.1 -d 0.001 -t ./databaserelease2/train.csv -v ./databaserelease2/val.csv --width 1024 --height 1024 --outColumn 12
+srun python ./train_segmented.py --model_design 8 -o model8.1.train -b 5 --loss mae -e 200 -l 0.01 -d 0.001 -t ./databaserelease2/train.csv -v ./databaserelease2/val.csv --width 1024 --height 1024 --outColumn 12
