@@ -550,7 +550,7 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
 
     elif model_design == 8:
         input = layers.Input((WIDTH, HEIGHT, 3))
-        conv2d = new_conv2d(input, 64, (7, 7), strides=(1, 1), padding="same")
+        conv2d = new_conv2d(input, 64, (7, 7), strides=(1, 1))
         maxpool = layers.MaxPooling2D()(conv2d)
         res1 = new_res_block_collection_v2(3, maxpool, 64)
         res2 = new_res_block_collection_v2(4, res1, 128, first_strides=(2, 2))
@@ -569,7 +569,7 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
         add = layers.Add()([res1, res2, res3, res4])
 
 
-        conv2d = new_conv2d(input, 64, (14, 14), strides=(1, 1), padding="same")
+        conv2d = new_conv2d(input, 64, (14, 14), strides=(1, 1))
         maxpool = layers.MaxPooling2D()(conv2d)
         res1 = new_res_block_collection_v2(3, maxpool, 64)
         res2 = new_res_block_collection_v2(4, res1, 128, first_strides=(2, 2))
