@@ -592,7 +592,7 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
 
         flat = layers.Flatten()(res_combined)
 
-        output = Dense(1, kernel_initializer="he_uniform", activation="sigmoid")(flat)
+        output = Dense(1, activation="sigmoid")(flat)
         model = models.Model(inputs=input, outputs=output)
 
     else:
