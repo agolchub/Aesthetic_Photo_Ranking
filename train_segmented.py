@@ -652,7 +652,7 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
 
     model.compile(
         loss=loss_function,
-        optimizer=optimizers.SGD(learning_rate=lr, momentum=momentum, decay=decay, nesterov=nesterov),
+        optimizer=optimizers.Adam(learning_rate=lr),
         metrics=['accuracy'])
     # model.build()
     # history = model.fit(np.array(X_train), np.array(y_train),
@@ -688,6 +688,8 @@ def test(modelin, imagepath, WIDTH, HEIGHT, outColumn):
     Y_pred = model.predict(a)
     print(np.array(y))
     print(Y_pred)
+
+    model.add(tf.math.round())
 
     np.set_printoptions(threshold=sys.maxsize)
 
