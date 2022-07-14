@@ -796,7 +796,7 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
 
     model.compile(
         loss=loss_function,
-        optimizer=optimizers.Adam(learning_rate=lr),
+        optimizer=optimizers.SGD(learning_rate=lr),
         metrics=['accuracy'])
     # model.build()
     # history = model.fit(np.array(X_train), np.array(y_train),
