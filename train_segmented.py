@@ -128,7 +128,12 @@ def proc_image_dir(Images_Path, scores="", categorical=False, WIDTH=1024, HEIGHT
                     imagePath = Images_Path + line[0]
                     full_size_image = io.imread(imagePath)
                     resizedImage = resize(full_size_image, (WIDTH, HEIGHT), anti_aliasing=True)
-                    y.append(float(line[scoreColumn]))
+                    if (categorical):
+                        out = [0] * 5
+                        out[int(rawscore)] = 1
+                    else:
+                        out = rawscore  # ((rawscore - 1.0)/9.0)
+                    y.append(out)
                     x.append(resizedImage)
                     images.append(imagePath)
                     print(line[scoreColumn] + " - " + imagePath)
@@ -634,6 +639,7 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
         model = models.load_model(modelin)
 
     categorical = model.output_shape[1] > 1
+    print("categorical: " + str(categorical))
 
     if transfer_learning:
         for layer in model.layers:
