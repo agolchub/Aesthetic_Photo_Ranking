@@ -874,6 +874,7 @@ def main(argv):
     HEIGHT = 680
     outColumn = 5
     unlock_segment_weights = False
+    model_design = 0
 
     try:
         opts, args = getopt.getopt(argv, "hi:o:p:nd:l:b:e:c:t:v:xrm:f:",
@@ -943,7 +944,7 @@ def main(argv):
         elif opt in ("--unlock_segment_weights"):
             unlock_segment_weights = True
         elif opt in ("--model_design"):
-            mode_design = int(arg)
+            model_design = int(arg)
 
     checkpoint_filepath = modelout + ".checkpoint/"
 
@@ -952,7 +953,7 @@ def main(argv):
     print('Image path is "', imagepath)
 
     if (not testmode and ((
-                                  modelin == '' and not use_resnet and not special_model and not special_model2 and not simple_model and mode_design < 3) or modelout == '' or (
+                                  modelin == '' and not use_resnet and not special_model and not special_model2 and not simple_model and model_design < 3) or modelout == '' or (
                                   imagepath == '' and (train_path == '' or val_path == '')))):
         print('Missing required parameter.')
         print('train.py -i <modelin> -o <modelout> -p <imagepath>')
@@ -971,7 +972,7 @@ def main(argv):
         train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov, checkpoint_filepath, train_path,
               val_path, transfer_learning, randomize_weights, use_resnet, special_model, build_only, special_model2,
               batched_reader, simple_model, momentum, loss_function, catalog, WIDTH, HEIGHT, outColumn,
-              unlock_segment_weights, mode_design)
+              unlock_segment_weights, model_design)
 
 
 if __name__ == "__main__":
