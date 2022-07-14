@@ -433,7 +433,7 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
         # dense = new_dense(dense, 512)
         # dense = new_dense(dense, 256)
         # dense = new_dense(dense, 128)
-        dense = Dense(1, kernel_initializer="he_uniform", activation="linear")(flat)
+        dense = Dense(5, kernel_initializer="he_uniform", activation="softmax")(flat)
         model = models.Model(inputs=input, outputs=dense)
 
     elif model_design == 4:
