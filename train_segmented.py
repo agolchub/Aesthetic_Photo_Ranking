@@ -130,7 +130,7 @@ def proc_image_dir(Images_Path, scores="", categorical=False, WIDTH=1024, HEIGHT
                     resizedImage = resize(full_size_image, (WIDTH, HEIGHT), anti_aliasing=True)
                     if (categorical):
                         out = [0] * 5
-                        out[int(rawscore)] = 1
+                        out[int(line[scoreColumn])] = 1
                     else:
                         out = rawscore  # ((rawscore - 1.0)/9.0)
                     y.append(out)
