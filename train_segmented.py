@@ -714,9 +714,25 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
 
         output = Dense(5, kernel_initializer="he_uniform", activation="softmax")(dense)
         model = models.Model(inputs=input, outputs=output)
+    elif model_design == 13:
+        input = layers.Input((WIDTH, HEIGHT, 3))
+        conv2d = new_conv2d(input, 80, (12, 8), strides=(6, 4))
+        conv2d = new_conv2d(conv2d, 128, (7, 7), strides=(4, 4))
+        conv2d = new_conv2d(conv2d, 256, (3, 3), strides=(4, 4))
+        conv2d = new_conv2d(conv2d, 256, (3, 3), strides=(4, 4))
+
+        flat = Flatten()(conv2d)
+
+        dense = Dense(128, activation="relu")(flat)
+        dense = Dense(128, activation="relu")(dense)
+
+        output = Dense(5, kernel_initializer="he_uniform", activation="softmax")(dense)
+        model = models.Model(inputs=input, outputs=output)
 
     else:
         model = models.load_model(modelin)
+
+
 
     categorical = model.output_shape[1] > 1
     print("categorical: " + str(categorical))
