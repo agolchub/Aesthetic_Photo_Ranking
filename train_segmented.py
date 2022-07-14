@@ -723,8 +723,8 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
 
         flat = Flatten()(conv2d)
 
-        dense = Dense(128, activation="relu")(flat)
-        dense = Dense(128, activation="relu")(dense)
+        dense = Dropout(0.2)(Dense(128, activation="relu")(flat))
+        dense = Dropout(0.2)(Dense(128, activation="relu")(dense))
 
         output = Dense(5, kernel_initializer="he_uniform", activation="softmax")(dense)
         model = models.Model(inputs=input, outputs=output)
