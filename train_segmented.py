@@ -150,7 +150,7 @@ def proc_image_dir(Images_Path, scores="", categorical=False, WIDTH=1024, HEIGHT
                 # x.append(full_size_image)
                 if (categorical):
                     out = [0] * 5
-                    out[int(rawscore) - 1] = 1
+                    out[int(rawscore)] = 1
                 else:
                     out = rawscore  # ((rawscore - 1.0)/9.0)
                 print(out)
@@ -349,6 +349,7 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
           val_path, transfer_learning, randomize_weights, use_resnet, special_model, build_only, special_model2,
           batched_reader, simple_model, momentum, loss_function, catalog, WIDTH, HEIGHT, outColumn,
           unlock_segment_weights, model_design):
+    categorical = False
     # load model
     if (simple_model):
         input = layers.Input((WIDTH, HEIGHT, 3))
@@ -590,8 +591,49 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
         output = Dense(1, kernel_initializer="he_uniform", activation="linear")(concat)
         model = models.Model(inputs=input, outputs=output)
 
+    elif model_design == 9:
+        input = layers.Input((WIDTH, HEIGHT, 3))
+        conv2d = new_conv2d(input, 64, (35, 35), strides=(2, 2), padding="same")
+        conv2d = new_conv2d(conv2d, 128, (17, 17), strides=(2, 2), padding="same")
+        conv2d = new_conv2d(conv2d, 256, (9, 9), strides=(2, 2), padding="same")
+        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
+        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
+        conv2d_1 = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
+
+        conv2d = new_conv2d(input, 64, (49, 49), strides=(2, 2), padding="same")
+        conv2d = new_conv2d(conv2d, 128, (23, 23), strides=(2, 2), padding="same")
+        conv2d = new_conv2d(conv2d, 256, (11, 11), strides=(2, 2), padding="same")
+        conv2d = new_conv2d(conv2d, 512, (5, 5), strides=(2, 2), padding="same")
+        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
+        conv2d_2 = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
+
+        conv2d = new_conv2d(input, 64, (7, 7), strides=(2, 2), padding="same")
+        conv2d = new_conv2d(conv2d, 128, (5, 5), strides=(2, 2), padding="same")
+        conv2d = new_conv2d(conv2d, 256, (3, 3), strides=(2, 2), padding="same")
+        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
+        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
+        conv2d_3 = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
+
+        conv2d = new_conv2d(input, 64, (128, 128), strides=(2, 2), padding="same")
+        conv2d = new_conv2d(conv2d, 128, (23, 23), strides=(2, 2), padding="same")
+        conv2d = new_conv2d(conv2d, 256, (7, 7), strides=(2, 2), padding="same")
+        conv2d = new_conv2d(conv2d, 512, (5, 5), strides=(2, 2), padding="same")
+        conv2d = new_conv2d(conv2d, 512, (5, 5), strides=(2, 2), padding="same")
+        conv2d_4 = new_conv2d(conv2d, 512, (5, 5), strides=(2, 2), padding="same")
+
+        flat_1 = layers.Flatten()(conv2d_1)
+        flat_2 = layers.Flatten()(conv2d_2)
+        flat_3 = layers.Flatten()(conv2d_3)
+        flat_4 = layers.Flatten()(conv2d_4)
+
+        concat = layers.Concatenate()([flat_1, flat_2, flat_3, flat_4])
+
+        output = Dense(5, kernel_initializer="he_uniform", activation="softmax")(concat)
+        model = models.Model(inputs=input, outputs=output)
     else:
         model = models.load_model(modelin)
+
+    categorical = model.output_shape[1] > 1
 
     if transfer_learning:
         for layer in model.layers:
@@ -636,9 +678,9 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
     else:
         X_train, y_train, image_list_train = proc_image_dir(os.path.dirname(os.path.abspath(train_path)) + '/JPEG/',
                                                             train_path, WIDTH=WIDTH, HEIGHT=HEIGHT,
-                                                            scoreColumn=outColumn)
+                                                            scoreColumn=outColumn, categorical=categorical)
         X_val, y_val, image_list_val = proc_image_dir(os.path.dirname(os.path.abspath(val_path)) + '/JPEG/', val_path,
-                                                      WIDTH=WIDTH, HEIGHT=HEIGHT, scoreColumn=outColumn)
+                                                      WIDTH=WIDTH, HEIGHT=HEIGHT, scoreColumn=outColumn, categorical=categorical)
 
     # run training loop
     model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
@@ -682,8 +724,10 @@ def test(modelin, imagepath, WIDTH, HEIGHT, outColumn):
     # model.load_weights(modelin+".checkpoint/")
     print("Model Loaded")
     print(model.summary())
+    categorical = model.output_shape[1] > 1
+
     x, y, images = proc_image_dir(os.path.dirname(os.path.abspath(imagepath)) + '/JPEG/', imagepath, WIDTH=WIDTH,
-                                  HEIGHT=HEIGHT, scoreColumn=outColumn)
+                                  HEIGHT=HEIGHT, scoreColumn=outColumn, categorical=categorical)
     a = np.array(x).astype(float)
     Y_pred = model.predict(a)
     print(np.array(y))
