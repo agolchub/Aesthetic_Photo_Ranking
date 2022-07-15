@@ -9,5 +9,5 @@
 # Execute the task
 conda activate tf2-gpu
 srun python ./train_segmented.py --model_design 13 -o model13.2.train -b 40 --loss bce -e 50 -l 0.1 -t ./databaserelease2/train.csv -v ./databaserelease2/val.csv --width 1024 --height 680 --outColumn 16
-srun python ./train_segmented.py -i model13.2.train.checkpoint -o model13.2.2.train -b 40 --loss bce -e 100 -l 0.01 -t ./databaserelease2/train.csv -v ./databaserelease2/val.csv --width 1024 --height 680 --outColumn 16
-srun python ./train_segmented.py -i model13.2.2.train.checkpoint -o model13.2.3.train -b 40 --loss bce -e 200 -l 0.001 -t ./databaserelease2/train.csv -v ./databaserelease2/val.csv --width 1024 --height 680 --outColumn 16
+srun python ./train_segmented.py -i model13.2.train -o model13.2.2.train -b 40 --loss bce -e 100 -l 0.01 -t ./databaserelease2/train.csv -v ./databaserelease2/val.csv --width 1024 --height 680 --outColumn 16
+srun python ./train_segmented.py -i model13.2.2.train -o model13.2.3.train -b 40 --loss bce -e 200 -l 0.001 -t ./databaserelease2/train.csv -v ./databaserelease2/val.csv --width 1024 --height 680 --outColumn 16
