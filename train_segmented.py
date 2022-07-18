@@ -353,7 +353,7 @@ def build_layers_for_model2(model, input, unlock_segment_weights):
 def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov, checkpoint_filepath, train_path,
           val_path, transfer_learning, randomize_weights, use_resnet, special_model, build_only, special_model2,
           batched_reader, simple_model, momentum, loss_function, catalog, WIDTH, HEIGHT, outColumn,
-          unlock_segment_weights, model_design, reload):
+          unlock_segment_weights, model_design, reload, patience):
     categorical = False
     # load model
     if (simple_model):
@@ -822,7 +822,7 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
 
     wait_callback = WaitCallback()
 
-    early_stopping_callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=5)
+    early_stopping_callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=patience)
 
     epochs_per_rate = int((epochs / len(lr)))
 
@@ -928,6 +928,7 @@ def main(argv):
     unlock_segment_weights = False
     model_design = 0
     reload = False
+    patience = 0
 
     try:
         opts, args = getopt.getopt(argv, "hi:o:p:nd:l:b:e:c:t:v:xrm:f:",
@@ -1000,6 +1001,8 @@ def main(argv):
             model_design = int(arg)
         elif opt in ("--reload_checkpoint_between_rates"):
             reload = True
+        elif opt in ("--patience"):
+            patience = int(arg)
 
     checkpoint_filepath = modelout + ".checkpoint/"
 
@@ -1030,7 +1033,7 @@ def main(argv):
         train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov, checkpoint_filepath, train_path,
               val_path, transfer_learning, randomize_weights, use_resnet, special_model, build_only, special_model2,
               batched_reader, simple_model, momentum, loss_function, catalog, WIDTH, HEIGHT, outColumn,
-              unlock_segment_weights, model_design, reload)
+              unlock_segment_weights, model_design, reload, patience)
 
 
 if __name__ == "__main__":
