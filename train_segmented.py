@@ -353,7 +353,7 @@ def build_layers_for_model2(model, input, unlock_segment_weights):
 def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov, checkpoint_filepath, train_path,
           val_path, transfer_learning, randomize_weights, use_resnet, special_model, build_only, special_model2,
           batched_reader, simple_model, momentum, loss_function, catalog, WIDTH, HEIGHT, outColumn,
-          unlock_segment_weights, model_design):
+          unlock_segment_weights, model_design, reload):
     categorical = False
     # load model
     if (simple_model):
@@ -731,22 +731,35 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
 
     elif model_design == 14:
         input = layers.Input((WIDTH, HEIGHT, 3))
-        conv2d = new_conv2d(input, 64, (12, 8), strides=(3, 2))
-        res = new_res_block_collection_v2(3, conv2d, 64)
-        res = new_res_block_collection_v2(4, res, 128, first_strides=(2, 2))
-        res = new_res_block_collection_v2(3, res, 256, first_strides=2)
-        res = new_res_block_collection_v2(3, res, 256, first_strides=2)
-        res = new_res_block_collection_v2(3, res, 512, first_strides=2)
-        res = new_res_block_collection_v2(3, res, 512, first_strides=2)
-        flat = layers.Flatten()(res)
-        dense = Dropout(0.2)(Dense(128, activation="relu")(flat))
+        conv2d = new_conv2d(input, 80, (12, 8), strides=(3, 2))
+        conv2d = new_conv2d(conv2d, 128, (7, 7), strides=(2, 2))
+        conv2d = new_conv2d(conv2d, 256, (3, 3), strides=(2, 2))
+        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2))
+        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2))
+        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2))
+        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2))
+
+        flat = Flatten()(conv2d)
+
+        conv2d_2 = new_conv2d(input, 80, (24, 16), strides=(6, 4))
+        conv2d_2 = new_conv2d(conv2d_2, 128, (14, 14), strides=(2, 2))
+        conv2d_2 = new_conv2d(conv2d_2, 256, (5, 5), strides=(2, 2))
+        conv2d_2 = new_conv2d(conv2d_2, 512, (3, 3), strides=(2, 2))
+        conv2d_2 = new_conv2d(conv2d_2, 512, (3, 3), strides=(2, 2))
+        conv2d_2 = new_conv2d(conv2d_2, 512, (3, 3), strides=(2, 2))
+
+
+        flat_2 = Flatten()(conv2d_2)
+        concat = Concatenate()([flat, flat_2])
+
+        dense = Dropout(0.2)(Dense(128, activation="relu")(concat))
         dense = Dropout(0.2)(Dense(128, activation="relu")(dense))
+
         output = Dense(5, kernel_initializer="he_uniform", activation="softmax")(dense)
         model = models.Model(inputs=input, outputs=output)
 
     else:
         model = models.load_model(modelin)
-
 
 
     categorical = model.output_shape[1] > 1
@@ -809,31 +822,55 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
 
     wait_callback = WaitCallback()
 
-    model.compile(
-        loss=loss_function,
-        optimizer=optimizers.SGD(learning_rate=lr),
-        metrics=['accuracy'])
-    # model.build()
-    # history = model.fit(np.array(X_train), np.array(y_train),
-    #    validation_data=(np.array(X_val), np.array(y_val)),
-    #        epochs=epochs, batch_size=batch_size,
-    #        callbacks=[model_checkpoint_callback,wait_callback])
-    if (batched_reader):
-        history = model.fit_generator(generator=training_generator,
-                                      validation_data=validation_generator,
-                                      epochs=epochs,
-                                      callbacks=[model_checkpoint_callback])  # ,wait_callback,tensorboard_callback])
-    else:
-        history = model.fit(np.array(X_train), np.array(y_train),
-                            validation_data=(np.array(X_val), np.array(y_val)),
-                            epochs=epochs, batch_size=batch_size,
-                            callbacks=[model_checkpoint_callback,
-                                       tensorboard_callback])  # ,wait_callback,tensorboard_callback])
+    early_stopping_callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=5)
 
-    # save model
-    model.save(modelout)
+    epochs_per_rate = int((epochs / len(lr)))
 
-    print([model.history.history["loss"], model.history.history["val_loss"]])
+    for l in lr:
+        print(reload)
+        print(lr.index(l))
+        if reload and lr.index(l) > 0:
+            print("reloading checkpoint weights...")
+            model.load_weights(checkpoint_filepath)
+
+        print("learning rate: " + str(l))
+        model.compile(
+            loss=loss_function,
+            optimizer=optimizers.SGD(learning_rate=l, decay=decay),
+            metrics=['accuracy'])
+
+        # run training loop
+        model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
+            filepath=checkpoint_filepath,
+            save_weights_only=True,
+            monitor='val_loss',
+            mode='min',
+            save_best_only=True)
+
+        wait_callback = WaitCallback()
+
+
+        # model.build()
+        # history = model.fit(np.array(X_train), np.array(y_train),
+        #    validation_data=(np.array(X_val), np.array(y_val)),
+        #        epochs=epochs, batch_size=batch_size,
+        #        callbacks=[model_checkpoint_callback,wait_callback])
+        if (batched_reader):
+            history = model.fit_generator(generator=training_generator,
+                                          validation_data=validation_generator,
+                                          epochs=epochs_per_rate,
+                                          callbacks=[model_checkpoint_callback])  # ,wait_callback,tensorboard_callback])
+        else:
+            history = model.fit(np.array(X_train), np.array(y_train),
+                                validation_data=(np.array(X_val), np.array(y_val)),
+                                epochs=epochs_per_rate, batch_size=batch_size,
+                                callbacks=[model_checkpoint_callback,
+                                           tensorboard_callback, early_stopping_callback])  # ,wait_callback,tensorboard_callback])
+
+        # save model
+        model.save(modelout + "/model")
+
+        print([model.history.history["loss"], model.history.history["val_loss"]])
 
 
 def test(modelin, imagepath, WIDTH, HEIGHT, outColumn):
@@ -890,6 +927,7 @@ def main(argv):
     outColumn = 5
     unlock_segment_weights = False
     model_design = 0
+    reload = False
 
     try:
         opts, args = getopt.getopt(argv, "hi:o:p:nd:l:b:e:c:t:v:xrm:f:",
@@ -898,7 +936,7 @@ def main(argv):
                                     "resnet50", "special_model", "modelout=", "imagepath=", "nesterov", "decay=",
                                     "learningrate=", "batchsize", "epochs", "checkpoint_filepath=", "train=", "val=",
                                     "test=", "transfer_learning", "randomize_weights", "batched_reader",
-                                    "model_design="])
+                                    "model_design=", "reload_checkpoint_between_rates"])
     except getopt.GetoptError:
         print('train.py -i <modelin> -o <modelout> -p <imagepath>')
         sys.exit(2)
@@ -960,6 +998,8 @@ def main(argv):
             unlock_segment_weights = True
         elif opt in ("--model_design"):
             model_design = int(arg)
+        elif opt in ("--reload_checkpoint_between_rates"):
+            reload = True
 
     checkpoint_filepath = modelout + ".checkpoint/"
 
@@ -987,7 +1027,7 @@ def main(argv):
         train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov, checkpoint_filepath, train_path,
               val_path, transfer_learning, randomize_weights, use_resnet, special_model, build_only, special_model2,
               batched_reader, simple_model, momentum, loss_function, catalog, WIDTH, HEIGHT, outColumn,
-              unlock_segment_weights, model_design)
+              unlock_segment_weights, model_design, reload)
 
 
 if __name__ == "__main__":
