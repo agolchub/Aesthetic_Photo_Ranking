@@ -18,7 +18,7 @@ from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Concatenate
 from tensorflow.keras.models import Sequential
 from datetime import datetime
-
+import matplotlib.pylab as plt
 
 class CustomDataGen(tf.keras.utils.Sequence):
 
@@ -937,8 +937,32 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
 
         print([model.history.history["loss"], model.history.history["val_loss"]])
 
+def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix', cmap=plt.cm.Blues, figure_size=(5,5)):
+    from matplotlib.transforms import offset_copy
+
+    plt.figure(figsize = figure_size)
+    plt.imshow(cm, interpolation='nearest', cmap=cmap)
+    plt.title(title)
+    plt.colorbar()
+    tick_marks = np.arange(len(classes))
+    y_tick_marks = np.arange(len(classes))
+    plt.xticks(tick_marks, classes, rotation=90)
+    plt.yticks(y_tick_marks,labels=classes)
+    if normalize:
+        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+    thresh = cm.max() / 2.
+    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+        plt.text(j, i, cm[i, j],
+                 horizontalalignment="center",
+                 color="white" if cm[i, j] > thresh else "black")
+    plt.tight_layout()
+    plt.ylabel('True label')
+    plt.xlabel('Predicted label')
+    plt.savefig("./fig/cm-"+title+".png")
+    plt.show()
 
 def test(modelin, imagepath, WIDTH, HEIGHT, outColumn):
+    from sklearn.metrics import confusion_matrix
     model = models.load_model(modelin)
     # model.load_weights(modelin+".checkpoint/")
     print("Model Loaded")
@@ -952,8 +976,6 @@ def test(modelin, imagepath, WIDTH, HEIGHT, outColumn):
     print(np.array(y))
     print(Y_pred)
 
-    model.add(tf.math.round())
-
     np.set_printoptions(threshold=sys.maxsize)
 
     print(np.argmax(np.array(y), axis=1))
@@ -961,6 +983,10 @@ def test(modelin, imagepath, WIDTH, HEIGHT, outColumn):
 
     loss, acc = model.evaluate(a, np.array(y), verbose=2)
     print("Restored model, accuracy: {:5.2f}%".format(100 * acc))
+
+    Y_pred_classes = np.argmax(Y_pred, axis=1)
+    confusion_mtx = confusion_matrix(np.argmax(np.array(y), axis=1), Y_pred_classes)
+    plot_confusion_matrix(confusion_mtx, classes=[0, 1, 2, 3, 4], title='Confusion Matrix - Test Set')
 
 
 def main(argv):
