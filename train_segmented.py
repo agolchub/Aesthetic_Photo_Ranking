@@ -959,7 +959,7 @@ def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix'
     plt.tight_layout()
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
-    plt.savefig("./fig/cm-"+title+".png")
+    plt.savefig("./cm-"+title+".png")
     plt.show()
 
 def test(modelin, imagepath, WIDTH, HEIGHT, outColumn):
