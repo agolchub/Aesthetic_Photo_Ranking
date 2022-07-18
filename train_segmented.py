@@ -937,7 +937,7 @@ def main(argv):
                                     "resnet50", "special_model", "modelout=", "imagepath=", "nesterov", "decay=",
                                     "learningrate=", "batchsize", "epochs", "checkpoint_filepath=", "train=", "val=",
                                     "test=", "transfer_learning", "randomize_weights", "batched_reader",
-                                    "model_design=", "reload_checkpoint_between_rates"])
+                                    "model_design=", "reload_checkpoint_between_rates", "patience="])
     except getopt.GetoptError:
         print('train.py -i <modelin> -o <modelout> -p <imagepath>')
         sys.exit(2)
