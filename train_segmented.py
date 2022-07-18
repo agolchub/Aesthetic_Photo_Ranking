@@ -815,7 +815,7 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
         add = layers.Add()([res1, res2, res3, res4])
         res_combined = layers.Activation("relu")(add)
 
-        conv2d = new_conv2d(res4, 512, (3, 3), strides=(3, 2), dropout_rate=0.2)
+        conv2d = new_conv2d(res_combined, 512, (3, 3), strides=(3, 2), dropout_rate=0.2)
         conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), dropout_rate=0.2)
 
         flat = layers.Flatten()(conv2d)
