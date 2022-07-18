@@ -880,6 +880,8 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
         X_val, y_val, image_list_val = proc_image_dir(os.path.dirname(os.path.abspath(val_path)) + '/JPEG/', val_path,
                                                       WIDTH=WIDTH, HEIGHT=HEIGHT, scoreColumn=outColumn, categorical=categorical)
 
+    print("Images loaded")
+    
     # run training loop
     wait_callback = WaitCallback()
 
