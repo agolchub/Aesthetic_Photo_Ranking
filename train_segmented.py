@@ -19,6 +19,7 @@ from tensorflow.keras.layers import Conv2D, MaxPooling2D, Concatenate
 from tensorflow.keras.models import Sequential
 from datetime import datetime
 import matplotlib.pylab as plt
+import itertools
 
 class CustomDataGen(tf.keras.utils.Sequence):
 
