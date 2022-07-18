@@ -102,6 +102,8 @@ class WaitCallback(tf.keras.callbacks.Callback):
 def proc_image_dir(Images_Path, scores="", categorical=False, WIDTH=1024, HEIGHT=680, scoreColumn=5):
     import random
     import csv
+    import os
+    import psutil
     #    image_classes = sorted([dirname for dirname in os.listdir(Images_Path)
     #                      if os.path.isdir(os.path.join(Images_Path, dirname)) and not dirname.startswith(".") and not dirname.startswith("mblur")])
 
@@ -127,6 +129,7 @@ def proc_image_dir(Images_Path, scores="", categorical=False, WIDTH=1024, HEIGHT
             for line in csvFile:
                 try:
                     read_one_image(HEIGHT, Images_Path, WIDTH, categorical, images, line, rawscore, scoreColumn, x, y)
+                    print(psutil.Process(os.getpid()).memory_info().rss / 1024 ** 2)
                 except Exception as e:
                     print("Error ---- ")
                     print(e)
