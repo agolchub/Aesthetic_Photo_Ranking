@@ -1049,7 +1049,7 @@ def main(argv):
         elif opt in ("--simple_model"):
             simple_model = True
         elif opt in ("-e", "--momentum"):
-            momentum = arg
+            momentum = float(arg)
         elif opt in ("-f", "--loss"):
             loss_function = arg
         elif opt in ("--catalog"):
