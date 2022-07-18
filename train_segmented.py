@@ -813,16 +813,10 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
                                                       WIDTH=WIDTH, HEIGHT=HEIGHT, scoreColumn=outColumn, categorical=categorical)
 
     # run training loop
-    model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
-        filepath=checkpoint_filepath,
-        save_weights_only=False,
-        monitor='val_loss',
-        mode='min',
-        save_best_only=True)
-
     wait_callback = WaitCallback()
 
-    early_stopping_callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=patience, verbose=1)
+    early_stopping_callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=patience, verbose=1,
+                                                               restore_best_weights=reload)
 
     epochs_per_rate = int((epochs / len(lr)))
 
@@ -859,13 +853,13 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
             history = model.fit_generator(generator=training_generator,
                                           validation_data=validation_generator,
                                           epochs=epochs_per_rate,
-                                          callbacks=[model_checkpoint_callback])  # ,wait_callback,tensorboard_callback])
+                                          callbacks=[model_checkpoint_callback])
         else:
             history = model.fit(np.array(X_train), np.array(y_train),
                                 validation_data=(np.array(X_val), np.array(y_val)),
                                 epochs=epochs_per_rate, batch_size=batch_size,
                                 callbacks=[model_checkpoint_callback,
-                                           tensorboard_callback, early_stopping_callback])  # ,wait_callback,tensorboard_callback])
+                                           tensorboard_callback, early_stopping_callback])
 
         # save model
         model.save(modelout + "/model")
