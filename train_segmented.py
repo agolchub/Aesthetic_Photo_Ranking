@@ -904,7 +904,7 @@ def main(argv):
     imagepath = ''
     epochs = 1
     batch_size = 1
-    lr = .01
+    lr = []
     decay = 0.0
     nesterov = False
     checkpoint_filepath = "./checkpoint/"
@@ -955,7 +955,7 @@ def main(argv):
         elif opt in ("-n", "--nesterov"):
             nesterov = True
         elif opt in ("-l", "--learningrate"):
-            lr = float(arg)
+            lr.append(float(arg))
         elif opt in ("-b", "--batchsize"):
             batch_size = int(arg)
         elif opt in ("-e", "--epochs"):
@@ -1002,6 +1002,9 @@ def main(argv):
             reload = True
 
     checkpoint_filepath = modelout + ".checkpoint/"
+
+    if len(lr) < 1:
+        lr.append(0.01)
 
     print('Input file is "', modelin)
     print('Output file is "', modelout)
