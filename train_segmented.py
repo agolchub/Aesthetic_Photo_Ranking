@@ -129,15 +129,16 @@ def proc_image_dir(Images_Path, scores="", categorical=False, WIDTH=1024, HEIGHT
                     imagePath = Images_Path + line[0]
                     full_size_image = io.imread(imagePath)
                     resizedImage = resize(full_size_image, (WIDTH, HEIGHT), anti_aliasing=True)
-                    if (categorical):
-                        out = [0] * 5
-                        out[int(line[scoreColumn])] = 1
-                    else:
-                        out = rawscore  # ((rawscore - 1.0)/9.0)
-                    y.append(out)
-                    x.append(resizedImage)
-                    images.append(imagePath)
-                    print(line[scoreColumn] + " - " + imagePath)
+                    if resizedImage.shape[2] == 3:
+                        if (categorical):
+                            out = [0] * 5
+                            out[int(line[scoreColumn])] = 1
+                        else:
+                            out = rawscore  # ((rawscore - 1.0)/9.0)
+                        y.append(out)
+                        x.append(resizedImage)
+                        images.append(imagePath)
+                        print(line[scoreColumn] + " - " + imagePath)
                 except Exception as e:
                     print("Error ---- ")
                     print(e)
