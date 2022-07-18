@@ -884,9 +884,14 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
     early_stopping_callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=patience, verbose=1,
                                                                restore_best_weights=reload)
 
+    steps_per_epoch = int(len(X_train)/batch_size)
     epochs_per_rate = int((epochs / len(lr)))
 
+
+
     for l in lr:
+        learning_schedule = optimizers.schedules.ExponentialDecay(initial_learning_rate=l,
+                                                                  decay_steps=steps_per_epoch, decay_rate=1.0-decay)
         print(reload)
         print(lr.index(l))
         if reload and lr.index(l) > 0:
@@ -896,7 +901,7 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
         print("learning rate: " + str(l))
         model.compile(
             loss=loss_function,
-            optimizer=optimizers.SGD(learning_rate=l, decay=decay, momentum=momentum, nesterov=nesterov),
+            optimizer=optimizers.SGD(learning_rate=learning_schedule, momentum=momentum, nesterov=nesterov),
             metrics=['accuracy'])
 
         # run training loop
