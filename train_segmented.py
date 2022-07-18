@@ -896,7 +896,7 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
         print("learning rate: " + str(l))
         model.compile(
             loss=loss_function,
-            optimizer=optimizers.SGD(learning_rate=l, decay=decay),
+            optimizer=optimizers.SGD(learning_rate=l, decay=decay, momentum=momentum, nesterov=nesterov),
             metrics=['accuracy'])
 
         # run training loop
