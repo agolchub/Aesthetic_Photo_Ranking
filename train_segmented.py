@@ -822,7 +822,7 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
 
     wait_callback = WaitCallback()
 
-    early_stopping_callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=patience)
+    early_stopping_callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=patience, verbose=1)
 
     epochs_per_rate = int((epochs / len(lr)))
 
