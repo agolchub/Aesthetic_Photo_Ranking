@@ -223,8 +223,8 @@ model.summary()
 #)
 
 
-run_filepath = './runs/run-'+datetime.now().strftime("%Y%m%d%H%M%S")
-checkpoint_filepath = './runs/checkpointfile/'
+run_filepath = './runs.log/run-'+datetime.now().strftime("%Y%m%d%H%M%S")
+checkpoint_filepath = 'runs.log/checkpointfile/'
 history_path = run_filepath+".history"
 
 model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(

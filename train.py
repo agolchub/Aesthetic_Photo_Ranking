@@ -95,8 +95,9 @@ class WaitCallback(tf.keras.callbacks.Callback):
 
             return super().on_epoch_end(epoch, logs=logs)
 
-def proc_image_dir(Images_Path,categorical=False):
+def proc_image_dir(Images_Path,scores="",categorical=False,WIDTH = 1024, HEIGHT = 680,scoreColumn=5):
     import random
+    import csv
 #    image_classes = sorted([dirname for dirname in os.listdir(Images_Path)
 #                      if os.path.isdir(os.path.join(Images_Path, dirname)) and not dirname.startswith(".") and not dirname.startswith("mblur")])
     
@@ -104,8 +105,7 @@ def proc_image_dir(Images_Path,categorical=False):
     
     x = [] # images as arrays
     y = [] # labels Infiltration or Not_infiltration
-    WIDTH = 1024
-    HEIGHT = 680
+
   
     print("Adding Images: ",end="")
     i = 0
@@ -117,6 +117,25 @@ def proc_image_dir(Images_Path,categorical=False):
     rawscore = 0.0
     random.shuffle(items)
     #items = items[:200]
+
+    if scores != "":
+        with open(scores,mode='r')as cat:
+            csvFile = csv.reader(cat)
+            for line in csvFile:
+                try:
+                    imagePath = Images_Path+line[0]
+                    full_size_image = io.imread(imagePath)
+                    resizedImage = resize(full_size_image, (WIDTH,HEIGHT), anti_aliasing=True)
+                    y.append(float(line[scoreColumn]))
+                    x.append(resizedImage)
+                    images.append(imagePath)
+                    print(line[scoreColumn] + " - " + imagePath)
+                except Exception as e:
+                    print("Error ---- ")
+                    print(e)
+                    print(line)
+        return x,y,images
+
     for item in items:
         print("Reading "+item)
         if item.lower().endswith(".jpg") or item.lower().endswith(".bmp"):
@@ -197,7 +216,7 @@ def new_res_block(input,n,m,size,strides):
     return activation
 
 
-def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model,momentum,loss_function):
+def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model,momentum,loss_function,catalog,WIDTH,HEIGHT):
     #load model
     if(use_resnet):
         resnetmodel = tf.keras.applications.resnet50.ResNet50(input_shape=(224,224,3),include_top=False)
@@ -240,8 +259,10 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         
         model = models.Model(inputs=resnetmodel.input,outputs=d3)
     elif(simple_model):
-        input = layers.Input((1024,680,3))
+        input = layers.Input((WIDTH,HEIGHT,3))
         do0 = new_conv2d(input,80,(36,12),(15,10))
+        do0 = new_conv2d(do0,80,(5,5),(3,3))
+        do0 = new_conv2d(do0,80,(3,3),(2,2))
 
         f1   = layers.Flatten()(do0)
 
@@ -427,7 +448,10 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
     if(build_only):
         img_file = modelout+'-model_arch.png'
         tf.keras.utils.plot_model(model, to_file=img_file, show_shapes=True, show_layer_names=True)
+
         model.save(modelout)
+        from keras_visualizer import visualizer
+        visualizer(model, format='png')
         exit(0)
 
     if(imagepath!=''):
@@ -443,8 +467,8 @@ def train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpo
         training_generator = CustomDataGen(batch_size,train_path,resnet=use_resnet)
         validation_generator = CustomDataGen(batch_size,val_path,resnet=use_resnet)
     else:
-        X_train,y_train,image_list_train = proc_image_dir(train_path)
-        X_val,y_val,image_list_val = proc_image_dir(val_path)
+        X_train,y_train,image_list_train = proc_image_dir(train_path,catalog,WIDTH=WIDTH,HEIGHT=HEIGHT)
+        X_val,y_val,image_list_val = proc_image_dir(val_path,catalog,WIDTH=WIDTH,HEIGHT=HEIGHT)
 
     #run training loop
     model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
@@ -520,11 +544,14 @@ def main(argv):
     special_model2 = False
     batched_reader = False
     simple_model = False
+    catalog=""
     momentum = 0.0
     loss_function = 'mse'
+    WIDTH = 1024
+    HEIGHT = 680
 
     try:
-        opts, args = getopt.getopt(argv,"hi:o:p:nd:l:b:e:c:t:v:xrm:f:",["loss=","momentum=","special_model2","simple_model","test","build_only","modelin=","resnet50","special_model","modelout=","imagepath=","nesterov","decay=","learningrate=","batchsize","epochs","checkpoint_filepath=","train=","val=","test=","transfer_learning","randomize_weights","batched_reader"])
+        opts, args = getopt.getopt(argv,"hi:o:p:nd:l:b:e:c:t:v:xrm:f:",["width=","height=","catalog=","loss=","momentum=","special_model2","simple_model","test","build_only","modelin=","resnet50","special_model","modelout=","imagepath=","nesterov","decay=","learningrate=","batchsize","epochs","checkpoint_filepath=","train=","val=","test=","transfer_learning","randomize_weights","batched_reader"])
     except getopt.GetoptError:
         print ('train.py -i <modelin> -o <modelout> -p <imagepath>')
         sys.exit(2)
@@ -574,6 +601,12 @@ def main(argv):
             momentum = arg
         elif opt in ("-f","--loss"):
             loss_function = arg
+        elif opt in ("--catalog"):
+            catalog = arg
+        elif opt in ("--width"):
+            WIDTH = int(arg)
+        elif opt in ("--height"):
+            HEIGHT = int(arg)
 
     checkpoint_filepath = modelout+".checkpoint/"
 
@@ -589,14 +622,14 @@ def main(argv):
     if(testmode and (modelin == '' or imagepath == '')):
         print('Missing required parameter.')
         print ('train.py --test -i <modelin> -p <imagepath>')
-        sys.exit(2)
+        sys.exit(3)
 
     print ('--------------------\n\n')
 
     if(testmode):
         test(modelin,imagepath)
     else:
-        train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model,momentum,loss_function)
+        train(modelin,modelout,imagepath,epochs,batch_size,lr,decay,nesterov,checkpoint_filepath,train_path,val_path,transfer_learning,randomize_weights,use_resnet,special_model,build_only,special_model2,batched_reader,simple_model,momentum,loss_function,catalog,WIDTH,HEIGHT)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
