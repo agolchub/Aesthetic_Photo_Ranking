@@ -104,6 +104,7 @@ def proc_image_dir(Images_Path, scores="", categorical=False, WIDTH=1024, HEIGHT
     import csv
     import os
     import psutil
+    import gc
     #    image_classes = sorted([dirname for dirname in os.listdir(Images_Path)
     #                      if os.path.isdir(os.path.join(Images_Path, dirname)) and not dirname.startswith(".") and not dirname.startswith("mblur")])
 
@@ -132,6 +133,7 @@ def proc_image_dir(Images_Path, scores="", categorical=False, WIDTH=1024, HEIGHT
                     y.append(out)
                     x.append(resizedImage)
                     images.append(Images_Path + line[0])
+                    gc.collect()
                     print(psutil.Process(os.getpid()).memory_info().rss / 1024 ** 2)
                 except Exception as e:
                     print("Error ---- ")
