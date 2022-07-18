@@ -729,6 +729,19 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
         output = Dense(5, kernel_initializer="he_uniform", activation="softmax")(dense)
         model = models.Model(inputs=input, outputs=output)
 
+    elif model_design == 14:
+        input = layers.Input((WIDTH, HEIGHT, 3))
+        conv2d = new_conv2d(input, 64, (12, 8), strides=(3, 2))
+        res = new_res_block_collection_v2(3, conv2d, 64)
+        res = new_res_block_collection_v2(4, res, 128, first_strides=(2, 2))
+        res = new_res_block_collection_v2(6, res, 256, first_strides=2)
+        res = new_res_block_collection_v2(3, res, 512, first_strides=2)
+        flat = layers.Flatten()(res)
+        dense = Dropout(0.2)(Dense(128, activation="relu")(flat))
+        dense = Dropout(0.2)(Dense(128, activation="relu")(dense))
+        output = Dense(5, kernel_initializer="he_uniform", activation="softmax")(dense)
+        model = models.Model(inputs=input, outputs=output)
+
     else:
         model = models.load_model(modelin)
 
