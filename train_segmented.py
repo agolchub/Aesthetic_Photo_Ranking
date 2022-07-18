@@ -128,7 +128,10 @@ def proc_image_dir(Images_Path, scores="", categorical=False, WIDTH=1024, HEIGHT
             csvFile = csv.reader(cat)
             for line in csvFile:
                 try:
-                    read_one_image(HEIGHT, Images_Path, WIDTH, categorical, images, line, rawscore, scoreColumn, x, y)
+                    resizedImage, out = read_one_image(HEIGHT, Images_Path, WIDTH, categorical, line, scoreColumn)
+                    y.append(out)
+                    x.append(resizedImage)
+                    images.append(Images_Path + line[0])
                     print(psutil.Process(os.getpid()).memory_info().rss / 1024 ** 2)
                 except Exception as e:
                     print("Error ---- ")
@@ -167,21 +170,22 @@ def proc_image_dir(Images_Path, scores="", categorical=False, WIDTH=1024, HEIGHT
     return x, y, images
 
 
-def read_one_image(HEIGHT, Images_Path, WIDTH, categorical, images, line, rawscore, scoreColumn, x, y):
+def read_one_image(HEIGHT, Images_Path, WIDTH, categorical, line, scoreColumn):
     imagePath = Images_Path + line[0]
     full_size_image = io.imread(imagePath)
     resizedImage = resize(full_size_image, (WIDTH, HEIGHT), anti_aliasing=True)
+    rawscore = int(line[scoreColumn])
     if resizedImage.shape[2] == 3:
         if (categorical):
             out = [0] * 5
-            out[int(line[scoreColumn])] = 1
+            out[rawscore] = 1
         else:
             out = rawscore  # ((rawscore - 1.0)/9.0)
-        y.append(out)
-        x.append(resizedImage)
-        images.append(imagePath)
-        print(line[scoreColumn] + " - " + imagePath)
 
+        print(line[scoreColumn] + " - " + imagePath)
+    del full_size_image
+    del rawscore
+    return resizedImage, out
 
 def init_layer(layer):
     try:
