@@ -1036,12 +1036,18 @@ def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix'
     plt.savefig("./cm-"+title+".png")
     plt.show()
 
-def test(modelin, imagepath, WIDTH, HEIGHT, outColumn):
+def test(modelin, imagepath, WIDTH, HEIGHT, outColumn, weights = None):
     from sklearn.metrics import confusion_matrix
     model = models.load_model(modelin)
     # model.load_weights(modelin+".checkpoint/")
     print("Model Loaded")
     print(model.summary())
+
+    if weights is not None:
+        print("Loading weights...")
+        model.load_weights(weights)
+        print("Weights loaded")
+
     categorical = model.output_shape[1] > 1
 
     x, y, images = proc_image_dir(os.path.dirname(os.path.abspath(imagepath)) + '/JPEG/', imagepath, WIDTH=WIDTH,
@@ -1095,6 +1101,7 @@ def main(argv):
     model_design = 0
     reload = False
     patience = 0
+    weights = None
 
     try:
         opts, args = getopt.getopt(argv, "hi:o:p:nd:l:b:e:c:t:v:xrm:f:",
@@ -1103,7 +1110,7 @@ def main(argv):
                                     "resnet50", "special_model", "modelout=", "imagepath=", "nesterov", "decay=",
                                     "learningrate=", "batchsize", "epochs", "checkpoint_filepath=", "train=", "val=",
                                     "test=", "transfer_learning", "randomize_weights", "batched_reader",
-                                    "model_design=", "reload_checkpoint_between_rates", "patience="])
+                                    "model_design=", "reload_checkpoint_between_rates", "patience=", "load_weights="])
     except getopt.GetoptError:
         print('train.py -i <modelin> -o <modelout> -p <imagepath>')
         sys.exit(2)
@@ -1169,6 +1176,8 @@ def main(argv):
             reload = True
         elif opt in ("--patience"):
             patience = int(arg)
+        elif opt in ("--load_weights"):
+            weights = arg
 
     checkpoint_filepath = modelout + ".checkpoint/"
 
@@ -1194,7 +1203,7 @@ def main(argv):
     print('--------------------\n\n')
 
     if (testmode):
-        test(modelin, imagepath, WIDTH, HEIGHT, outColumn)
+        test(modelin, imagepath, WIDTH, HEIGHT, outColumn, weights)
     else:
         train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov, checkpoint_filepath, train_path,
               val_path, transfer_learning, randomize_weights, use_resnet, special_model, build_only, special_model2,
