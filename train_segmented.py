@@ -923,7 +923,7 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
     # model.build()
     model.compile(
         loss='mse',
-        optimizer=optimizers.Adam(lr=0.01, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0))
+        optimizer=optimizers.Adam(learning_rate=0.01, beta_1=0.9, beta_2=0.999, epsilon=1e-08, weight_decay=0.0))
 
     print(model.summary())
     if (build_only):
