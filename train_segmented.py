@@ -207,50 +207,50 @@ def init_layer(layer):
 
 def new_conv2d(input, n, size=(2, 2), strides=(2, 2), activation="relu", kernel_initializer="glorot_uniform",
                batch_normalization=True, dropout_rate=0.2, padding="valid"):
-    conv2d = layers.Conv2D(n, size, strides=strides, kernel_initializer=kernel_initializer, padding=padding)(input)
-    batch_normalization_layer = layers.BatchNormalization()(conv2d) if batch_normalization else conv2d
-    activation_layer = layers.Activation(activation)(batch_normalization_layer) if activation is not None else batch_normalization_layer
-    dropout = layers.Dropout(dropout_rate)(activation_layer) if dropout_rate > 0 else activation_layer
+    conv2d = layers.Conv2D(n, size, strides=strides, kernel_initializer=kernel_initializer, padding=padding, dtype=tf.float16)(input)
+    batch_normalization_layer = layers.BatchNormalization(dtype=tf.float16)(conv2d) if batch_normalization else conv2d
+    activation_layer = layers.Activation(activation, dtype=tf.float16)(batch_normalization_layer) if activation is not None else batch_normalization_layer
+    dropout = layers.Dropout(dropout_rate, dtype=tf.float16)(activation_layer) if dropout_rate > 0 else activation_layer
 
     return dropout
 
 
 def new_dense(input, n, activation="relu", kernel_initializer="glorot_uniform", dropout_rate=0.2):
-    dense = layers.Dense(n, activation=activation, kernel_initializer=kernel_initializer)(input)
-    dropout = layers.Dropout(dropout_rate)(dense)
+    dense = layers.Dense(n, activation=activation, kernel_initializer=kernel_initializer, dtype=tf.float16)(input)
+    dropout = layers.Dropout(dropout_rate, dtype=tf.float16)(dense)
     return dropout
 
 
 def new_res_block(input, n, m, size, strides):
-    conv2d = layers.Conv2D(n, size, strides=strides)(input)
-    batchNormalization = layers.BatchNormalization()(conv2d)
-    activation = layers.Activation("relu")(batchNormalization)
+    conv2d = layers.Conv2D(n, size, strides=strides, dtype=tf.float16)(input)
+    batchNormalization = layers.BatchNormalization(dtype=tf.float16)(conv2d)
+    activation = layers.Activation("relu", dtype=tf.float16)(batchNormalization)
     shortcut = activation
-    conv2d = layers.Conv2D(n * m, (2, 2), strides=(1, 1))(activation)
-    batchNormalization = layers.BatchNormalization()(conv2d)
-    activation = layers.Activation("relu")(batchNormalization)
-    conv2d = layers.Conv2D(n * m * m, (2, 2), strides=(1, 1))(activation)
-    batchNormalization = layers.BatchNormalization()(conv2d)
+    conv2d = layers.Conv2D(n * m, (2, 2), strides=(1, 1), dtype=tf.float16)(activation)
+    batchNormalization = layers.BatchNormalization(dtype=tf.float16)(conv2d)
+    activation = layers.Activation("relu", dtype=tf.float16)(batchNormalization)
+    conv2d = layers.Conv2D(n * m * m, (2, 2), strides=(1, 1), dtype=tf.float16)(activation)
+    batchNormalization = layers.BatchNormalization(dtype=tf.float16)(conv2d)
 
-    shortcut = layers.Conv2D(n * m * m, (3, 3), strides=(1, 1))(shortcut)
-    shortcut = layers.BatchNormalization()(shortcut)
+    shortcut = layers.Conv2D(n * m * m, (3, 3), strides=(1, 1), dtype=tf.float16)(shortcut)
+    shortcut = layers.BatchNormalization(dtype=tf.float16)(shortcut)
 
-    add = layers.Add()([batchNormalization, shortcut])
-    activation = layers.Activation("relu")(add)
+    add = layers.Add(dtype=tf.float16)([batchNormalization, shortcut])
+    activation = layers.Activation("relu", dtype=tf.float16)(add)
     return activation
 
 
 def new_res_block_v2(input, n, size=3, strides=1, first_strides=1):
     shortcut = input
     if (first_strides != strides):
-        shortcut = layers.Conv2D(n, (1, 1), strides=first_strides, padding='same', activation=None)(shortcut)
-    conv2d = layers.Conv2D(n, size, strides=first_strides, padding='same', activation=None)(input)
-    batch_normalization = layers.BatchNormalization()(conv2d)
-    activation = layers.Activation("relu")(batch_normalization)
-    conv2d = layers.Conv2D(n, size, strides=strides, padding='same', activation=None)(activation)
-    batch_normalization = layers.BatchNormalization()(conv2d)
-    add = layers.Add()([batch_normalization, shortcut])
-    activation = layers.Activation("relu")(add)
+        shortcut = layers.Conv2D(n, (1, 1), strides=first_strides, padding='same', activation=None, dtype=tf.float16)(shortcut)
+    conv2d = layers.Conv2D(n, size, strides=first_strides, padding='same', activation=None, dtype=tf.float16)(input)
+    batch_normalization = layers.BatchNormalization(dtype=tf.float16)(conv2d)
+    activation = layers.Activation("relu", dtype=tf.float16)(batch_normalization)
+    conv2d = layers.Conv2D(n, size, strides=strides, padding='same', activation=None, dtype=tf.float16)(activation)
+    batch_normalization = layers.BatchNormalization(dtype=tf.float16)(conv2d)
+    add = layers.Add(dtype=tf.float16)([batch_normalization, shortcut])
+    activation = layers.Activation("relu", dtype=tf.float16)(add)
     return activation
 
 
@@ -266,40 +266,40 @@ def build_layers_for_model(model, input, unlock_segment_weights):
     activation = "relu"
     dropout_rate = 0.2
     conv2d = layers.Conv2D(80, (20, 20), strides=(5, 5), kernel_initializer="glorot_uniform",
-                           weights=model.layers[1].get_weights())(input)
-    batchNormalization = layers.BatchNormalization(weights=model.layers[2].get_weights())(conv2d)
-    activationLayer = layers.Activation(activation, weights=model.layers[3].get_weights())(batchNormalization)
-    dropout = layers.Dropout(dropout_rate, weights=model.layers[4].get_weights())(activationLayer)
+                           weights=model.layers[1].get_weights(), dtype=tf.float16)(input)
+    batchNormalization = layers.BatchNormalization(weights=model.layers[2].get_weights(), dtype=tf.float16)(conv2d)
+    activationLayer = layers.Activation(activation, weights=model.layers[3].get_weights(), dtype=tf.float16)(batchNormalization)
+    dropout = layers.Dropout(dropout_rate, weights=model.layers[4].get_weights(), dtype=tf.float16)(activationLayer)
     conv2d.trainable = unlock_segment_weights
     batchNormalization.trainable = unlock_segment_weights
     activationLayer.trainable = unlock_segment_weights
     dropout.trainable = unlock_segment_weights
 
     conv2d = layers.Conv2D(80, (5, 5), strides=(3, 3), kernel_initializer="glorot_uniform",
-                           weights=model.layers[5].get_weights())(dropout)
-    batchNormalization = layers.BatchNormalization(weights=model.layers[6].get_weights())(conv2d)
-    activationLayer = layers.Activation(activation, weights=model.layers[7].get_weights())(batchNormalization)
-    dropout = layers.Dropout(dropout_rate, weights=model.layers[8].get_weights())(activationLayer)
+                           weights=model.layers[5].get_weights(), dtype=tf.float16)(dropout)
+    batchNormalization = layers.BatchNormalization(weights=model.layers[6].get_weights(), dtype=tf.float16)(conv2d)
+    activationLayer = layers.Activation(activation, weights=model.layers[7].get_weights(), dtype=tf.float16)(batchNormalization)
+    dropout = layers.Dropout(dropout_rate, weights=model.layers[8].get_weights(), dtype=tf.float16)(activationLayer)
     conv2d.trainable = unlock_segment_weights
     batchNormalization.trainable = unlock_segment_weights
     activationLayer.trainable = unlock_segment_weights
     dropout.trainable = unlock_segment_weights
 
     conv2d = layers.Conv2D(80, (3, 3), strides=(2, 2), kernel_initializer="glorot_uniform",
-                           weights=model.layers[9].get_weights())(dropout)
-    batchNormalization = layers.BatchNormalization(weights=model.layers[10].get_weights())(conv2d)
-    activationLayer = layers.Activation(activation, weights=model.layers[11].get_weights())(batchNormalization)
-    dropout = layers.Dropout(dropout_rate, weights=model.layers[12].get_weights())(activationLayer)
+                           weights=model.layers[9].get_weights(), dtype=tf.float16)(dropout)
+    batchNormalization = layers.BatchNormalization(weights=model.layers[10].get_weights(), dtype=tf.float16)(conv2d)
+    activationLayer = layers.Activation(activation, weights=model.layers[11].get_weights(), dtype=tf.float16)(batchNormalization)
+    dropout = layers.Dropout(dropout_rate, weights=model.layers[12].get_weights(), dtype=tf.float16)(activationLayer)
     conv2d.trainable = unlock_segment_weights
     batchNormalization.trainable = unlock_segment_weights
     activationLayer.trainable = unlock_segment_weights
     dropout.trainable = unlock_segment_weights
 
     conv2d = layers.Conv2D(80, (2, 2), strides=(1, 1), kernel_initializer="glorot_uniform",
-                           weights=model.layers[13].get_weights())(dropout)
-    batchNormalization = layers.BatchNormalization(weights=model.layers[14].get_weights())(conv2d)
-    activationLayer = layers.Activation(activation, weights=model.layers[15].get_weights())(batchNormalization)
-    dropout = layers.Dropout(dropout_rate, weights=model.layers[16].get_weights())(activationLayer)
+                           weights=model.layers[13].get_weights(), dtype=tf.float16)(dropout)
+    batchNormalization = layers.BatchNormalization(weights=model.layers[14].get_weights(), dtype=tf.float16)(conv2d)
+    activationLayer = layers.Activation(activation, weights=model.layers[15].get_weights(), dtype=tf.float16)(batchNormalization)
+    dropout = layers.Dropout(dropout_rate, weights=model.layers[16].get_weights(), dtype=tf.float16)(activationLayer)
     conv2d.trainable = unlock_segment_weights
     batchNormalization.trainable = unlock_segment_weights
     activationLayer.trainable = unlock_segment_weights
@@ -312,40 +312,40 @@ def build_layers_for_model2(model, input, unlock_segment_weights):
     activation = "relu"
     dropout_rate = 0.2
     conv2d = layers.Conv2D(80, (20, 20), strides=(5, 5), kernel_initializer="glorot_uniform",
-                           weights=model.layers[1].get_weights())(input)
-    batchNormalization = layers.BatchNormalization(weights=model.layers[2].get_weights())(conv2d)
-    activationLayer = layers.Activation(activation, weights=model.layers[3].get_weights())(batchNormalization)
-    dropout = layers.Dropout(dropout_rate, weights=model.layers[4].get_weights())(activationLayer)
+                           weights=model.layers[1].get_weights(), dtype=tf.float16)(input)
+    batchNormalization = layers.BatchNormalization(weights=model.layers[2].get_weights(), dtype=tf.float16)(conv2d)
+    activationLayer = layers.Activation(activation, weights=model.layers[3].get_weights(), dtype=tf.float16)(batchNormalization)
+    dropout = layers.Dropout(dropout_rate, weights=model.layers[4].get_weights(), dtype=tf.float16)(activationLayer)
     conv2d.trainable = unlock_segment_weights
     batchNormalization.trainable = unlock_segment_weights
     activationLayer.trainable = unlock_segment_weights
     dropout.trainable = unlock_segment_weights
 
     conv2d = layers.Conv2D(80, (5, 5), strides=(3, 3), kernel_initializer="glorot_uniform",
-                           weights=model.layers[5].get_weights())(dropout)
-    batchNormalization = layers.BatchNormalization(weights=model.layers[6].get_weights())(conv2d)
-    activationLayer = layers.Activation(activation, weights=model.layers[7].get_weights())(batchNormalization)
-    dropout = layers.Dropout(dropout_rate, weights=model.layers[8].get_weights())(activationLayer)
+                           weights=model.layers[5].get_weights(), dtype=tf.float16)(dropout)
+    batchNormalization = layers.BatchNormalization(weights=model.layers[6].get_weights(), dtype=tf.float16)(conv2d)
+    activationLayer = layers.Activation(activation, weights=model.layers[7].get_weights(), dtype=tf.float16)(batchNormalization)
+    dropout = layers.Dropout(dropout_rate, weights=model.layers[8].get_weights(), dtype=tf.float16)(activationLayer)
     conv2d.trainable = unlock_segment_weights
     batchNormalization.trainable = unlock_segment_weights
     activationLayer.trainable = unlock_segment_weights
     dropout.trainable = unlock_segment_weights
 
     conv2d = layers.Conv2D(80, (3, 3), strides=(2, 2), kernel_initializer="glorot_uniform",
-                           weights=model.layers[9].get_weights())(dropout)
-    batchNormalization = layers.BatchNormalization(weights=model.layers[10].get_weights())(conv2d)
-    activationLayer = layers.Activation(activation, weights=model.layers[11].get_weights())(batchNormalization)
-    dropout = layers.Dropout(dropout_rate, weights=model.layers[12].get_weights())(activationLayer)
+                           weights=model.layers[9].get_weights(), dtype=tf.float16)(dropout)
+    batchNormalization = layers.BatchNormalization(weights=model.layers[10].get_weights(), dtype=tf.float16)(conv2d)
+    activationLayer = layers.Activation(activation, weights=model.layers[11].get_weights(), dtype=tf.float16)(batchNormalization)
+    dropout = layers.Dropout(dropout_rate, weights=model.layers[12].get_weights(), dtype=tf.float16)(activationLayer)
     conv2d.trainable = unlock_segment_weights
     batchNormalization.trainable = unlock_segment_weights
     activationLayer.trainable = unlock_segment_weights
     dropout.trainable = unlock_segment_weights
 
     conv2d = layers.Conv2D(80, (2, 2), strides=(1, 1), kernel_initializer="glorot_uniform",
-                           weights=model.layers[13].get_weights())(dropout)
-    batchNormalization = layers.BatchNormalization(weights=model.layers[14].get_weights())(conv2d)
-    activationLayer = layers.Activation(activation, weights=model.layers[15].get_weights())(batchNormalization)
-    dropout = layers.Dropout(dropout_rate, weights=model.layers[16].get_weights())(activationLayer)
+                           weights=model.layers[13].get_weights(), dtype=tf.float16)(dropout)
+    batchNormalization = layers.BatchNormalization(weights=model.layers[14].get_weights(), dtype=tf.float16)(conv2d)
+    activationLayer = layers.Activation(activation, weights=model.layers[15].get_weights(), dtype=tf.float16)(batchNormalization)
+    dropout = layers.Dropout(dropout_rate, weights=model.layers[16].get_weights(), dtype=tf.float16)(activationLayer)
     conv2d.trainable = unlock_segment_weights
     batchNormalization.trainable = unlock_segment_weights
     activationLayer.trainable = unlock_segment_weights
@@ -354,11 +354,11 @@ def build_layers_for_model2(model, input, unlock_segment_weights):
     f1 = layers.Flatten()(dropout)
 
     dense = layers.Dense(64, activation=activation, kernel_initializer="glorot_uniform",
-                         weights=model.layers[18].get_weights())(f1)
-    dropout = layers.Dropout(dropout_rate, weights=model.layers[19].get_weights())(dense)
+                         weights=model.layers[18].get_weights(), dtype=tf.float16)(f1)
+    dropout = layers.Dropout(dropout_rate, weights=model.layers[19].get_weights(), dtype=tf.float16)(dense)
     dense = layers.Dense(64, activation=activation, kernel_initializer="glorot_uniform",
-                         weights=model.layers[20].get_weights())(dropout)
-    dropout = layers.Dropout(dropout_rate, weights=model.layers[21].get_weights())(dense)
+                         weights=model.layers[20].get_weights(), dtype=tf.float16)(dropout)
+    dropout = layers.Dropout(dropout_rate, weights=model.layers[21].get_weights(), dtype=tf.float16)(dense)
     d4 = Dense(1, kernel_initializer="he_uniform", activation="hard_sigmoid", weights=model.layers[22].get_weights())(
         dropout)
 
@@ -864,9 +864,9 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
         model = models.Model(inputs=input, outputs=output)
 
     elif model_design == 18:
-        input = layers.Input((WIDTH, HEIGHT, 3))
+        input = layers.Input((WIDTH, HEIGHT, 3),dtype=tf.float16)
         conv2d = new_conv2d(input, 64, (7, 7), strides=(1, 1))
-        maxpool = layers.MaxPooling2D()(conv2d)
+        maxpool = layers.MaxPooling2D(dtype=tf.float16)(conv2d)
         res1 = new_res_block_collection_v2(3, maxpool, 64)
         res2 = new_res_block_collection_v2(4, res1, 128, first_strides=(2, 2))
         res3 = new_res_block_collection_v2(6, res2, 256, first_strides=2)
@@ -886,15 +886,15 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
 
         res4 = new_conv2d(res4, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
 
-        add = layers.Add()([res1, res2, res3, res4])
-        res_combined = layers.Activation("relu")(add)
+        add = layers.Add(dtype=tf.float16)([res1, res2, res3, res4])
+        res_combined = layers.Activation("relu", dtype=tf.float16)(add)
 
         conv2d = new_conv2d(res_combined, 512, (3, 3), strides=(3, 2), dropout_rate=0.2)
         conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), dropout_rate=0.2)
 
-        flat = layers.Flatten()(conv2d)
+        flat = layers.Flatten(dtype=tf.float16)(conv2d)
 
-        output = Dense(5, kernel_initializer="he_uniform", activation="softmax")(flat)
+        output = Dense(5, kernel_initializer="he_uniform", activation="softmax", dtype=tf.float16)(flat)
         model = models.Model(inputs=input, outputs=output)
 
     else:
