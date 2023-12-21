@@ -100,7 +100,7 @@ class WaitCallback(tf.keras.callbacks.Callback):
 
 import threading
 imageProcessingLock = threading.Lock()
-def proc_image_dir(Images_Path, scores="", categorical=False, WIDTH=1024, HEIGHT=680, scoreColumn=5, categories=5):
+def proc_image_dir(Images_Path, scores="", categorical=False, WIDTH=1024, HEIGHT=680, scoreColumn=5, categories=5, sample=10000):
     import random
     import csv
     import os
@@ -126,16 +126,19 @@ def proc_image_dir(Images_Path, scores="", categorical=False, WIDTH=1024, HEIGHT
     random.shuffle(items)
     # items = items[:200]
     threads = []
+    count = 0
     if scores != "":
         with open(scores, mode='r') as cat:
             csvFile = csv.reader(cat)
             for line in csvFile:
-                t = Thread(target=read_one_image,args=(HEIGHT, Images_Path, WIDTH, categorical, line, scoreColumn, categories, y, x, images))
-                t.start()
-                threads.append(t)
+                count=count+1
+                if(not (count%sample == 0)):
+                    t = Thread(target=read_one_image,args=(HEIGHT, Images_Path, WIDTH, categorical, line, scoreColumn, categories, y, x, images))
+                    t.start()
+                    threads.append(t)
             for t in threads:
                 t.join()
-                
+            gc.collect()
         return x, y, images
 
     for item in items:
@@ -170,6 +173,7 @@ def proc_image_dir(Images_Path, scores="", categorical=False, WIDTH=1024, HEIGHT
 
 
 def read_one_image(HEIGHT, Images_Path, WIDTH, categorical, line, scoreColumn, categories, y, x, images):
+    import gc
     try:
         imagePath = Images_Path + line[0]
         full_size_image = io.imread(imagePath)
@@ -199,6 +203,7 @@ def read_one_image(HEIGHT, Images_Path, WIDTH, categorical, line, scoreColumn, c
         print("Error ---- ")
         print(e)
         print(line)
+    #gc.collect()
     return resizedImage, out
 
 def init_layer(layer):
@@ -1043,8 +1048,8 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
 
         res4 = new_conv2d(res4, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
 
-        add = layers.Add(dtype=tf.float16)([res1, res2, res3, res4])
-        res_combined = layers.Activation("relu", dtype=tf.float16)(add)
+        res_combined = layers.Add(dtype=tf.float16)([res1, res2, res3, res4])
+        #res_combined = layers.Activation("relu", dtype=tf.float16)(res_combined)
 
         conv2d = new_conv2d(res_combined, 512, (3, 3), strides=(3, 2), dropout_rate=0.2)
         conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), dropout_rate=0.2)
@@ -1057,7 +1062,41 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
         dense = Dense(256, kernel_initializer="he_uniform", activation="relu", dtype=tf.float16)(dense)
         dense = Dense(128, kernel_initializer="he_uniform", activation="relu", dtype=tf.float16)(dense)
         dense = Dense(128, kernel_initializer="he_uniform", activation="relu", dtype=tf.float16)(dense)
-        output = Dense(1, kernel_initializer="he_uniform", activation="linear", dtype=tf.float16)(dense)
+        output = Dense(1, kernel_initializer="he_uniform", activation="sigmoid", dtype=tf.float16)(dense)
+        model = models.Model(inputs=input, outputs=output)
+
+    elif model_design == 22:
+        input = layers.Input((WIDTH, HEIGHT, 3),dtype=tf.float16)
+        conv2d = new_conv2d(input, 64, (7, 7), strides=(1, 1))
+        maxpool = layers.MaxPooling2D(dtype=tf.float16)(conv2d)
+        res1 = new_res_block_collection_v2(3, maxpool, 64)
+        res2 = new_res_block_collection_v2(4, res1, 128, first_strides=(2, 2))
+        res3 = new_res_block_collection_v2(6, res2, 256, first_strides=2)
+        res4 = new_res_block_collection_v2(3, res3, 512, first_strides=2)
+
+        res1 = new_conv2d(res1, 128, (3, 3), strides=(2, 2), padding="same")
+        res1 = new_conv2d(res1, 256, (2, 2), strides=(2, 2), padding="same")
+        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), padding="same")
+        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+
+        res2 = new_conv2d(res2, 256, (3, 3), strides=(2, 2), padding="same")
+        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), padding="same")
+        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+
+        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+
+        res4 = new_conv2d(res4, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+
+        add = layers.Add(dtype=tf.float16)([res1, res2, res3, res4])
+        #res_combined = layers.Activation("relu", dtype=tf.float16)(add)
+
+        conv2d = new_conv2d(res_combined, 512, (3, 3), strides=(3, 2), dropout_rate=0.2)
+        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), dropout_rate=0.2)
+
+        flat = layers.Flatten(dtype=tf.float16)(conv2d)
+
+        output = Dense(1, kernel_initializer="he_uniform", activation="linear", dtype=tf.float16)(flat)
         model = models.Model(inputs=input, outputs=output)
 
     else:
@@ -1110,9 +1149,9 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
     else:
         X_train, y_train, image_list_train = proc_image_dir(os.path.dirname(os.path.abspath(train_path)) + '/JPEG/',
                                                             train_path, WIDTH=WIDTH, HEIGHT=HEIGHT,
-                                                            scoreColumn=outColumn, categorical=categorical, categories=model.output_shape[1])
+                                                            scoreColumn=outColumn, categorical=categorical, categories=model.output_shape[1], sample=2)
         X_val, y_val, image_list_val = proc_image_dir(os.path.dirname(os.path.abspath(val_path)) + '/JPEG/', val_path,
-                                                      WIDTH=WIDTH, HEIGHT=HEIGHT, scoreColumn=outColumn, categorical=categorical, categories=model.output_shape[1])
+                                                      WIDTH=WIDTH, HEIGHT=HEIGHT, scoreColumn=outColumn, categorical=categorical, categories=model.output_shape[1], sample=2)
 
     print("Images loaded")
 
