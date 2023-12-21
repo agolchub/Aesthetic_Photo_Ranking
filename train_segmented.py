@@ -8,18 +8,43 @@ from sklearn.model_selection import train_test_split
 from skimage import io
 from skimage.transform import resize
 import sys, getopt
-from tensorflow.keras import initializers, models, optimizers, layers
+from tensorflow.keras import initializers, models, optimizers
+from tensorflow.keras.layers import Activation
+from tensorflow.keras.layers import Conv2D, MaxPooling2D
+from tensorflow.keras.models import Sequential
 import os
 import tensorflow as tf
 from tensorflow.python.keras.layers.core import Lambda
 from tensorflow.python.lib.io.file_io import file_crc32
 from tensorflow.python.platform.tf_logging import error
-from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten
-from tensorflow.keras.layers import Conv2D, MaxPooling2D, Concatenate
-from tensorflow.keras.models import Sequential
+
 from datetime import datetime
 import matplotlib.pylab as plt
 import itertools
+
+from simple_model import simple_model as sm
+import special_model as special
+from model_10 import model_10
+from model_11 import model_11
+from model_12 import model_12
+from model_13 import model_13
+from model_14 import model_14
+from model_15 import model_15
+from model_16 import model_16
+from model_17 import model_17
+from model_18 import model_18
+from model_19 import model_19
+from model_20 import model_20
+from model_21 import model_21
+from model_22 import model_22
+from model_3 import model_3
+from model_4 import model_4
+from model_5 import model_5
+from model_6 import model_6
+from model_7 import model_7
+from model_8 import model_8
+from model_9 import model_9
+from models.primitives import init_layer
 
 class CustomDataGen(tf.keras.utils.Sequence):
 
@@ -206,898 +231,81 @@ def read_one_image(HEIGHT, Images_Path, WIDTH, categorical, line, scoreColumn, c
     #gc.collect()
     return resizedImage, out
 
-def init_layer(layer):
-    try:
-        initializer = tf.keras.initializers.GlorotUniform()
-        import keras.backend as K
-        session = K.get_session()
-        if hasattr(layer, 'kernel_initializer'):
-            print("initializing kernel weights")
-            layer.kernel.initializer.run(session=session)
-        if hasattr(layer, 'bias_initializer'):
-            print("initializing bias weights")
-            layer.bias.initializer.run(session=session)
-        print(layer.name, " re-initilized")
-    except:
-        print(layer.name, " could not be re-initilized", sys.exc_info())
-
-
-def new_conv2d(input, n, size=(2, 2), strides=(2, 2), activation="relu", kernel_initializer="glorot_uniform",
-               batch_normalization=True, dropout_rate=0.2, padding="valid"):
-    conv2d = layers.Conv2D(n, size, strides=strides, kernel_initializer=kernel_initializer, padding=padding, dtype=tf.float16)(input)
-    batch_normalization_layer = layers.BatchNormalization(dtype=tf.float16)(conv2d) if batch_normalization else conv2d
-    activation_layer = layers.Activation(activation, dtype=tf.float16)(batch_normalization_layer) if activation is not None else batch_normalization_layer
-    dropout = layers.Dropout(dropout_rate, dtype=tf.float16)(activation_layer) if dropout_rate > 0 else activation_layer
-
-    return dropout
-
-
-def new_dense(input, n, activation="relu", kernel_initializer="glorot_uniform", dropout_rate=0.2):
-    dense = layers.Dense(n, activation=activation, kernel_initializer=kernel_initializer, dtype=tf.float16)(input)
-    dropout = layers.Dropout(dropout_rate, dtype=tf.float16)(dense)
-    return dropout
-
-
-def new_res_block(input, n, m, size, strides):
-    conv2d = layers.Conv2D(n, size, strides=strides, dtype=tf.float16)(input)
-    batchNormalization = layers.BatchNormalization(dtype=tf.float16)(conv2d)
-    activation = layers.Activation("relu", dtype=tf.float16)(batchNormalization)
-    shortcut = activation
-    conv2d = layers.Conv2D(n * m, (2, 2), strides=(1, 1), dtype=tf.float16)(activation)
-    batchNormalization = layers.BatchNormalization(dtype=tf.float16)(conv2d)
-    activation = layers.Activation("relu", dtype=tf.float16)(batchNormalization)
-    conv2d = layers.Conv2D(n * m * m, (2, 2), strides=(1, 1), dtype=tf.float16)(activation)
-    batchNormalization = layers.BatchNormalization(dtype=tf.float16)(conv2d)
-
-    shortcut = layers.Conv2D(n * m * m, (3, 3), strides=(1, 1), dtype=tf.float16)(shortcut)
-    shortcut = layers.BatchNormalization(dtype=tf.float16)(shortcut)
-
-    add = layers.Add(dtype=tf.float16)([batchNormalization, shortcut])
-    activation = layers.Activation("relu", dtype=tf.float16)(add)
-    return activation
-
-
-def new_res_block_v2(input, n, size=3, strides=1, first_strides=1):
-    shortcut = input
-    if (first_strides != strides):
-        shortcut = layers.Conv2D(n, (1, 1), strides=first_strides, padding='same', activation=None, dtype=tf.float16)(shortcut)
-    conv2d = layers.Conv2D(n, size, strides=first_strides, padding='same', activation=None, dtype=tf.float16)(input)
-    batch_normalization = layers.BatchNormalization(dtype=tf.float16)(conv2d)
-    activation = layers.Activation("relu", dtype=tf.float16)(batch_normalization)
-    conv2d = layers.Conv2D(n, size, strides=strides, padding='same', activation=None, dtype=tf.float16)(activation)
-    batch_normalization = layers.BatchNormalization(dtype=tf.float16)(conv2d)
-    add = layers.Add(dtype=tf.float16)([batch_normalization, shortcut])
-    activation = layers.Activation("relu", dtype=tf.float16)(add)
-    return activation
-
-
-def new_res_block_collection_v2(blocks, input, n, size=3, strides=1, first_strides=1):
-    activation = input
-    for i in range(blocks):
-        print(i)
-        activation = new_res_block_v2(activation, n, size, strides, strides if i != 0 else first_strides)
-    return activation
-
-
-def build_layers_for_model(model, input, unlock_segment_weights):
-    activation = "relu"
-    dropout_rate = 0.2
-    conv2d = layers.Conv2D(80, (20, 20), strides=(5, 5), kernel_initializer="glorot_uniform",
-                           weights=model.layers[1].get_weights(), dtype=tf.float16)(input)
-    batchNormalization = layers.BatchNormalization(weights=model.layers[2].get_weights(), dtype=tf.float16)(conv2d)
-    activationLayer = layers.Activation(activation, weights=model.layers[3].get_weights(), dtype=tf.float16)(batchNormalization)
-    dropout = layers.Dropout(dropout_rate, weights=model.layers[4].get_weights(), dtype=tf.float16)(activationLayer)
-    conv2d.trainable = unlock_segment_weights
-    batchNormalization.trainable = unlock_segment_weights
-    activationLayer.trainable = unlock_segment_weights
-    dropout.trainable = unlock_segment_weights
-
-    conv2d = layers.Conv2D(80, (5, 5), strides=(3, 3), kernel_initializer="glorot_uniform",
-                           weights=model.layers[5].get_weights(), dtype=tf.float16)(dropout)
-    batchNormalization = layers.BatchNormalization(weights=model.layers[6].get_weights(), dtype=tf.float16)(conv2d)
-    activationLayer = layers.Activation(activation, weights=model.layers[7].get_weights(), dtype=tf.float16)(batchNormalization)
-    dropout = layers.Dropout(dropout_rate, weights=model.layers[8].get_weights(), dtype=tf.float16)(activationLayer)
-    conv2d.trainable = unlock_segment_weights
-    batchNormalization.trainable = unlock_segment_weights
-    activationLayer.trainable = unlock_segment_weights
-    dropout.trainable = unlock_segment_weights
-
-    conv2d = layers.Conv2D(80, (3, 3), strides=(2, 2), kernel_initializer="glorot_uniform",
-                           weights=model.layers[9].get_weights(), dtype=tf.float16)(dropout)
-    batchNormalization = layers.BatchNormalization(weights=model.layers[10].get_weights(), dtype=tf.float16)(conv2d)
-    activationLayer = layers.Activation(activation, weights=model.layers[11].get_weights(), dtype=tf.float16)(batchNormalization)
-    dropout = layers.Dropout(dropout_rate, weights=model.layers[12].get_weights(), dtype=tf.float16)(activationLayer)
-    conv2d.trainable = unlock_segment_weights
-    batchNormalization.trainable = unlock_segment_weights
-    activationLayer.trainable = unlock_segment_weights
-    dropout.trainable = unlock_segment_weights
-
-    conv2d = layers.Conv2D(80, (2, 2), strides=(1, 1), kernel_initializer="glorot_uniform",
-                           weights=model.layers[13].get_weights(), dtype=tf.float16)(dropout)
-    batchNormalization = layers.BatchNormalization(weights=model.layers[14].get_weights(), dtype=tf.float16)(conv2d)
-    activationLayer = layers.Activation(activation, weights=model.layers[15].get_weights(), dtype=tf.float16)(batchNormalization)
-    dropout = layers.Dropout(dropout_rate, weights=model.layers[16].get_weights(), dtype=tf.float16)(activationLayer)
-    conv2d.trainable = unlock_segment_weights
-    batchNormalization.trainable = unlock_segment_weights
-    activationLayer.trainable = unlock_segment_weights
-    dropout.trainable = unlock_segment_weights
-
-    return dropout
-
-
-def build_layers_for_model2(model, input, unlock_segment_weights):
-    activation = "relu"
-    dropout_rate = 0.2
-    conv2d = layers.Conv2D(80, (20, 20), strides=(5, 5), kernel_initializer="glorot_uniform",
-                           weights=model.layers[1].get_weights(), dtype=tf.float16)(input)
-    batchNormalization = layers.BatchNormalization(weights=model.layers[2].get_weights(), dtype=tf.float16)(conv2d)
-    activationLayer = layers.Activation(activation, weights=model.layers[3].get_weights(), dtype=tf.float16)(batchNormalization)
-    dropout = layers.Dropout(dropout_rate, weights=model.layers[4].get_weights(), dtype=tf.float16)(activationLayer)
-    conv2d.trainable = unlock_segment_weights
-    batchNormalization.trainable = unlock_segment_weights
-    activationLayer.trainable = unlock_segment_weights
-    dropout.trainable = unlock_segment_weights
-
-    conv2d = layers.Conv2D(80, (5, 5), strides=(3, 3), kernel_initializer="glorot_uniform",
-                           weights=model.layers[5].get_weights(), dtype=tf.float16)(dropout)
-    batchNormalization = layers.BatchNormalization(weights=model.layers[6].get_weights(), dtype=tf.float16)(conv2d)
-    activationLayer = layers.Activation(activation, weights=model.layers[7].get_weights(), dtype=tf.float16)(batchNormalization)
-    dropout = layers.Dropout(dropout_rate, weights=model.layers[8].get_weights(), dtype=tf.float16)(activationLayer)
-    conv2d.trainable = unlock_segment_weights
-    batchNormalization.trainable = unlock_segment_weights
-    activationLayer.trainable = unlock_segment_weights
-    dropout.trainable = unlock_segment_weights
-
-    conv2d = layers.Conv2D(80, (3, 3), strides=(2, 2), kernel_initializer="glorot_uniform",
-                           weights=model.layers[9].get_weights(), dtype=tf.float16)(dropout)
-    batchNormalization = layers.BatchNormalization(weights=model.layers[10].get_weights(), dtype=tf.float16)(conv2d)
-    activationLayer = layers.Activation(activation, weights=model.layers[11].get_weights(), dtype=tf.float16)(batchNormalization)
-    dropout = layers.Dropout(dropout_rate, weights=model.layers[12].get_weights(), dtype=tf.float16)(activationLayer)
-    conv2d.trainable = unlock_segment_weights
-    batchNormalization.trainable = unlock_segment_weights
-    activationLayer.trainable = unlock_segment_weights
-    dropout.trainable = unlock_segment_weights
-
-    conv2d = layers.Conv2D(80, (2, 2), strides=(1, 1), kernel_initializer="glorot_uniform",
-                           weights=model.layers[13].get_weights(), dtype=tf.float16)(dropout)
-    batchNormalization = layers.BatchNormalization(weights=model.layers[14].get_weights(), dtype=tf.float16)(conv2d)
-    activationLayer = layers.Activation(activation, weights=model.layers[15].get_weights(), dtype=tf.float16)(batchNormalization)
-    dropout = layers.Dropout(dropout_rate, weights=model.layers[16].get_weights(), dtype=tf.float16)(activationLayer)
-    conv2d.trainable = unlock_segment_weights
-    batchNormalization.trainable = unlock_segment_weights
-    activationLayer.trainable = unlock_segment_weights
-    dropout.trainable = unlock_segment_weights
-
-    f1 = layers.Flatten()(dropout)
-
-    dense = layers.Dense(64, activation=activation, kernel_initializer="glorot_uniform",
-                         weights=model.layers[18].get_weights(), dtype=tf.float16)(f1)
-    dropout = layers.Dropout(dropout_rate, weights=model.layers[19].get_weights(), dtype=tf.float16)(dense)
-    dense = layers.Dense(64, activation=activation, kernel_initializer="glorot_uniform",
-                         weights=model.layers[20].get_weights(), dtype=tf.float16)(dropout)
-    dropout = layers.Dropout(dropout_rate, weights=model.layers[21].get_weights(), dtype=tf.float16)(dense)
-    d4 = Dense(1, kernel_initializer="he_uniform", activation="hard_sigmoid", weights=model.layers[22].get_weights())(
-        dropout)
-
-    return d4
-
-
 def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov, checkpoint_filepath, train_path,
           val_path, transfer_learning, randomize_weights, use_resnet, special_model, build_only, special_model2,
           batched_reader, simple_model, momentum, loss_function, catalog, WIDTH, HEIGHT, outColumn,
           unlock_segment_weights, model_design, reload, patience):
     categorical = False
     # load model
+
     if (simple_model):
-        input = layers.Input((WIDTH, HEIGHT, 3))
-        do0 = new_conv2d(input, 96, (7, 7), (30, 30))
-        # do0 = new_conv2d(do0,256,(5,5),(3,3))
-        # do0 = new_conv2d(do0,384,(3,3),(2,2))
-        # do0 = new_conv2d(do0,384,(2,2),(2,2))
-        # do0 = new_conv2d(do0, 256, (2, 2), (2, 2))
-
-        f1 = layers.Flatten()(do0)
-
-        do1 = new_dense(f1, 4096, dropout_rate=0.2)
-        do2 = new_dense(do1, 4096, dropout_rate=0.2)
-        do2 = new_dense(do2, 1024, dropout_rate=0.2)
-        d4 = Dense(1, kernel_initializer="he_uniform", activation="sigmoid")(do2)
-        model = models.Model(inputs=input, outputs=d4)
+        model = sm(WIDTH, HEIGHT)
+        
     elif (special_model):
-        input = layers.Input((WIDTH, HEIGHT, 3))
-        model1 = models.load_model("./segmented_models_3/color")
-        model2 = models.load_model("./segmented_models_3/framing")
-        model3 = models.load_model("./segmented_models_3/lighting")
-        model4 = models.load_model("./segmented_models_3/symmetry")
+        model = special.special_model(WIDTH, HEIGHT, unlock_segment_weights)
 
-        model = models.Sequential()
-
-        m1 = build_layers_for_model(model1, input, unlock_segment_weights)
-        m2 = build_layers_for_model(model2, input, unlock_segment_weights)
-        m3 = build_layers_for_model(model3, input, unlock_segment_weights)
-        m4 = build_layers_for_model(model4, input, unlock_segment_weights)
-
-        do0 = new_conv2d(input, 80, (20, 20), (5, 5))
-        do0 = new_conv2d(do0, 80, (5, 5), (3, 3))
-        do0 = new_conv2d(do0, 80, (3, 3), (2, 2))
-        do0 = new_conv2d(do0, 80, (2, 2), (1, 1))
-
-        f1 = layers.Flatten()(do0)
-
-        f1 = layers.Concatenate()(
-            [layers.Flatten()(m1), layers.Flatten()(m2), layers.Flatten()(m3), layers.Flatten()(m4)])
-
-        do1 = new_dense(f1, 256, dropout_rate=0.2)
-        do2 = new_dense(do1, 128, dropout_rate=0.2)
-        do2 = new_dense(do1, 64, dropout_rate=0.2)
-        do2 = new_dense(do2, 10, dropout_rate=0.2)
-        d4 = Dense(1, kernel_initializer="he_uniform", activation="linear")(do2)
-        model = models.Model(inputs=input, outputs=d4)
     elif (special_model2):
-        input = layers.Input((WIDTH, HEIGHT, 3))
-        model1 = models.load_model("./segmented_models_3/color")
-        model2 = models.load_model("./segmented_models_3/framing")
-        model3 = models.load_model("./segmented_models_3/lighting")
-        model4 = models.load_model("./segmented_models_3/symmetry")
+        model = special.special_model2(WIDTH, HEIGHT, unlock_segment_weights)
 
-        model = models.Sequential()
-
-        m1 = build_layers_for_model2(model1, input, unlock_segment_weights)
-        m2 = build_layers_for_model2(model2, input, unlock_segment_weights)
-        m3 = build_layers_for_model2(model3, input, unlock_segment_weights)
-        m4 = build_layers_for_model2(model4, input, unlock_segment_weights)
-
-        f1 = layers.Add()([m1, m2, m3, m4])
-
-        model = models.Model(inputs=input, outputs=f1)
     elif model_design == 3:
-        input = layers.Input((WIDTH, HEIGHT, 3))
-        conv2d = new_conv2d(input, 64, (7, 7), strides=(1, 1))
-        maxpool = layers.MaxPooling2D()(conv2d)
-        res = new_res_block_collection_v2(3, maxpool, 64)
-        res = new_res_block_collection_v2(4, res, 128, first_strides=(2, 2))
-        res = new_res_block_collection_v2(6, res, 256, first_strides=2)
-        res = new_res_block_collection_v2(3, res, 512, first_strides=2)
-        flat = layers.Flatten()(res)
-        # dense = new_dense(flat, 4096)
-        # dense = new_dense(dense, 2048)
-        # dense = new_dense(dense, 1024)
-        # dense = new_dense(dense, 512)
-        # dense = new_dense(dense, 256)
-        # dense = new_dense(dense, 128)
-        dense = Dense(5, kernel_initializer="he_uniform", activation="softmax")(flat)
-        model = models.Model(inputs=input, outputs=dense)
+        model = model_3(WIDTH, HEIGHT)
 
     elif model_design == 4:
-        input = layers.Input((WIDTH, HEIGHT, 3))
-        conv2d = new_conv2d(input, 64, (7, 7), strides=(1, 1))
-        maxpool = layers.MaxPooling2D()(conv2d)
-        res1 = new_res_block_collection_v2(3, maxpool, 64)
-        res2 = new_res_block_collection_v2(4, res1, 128, first_strides=(2, 2))
-        res3 = new_res_block_collection_v2(6, res2, 256, first_strides=2)
-        res4 = new_res_block_collection_v2(3, res3, 512, first_strides=2)
-
-        res1 = new_conv2d(res1, 128, (3, 3), strides=(2, 2))
-        res1 = new_conv2d(res1, 256, (3, 3), strides=(2, 2))
-        res1 = new_conv2d(res1, 512, (3, 3), strides=(2, 2))
-
-        res2 = new_conv2d(res2, 256, (3, 3), strides=(2, 2))
-        res2 = new_conv2d(res2, 512, (3, 3), strides=(2, 2))
-
-        res3 = new_conv2d(res3, 512, (3, 3), strides=(2, 2))
-
-        flat1 = layers.Flatten()(res1)
-        flat2 = layers.Flatten()(res2)
-        flat3 = layers.Flatten()(res3)
-        flat4 = layers.Flatten()(res4)
-
-        dense1 = new_dense(flat1, 16)
-        dense2 = new_dense(flat2, 16)
-        dense3 = new_dense(flat3, 16)
-        dense4 = new_dense(flat4, 16)
-
-        concat = Concatenate()([dense1, dense2, dense3, dense4])
-
-        output = Dense(1, kernel_initializer="he_uniform", activation="linear")(concat)
-        model = models.Model(inputs=input, outputs=output)
+        model = model_4(WIDTH, HEIGHT)
 
     elif model_design == 5:
-        input = layers.Input((WIDTH, HEIGHT, 3))
-        conv2d = new_conv2d(input, 64, (7, 7), strides=(1, 1))
-        maxpool = layers.MaxPooling2D()(conv2d)
-        res1 = new_res_block_collection_v2(3, maxpool, 64)
-        res2 = new_res_block_collection_v2(4, res1, 128, first_strides=(2, 2))
-        res3 = new_res_block_collection_v2(6, res2, 256, first_strides=2)
-        res4 = new_res_block_collection_v2(3, res3, 512, first_strides=2)
-
-        res1 = new_conv2d(res1, 128, (3, 3), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 256, (2, 2), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res2 = new_conv2d(res2, 256, (3, 3), strides=(2, 2), padding="same")
-        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        add = layers.Add()([res1, res2, res3, res4])
-        res_combined = layers.Activation("relu")(add)
-
-        flat = layers.Flatten()(res_combined)
-
-        output = Dense(1, kernel_initializer="he_uniform", activation="linear")(flat)
-        model = models.Model(inputs=input, outputs=output)
+        model = model_5(WIDTH, HEIGHT)
 
     elif model_design == 6:
-        input = layers.Input((WIDTH, HEIGHT, 3))
-        conv2d = new_conv2d(input, 64, (7, 7), strides=(1, 1))
-        maxpool = layers.MaxPooling2D()(conv2d)
-        res1 = new_res_block_collection_v2(3, maxpool, 64)
-        res2 = new_res_block_collection_v2(4, res1, 128, first_strides=(2, 2))
-        res3 = new_res_block_collection_v2(6, res2, 256, first_strides=2)
-        res4 = new_res_block_collection_v2(3, res3, 512, first_strides=2)
-
-        res1 = new_conv2d(res1, 128, (3, 3), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 256, (2, 2), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res2 = new_conv2d(res2, 256, (3, 3), strides=(2, 2), padding="same")
-        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        add = layers.Add()([res1, res2, res3, res4])
-        res_combined = layers.Activation("relu")(add)
-
-        flat = layers.Flatten()(res_combined)
-
-        dense = new_dense(flat, 128)
-
-        output = Dense(1, kernel_initializer="he_uniform", activation="linear")(dense)
-        model = models.Model(inputs=input, outputs=output)
+        model = model_6(WIDTH, HEIGHT)
 
     elif model_design == 7:
-        input = layers.Input((WIDTH, HEIGHT, 3))
-        conv2d = new_conv2d(input, 64, (35, 35), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 128, (17, 17), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 256, (9, 9), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
-        conv2d_1 = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
-
-        conv2d = new_conv2d(input, 64, (49, 49), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 128, (23, 23), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 256, (11, 11), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 512, (5, 5), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
-        conv2d_2 = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
-        #conv2d_2 = new_conv2d(conv2d, 512, (2, 2), strides=(1, 1), padding="same", batch_normalization=False)
-
-        conv2d = new_conv2d(input, 64, (7, 7), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 128, (5, 5), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 256, (3, 3), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
-        conv2d_3 = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
-
-        concat = layers.Concatenate()([conv2d_1, conv2d_2, conv2d_3])
-        res_combined = layers.Activation("relu")(concat)
-
-        flat = layers.Flatten()(res_combined)
-
-        dense = Dense(128)(flat)
-        output = Dense(1, kernel_initializer="he_uniform", activation="linear")(dense)
-        model = models.Model(inputs=input, outputs=output)
+        model = model_7(WIDTH, HEIGHT)
 
     elif model_design == 8:
-        input = layers.Input((WIDTH, HEIGHT, 3))
-        conv2d = new_conv2d(input, 64, (35, 35), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 128, (17, 17), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 256, (9, 9), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
-        conv2d_1 = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
-
-        conv2d = new_conv2d(input, 64, (49, 49), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 128, (23, 23), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 256, (11, 11), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 512, (5, 5), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
-        conv2d_2 = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
-
-        conv2d = new_conv2d(input, 64, (7, 7), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 128, (5, 5), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 256, (3, 3), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
-        conv2d_3 = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
-
-        conv2d = new_conv2d(input, 64, (128, 128), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 128, (23, 23), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 256, (7, 7), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 512, (5, 5), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 512, (5, 5), strides=(2, 2), padding="same")
-        conv2d_4 = new_conv2d(conv2d, 512, (5, 5), strides=(2, 2), padding="same")
-
-        flat_1 = layers.Flatten()(conv2d_1)
-        flat_2 = layers.Flatten()(conv2d_2)
-        flat_3 = layers.Flatten()(conv2d_3)
-        flat_4 = layers.Flatten()(conv2d_4)
-
-        concat = layers.Concatenate()([flat_1, flat_2, flat_3, flat_4])
-
-        output = Dense(1, kernel_initializer="he_uniform", activation="linear")(concat)
-        model = models.Model(inputs=input, outputs=output)
+        model = model_8(WIDTH, HEIGHT)
 
     elif model_design == 9:
-        input = layers.Input((WIDTH, HEIGHT, 3))
-        conv2d = new_conv2d(input, 64, (35, 35), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 128, (17, 17), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 256, (9, 9), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
-        conv2d_1 = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
-
-        conv2d = new_conv2d(input, 64, (49, 49), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 128, (23, 23), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 256, (11, 11), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 512, (5, 5), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
-        conv2d_2 = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
-
-        conv2d = new_conv2d(input, 64, (7, 7), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 128, (5, 5), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 256, (3, 3), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
-        conv2d_3 = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), padding="same")
-
-        conv2d = new_conv2d(input, 64, (128, 128), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 128, (23, 23), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 256, (7, 7), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 512, (5, 5), strides=(2, 2), padding="same")
-        conv2d = new_conv2d(conv2d, 512, (5, 5), strides=(2, 2), padding="same")
-        conv2d_4 = new_conv2d(conv2d, 512, (5, 5), strides=(2, 2), padding="same")
-
-        flat_1 = layers.Flatten()(conv2d_1)
-        flat_2 = layers.Flatten()(conv2d_2)
-        flat_3 = layers.Flatten()(conv2d_3)
-        flat_4 = layers.Flatten()(conv2d_4)
-
-        concat = layers.Concatenate()([flat_1, flat_2, flat_3, flat_4])
-
-        output = Dense(5, kernel_initializer="he_uniform", activation="softmax")(concat)
-        model = models.Model(inputs=input, outputs=output)
+        model = model_9(WIDTH, HEIGHT)
 
     elif model_design == 10:
-        input = layers.Input((WIDTH, HEIGHT, 3))
-        conv2d = new_conv2d(input, 64, (7, 7), strides=(1, 1))
-        maxpool = layers.MaxPooling2D()(conv2d)
-        res1 = new_res_block_collection_v2(3, maxpool, 64)
-        res2 = new_res_block_collection_v2(4, res1, 128, first_strides=(2, 2))
-        res3 = new_res_block_collection_v2(6, res2, 256, first_strides=2)
-        res4 = new_res_block_collection_v2(3, res3, 512, first_strides=2)
-
-        res1 = new_conv2d(res1, 128, (3, 3), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 256, (2, 2), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res2 = new_conv2d(res2, 256, (3, 3), strides=(2, 2), padding="same")
-        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        add = layers.Add()([res1, res2, res3, res4])
-        res_combined = layers.Activation("relu")(add)
-
-        flat = layers.Flatten()(res_combined)
-
-        output = Dense(5, kernel_initializer="he_uniform", activation="softmax")(flat)
-        model = models.Model(inputs=input, outputs=output)
+        model = model_10(WIDTH, HEIGHT)
 
     elif model_design == 11:
-        input = layers.Input((WIDTH, HEIGHT, 3))
-        conv2d = new_conv2d(input, 64, (7, 7), strides=(1, 1))
-        maxpool = layers.MaxPooling2D()(conv2d)
-        res1 = new_res_block_collection_v2(3, maxpool, 64)
-        res2 = new_res_block_collection_v2(4, res1, 128, first_strides=(2, 2))
-        res3 = new_res_block_collection_v2(6, res2, 256, first_strides=2)
-        res4 = new_res_block_collection_v2(3, res3, 512, first_strides=2)
-
-        res1 = new_conv2d(res1, 128, (3, 3), strides=(2, 2))
-        res1 = new_conv2d(res1, 256, (3, 3), strides=(2, 2))
-        res1 = new_conv2d(res1, 512, (3, 3), strides=(2, 2))
-
-        res2 = new_conv2d(res2, 256, (3, 3), strides=(2, 2))
-        res2 = new_conv2d(res2, 512, (3, 3), strides=(2, 2))
-
-        res3 = new_conv2d(res3, 512, (3, 3), strides=(2, 2))
-
-        flat1 = layers.Flatten()(res1)
-        flat2 = layers.Flatten()(res2)
-        flat3 = layers.Flatten()(res3)
-        flat4 = layers.Flatten()(res4)
-
-        dense1 = new_dense(flat1, 16)
-        dense2 = new_dense(flat2, 16)
-        dense3 = new_dense(flat3, 16)
-        dense4 = new_dense(flat4, 16)
-
-        concat = Concatenate()([dense1, dense2, dense3, dense4])
-
-        output = Dense(5, kernel_initializer="he_uniform", activation="softmax")(concat)
-        model = models.Model(inputs=input, outputs=output)
+        model = model_11(WIDTH, HEIGHT)
 
     elif model_design == 12:
-        input = layers.Input((WIDTH, HEIGHT, 3))
-        conv2d = new_conv2d(input, 80, (102, 68), strides=(3, 2))
-        conv2d = new_conv2d(conv2d, 128, (7, 7), strides=(2, 2))
-        conv2d = new_conv2d(conv2d, 256, (3, 3), strides=(1, 1))
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2))
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(1, 1))
-        conv2d = new_conv2d(conv2d, 256, (3, 3), strides=(2, 2))
-        conv2d = new_conv2d(conv2d, 256, (3, 3), strides=(1, 1))
-        conv2d = new_conv2d(conv2d, 128, (3, 3), strides=(2, 2))
-        conv2d = new_conv2d(conv2d, 128, (3, 3), strides=(1, 1))
-
-        flat = Flatten()(conv2d)
-
-        dense = Dense(128, activation="sigmoid")(flat)
-        dense = Dense(128, activation="sigmoid")(dense)
-
-        output = Dense(5, kernel_initializer="he_uniform", activation="softmax")(dense)
-        model = models.Model(inputs=input, outputs=output)
+        model = model_12(WIDTH, HEIGHT)
 
     elif model_design == 13:
-        input = layers.Input((WIDTH, HEIGHT, 3))
-        conv2d = new_conv2d(input, 80, (12, 8), strides=(6, 4))
-        conv2d = new_conv2d(conv2d, 128, (7, 7), strides=(4, 4))
-        conv2d = new_conv2d(conv2d, 256, (3, 3), strides=(4, 4))
-        conv2d = new_conv2d(conv2d, 256, (3, 3), strides=(4, 4))
-
-        flat = Flatten()(conv2d)
-
-        dense = Dropout(0.2)(Dense(128, activation="relu")(flat))
-        dense = Dropout(0.2)(Dense(128, activation="relu")(dense))
-
-        output = Dense(5, kernel_initializer="he_uniform", activation="softmax")(dense)
-        model = models.Model(inputs=input, outputs=output)
+        model = model_13(WIDTH, HEIGHT)
 
     elif model_design == 14:
-        input = layers.Input((WIDTH, HEIGHT, 3))
-        conv2d = new_conv2d(input, 80, (12, 8), strides=(3, 2))
-        conv2d = new_conv2d(conv2d, 128, (7, 7), strides=(2, 2))
-        conv2d = new_conv2d(conv2d, 256, (3, 3), strides=(2, 2))
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2))
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2))
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2))
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2))
-
-        flat = Flatten()(conv2d)
-
-        conv2d_2 = new_conv2d(input, 80, (24, 16), strides=(6, 4))
-        conv2d_2 = new_conv2d(conv2d_2, 128, (14, 14), strides=(2, 2))
-        conv2d_2 = new_conv2d(conv2d_2, 256, (5, 5), strides=(2, 2))
-        conv2d_2 = new_conv2d(conv2d_2, 512, (3, 3), strides=(2, 2))
-        conv2d_2 = new_conv2d(conv2d_2, 512, (3, 3), strides=(2, 2))
-        conv2d_2 = new_conv2d(conv2d_2, 512, (3, 3), strides=(2, 2))
-
-
-        flat_2 = Flatten()(conv2d_2)
-        concat = Concatenate()([flat, flat_2])
-
-        dense = Dropout(0.2)(Dense(128, activation="relu")(concat))
-        dense = Dropout(0.2)(Dense(128, activation="relu")(dense))
-
-        output = Dense(5, kernel_initializer="he_uniform", activation="softmax")(dense)
-        model = models.Model(inputs=input, outputs=output)
+        model = model_14(WIDTH, HEIGHT)
 
     elif model_design == 15:
-        input = layers.Input((WIDTH, HEIGHT, 3))
-        conv2d = new_conv2d(input, 64, (7, 7), strides=(1, 1))
-        maxpool = layers.MaxPooling2D()(conv2d)
-        res1 = new_res_block_collection_v2(3, maxpool, 64)
-        res2 = new_res_block_collection_v2(4, res1, 128, first_strides=(2, 2))
-        res3 = new_res_block_collection_v2(6, res2, 256, first_strides=2)
-        res4 = new_res_block_collection_v2(3, res3, 512, first_strides=2)
-
-        res1 = new_conv2d(res1, 128, (3, 3), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 256, (2, 2), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res2 = new_conv2d(res2, 256, (3, 3), strides=(2, 2), padding="same")
-        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), padding="same")
-        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res4 = new_conv2d(res4, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        add = layers.Add()([res1, res2, res3, res4])
-        res_combined = layers.Activation("relu")(add)
-
-        flat = layers.Flatten()(res_combined)
-
-        output = Dense(5, kernel_initializer="he_uniform", activation="linear")(flat)
-        model = models.Model(inputs=input, outputs=output)
+        model = model_15(WIDTH, HEIGHT)
 
     elif model_design == 16:
-        input = layers.Input((WIDTH, HEIGHT, 3))
-        conv2d = new_conv2d(input, 64, (7, 7), strides=(1, 1))
-        maxpool = layers.MaxPooling2D()(conv2d)
-        res1 = new_res_block_collection_v2(3, maxpool, 64)
-        res2 = new_res_block_collection_v2(4, res1, 128, first_strides=(2, 2))
-        res3 = new_res_block_collection_v2(6, res2, 256, first_strides=2)
-        res4 = new_res_block_collection_v2(3, res3, 512, first_strides=2)
-
-        res1 = new_conv2d(res1, 128, (3, 3), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 256, (2, 2), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res2 = new_conv2d(res2, 256, (3, 3), strides=(2, 2), padding="same")
-        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), padding="same")
-        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res4 = new_conv2d(res4, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        add = layers.Add()([res1, res2, res3, res4])
-        res_combined = layers.Activation("relu")(add)
-
-        conv2d = new_conv2d(res_combined, 512, (3, 3), strides=(3, 2), dropout_rate=0.2)
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), dropout_rate=0.2)
-
-        flat = layers.Flatten()(conv2d)
-
-        output = Dense(5, kernel_initializer="he_uniform", activation="linear")(flat)
-        model = models.Model(inputs=input, outputs=output)
+        model = model_16(WIDTH, HEIGHT)
 
     elif model_design == 17:
-        input = layers.Input((WIDTH, HEIGHT, 3))
-        conv2d = new_conv2d(input, 80, (12, 8), strides=(6, 4))
-        conv2d = new_conv2d(conv2d, 128, (7, 7), strides=(4, 4))
-        conv2d = new_conv2d(conv2d, 256, (3, 3), strides=(4, 4))
-        conv2d = new_conv2d(conv2d, 256, (3, 3), strides=(4, 4))
-
-        flat = Flatten()(conv2d)
-
-        conv2d = new_conv2d(input, 80, (12, 8), strides=(3, 2))
-        conv2d = new_conv2d(conv2d, 128, (7, 7), strides=(2, 2))
-        conv2d = new_conv2d(conv2d, 256, (3, 3), strides=(2, 2))
-        conv2d = new_conv2d(conv2d, 256, (3, 3), strides=(2, 2))
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2))
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2))
-
-        concat = Concatenate()([Flatten()(conv2d), flat])
-
-        dense = Dropout(0.2)(Dense(128, activation="relu")(concat))
-        dense = Dropout(0.2)(Dense(128, activation="relu")(dense))
-
-        output = Dense(5, kernel_initializer="he_uniform", activation="softmax")(dense)
-        model = models.Model(inputs=input, outputs=output)
+        model = model_17(WIDTH, HEIGHT)
 
     elif model_design == 18:
-        input = layers.Input((WIDTH, HEIGHT, 3),dtype=tf.float16)
-        conv2d = new_conv2d(input, 64, (7, 7), strides=(1, 1))
-        maxpool = layers.MaxPooling2D(dtype=tf.float16)(conv2d)
-        res1 = new_res_block_collection_v2(3, maxpool, 64)
-        res2 = new_res_block_collection_v2(4, res1, 128, first_strides=(2, 2))
-        res3 = new_res_block_collection_v2(6, res2, 256, first_strides=2)
-        res4 = new_res_block_collection_v2(3, res3, 512, first_strides=2)
-
-        res1 = new_conv2d(res1, 128, (3, 3), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 256, (2, 2), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res2 = new_conv2d(res2, 256, (3, 3), strides=(2, 2), padding="same")
-        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), padding="same")
-        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res4 = new_conv2d(res4, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        add = layers.Add(dtype=tf.float16)([res1, res2, res3, res4])
-        res_combined = layers.Activation("relu", dtype=tf.float16)(add)
-
-        conv2d = new_conv2d(res_combined, 512, (3, 3), strides=(3, 2), dropout_rate=0.2)
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), dropout_rate=0.2)
-
-        flat = layers.Flatten(dtype=tf.float16)(conv2d)
-
-        output = Dense(5, kernel_initializer="he_uniform", activation="softmax", dtype=tf.float16)(flat)
-        model = models.Model(inputs=input, outputs=output)
+        model = model_18(WIDTH, HEIGHT)
 
     elif model_design == 19:
-        input = layers.Input((WIDTH, HEIGHT, 3),dtype=tf.float16)
-        conv2d = new_conv2d(input, 64, (7, 7), strides=(1, 1))
-        maxpool = layers.MaxPooling2D(dtype=tf.float16)(conv2d)
-        res1 = new_res_block_collection_v2(3, maxpool, 64)
-        res2 = new_res_block_collection_v2(4, res1, 128, first_strides=(2, 2))
-        res3 = new_res_block_collection_v2(6, res2, 256, first_strides=2)
-        res4 = new_res_block_collection_v2(3, res3, 512, first_strides=2)
-
-        res1 = new_conv2d(res1, 128, (3, 3), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 256, (2, 2), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res2 = new_conv2d(res2, 256, (3, 3), strides=(2, 2), padding="same")
-        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), padding="same")
-        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res4 = new_conv2d(res4, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        add = layers.Add(dtype=tf.float16)([res1, res2, res3, res4])
-        res_combined = layers.Activation("relu", dtype=tf.float16)(add)
-
-        conv2d = new_conv2d(res_combined, 512, (3, 3), strides=(3, 2), dropout_rate=0.2)
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), dropout_rate=0.2)
-
-        flat = layers.Flatten(dtype=tf.float16)(conv2d)
-
-        output = Dense(10, kernel_initializer="he_uniform", activation="softmax", dtype=tf.float16)(flat)
-        model = models.Model(inputs=input, outputs=output)
+        model = model_19(WIDTH, HEIGHT)
 
     elif model_design == 20:
-        input = layers.Input((WIDTH, HEIGHT, 3),dtype=tf.float16)
-        conv2d = new_conv2d(input, 64, (7, 7), strides=(1, 1))
-        maxpool = layers.MaxPooling2D(dtype=tf.float16)(conv2d)
-        res1 = new_res_block_collection_v2(3, maxpool, 64)
-        res2 = new_res_block_collection_v2(4, res1, 128, first_strides=(2, 2))
-        res3 = new_res_block_collection_v2(6, res2, 256, first_strides=2)
-        res4 = new_res_block_collection_v2(3, res3, 512, first_strides=2)
-        res5 = new_res_block_collection_v2(3, res4, 512, first_strides=2)
-        res6 = new_res_block_collection_v2(3, res5, 512, first_strides=2)
-        res7 = new_res_block_collection_v2(3, res6, 512, first_strides=2)
-        res8 = new_res_block_collection_v2(3, res7, 512, first_strides=2)
-
-        res1 = new_conv2d(res1, 128, (3, 3), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 256, (2, 2), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 1024, (2, 2), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 1024, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res2 = new_conv2d(res2, 256, (3, 3), strides=(2, 2), padding="same")
-        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), padding="same")
-        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), padding="same")
-        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), padding="same")
-        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), padding="same")
-        res2 = new_conv2d(res2, 1024, (2, 2), strides=(2, 2), padding="same")
-        res2 = new_conv2d(res2, 1024, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), padding="same")
-        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), padding="same")
-        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), padding="same")
-        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), padding="same")
-        res3 = new_conv2d(res3, 1024, (2, 2), strides=(2, 2), padding="same")
-        res3 = new_conv2d(res3, 1024, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res4 = new_conv2d(res4, 512, (2, 2), strides=(2, 2), padding="same")
-        res4 = new_conv2d(res4, 512, (2, 2), strides=(2, 2), padding="same")
-        res4 = new_conv2d(res4, 512, (2, 2), strides=(2, 2), padding="same")
-        res4 = new_conv2d(res4, 1024, (2, 2), strides=(2, 2), padding="same")
-        res4 = new_conv2d(res4, 1024, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res5 = new_conv2d(res5, 512, (2, 2), strides=(2, 2), padding="same")
-        res5 = new_conv2d(res5, 512, (2, 2), strides=(2, 2), padding="same")
-        res5 = new_conv2d(res5, 1024, (2, 2), strides=(2, 2), padding="same")
-        res5 = new_conv2d(res5, 1024, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res6 = new_conv2d(res6, 512, (2, 2), strides=(2, 2), padding="same")
-        res6 = new_conv2d(res6, 1024, (2, 2), strides=(2, 2), padding="same")
-        res6 = new_conv2d(res6, 1024, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res7 = new_conv2d(res7, 512, (2, 2), strides=(2, 2), padding="same")
-        res7 = new_conv2d(res7, 1024, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res8 = new_conv2d(res8, 1024, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        print(f'shape: {res1.shape}')
-        print(f'shape: {res2.shape}')
-        print(f'shape: {res3.shape}')
-        print(f'shape: {res4.shape}')
-        print(f'shape: {res5.shape}')
-        print(f'shape: {res6.shape}')
-        print(f'shape: {res7.shape}')
-        print(f'shape: {res8.shape}')
-
-        add = layers.Add(dtype=tf.float16)([res1, res2, res3, res4, res5, res6, res7, res8])
-        res_combined = layers.Activation("relu", dtype=tf.float16)(add)
-
-        conv2d = new_conv2d(res_combined, 2048, (2, 2), strides=(1, 1), dropout_rate=0.2)
-        conv2d = new_conv2d(conv2d, 2048, (1, 1), strides=(1, 1), dropout_rate=0.2)
-        
-        flat = layers.Flatten(dtype=tf.float16)(conv2d)
-
-        output = Dense(10, kernel_initializer="he_uniform", activation="softmax", dtype=tf.float16)(flat)
-        model = models.Model(inputs=input, outputs=output)
+        model = model_20(WIDTH, HEIGHT)
 
     elif model_design == 21:
-        input = layers.Input((WIDTH, HEIGHT, 3),dtype=tf.float16)
-        conv2d = new_conv2d(input, 64, (7, 7), strides=(1, 1))
-        maxpool = layers.MaxPooling2D(dtype=tf.float16)(conv2d)
-        res1 = new_res_block_collection_v2(3, maxpool, 64)
-        res2 = new_res_block_collection_v2(4, res1, 128, first_strides=(2, 2))
-        res3 = new_res_block_collection_v2(6, res2, 256, first_strides=2)
-        res4 = new_res_block_collection_v2(3, res3, 512, first_strides=2)
-
-        res1 = new_conv2d(res1, 128, (3, 3), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 256, (2, 2), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res2 = new_conv2d(res2, 256, (3, 3), strides=(2, 2), padding="same")
-        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), padding="same")
-        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res4 = new_conv2d(res4, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res_combined = layers.Add(dtype=tf.float16)([res1, res2, res3, res4])
-        #res_combined = layers.Activation("relu", dtype=tf.float16)(res_combined)
-
-        conv2d = new_conv2d(res_combined, 512, (3, 3), strides=(3, 2), dropout_rate=0.2)
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), dropout_rate=0.2)
-
-        flat = layers.Flatten(dtype=tf.float16)(conv2d)
-
-        dense = Dense(2048, kernel_initializer="he_uniform", activation="relu", dtype=tf.float16)(flat)
-        dense = Dense(1024, kernel_initializer="he_uniform", activation="relu", dtype=tf.float16)(dense)
-        dense = Dense(512, kernel_initializer="he_uniform", activation="relu", dtype=tf.float16)(dense)
-        dense = Dense(256, kernel_initializer="he_uniform", activation="relu", dtype=tf.float16)(dense)
-        dense = Dense(128, kernel_initializer="he_uniform", activation="relu", dtype=tf.float16)(dense)
-        dense = Dense(128, kernel_initializer="he_uniform", activation="relu", dtype=tf.float16)(dense)
-        output = Dense(1, kernel_initializer="he_uniform", activation="sigmoid", dtype=tf.float16)(dense)
-        model = models.Model(inputs=input, outputs=output)
+        model = model_21(WIDTH, HEIGHT)
 
     elif model_design == 22:
-        input = layers.Input((WIDTH, HEIGHT, 3),dtype=tf.float16)
-        conv2d = new_conv2d(input, 64, (7, 7), strides=(1, 1))
-        maxpool = layers.MaxPooling2D(dtype=tf.float16)(conv2d)
-        res1 = new_res_block_collection_v2(3, maxpool, 64)
-        res2 = new_res_block_collection_v2(4, res1, 128, first_strides=(2, 2))
-        res3 = new_res_block_collection_v2(6, res2, 256, first_strides=2)
-        res4 = new_res_block_collection_v2(3, res3, 512, first_strides=2)
-
-        res1 = new_conv2d(res1, 128, (3, 3), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 256, (2, 2), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), padding="same")
-        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res2 = new_conv2d(res2, 256, (3, 3), strides=(2, 2), padding="same")
-        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), padding="same")
-        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        res4 = new_conv2d(res4, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
-
-        add = layers.Add(dtype=tf.float16)([res1, res2, res3, res4])
-        #res_combined = layers.Activation("relu", dtype=tf.float16)(add)
-
-        conv2d = new_conv2d(res_combined, 512, (3, 3), strides=(3, 2), dropout_rate=0.2)
-        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), dropout_rate=0.2)
-
-        flat = layers.Flatten(dtype=tf.float16)(conv2d)
-
-        output = Dense(1, kernel_initializer="he_uniform", activation="linear", dtype=tf.float16)(flat)
-        model = models.Model(inputs=input, outputs=output)
+        model = model_22(WIDTH, HEIGHT)
 
     else:
         model = models.load_model(modelin)
