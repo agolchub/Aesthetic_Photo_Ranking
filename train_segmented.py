@@ -22,28 +22,7 @@ from datetime import datetime
 import matplotlib.pylab as plt
 import itertools
 
-from simple_model import simple_model as sm
-import special_model as special
-from model_10 import model_10
-from model_11 import model_11
-from model_12 import model_12
-from model_13 import model_13
-from model_14 import model_14
-from model_15 import model_15
-from model_16 import model_16
-from model_17 import model_17
-from model_18 import model_18
-from model_19 import model_19
-from model_20 import model_20
-from model_21 import model_21
-from model_22 import model_22
-from model_3 import model_3
-from model_4 import model_4
-from model_5 import model_5
-from model_6 import model_6
-from model_7 import model_7
-from model_8 import model_8
-from model_9 import model_9
+import models as myModels
 from models.primitives import init_layer
 
 class CustomDataGen(tf.keras.utils.Sequence):
@@ -239,73 +218,73 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
     # load model
 
     if (simple_model):
-        model = sm(WIDTH, HEIGHT)
+        model = myModels.simple_model(WIDTH, HEIGHT)
         
     elif (special_model):
-        model = special.special_model(WIDTH, HEIGHT, unlock_segment_weights)
+        model = myModels.special_model(WIDTH, HEIGHT, unlock_segment_weights)
 
     elif (special_model2):
-        model = special.special_model2(WIDTH, HEIGHT, unlock_segment_weights)
+        model = myModels.special_model2(WIDTH, HEIGHT, unlock_segment_weights)
 
     elif model_design == 3:
-        model = model_3(WIDTH, HEIGHT)
+        model = myModels.model_3(WIDTH, HEIGHT)
 
     elif model_design == 4:
-        model = model_4(WIDTH, HEIGHT)
+        model = myModels.model_4(WIDTH, HEIGHT)
 
     elif model_design == 5:
-        model = model_5(WIDTH, HEIGHT)
+        model = myModels.model_5(WIDTH, HEIGHT)
 
     elif model_design == 6:
-        model = model_6(WIDTH, HEIGHT)
+        model = myModels.model_6(WIDTH, HEIGHT)
 
     elif model_design == 7:
-        model = model_7(WIDTH, HEIGHT)
+        model = myModels.model_7(WIDTH, HEIGHT)
 
     elif model_design == 8:
-        model = model_8(WIDTH, HEIGHT)
+        model = myModels.model_8(WIDTH, HEIGHT)
 
     elif model_design == 9:
-        model = model_9(WIDTH, HEIGHT)
+        model = myModels.model_9(WIDTH, HEIGHT)
 
     elif model_design == 10:
-        model = model_10(WIDTH, HEIGHT)
+        model = myModels.model_10(WIDTH, HEIGHT)
 
     elif model_design == 11:
-        model = model_11(WIDTH, HEIGHT)
+        model = myModels.model_11(WIDTH, HEIGHT)
 
     elif model_design == 12:
-        model = model_12(WIDTH, HEIGHT)
+        model = myModels.model_12(WIDTH, HEIGHT)
 
     elif model_design == 13:
-        model = model_13(WIDTH, HEIGHT)
+        model = myModels.model_13(WIDTH, HEIGHT)
 
     elif model_design == 14:
-        model = model_14(WIDTH, HEIGHT)
+        model = myModels.model_14(WIDTH, HEIGHT)
 
     elif model_design == 15:
-        model = model_15(WIDTH, HEIGHT)
+        model = myModels.model_15(WIDTH, HEIGHT)
 
     elif model_design == 16:
-        model = model_16(WIDTH, HEIGHT)
+        model = myModels.model_16(WIDTH, HEIGHT)
 
     elif model_design == 17:
-        model = model_17(WIDTH, HEIGHT)
+        model = myModels.model_17(WIDTH, HEIGHT)
 
     elif model_design == 18:
-        model = model_18(WIDTH, HEIGHT)
+        model = myModels.model_18(WIDTH, HEIGHT)
 
     elif model_design == 19:
-        model = model_19(WIDTH, HEIGHT)
+        model = myModels.model_19(WIDTH, HEIGHT)
 
     elif model_design == 20:
-        model = model_20(WIDTH, HEIGHT)
+        model = myModels.model_20(WIDTH, HEIGHT)
 
     elif model_design == 21:
-        model = model_21(WIDTH, HEIGHT)
+        model = myModels.model_21(WIDTH, HEIGHT)
 
     elif model_design == 22:
-        model = model_22(WIDTH, HEIGHT)
+        model = myModels.model_22(WIDTH, HEIGHT)
 
     else:
         model = models.load_model(modelin)
@@ -337,7 +316,7 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
 
     print(model.summary())
     if (build_only):
-        img_file = modelout + '-model_arch.png'
+        img_file = f'model_archs/{modelout.split("/")[-1]}-model_arch.png'
         tf.keras.utils.plot_model(model, to_file=img_file, show_shapes=True, show_layer_names=True)
         model.save(modelout)
         exit(0)
