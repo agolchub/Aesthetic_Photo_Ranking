@@ -98,13 +98,15 @@ class WaitCallback(tf.keras.callbacks.Callback):
 
         return super().on_epoch_end(epoch, logs=logs)
 
-
-def proc_image_dir(Images_Path, scores="", categorical=False, WIDTH=1024, HEIGHT=680, scoreColumn=5):
+import threading
+imageProcessingLock = threading.Lock()
+def proc_image_dir(Images_Path, scores="", categorical=False, WIDTH=1024, HEIGHT=680, scoreColumn=5, categories=5):
     import random
     import csv
     import os
     import psutil
     import gc
+    from threading import Thread
     #    image_classes = sorted([dirname for dirname in os.listdir(Images_Path)
     #                      if os.path.isdir(os.path.join(Images_Path, dirname)) and not dirname.startswith(".") and not dirname.startswith("mblur")])
 
@@ -123,22 +125,17 @@ def proc_image_dir(Images_Path, scores="", categorical=False, WIDTH=1024, HEIGHT
     rawscore = 0.0
     random.shuffle(items)
     # items = items[:200]
-
+    threads = []
     if scores != "":
         with open(scores, mode='r') as cat:
             csvFile = csv.reader(cat)
             for line in csvFile:
-                try:
-                    resizedImage, out = read_one_image(HEIGHT, Images_Path, WIDTH, categorical, line, scoreColumn)
-                    y.append(out)
-                    x.append(resizedImage)
-                    images.append(Images_Path + line[0])
-                    gc.collect()
-                    print(psutil.Process(os.getpid()).memory_info().rss / 1024 ** 2)
-                except Exception as e:
-                    print("Error ---- ")
-                    print(e)
-                    print(line)
+                t = Thread(target=read_one_image,args=(HEIGHT, Images_Path, WIDTH, categorical, line, scoreColumn, categories, y, x, images))
+                t.start()
+                threads.append(t)
+            for t in threads:
+                t.join()
+                
         return x, y, images
 
     for item in items:
@@ -172,21 +169,36 @@ def proc_image_dir(Images_Path, scores="", categorical=False, WIDTH=1024, HEIGHT
     return x, y, images
 
 
-def read_one_image(HEIGHT, Images_Path, WIDTH, categorical, line, scoreColumn):
-    imagePath = Images_Path + line[0]
-    full_size_image = io.imread(imagePath)
-    resizedImage = resize(full_size_image, (WIDTH, HEIGHT), anti_aliasing=True)
-    rawscore = int(line[scoreColumn])
-    if resizedImage.shape[2] == 3:
-        if (categorical):
-            out = [0] * 5
-            out[rawscore] = 1
-        else:
-            out = rawscore  # ((rawscore - 1.0)/9.0)
+def read_one_image(HEIGHT, Images_Path, WIDTH, categorical, line, scoreColumn, categories, y, x, images):
+    try:
+        imagePath = Images_Path + line[0]
+        full_size_image = io.imread(imagePath)
+        resizedImage = resize(full_size_image, (WIDTH, HEIGHT), anti_aliasing=True)
+        if resizedImage.shape[2] == 3:
+            if (categorical):
+                out = [0] * categories
+                out[int(line[scoreColumn])] = 1
+            else:
+                out = float(line[scoreColumn])  # ((rawscore - 1.0)/9.0)
 
-        print(line[scoreColumn] + " - " + imagePath)
-    del full_size_image
-    del rawscore
+            print(line[scoreColumn] + " - " + imagePath)
+        del full_size_image
+
+        imageProcessingLock.acquire()
+        try:
+            y.append(out)
+            x.append(resizedImage)
+            images.append(Images_Path + line[0])
+        except Exception as e:
+            print("Error ---- ")
+            print(e)
+            print(line)
+        finally:
+            imageProcessingLock.release()
+    except Exception as e:
+        print("Error ---- ")
+        print(e)
+        print(line)
     return resizedImage, out
 
 def init_layer(layer):
@@ -897,6 +909,157 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
         output = Dense(5, kernel_initializer="he_uniform", activation="softmax", dtype=tf.float16)(flat)
         model = models.Model(inputs=input, outputs=output)
 
+    elif model_design == 19:
+        input = layers.Input((WIDTH, HEIGHT, 3),dtype=tf.float16)
+        conv2d = new_conv2d(input, 64, (7, 7), strides=(1, 1))
+        maxpool = layers.MaxPooling2D(dtype=tf.float16)(conv2d)
+        res1 = new_res_block_collection_v2(3, maxpool, 64)
+        res2 = new_res_block_collection_v2(4, res1, 128, first_strides=(2, 2))
+        res3 = new_res_block_collection_v2(6, res2, 256, first_strides=2)
+        res4 = new_res_block_collection_v2(3, res3, 512, first_strides=2)
+
+        res1 = new_conv2d(res1, 128, (3, 3), strides=(2, 2), padding="same")
+        res1 = new_conv2d(res1, 256, (2, 2), strides=(2, 2), padding="same")
+        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), padding="same")
+        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+
+        res2 = new_conv2d(res2, 256, (3, 3), strides=(2, 2), padding="same")
+        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), padding="same")
+        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+
+        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+
+        res4 = new_conv2d(res4, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+
+        add = layers.Add(dtype=tf.float16)([res1, res2, res3, res4])
+        res_combined = layers.Activation("relu", dtype=tf.float16)(add)
+
+        conv2d = new_conv2d(res_combined, 512, (3, 3), strides=(3, 2), dropout_rate=0.2)
+        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), dropout_rate=0.2)
+
+        flat = layers.Flatten(dtype=tf.float16)(conv2d)
+
+        output = Dense(10, kernel_initializer="he_uniform", activation="softmax", dtype=tf.float16)(flat)
+        model = models.Model(inputs=input, outputs=output)
+
+    elif model_design == 20:
+        input = layers.Input((WIDTH, HEIGHT, 3),dtype=tf.float16)
+        conv2d = new_conv2d(input, 64, (7, 7), strides=(1, 1))
+        maxpool = layers.MaxPooling2D(dtype=tf.float16)(conv2d)
+        res1 = new_res_block_collection_v2(3, maxpool, 64)
+        res2 = new_res_block_collection_v2(4, res1, 128, first_strides=(2, 2))
+        res3 = new_res_block_collection_v2(6, res2, 256, first_strides=2)
+        res4 = new_res_block_collection_v2(3, res3, 512, first_strides=2)
+        res5 = new_res_block_collection_v2(3, res4, 512, first_strides=2)
+        res6 = new_res_block_collection_v2(3, res5, 512, first_strides=2)
+        res7 = new_res_block_collection_v2(3, res6, 512, first_strides=2)
+        res8 = new_res_block_collection_v2(3, res7, 512, first_strides=2)
+
+        res1 = new_conv2d(res1, 128, (3, 3), strides=(2, 2), padding="same")
+        res1 = new_conv2d(res1, 256, (2, 2), strides=(2, 2), padding="same")
+        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), padding="same")
+        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), padding="same")
+        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), padding="same")
+        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), padding="same")
+        res1 = new_conv2d(res1, 1024, (2, 2), strides=(2, 2), padding="same")
+        res1 = new_conv2d(res1, 1024, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+
+        res2 = new_conv2d(res2, 256, (3, 3), strides=(2, 2), padding="same")
+        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), padding="same")
+        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), padding="same")
+        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), padding="same")
+        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), padding="same")
+        res2 = new_conv2d(res2, 1024, (2, 2), strides=(2, 2), padding="same")
+        res2 = new_conv2d(res2, 1024, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+
+        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), padding="same")
+        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), padding="same")
+        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), padding="same")
+        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), padding="same")
+        res3 = new_conv2d(res3, 1024, (2, 2), strides=(2, 2), padding="same")
+        res3 = new_conv2d(res3, 1024, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+
+        res4 = new_conv2d(res4, 512, (2, 2), strides=(2, 2), padding="same")
+        res4 = new_conv2d(res4, 512, (2, 2), strides=(2, 2), padding="same")
+        res4 = new_conv2d(res4, 512, (2, 2), strides=(2, 2), padding="same")
+        res4 = new_conv2d(res4, 1024, (2, 2), strides=(2, 2), padding="same")
+        res4 = new_conv2d(res4, 1024, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+
+        res5 = new_conv2d(res5, 512, (2, 2), strides=(2, 2), padding="same")
+        res5 = new_conv2d(res5, 512, (2, 2), strides=(2, 2), padding="same")
+        res5 = new_conv2d(res5, 1024, (2, 2), strides=(2, 2), padding="same")
+        res5 = new_conv2d(res5, 1024, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+
+        res6 = new_conv2d(res6, 512, (2, 2), strides=(2, 2), padding="same")
+        res6 = new_conv2d(res6, 1024, (2, 2), strides=(2, 2), padding="same")
+        res6 = new_conv2d(res6, 1024, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+
+        res7 = new_conv2d(res7, 512, (2, 2), strides=(2, 2), padding="same")
+        res7 = new_conv2d(res7, 1024, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+
+        res8 = new_conv2d(res8, 1024, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+
+        print(f'shape: {res1.shape}')
+        print(f'shape: {res2.shape}')
+        print(f'shape: {res3.shape}')
+        print(f'shape: {res4.shape}')
+        print(f'shape: {res5.shape}')
+        print(f'shape: {res6.shape}')
+        print(f'shape: {res7.shape}')
+        print(f'shape: {res8.shape}')
+
+        add = layers.Add(dtype=tf.float16)([res1, res2, res3, res4, res5, res6, res7, res8])
+        res_combined = layers.Activation("relu", dtype=tf.float16)(add)
+
+        conv2d = new_conv2d(res_combined, 2048, (2, 2), strides=(1, 1), dropout_rate=0.2)
+        conv2d = new_conv2d(conv2d, 2048, (1, 1), strides=(1, 1), dropout_rate=0.2)
+        
+        flat = layers.Flatten(dtype=tf.float16)(conv2d)
+
+        output = Dense(10, kernel_initializer="he_uniform", activation="softmax", dtype=tf.float16)(flat)
+        model = models.Model(inputs=input, outputs=output)
+
+    elif model_design == 21:
+        input = layers.Input((WIDTH, HEIGHT, 3),dtype=tf.float16)
+        conv2d = new_conv2d(input, 64, (7, 7), strides=(1, 1))
+        maxpool = layers.MaxPooling2D(dtype=tf.float16)(conv2d)
+        res1 = new_res_block_collection_v2(3, maxpool, 64)
+        res2 = new_res_block_collection_v2(4, res1, 128, first_strides=(2, 2))
+        res3 = new_res_block_collection_v2(6, res2, 256, first_strides=2)
+        res4 = new_res_block_collection_v2(3, res3, 512, first_strides=2)
+
+        res1 = new_conv2d(res1, 128, (3, 3), strides=(2, 2), padding="same")
+        res1 = new_conv2d(res1, 256, (2, 2), strides=(2, 2), padding="same")
+        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), padding="same")
+        res1 = new_conv2d(res1, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+
+        res2 = new_conv2d(res2, 256, (3, 3), strides=(2, 2), padding="same")
+        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), padding="same")
+        res2 = new_conv2d(res2, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+
+        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+        res3 = new_conv2d(res3, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+
+        res4 = new_conv2d(res4, 512, (2, 2), strides=(2, 2), dropout_rate=0, padding="same", activation=None, batch_normalization=False)
+
+        add = layers.Add(dtype=tf.float16)([res1, res2, res3, res4])
+        res_combined = layers.Activation("relu", dtype=tf.float16)(add)
+
+        conv2d = new_conv2d(res_combined, 512, (3, 3), strides=(3, 2), dropout_rate=0.2)
+        conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), dropout_rate=0.2)
+
+        flat = layers.Flatten(dtype=tf.float16)(conv2d)
+
+        dense = Dense(2048, kernel_initializer="he_uniform", activation="relu", dtype=tf.float16)(flat)
+        dense = Dense(1024, kernel_initializer="he_uniform", activation="relu", dtype=tf.float16)(dense)
+        dense = Dense(512, kernel_initializer="he_uniform", activation="relu", dtype=tf.float16)(dense)
+        dense = Dense(256, kernel_initializer="he_uniform", activation="relu", dtype=tf.float16)(dense)
+        dense = Dense(128, kernel_initializer="he_uniform", activation="relu", dtype=tf.float16)(dense)
+        dense = Dense(128, kernel_initializer="he_uniform", activation="relu", dtype=tf.float16)(dense)
+        output = Dense(1, kernel_initializer="he_uniform", activation="linear", dtype=tf.float16)(dense)
+        model = models.Model(inputs=input, outputs=output)
+
     else:
         model = models.load_model(modelin)
 
@@ -947,9 +1110,9 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
     else:
         X_train, y_train, image_list_train = proc_image_dir(os.path.dirname(os.path.abspath(train_path)) + '/JPEG/',
                                                             train_path, WIDTH=WIDTH, HEIGHT=HEIGHT,
-                                                            scoreColumn=outColumn, categorical=categorical)
+                                                            scoreColumn=outColumn, categorical=categorical, categories=model.output_shape[1])
         X_val, y_val, image_list_val = proc_image_dir(os.path.dirname(os.path.abspath(val_path)) + '/JPEG/', val_path,
-                                                      WIDTH=WIDTH, HEIGHT=HEIGHT, scoreColumn=outColumn, categorical=categorical)
+                                                      WIDTH=WIDTH, HEIGHT=HEIGHT, scoreColumn=outColumn, categorical=categorical, categories=model.output_shape[1])
 
     print("Images loaded")
 
@@ -1051,7 +1214,7 @@ def test(modelin, imagepath, WIDTH, HEIGHT, outColumn, weights = None):
     categorical = model.output_shape[1] > 1
 
     x, y, images = proc_image_dir(os.path.dirname(os.path.abspath(imagepath)) + '/JPEG/', imagepath, WIDTH=WIDTH,
-                                  HEIGHT=HEIGHT, scoreColumn=outColumn, categorical=categorical)
+                                  HEIGHT=HEIGHT, scoreColumn=outColumn, categorical=categorical, categories=model.output_shape[1])
     a = np.array(x).astype(float)
     Y_pred = model.predict(a)
     print(np.array(y))
