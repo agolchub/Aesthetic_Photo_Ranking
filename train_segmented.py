@@ -149,7 +149,7 @@ def read_one_image(HEIGHT, Images_Path, WIDTH, categorical, line, scoreColumn, c
 def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov, checkpoint_filepath, train_path,
           val_path, transfer_learning, randomize_weights, use_resnet, special_model, build_only, special_model2,
           batched_reader, simple_model, momentum, loss_function, catalog, WIDTH, HEIGHT, outColumn,
-          unlock_segment_weights, model_design, reload, patience):
+          unlock_segment_weights, model_design, reload, patience, epoch_length):
     categorical = False
     # load model
 
@@ -209,7 +209,7 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
         # Second split the 40% into validation and test sets
         X_test, X_val, y_test, y_val = train_test_split(X_valtest, y_valtest, test_size=0.5, random_state=1)
     elif (batched_reader):
-        training_generator = CustomDataGen(batch_size, train_path, resnet=use_resnet, outColumn=outColumn, categorical=False, shuffle=True)
+        training_generator = CustomDataGen(batch_size, train_path, resnet=use_resnet, outColumn=outColumn, categorical=False, shuffle=True, epoch_length=epoch_length)
         validation_generator = CustomDataGen(batch_size, val_path, resnet=use_resnet, outColumn=outColumn, categorical=False, shuffle=True)
         steps_per_epoch = int(training_generator.__len__())
 
@@ -381,6 +381,7 @@ def main(argv):
     reload = False
     patience = 0
     weights = None
+    epoch_length = 0
 
     try:
         opts, args = getopt.getopt(argv, "hi:o:p:nd:l:b:e:c:t:v:xrm:f:",
@@ -389,7 +390,7 @@ def main(argv):
                                     "resnet50", "special_model", "modelout=", "imagepath=", "nesterov", "decay=",
                                     "learningrate=", "batchsize", "epochs", "checkpoint_filepath=", "train=", "val=",
                                     "test=", "transfer_learning", "randomize_weights", "batched_reader",
-                                    "model_design=", "reload_checkpoint_between_rates", "patience=", "load_weights="])
+                                    "model_design=", "reload_checkpoint_between_rates", "patience=", "load_weights=", "epoch_length="])
     except getopt.GetoptError:
         print('train.py -i <modelin> -o <modelout> -p <imagepath>')
         sys.exit(2)
@@ -457,6 +458,8 @@ def main(argv):
             patience = int(arg)
         elif opt in ("--load_weights"):
             weights = arg
+        elif opt in ("--epoch_length"):
+            epoch_length = int(arg)
 
     checkpoint_filepath = modelout + ".checkpoint/"
 
@@ -487,7 +490,7 @@ def main(argv):
         train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov, checkpoint_filepath, train_path,
               val_path, transfer_learning, randomize_weights, use_resnet, special_model, build_only, special_model2,
               batched_reader, simple_model, momentum, loss_function, catalog, WIDTH, HEIGHT, outColumn,
-              unlock_segment_weights, model_design, reload, patience)
+              unlock_segment_weights, model_design, reload, patience, epoch_length)
 
 
 if __name__ == "__main__":

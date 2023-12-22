@@ -22,3 +22,4 @@ from .model_6 import model_6
 from .model_7 import model_7
 from .model_8 import model_8
 from .model_9 import model_9
+from .model_23 import model_23

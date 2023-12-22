@@ -44,7 +44,7 @@ class CustomDataGen(tf.keras.utils.Sequence):
     def __init__(self,
                  batch_size, path,
                  input_size=(1024, 680, 3),
-                 shuffle=False, resnet=False, outColumn = 2, categorical=False, categories=1):
+                 shuffle=False, resnet=False, outColumn = 2, categorical=False, categories=1, epoch_length=0):
         self.categorical = categorical
         self.categories = categories
         self.batch_size = batch_size
@@ -60,7 +60,12 @@ class CustomDataGen(tf.keras.utils.Sequence):
         if(self.shuffle):
             print("shuffling")
             random.shuffle(self.items)
+
         self.n = len(self.items)
+
+        if(epoch_length>0 and epoch_length<self.n):
+            self.n = epoch_length
+
         self.resnet = resnet
 
         threads=[]
