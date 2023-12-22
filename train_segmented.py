@@ -8,79 +8,14 @@ from sklearn.model_selection import train_test_split
 from skimage import io
 from skimage.transform import resize
 import sys, getopt
-from tensorflow.keras import initializers, models, optimizers
-from tensorflow.keras.layers import Activation
-from tensorflow.keras.layers import Conv2D, MaxPooling2D
-from tensorflow.keras.models import Sequential
 import os
 import tensorflow as tf
-from tensorflow.python.keras.layers.core import Lambda
-from tensorflow.python.lib.io.file_io import file_crc32
-from tensorflow.python.platform.tf_logging import error
-
 from datetime import datetime
 import matplotlib.pylab as plt
 import itertools
-
-import models as myModels
+import models
 from models.primitives import init_layer
-
-class CustomDataGen(tf.keras.utils.Sequence):
-
-    def __init__(self,
-                 batch_size, path,
-                 input_size=(1024, 680, 3),
-                 shuffle=True, resnet=False):
-
-        self.batch_size = batch_size
-        self.input_size = input_size
-        self.shuffle = shuffle
-        self.path = path
-        self.items = glob(os.path.join(self.path, "*.jpg"))
-        self.n = len(self.items)
-        self.resnet = resnet
-
-    def on_epoch_end(self):
-        pass
-
-    def __getitem__(self, index):
-        # import random
-
-        x = []  # images as arrays
-        y = []  # labels Infiltration or Not_infiltration
-        WIDTH = 1024
-        HEIGHT = 680
-        if self.resnet:
-            WIDTH = HEIGHT = 224
-        j = 0
-        images = []
-        rawscore = 0.0
-
-        for i in range(index * self.batch_size, (index + 1) * self.batch_size):
-            if (i >= len(self.items)):
-                break
-            item = self.items[i]
-            # print("Reading " + item)
-            # Read and resize image
-            full_size_image = io.imread(item)
-            rawscore = float(os.path.basename(item).split("-")[0])
-            out = rawscore
-            y.append(out)
-            images.append(item)
-            resizedImage = resize(full_size_image, (WIDTH, HEIGHT), anti_aliasing=True)
-            if (len(resizedImage.shape) < 3):
-                resizedImage = skimage.color.gray2rgb(resizedImage)
-
-            x.append(resizedImage)
-        x = np.array(x)
-        y = np.array(y)
-        if self.resnet:
-            x = tf.keras.applications.resnet.preprocess_input(x)
-
-        return x, y
-
-    def __len__(self):
-        return self.n // self.batch_size
+from data import CustomDataGen
 
 
 class WaitCallback(tf.keras.callbacks.Callback):
@@ -135,14 +70,15 @@ def proc_image_dir(Images_Path, scores="", categorical=False, WIDTH=1024, HEIGHT
         with open(scores, mode='r') as cat:
             csvFile = csv.reader(cat)
             for line in csvFile:
-                count=count+1
-                if(not (count%sample == 0)):
-                    t = Thread(target=read_one_image,args=(HEIGHT, Images_Path, WIDTH, categorical, line, scoreColumn, categories, y, x, images))
-                    t.start()
-                    threads.append(t)
+                # count=count+1
+                # if(not (count%sample == 0)):
+                t = Thread(target=read_one_image,args=(HEIGHT, Images_Path, WIDTH, categorical, line, scoreColumn, categories, y, x, images))
+                t.start()
+                threads.append(t)
             for t in threads:
                 t.join()
             gc.collect()
+
         return x, y, images
 
     for item in items:
@@ -218,76 +154,18 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
     # load model
 
     if (simple_model):
-        model = myModels.simple_model(WIDTH, HEIGHT)
+        model = models.simple_model(WIDTH, HEIGHT)
         
     elif (special_model):
-        model = myModels.special_model(WIDTH, HEIGHT, unlock_segment_weights)
+        model = models.special_model(WIDTH, HEIGHT, unlock_segment_weights)
 
     elif (special_model2):
-        model = myModels.special_model2(WIDTH, HEIGHT, unlock_segment_weights)
-
-    elif model_design == 3:
-        model = myModels.model_3(WIDTH, HEIGHT)
-
-    elif model_design == 4:
-        model = myModels.model_4(WIDTH, HEIGHT)
-
-    elif model_design == 5:
-        model = myModels.model_5(WIDTH, HEIGHT)
-
-    elif model_design == 6:
-        model = myModels.model_6(WIDTH, HEIGHT)
-
-    elif model_design == 7:
-        model = myModels.model_7(WIDTH, HEIGHT)
-
-    elif model_design == 8:
-        model = myModels.model_8(WIDTH, HEIGHT)
-
-    elif model_design == 9:
-        model = myModels.model_9(WIDTH, HEIGHT)
-
-    elif model_design == 10:
-        model = myModels.model_10(WIDTH, HEIGHT)
-
-    elif model_design == 11:
-        model = myModels.model_11(WIDTH, HEIGHT)
-
-    elif model_design == 12:
-        model = myModels.model_12(WIDTH, HEIGHT)
-
-    elif model_design == 13:
-        model = myModels.model_13(WIDTH, HEIGHT)
-
-    elif model_design == 14:
-        model = myModels.model_14(WIDTH, HEIGHT)
-
-    elif model_design == 15:
-        model = myModels.model_15(WIDTH, HEIGHT)
-
-    elif model_design == 16:
-        model = myModels.model_16(WIDTH, HEIGHT)
-
-    elif model_design == 17:
-        model = myModels.model_17(WIDTH, HEIGHT)
-
-    elif model_design == 18:
-        model = myModels.model_18(WIDTH, HEIGHT)
-
-    elif model_design == 19:
-        model = myModels.model_19(WIDTH, HEIGHT)
-
-    elif model_design == 20:
-        model = myModels.model_20(WIDTH, HEIGHT)
-
-    elif model_design == 21:
-        model = myModels.model_21(WIDTH, HEIGHT)
-
-    elif model_design == 22:
-        model = myModels.model_22(WIDTH, HEIGHT)
-
+        model = models.special_model2(WIDTH, HEIGHT, unlock_segment_weights)
+    elif model_design:
+        modelModule = getattr(models,f'model_{model_design}')
+        model = modelModule(WIDTH, HEIGHT)
     else:
-        model = models.load_model(modelin)
+        model = tf.keras.models.load_model(modelin)
 
 
     categorical = model.output_shape[1] > 1
@@ -312,7 +190,7 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
     # model.build()
     model.compile(
         loss='mse',
-        optimizer=optimizers.Adam(learning_rate=0.01, beta_1=0.9, beta_2=0.999, epsilon=1e-08, weight_decay=0.0))
+        optimizer= tf.keras.optimizers.Adam(learning_rate=0.01, beta_1=0.9, beta_2=0.999, epsilon=1e-08, weight_decay=0.0))
 
     print(model.summary())
     if (build_only):
@@ -331,14 +209,17 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
         # Second split the 40% into validation and test sets
         X_test, X_val, y_test, y_val = train_test_split(X_valtest, y_valtest, test_size=0.5, random_state=1)
     elif (batched_reader):
-        training_generator = CustomDataGen(batch_size, train_path, resnet=use_resnet)
-        validation_generator = CustomDataGen(batch_size, val_path, resnet=use_resnet)
+        training_generator = CustomDataGen(batch_size, train_path, resnet=use_resnet, outColumn=outColumn, categorical=False, shuffle=True)
+        validation_generator = CustomDataGen(batch_size, val_path, resnet=use_resnet, outColumn=outColumn, categorical=False, shuffle=True)
+        steps_per_epoch = int(training_generator.__len__())
+
     else:
         X_train, y_train, image_list_train = proc_image_dir(os.path.dirname(os.path.abspath(train_path)) + '/JPEG/',
                                                             train_path, WIDTH=WIDTH, HEIGHT=HEIGHT,
                                                             scoreColumn=outColumn, categorical=categorical, categories=model.output_shape[1], sample=2)
         X_val, y_val, image_list_val = proc_image_dir(os.path.dirname(os.path.abspath(val_path)) + '/JPEG/', val_path,
                                                       WIDTH=WIDTH, HEIGHT=HEIGHT, scoreColumn=outColumn, categorical=categorical, categories=model.output_shape[1], sample=2)
+        steps_per_epoch = int(len(X_train)/batch_size)
 
     print("Images loaded")
 
@@ -348,13 +229,13 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
     early_stopping_callback = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=patience, verbose=1,
                                                                restore_best_weights=reload)
 
-    steps_per_epoch = int(len(X_train)/batch_size)
+
     epochs_per_rate = int((epochs / len(lr)))
 
 
 
     for l in lr:
-        learning_schedule = optimizers.schedules.ExponentialDecay(initial_learning_rate=l,
+        learning_schedule = tf.keras.optimizers.schedules.ExponentialDecay(initial_learning_rate=l,
                                                                   decay_steps=steps_per_epoch, decay_rate=1.0-decay)
         print(reload)
         print(lr.index(l))
@@ -365,7 +246,7 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
         print("learning rate: " + str(l))
         model.compile(
             loss=loss_function,
-            optimizer=optimizers.SGD(learning_rate=learning_schedule, momentum=momentum, nesterov=nesterov),
+            optimizer=tf.keras.optimizers.SGD(learning_rate=learning_schedule, momentum=momentum, nesterov=nesterov),
             metrics=['accuracy'])
 
         # run training loop
@@ -384,17 +265,26 @@ def train(modelin, modelout, imagepath, epochs, batch_size, lr, decay, nesterov,
         #    validation_data=(np.array(X_val), np.array(y_val)),
         #        epochs=epochs, batch_size=batch_size,
         #        callbacks=[model_checkpoint_callback,wait_callback])
+
         if (batched_reader):
-            history = model.fit_generator(generator=training_generator,
+            # for i in range(steps_per_epoch):
+            #     X_train, y_train = training_generator.__getitem__(i)
+            #     X_val, y_val = validation_generator.__getitem__(i)
+            #     history = model.fit(np.array(X_train), np.array(y_train),
+            #         validation_data=(np.array(X_val), np.array(y_val)),
+            #         epochs=epochs_per_rate, batch_size=batch_size,
+            #         callbacks=[model_checkpoint_callback,
+            #                     tensorboard_callback, early_stopping_callback])
+            history = model.fit(x=training_generator,
                                           validation_data=validation_generator,
-                                          epochs=epochs_per_rate,
+                                          epochs=epochs_per_rate, batch_size=batch_size,
                                           callbacks=[model_checkpoint_callback])
         else:
             history = model.fit(np.array(X_train), np.array(y_train),
                                 validation_data=(np.array(X_val), np.array(y_val)),
                                 epochs=epochs_per_rate, batch_size=batch_size,
                                 callbacks=[model_checkpoint_callback,
-                                           tensorboard_callback, early_stopping_callback])
+                                            tensorboard_callback, early_stopping_callback])
 
         # save model
         model.save(modelout + "/model")
@@ -427,7 +317,7 @@ def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix'
 
 def test(modelin, imagepath, WIDTH, HEIGHT, outColumn, weights = None):
     from sklearn.metrics import confusion_matrix
-    model = models.load_model(modelin)
+    model = tf.keras.models.load_model(modelin)
     # model.load_weights(modelin+".checkpoint/")
     print("Model Loaded")
     print(model.summary())
