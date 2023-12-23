@@ -3,11 +3,9 @@ import tensorflow as tf
 
 def simple_model(WIDTH, HEIGHT):
     input = tf.keras.layers.Input((WIDTH, HEIGHT, 3))
-    do0 = new_conv2d(input, 96, (7, 7), (30, 30))
-        # do0 = new_conv2d(do0,256,(5,5),(3,3))
-        # do0 = new_conv2d(do0,384,(3,3),(2,2))
-        # do0 = new_conv2d(do0,384,(2,2),(2,2))
-        # do0 = new_conv2d(do0, 256, (2, 2), (2, 2))
+    do0 = new_conv2d(input, 96, (7, 7), (5, 5))
+    do0 = new_conv2d(do0,256,(5,5),(3,3))
+    do0 = new_conv2d(do0,384,(3,3),(2,2))
 
     f1 = tf.keras.layers.Flatten()(do0)
 

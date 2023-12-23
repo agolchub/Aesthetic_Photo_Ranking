@@ -31,8 +31,8 @@ def model_23(WIDTH, HEIGHT):
     res_combined = tf.keras.layers.Add(dtype=tf.float16)([res1, res2, res3, res4])
         #res_combined = tf.keras.layers.Activation("relu", dtype=tf.float16)(res_combined)
 
-    conv2d = new_conv2d(res_combined, 512, (3, 3), strides=(3, 2), dropout_rate=0.2)
-    conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), dropout_rate=0.2)
+    conv2d = new_conv2d(res_combined, 512, (3, 3), strides=(2, 2), dropout_rate=0.2)
+    # conv2d = new_conv2d(conv2d, 512, (3, 3), strides=(2, 2), dropout_rate=0.2)
 
     flat = tf.keras.layers.Flatten(dtype=tf.float16)(conv2d)
 
