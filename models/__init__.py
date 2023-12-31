@@ -23,3 +23,4 @@ from .model_7 import model_7
 from .model_8 import model_8
 from .model_9 import model_9
 from .model_23 import model_23
+from .model_24 import model_24

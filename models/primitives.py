@@ -73,3 +73,4 @@ def new_res_block_collection_v2(blocks, input, n, size=3, strides=1, first_strid
         print(i)
         activation = new_res_block_v2(activation, n, size, strides, strides if i != 0 else first_strides)
     return activation
+
